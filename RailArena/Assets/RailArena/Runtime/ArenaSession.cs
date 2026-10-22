@@ -17,6 +17,7 @@ namespace RailArena
         public MatchState Match { get; private set; }
         public ArenaActor Human => Actors.Count > LocalPlayerId ? Actors[LocalPlayerId] : null;
         public int Difficulty { get; private set; } = 1;
+        public BotSettings BotSettings { get; private set; }
         public int BotCount { get; private set; } = 3;
         public TargetScenario Scenario { get; private set; }
         public bool Paused { get; private set; }
@@ -72,6 +73,9 @@ namespace RailArena
 
         private void StartSessionCore(bool practice, int bots, int difficulty, TargetScenario scenario)
         {
+            var botTuning = Resources.Load<BotTuning>("BotTuning");
+            if (botTuning == null) throw new System.InvalidOperationException("The bot tuning asset is missing.");
+            BotSettings = botTuning.SettingsFor(Mathf.Clamp(difficulty, 0, 2));
             hitHistory?.Dispose();
             foreach (var actor in Actors) Destroy(actor.gameObject);
             Actors.Clear();

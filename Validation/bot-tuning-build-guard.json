@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "command": "command script eval",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var asset=UnityEditor.AssetDatabase.LoadAssetAtPath<RailArena.BotTuning>(\"Assets/Resources/BotTuning.asset\"); int original=asset.AimRefreshTicks; bool rejected=false; try { asset.AimRefreshTicks=0; try { new RailArena.Editor.BotTuningBuildValidator().OnPreprocessBuild(null); } catch(UnityEditor.Build.BuildFailedException) { rejected=true; } } finally { asset.AimRefreshTicks=original; } return new { callbackRejectedInvalidAsset=rejected,restoredRefresh=asset.AimRefreshTicks };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "callbackRejectedInvalidAsset": true,
+        "restoredRefresh": 12
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\Rail Arena\\RailArena"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -5,7 +5,7 @@ This is an interim audit against `OBJECTIVE.md`, not a completion claim. A passi
 | Requirement | Current evidence | Remaining acceptance |
 | --- | --- | --- |
 | Unity 6000.6.7f1, URP, pinned dependencies | ProjectVersion, package manifest/lockfile, successful Windows build records | Final clean-clone build check |
-| Editable gameplay and bot tuning | Editable movement tuning asset; deterministic bot parameters in source | Move bot reaction/aim/decision parameters into a validated editable asset |
+| Editable gameplay and bot tuning | Movement asset and validated bot profile asset; session snapshots and behavioral edit/isolation tests | Native tuning workflow and broader balancing review |
 | Local Git/LFS and public MIT source | Public Evekiio/rail-arena; binary source assets in LFS; licenses/notices | Final source and artifact audit |
 | Offline bot match, 1-7 bots, three difficulties | Three real-time ten-minute seven-bot difficulty soaks; isolated reaction/aim/LOS tests; fresh one/seven-bot smoke | Native configuration acceptance, broader seed/population coverage and fairness review |
 | Untimed practice, unlimited respawns, restart/configuration | Rule tests, native practice launch, live deaths/respawns | Native restart and configuration acceptance |

@@ -133,5 +133,47 @@ namespace RailArena.Tests
             Assert.That(worldMove.x, Is.GreaterThan(.99f));
             Assert.That(Mathf.Abs(worldMove.z), Is.LessThan(.01f));
         }
+
+        [Test]
+        public void EditedReactionAffectsNewSessionAndLaterAssetEditsDoNotChangeItsSnapshot()
+        {
+            var source = Resources.Load<BotTuning>("BotTuning");
+            var original = source.Veteran;
+            try
+            {
+                var edited = original; edited.ReactionTicks = 60; source.Veteran = edited;
+                Setup(1);
+                source.Veteran = original;
+                int acquired = session.Match.Tick;
+                int firstFire = -1;
+                for (int i = 0; i <= 60; i++)
+                {
+                    if (bot.Brain.Think(session, bot).Fire && firstFire < 0) firstFire = session.Match.Tick;
+                    session.Match.Advance();
+                }
+                Assert.That(firstFire - acquired, Is.EqualTo(60));
+                Assert.That(source.Veteran.ReactionTicks, Is.EqualTo(27));
+            }
+            finally { source.Veteran = original; }
+        }
+
+        [Test]
+        public void InvalidBotTuningRejectsZeroIntervalsNonfiniteValuesAndUnknownDifficulty()
+        {
+            var tuning = ScriptableObject.CreateInstance<BotTuning>();
+            try
+            {
+                tuning.AimRefreshTicks = 0;
+                Assert.Throws<ArgumentException>(() => tuning.SettingsFor(1));
+                tuning.AimRefreshTicks = 12;
+                var profile = tuning.Ace; profile.AimErrorDegrees = float.NaN; tuning.Ace = profile;
+                Assert.Throws<ArgumentException>(() => tuning.SettingsFor(1), "Even an unselected invalid profile must be rejected.");
+                profile.AimErrorDegrees = 1; profile.TurnDegreesPerSecond = float.PositiveInfinity; tuning.Ace = profile;
+                Assert.Throws<ArgumentException>(() => tuning.SettingsFor(2));
+                profile.TurnDegreesPerSecond = 330; tuning.Ace = profile;
+                Assert.Throws<ArgumentOutOfRangeException>(() => tuning.SettingsFor(3));
+            }
+            finally { Object.DestroyImmediate(tuning); }
+        }
     }
 }

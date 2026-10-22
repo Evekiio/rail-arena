@@ -44,7 +44,7 @@ Initial direct-IP duel integration is now available from **ONLINE DUEL // DIRECT
 
 | Evidence | Scope |
 | --- | --- |
-| 41 EditMode tests passing | Shared simulation including single-player practice, actual character geometry and animation, bot reaction/aim/occlusion/health seeking, protocol, rewind and camera continuity |
+| 43 EditMode tests passing | Shared simulation including solo practice, actual character geometry/animation, editable bot profiles and behavior, protocol, rewind and camera continuity |
 | 35 standalone mechanics checks passing | Accelerated real authority with actual hurtboxes; exact combat, pickup, respawn and match-clock boundaries, plus solo movement/fire/respawn and mode switching |
 | Full ten-minute network-candidate match and rematch | Two local processes under configured delay/jitter/5% loss; historical fingerprint, not the final art build |
 | Latest corrected-hitbox network smoke | Real UDP, 60 seconds, simulated delay/loss, zero application errors |
@@ -82,6 +82,8 @@ Passing simulation tests alone does not establish playability, movement fidelity
 For the development Windows build, run `tools/Test-Offline.ps1` to execute a repeatable 45-second local combat smoke test with seven bots and an automated human input driver. It saves counters, errors, void traces and frame timing. This automation does not validate human input feel or menu clicks. Hidden-window frame timing is not a visible-window rendering benchmark.
 
 The same runner accepts `-Duration 600 -Difficulty 0 -Bots 7` for a ten-minute easy session; difficulty values 1 and 2 select medium and hard. Per-actor route and sampled stall measurements are described in [bot validation](docs/BOT-VALIDATION.md).
+
+Bot reaction, aim and decision profiles are editable in `Assets/Resources/BotTuning.asset`; restart the session to apply changes. See [bot tuning](docs/BOT-TUNING.md) for units, preserved defaults and validation.
 
 Run `tools/Test-Mechanics.ps1` for 35 accelerated standalone authority checks covering actual hurtbox damage, held-fire cooldowns, pickups, respawns, void scoring, match clocks, sudden death, untimed practice and solo-to-bot mode switching. See [scenario scope and the bone-scale regression it discovered](docs/MECHANICS-VALIDATION.md). These checks do not substitute for native playtesting or real-time multiplayer.
 

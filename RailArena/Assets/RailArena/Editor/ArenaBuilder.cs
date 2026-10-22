@@ -16,6 +16,7 @@ namespace RailArena.Editor
         [MenuItem("Rail Arena/Build Foundry scene")]
         public static void Build()
         {
+            BotTuningBuilder.EnsureAsset();
             System.IO.Directory.CreateDirectory(Folder);
             AssetDatabase.Refresh();
             EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);

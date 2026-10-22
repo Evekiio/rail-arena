@@ -30,13 +30,13 @@ namespace RailArena
         {
             if (session.Scenario == TargetScenario.Stationary) return default;
             int tick = session.Match.Tick;
-            int difficulty = session.Difficulty;
+            var tuning = session.BotSettings;
             var world = session.World;
             if (tick >= decisionTick)
             {
-                decisionTick = tick + 15 + (2 - difficulty) * 12;
+                decisionTick = tick + tuning.DecisionIntervalTicks;
                 if (next < 0) goal = random.Next(world.Nodes.Length);
-                if (self.Health <= 50)
+                if (self.Health <= tuning.SeekHealthAtOrBelow)
                 {
                     float nearest = float.MaxValue;
                     foreach (var pickup in world.Pickups)
@@ -90,20 +90,19 @@ namespace RailArena
             bool fire = false;
             if (target != null && session.Scenario == TargetScenario.Combat)
             {
-                Vector3 direction = (target.Eye - Vector3.up * .35f - self.Eye).normalized;
+                Vector3 direction = (target.Eye - Vector3.up * tuning.AimBelowEyeMetres - self.Eye).normalized;
                 float wantedYaw = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
                 float wantedPitch = -Mathf.Asin(direction.y) * Mathf.Rad2Deg;
-                float turn = (150 + difficulty * 90) / 60f;
-                int reaction = difficulty == 0 ? 48 : difficulty == 1 ? 27 : 14;
-                float error = difficulty == 0 ? 5 : difficulty == 1 ? 2.5f : 1;
-                if (tick % 12 == 0)
+                float turn = tuning.TurnDegreesPerSecond / CombatRules.TickRate;
+                if (tick % tuning.AimRefreshTicks == 0)
                 {
-                    aimYawError = ((float)random.NextDouble() * 2 - 1) * error;
-                    aimPitchError = ((float)random.NextDouble() * 2 - 1) * error;
+                    aimYawError = ((float)random.NextDouble() * 2 - 1) * tuning.AimErrorDegrees;
+                    aimPitchError = ((float)random.NextDouble() * 2 - 1) * tuning.AimErrorDegrees;
                 }
                 yaw = Mathf.MoveTowardsAngle(yaw, wantedYaw + aimYawError, turn);
                 pitch = Mathf.MoveTowardsAngle(pitch, wantedPitch + aimPitchError, turn);
-                fire = tick - visibleSince >= reaction && Mathf.Abs(Mathf.DeltaAngle(yaw, wantedYaw)) < 9;
+                fire = tick - visibleSince >= tuning.ReactionTicks &&
+                    Mathf.Abs(Mathf.DeltaAngle(yaw, wantedYaw)) < tuning.FireYawToleranceDegrees;
                 // Keep moving along safe routes while aiming independently.
             }
             else
