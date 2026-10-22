@@ -2,6 +2,12 @@
 
 Status: **offline milestone and initial online integration, incomplete game**. The full objective has not been achieved.
 
+## Native input diagnostic checkpoint
+
+The candidate's 45-second seven-bot regression also passed: 2,710 ticks, 188 shots, 23 deaths, two pickups, 53 pad launches, zero exceptions and zero void deaths (`Validation/native-input-offline.json`). This uses automated control and is not native-input acceptance.
+
+The opt-in development component in `NATIVE-INPUT-REVIEW.md` compiled and built as candidate `2a470bd8...`. Initial focus/report output is retained in `Validation/native-input-initial.json`. All 35 accelerated standalone mechanics checks passed with zero errors (`native-input-mechanics.json`). A Windows Firewall permission dialog prevented the candidate's visible input/settings review; no security permission was changed. The prior current build launched practice and rendered the new arms, but its injected Escape tap did not visibly pause. Keyboard receipt and the cause remain unverified. The default `Builds/Windows` executable remains the preceding `5a72f123...` build.
+
 ## First-person armored arms
 
 An arm-only CC0 contender derivative now provides visible hands/forearms, ordinary humanoid idle/IK, shared weapon grips and recoil, and the local contender palette. It has no actor, hurtbox or collider components. Cosmetic recoil travel is reduced to 5.5 cm; authority, aim rays and 90-tick firing remain unchanged. Details, provenance and remaining finger/action-animation work are in `FIRST-PERSON-ARMS.md`.
