@@ -7,6 +7,19 @@ namespace RailArena.Tests
     public sealed class SimulationTests
     {
         [Test]
+        public void SoloPracticeAllowsOneParticipantWithoutChangingTimedMatchMinimum()
+        {
+            var practice = new MatchState(new[] { 0 }, true);
+            for (int i = 0; i < CombatRules.CountdownTicks + CombatRules.MatchTicks + 1; i++) practice.Advance();
+            Assert.That(practice.Phase, Is.EqualTo(MatchPhase.Playing));
+            Assert.That(practice.RecordKill(0, 0), Is.False);
+            Assert.That(practice.RecordVoidDeath(0), Is.True);
+            Assert.That(practice.Scores[0], Is.EqualTo(-1));
+            Assert.Throws<System.ArgumentException>(() => new MatchState(new[] { 0 }, false));
+            Assert.Throws<System.ArgumentException>(() => new MatchState(new int[0], true));
+        }
+
+        [Test]
         public void CountdownBlocksScoringAndTiedLeadersPlayNextKillSuddenDeath()
         {
             var match = new MatchState(new[] { 0, 1, 2 }, false);

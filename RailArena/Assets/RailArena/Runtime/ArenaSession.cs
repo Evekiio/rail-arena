@@ -76,7 +76,7 @@ namespace RailArena
             foreach (var actor in Actors) Destroy(actor.gameObject);
             Actors.Clear();
             Practice = practice;
-            BotCount = Mathf.Clamp(bots, 1, 7);
+            BotCount = Mathf.Clamp(bots, practice ? 0 : 1, 7);
             Difficulty = Mathf.Clamp(difficulty, 0, 2);
             Scenario = scenario;
             var ids = new List<int>();

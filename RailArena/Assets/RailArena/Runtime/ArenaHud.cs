@@ -67,13 +67,16 @@ namespace RailArena
             }
             else
             {
-                Button("OFFLINE BOT MATCH", () => Session.StartSession(false, bots, difficulty, scenario), ref y);
-                Button("PRACTICE // UNTIMED", () => Session.StartSession(true, bots, difficulty, scenario), ref y);
+                Button(bots == 0 ? "BOT MATCH // SELECT 1+ BOT" : "OFFLINE BOT MATCH",
+                    () => Session.StartSession(false, bots, difficulty, scenario), ref y, bots > 0);
+                Button(bots == 0 ? "SOLO PRACTICE // UNTIMED" : "PRACTICE // UNTIMED",
+                    () => Session.StartSession(true, bots, difficulty, scenario), ref y);
                 Button("ONLINE DUEL // DIRECT IP", OnlineMenu, ref y);
             }
             if (!Session.IsOnline)
             {
-            Button($"BOTS  {bots}   +", () => { bots = bots % 7 + 1; RefreshMenu(); }, ref y);
+            Button(bots == 0 ? "BOTS  0 // SOLO   +" : $"BOTS  {bots}   +", () =>
+            { bots = !Session.Running || Session.Practice ? (bots + 1) % 8 : bots % 7 + 1; RefreshMenu(); }, ref y);
             Button($"DIFFICULTY  {new[] { "CADET", "VETERAN", "ACE" }[difficulty]}", () => { difficulty = (difficulty + 1) % 3; RefreshMenu(); }, ref y);
             Button($"TARGETS  {scenario.ToString().ToUpperInvariant()}", () => { scenario = (TargetScenario)(((int)scenario + 1) % 3); RefreshMenu(); }, ref y);
             }
@@ -150,13 +153,14 @@ namespace RailArena
             if (match.Phase == MatchPhase.Results && menu == null) RefreshMenu();
         }
 
-        private void Button(string title, UnityEngine.Events.UnityAction action, ref float y)
+        private void Button(string title, UnityEngine.Events.UnityAction action, ref float y, bool interactable = true)
         {
             var root = new GameObject(title, typeof(RectTransform), typeof(UnityEngine.UI.Image), typeof(UnityEngine.UI.Button));
             root.transform.SetParent(menu.transform, false);
             Rect(root, new Vector2(.095f, y), new Vector2(.46f, y + .055f));
             root.GetComponent<UnityEngine.UI.Image>().color = new Color(.055f, .1f, .15f);
             var button = root.GetComponent<UnityEngine.UI.Button>();
+            button.interactable = interactable;
             button.onClick.AddListener(action);
             Text(root.transform, "Label", title, 24, new Vector2(.035f, 0), Vector2.one).alignment = TextAnchor.MiddleLeft;
             y -= .073f;

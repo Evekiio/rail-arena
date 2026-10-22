@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "command": "command script eval",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var s=UnityEngine.Object.FindFirstObjectByType<RailArena.ArenaSession>(); return new {frame=UnityEngine.Time.frameCount,tick=s.Match.Tick,actors=s.Actors.Count,s.Human.Health,phase=s.Match.Phase.ToString()};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "frame": 3790,
+        "tick": 738,
+        "actors": 1,
+        "Health": 100,
+        "phase": "Playing"
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\Rail Arena\\RailArena"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -42,8 +42,8 @@ Initial direct-IP duel integration is now available from **ONLINE DUEL // DIRECT
 
 | Evidence | Scope |
 | --- | --- |
-| 40 EditMode tests passing | Shared simulation, actual character geometry and animation, bot reaction/aim/occlusion/health seeking, protocol, rewind and camera continuity |
-| 28 standalone mechanics checks passing | Accelerated real authority with actual hurtboxes; exact combat, pickup, respawn and match-clock boundaries |
+| 41 EditMode tests passing | Shared simulation including single-player practice, actual character geometry and animation, bot reaction/aim/occlusion/health seeking, protocol, rewind and camera continuity |
+| 35 standalone mechanics checks passing | Accelerated real authority with actual hurtboxes; exact combat, pickup, respawn and match-clock boundaries, plus solo movement/fire/respawn and mode switching |
 | Full ten-minute network-candidate match and rematch | Two local processes under configured delay/jitter/5% loss; historical fingerprint, not the final art build |
 | Latest corrected-hitbox network smoke | Real UDP, 60 seconds, simulated delay/loss, zero application errors |
 | Human acceptance still open | Keyboard/mouse feel, settings, visible and sound-on quality, native two-human duel, final build and real internet path |
@@ -53,6 +53,8 @@ Reports identify their build and limitations. See [the acceptance matrix](docs/A
 ## Play the local build
 
 Launch `Builds/Windows/RailArena.exe` from the workspace. Choose **OFFLINE BOT MATCH** or **PRACTICE**. Set bot count, difficulty and target behavior before starting. During a session, press Escape to pause; changing the configuration and choosing **RESTART SESSION** applies it.
+
+For movement and arena testing alone, cycle **BOTS** to **0 // SOLO**, then choose **SOLO PRACTICE // UNTIMED**. It has no opponents or network connection. Movement, rail firing, pickups, jump pads, void scoring and unlimited respawns use the normal authority. Timed bot matches require at least one bot. Solo practice can restart with bots after changing the count in the pause menu.
 
 | Control | Action |
 | --- | --- |
@@ -79,7 +81,7 @@ For the development Windows build, run `tools/Test-Offline.ps1` to execute a rep
 
 The same runner accepts `-Duration 600 -Difficulty 0 -Bots 7` for a ten-minute easy session; difficulty values 1 and 2 select medium and hard. Per-actor route and sampled stall measurements are described in [bot validation](docs/BOT-VALIDATION.md).
 
-Run `tools/Test-Mechanics.ps1` for 28 accelerated standalone authority checks covering actual hurtbox damage, held-fire cooldowns, pickups, respawns, void scoring, match clocks, sudden death and untimed practice. See [scenario scope and the bone-scale regression it discovered](docs/MECHANICS-VALIDATION.md). These checks do not substitute for native playtesting or real-time multiplayer.
+Run `tools/Test-Mechanics.ps1` for 35 accelerated standalone authority checks covering actual hurtbox damage, held-fire cooldowns, pickups, respawns, void scoring, match clocks, sudden death, untimed practice and solo-to-bot mode switching. See [scenario scope and the bone-scale regression it discovered](docs/MECHANICS-VALIDATION.md). These checks do not substitute for native playtesting or real-time multiplayer.
 
 Build the current saved scene through the running pinned Editor:
 

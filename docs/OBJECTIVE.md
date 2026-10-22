@@ -5,6 +5,7 @@ Capture their fast, readable, skill-driven arena-shooter experience while giving
 Playable modes
 - Offline bot match: Start directly from the main menu without accounts, internet access, or a second player. Support one human against 1–7 configurable bots, with three difficulty levels.
 - Practice: Offer an untimed bot session with unlimited respawns so I can run around, shoot bots, and test movement, aiming, damage, pickups, and jump pads. Allow restarting the session and changing bot count or difficulty through the pause menu.
+- Solo practice: As requested during development, support zero bots for movement, physics and arena testing without opponents, retaining the same gameplay authority and unlimited respawns.
 - Online duel: Two humans can host and join directly by IP and configurable port, ready up, play a complete duel, view results, and rematch.
 Gameplay requirements
 - Quake-style ground acceleration, strafe jumping, bunny hopping, air acceleration, and momentum preservation. No sprint or stamina.

@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "command": "command script eval",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "UnityEngine.GameObject.Find(\"SOLO PRACTICE // UNTIMED\").GetComponent<UnityEngine.UI.Button>().onClick.Invoke(); var s=UnityEngine.Object.FindFirstObjectByType<RailArena.ArenaSession>(); return new {frame=UnityEngine.Time.frameCount,actors=s.Actors.Count,s.BotCount,s.Practice,s.IsOnline};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "frame": 2045,
+        "actors": 1,
+        "BotCount": 0,
+        "Practice": true,
+        "IsOnline": false
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\Rail Arena\\RailArena"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

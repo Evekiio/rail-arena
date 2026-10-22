@@ -263,6 +263,43 @@ namespace RailArena
             Fire(HitRegion.Head); Advance(120);
             Expect("Practice still respawns at 120 ticks after time limit", Target.Health == 100 && Target.Life == 2,
                 $"health={Target.Health}, life={Target.Life}");
+
+            session.StartSession(true, 0, 1, TargetScenario.Stationary);
+            session.SetPaused(true);
+            yield return null; yield return null;
+            Expect("Solo practice creates only the human with no network", session.Actors.Count == 1 && session.BotCount == 0 &&
+                session.Practice && !session.IsOnline, $"actors={session.Actors.Count}, bots={session.BotCount}, online={session.IsOnline}");
+            Advance(180);
+            Vector3 before = Shooter.transform.position;
+            Shooter.Command = new MovementCommand { Move = Vector2.up, Yaw = 90, Fire = true };
+            Advance(30); Shooter.Command = default;
+            Expect("Solo authority moves and fires without a target", Vector3.Distance(before, Shooter.transform.position) > 1 &&
+                session.ShotsFired == 1 && Shooter.Health == 100,
+                $"travel={Vector3.Distance(before, Shooter.transform.position)}, shots={session.ShotsFired}, health={Shooter.Health}");
+            Shooter.Place(new Vector3(0, .08f, -22));
+            Advance(36180);
+            Expect("Solo practice stays active beyond match limit", session.Match.Phase == MatchPhase.Playing && session.Actors.Count == 1,
+                $"phase={session.Match.Phase}, actors={session.Actors.Count}");
+            Shooter.Place(new Vector3(0, -21, 0));
+            Advance(1);
+            Expect("Solo void death still scores minus one", !Shooter.Alive && session.Match.Scores[0] == -1,
+                $"health={Shooter.Health}, score={session.Match.Scores[0]}");
+            Advance(119);
+            bool stillDead = !Shooter.Alive;
+            Advance(1);
+            Expect("Solo void respawn preserves exact 120-tick boundary", stillDead && Shooter.Health == 100 && Shooter.Life == 2,
+                $"deadBeforeBoundary={stillDead}, health={Shooter.Health}, life={Shooter.Life}");
+            session.StartSession(true, 1, 2, TargetScenario.Moving);
+            session.SetPaused(true);
+            yield return null; yield return null;
+            Expect("Solo can restart into configured bot practice", session.Actors.Count == 2 && session.BotCount == 1 &&
+                session.Difficulty == 2 && session.Scenario == TargetScenario.Moving,
+                $"actors={session.Actors.Count}, difficulty={session.Difficulty}, scenario={session.Scenario}");
+            session.StartSession(false, 0, 1, TargetScenario.Combat);
+            session.SetPaused(true);
+            yield return null; yield return null;
+            Expect("Timed bot match retains at least one bot", session.Actors.Count == 2 && session.BotCount == 1 && !session.Practice,
+                $"actors={session.Actors.Count}, bots={session.BotCount}, practice={session.Practice}");
         }
     }
 }

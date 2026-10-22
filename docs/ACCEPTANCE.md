@@ -9,6 +9,7 @@ This is an interim audit against `OBJECTIVE.md`, not a completion claim. A passi
 | Local Git/LFS and public MIT source | Public Evekiio/rail-arena; binary source assets in LFS; licenses/notices | Final source and artifact audit |
 | Offline bot match, 1-7 bots, three difficulties | Three real-time ten-minute seven-bot difficulty soaks; isolated reaction/aim/LOS tests; fresh one/seven-bot smoke | Native configuration acceptance, broader seed/population coverage and fairness review |
 | Untimed practice, unlimited respawns, restart/configuration | Rule tests, native practice launch, live deaths/respawns | Native restart and configuration acceptance |
+| Zero-bot solo practice for movement/arena testing | Single-participant rule regression; actual Editor menu event path; standalone movement/fire/untimed/void/respawn/mode-switch checks | Native menu and keyboard/mouse acceptance |
 | Direct-IP host/join, port, ready-up | Real two-process UDP tests; native port entry and unused-host timeout | Native two-human connection path and standalone bind/full/incompatible errors |
 | Ten-minute countdown, results, rematch | Normal and impaired runs completed tick 36180, matching results and round two; impaired scores 102-66 | Final-build regression after presentation changes and native acceptance |
 | Quake-style acceleration, air control, hopping, momentum | Shared tuning derived from reference units; simulation tests; bot traversal | Sustained keyboard/mouse movement feel and fidelity review |
@@ -35,4 +36,4 @@ This is an interim audit against `OBJECTIVE.md`, not a completion claim. A passi
 
 Current evidence is indexed in `VALIDATION.md`, networking details in `NETWORKING.md`, and model provenance/limitations in `CHARACTERS.md`. Source milestones must continue to be pushed under the policy in `DEVELOPMENT.md`.
 
-`MECHANICS-VALIDATION.md` explains the 28 accelerated standalone checks and the inherited-bone-scale hitbox bug they discovered. Historical combat counts are not proof of corrected geometry; use build-specific evidence.
+`MECHANICS-VALIDATION.md` explains the current 35 accelerated standalone checks, including the original 28 that discovered the inherited-bone-scale hitbox bug. Historical combat counts are not proof of corrected geometry; use build-specific evidence.

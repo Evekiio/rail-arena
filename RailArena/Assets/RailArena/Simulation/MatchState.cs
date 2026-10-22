@@ -24,8 +24,9 @@ namespace RailArena.Simulation
                 if (id < 0 || !scores.TryAdd(id, 0))
                     throw new ArgumentException("Participant IDs must be unique and nonnegative.", nameof(participants));
             }
-            if (scores.Count < 2 || scores.Count > 8)
-                throw new ArgumentException("Matches require two to eight participants.", nameof(participants));
+            int minimum = practice ? 1 : 2;
+            if (scores.Count < minimum || scores.Count > 8)
+                throw new ArgumentException($"This mode requires {minimum} to eight participants.", nameof(participants));
             Practice = practice;
             Phase = MatchPhase.Countdown;
         }

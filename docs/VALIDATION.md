@@ -2,6 +2,14 @@
 
 Status: **offline milestone and initial online integration, incomplete game**. The full objective has not been achieved.
 
+## Zero-bot solo practice
+
+Build `8a42aa65...` adds selectable zero-bot solo practice for movement/arena testing without opponents or networking. Timed bot matches retain a one-bot minimum; online duels retain two humans. All 41 EditMode tests and 35 accelerated standalone mechanics checks passed (`Validation/solo-editmode.json`, `solo-mechanics.json`, `solo-build.json`). The actual Editor menu event path confirmed an enabled solo button, disabled timed bot match with zero selected bots, one spawned human and live frame/tick progression (`solo-menu-editor.json`, `solo-session-editor.json`, `solo-live-editor.json`). This does not prove native click or keyboard feel.
+
+The same build's ordinary 45-second seven-bot regression passed with 183 shots, 26 deaths, 59 launches, zero exceptions and zero void deaths (`Validation/solo-bot-regression.json`). Solo integration includes firing without targets, continued untimed play, exact void respawn and switching back to configured bot practice. See `MECHANICS-VALIDATION.md` for exact scope.
+
+Its automated 60-second impaired duel regression also passed (`Validation/Duel-SoloRegression/`): 57 host-recorded shots, eight deaths, 30 validated rewinds, zero peer application errors, 304 relay drops and 175 reordered sends. Maximum raw client correction was 1.2475 m; this remains a motion-quality concern rather than approved visual feel. This is local simulated impairment, not a final full-match/rematch repeat or an actual internet test.
+
 ## Bot reliability and hosting milestone
 
 All 40 EditMode tests passed, including seven isolated reaction/aim/occlusion/health-seeking cases (`Validation/bot-brain-editmode.json`). Three concurrent real-time ten-minute seven-bot practice runs passed at easy/medium/hard (`Validation/Bot-Soak-600s/difficulty-*.json`, fingerprint `c2070a17...`): 2559/2674/2576 shots, 141/305/516 deaths, zero application exceptions and zero void deaths. Every actor accumulated at least 244 sampled route nodes. Longest sampled stationary time was under 1.1 seconds and time without route progress about 3.01 seconds. These are ten-minute sampled reliability observations, not infinite/all-seed coverage or a rendering benchmark. Definitions, thresholds and raw report scope are in `BOT-VALIDATION.md`.

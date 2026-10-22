@@ -10,7 +10,7 @@ The script launches a hidden standalone process, requires a fresh JSON report, c
 
 The harness arranges two stationary actors in the saved arena. Native input and bot decisions are disabled for these actors. The offline session is paused between controlled ticks, and a development-only entry point invokes the same `AdvanceAuthority()` method used by offline and online host play. Movement still uses real CharacterControllers. Damage still passes through captured animated hurtbox geometry, the normal shot trace, health application, scoring and death handling. No test-only damage function or shortened match duration is substituted.
 
-Aim selection first confirms an unobstructed ray to the requested live hit region. The normal authority then independently traces the fired shot. Twenty-eight checks cover:
+Aim selection first confirms an unobstructed ray to the requested live hit region. The normal authority then independently traces the fired shot. The original twenty-eight checks cover:
 
 - Countdown through tick 179 and active combat at tick 180.
 - Lethal headshot, two body hits, three limb hits and mixed body/limb damage.
@@ -21,6 +21,8 @@ Aim selection first confirms an unobstructed ray to the requested live hit regio
 - Complete integer match clock through tick 36180, tied-leader sudden death, next-kill resolution, unique-leader results and frozen results state.
 - Practice active beyond the timed-match limit and continuing to respawn.
 
+Seven additional checks cover zero-bot solo practice: one human without networking, normal movement and firing without a target, continued play beyond the match limit, void penalty, exact respawn, switching to configured bot practice, and the unchanged minimum of one bot in timed matches. The current runner therefore executes 35 checks.
+
 This is accelerated integer-clock integration evidence, not native keyboard/mouse interaction, visual feel, audio acceptance or a real-time ten-minute session. The existing separate two-process full-match records establish their own real-time scope. Actual public-network multiplayer remains unverified.
 
 ## Scale regression discovered by this runner
@@ -30,3 +32,9 @@ The initial attempt (`Validation/mechanics-first.json`, build `f694df59...`) cou
 The builder now compensates each hurtbox's inherited scale and measures limb height from world-space bone distances. `UpdateHurtboxes()` updates only this part of the existing prefab. The new geometric EditMode regression checks unit world scale, bounded dimensions and bone proximity, a direct head hit and a two-metre-offset miss.
 
 The corrected standalone report is `Validation/mechanics-corrected.json`, fingerprint `a6326328c71a681aa0fc8a4624b703dbd58c35a62a0d4b965e0bfdbeaa2779f6`. All 28 checks passed without application errors. All 33 EditMode tests passed in `Validation/mechanics-editmode.json`; build evidence is in `Validation/mechanics-build.json`. Earlier reports remain historical and do not certify the corrected build.
+
+## Solo practice extension
+
+All 35 current standalone checks pass on fingerprint `8a42aa65066663b37a094b636b59a055d5ff72787a78b0ffff0c81ca90a8fe30` (`Validation/solo-mechanics.json`). All 41 EditMode tests pass (`solo-editmode.json`); build evidence is in `solo-build.json`. Solo movement travelled 3.716 m over 30 ordinary authority ticks and fired one shot with no victim. Solo void death subtracted one point and respawned at the 120-tick boundary.
+
+Editor UI event checks (`solo-menu-editor.json`, `solo-session-editor.json`, `solo-live-editor.json`) cycle the actual bot-count buttons to zero, confirm the solo action is enabled and the timed match disabled, invoke solo start, then observe frame progression to 3790 and match tick 738 with one healthy human. These are normal menu event handlers invoked through Editor tooling, not injected native clicks or keyboard acceptance. Timed matches still require two to eight participants; untimed practice allows one to eight. The network duel still has two humans.

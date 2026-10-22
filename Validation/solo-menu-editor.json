@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "command": "command script eval",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "for(int count=3;count<=7;count++){ UnityEngine.GameObject.Find(\"BOTS  \"+count+\"   +\").GetComponent<UnityEngine.UI.Button>().onClick.Invoke(); } var solo=UnityEngine.GameObject.Find(\"SOLO PRACTICE // UNTIMED\").GetComponent<UnityEngine.UI.Button>(); var match=UnityEngine.GameObject.Find(\"BOT MATCH // SELECT 1+ BOT\").GetComponent<UnityEngine.UI.Button>(); return new {frame=UnityEngine.Time.frameCount,solo=solo.interactable,timed=match.interactable,soloBounds=solo.GetComponent<UnityEngine.RectTransform>().rect.ToString()};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "frame": 1948,
+        "solo": true,
+        "timed": false,
+        "soloBounds": "(x:-350.40, y:-29.70, width:700.80, height:59.40)"
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\Rail Arena\\RailArena"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
