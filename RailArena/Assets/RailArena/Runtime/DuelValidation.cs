@@ -26,6 +26,9 @@ namespace RailArena
             public int pending;
             public float correction;
             public int outboundClamps;
+            public int rewoundShots;
+            public int rejectedTimes;
+            public int[] actorShots;
             public string connection;
             public bool passed;
         }
@@ -70,8 +73,12 @@ namespace RailArena
                 shots = session.ShotsFired, observedShots = observed, deaths = session.Deaths, pads = session.PadLaunches,
                 snapshots = session.SnapshotsReceived, acknowledged = session.LastAcknowledgedInput,
                 pending = session.PendingInputs, correction = session.MaximumCorrection, outboundClamps = session.OutboundClamps, connection = session.ConnectionStatus };
+            report.rewoundShots = session.RewoundShots;
+            report.rejectedTimes = session.RejectedShotTimes;
+            report.actorShots = Array.ConvertAll(session.Actors.ToArray(), actor => actor.ShotSerial);
             report.passed = errors == 0 && session.IsOnline && report.round == 1 && report.tick > 900 &&
-                observed > 1 && (role == "host" ? report.shots > 1 : report.snapshots > 30 && report.acknowledged > 300);
+                report.actorShots.Length == 2 && report.actorShots[0] > 0 && report.actorShots[1] > 0 &&
+                (role == "host" ? report.shots > 1 && report.rewoundShots > 0 : report.snapshots > 30 && report.acknowledged > 300);
             Directory.CreateDirectory(Path.GetDirectoryName(output));
             File.WriteAllText(output, JsonUtility.ToJson(report, true));
             Debug.Log("DUEL_VALIDATION " + JsonUtility.ToJson(report));

@@ -42,6 +42,9 @@ namespace RailArena
         private int padCount;
         private Transform weapon;
         private float recoil;
+        private Networking.HitboxHistory hitHistory;
+        public int RewoundShots { get; private set; }
+        public int RejectedShotTimes { get; private set; }
 
         private void Awake()
         {
@@ -68,6 +71,7 @@ namespace RailArena
 
         private void StartSessionCore(bool practice, int bots, int difficulty, TargetScenario scenario)
         {
+            hitHistory?.Dispose();
             foreach (var actor in Actors) Destroy(actor.gameObject);
             Actors.Clear();
             Practice = practice;
@@ -83,6 +87,9 @@ namespace RailArena
                 actor.Place(World.Spawns[i % World.Spawns.Length].position);
             }
             Match = new MatchState(ids, practice);
+            hitHistory = new Networking.HitboxHistory(Actors);
+            hitHistory.Capture(0);
+            RewoundShots = RejectedShotTimes = 0;
             foreach (var pickup in World.Pickups) { pickup.AvailableTick = 0; pickup.SetAvailable(true); }
             Feed = "";
             shotCount = deathCount = pickupCount = padCount = 0;
@@ -105,6 +112,8 @@ namespace RailArena
 
         public void MainMenu()
         {
+            hitHistory?.Dispose();
+            hitHistory = null;
             DisconnectNetwork();
             Match = null;
             foreach (var actor in Actors) Destroy(actor.gameObject);
@@ -194,8 +203,10 @@ namespace RailArena
                         pickupCount++;
                     }
                 }
-                if (actor.Command.Fire && CombatRules.CanFire(tick, actor.NextShotTick, actor.Alive)) Shoot(actor);
             }
+            hitHistory.Capture(tick);
+            foreach (var actor in Actors)
+                if (Match.IsActive && actor.Command.Fire && CombatRules.CanFire(tick, actor.NextShotTick, actor.Alive)) Shoot(actor);
             foreach (var pickup in World.Pickups) if (tick >= pickup.AvailableTick) pickup.SetAvailable(true);
         }
 
@@ -206,28 +217,22 @@ namespace RailArena
             actor.Presentation.Fired();
             shotCount++;
             Vector3 origin = actor.Eye;
-            Vector3 direction = actor.AimDirection;
-            Vector3 end = origin + direction * 180;
-            // Self is on a separate layer for the local camera, but rays explicitly skip every own hitbox.
-            var hits = Physics.RaycastAll(origin, direction, 180, (1 << 0) | (1 << 8) | (1 << 10), QueryTriggerInteraction.Collide);
-            System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
-            foreach (var hit in hits)
+            int viewedTick = IsOnline && actor.Id != LocalPlayerId ? actor.ViewedTick : Match.Tick;
+            var hit = hitHistory.Trace(Match.Tick, viewedTick, actor);
+            if (!hit.ValidTime) RejectedShotTimes++;
+            else if (viewedTick < Match.Tick) RewoundShots++;
+            Vector3 end = hit.End;
+            if (hit.Actor != null)
             {
-                var box = hit.collider.GetComponent<Hitbox>();
-                if (box != null && (box.Actor == actor || !box.Actor.Alive)) continue;
-                end = hit.point;
-                if (box != null)
+                var victim = hit.Actor;
+                victim.Health = CombatRules.ApplyDamage(victim.Health, hit.Region);
+                victim.HitSerial++;
+                victim.Presentation.Hit();
+                if (!victim.Alive)
                 {
-                    box.Actor.Health = CombatRules.ApplyDamage(box.Actor.Health, box.Region);
-                    box.Actor.HitSerial++;
-                    box.Actor.Presentation.Hit();
-                    if (!box.Actor.Alive)
-                    {
-                        Match.RecordKill(actor.Id, box.Actor.Id);
-                        Kill(box.Actor, actor, box.Region.ToString().ToUpperInvariant());
-                    }
+                    Match.RecordKill(actor.Id, victim.Id);
+                    Kill(victim, actor, hit.Region.ToString().ToUpperInvariant());
                 }
-                break;
             }
             actor.ShotSerial++;
             actor.LastShotEnd = end;
@@ -271,6 +276,7 @@ namespace RailArena
                 if (nearest > bestDistance) { bestDistance = nearest; best = spawn; }
             }
             actor.Health = 100;
+            actor.Life++;
             actor.SetAlive(true);
             actor.Place(best.position);
             actor.NextShotTick = Match.Tick;

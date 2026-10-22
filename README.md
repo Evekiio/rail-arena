@@ -6,6 +6,8 @@ An original railgun arena shooter for Windows, inspired by Quake III Arena's mov
 
 The target is immediate offline bot matches and practice, plus direct-IP two-human duels. The complete scope and acceptance criteria are in [the objective](docs/OBJECTIVE.md).
 
+Public source: [Evekiio/rail-arena](https://github.com/Evekiio/rail-arena). Tested development milestones are pushed as work progresses; a finished downloadable release is not available yet.
+
 ## Project
 
 - Unity **6000.6.7f1**, pinned in `RailArena/ProjectSettings/ProjectVersion.txt`.
@@ -15,13 +17,22 @@ The target is immediate offline bot matches and practice, plus direct-IP two-hum
 
 Open the `RailArena` folder in the exact Editor version. Package versions are recorded in the manifest and lockfile. Unity licensing and the first package restore are required for development. The intended offline game will not require an account or external service.
 
+Clone with Git LFS installed so the binary models, textures and animation sources are restored:
+
+```powershell
+git lfs install
+git clone https://github.com/Evekiio/rail-arena.git
+cd rail-arena
+git lfs pull
+```
+
 ## Current implementation
 
 The editable Foundry arena now includes a lower loop, elevated bridge and wings, four ramps, four launch pads, three health pickups and eight spawn positions. Offline bot match and untimed practice use the same local 60 Hz authority, with configurable bot count, three difficulty levels and stationary, moving or combat targets.
 
 The first gameplay pass includes location-based hitboxes, a rail cooldown, deaths and respawns, health restoration, countdown, time limit, void scoring and tied-leader sudden death. Menus, a HUD, scoreboard, results, restart and basic settings are implemented. Characters now use a textured armored humanoid, three mesh LODs, four palette variants, retargeted locomotion/jump/landing/hit/death animations and two-hand aiming IK. See [character sources, editing and limitations](docs/CHARACTERS.md). Weapon, sound and arena presentation still need polish. **The full online acceptance criteria remain incomplete.**
 
-Initial direct-IP duel integration is now available from **ONLINE DUEL // DIRECT IP**. Host and join use the same build and selected UDP port, then both players ready up. The host owns gameplay, while the client predicts/reconciles movement and interpolates the opponent. Two separate Windows players passed a 45-second local smoke test. Hit rewind, complete match/rematch acceptance, impairment testing and remote-network verification remain incomplete. See [networking coverage and remaining integration](docs/NETWORKING.md).
+Initial direct-IP duel integration is now available from **ONLINE DUEL // DIRECT IP**. Host and join use the same build and selected UDP port, then both players ready up. The host owns gameplay, while the client predicts/reconciles movement and interpolates the opponent. Bounded 200 ms hit rewind is implemented and covered by historical geometry tests and a two-player standalone smoke test. Complete match/rematch acceptance, impairment testing and remote-network verification remain incomplete. See [networking coverage and remaining integration](docs/NETWORKING.md).
 
 ## Play the local build
 

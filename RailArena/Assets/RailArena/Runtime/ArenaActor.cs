@@ -25,6 +25,8 @@ namespace RailArena
         public bool Grounded => GroundedOverride ?? (Controller.enabled && Controller.isGrounded);
         public int ShotSerial;
         public int HitSerial;
+        public int Life = 1;
+        public int ViewedTick;
         public Vector3 LastShotEnd;
         public bool Alive => Health > 0;
         public Vector3 Eye => transform.position + Vector3.up * 1.58f;

@@ -78,7 +78,7 @@ namespace RailArena
             OutboundClamps = 0;
         }
 
-        private void OnDestroy() => DisconnectNetwork();
+        private void OnDestroy() { DisconnectNetwork(); hitHistory?.Dispose(); }
 
         private void UpdateNetwork()
         {
@@ -113,6 +113,7 @@ namespace RailArena
                 {
                     remoteInputs.Consume(Match.Tick + 1, out var input);
                     Actors[1].Command = input.Command;
+                    Actors[1].ViewedTick = input.ViewedTick;
                     AdvanceAuthority();
                 }
                 // Keep lobby/results snapshots flowing even while the match clock is stopped.
@@ -138,7 +139,7 @@ namespace RailArena
                 }
                 command = DuelProtocol.CommandForWire(command);
                 command.Sequence = ++inputSequence;
-                var input = new DuelInput { Command = command, ViewedTick = Math.Max(0, receivedSnapshot.Tick - InterpolationTicks) };
+                var input = new DuelInput { Command = command, ViewedTick = Math.Max(0, (int)Math.Floor(RemoteViewTick)) };
                 prediction.Add(input);
                 Human.Command = command;
                 if (Human.Alive && Match.IsActive)
@@ -251,7 +252,7 @@ namespace RailArena
         private void InterpolateOpponent()
         {
             if (link == null || link.IsHost || interpolation.Count == 0) return;
-            double tick = receivedSnapshot.Tick + Math.Min(.25, Time.realtimeSinceStartupAsDouble - snapshotTime) * 60 - InterpolationTicks;
+            double tick = RemoteViewTick;
             var first = interpolation[0];
             var second = first;
             foreach (var frame in interpolation)
@@ -283,5 +284,8 @@ namespace RailArena
                 if (authoritative) padCount++;
             }
         }
+
+        private double RemoteViewTick => receivedSnapshot == null ? 0 : receivedSnapshot.Tick +
+            Math.Min(.25, Time.realtimeSinceStartupAsDouble - snapshotTime) * CombatRules.TickRate - InterpolationTicks;
     }
 }
