@@ -257,9 +257,22 @@ namespace RailArena.Editor
             => BuildWindowsTo("../Builds/Windows/RailArena.exe");
 
         public static void BuildWindowsTo(string output)
+            => BuildWindowsPlayer(output, true, false);
+
+        public static void BuildWindowsPlaytestTo(string output, bool nativeInputReview = false)
+            => BuildWindowsPlayer(output, false, nativeInputReview);
+
+        private static void BuildWindowsPlayer(string output, bool development, bool nativeInputReview)
         {
-            var result = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, output,
-                BuildTarget.StandaloneWindows64, BuildOptions.Development);
+            var scenes = System.Array.FindAll(EditorBuildSettings.scenes, scene => scene.enabled);
+            var result = BuildPipeline.BuildPlayer(new BuildPlayerOptions
+            {
+                scenes = System.Array.ConvertAll(scenes, scene => scene.path),
+                locationPathName = output,
+                target = BuildTarget.StandaloneWindows64,
+                options = development ? BuildOptions.Development : BuildOptions.None,
+                extraScriptingDefines = nativeInputReview ? new[] { "RAIL_ARENA_NATIVE_REVIEW" } : System.Array.Empty<string>()
+            });
             if (result.summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded)
                 throw new System.Exception("Windows build failed: " + result.summary.result);
         }

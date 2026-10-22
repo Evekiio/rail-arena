@@ -85,7 +85,7 @@ namespace RailArena
             else Button("QUIT", Application.Quit, ref y);
             Text(menu.transform, "Controls", "W A S D  MOVE     SPACE  JUMP     MOUSE  AIM / FIRE\nESC  PAUSE     TAB  SCOREBOARD\n\nUnlimited rail charges. 1.5 second cycle.\nHEAD 100   /   BODY 50   /   LIMB 34", 22,
                 new Vector2(.53f, .24f), new Vector2(.94f, .64f));
-            Text(menu.transform, "Version", "DEVELOPMENT BUILD  //  ONLINE INTEGRATION IN TEST", 18,
+            Text(menu.transform, "Version", "IN DEVELOPMENT  //  OFFLINE / DIRECT-IP PLAYTEST", 18,
                 new Vector2(.095f, .035f), new Vector2(.9f, .085f)).color = new Color(.55f, .63f, .7f);
             if (!string.IsNullOrEmpty(Session.ConnectionError)) Text(menu.transform, "Connection error", Session.ConnectionError, 22,
                 new Vector2(.53f, .12f), new Vector2(.94f, .22f)).color = new Color(1, .65f, .3f);
@@ -95,9 +95,9 @@ namespace RailArena
         {
             foreach (Transform child in menu.transform) Destroy(child.gameObject);
             Text(menu.transform, "Title", "SETTINGS", 64, new Vector2(.1f, .78f), new Vector2(.8f, .9f));
-            Slider("Mouse sensitivity", Session.Sensitivity, .02f, .5f, .62f, value =>
+            Slider("Mouse sensitivity", Session.Sensitivity, .02f, .5f, .62f, value => value.ToString("0.000", System.Globalization.CultureInfo.InvariantCulture), value =>
             { Session.Sensitivity = value; PlayerPrefs.SetFloat("sensitivity", value); });
-            Slider("Master volume", AudioListener.volume, 0, 1, .49f, value =>
+            Slider("Master volume", AudioListener.volume, 0, 1, .49f, value => Mathf.RoundToInt(value * 100) + "%", value =>
             { AudioListener.volume = value; PlayerPrefs.SetFloat("volume", value); });
             float y = .35f;
             Button("1920 x 1080", () => Screen.SetResolution(1920, 1080, Screen.fullScreenMode), ref y);
@@ -106,9 +106,10 @@ namespace RailArena
             Button("BACK", () => { PlayerPrefs.Save(); RefreshMenu(); }, ref y);
         }
 
-        private void Slider(string title, float value, float min, float max, float y, UnityEngine.Events.UnityAction<float> changed)
+        private void Slider(string title, float value, float min, float max, float y, System.Func<float, string> format,
+            UnityEngine.Events.UnityAction<float> changed)
         {
-            Text(menu.transform, title, title, 28, new Vector2(.1f, y + .04f), new Vector2(.6f, y + .1f));
+            var label = Text(menu.transform, title, title + " // " + format(value), 28, new Vector2(.1f, y + .04f), new Vector2(.6f, y + .1f));
             var root = new GameObject(title, typeof(RectTransform), typeof(UnityEngine.UI.Image), typeof(UnityEngine.UI.Slider));
             root.transform.SetParent(menu.transform, false);
             Rect(root, new Vector2(.1f, y), new Vector2(.6f, y + .025f));
@@ -124,7 +125,7 @@ namespace RailArena
             slider.minValue = min;
             slider.maxValue = max;
             slider.value = value;
-            slider.onValueChanged.AddListener(changed);
+            slider.onValueChanged.AddListener(current => { label.text = title + " // " + format(current); changed(current); });
         }
 
         private void Update()

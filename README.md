@@ -8,9 +8,9 @@ The target is immediate offline bot matches and practice, plus direct-IP two-hum
 
 Public source: [Evekiio/rail-arena](https://github.com/Evekiio/rail-arena). Tested development milestones are pushed as work progresses; a finished downloadable release is not available yet.
 
-![First-person armored arms and RA-01 railgun in Foundry](RailArena/Assets/Validation/view-arms-first-person.png)
+![Standalone solo practice with armored arms and RA-01 rail discharge](Validation/NativeReview/Solo-Standalone.jpg)
 
-*Actual Unity Editor camera capture with the first arm-only view rig. Finger/action-animation and final arena polish remain unfinished; this is not a standalone or native-input acceptance screenshot.*
+*Actual Windows standalone review player during native mouse aiming/firing in zero-bot practice. Finger/action animation and final arena polish remain unfinished. Keyboard movement, jump and pause are still unverified; this image does not establish their acceptance.*
 
 The current view rig also has original procedural run bob, look sway, landing compression, respawn raise and recoil pitch. These move the weapon and hands while preserving camera aim. See [motion details and controlled preview scope](docs/FIRST-PERSON-ARMS.md).
 
@@ -50,7 +50,8 @@ Direct-IP duel integration is available from **ONLINE DUEL // DIRECT IP**. Host 
 | 35 standalone mechanics checks passing | Accelerated real authority with actual hurtboxes; exact combat, pickup, respawn and match-clock boundaries, plus solo movement/fire/respawn and mode switching |
 | Full ten-minute match and rematch on life-aware build 235d7b84 | Separate clean and impaired local UDP runs; matching result tick, scores and life numbers, with zero application errors; newer presentation changes have separate regression reports |
 | Replicated respawn lifecycle | Version 3 snapshots reset stale input, interpolation and view state, including missed-death and rematch regressions |
-| Human acceptance still open | Keyboard/mouse feel, settings, visible and sound-on quality, native two-human duel, final build and real internet path |
+| Native mouse/settings review | Solo menu/launch, aiming/firing, sensitivity/volume save and relaunch, resolution changes and fullscreen toggle; [evidence and limits](docs/NATIVE-INPUT-REVIEW.md) |
+| Human acceptance still open | Keyboard controls and mouse feel, display-mode persistence, sound-on quality, native two-human duel, release qualification and real internet path |
 
 Reports identify their build and limitations. See [the acceptance matrix](docs/ACCEPTANCE.md), [validation record](docs/VALIDATION.md), [bot checks](docs/BOT-VALIDATION.md) and [direct-IP hosting guide](docs/HOSTING.md).
 
@@ -76,7 +77,9 @@ flowchart LR
 
 ## Play the local build
 
-Launch `Builds/Windows/RailArena.exe` from the workspace. Choose **OFFLINE BOT MATCH** or **PRACTICE**. Set bot count, difficulty and target behavior before starting. During a session, press Escape to pause; changing the configuration and choosing **RESTART SESSION** applies it.
+For the local non-development playtest, launch `Builds/NativeReviewPlayer/RailArena.exe`; its diagnostic marker has been removed. `Builds/Windows/RailArena.exe` remains the development player used by automated runners. These are unfinished local builds, not downloadable releases.
+
+Choose **OFFLINE BOT MATCH** or **PRACTICE**. Set bot count, difficulty and target behavior before starting. During a session, press Escape to pause; changing the configuration and choosing **RESTART SESSION** applies it. Native keyboard acceptance is still open as documented above.
 
 For movement and arena testing alone, cycle **BOTS** to **0 // SOLO**, then choose **SOLO PRACTICE // UNTIMED**. It has no opponents or network connection. Movement, rail firing, pickups, jump pads, void scoring and unlimited respawns use the normal authority. Timed bot matches require at least one bot. Solo practice can restart with bots after changing the count in the pause menu.
 
@@ -116,6 +119,8 @@ unity command script eval --project-path .\RailArena --caller plugin --skill uni
 ```
 
 The scene and editable tuning live under `Assets/RailArena/Generated`. `Rail Arena > Build Foundry scene` regenerates these generated assets from the builder; manual changes to generated assets should be preserved separately before regeneration. See the [direct-IP hosting, firewall and port-forwarding guide](docs/HOSTING.md) for manual connection steps and the remaining remote-network acceptance.
+
+For a non-development local playtest build, use `ArenaBuilder.BuildWindowsPlaytestTo(output)`; the automated validation runners still require the development build. The optional input-review variant and exact commands are documented in [native input review](docs/NATIVE-INPUT-REVIEW.md). Build mode does not change the project's unfinished release status.
 
 ## License
 

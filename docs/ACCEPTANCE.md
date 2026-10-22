@@ -9,7 +9,7 @@ This is an interim audit against `OBJECTIVE.md`, not a completion claim. A passi
 | Local Git/LFS and public MIT source | Public Evekiio/rail-arena; binary source assets in LFS; licenses/notices | Final source and artifact audit |
 | Offline bot match, 1-7 bots, three difficulties | Three real-time ten-minute seven-bot difficulty soaks; isolated reaction/aim/LOS tests; fresh one/seven-bot smoke | Native configuration acceptance, broader seed/population coverage and fairness review |
 | Untimed practice, unlimited respawns, restart/configuration | Rule tests, native practice launch, live deaths/respawns | Native restart and configuration acceptance |
-| Zero-bot solo practice for movement/arena testing | Single-participant rule regression; actual Editor menu event path; standalone movement/fire/untimed/void/respawn/mode-switch checks | Native menu and keyboard/mouse acceptance |
+| Zero-bot solo practice for movement/arena testing | Single-participant rule regression; native zero-bot selector and solo launch; standalone movement/fire/untimed/void/respawn/mode-switch checks | Native keyboard movement/jump/pause and sustained mouse feel |
 | Direct-IP host/join, port, ready-up | Real two-process UDP tests; native port entry and unused-host timeout | Native two-human connection path and standalone bind/full/incompatible errors |
 | Ten-minute countdown, results, rematch | 235d7b84 clean/impaired runs completed tick 36180 with matching scores/lives and round two >=900 ticks | Native results/rematch interaction, release-build regression and remote-network acceptance |
 | Quake-style acceleration, air control, hopping, momentum | Shared tuning derived from reference units; simulation tests; bot traversal | Sustained keyboard/mouse movement feel and fidelity review |
@@ -27,12 +27,12 @@ This is an interim audit against `OBJECTIVE.md`, not a completion claim. A passi
 | Compatibility and graceful disconnect | Protocol mismatch/full-host/timeout/leave tests; native timeout | Complete standalone error/disconnect scenarios |
 | Character readability and high-quality animation | Textured armored base, three LODs, four skins, packed Blender source; railgun; arm-only first-person rig with shared grips, procedural travel/landing/raise/recoil motion, live IK test and controlled previews | Creative approval, finger fit, authored first-person actions and directional-animation polish |
 | Rail effects/audio and full HUD/match presentation | Original shot sound/effect, implemented HUD/scoreboard/feed/results | Visible and sound-on review; art/feedback polish |
-| Sensitivity, volume, resolution/fullscreen | Implemented settings and persistence | Native save/reload and display-mode acceptance |
+| Sensitivity, volume, resolution/fullscreen | Native sensitivity/volume changes, save/relaunch and restored values; live numeric labels; resolution and fullscreen toggles | Display-mode persistence after relaunch, mouse feel and sound-on review |
 | Simulated latency/loss | Full network-candidate match/rematch passed configured delay/jitter/5% loss, with 2823 recorded drops and 2020 reordered sends | Final-build regression, additional conditions and visual acceptance |
 | Actual remote-network multiplayer | No evidence yet | A real peer on another network and verified routing/firewall setup |
 | Performance on available machine | Hardware and qualified hidden-window frame times recorded | Visible rendering, memory and input-latency measurements |
 | Editable project and runnable Windows build | Local source/Blender masters and successive Windows builds | Final packaged Windows artifact and clean-clone instructions |
-| Portfolio README, screenshots, hosting guide | Development README with real Editor capture and evidence table; notices; implementation-checked LAN/firewall/forwarding guide | Finished presentation, downloadable build, standalone screenshots and remote verification of operating guide |
+| Portfolio README, screenshots, hosting guide | Development README with actual standalone capture and evidence table; notices; implementation-checked LAN/firewall/forwarding guide | Finished presentation, downloadable build and actual remote verification of operating guide |
 
 Current evidence is indexed in `VALIDATION.md`, networking details in `NETWORKING.md`, and model provenance/limitations in `CHARACTERS.md`. Source milestones must continue to be pushed under the policy in `DEVELOPMENT.md`.
 

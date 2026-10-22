@@ -1,4 +1,4 @@
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
+#if UNITY_EDITOR || DEVELOPMENT_BUILD || RAIL_ARENA_NATIVE_REVIEW
 using System;
 using System.IO;
 using UnityEngine;
@@ -14,8 +14,9 @@ namespace RailArena
         private sealed class Report
         {
             public string fingerprint;
-            public int frames, focusedFrames, escapePresses, jumpPresses, movementPresses, firePresses;
-            public bool focused, running, paused;
+            public int frames, focusedFrames, escapePresses, jumpPresses, movementPresses, firePresses, keyboardStateEvents;
+            public bool focused, running, paused, keyboardAvailable;
+            public string cursorLock;
             public int tick;
             public Vector3 position;
             public float sensitivity, volume;
@@ -36,8 +37,16 @@ namespace RailArena
             review.report.fingerprint = Networking.BuildIdentity.Fingerprint;
         }
 
-        private void OnEnable() => InputSystem.onAfterUpdate += ObserveInput;
-        private void OnDisable() => InputSystem.onAfterUpdate -= ObserveInput;
+        private void OnEnable()
+        { InputSystem.onAfterUpdate += ObserveInput; InputSystem.onEvent += ObserveKeyboardEvent; }
+        private void OnDisable()
+        { InputSystem.onAfterUpdate -= ObserveInput; InputSystem.onEvent -= ObserveKeyboardEvent; }
+
+        private void ObserveKeyboardEvent(InputEventPtr inputEvent, InputDevice device)
+        {
+            if (Application.isFocused && device is Keyboard &&
+                (inputEvent.type == StateEvent.Type || inputEvent.type == DeltaStateEvent.Type)) report.keyboardStateEvents++;
+        }
 
         private void ObserveInput()
         {
@@ -58,6 +67,8 @@ namespace RailArena
         {
             report.frames++;
             report.focused = Application.isFocused;
+            report.keyboardAvailable = Keyboard.current != null;
+            report.cursorLock = Cursor.lockState.ToString();
             if (report.focused) report.focusedFrames++;
             if (Time.unscaledTime < nextWrite || output == null) return;
             nextWrite = Time.unscaledTime + 1;
