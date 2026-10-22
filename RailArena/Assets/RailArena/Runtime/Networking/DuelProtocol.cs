@@ -21,6 +21,7 @@ namespace RailArena.Networking
         public float Yaw;
         public float Pitch;
         public int Health;
+        public int Life;
         public int NextShotTick;
         public int RespawnTick;
         public int PadReadyTick;
@@ -62,7 +63,7 @@ namespace RailArena.Networking
     {
         public const int MaximumDatagram = 1200;
         public const int MaximumInputBatch = 6;
-        public const ushort Version = 2;
+        public const ushort Version = 3;
         private const uint Magic = 0x52414C52;
 
         public static MovementCommand CommandForWire(MovementCommand command)
@@ -215,7 +216,7 @@ namespace RailArena.Networking
                 WriteVector(writer, actor.Position);
                 WriteVector(writer, actor.Velocity);
                 writer.Write(actor.Yaw); writer.Write(actor.Pitch);
-                writer.Write(actor.Health); writer.Write(actor.NextShotTick); writer.Write(actor.RespawnTick);
+                writer.Write(actor.Health); writer.Write(actor.Life); writer.Write(actor.NextShotTick); writer.Write(actor.RespawnTick);
                 writer.Write(actor.PadReadyTick); writer.Write(actor.AirborneTicks); writer.Write(actor.Score); writer.Write(actor.LastInput);
                 writer.Write(actor.Grounded); writer.Write(actor.ShotSerial); writer.Write(actor.HitSerial); WriteVector(writer, actor.ShotEnd);
             }
@@ -234,7 +235,8 @@ namespace RailArena.Networking
                 {
                     Position = ReadVector(reader, 10000), Velocity = ReadVector(reader, 1000),
                     Yaw = Finite(reader.ReadSingle(), -360, 360), Pitch = Finite(reader.ReadSingle(), -89, 89),
-                    Health = Range(reader.ReadInt32(), 0, 100), NextShotTick = Nonnegative(reader.ReadInt32()),
+                    Health = Range(reader.ReadInt32(), 0, 100), Life = Range(reader.ReadInt32(), 1, int.MaxValue),
+                    NextShotTick = Nonnegative(reader.ReadInt32()),
                     RespawnTick = Nonnegative(reader.ReadInt32()), PadReadyTick = Nonnegative(reader.ReadInt32()),
                     AirborneTicks = Range(reader.ReadInt32(), 0, 2), Score = reader.ReadInt32(), LastInput = Nonnegative(reader.ReadInt32()),
                     Grounded = ReadBool(reader), ShotSerial = Nonnegative(reader.ReadInt32()), HitSerial = Nonnegative(reader.ReadInt32()),

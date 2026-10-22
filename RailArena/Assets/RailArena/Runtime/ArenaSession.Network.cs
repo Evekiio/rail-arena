@@ -186,7 +186,7 @@ namespace RailArena
             var state = new DuelSnapshot { Round = link.Round, Tick = Match.Tick, Phase = Match.Phase, Winner = Match.Winner };
             foreach (var actor in Actors)
                 state.Actors[actor.Id] = new ActorSnapshot { Position = actor.transform.position, Velocity = actor.Velocity,
-                    Yaw = Mathf.Repeat(actor.Command.Yaw, 360), Pitch = actor.Command.Pitch, Health = actor.Health,
+                    Yaw = Mathf.Repeat(actor.Command.Yaw, 360), Pitch = actor.Command.Pitch, Health = actor.Health, Life = actor.Life,
                     NextShotTick = actor.NextShotTick, RespawnTick = actor.RespawnTick, PadReadyTick = actor.PadReadyTick,
                     AirborneTicks = actor.AirborneTicks, Score = Match.Scores[actor.Id],
                     LastInput = actor.Id == 1 ? remoteInputs.LastConsumed : 0, Grounded = actor.Grounded,
@@ -199,6 +199,7 @@ namespace RailArena
         {
             if (receivedSnapshot != null && state.Round == receivedSnapshot.Round && state.Tick < receivedSnapshot.Tick) return;
             bool newRound = state.Round != clientRound;
+            bool localLifeChanged = Human.Life != state.Actors[LocalPlayerId].Life;
             bool wasResults = Match.Phase == MatchPhase.Results;
             if (newRound)
             {
@@ -206,6 +207,9 @@ namespace RailArena
                 prediction.Clear(); interpolation.Clear();
                 inputSequence = LastAcknowledgedInput = 0;
             }
+            // Never replay a previous life's controls or blend an opponent through its respawn teleport.
+            if (localLifeChanged) prediction.Clear();
+            if (Actors[1 - LocalPlayerId].Life != state.Actors[1 - LocalPlayerId].Life) interpolation.Clear();
             receivedSnapshot = state;
             SnapshotsReceived++;
             snapshotTime = Time.realtimeSinceStartupAsDouble;
@@ -219,26 +223,33 @@ namespace RailArena
                 previousPadReady = Human.PadReadyTick, authorityPadReady = state.Actors[LocalPlayerId].PadReadyTick,
                 previousAirborne = Human.AirborneTicks, authorityAirborne = state.Actors[LocalPlayerId].AirborneTicks };
 #endif
-            bool continuousLife = Human.Alive && state.Actors[LocalPlayerId].Health > 0 && Human.RespawnTick == state.Actors[LocalPlayerId].RespawnTick;
+            bool continuousLife = !localLifeChanged && Human.Alive && state.Actors[LocalPlayerId].Health > 0;
             foreach (var actor in Actors)
             {
                 var authoritative = state.Actors[actor.Id];
                 bool wasAlive = actor.Alive;
+                bool lifeChanged = actor.Life != authoritative.Life;
                 if (actor == Human || newRound || interpolation.Count == 0)
-                    RestoreActor(actor, authoritative, actor == Human);
+                    RestoreActor(actor, authoritative, actor == Human, newRound);
                 else
                 {
                     actor.Health = authoritative.Health;
                     if (wasAlive != actor.Alive) actor.SetAlive(actor.Alive);
                     actor.Controller.enabled = false;
                 }
-                if (newRound || (!wasAlive && actor.Alive)) actor.Brain = new BotBrain(7291 + actor.Id * 917 + state.Tick);
-                if (authoritative.ShotSerial > actor.ShotSerial && !newRound && actor != Human)
+                if (newRound || lifeChanged || (!wasAlive && actor.Alive)) actor.Brain = new BotBrain(7291 + actor.Id * 917 + state.Tick);
+                if (authoritative.ShotSerial > actor.ShotSerial && !newRound && !lifeChanged && actor != Human)
                 { actor.Presentation.Fired(); ShowShot(actor, actor.Eye, authoritative.ShotEnd); }
-                if (authoritative.HitSerial > actor.HitSerial && !newRound) actor.Presentation.Hit();
+                if (authoritative.HitSerial > actor.HitSerial && !newRound && !lifeChanged) actor.Presentation.Hit();
                 actor.ShotSerial = authoritative.ShotSerial;
                 actor.HitSerial = authoritative.HitSerial;
                 if (wasAlive && !actor.Alive) Feed = $"{Actors[1 - actor.Id].DisplayName}  >  {actor.DisplayName}";
+            }
+            if (newRound || localLifeChanged)
+            {
+                recoil = 0;
+                weaponMotion.Reset(true);
+                weaponMotionLife = Human.Life;
             }
             LastAcknowledgedInput = state.Actors[LocalPlayerId].LastInput;
             prediction.RemoveAll(input => input.Command.Sequence <= LastAcknowledgedInput);
@@ -282,11 +293,13 @@ namespace RailArena
             if (newRound || wasResults != (Match.Phase == MatchPhase.Results)) SetPaused(false);
         }
 
-        private void RestoreActor(ArenaActor actor, ActorSnapshot state, bool local)
+        private void RestoreActor(ArenaActor actor, ActorSnapshot state, bool local, bool resetPresentation)
         {
             bool wasAlive = actor.Alive;
+            bool lifeChanged = actor.Life != state.Life;
             actor.Health = state.Health;
-            if (wasAlive != actor.Alive) actor.SetAlive(actor.Alive);
+            actor.Life = state.Life;
+            if (wasAlive != actor.Alive || lifeChanged || resetPresentation) actor.SetAlive(actor.Alive);
             actor.Controller.enabled = false;
             actor.transform.position = state.Position;
             actor.Controller.enabled = local && actor.Alive;

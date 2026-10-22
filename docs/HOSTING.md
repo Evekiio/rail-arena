@@ -4,6 +4,8 @@ Rail Arena supports exactly two humans with one player hosting authority. There 
 
 The game menu defaults to **UDP 7777**. Automated validation scripts use different default ports to avoid colliding with manual play.
 
+The life-replication update uses wire protocol version 3. Transfer the updated complete build to both players; an older version 2 executable cannot join it. Different fingerprints within the supported protocol are rejected as incompatible builds.
+
 ## Same computer or LAN
 
 1. Launch the host, choose **ONLINE DUEL // DIRECT IP**, enter a port and select **HOST DUEL**. Keep it running at the waiting screen.

@@ -30,6 +30,7 @@ namespace RailArena
             public int rewoundShots;
             public int rejectedTimes;
             public int[] actorShots;
+            public int[] actorLives;
             public bool fullMatch;
             public bool resultsSeen;
             public bool rematchStarted;
@@ -37,6 +38,7 @@ namespace RailArena
             public int completedWinner = -1;
             public int[] completedScores;
             public int[] completedShots;
+            public int[] completedLives;
             public float elapsedSeconds;
             public string connection;
             public bool passed;
@@ -75,8 +77,15 @@ namespace RailArena
             int completedWinner = -1;
             int[] completedScores = null;
             int[] completedShots = null;
+            int[] completedLives = null;
+            float nextProgress = started + 30;
             while (Time.realtimeSinceStartup - started < duration)
             {
+                if (Time.realtimeSinceStartup >= nextProgress)
+                {
+                    nextProgress += 30;
+                    Debug.Log($"DUEL_PROGRESS role={role} round={session.NetworkRound} tick={session.Match?.Tick} shots={session.ShotsFired} lives={string.Join(",", Array.ConvertAll(session.Actors.ToArray(), actor => actor.Life))}");
+                }
                 if (!readied && session.IsOnline && session.ConnectionStatus.StartsWith("CONNECTED"))
                 { session.ToggleReady(); readied = true; }
                 if (fullMatch && session.NetworkRound == 1 && session.Match?.Phase == Simulation.MatchPhase.Results)
@@ -87,6 +96,7 @@ namespace RailArena
                         completedWinner = session.Match.Winner;
                         completedScores = new[] { session.Match.Scores[0], session.Match.Scores[1] };
                         completedShots = Array.ConvertAll(session.Actors.ToArray(), actor => actor.ShotSerial);
+                        completedLives = Array.ConvertAll(session.Actors.ToArray(), actor => actor.Life);
                         session.ToggleReady();
                         rematchReady = true;
                         Debug.Log($"DUEL_RESULTS tick={completedTick} winner={completedWinner} scores={completedScores[0]},{completedScores[1]}");
@@ -106,6 +116,7 @@ namespace RailArena
             report.rejectedTimes = session.RejectedShotTimes;
             report.correctionSamples = session.CorrectionSamples.ToArray();
             report.actorShots = Array.ConvertAll(session.Actors.ToArray(), actor => actor.ShotSerial);
+            report.actorLives = Array.ConvertAll(session.Actors.ToArray(), actor => actor.Life);
             report.fullMatch = fullMatch;
             report.resultsSeen = rematchReady;
             report.rematchStarted = rematchReady && report.round == 2;
@@ -113,11 +124,13 @@ namespace RailArena
             report.completedWinner = completedWinner;
             report.completedScores = completedScores;
             report.completedShots = completedShots;
+            report.completedLives = completedLives;
             report.elapsedSeconds = Time.realtimeSinceStartup - started;
             bool matchPassed = fullMatch ? report.rematchStarted && completedTick >= Simulation.CombatRules.CountdownTicks + Simulation.CombatRules.MatchTicks &&
                 completedWinner >= 0 && completedShots[0] > 0 && completedShots[1] > 0 : report.round == 1;
             report.passed = errors == 0 && session.IsOnline && matchPassed && report.tick >= 900 &&
                 report.actorShots.Length == 2 && report.actorShots[0] > 0 && report.actorShots[1] > 0 &&
+                Array.Exists(fullMatch ? completedLives ?? Array.Empty<int>() : report.actorLives, life => life > 1) &&
                 (role == "host" ? report.shots > 1 && report.rewoundShots > 0 : report.snapshots > 30 && report.acknowledged > 300);
             Directory.CreateDirectory(Path.GetDirectoryName(output));
             File.WriteAllText(output, JsonUtility.ToJson(report, true));

@@ -2,6 +2,25 @@
 
 Status: **offline milestone and initial online integration, incomplete game**. The full objective has not been achieved.
 
+## Replicated respawn lifecycle
+
+Wire protocol version 3 carries each contender's authoritative positive life number. The client restores that identity, clears local prediction/camera correction/recoil on life changes, resets view motion on respawn/rematch and discards remote interpolation across a respawn teleport. Animation/hurtbox/weapon presentation is restored even when the client missed every dead-state snapshot. Stale shot/hit events are not replayed on a new life. Physics, damage, health and cooldown rules are unchanged. Both players must use the updated complete build; version 2 packets are rejected.
+
+The initial six-case lifecycle run recorded four failures and two passing codec checks (`Validation/snapshot-life-initial-tests.json`). After the fix, all 57 Editor-suite cases passed, including missed-death restoration, stale local input/correction removal, remote spawn snap, rematch raise and invalid life rejection (`snapshot-life-tests.json`). Candidate fingerprint `235d7b842ef1f46c676c8f26bf82e79698e5139c9a910c0c6b680ef817c82854` built and passed all 35 accelerated standalone mechanical checks (`snapshot-life-build.json`, `snapshot-life-mechanics.json`).
+
+Local source consistency also passed: Git LFS fsck returned success, and all 306 enumerated Assets files and 26 directories had their expected Unity metadata (`source-consistency-audit.json`). This checks local consistency, not a clean-clone build, upstream license re-verification or final creative quality.
+
+Both real-time ten-minute local UDP matches completed at tick 36,180, with both peers agreeing on winner 1, scores, shot serials and life numbers. Each then readied for round two and advanced at least 900 ticks. All four players reported zero application errors.
+
+| Run | First-round scores | First-round lives | First-round shot counts | Rematch ticks, host/client | Raw max client correction |
+| --- | --- | --- | --- | --- | --- |
+| Clean loopback | 11-68 | 69, 12 | 289, 308 | 900 / 905 | 0.7128 m |
+| Simulated delay/loss | 13-59 | 60, 14 | 297, 307 | 900 / 902 | 2.3427 m |
+
+Reports are in `Validation/Duel-Life-Full-Clean/` and `Duel-Life-Full-Impaired/`. Both ran approximately 618 seconds through the rematch sample. The impaired relay recorded 51,911 forwarded packets, 2,823 dropped packets and 2,035 reordered sends at configured 25 ms +/-10 ms one-way delay and 5% loss; mean applied delay was 29.79 ms. These runs overlapped and are not rendering/performance benchmarks. Inputs and ready/rematch actions came from the opt-in driver, not native human interaction. They prove this build's automated local paths, not an actual internet connection or creative quality. The 2.3427 m raw correction remains an unresolved reconciliation-quality concern; the lifecycle fix does not certify stable prediction-clock timing or movement feel.
+
+The tested candidate is now `Builds/Windows/RailArena.exe`; all 313 build files were verified unchanged after promotion. The previous build is preserved in `Builds/PreviousWindows-90e13260` (`snapshot-life-promotion.json`). Native input/settings, real remote-network play, final visual/audio quality, clean-clone build and release packaging remain open.
+
 ## Held-Space continuation during packet loss
 
 The host's short-loss fallback previously cleared held jump while continuing movement. A deterministic queue/shared-integrator regression reproduced a landing mismatch: +8.0208 m/s client vertical velocity versus -1.4167 m/s host (`Validation/held-jump-initial-tests.json`, one expected failing test). The queue now retains the latest held-jump state for the existing inclusive nine-tick/150 ms movement grace. It stores the newest state before older taps are aggregated, so release and redundant old packets cannot turn a tap into a held jump. Fire still requires received intent and retains its original aim/viewed tick. Cooldowns, jump physics, authority step count and offline behavior are unchanged.

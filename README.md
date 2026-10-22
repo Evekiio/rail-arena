@@ -40,19 +40,39 @@ The first [arena surface-art pass](docs/ARENA-ART.md) adds original panel textur
 
 The first gameplay pass includes location-based hitboxes, a rail cooldown, deaths and respawns, health restoration, countdown, time limit, void scoring and tied-leader sudden death. Menus, a HUD, scoreboard, results, restart and basic settings are implemented. Characters now use a textured armored humanoid, three mesh LODs, four palette variants, retargeted locomotion/jump/landing/hit/death animations and two-hand aiming IK. See [character sources, editing and limitations](docs/CHARACTERS.md). The original [RA-01 railgun](docs/WEAPONS.md) has editable Blender source, two mesh LODs and cooldown-driven feedback. [First-person armored arms](docs/FIRST-PERSON-ARMS.md) now share its grips and recoil. Hand/action-animation, sound and arena polish remain. **The full online acceptance criteria remain incomplete.**
 
-Initial direct-IP duel integration is now available from **ONLINE DUEL // DIRECT IP**. Host and join use the same build and selected UDP port, then both players ready up. The host owns gameplay, while the client predicts/reconciles movement and interpolates the opponent. Bounded 200 ms hit rewind is implemented and covered by historical geometry tests and a two-player standalone smoke test. Complete match/rematch acceptance, impairment testing and remote-network verification remain incomplete. See [networking coverage and remaining integration](docs/NETWORKING.md).
+Direct-IP duel integration is available from **ONLINE DUEL // DIRECT IP**. Host and join use the same build and selected UDP port, then both players ready up. The host owns gameplay, while the client predicts/reconciles movement and interpolates the opponent. Bounded 200 ms hit rewind has geometry tests and integrated UDP evidence. Automated local match/rematch and delay/loss reports identify their builds; native human interaction, reconciliation feel and a real internet path remain unverified. See [networking coverage and remaining integration](docs/NETWORKING.md).
 
 ## Validation snapshot
 
 | Evidence | Scope |
 | --- | --- |
-| 46 Editor-suite tests passing | Shared simulation, model geometry, live player-loop view-arm IK, bot profiles/behavior, protocol, rewind and camera continuity |
+| 57 Editor-suite tests passing | Shared simulation, model geometry, live view-arm IK, bounded view motion, bot behavior, held-jump loss, protocol, rewind, camera continuity and replicated respawn lifecycle |
 | 35 standalone mechanics checks passing | Accelerated real authority with actual hurtboxes; exact combat, pickup, respawn and match-clock boundaries, plus solo movement/fire/respawn and mode switching |
-| Full ten-minute network-candidate match and rematch | Two local processes under configured delay/jitter/5% loss; historical fingerprint, not the final art build |
-| Latest corrected-hitbox network smoke | Real UDP, 60 seconds, simulated delay/loss, zero application errors |
+| Current full ten-minute match and rematch | Separate clean and impaired local UDP runs; matching result tick, scores and life numbers, with zero application errors |
+| Replicated respawn lifecycle | Version 3 snapshots reset stale input, interpolation and view state, including missed-death and rematch regressions |
 | Human acceptance still open | Keyboard/mouse feel, settings, visible and sound-on quality, native two-human duel, final build and real internet path |
 
 Reports identify their build and limitations. See [the acceptance matrix](docs/ACCEPTANCE.md), [validation record](docs/VALIDATION.md), [bot checks](docs/BOT-VALIDATION.md) and [direct-IP hosting guide](docs/HOSTING.md).
+
+## Architecture
+
+```mermaid
+flowchart LR
+    Local["Local keyboard and mouse"] --> Commands["MovementCommand"]
+    Bots["Offline BotBrain"] -->|offline commands| Authority["ArenaSession: 60 Hz authority"]
+    Commands -->|host or offline| Authority
+    Commands -->|challenger| Client["Duel client: predict and replay"]
+    Client --> Inputs["Bounded UDP commands"]
+    Inputs --> Authority
+    Authority --> Rules["Movement, rail hits, pickups, scores and clock"]
+    Rules --> Snapshots["Snapshots: pose, health, life and results"]
+    Snapshots --> Client
+    Client --> View["Opponent interpolation and camera continuity"]
+    Rules --> Presentation["Animation, weapon feedback, HUD and audio"]
+    View --> Presentation
+```
+
+`RailArena.Simulation` contains movement integration and match/combat rules. Runtime authority supplies collision resolution and hit geometry; the client reuses movement and pad logic. `Networking` owns bounded codecs, the two-peer link, input queue, historical hit tracing and camera continuity. Presentation observes actor state and never grants damage or movement. Life identity separates respawn teleports from ordinary motion, clearing stale prediction and interpolation state. Online slots are human-only; automated validation supplies controls without adding an online bot mode.
 
 ## Play the local build
 

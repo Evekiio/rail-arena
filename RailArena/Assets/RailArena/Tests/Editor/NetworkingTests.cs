@@ -80,12 +80,13 @@ namespace RailArena.Tests
         {
             var state = Snapshot(1, 120);
             state.Actors[1] = new ActorSnapshot { Position = new Vector3(2, 3, 4), Velocity = new Vector3(1, 2, 3),
-                Health = 34, Score = -1, LastInput = 58, NextShotTick = 200 };
+                Health = 34, Life = 7, Score = -1, LastInput = 58, NextShotTick = 200 };
             byte[] data = DuelProtocol.Encode(new DuelPacket { Kind = DuelMessage.Snapshot, Snapshot = state });
             Assert.That(data.Length, Is.LessThan(1200));
             Assert.That(DuelProtocol.TryDecode(data, out var packet), Is.True);
             Assert.That(packet.Snapshot.Actors[1].Position, Is.EqualTo(state.Actors[1].Position));
             Assert.That(packet.Snapshot.Actors[1].Score, Is.EqualTo(-1));
+            Assert.That(packet.Snapshot.Actors[1].Life, Is.EqualTo(7));
             var random = new System.Random(791);
             for (int i = 0; i < 2000; i++)
             {
@@ -291,7 +292,7 @@ namespace RailArena.Tests
         }
 
         private static DuelSnapshot Snapshot(int round, int tick) => new() { Round = round, Tick = tick,
-            Phase = MatchPhase.Playing, Actors = new[] { new ActorSnapshot { Health = 100 }, new ActorSnapshot { Health = 100 } } };
+            Phase = MatchPhase.Playing, Actors = new[] { new ActorSnapshot { Health = 100, Life = 1 }, new ActorSnapshot { Health = 100, Life = 1 } } };
 
         private static void Pump(DuelLink host, DuelLink client, ref double now, Func<bool> done)
         {

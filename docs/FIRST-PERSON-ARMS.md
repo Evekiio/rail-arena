@@ -32,6 +32,8 @@ The source has wrist bones but no articulated finger rig. Fingers remain in the 
 
 These effects move neither the camera nor the actor. The crosshair and gameplay aim ray remain stable. Session/life resets clear motion history; hiding on death or pause clears pending landing/sway state. The motion class reads velocity, grounded state and look deltas; it has no access to authority or networking. It adds no equip delay, fire restriction, sprint or reload. This is procedural presentation, not a replacement for bespoke finger/action animation.
 
+Online clients now receive the host's life identity and explicitly reset view motion/recoil on respawn and rematch, including a respawn whose death-state snapshots were lost. The authoritative snapshot handler also clears old-life prediction and camera correction. This corrects lifecycle signaling; it does not add new skeletal action clips.
+
 The updated controlled review uses the runtime motion class for equip, running, airborne fade, landing, looking and two recoil/charge pulses. Its 192 frames at 24 fps are saved in `Validation/ViewWeaponMotion/`. The camera remains fixed and velocities/look deltas are staged. This is not native input, actual jumping/landing footage or firing-cadence acceptance. The earlier idle/recoil-only preview in `Validation/ViewArmsMotion/` remains historical evidence.
 
 ## Verification and preview

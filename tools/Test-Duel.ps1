@@ -42,7 +42,8 @@ try {
     if ($railReports[0].fingerprint -ne $railReports[1].fingerprint) { throw 'Build fingerprints disagree.' }
     if ($FullMatch -and ($railReports[0].completedWinner -ne $railReports[1].completedWinner -or
         $railReports[0].completedTick -ne $railReports[1].completedTick -or
-        ($railReports[0].completedScores -join ',') -ne ($railReports[1].completedScores -join ','))) {
+        ($railReports[0].completedScores -join ',') -ne ($railReports[1].completedScores -join ',') -or
+        ($railReports[0].completedLives -join ',') -ne ($railReports[1].completedLives -join ','))) {
         throw 'The peers disagree about the completed match result.'
     }
 } finally {

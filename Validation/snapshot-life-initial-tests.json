@@ -1,0 +1,70 @@
+{
+  "success": true,
+  "command": "command test status",
+  "data": {
+    "command": "test status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 0.48,
+      "summary": {
+        "total": 6,
+        "passed": 2,
+        "failed": 4,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.CodecRejectsNonpositiveLifeNumbers(0)",
+          "Status": "Passed",
+          "Duration": 0.1046723,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.CodecRejectsNonpositiveLifeNumbers(-1)",
+          "Status": "Passed",
+          "Duration": 0.0041784,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.LocalNewLifeDiscardsOldPredictionAndViewCorrection",
+          "Status": "Failed",
+          "Duration": 0.0249764,
+          "Message": "  Expected: 0\r\n  But was:  1\r\n",
+          "StackTrace": "at RailArena.Tests.SnapshotLifecycleTests.LocalNewLifeDiscardsOldPredictionAndViewCorrection () [0x000a9] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:102\r\n"
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.MissedDeathSnapshotStillAdvancesLifeAndResetsPresentation",
+          "Status": "Failed",
+          "Duration": 0.005277,
+          "Message": "  Expected: 2\r\n  But was:  1\r\n",
+          "StackTrace": "at RailArena.Tests.SnapshotLifecycleTests.MissedDeathSnapshotStillAdvancesLifeAndResetsPresentation () [0x00054] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:76\r\n"
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.RematchRaisesViewWeaponEvenWhenLifeNumberReturnsToOne",
+          "Status": "Failed",
+          "Duration": 0.0081179,
+          "Message": "  Expected: less than -0.100000001f\r\n  But was:  0.0f\r\n",
+          "StackTrace": "at RailArena.Tests.SnapshotLifecycleTests.RematchRaisesViewWeaponEvenWhenLifeNumberReturnsToOne () [0x0006e] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:116\r\n"
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.RemoteRespawnSnapsToSpawnAndDiscardsPreviousLifeInterpolation",
+          "Status": "Failed",
+          "Duration": 0.0067178,
+          "Message": "  Expected: 2\r\n  But was:  1\r\n",
+          "StackTrace": "at RailArena.Tests.SnapshotLifecycleTests.RemoteRespawnSnapsToSpawnAndDiscardsPreviousLifeInterpolation () [0x00080] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:88\r\n"
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\Rail Arena\\RailArena"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

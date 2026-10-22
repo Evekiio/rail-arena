@@ -11,7 +11,7 @@ This is an interim audit against `OBJECTIVE.md`, not a completion claim. A passi
 | Untimed practice, unlimited respawns, restart/configuration | Rule tests, native practice launch, live deaths/respawns | Native restart and configuration acceptance |
 | Zero-bot solo practice for movement/arena testing | Single-participant rule regression; actual Editor menu event path; standalone movement/fire/untimed/void/respawn/mode-switch checks | Native menu and keyboard/mouse acceptance |
 | Direct-IP host/join, port, ready-up | Real two-process UDP tests; native port entry and unused-host timeout | Native two-human connection path and standalone bind/full/incompatible errors |
-| Ten-minute countdown, results, rematch | Normal and impaired runs completed tick 36180, matching results and round two; impaired scores 102-66 | Final-build regression after presentation changes and native acceptance |
+| Ten-minute countdown, results, rematch | Current 235d7b84 clean/impaired runs completed tick 36180 with matching scores/lives and round two >=900 ticks | Native results/rematch interaction, release-build regression and remote-network acceptance |
 | Quake-style acceleration, air control, hopping, momentum | Shared tuning derived from reference units; simulation tests; bot traversal | Sustained keyboard/mouse movement feel and fidelity review |
 | Rail-only, unlimited ammo, 90-tick cadence | Shared rules; standalone held-fire boundaries; sustained combat | Weapon feedback and native input review |
 | 100 health, head/body/limb damage, mixed hits | Corrected bone-scale geometry regression and standalone head/body/limb/mixed sequences | Dynamic aiming and visual alignment review |
@@ -21,7 +21,7 @@ This is an interim audit against `OBJECTIVE.md`, not a completion claim. A passi
 | Bots navigate, see targets, move/fire, seek health, respawn | Ten-minute per-actor navigation/stall samples at all difficulties with zero voids/errors; isolated LOS/reaction/health-seeking checks | Broader seed coverage, visual/tactical quality and fairness review |
 | Same rules for bots/humans and offline/online | Shared 60 Hz authority and movement; no online bot participants | Final regression with complete mechanics scenarios |
 | Stationary, moving and combat repeatable scenarios | Implemented main/pause configuration | Native scenario selection and damage acceptance |
-| Host-authoritative movement/combat/pickups/scoring at 60 Hz | Command-only client packets and host snapshots; full-match clock evidence | Final-build network regression |
+| Host-authoritative movement/combat/pickups/scoring at 60 Hz | Command-only client packets, life-aware snapshots and current clean/impaired full-match evidence | Native human interaction, release-build and actual remote-network acceptance |
 | Client prediction, reconciliation and interpolation | Real UDP, impairment smoke tests, correction diagnostics | Visual motion acceptance; camera candidate has tests but human feel is unapproved |
 | Validated hit rewind <=200 ms | Exact twelve-tick, world-wall, historical box/capsule and life-isolation tests; integrated rewound shots | Final impaired-network and visual acceptance |
 | Compatibility and graceful disconnect | Protocol mismatch/full-host/timeout/leave tests; native timeout | Complete standalone error/disconnect scenarios |

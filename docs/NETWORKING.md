@@ -8,6 +8,8 @@ The host owns the shared 60 Hz `ArenaSession` authority loop for both human slot
 
 The client predicts its movement with the shared controller integration and pad logic, retains up to 128 unacknowledged commands, restores the acknowledged host state, then replays remaining commands. Commands are redundantly batched, normalized before encoding and consumed no more than once per host tick. The host sends snapshots every three simulation ticks. The opponent is interpolated six ticks behind the estimated host time. Client-predicted fire produces effects but cannot apply damage; host shot and hit serials replicate combat presentation. Pausing opens local controls while the online authority continues.
 
+Snapshots now carry the host's positive life number for each contender (wire protocol version 3). A local life change discards predictions from the previous life, resets camera correction/recoil and raises the view weapon. A remote life change clears interpolation history and restores the contender at its new spawn instead of interpolating across the teleport. Presentation and automated test-driver navigation reset even if every dead-state snapshot was missed. Old shot/hit serial changes are not replayed as new-life effects. A new round resets these states even when life numbers return to one. Both peers must use the same complete build; version 2 packets are rejected.
+
 Host/join controls accept an IPv4 address and configurable UDP port (default 7777). Both peers must ready up before the countdown. Results use the host winner and offer ready-up for a new round. These paths are implemented; complete timed results/rematch and native-input interaction still need acceptance testing.
 
 ## Implemented core
@@ -45,6 +47,14 @@ The rebuilt player passed another two-process loopback soak (`Validation/Duel-Re
 Prediction/interpolation, rewind and replicated presentation still need complete impairment and visual acceptance. Full-match/rematch evidence and remaining candidate checks are detailed below; standalone disconnect/error scenarios are not yet complete. Native connection-panel mouse and text-entry checks are recorded below, while keyboard/gameplay feel and human-to-human native acceptance remain open. Actual internet play requires a remote machine and network setup; loopback evidence cannot substitute for that test.
 
 ## Extended acceptance tooling and findings
+
+### Replicated life boundaries
+
+The previous client did not receive or update `ArenaActor.Life`. Health-edge checks alone could not establish a new life when a death snapshot was missing, old pending inputs could be replayed after respawn, and interpolation was retained through the spawn teleport. View-weapon motion also missed client respawn/rematch resets. Six new cases exercise real snapshot application and codec bounds; the initial lifecycle run recorded four failures and two passing codec cases (`Validation/snapshot-life-initial-tests.json`). All 57 Editor-suite tests pass after the fix (`snapshot-life-tests.json`). These cases include missed-death presentation restoration, local prediction/correction reset, remote interpolation reset, rematch raise and rejection of nonpositive life numbers.
+
+The standalone duel runner now records per-actor lives and first-round completed lives, requires observed respawn progression, and compares both peers' completed life numbers as well as result tick, winner and scores in a full match. It logs a progress sample every 30 seconds. This diagnostic driver still supplies each process's own human-slot controls; it does not add online bots or establish native input acceptance.
+
+Fingerprint `235d7b84...` passed complete ten-minute match/rematch runs on clean loopback and simulated delay/loss (`Validation/Duel-Life-Full-Clean/`, `Duel-Life-Full-Impaired/`). Both finished at tick 36,180 and agreed on winner 1. Clean scores were 11-68 with life numbers 69,12 and shot counts 289,308; impaired scores were 13-59 with lives 60,14 and shots 297,307. Both hosts reached rematch tick 900 and clients 905/902, with zero application errors. The impaired relay recorded 2,823 drops and 2,035 reordered sends. Maximum raw client corrections were 0.7128 m clean and 2.3427 m impaired. This refreshes automated local full-match evidence for the current life-aware build; native interaction, actual internet routing and reconciliation feel remain unverified.
 
 ### Held-jump loss regression
 
