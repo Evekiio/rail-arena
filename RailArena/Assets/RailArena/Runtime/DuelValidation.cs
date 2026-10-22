@@ -25,6 +25,7 @@ namespace RailArena
             public int acknowledged;
             public int pending;
             public float correction;
+            public ArenaSession.PredictionCorrection[] correctionSamples;
             public int outboundClamps;
             public int rewoundShots;
             public int rejectedTimes;
@@ -103,6 +104,7 @@ namespace RailArena
                 pending = session.PendingInputs, correction = session.MaximumCorrection, outboundClamps = session.OutboundClamps, connection = session.ConnectionStatus };
             report.rewoundShots = session.RewoundShots;
             report.rejectedTimes = session.RejectedShotTimes;
+            report.correctionSamples = session.CorrectionSamples.ToArray();
             report.actorShots = Array.ConvertAll(session.Actors.ToArray(), actor => actor.ShotSerial);
             report.fullMatch = fullMatch;
             report.resultsSeen = rematchReady;

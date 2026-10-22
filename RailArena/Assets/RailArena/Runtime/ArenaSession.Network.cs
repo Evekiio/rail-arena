@@ -25,10 +25,24 @@ namespace RailArena
         public int SnapshotsReceived { get; private set; }
         public float MaximumCorrection { get; private set; }
         public int OutboundClamps { get; private set; }
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        [Serializable]
+        public sealed class PredictionCorrection
+        {
+            public int tick, acknowledged, pending, previousClientTick;
+            public float distance;
+            public Vector3 predicted, authority, replayed, previousVelocity, correctedVelocity;
+            public bool previousGrounded, authorityGrounded, replayGrounded;
+            public int previousPadReady, authorityPadReady, replayPadReady;
+            public int previousAirborne, authorityAirborne;
+        }
+        public List<PredictionCorrection> CorrectionSamples { get; } = new();
+#endif
         private DuelLink link;
         private DuelInputQueue remoteInputs;
         private readonly List<DuelInput> prediction = new();
         private readonly List<DuelSnapshot> interpolation = new();
+        private readonly ReconciliationView reconciliationView = new();
         private DuelSnapshot receivedSnapshot;
         private int inputSequence;
         private int clientTick;
@@ -73,9 +87,13 @@ namespace RailArena
             LocalPlayerId = 0;
             remoteInputs = null;
             prediction.Clear(); interpolation.Clear();
+            reconciliationView.Reset();
             receivedSnapshot = null;
             inputSequence = clientRound = clientTick = LastAcknowledgedInput = snapshotCadence = SnapshotsReceived = displayedTick = 0;
             MaximumCorrection = 0;
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            CorrectionSamples.Clear();
+#endif
             OutboundClamps = 0;
         }
 
@@ -193,6 +211,14 @@ namespace RailArena
             snapshotTime = Time.realtimeSinceStartupAsDouble;
             Match = MatchState.FromAuthority(state.Tick, state.Phase, state.Winner, state.Actors[0].Score, state.Actors[1].Score);
             Vector3 oldPrediction = Human.transform.position;
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            var correction = new PredictionCorrection { tick = state.Tick, previousClientTick = clientTick,
+                predicted = oldPrediction, authority = state.Actors[LocalPlayerId].Position,
+                previousVelocity = Human.Velocity, previousGrounded = Human.Grounded,
+                authorityGrounded = state.Actors[LocalPlayerId].Grounded,
+                previousPadReady = Human.PadReadyTick, authorityPadReady = state.Actors[LocalPlayerId].PadReadyTick,
+                previousAirborne = Human.AirborneTicks, authorityAirborne = state.Actors[LocalPlayerId].AirborneTicks };
+#endif
             bool continuousLife = Human.Alive && state.Actors[LocalPlayerId].Health > 0 && Human.RespawnTick == state.Actors[LocalPlayerId].RespawnTick;
             foreach (var actor in Actors)
             {
@@ -227,7 +253,27 @@ namespace RailArena
                     Human.NextShotTick = clientTick + CombatRules.ShotIntervalTicks;
             }
             Human.Command = liveCommand;
-            if (!newRound && continuousLife) MaximumCorrection = Mathf.Max(MaximumCorrection, Vector3.Distance(oldPrediction, Human.transform.position));
+            if (!newRound && continuousLife)
+            {
+                float distance = Vector3.Distance(oldPrediction, Human.transform.position);
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+                if (distance > .25f && (CorrectionSamples.Count < 24 || distance > MaximumCorrection))
+                {
+                    correction.distance = distance;
+                    correction.acknowledged = LastAcknowledgedInput;
+                    correction.pending = prediction.Count;
+                    correction.replayed = Human.transform.position;
+                    correction.correctedVelocity = Human.Velocity;
+                    correction.replayGrounded = Human.Grounded;
+                    correction.replayPadReady = Human.PadReadyTick;
+                    if (CorrectionSamples.Count < 24) CorrectionSamples.Add(correction);
+                    else CorrectionSamples[CorrectionSamples.Count - 1] = correction;
+                }
+#endif
+                MaximumCorrection = Mathf.Max(MaximumCorrection, distance);
+                reconciliationView.Correct(oldPrediction, Human.transform.position);
+            }
+            else reconciliationView.Reset();
             if (interpolation.Count == 0) displayedTick = state.Tick;
             if (interpolation.Count == 0 || state.Tick > interpolation[interpolation.Count - 1].Tick) interpolation.Add(state);
             while (interpolation.Count > 32) interpolation.RemoveAt(0);

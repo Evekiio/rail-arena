@@ -150,7 +150,9 @@ namespace RailArena
         {
             if (!Running) return;
             InterpolateOpponent();
-            View.transform.SetPositionAndRotation(Human.Eye, Quaternion.Euler(pitch, yaw, 0));
+            Vector3 eye = IsOnline && LocalPlayerId == 1 ? reconciliationView.Position(Human.Eye) : Human.Eye;
+            View.transform.SetPositionAndRotation(eye, Quaternion.Euler(pitch, yaw, 0));
+            reconciliationView.Decay(Time.unscaledDeltaTime);
             recoil = Mathf.MoveTowards(recoil, 0, Time.unscaledDeltaTime * 5);
             weapon.localPosition = new Vector3(.33f, -.3f, .62f - recoil * .15f);
             weapon.gameObject.SetActive(Human.Alive && !Paused);

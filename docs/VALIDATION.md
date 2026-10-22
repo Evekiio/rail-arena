@@ -2,6 +2,10 @@
 
 Status: **offline milestone and initial online integration, incomplete game**. The full objective has not been achieved.
 
+The network candidate completed its full real-time ten-minute match/rematch under seeded delay, jitter and 5% loss (`Validation/Duel-FullMatch-Impaired/`). Both peers agreed on tick 36,180 and scores 102-66, then entered round two for at least 900 ticks with zero errors. The relay recorded 2,823 drops and 2,020 reordered sends over approximately 629 seconds. Raw maximum client correction was 1.2060 m. This is simulated impairment around loopback, not internet multiplayer.
+
+Subsequent correction diagnostics and client-only camera continuity passed 32 tests plus a separate impaired smoke test (`Validation/view-reconciliation-editmode.json`, `Validation/Duel-View-Reconciliation/`). Camera smoothing does not alter authority, collision state or raw correction reporting. Visual feel remains unapproved; the camera candidate is distinct from the build used for the full impaired match.
+
 Extended candidate: all 28 cases passed after correcting permanent command backlog under jitter (`Validation/jitter-editmode.json`). A separate candidate Windows build passed the 60-second impaired smoke test with configured 25 ms each-way delay, jitter and 5% loss. Actual relay records show 309 drops and 211 reordered sends; both players logged zero errors. The host validated 17 rewound shots and rejected one expired timestamp. Maximum client correction was 0.9911 m, which still requires visual acceptance. See `docs/NETWORKING.md` for failed runs, root causes, candidate/build distinction and native UI coverage.
 
 The earlier full-match build (`9c50d65e...`) passed a real-time ten-minute duel, matching results and rematch (`Validation/Duel-FullMatch/`). Both peers agreed on tick 36,180, winner 0 and scores 96-69, then entered round two for at least 900 ticks. Elapsed time was approximately 619 seconds, with zero errors. Maximum client correction was 1.4100 m. This result predates the jitter fix and does not establish full-match acceptance for the latest candidate under impaired conditions; that separate run is in progress.
@@ -42,12 +46,12 @@ Machine: Intel Core i7-8700K, NVIDIA GeForce RTX 2080, approximately 64 GB syste
 
 ## Unperformed or incomplete
 
-- Native standalone UI interaction: Computer Use launch approval timed out. Menu clicks, mouse feel and sound-on quality remain unverified by native input. The automated runner starts sessions through code.
+- Native keyboard movement/jump/pause, mouse feel, settings and sound-on acceptance remain unverified. Native mouse menu navigation, UDP port text entry, join timeout, practice launch and firing were subsequently observed (`Validation/native-ui-checks.json`). Automated duel runners still start sessions through code.
 - The requested standalone screenshot did not materialize during hidden-window testing; Editor captures are not presented as standalone screenshots.
 - Long-duration bot reliability and separate difficulty acceptance tests.
 - Complete standalone mechanical boundary tests, timed results/rematch interaction and settings interaction.
 - Rewind, prediction/interpolation and combat presentation acceptance under impaired networking.
-- Full two-client timed match, results, rematch, compatibility and disconnect scenarios; simulated packet loss/latency and actual remote-network testing.
+- Final-build full-match/rematch regression after presentation changes, complete standalone compatibility/disconnect scenarios and actual remote-network testing. The network candidate's full impaired-match evidence is recorded above.
 - Further character polish and creative approval, dedicated first-person arms, weapon, effects, audio and arena art.
 - Portfolio-ready README/screenshots and a downloadable Windows release. Public source publication is verified at `https://github.com/Evekiio/rail-arena`; the initial upload included all commits through `914fcd2` and 22 LFS objects (105 MB). See `Validation/github-publication.json` and the development delivery policy.
 
