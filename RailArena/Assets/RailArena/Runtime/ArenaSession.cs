@@ -41,6 +41,7 @@ namespace RailArena
         private int pickupCount;
         private int padCount;
         private Transform weapon;
+        private RailgunPresentation weaponPresentation;
         private float recoil;
         private Networking.HitboxHistory hitHistory;
         public int RewoundShots { get; private set; }
@@ -154,6 +155,7 @@ namespace RailArena
             View.transform.SetPositionAndRotation(eye, Quaternion.Euler(pitch, yaw, 0));
             reconciliationView.Decay(Time.unscaledDeltaTime);
             recoil = Mathf.MoveTowards(recoil, 0, Time.unscaledDeltaTime * 5);
+            weaponPresentation.SetCharge((Human.NextShotTick - Match.Tick) / (float)CombatRules.ShotIntervalTicks);
             weapon.localPosition = new Vector3(.33f, -.3f, .62f - recoil * .15f);
             weapon.gameObject.SetActive(Human.Alive && !Paused);
         }
@@ -248,7 +250,7 @@ namespace RailArena
             var effect = new GameObject("Rail discharge").AddComponent<LineRenderer>();
             effect.sharedMaterial = RailMaterial;
             effect.positionCount = 2;
-            effect.SetPosition(0, actor == Human ? weapon.TransformPoint(new Vector3(0, .12f, .5f)) : actor.Presentation.Muzzle.position);
+            effect.SetPosition(0, actor == Human ? weaponPresentation.Muzzle.position : actor.Presentation.Muzzle.position);
             effect.SetPosition(1, end);
             effect.startWidth = .065f;
             effect.endWidth = .025f;
@@ -315,18 +317,12 @@ namespace RailArena
         private void CreateWeapon()
         {
             View.cullingMask &= ~(1 << 10);
-            weapon = new GameObject("Rail accelerator").transform;
-            weapon.SetParent(View.transform, false);
-            for (int i = 0; i < 4; i++)
-            {
-                var part = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                Destroy(part.GetComponent<Collider>());
-                part.transform.SetParent(weapon, false);
-                part.transform.localScale = i == 0 ? new Vector3(.2f, .17f, .65f) : new Vector3(.035f, .04f, .8f);
-                part.transform.localPosition = i == 0 ? Vector3.zero : new Vector3((i - 2) * .08f, .12f, .1f);
-                part.GetComponent<Renderer>().sharedMaterial = i == 0 ? PlayerMaterial : RailMaterial;
-                part.layer = 11;
-            }
+            var prefab = Resources.Load<GameObject>("Weapons/Railgun");
+            if (prefab == null) throw new System.InvalidOperationException("The railgun presentation prefab is missing.");
+            weapon = Instantiate(prefab, View.transform, false).transform;
+            weaponPresentation = weapon.GetComponent<RailgunPresentation>();
+            weapon.GetComponent<LODGroup>().ForceLOD(0);
+            foreach (var part in weapon.GetComponentsInChildren<Transform>(true)) part.gameObject.layer = 11;
             weapon.gameObject.SetActive(false);
         }
 

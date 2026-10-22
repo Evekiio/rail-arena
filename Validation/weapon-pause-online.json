@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "command": "command script eval",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var s=UnityEngine.Object.FindFirstObjectByType<RailArena.ArenaSession>(); return new { s.IsOnline,s.Paused,speed=s.Actors[0].Presentation.Animator.speed,frame=UnityEngine.Time.frameCount };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "IsOnline": true,
+        "Paused": true,
+        "speed": 1,
+        "frame": 2349
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\Rail Arena\\RailArena"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

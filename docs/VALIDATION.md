@@ -2,6 +2,16 @@
 
 Status: **offline milestone and initial online integration, incomplete game**. The full objective has not been achieved.
 
+## Original railgun milestone
+
+Build `15f0d82be90b69f3f2d6ec23c8a8ffc4bdbd3362a19d12b7891c022c527af8f4` adds the editable original RA-01 weapon in first and third person (`WEAPONS.md`). All 32 EditMode regression cases passed (`Validation/weapon-editmode.json`), and the Windows build succeeded (`weapon-build.json`). The 45-second standalone offline run passed with 147 shots, 61 deaths, four pickups, 41 pad launches, zero exceptions and zero void deaths (`weapon-offline.json`). Hidden-window loop timing is not a visible rendering benchmark.
+
+The updated controlled character-motion video decodes completely. The first-person image at `RailArena/Assets/Validation/railgun-first-person.png` is an Editor camera capture. Wrist target distances were approximately 0.000002 m and 0 m in the live Editor; this does not establish finger placement or creative approval. First-person arms remain unfinished.
+
+An online pause presentation bug was corrected: actor animation and cosmetic settling now continue with online authority, while offline pause freezes them. Editor checks recorded animator speed 1 for a paused listening host and 0 for paused offline practice (`weapon-pause-online.json`, `weapon-pause-offline.json`). No peer was connected during these branch checks.
+
+The first impaired smoke attempt under restricted execution delivered zero UDP packets and timed out without gameplay (`Validation/Duel-Weapon/`). That report is retained as a failed environment-limited attempt, not passing network evidence. The separate localhost-network-enabled 60-second run passed on both peers with 41 observed shots, 20 validated rewinds and zero errors (`Validation/Duel-Weapon-LocalNetwork/`). The relay recorded 302 drops and 206 reordered sends with configured 25 ms one-way delay, +/-10 ms jitter and 5% loss. Maximum raw client correction was 0.9485 m; feel remains unapproved. This is a smoke regression, not a repeated full ten-minute match or internet test.
+
 The network candidate completed its full real-time ten-minute match/rematch under seeded delay, jitter and 5% loss (`Validation/Duel-FullMatch-Impaired/`). Both peers agreed on tick 36,180 and scores 102-66, then entered round two for at least 900 ticks with zero errors. The relay recorded 2,823 drops and 2,020 reordered sends over approximately 629 seconds. Raw maximum client correction was 1.2060 m. This is simulated impairment around loopback, not internet multiplayer.
 
 Subsequent correction diagnostics and client-only camera continuity passed 32 tests plus a separate impaired smoke test (`Validation/view-reconciliation-editmode.json`, `Validation/Duel-View-Reconciliation/`). Camera smoothing does not alter authority, collision state or raw correction reporting. Visual feel remains unapproved; the camera candidate is distinct from the build used for the full impaired match.

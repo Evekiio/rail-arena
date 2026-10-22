@@ -235,36 +235,35 @@ namespace RailArena.Editor
 
         private static void Weapon(Transform parent, ContenderPresentation presentation)
         {
-            var root = new GameObject("Rail accelerator").transform;
-            root.SetParent(parent, false);
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Weapons/Railgun.prefab");
+            if (prefab == null) throw new InvalidOperationException("Build the detailed railgun before regenerating contenders.");
+            var root = UnityEngine.Object.Instantiate(prefab, parent, false).transform;
             presentation.Weapon = root;
-            Material alloy = AssetDatabase.LoadAssetAtPath<Material>("Assets/RailArena/Generated/Pale alloy.mat");
-            Material dark = AssetDatabase.LoadAssetAtPath<Material>("Assets/RailArena/Generated/Blackened structure.mat");
-            Material ion = AssetDatabase.LoadAssetAtPath<Material>("Assets/RailArena/Generated/Ion energy.mat");
-            Part(root, "Receiver", new Vector3(0, 0, .05f), new Vector3(.16f, .16f, .48f), dark);
-            Part(root, "Stock", new Vector3(0, -.025f, -.24f), new Vector3(.12f, .12f, .22f), alloy);
-            Part(root, "Trigger grip", new Vector3(0, -.11f, -.1f), new Vector3(.075f, .19f, .1f), dark);
-            Part(root, "Upper rail", new Vector3(0, .09f, .28f), new Vector3(.1f, .045f, .65f), alloy);
-            Part(root, "Lower rail", new Vector3(0, -.07f, .28f), new Vector3(.1f, .045f, .65f), alloy);
-            Part(root, "Core", new Vector3(0, .01f, .3f), new Vector3(.045f, .045f, .6f), ion);
-            for (int i = 0; i < 6; i++)
-                Part(root, "Cooling fin", new Vector3(0, 0, i * .055f), new Vector3(.21f, .2f, .018f), alloy);
+            presentation.Railgun = root.GetComponent<RailgunPresentation>();
             presentation.RightGrip = Marker(root, "Right grip", new Vector3(0, -.1f, -.09f));
             presentation.LeftGrip = Marker(root, "Left support", new Vector3(-.13f, -.08f, -.015f));
             presentation.RightGrip.localRotation = Quaternion.Euler(0, 0, 90);
             presentation.LeftGrip.localRotation = Quaternion.Euler(0, 0, -90);
-            presentation.Muzzle = Marker(root, "Muzzle", new Vector3(0, .01f, .65f));
+            presentation.Muzzle = presentation.Railgun.Muzzle;
+        }
+
+        [MenuItem("Rail Arena/Update contender weapon")]
+        public static void UpdateWeapon()
+        {
+            const string path = "Assets/Resources/Characters/Contender.prefab";
+            var root = PrefabUtility.LoadPrefabContents(path);
+            try
+            {
+                var presentation = root.GetComponent<ContenderPresentation>();
+                if (presentation.Weapon != null) UnityEngine.Object.DestroyImmediate(presentation.Weapon.gameObject);
+                Weapon(root.transform, presentation);
+                PrefabUtility.SaveAsPrefabAsset(root, path);
+            }
+            finally { PrefabUtility.UnloadPrefabContents(root); }
         }
 
         private static Transform Marker(Transform parent, string name, Vector3 point)
         { var marker = new GameObject(name).transform; marker.SetParent(parent, false); marker.localPosition = point; return marker; }
-        private static void Part(Transform parent, string name, Vector3 point, Vector3 size, Material material)
-        {
-            var part = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            part.name = name; part.transform.SetParent(parent, false); part.transform.localPosition = point;
-            part.transform.localScale = size; part.GetComponent<Renderer>().sharedMaterial = material;
-            UnityEngine.Object.DestroyImmediate(part.GetComponent<Collider>());
-        }
         private static void Save(UnityEngine.Object obj, string path)
         { if (AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path)) AssetDatabase.DeleteAsset(path); AssetDatabase.CreateAsset(obj, path); }
 

@@ -10,6 +10,7 @@ namespace RailArena
         public Transform RightGrip;
         public Transform LeftGrip;
         public Transform Muzzle;
+        public RailgunPresentation Railgun;
         public Renderer[] BodyRenderers;
         public Material[] Skins;
         private ArenaActor actor;
@@ -56,8 +57,10 @@ namespace RailArena
 #if UNITY_EDITOR
             if (ReviewPlayback) return;
 #endif
-            Animator.speed = session.Paused ? 0 : 1;
-            if (session.Paused) return;
+            bool worldPaused = session.Paused && !session.IsOnline;
+            Animator.speed = worldPaused ? 0 : 1;
+            if (worldPaused) return;
+            Railgun.SetCharge((actor.NextShotTick - session.Match.Tick) / (float)Simulation.CombatRules.ShotIntervalTicks);
             float speed = new Vector2(actor.Velocity.x, actor.Velocity.z).magnitude;
             Vector3 aimForward = Quaternion.Euler(0, actor.Command.Yaw, 0) * Vector3.forward;
             bool backwards = speed > .5f && Vector3.Dot(actor.Velocity, aimForward) < -speed * .2f;
@@ -96,7 +99,7 @@ namespace RailArena
         private void LateUpdate()
         {
             if (actor == null || actor.Alive) return;
-            bool paused = session.Paused;
+            bool paused = session.Paused && !session.IsOnline;
 #if UNITY_EDITOR
             if (ReviewPlayback) paused = false;
 #endif

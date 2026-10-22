@@ -1,5 +1,7 @@
 # Third-party notices
 
+The RA-01 railgun geometry, Blender generation script, materials and presentation integration are original Rail Arena work under the repository MIT license. Its source and reproduction instructions are recorded in `docs/WEAPONS.md`.
+
 The MIT license applies to original Rail Arena code. It does not relicense Unity, its runtime or its packages.
 
 The Universal 3D template, URP, Input System, uGUI, test framework, Pipeline editor tooling and other Unity dependencies retain their upstream licenses. Their resolved versions and dependency tree are recorded in `RailArena/Packages/packages-lock.json`; package license files are available through Unity Package Manager and the resolved package cache. Unity Editor and player use remain subject to applicable Unity terms.
