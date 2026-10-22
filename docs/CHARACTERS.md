@@ -21,7 +21,7 @@ Quaternius's free CC0 Standard animation library supplies idle, walking, jogging
 
 Root motion is disabled. Animation does not move the character controller or change movement acceleration, damage, health, cooldowns or respawn timing. Hurtboxes follow the skeleton; their hit regions retain the same damage values. Dead bodies remain visible for their death animation while their hurtboxes and controller are disabled, then reset at the normal respawn. Cosmetic gravity and bone clearance settle the visual body onto the deck without changing the authoritative actor position.
 
-The supplied skeleton has wrist bones but no articulated finger rig. A fixed combat grip is authored in the mesh; individual finger animation is not claimed. Directional movement uses lower-body turning and backwards clips rather than a complete authored eight-direction strafe library. Dedicated first-person arms are not included in this pass.
+The supplied skeleton has wrist bones but no articulated finger rig. A fixed combat grip is authored in the mesh; individual finger animation is not claimed. Directional movement uses lower-body turning and backwards clips rather than a complete authored eight-direction strafe library. A separate arm-only first-person rig is now derived from this same base; see `FIRST-PERSON-ARMS.md` for generation, IK, scope and remaining hand/animation polish.
 
 ## Validation and review
 
@@ -31,6 +31,6 @@ The later scale regression in `Validation/mechanics-editmode.json` also verifies
 
 The `CharacterMotionReview.Capture()` Editor helper records a controlled 24 fps LOD0 review through Unity's normal animation and IK loop. Its sequence is idle, run, backwards, jump and death. The jump arc is staged for visual inspection. The resulting `Validation/CharacterMotion/Contender-Motion-Review.mp4` is not gameplay or native-input acceptance evidence. A normal standalone bot soak is recorded separately.
 
-Creative quality still requires human review of the actual moving result. Close finger detail, dedicated first-person arms, more individually modeled contenders and a bespoke eight-direction movement set are possible further improvements; they are not represented as completed here.
+Creative quality still requires review of the actual moving result. Close finger detail, authored first-person actions, more individually modeled contenders and a bespoke eight-direction movement set remain further improvements.
 
 The current motion preview includes the original RA-01 railgun described in `WEAPONS.md`. Its attachment preserves the existing wrist IK targets. Opening an online pause menu now leaves animation and cosmetic corpse settling active, consistent with the continuing online authority; offline pause still freezes them. Editor branch checks are recorded in `Validation/weapon-pause-online.json` and `weapon-pause-offline.json`. These checks use a listening host without a connected peer and do not establish complete two-player pause acceptance.

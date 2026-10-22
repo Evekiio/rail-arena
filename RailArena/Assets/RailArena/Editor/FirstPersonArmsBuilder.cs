@@ -1,0 +1,108 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
+using UnityEditor.Animations;
+using UnityEngine;
+using UnityEngine.Rendering;
+using Object = UnityEngine.Object;
+
+namespace RailArena.Editor
+{
+    public static class FirstPersonArmsBuilder
+    {
+        private const string Root = "Assets/RailArena/Characters";
+        private const string MeshPath = Root + "/View arms.asset";
+
+        [MenuItem("Rail Arena/Build first-person arms")]
+        public static void Build()
+        {
+            var source = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/ThirdParty/Grab3D/Contender_LOD0.fbx");
+            var root = Object.Instantiate(source);
+            try
+            {
+                root.name = "First person armored arms";
+                var animator = root.GetComponent<Animator>();
+                var renderer = root.GetComponentInChildren<SkinnedMeshRenderer>();
+                var armBones = new HashSet<int>();
+                foreach (var id in new[] { HumanBodyBones.LeftUpperArm, HumanBodyBones.LeftLowerArm, HumanBodyBones.LeftHand,
+                    HumanBodyBones.RightUpperArm, HumanBodyBones.RightLowerArm, HumanBodyBones.RightHand })
+                {
+                    int index = Array.IndexOf(renderer.bones, animator.GetBoneTransform(id));
+                    if (index < 0) throw new InvalidOperationException("The source mesh lacks an arm skin bone: " + id);
+                    armBones.Add(index);
+                }
+                Mesh mesh = ExtractArms(renderer.sharedMesh, armBones);
+                var old = AssetDatabase.LoadAssetAtPath<Mesh>(MeshPath);
+                if (old == null) AssetDatabase.CreateAsset(mesh, MeshPath);
+                else
+                {
+                    old.Clear(); old.indexFormat = mesh.indexFormat;
+                    old.vertices = mesh.vertices; old.normals = mesh.normals; old.tangents = mesh.tangents; old.uv = mesh.uv;
+                    old.boneWeights = mesh.boneWeights; old.bindposes = mesh.bindposes; old.triangles = mesh.triangles;
+                    old.bounds = mesh.bounds; old.UploadMeshData(false); EditorUtility.SetDirty(old); Object.DestroyImmediate(mesh);
+                }
+                renderer.sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(MeshPath);
+                renderer.sharedMaterial = AssetDatabase.LoadAssetAtPath<Material>(Root + "/Ion.mat");
+                renderer.localBounds = renderer.sharedMesh.bounds;
+                renderer.updateWhenOffscreen = true;
+                renderer.shadowCastingMode = ShadowCastingMode.Off;
+                renderer.receiveShadows = false;
+                animator.runtimeAnimatorController = Controller();
+                animator.applyRootMotion = false;
+                animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+                var view = root.AddComponent<FirstPersonArms>();
+                view.Animator = animator; view.Surface = renderer;
+                // Relative to the railgun: keeps the shoulder cuts below the first-person frame.
+                root.transform.localPosition = new Vector3(-.23f, -1.65f, -.37f);
+                foreach (var part in root.GetComponentsInChildren<Transform>(true)) part.gameObject.layer = 11;
+                PrefabUtility.SaveAsPrefabAsset(root, "Assets/Resources/Characters/ViewArms.prefab");
+                AssetDatabase.SaveAssets();
+            }
+            finally { Object.DestroyImmediate(root); }
+        }
+
+        private static RuntimeAnimatorController Controller()
+        {
+            string path = Root + "/View arms.controller";
+            var controller = AssetDatabase.LoadAssetAtPath<AnimatorController>(path);
+            if (controller == null) controller = AnimatorController.CreateAnimatorControllerAtPath(path);
+            var layer = controller.layers[0]; layer.iKPass = true; controller.layers = new[] { layer };
+            var state = layer.stateMachine.states.FirstOrDefault(s => s.state.name == "Ready").state;
+            if (state == null) state = layer.stateMachine.AddState("Ready");
+            var body = AssetDatabase.LoadAssetAtPath<AnimatorController>(Root + "/Contender.controller");
+            state.motion = body.animationClips.First(c => c.name.EndsWith("Idle_Loop"));
+            layer.stateMachine.defaultState = state;
+            EditorUtility.SetDirty(controller);
+            return controller;
+        }
+
+        private static Mesh ExtractArms(Mesh source, HashSet<int> bones)
+        {
+            var sourceWeights = source.boneWeights;
+            bool Arm(int index)
+            {
+                var w = sourceWeights[index];
+                float sum = (bones.Contains(w.boneIndex0) ? w.weight0 : 0) + (bones.Contains(w.boneIndex1) ? w.weight1 : 0) +
+                    (bones.Contains(w.boneIndex2) ? w.weight2 : 0) + (bones.Contains(w.boneIndex3) ? w.weight3 : 0);
+                return sum >= .6f;
+            }
+            var selected = new List<int>();
+            var indices = source.triangles;
+            for (int i = 0; i < indices.Length; i += 3)
+                if (Arm(indices[i]) && Arm(indices[i + 1]) && Arm(indices[i + 2]))
+                    selected.AddRange(new[] { indices[i], indices[i + 1], indices[i + 2] });
+            if (selected.Count < 300) throw new InvalidOperationException("Arm extraction did not retain sufficient source geometry.");
+            var used = selected.Distinct().ToArray();
+            var map = new Dictionary<int, int>();
+            for (int i = 0; i < used.Length; i++) map[used[i]] = i;
+            var positions = source.vertices; var normals = source.normals; var tangents = source.tangents; var uv = source.uv;
+            var mesh = new Mesh { name = "CC0 contender arm-only derivative", indexFormat = IndexFormat.UInt32,
+                vertices = used.Select(i => positions[i]).ToArray(), normals = used.Select(i => normals[i]).ToArray(),
+                tangents = used.Select(i => tangents[i]).ToArray(), uv = used.Select(i => uv[i]).ToArray(),
+                boneWeights = used.Select(i => sourceWeights[i]).ToArray(), bindposes = source.bindposes,
+                triangles = selected.Select(i => map[i]).ToArray() };
+            mesh.RecalculateBounds(); return mesh;
+        }
+    }
+}

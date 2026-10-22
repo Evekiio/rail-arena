@@ -2,6 +2,16 @@
 
 Status: **offline milestone and initial online integration, incomplete game**. The full objective has not been achieved.
 
+## First-person armored arms
+
+An arm-only CC0 contender derivative now provides visible hands/forearms, ordinary humanoid idle/IK, shared weapon grips and recoil, and the local contender palette. It has no actor, hurtbox or collider components. Cosmetic recoil travel is reduced to 5.5 cm; authority, aim rays and 90-tick firing remain unchanged. Details, provenance and remaining finger/action-animation work are in `FIRST-PERSON-ARMS.md`.
+
+All 46 Editor-suite tests passed, including a test that enters the real player loop to check neutral and +/-89-degree camera aim with recoil. Initial manual EditMode IK sampling failed and is retained separately; the lifecycle-correct test replaced that inadequate sampling (`Validation/view-arms-editmode.json`, `view-arms-editmode-initial.json`). Live solo inspection advanced to frame 17581 / tick 1749 and recorded matching palette plus wrist errors around 0.0000012 m (`view-arms-live-editor.json`). The actual Editor player-camera PNG is at `Assets/Validation/view-arms-first-person.png`.
+
+The 96-frame 24 fps controlled preview decodes fully at 1280 x 720, four seconds long (`Validation/ViewArmsMotion/View-Arms-Motion-Review.mp4`). Recorded maximum wrist errors were approximately 0.0000053 m left and 0.0000035 m right. Recoil/charge pulses are staged presentation; this is not gameplay, audio or native-input acceptance.
+
+Windows fingerprint `5a72f123cd70e65c7deff7072f14938ac7b2c52614e85d28f125eb1ce20e34a7` built and passed all 35 standalone mechanics checks (`view-arms-build.json`, `view-arms-mechanics.json`). Its 45-second seven-bot run passed with 193 shots, 22 deaths, two pickups, 56 launches, zero exceptions and zero void deaths (`view-arms-offline.json`). The automated 60-second impaired duel passed with 65 host-recorded shots, three deaths, 31 validated rewinds, one expired-time rejection and zero peer application errors (`Validation/Duel-ViewArms/`). The relay recorded 302 drops and 183 reordered sends with configured 25 ms one-way delay, +/-10 ms jitter and 5% loss. Maximum raw client correction was 0.8269 m. These remain local regression conditions, not a final full-match/rematch repeat, human motion approval or actual internet test.
+
 ## Editable bot tuning
 
 Bot reaction, aim, turning, decision intervals and shared targeting thresholds now come from `Assets/Resources/BotTuning.asset`, retaining the previous defaults. Validated session snapshots prevent mid-session asset edits from changing active behavior. Missing/invalid tuning is rejected by build preprocessing and session initialization. See `BOT-TUNING.md` for editing, ranges and reproducible evidence.

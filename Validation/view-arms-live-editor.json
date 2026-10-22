@@ -1,0 +1,32 @@
+{
+  "success": true,
+  "command": "command script eval",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var s=UnityEngine.Object.FindFirstObjectByType<RailArena.ArenaSession>(); var a=UnityEngine.Object.FindFirstObjectByType<RailArena.FirstPersonArms>(); var w=a.transform.parent.GetComponent<RailArena.RailgunPresentation>(); return new {frame=UnityEngine.Time.frameCount,tick=s.Match.Tick,triangles=a.Surface.sharedMesh.triangles.Length/3,vertices=a.Surface.sharedMesh.vertexCount,leftWristError=UnityEngine.Vector3.Distance(a.Animator.GetBoneTransform(UnityEngine.HumanBodyBones.LeftHand).position,w.LeftGrip.position),rightWristError=UnityEngine.Vector3.Distance(a.Animator.GetBoneTransform(UnityEngine.HumanBodyBones.RightHand).position,w.RightGrip.position),paletteMatches=a.Surface.sharedMaterial==s.Human.Presentation.BodyRenderers[0].sharedMaterial,viewRecoilMetres=RailArena.RailgunPresentation.ViewRecoilTravel};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "frame": 17581,
+        "tick": 1749,
+        "triangles": 15962,
+        "vertices": 18333,
+        "leftWristError": 0.0000011920929,
+        "rightWristError": 0.00000106624032,
+        "paletteMatches": true,
+        "viewRecoilMetres": 0.055
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\Rail Arena\\RailArena"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

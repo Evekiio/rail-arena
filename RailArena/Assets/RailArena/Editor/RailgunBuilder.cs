@@ -57,6 +57,13 @@ namespace RailArena.Editor
                 var muzzle = new GameObject("Muzzle").transform;
                 muzzle.SetParent(root.transform, false); muzzle.localPosition = new Vector3(0, .015f, .742f);
                 visual.Muzzle = muzzle; visual.Actuators = actuators.ToArray(); visual.EnergySurfaces = energy.ToArray();
+                Transform Grip(string name, Vector3 position, float roll)
+                {
+                    var grip = new GameObject(name).transform; grip.SetParent(root.transform, false);
+                    grip.localPosition = position; grip.localRotation = Quaternion.Euler(0, 0, roll); return grip;
+                }
+                visual.RightGrip = Grip("Right grip", new Vector3(0, -.1f, -.09f), 90);
+                visual.LeftGrip = Grip("Left support", new Vector3(-.13f, -.08f, -.015f), -90);
                 var group = root.AddComponent<LODGroup>(); group.SetLODs(lods); group.RecalculateBounds();
                 PrefabUtility.SaveAsPrefabAsset(root, "Assets/Resources/Weapons/Railgun.prefab");
             }

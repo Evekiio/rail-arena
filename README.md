@@ -8,9 +8,9 @@ The target is immediate offline bot matches and practice, plus direct-IP two-hum
 
 Public source: [Evekiio/rail-arena](https://github.com/Evekiio/rail-arena). Tested development milestones are pushed as work progresses; a finished downloadable release is not available yet.
 
-![Foundry surface-art pass with the original RA-01 railgun](RailArena/Assets/Validation/foundry-surface-first-person.png)
+![First-person armored arms and RA-01 railgun in Foundry](RailArena/Assets/Validation/view-arms-first-person.png)
 
-*Actual Unity Editor camera capture from the first Foundry surface-art pass. First-person arms and final arena art are unfinished; this is not a standalone or native-input acceptance screenshot.*
+*Actual Unity Editor camera capture with the first arm-only view rig. Finger/action-animation and final arena polish remain unfinished; this is not a standalone or native-input acceptance screenshot.*
 
 ## Project
 
@@ -36,7 +36,7 @@ The editable Foundry arena now includes a lower loop, elevated bridge and wings,
 
 The first [arena surface-art pass](docs/ARENA-ART.md) adds original panel textures, beveled covers, vents, warning markings and directional launch fields while preserving the collider/navigation signature.
 
-The first gameplay pass includes location-based hitboxes, a rail cooldown, deaths and respawns, health restoration, countdown, time limit, void scoring and tied-leader sudden death. Menus, a HUD, scoreboard, results, restart and basic settings are implemented. Characters now use a textured armored humanoid, three mesh LODs, four palette variants, retargeted locomotion/jump/landing/hit/death animations and two-hand aiming IK. See [character sources, editing and limitations](docs/CHARACTERS.md). The original [RA-01 railgun](docs/WEAPONS.md) now has editable Blender source, two mesh LODs and cooldown-driven actuator/energy feedback in first and third person. First-person arms, sound and arena presentation still need polish. **The full online acceptance criteria remain incomplete.**
+The first gameplay pass includes location-based hitboxes, a rail cooldown, deaths and respawns, health restoration, countdown, time limit, void scoring and tied-leader sudden death. Menus, a HUD, scoreboard, results, restart and basic settings are implemented. Characters now use a textured armored humanoid, three mesh LODs, four palette variants, retargeted locomotion/jump/landing/hit/death animations and two-hand aiming IK. See [character sources, editing and limitations](docs/CHARACTERS.md). The original [RA-01 railgun](docs/WEAPONS.md) has editable Blender source, two mesh LODs and cooldown-driven feedback. [First-person armored arms](docs/FIRST-PERSON-ARMS.md) now share its grips and recoil. Hand/action-animation, sound and arena polish remain. **The full online acceptance criteria remain incomplete.**
 
 Initial direct-IP duel integration is now available from **ONLINE DUEL // DIRECT IP**. Host and join use the same build and selected UDP port, then both players ready up. The host owns gameplay, while the client predicts/reconciles movement and interpolates the opponent. Bounded 200 ms hit rewind is implemented and covered by historical geometry tests and a two-player standalone smoke test. Complete match/rematch acceptance, impairment testing and remote-network verification remain incomplete. See [networking coverage and remaining integration](docs/NETWORKING.md).
 
@@ -44,7 +44,7 @@ Initial direct-IP duel integration is now available from **ONLINE DUEL // DIRECT
 
 | Evidence | Scope |
 | --- | --- |
-| 43 EditMode tests passing | Shared simulation including solo practice, actual character geometry/animation, editable bot profiles and behavior, protocol, rewind and camera continuity |
+| 46 Editor-suite tests passing | Shared simulation, model geometry, live player-loop view-arm IK, bot profiles/behavior, protocol, rewind and camera continuity |
 | 35 standalone mechanics checks passing | Accelerated real authority with actual hurtboxes; exact combat, pickup, respawn and match-clock boundaries, plus solo movement/fire/respawn and mode switching |
 | Full ten-minute network-candidate match and rematch | Two local processes under configured delay/jitter/5% loss; historical fingerprint, not the final art build |
 | Latest corrected-hitbox network smoke | Real UDP, 60 seconds, simulated delay/loss, zero application errors |

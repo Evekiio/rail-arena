@@ -1,5 +1,7 @@
 # Third-party notices
 
+The first-person arm mesh is an arm-only CC0 derivative of the Grab3D contender described below, retaining its disclosed AI-assisted origin. It reuses the existing textures and Quaternius CC0 idle motion. The extraction/attachment code is original MIT work; this is not a claim that the underlying character was sculpted originally for Rail Arena. See `docs/FIRST-PERSON-ARMS.md`.
+
 The Foundry surface-art generator and its new panel textures, meshes and materials are original Rail Arena work under MIT, not third-party assets. See `docs/ARENA-ART.md` for editable sources and scope.
 
 The RA-01 railgun geometry, Blender generation script, materials and presentation integration are original Rail Arena work under the repository MIT license. Its source and reproduction instructions are recorded in `docs/WEAPONS.md`.

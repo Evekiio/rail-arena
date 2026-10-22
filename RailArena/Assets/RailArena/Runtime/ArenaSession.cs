@@ -43,6 +43,7 @@ namespace RailArena
         private int padCount;
         private Transform weapon;
         private RailgunPresentation weaponPresentation;
+        private FirstPersonArms viewArms;
         private float recoil;
         private Networking.HitboxHistory hitHistory;
         public int RewoundShots { get; private set; }
@@ -92,6 +93,7 @@ namespace RailArena
                 actor.Place(World.Spawns[i % World.Spawns.Length].position);
             }
             Match = new MatchState(ids, practice);
+            if (viewArms != null) viewArms.Surface.sharedMaterial = Human.Presentation.BodyRenderers[0].sharedMaterial;
             hitHistory = new Networking.HitboxHistory(Actors);
             hitHistory.Capture(0);
             RewoundShots = RejectedShotTimes = 0;
@@ -160,7 +162,7 @@ namespace RailArena
             reconciliationView.Decay(Time.unscaledDeltaTime);
             recoil = Mathf.MoveTowards(recoil, 0, Time.unscaledDeltaTime * 5);
             weaponPresentation.SetCharge((Human.NextShotTick - Match.Tick) / (float)CombatRules.ShotIntervalTicks);
-            weapon.localPosition = new Vector3(.33f, -.3f, .62f - recoil * .15f);
+            weapon.localPosition = new Vector3(.33f, -.3f, .62f - recoil * RailgunPresentation.ViewRecoilTravel);
             weapon.gameObject.SetActive(Human.Alive && !Paused);
         }
 
@@ -326,6 +328,7 @@ namespace RailArena
             weapon = Instantiate(prefab, View.transform, false).transform;
             weaponPresentation = weapon.GetComponent<RailgunPresentation>();
             weapon.GetComponent<LODGroup>().ForceLOD(0);
+            viewArms = FirstPersonArms.CreateOnWeapon(weaponPresentation);
             foreach (var part in weapon.GetComponentsInChildren<Transform>(true)) part.gameObject.layer = 11;
             weapon.gameObject.SetActive(false);
         }

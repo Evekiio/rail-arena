@@ -5,7 +5,10 @@ namespace RailArena
     /// <summary>Visual charge state observes the shared weapon cooldown without changing it.</summary>
     public sealed class RailgunPresentation : MonoBehaviour
     {
+        public const float ViewRecoilTravel = .055f;
         public Transform Muzzle;
+        public Transform RightGrip;
+        public Transform LeftGrip;
         public Transform[] Actuators;
         public Renderer[] EnergySurfaces;
         private Vector3[] restPositions;

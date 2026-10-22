@@ -70,6 +70,7 @@ namespace RailArena.Editor
             PrefabUtility.SaveAsPrefabAsset(instance, "Assets/Resources/Characters/Contender.prefab");
             UnityEngine.Object.DestroyImmediate(instance);
             AssetDatabase.SaveAssets();
+            FirstPersonArmsBuilder.Build();
             Debug.Log("Animated contender built with humanoid retargeting, three LODs and bone-following hitboxes.");
         }
 
@@ -271,10 +272,8 @@ namespace RailArena.Editor
             var root = UnityEngine.Object.Instantiate(prefab, parent, false).transform;
             presentation.Weapon = root;
             presentation.Railgun = root.GetComponent<RailgunPresentation>();
-            presentation.RightGrip = Marker(root, "Right grip", new Vector3(0, -.1f, -.09f));
-            presentation.LeftGrip = Marker(root, "Left support", new Vector3(-.13f, -.08f, -.015f));
-            presentation.RightGrip.localRotation = Quaternion.Euler(0, 0, 90);
-            presentation.LeftGrip.localRotation = Quaternion.Euler(0, 0, -90);
+            presentation.RightGrip = presentation.Railgun.RightGrip;
+            presentation.LeftGrip = presentation.Railgun.LeftGrip;
             presentation.Muzzle = presentation.Railgun.Muzzle;
         }
 
@@ -293,8 +292,6 @@ namespace RailArena.Editor
             finally { PrefabUtility.UnloadPrefabContents(root); }
         }
 
-        private static Transform Marker(Transform parent, string name, Vector3 point)
-        { var marker = new GameObject(name).transform; marker.SetParent(parent, false); marker.localPosition = point; return marker; }
         private static void Save(UnityEngine.Object obj, string path)
         { if (AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path)) AssetDatabase.DeleteAsset(path); AssetDatabase.CreateAsset(obj, path); }
 
