@@ -12,6 +12,8 @@ Public source: [Evekiio/rail-arena](https://github.com/Evekiio/rail-arena). Test
 
 *Actual Unity Editor camera capture with the first arm-only view rig. Finger/action-animation and final arena polish remain unfinished; this is not a standalone or native-input acceptance screenshot.*
 
+The current view rig also has original procedural run bob, look sway, landing compression, respawn raise and recoil pitch. These move the weapon and hands while preserving camera aim. See [motion details and controlled preview scope](docs/FIRST-PERSON-ARMS.md).
+
 ## Project
 
 - Unity **6000.6.7f1**, pinned in `RailArena/ProjectSettings/ProjectVersion.txt`.

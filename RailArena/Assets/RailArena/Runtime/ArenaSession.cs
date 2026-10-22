@@ -45,6 +45,9 @@ namespace RailArena
         private RailgunPresentation weaponPresentation;
         private FirstPersonArms viewArms;
         private float recoil;
+        private readonly FirstPersonWeaponMotion weaponMotion = new();
+        private int weaponMotionLife;
+        private Vector2 lookMotion;
         private Networking.HitboxHistory hitHistory;
         public int RewoundShots { get; private set; }
         public int RejectedShotTimes { get; private set; }
@@ -104,6 +107,9 @@ namespace RailArena
             VoidTraces.Clear();
             yaw = 90;
             pitch = 0;
+            recoil = 0;
+            weaponMotion.Reset(true);
+            weaponMotionLife = Human.Life;
             SetPaused(false);
         }
 
@@ -132,6 +138,7 @@ namespace RailArena
 
         private void Update()
         {
+            lookMotion = Vector2.zero;
             UpdateNetwork();
             if (Keyboard.current?.escapeKey.wasPressedThisFrame == true && Running) SetPaused(!Paused);
             if (!Running || OnlineWaiting || Paused || AutomatedHuman || Match.Phase == MatchPhase.Results) return;
@@ -139,6 +146,7 @@ namespace RailArena
             if (mouse != null)
             {
                 var delta = mouse.delta.ReadValue();
+                lookMotion = delta * Sensitivity;
                 yaw += delta.x * Sensitivity;
                 pitch = Mathf.Clamp(pitch - delta.y * Sensitivity, -89, 89);
             }
@@ -162,7 +170,15 @@ namespace RailArena
             reconciliationView.Decay(Time.unscaledDeltaTime);
             recoil = Mathf.MoveTowards(recoil, 0, Time.unscaledDeltaTime * 5);
             weaponPresentation.SetCharge((Human.NextShotTick - Match.Tick) / (float)CombatRules.ShotIntervalTicks);
-            weapon.localPosition = new Vector3(.33f, -.3f, .62f - recoil * RailgunPresentation.ViewRecoilTravel);
+            if (!Human.Alive || Paused) weaponMotion.Reset(false);
+            else
+            {
+                if (weaponMotionLife != Human.Life) weaponMotion.Reset(true);
+                weaponMotionLife = Human.Life;
+                weaponMotion.Step(Time.unscaledDeltaTime, Human.Velocity, Human.Grounded && Human.AirborneTicks == 0, lookMotion, recoil);
+            }
+            weapon.localPosition = FirstPersonWeaponMotion.RestPosition + weaponMotion.Offset - Vector3.forward * (recoil * RailgunPresentation.ViewRecoilTravel);
+            weapon.localRotation = weaponMotion.Rotation;
             weapon.gameObject.SetActive(Human.Alive && !Paused);
         }
 

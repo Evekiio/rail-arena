@@ -8,16 +8,17 @@ using Object = UnityEngine.Object;
 
 namespace RailArena.Editor
 {
-    /// <summary>Controlled idle/recoil/charge review, not gameplay footage or firing-cadence acceptance.</summary>
+    /// <summary>Controlled view-weapon review, not gameplay footage or native-input acceptance.</summary>
     public sealed class FirstPersonMotionReview : MonoBehaviour
     {
         [Serializable]
         private sealed class Report
         {
-            public int frames = 96;
+            public int frames = 192;
             public int fps = 24;
             public float maximumLeftWristError, maximumRightWristError;
-            public string scope = "Controlled in-engine idle/recoil/charge presentation, not native input or gameplay";
+            public float maximumOffsetMetres, maximumRotationDegrees;
+            public string scope = "Controlled equip/run/airborne/landing/look/recoil presentation, not native input or gameplay";
         }
 
         public static string Capture()
@@ -27,12 +28,12 @@ namespace RailArena.Editor
                 throw new InvalidOperationException("Enter Play mode at the main menu before recording view arms.");
             var recorder = new GameObject("View-arm motion recorder").AddComponent<FirstPersonMotionReview>();
             recorder.StartCoroutine(recorder.Record(session));
-            return "Recording 96 frames through the normal animation loop; wait for ViewArmsMotion/complete.txt.";
+            return "Recording 192 frames through the normal animation loop; wait for ViewWeaponMotion/complete.txt.";
         }
 
         private IEnumerator Record(ArenaSession session)
         {
-            string folder = Path.GetFullPath(Path.Combine(Application.dataPath, "../../Validation/ViewArmsMotion"));
+            string folder = Path.GetFullPath(Path.Combine(Application.dataPath, "../../Validation/ViewWeaponMotion"));
             Directory.CreateDirectory(folder); File.Delete(Path.Combine(folder, "complete.txt"));
             int previousRate = Time.captureFramerate; Time.captureFramerate = 24;
             var cameraObject = new GameObject("View-arm review camera");
@@ -41,7 +42,7 @@ namespace RailArena.Editor
             camera.transform.SetPositionAndRotation(new Vector3(-16, 1.66f, -19), Quaternion.Euler(0, 90, 0));
             camera.GetUniversalAdditionalCameraData().renderPostProcessing = true;
             var gun = Object.Instantiate(Resources.Load<GameObject>("Weapons/Railgun"), camera.transform, false);
-            gun.transform.localPosition = new Vector3(.33f, -.3f, .62f);
+            gun.transform.localPosition = FirstPersonWeaponMotion.RestPosition;
             var weapon = gun.GetComponent<RailgunPresentation>();
             gun.GetComponent<LODGroup>().ForceLOD(0);
             var arms = FirstPersonArms.CreateOnWeapon(weapon);
@@ -50,14 +51,23 @@ namespace RailArena.Editor
             var pixels = new Texture2D(1280, 720, TextureFormat.RGB24, false);
             var previousTarget = RenderTexture.active; camera.targetTexture = render;
             var report = new Report();
+            var motion = new FirstPersonWeaponMotion();
+            motion.Reset(true);
             try
             {
                 yield return null; yield return null;
-                for (int frame = 0; frame < 96; frame++)
+                for (int frame = 0; frame < report.frames; frame++)
                 {
-                    int age = frame < 24 ? 1000 : frame < 60 ? frame - 24 : frame - 60;
+                    bool airborne = frame >= 72 && frame < 96;
+                    var velocity = frame >= 24 && frame < 96 ? new Vector3(10, airborne ? -18 : -1, 0) : Vector3.zero;
+                    var look = frame >= 120 && frame < 144 ? new Vector2(Mathf.Sin((frame - 120) / 24f * Mathf.PI * 2) * 8, 0) : Vector2.zero;
+                    int age = frame < 144 ? 1000 : frame < 180 ? frame - 144 : frame - 180;
                     float recoil = Mathf.Max(0, 1 - age / 24f * 5);
-                    gun.transform.localPosition = new Vector3(.33f, -.3f, .62f - recoil * RailgunPresentation.ViewRecoilTravel);
+                    motion.Step(1f / report.fps, velocity, !airborne, look, recoil);
+                    gun.transform.localPosition = FirstPersonWeaponMotion.RestPosition + motion.Offset - Vector3.forward * (recoil * RailgunPresentation.ViewRecoilTravel);
+                    gun.transform.localRotation = motion.Rotation;
+                    report.maximumOffsetMetres = Mathf.Max(report.maximumOffsetMetres, motion.Offset.magnitude);
+                    report.maximumRotationDegrees = Mathf.Max(report.maximumRotationDegrees, Quaternion.Angle(Quaternion.identity, motion.Rotation));
                     weapon.SetCharge(Mathf.Clamp01(1 - age / 36f));
                     yield return new WaitForEndOfFrame();
                     report.maximumLeftWristError = Mathf.Max(report.maximumLeftWristError,
@@ -69,7 +79,7 @@ namespace RailArena.Editor
                     File.WriteAllBytes(Path.Combine(folder, $"frame-{frame:0000}.png"), pixels.EncodeToPNG());
                 }
                 File.WriteAllText(Path.Combine(folder, "review.json"), JsonUtility.ToJson(report, true));
-                File.WriteAllText(Path.Combine(folder, "complete.txt"), "96 controlled presentation frames captured.");
+                File.WriteAllText(Path.Combine(folder, "complete.txt"), "192 controlled presentation frames captured.");
             }
             finally
             {

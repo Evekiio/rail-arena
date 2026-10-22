@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "command": "command script eval",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var s=UnityEngine.Object.FindAnyObjectByType<RailArena.ArenaSession>(); return new {frame=UnityEngine.Time.frameCount,tick=s.Match.Tick,shots=s.ShotsFired,deaths=s.Deaths,health=s.Human.Health,position=s.Human.transform.position,velocity=s.Human.Velocity};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": "{ frame = 14618, tick = 650, shots = 33, deaths = 5, health = 0, position = (-14.49, 8.00, -9.26), velocity = (-5.85, 4.27, 15.44) }"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\Rail Arena\\RailArena"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

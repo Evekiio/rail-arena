@@ -40,7 +40,7 @@ namespace RailArena.Tests
         }
 
         [UnityTest]
-        public IEnumerator BothWristsFollowTheSharedGripThroughAimAndRecoilInThePlayerLoop()
+        public IEnumerator BothWristsFollowSharedGripsThroughAimTravelLandingAndRecoil()
         {
             yield return new EnterPlayMode();
             foreach (var pose in new[] { Vector2.zero, new Vector2(89, 120), new Vector2(-89, -120) })
@@ -51,10 +51,18 @@ namespace RailArena.Tests
                     gun.transform.SetPositionAndRotation(new Vector3(.33f, -.3f, .62f), Quaternion.Euler(pose.x, pose.y, 0));
                     var weapon = gun.GetComponent<RailgunPresentation>();
                     var arms = FirstPersonArms.CreateOnWeapon(weapon);
+                    var motion = new FirstPersonWeaponMotion();
+                    motion.Reset(true);
                     yield return null; yield return null;
-                    for (int frame = 0; frame < 8; frame++)
+                    for (int frame = 0; frame < 32; frame++)
                     {
-                        gun.transform.position -= gun.transform.forward * .02f;
+                        bool airborne = frame >= 8 && frame < 16;
+                        float recoil = frame >= 20 ? Mathf.Max(0, 1 - (frame - 20) / 12f) : 0;
+                        motion.Step(1f / 60, airborne ? new Vector3(12, -20, 0) : new Vector3(10, -1, 0),
+                            !airborne, new Vector2(2, -1), recoil);
+                        var aim = Quaternion.Euler(pose.x, pose.y, 0);
+                        gun.transform.SetPositionAndRotation(FirstPersonWeaponMotion.RestPosition + aim *
+                            (motion.Offset - Vector3.forward * (recoil * RailgunPresentation.ViewRecoilTravel)), aim * motion.Rotation);
                         yield return null;
                         Assert.That(Vector3.Distance(arms.Animator.GetBoneTransform(HumanBodyBones.LeftHand).position, weapon.LeftGrip.position), Is.LessThan(.015f));
                         Assert.That(Vector3.Distance(arms.Animator.GetBoneTransform(HumanBodyBones.RightHand).position, weapon.RightGrip.position), Is.LessThan(.015f));

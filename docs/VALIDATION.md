@@ -2,11 +2,21 @@
 
 Status: **offline milestone and initial online integration, incomplete game**. The full objective has not been achieved.
 
+## First-person movement feedback
+
+Original procedural weapon/arm motion now responds to ground travel, look input, airborne fade, landing and session/respawn raise, with recoil pitch. Camera aim, authority, movement, hurtboxes and weapon rules remain separate. The renderer-only class has no simulation references. See `FIRST-PERSON-ARMS.md` for bounds and remaining art work.
+
+All 49 Editor-suite tests passed (`Validation/view-weapon-motion-tests.json`), including landing/reset behavior, bounded extreme-speed/look motion, 30/144 Hz sway convergence and the real player-loop wrist test through aim, travel, landing and recoil. The controlled 192-frame 24 fps eight-second preview decoded fully at 1280 x 720. Maximum measured wrist errors were 0.0000116 m left and 0.0000040 m right; maximum staged offset was 0.154 m during raise and rotation 7.53 degrees. Frames sampled at raise, run and landing and the contact sheet were inspected. This is staged presentation with a fixed camera, not actual movement, sound-on or native input acceptance (`Validation/ViewWeaponMotion/`).
+
+Windows fingerprint `dff8c764c4dcce80314a4635474a11cbc4d791608143ccf3dcb574785143f952` built and passed all 35 accelerated mechanical checks. The 45-second seven-bot run passed with 2,717 ticks, 183 shots, 26 deaths, two pickups, 59 pad launches, zero exceptions and zero void deaths. The 60-second impaired two-player UDP smoke passed with 53 host shots, five deaths, 27 rewound shots and zero application errors. The relay recorded 309 dropped and 206 reordered packets. Maximum raw client correction was 1.5204 m, an unresolved motion-quality concern rather than a newly certified acceptance result. These runs overlapped other validation work; their frame timing is not a rendering benchmark. Reports: `view-motion-build.json`, `view-motion-mechanics.json`, `view-motion-offline.json`, `Duel-ViewMotion/`.
+
+The actual Editor loop also advanced from frame 13109 / tick 0 to frame 14618 / tick 650 with 33 shots and five deaths. No new console errors were returned after the recorded cursor; earlier historical compile/command errors remain in the console history. The tested candidate was promoted unchanged to `Builds/Windows/RailArena.exe`, preserving the preceding build in `Builds/PreviousWindows-5a72f123` (`view-motion-promotion.json`). Native input/settings acceptance, final full-match regression, bespoke hand actions, sound and creative approval remain open.
+
 ## Native input diagnostic checkpoint
 
 The candidate's 45-second seven-bot regression also passed: 2,710 ticks, 188 shots, 23 deaths, two pickups, 53 pad launches, zero exceptions and zero void deaths (`Validation/native-input-offline.json`). This uses automated control and is not native-input acceptance.
 
-The opt-in development component in `NATIVE-INPUT-REVIEW.md` compiled and built as candidate `2a470bd8...`. Initial focus/report output is retained in `Validation/native-input-initial.json`. All 35 accelerated standalone mechanics checks passed with zero errors (`native-input-mechanics.json`). A Windows Firewall permission dialog prevented the candidate's visible input/settings review; no security permission was changed. The prior current build launched practice and rendered the new arms, but its injected Escape tap did not visibly pause. Keyboard receipt and the cause remain unverified. The default `Builds/Windows` executable remains the preceding `5a72f123...` build.
+The opt-in development component in `NATIVE-INPUT-REVIEW.md` compiled and built as candidate `2a470bd8...`. Initial focus/report output is retained in `Validation/native-input-initial.json`. All 35 accelerated standalone mechanics checks passed with zero errors (`native-input-mechanics.json`). A Windows Firewall permission dialog prevented the candidate's visible input/settings review; no security permission was changed. The prior current build launched practice and rendered the new arms, but its injected Escape tap did not visibly pause. Keyboard receipt and the cause remain unverified. At that checkpoint the default executable remained `5a72f123...`; it has since been superseded by the movement-feedback candidate above.
 
 ## First-person armored arms
 
