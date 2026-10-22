@@ -46,9 +46,9 @@ Direct-IP duel integration is available from **ONLINE DUEL // DIRECT IP**. Host 
 
 | Evidence | Scope |
 | --- | --- |
-| 57 Editor-suite tests passing | Shared simulation, model geometry, live view-arm IK, bounded view motion, bot behavior, held-jump loss, protocol, rewind, camera continuity and replicated respawn lifecycle |
+| 62 Editor-suite tests passing | Shared simulation, model geometry, live view-arm IK, bounded view motion, bots, protocol/rewind, held-jump loss, respawn lifecycle, remote animation/cooldown and correction classification |
 | 35 standalone mechanics checks passing | Accelerated real authority with actual hurtboxes; exact combat, pickup, respawn and match-clock boundaries, plus solo movement/fire/respawn and mode switching |
-| Current full ten-minute match and rematch | Separate clean and impaired local UDP runs; matching result tick, scores and life numbers, with zero application errors |
+| Full ten-minute match and rematch on life-aware build 235d7b84 | Separate clean and impaired local UDP runs; matching result tick, scores and life numbers, with zero application errors; newer presentation changes have separate regression reports |
 | Replicated respawn lifecycle | Version 3 snapshots reset stale input, interpolation and view state, including missed-death and rematch regressions |
 | Human acceptance still open | Keyboard/mouse feel, settings, visible and sound-on quality, native two-human duel, final build and real internet path |
 

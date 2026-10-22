@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Net;
 using NUnit.Framework;
 using RailArena.Networking;
 using RailArena.Simulation;
@@ -126,6 +127,77 @@ namespace RailArena.Tests
         {
             var state = State(1, 200, 1, life);
             Assert.Throws<ArgumentException>(() => DuelProtocol.Encode(new DuelPacket { Kind = DuelMessage.Snapshot, Snapshot = state }));
+        }
+
+        [Test]
+        public void RemoteCooldownAndPadTimingRefreshWithoutARespawn()
+        {
+            var actor = session.Actors[0];
+            var update = typeof(ContenderPresentation).GetMethod("Update", PrivateInstance);
+            update.Invoke(actor.Presentation, null);
+            var actuator = actor.Presentation.Railgun.Actuators[0];
+            Vector3 ready = actuator.localPosition;
+            var state = State(1, 203, 1, 1);
+            state.Actors[0].NextShotTick = 293;
+            state.Actors[0].PadReadyTick = 303;
+            Apply(state);
+            Assert.That(actor.NextShotTick, Is.EqualTo(293));
+            Assert.That(actor.PadReadyTick, Is.EqualTo(303));
+            update.Invoke(actor.Presentation, null);
+            Assert.That(Vector3.Distance(ready, actuator.localPosition), Is.GreaterThan(.02f));
+        }
+
+        [Test]
+        public void ResultsFreezeRetainsRawCorrectionButSeparatesItFromActivePlay()
+        {
+            session.Human.transform.position += Vector3.forward * 2;
+            var inputs = Field<List<DuelInput>>("prediction");
+            for (int i = 1; i <= 6; i++) inputs.Add(new DuelInput { Command = new MovementCommand
+                { Sequence = i, Move = Vector2.up, Fire = true } });
+            typeof(ArenaSession).GetField("clientTick", PrivateInstance).SetValue(session, 36187);
+            var state = State(1, 36180, 1, 1);
+            state.Phase = MatchPhase.Results; state.Winner = 1; state.Actors[1].Score = 1;
+            Apply(state);
+            Assert.That(session.Human.transform.position, Is.EqualTo(state.Actors[1].Position));
+            Assert.That(session.MaximumCorrection, Is.EqualTo(2).Within(.001));
+            Assert.That(session.MaximumActiveCorrection, Is.Zero);
+            Assert.That(session.MaximumPhaseChangeCorrection, Is.EqualTo(2).Within(.001));
+            var sample = session.LargestPhaseChangeCorrection;
+            Assert.That(sample.previousPhase, Is.EqualTo(MatchPhase.Playing));
+            Assert.That(sample.authorityPhase, Is.EqualTo(MatchPhase.Results));
+            Assert.That(sample.pending, Is.EqualTo(6));
+            Assert.That(sample.replayMovementTicks, Is.Zero);
+            Assert.That(sample.movementClockShift, Is.EqualTo(-7));
+        }
+
+        [Test]
+        public void ActiveMovementMismatchRemainsInBothRawAndActiveMeasurements()
+        {
+            session.Human.transform.position += Vector3.forward * 2;
+            Apply(State(1, 203, 1, 1));
+            Assert.That(session.MaximumCorrection, Is.EqualTo(2).Within(.001));
+            Assert.That(session.MaximumActiveCorrection, Is.EqualTo(2).Within(.001));
+            Assert.That(session.MaximumPhaseChangeCorrection, Is.Zero);
+            Assert.That(session.LargestActiveCorrection.distance, Is.EqualTo(2).Within(.001));
+        }
+
+        [TestCase(0, 2)]
+        [TestCase(2, 0)]
+        public void InterpolatedLaunchCounterDrivesAirAndLandingAnimation(int oldAirborne, int newAirborne)
+        {
+            var actor = session.Actors[0];
+            actor.AirborneTicks = oldAirborne;
+            var state = State(1, 203, 1, 1);
+            state.Actors[0].AirborneTicks = newAirborne;
+            Apply(state);
+            // A loopback-only connecting link selects the real client interpolation path; no peer is needed.
+            typeof(ArenaSession).GetField("link", PrivateInstance).SetValue(session,
+                DuelLink.Join(new IPEndPoint(IPAddress.Loopback, 65000), 123));
+            typeof(ArenaSession).GetField("snapshotTime", PrivateInstance).SetValue(session, Time.realtimeSinceStartupAsDouble - .15);
+            typeof(ArenaSession).GetMethod("InterpolateOpponent", PrivateInstance).Invoke(session, null);
+            Assert.That(actor.AirborneTicks, Is.EqualTo(newAirborne));
+            typeof(ContenderPresentation).GetMethod("Update", PrivateInstance).Invoke(actor.Presentation, null);
+            Assert.That(actor.Presentation.Animator.GetBool("Grounded"), Is.EqualTo(newAirborne == 0));
         }
     }
 }

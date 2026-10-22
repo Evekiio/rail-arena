@@ -24,6 +24,8 @@ namespace RailArena
         public int PendingInputs => prediction.Count;
         public int SnapshotsReceived { get; private set; }
         public float MaximumCorrection { get; private set; }
+        public float MaximumActiveCorrection { get; private set; }
+        public float MaximumPhaseChangeCorrection { get; private set; }
         public int OutboundClamps { get; private set; }
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
         [Serializable]
@@ -35,8 +37,12 @@ namespace RailArena
             public bool previousGrounded, authorityGrounded, replayGrounded;
             public int previousPadReady, authorityPadReady, replayPadReady;
             public int previousAirborne, authorityAirborne;
+            public MatchPhase previousPhase, authorityPhase;
+            public int replayMovementTicks, movementClockShift;
         }
         public List<PredictionCorrection> CorrectionSamples { get; } = new();
+        public PredictionCorrection LargestActiveCorrection { get; private set; }
+        public PredictionCorrection LargestPhaseChangeCorrection { get; private set; }
 #endif
         private DuelLink link;
         private DuelInputQueue remoteInputs;
@@ -91,8 +97,10 @@ namespace RailArena
             receivedSnapshot = null;
             inputSequence = clientRound = clientTick = LastAcknowledgedInput = snapshotCadence = SnapshotsReceived = displayedTick = 0;
             MaximumCorrection = 0;
+            MaximumActiveCorrection = MaximumPhaseChangeCorrection = 0;
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
             CorrectionSamples.Clear();
+            LargestActiveCorrection = LargestPhaseChangeCorrection = null;
 #endif
             OutboundClamps = 0;
         }
@@ -200,7 +208,8 @@ namespace RailArena
             if (receivedSnapshot != null && state.Round == receivedSnapshot.Round && state.Tick < receivedSnapshot.Tick) return;
             bool newRound = state.Round != clientRound;
             bool localLifeChanged = Human.Life != state.Actors[LocalPlayerId].Life;
-            bool wasResults = Match.Phase == MatchPhase.Results;
+            var previousPhase = Match.Phase;
+            bool wasResults = previousPhase == MatchPhase.Results;
             if (newRound)
             {
                 clientRound = state.Round;
@@ -217,6 +226,7 @@ namespace RailArena
             Vector3 oldPrediction = Human.transform.position;
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
             var correction = new PredictionCorrection { tick = state.Tick, previousClientTick = clientTick,
+                previousPhase = previousPhase, authorityPhase = state.Phase,
                 predicted = oldPrediction, authority = state.Actors[LocalPlayerId].Position,
                 previousVelocity = Human.Velocity, previousGrounded = Human.Grounded,
                 authorityGrounded = state.Actors[LocalPlayerId].Grounded,
@@ -234,6 +244,9 @@ namespace RailArena
                 else
                 {
                     actor.Health = authoritative.Health;
+                    actor.NextShotTick = authoritative.NextShotTick;
+                    actor.RespawnTick = authoritative.RespawnTick;
+                    actor.PadReadyTick = authoritative.PadReadyTick;
                     if (wasAlive != actor.Alive) actor.SetAlive(actor.Alive);
                     actor.Controller.enabled = false;
                 }
@@ -254,12 +267,14 @@ namespace RailArena
             LastAcknowledgedInput = state.Actors[LocalPlayerId].LastInput;
             prediction.RemoveAll(input => input.Command.Sequence <= LastAcknowledgedInput);
             clientTick = state.Tick;
+            int replayMovementTicks = 0;
             var liveCommand = Human.Command;
             foreach (var input in prediction)
             {
                 clientTick++;
                 Human.Command = input.Command;
-                if (Human.Alive && Match.IsActive) MoveActor(Human, clientTick, false);
+                if (Human.Alive && Match.IsActive)
+                { MoveActor(Human, clientTick, false); replayMovementTicks++; }
                 if (Human.Alive && Match.IsActive && input.Command.Fire && CombatRules.CanFire(clientTick, Human.NextShotTick, true))
                     Human.NextShotTick = clientTick + CombatRules.ShotIntervalTicks;
             }
@@ -267,21 +282,29 @@ namespace RailArena
             if (!newRound && continuousLife)
             {
                 float distance = Vector3.Distance(oldPrediction, Human.transform.position);
+                bool activePlay = (previousPhase == MatchPhase.Playing || previousPhase == MatchPhase.SuddenDeath) && Match.IsActive;
+                bool phaseChanged = previousPhase != Match.Phase;
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
+                correction.distance = distance;
+                correction.acknowledged = LastAcknowledgedInput;
+                correction.pending = prediction.Count;
+                correction.replayed = Human.transform.position;
+                correction.correctedVelocity = Human.Velocity;
+                correction.replayGrounded = Human.Grounded;
+                correction.replayPadReady = Human.PadReadyTick;
+                correction.replayMovementTicks = replayMovementTicks;
+                correction.movementClockShift = state.Tick + replayMovementTicks - correction.previousClientTick;
                 if (distance > .25f && (CorrectionSamples.Count < 24 || distance > MaximumCorrection))
                 {
-                    correction.distance = distance;
-                    correction.acknowledged = LastAcknowledgedInput;
-                    correction.pending = prediction.Count;
-                    correction.replayed = Human.transform.position;
-                    correction.correctedVelocity = Human.Velocity;
-                    correction.replayGrounded = Human.Grounded;
-                    correction.replayPadReady = Human.PadReadyTick;
                     if (CorrectionSamples.Count < 24) CorrectionSamples.Add(correction);
                     else CorrectionSamples[CorrectionSamples.Count - 1] = correction;
                 }
+                if (activePlay && distance > MaximumActiveCorrection) LargestActiveCorrection = correction;
+                if (phaseChanged && distance > MaximumPhaseChangeCorrection) LargestPhaseChangeCorrection = correction;
 #endif
                 MaximumCorrection = Mathf.Max(MaximumCorrection, distance);
+                if (activePlay) MaximumActiveCorrection = Mathf.Max(MaximumActiveCorrection, distance);
+                if (phaseChanged) MaximumPhaseChangeCorrection = Mathf.Max(MaximumPhaseChangeCorrection, distance);
                 reconciliationView.Correct(oldPrediction, Human.transform.position);
             }
             else reconciliationView.Reset();
@@ -331,6 +354,7 @@ namespace RailArena
             opponent.transform.position = Vector3.Lerp(a.Position, b.Position, blend);
             opponent.Velocity = Vector3.Lerp(a.Velocity, b.Velocity, blend);
             opponent.GroundedOverride = b.Grounded;
+            opponent.AirborneTicks = b.AirborneTicks;
             opponent.Command = new MovementCommand { Yaw = Mathf.LerpAngle(a.Yaw, b.Yaw, blend), Pitch = Mathf.Lerp(a.Pitch, b.Pitch, blend) };
         }
 

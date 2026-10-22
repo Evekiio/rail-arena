@@ -25,6 +25,8 @@ namespace RailArena
             public int acknowledged;
             public int pending;
             public float correction;
+            public float maximumActiveCorrection, maximumPhaseChangeCorrection;
+            public ArenaSession.PredictionCorrection largestActiveCorrection, largestPhaseChangeCorrection;
             public ArenaSession.PredictionCorrection[] correctionSamples;
             public int outboundClamps;
             public int rewoundShots;
@@ -115,6 +117,10 @@ namespace RailArena
             report.rewoundShots = session.RewoundShots;
             report.rejectedTimes = session.RejectedShotTimes;
             report.correctionSamples = session.CorrectionSamples.ToArray();
+            report.maximumActiveCorrection = session.MaximumActiveCorrection;
+            report.maximumPhaseChangeCorrection = session.MaximumPhaseChangeCorrection;
+            report.largestActiveCorrection = session.LargestActiveCorrection;
+            report.largestPhaseChangeCorrection = session.LargestPhaseChangeCorrection;
             report.actorShots = Array.ConvertAll(session.Actors.ToArray(), actor => actor.ShotSerial);
             report.actorLives = Array.ConvertAll(session.Actors.ToArray(), actor => actor.Life);
             report.fullMatch = fullMatch;

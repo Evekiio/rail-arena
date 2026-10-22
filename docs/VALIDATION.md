@@ -2,6 +2,18 @@
 
 Status: **offline milestone and initial online integration, incomplete game**. The full objective has not been achieved.
 
+## Remote animation/cooldown and correction classification
+
+Same-life remote snapshots now refresh weapon cooldown and respawn/pad timers, and interpolation applies the displayed snapshot's airborne-launch counter. This fixes an opponent railgun remaining visually ready and stale air/ground animation parameters. Three focused cases failed before the change (`Validation/remote-presentation-initial-tests.json`). An initial stale six-case result missed the added cases and is retained separately; it is not passing evidence. After recompilation and discovery checks, all 62 Editor-suite tests passed (`remote-presentation-tests.json`), including actual actuator movement and Animator grounded-state checks.
+
+The preceding `235d7b84` full impaired run's 2.3427 m maximum occurred at the results boundary, tick 36,180, where the client stopped replaying movement and restored exactly the frozen host pose. That recorded value is retained. Its bounded legacy samples cannot establish the largest active-play correction (`correction-boundary-analysis.json`). New diagnostics preserve the raw maximum and separately measure active-play and phase-change maxima, retaining the largest sample in each category with phase and actual movement-replay context. Tests prove that a results restore is still counted raw, that pending inputs do not move the frozen pawn, and that active-play mismatches remain counted. This is measurement clarification, not a physical reconciliation change.
+
+Fingerprint `0a0b376627a58c1ab38c6a70ed823bcea30d39a27af1feed368d6449440c4b76` built and passed all 35 accelerated standalone mechanics checks. The 45-second seven-bot run passed with 2,715 ticks, 189 shots, 23 deaths, two pickups, 56 pad launches, zero exceptions and zero void deaths. The 60-second impaired UDP smoke passed with 58 authoritative shots, six deaths, 30 rewinds and zero peer errors. Its relay dropped 309 packets and recorded 209 reordered sends. Raw and active-play correction maxima were both 0.8087 m; the phase-change maximum was 0.1122 m during countdown-to-play. The largest active sample had a -2 movement-clock shift near a predicted pad launch. Active prediction timing and native feel remain open; these different-run samples do not prove improvement over an earlier build.
+
+Reports: `remote-presentation-build.json`, `remote-presentation-mechanics.json`, `remote-presentation-offline.json` and `Duel-RemotePresentation-Impaired/`. These runs overlapped and do not establish rendering performance. The complete ten-minute/rematch reports below remain tied to the preceding life-aware build, not this newer presentation/diagnostic fingerprint. No new full-match or actual remote-network test is claimed.
+
+The tested build is now `Builds/Windows/RailArena.exe`; all 313 files were verified unchanged after promotion. The preceding full-match-tested build is preserved in `Builds/PreviousWindows-235d7b84` (`remote-presentation-promotion.json`).
+
 ## Replicated respawn lifecycle
 
 Wire protocol version 3 carries each contender's authoritative positive life number. The client restores that identity, clears local prediction/camera correction/recoil on life changes, resets view motion on respawn/rematch and discards remote interpolation across a respawn teleport. Animation/hurtbox/weapon presentation is restored even when the client missed every dead-state snapshot. Stale shot/hit events are not replayed on a new life. Physics, damage, health and cooldown rules are unchanged. Both players must use the updated complete build; version 2 packets are rejected.
