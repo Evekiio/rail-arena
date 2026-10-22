@@ -2,6 +2,8 @@
 
 Status: **offline milestone, incomplete game**. The full objective has not been achieved.
 
+The independent direct-IP networking core now has real loopback transport tests. All 20 simulation, character and networking cases passed in `Validation/network-core-editmode.json`. See `docs/NETWORKING.md` for exact coverage. This does not establish playable online duels; gameplay integration and two-client standalone testing remain incomplete.
+
 ## Armored character integration
 
 The current Windows build includes the textured humanoid contender, four palette variants, three LODs, skeleton-following hurtboxes, aiming IK and locomotion/jump/hit/death animation. Eleven EditMode cases passed, including the original seven simulation cases and character rig, hurtbox, forward/backward motion and animation-loop checks. Evidence: `Validation/character-editmode.json`.

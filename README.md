@@ -21,6 +21,8 @@ The editable Foundry arena now includes a lower loop, elevated bridge and wings,
 
 The first gameplay pass includes location-based hitboxes, a rail cooldown, deaths and respawns, health restoration, countdown, time limit, void scoring and tied-leader sudden death. Menus, a HUD, scoreboard, results, restart and basic settings are implemented. Characters now use a textured armored humanoid, three mesh LODs, four palette variants, retargeted locomotion/jump/landing/hit/death animations and two-hand aiming IK. See [character sources, editing and limitations](docs/CHARACTERS.md). Weapon, sound and arena presentation still need polish. **Online duel, prediction, reconciliation, interpolation and hit rewind are not implemented yet.**
 
+The direct-IP networking core has separately tested UDP connection setup, compatibility checks, ready state, bounded command/snapshot packets, input deduplication and disconnect handling. It is not connected to the playable session yet. See [networking coverage and remaining integration](docs/NETWORKING.md).
+
 ## Play the local build
 
 Launch `Builds/Windows/RailArena.exe` from the workspace. Choose **OFFLINE BOT MATCH** or **PRACTICE**. Set bot count, difficulty and target behavior before starting. During a session, press Escape to pause; changing the configuration and choosing **RESTART SESSION** applies it.

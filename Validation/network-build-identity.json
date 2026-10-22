@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "command": "command script eval",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "string a=RailArena.Editor.BuildIdentityGenerator.Generate(); string b=RailArena.Editor.BuildIdentityGenerator.Generate(); string changed=\"\"; string crlf=\"\"; string restored=\"\"; string probe=\"Assets/Resources/CompatibilityProbe.txt\"; try { System.IO.File.WriteAllText(probe,\"compatibility\\nverification\\n\"); UnityEditor.AssetDatabase.ImportAsset(probe,UnityEditor.ImportAssetOptions.ForceSynchronousImport); changed=RailArena.Editor.BuildIdentityGenerator.Generate(); System.IO.File.WriteAllText(probe,\"compatibility\\r\\nverification\\r\\n\"); crlf=RailArena.Editor.BuildIdentityGenerator.Generate(); } finally { UnityEditor.AssetDatabase.DeleteAsset(probe); restored=RailArena.Editor.BuildIdentityGenerator.Generate(); } if(a!=b || a==changed || a!=restored || changed!=crlf) throw new System.Exception(\"Build identity verification failed\"); return new { fingerprint=a, repeatStable=a==b, contentChangeDetected=a!=changed, lineEndingIndependent=changed==crlf, restored=a==restored };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "fingerprint": "3cc154ff35329d2bb0b9835e62669dddce4eebaf4c7654a156a85226c90e2faa",
+        "repeatStable": true,
+        "contentChangeDetected": true,
+        "lineEndingIndependent": true,
+        "restored": true
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\Rail Arena\\RailArena"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
