@@ -1,0 +1,89 @@
+{
+  "images": [
+    {
+      "name": "sci-fi-soldier-rigged_basecolor",
+      "path": "F:\\Rail Arena\\RailArena\\Assets\\ThirdParty\\Grab3D\\Textures\\sci-fi-soldier-rigged_basecolor.png",
+      "size": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "name": "sci-fi-soldier-rigged_metallic-roughness_metallic",
+      "path": "F:\\Rail Arena\\RailArena\\Assets\\ThirdParty\\Grab3D\\Textures\\sci-fi-soldier-rigged_metallic-roughness_metallic.png",
+      "size": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "name": "sci-fi-soldier-rigged_metallic-roughness_roughness",
+      "path": "F:\\Rail Arena\\RailArena\\Assets\\ThirdParty\\Grab3D\\Textures\\sci-fi-soldier-rigged_metallic-roughness_roughness.png",
+      "size": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "name": "sci-fi-soldier-rigged_normal",
+      "path": "F:\\Rail Arena\\RailArena\\Assets\\ThirdParty\\Grab3D\\Textures\\sci-fi-soldier-rigged_normal.png",
+      "size": [
+        2048,
+        2048
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "Material_1",
+      "textures": [
+        {
+          "node": "Image Texture",
+          "label": "",
+          "image": "sci-fi-soldier-rigged_basecolor",
+          "links": [
+            "Base Color"
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "label": "",
+          "image": "sci-fi-soldier-rigged_normal",
+          "links": [
+            "Color"
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "label": "",
+          "image": "sci-fi-soldier-rigged_metallic-roughness_roughness",
+          "links": [
+            "Roughness"
+          ]
+        },
+        {
+          "node": "Image Texture.003",
+          "label": "",
+          "image": "sci-fi-soldier-rigged_metallic-roughness_metallic",
+          "links": [
+            "Metallic"
+          ]
+        }
+      ]
+    }
+  ],
+  "lods": [
+    {
+      "path": "F:\\Rail Arena\\RailArena\\Assets\\ThirdParty\\Grab3D\\Contender_LOD0.fbx",
+      "triangles": 59712
+    },
+    {
+      "path": "F:\\Rail Arena\\RailArena\\Assets\\ThirdParty\\Grab3D\\Contender_LOD1.fbx",
+      "triangles": 23885
+    },
+    {
+      "path": "F:\\Rail Arena\\RailArena\\Assets\\ThirdParty\\Grab3D\\Contender_LOD2.fbx",
+      "triangles": 8358
+    }
+  ]
+}

@@ -19,7 +19,7 @@ Open the `RailArena` folder in the exact Editor version. Package versions are re
 
 The editable Foundry arena now includes a lower loop, elevated bridge and wings, four ramps, four launch pads, three health pickups and eight spawn positions. Offline bot match and untimed practice use the same local 60 Hz authority, with configurable bot count, three difficulty levels and stationary, moving or combat targets.
 
-The first gameplay pass includes location-based hitboxes, a rail cooldown, deaths and respawns, health restoration, countdown, time limit, void scoring and tied-leader sudden death. Menus, a HUD, scoreboard, results, restart and basic settings are implemented. Models, weapon, sound and arena presentation are an early pass. **Online duel, prediction, reconciliation, interpolation and hit rewind are not implemented yet.**
+The first gameplay pass includes location-based hitboxes, a rail cooldown, deaths and respawns, health restoration, countdown, time limit, void scoring and tied-leader sudden death. Menus, a HUD, scoreboard, results, restart and basic settings are implemented. Characters now use a textured armored humanoid, three mesh LODs, four palette variants, retargeted locomotion/jump/landing/hit/death animations and two-hand aiming IK. See [character sources, editing and limitations](docs/CHARACTERS.md). Weapon, sound and arena presentation still need polish. **Online duel, prediction, reconciliation, interpolation and hit rewind are not implemented yet.**
 
 ## Play the local build
 

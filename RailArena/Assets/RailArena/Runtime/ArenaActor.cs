@@ -20,6 +20,7 @@ namespace RailArena
         public Transform Model;
         public Transform Head;
         public BotBrain Brain;
+        public ContenderPresentation Presentation;
         public bool Alive => Health > 0;
         public Vector3 Eye => transform.position + Vector3.up * 1.58f;
         public Vector3 AimDirection => Quaternion.Euler(Command.Pitch, Command.Yaw, 0) * Vector3.forward;
@@ -32,7 +33,6 @@ namespace RailArena
             if ((flags & CollisionFlags.Below) != 0) LastGroundedPosition = transform.position;
             if ((flags & CollisionFlags.Above) != 0 && Velocity.y > 0) Velocity.y = 0;
             if ((flags & CollisionFlags.Below) != 0 && Velocity.y < 0) Velocity.y = -1;
-            Model.localRotation = Quaternion.Euler(0, Command.Yaw, 0);
         }
 
         public void Place(Vector3 position)
@@ -45,8 +45,8 @@ namespace RailArena
 
         public void SetAlive(bool alive)
         {
-            Model.gameObject.SetActive(alive);
             Controller.enabled = alive;
+            Presentation.SetAlive(alive);
         }
     }
 

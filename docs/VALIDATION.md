@@ -2,6 +2,14 @@
 
 Status: **offline milestone, incomplete game**. The full objective has not been achieved.
 
+## Armored character integration
+
+The current Windows build includes the textured humanoid contender, four palette variants, three LODs, skeleton-following hurtboxes, aiming IK and locomotion/jump/hit/death animation. Eleven EditMode cases passed, including the original seven simulation cases and character rig, hurtbox, forward/backward motion and animation-loop checks. Evidence: `Validation/character-editmode.json`.
+
+The rebuilt Windows player passed a fresh 45.02-second seven-bot plus automated-human soak: 2,703 ticks, 145 shots, 56 deaths, four pickups, 41 pad launches, zero void deaths and zero errors/exceptions. Evidence: `Validation/character-standalone.json`; successful build: `Validation/character-windows-build.json`. Hidden-window loop timing was mean 6.95 ms, p95 6.96 ms. This is not a visible rendering benchmark or native-input playtest.
+
+The 180-frame, 24 fps controlled motion preview was inspected for idle, running, backward movement, staged jumping, hand aiming and grounded death motion; its MP4 decoded completely without errors. It uses Unity's normal animation/IK loop. See `Validation/CharacterMotion/Contender-Motion-Review.mp4` and `docs/CHARACTERS.md` for asset provenance and remaining art limitations. Human approval of creative quality is still outstanding.
+
 ## Verified
 
 - Exact Editor: Unity 6000.6.7f1 (b22767f04f04); URP 17.6.0.
@@ -30,7 +38,7 @@ Machine: Intel Core i7-8700K, NVIDIA GeForce RTX 2080, approximately 64 GB syste
 - Complete standalone mechanical boundary tests, timed results/rematch interaction and settings interaction.
 - Online duel implementation, prediction, reconciliation, interpolation, rewind, compatibility and disconnect behavior.
 - Two-client testing, simulated packet loss/latency and actual remote-network testing.
-- Final polished character, weapon, effects, audio and arena art.
+- Further character polish and creative approval, dedicated first-person arms, weapon, effects, audio and arena art.
 - Public repository publication and portfolio-ready README/screenshots.
 
 Repeat the current smoke/soak with `tools/Test-Offline.ps1`. Stationary and moving target modes can also be selected from the main or pause menu and applied by starting/restarting a session. No completion claim should be based on this milestone.

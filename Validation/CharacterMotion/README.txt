@@ -1,0 +1,1 @@
+Controlled in-engine LOD0 pose review at 24 fps: idle 0-23, run 24-59, backwards 60-95, jump 96-131, death 132-179. The jump root arc is staged for inspection. This is not gameplay footage or native input validation.

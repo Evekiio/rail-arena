@@ -198,6 +198,7 @@ namespace RailArena
         {
             if (shotSound == null) shotSound = CreateShotSound();
             actor.NextShotTick = Match.Tick + CombatRules.ShotIntervalTicks;
+            actor.Presentation.Fired();
             shotCount++;
             Vector3 origin = actor.Eye;
             Vector3 direction = actor.AimDirection;
@@ -213,6 +214,7 @@ namespace RailArena
                 if (box != null)
                 {
                     box.Actor.Health = CombatRules.ApplyDamage(box.Actor.Health, box.Region);
+                    box.Actor.Presentation.Hit();
                     if (!box.Actor.Alive)
                     {
                         Match.RecordKill(actor.Id, box.Actor.Id);
@@ -224,7 +226,7 @@ namespace RailArena
             var effect = new GameObject("Rail discharge").AddComponent<LineRenderer>();
             effect.sharedMaterial = RailMaterial;
             effect.positionCount = 2;
-            effect.SetPosition(0, origin + direction * .7f);
+            effect.SetPosition(0, actor.Bot ? actor.Presentation.Muzzle.position : weapon.TransformPoint(new Vector3(0, .12f, .5f)));
             effect.SetPosition(1, end);
             effect.startWidth = .065f;
             effect.endWidth = .025f;
@@ -278,32 +280,14 @@ namespace RailArena
             actor.Controller.center = Vector3.up * .9f;
             actor.Controller.stepOffset = .3f;
             actor.Controller.slopeLimit = 50;
-            actor.Model = new GameObject("Armored contender").transform;
-            actor.Model.SetParent(root.transform, false);
-            AddPart(actor, "Torso", PrimitiveType.Cube, new Vector3(0, 1.08f, 0), new Vector3(.66f, .7f, .42f), HitRegion.Body);
-            actor.Head = AddPart(actor, "Helmet", PrimitiveType.Sphere, new Vector3(0, 1.65f, 0), Vector3.one * .43f, HitRegion.Head);
-            AddPart(actor, "Left leg", PrimitiveType.Cube, new Vector3(-.18f, .4f, 0), new Vector3(.25f, .75f, .29f), HitRegion.Limb);
-            AddPart(actor, "Right leg", PrimitiveType.Cube, new Vector3(.18f, .4f, 0), new Vector3(.25f, .75f, .29f), HitRegion.Limb);
-            AddPart(actor, "Left arm", PrimitiveType.Cube, new Vector3(-.46f, 1.08f, .05f), new Vector3(.22f, .63f, .25f), HitRegion.Limb);
-            AddPart(actor, "Right arm", PrimitiveType.Cube, new Vector3(.46f, 1.08f, .05f), new Vector3(.22f, .63f, .25f), HitRegion.Limb);
+            var prefab = Resources.Load<GameObject>("Characters/Contender");
+            if (prefab == null) throw new System.InvalidOperationException("The animated contender prefab is missing.");
+            actor.Model = Instantiate(prefab, root.transform, false).transform;
+            foreach (var part in actor.Model.GetComponentsInChildren<Transform>(true)) part.gameObject.layer = actor.Bot ? 8 : 10;
+            actor.Presentation = actor.Model.GetComponent<ContenderPresentation>();
+            actor.Presentation.Initialize(actor, this);
+            actor.Head = actor.Presentation.Animator.GetBoneTransform(HumanBodyBones.Head);
             return actor;
-        }
-
-        private Transform AddPart(ArenaActor actor, string name, PrimitiveType shape, Vector3 position, Vector3 scale, HitRegion region)
-        {
-            var part = GameObject.CreatePrimitive(shape);
-            part.name = name;
-            part.transform.SetParent(actor.Model, false);
-            part.transform.localPosition = position;
-            part.transform.localScale = scale;
-            part.layer = actor.Bot ? 8 : 10;
-            part.GetComponent<Renderer>().sharedMaterial = actor.Bot ? BotMaterial : PlayerMaterial;
-            var collider = part.GetComponent<Collider>();
-            collider.isTrigger = true;
-            var hitbox = part.AddComponent<Hitbox>();
-            hitbox.Actor = actor;
-            hitbox.Region = region;
-            return part.transform;
         }
 
         private void CreateWeapon()
