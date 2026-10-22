@@ -1,6 +1,14 @@
 # Direct-IP duel networking
 
-The networking core is implemented and tested independently of gameplay. Online play is not yet exposed in the game menu. The current runnable build remains an offline milestone.
+The development player now exposes **ONLINE DUEL // DIRECT IP** alongside offline play. Initial host-authoritative gameplay integration has passed a two-process local smoke test. The complete online acceptance criteria are still unproven; this is not a finished release.
+
+## Session integration
+
+The host owns the shared 60 Hz `ArenaSession` authority loop for both human slots, including movement, firing, health, pickups, scoring and respawns. Offline play uses that same loop. Online matches contain no bot participants. An opt-in development validation driver can supply automated input to each process's own human slot.
+
+The client predicts its movement with the shared controller integration and pad logic, retains up to 128 unacknowledged commands, restores the acknowledged host state, then replays remaining commands. Commands are redundantly batched, normalized before encoding and consumed no more than once per host tick. The host sends snapshots every three simulation ticks. The opponent is interpolated six ticks behind the estimated host time. Client-predicted fire produces effects but cannot apply damage; host shot and hit serials replicate combat presentation. Pausing opens local controls while the online authority continues.
+
+Host/join controls accept an IPv4 address and configurable UDP port (default 7777). Both peers must ready up before the countdown. Results use the host winner and offer ready-up for a new round. These paths are implemented; complete timed results/rematch and native-input interaction still need acceptance testing.
 
 ## Implemented core
 
@@ -18,8 +26,16 @@ The transport follows [.NET's documented nonblocking UDP behavior](https://learn
 
 These are transport and protocol tests, not two-client standalone match acceptance, simulated internet impairment, or remote-network verification.
 
+`Validation/online-session-editmode.json` records 22 passing cases after integration, including authoritative replica state and outbound normalization regressions. `Validation/online-session-build.json` records the successful Windows build.
+
+`Validation/Duel-Corrected/host.json` and `client.json` record two separate hidden Windows player processes connected over real loopback UDP with automated inputs. The host recorded 30 shots, 13 deaths and 10 pad launches. The client received 898 snapshots, acknowledged 2,690 inputs and measured a maximum continuous-life prediction correction of 0.0449 m. Both reported zero errors and passed. Reports are sampled separately, so their final ticks and shot counts need not match. This 45-second smoke test does not reach the ten-minute results boundary or prove rematch, impairment tolerance or internet connectivity.
+
+The initial run is retained under `Validation/Duel-Initial`: client serialization failed because rotated unit movement occasionally produced a component of `1.00000012`. Sender normalization fixes this without relaxing the receiver's bounds. The corrected run observed 99 such normalizations and no serialization errors. Reusing the shared authority also passed a fresh seven-bot offline soak (`Validation/online-change-offline-regression.json`): 143 shots, 62 deaths, four pickups, 45 pad launches, zero errors and zero void deaths.
+
+The connection panel was visually inspected in a live, advancing Editor session. Its button action was invoked through Unity APIs; native keyboard entry and mouse interaction are not established by that capture.
+
 ## Remaining integration
 
-The game still needs host/join/ready UI, host session ownership of both actors, client prediction and reconciliation, remote interpolation, validated 200 ms rewind, replicated combat presentation, results/rematch orchestration and disconnect presentation. The same movement and match rules must remain authoritative in offline and online modes. Two standalone clients must then complete matches and rematches under simulated latency/loss. Actual internet play requires a remote machine and network setup; loopback evidence cannot substitute for that test.
+Validated 200 ms hit rewind is not implemented; online shots currently query live host hitboxes. Prediction/interpolation and replicated presentation need impairment and visual acceptance. Two standalone clients must complete full matches, results, rematches and disconnect/error scenarios, including simulated latency and loss. Native connection-menu interaction remains unverified. Actual internet play requires a remote machine and network setup; loopback evidence cannot substitute for that test.
 
-Planned default: UDP 7777, configurable by the host. Firewall and port-forwarding instructions will be verified against the integrated player before being presented as usable hosting instructions.
+For a local development smoke test, run `tools/Test-Duel.ps1`; it uses UDP 17777 by default and launches two hidden players. Manual LAN/internet hosting instructions and remote-network verification remain part of final delivery.

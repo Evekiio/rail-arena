@@ -7,7 +7,7 @@ using UnityEngine.InputSystem.UI;
 
 namespace RailArena
 {
-    public sealed class ArenaHud : MonoBehaviour
+    public sealed partial class ArenaHud : MonoBehaviour
     {
         public ArenaSession Session;
         private Transform canvas;
@@ -46,6 +46,9 @@ namespace RailArena
         {
             if (canvas == null) return;
             if (menu != null) Destroy(menu);
+            connectionStatus = null;
+            if (Session.IsOnline && (Session.OnlineWaiting || Session.Match.Phase == MatchPhase.Results))
+            { ConnectionLobby(); return; }
             bool results = Session.Running && Session.Match.Phase == MatchPhase.Results;
             if (Session.Running && !Session.Paused && !results) return;
             menu = new GameObject("Menu", typeof(RectTransform), typeof(UnityEngine.UI.Image));
@@ -60,23 +63,29 @@ namespace RailArena
             if (Session.Running)
             {
                 if (!results) Button("RESUME", () => Session.SetPaused(false), ref y);
-                Button(results ? "REMATCH" : "RESTART SESSION", () => Session.StartSession(Session.Practice, bots, difficulty, scenario), ref y);
+                if (!Session.IsOnline) Button(results ? "REMATCH" : "RESTART SESSION", () => Session.StartSession(Session.Practice, bots, difficulty, scenario), ref y);
             }
             else
             {
                 Button("OFFLINE BOT MATCH", () => Session.StartSession(false, bots, difficulty, scenario), ref y);
                 Button("PRACTICE // UNTIMED", () => Session.StartSession(true, bots, difficulty, scenario), ref y);
+                Button("ONLINE DUEL // DIRECT IP", OnlineMenu, ref y);
             }
+            if (!Session.IsOnline)
+            {
             Button($"BOTS  {bots}   +", () => { bots = bots % 7 + 1; RefreshMenu(); }, ref y);
             Button($"DIFFICULTY  {new[] { "CADET", "VETERAN", "ACE" }[difficulty]}", () => { difficulty = (difficulty + 1) % 3; RefreshMenu(); }, ref y);
             Button($"TARGETS  {scenario.ToString().ToUpperInvariant()}", () => { scenario = (TargetScenario)(((int)scenario + 1) % 3); RefreshMenu(); }, ref y);
+            }
             Button("SETTINGS", Settings, ref y);
             if (Session.Running) Button("MAIN MENU", Session.MainMenu, ref y);
             else Button("QUIT", Application.Quit, ref y);
             Text(menu.transform, "Controls", "W A S D  MOVE     SPACE  JUMP     MOUSE  AIM / FIRE\nESC  PAUSE     TAB  SCOREBOARD\n\nUnlimited rail charges. 1.5 second cycle.\nHEAD 100   /   BODY 50   /   LIMB 34", 22,
                 new Vector2(.53f, .24f), new Vector2(.94f, .64f));
-            Text(menu.transform, "Version", "DEVELOPMENT BUILD  //  OFFLINE PLAYABLE MILESTONE", 18,
+            Text(menu.transform, "Version", "DEVELOPMENT BUILD  //  ONLINE INTEGRATION IN TEST", 18,
                 new Vector2(.095f, .035f), new Vector2(.9f, .085f)).color = new Color(.55f, .63f, .7f);
+            if (!string.IsNullOrEmpty(Session.ConnectionError)) Text(menu.transform, "Connection error", Session.ConnectionError, 22,
+                new Vector2(.53f, .12f), new Vector2(.94f, .22f)).color = new Color(1, .65f, .3f);
         }
 
         private void Settings()
@@ -118,6 +127,7 @@ namespace RailArena
         private void Update()
         {
             if (status == null) return;
+            if (connectionStatus != null) connectionStatus.text = Session.ConnectionStatus;
             bool running = Session.Running;
             crosshair.enabled = running && !Session.Paused && Session.Human.Alive;
             status.enabled = notice.enabled = running;
@@ -127,7 +137,7 @@ namespace RailArena
             float cycle = Mathf.Clamp01((Session.Human.NextShotTick - match.Tick) / 90f);
             int seconds = match.RemainingTicks / 60;
             string clock = Session.Practice ? "PRACTICE" : $"{seconds / 60:00}:{seconds % 60:00}";
-            status.text = $"HEALTH  {Session.Human.Health:000}    |    RAIL  {(cycle > 0 ? $"{(1 - cycle) * 100:0}%" : "READY")}\n{clock}    |    SCORE  {match.Scores[0]}    |    SPEED  {new Vector2(Session.Human.Velocity.x, Session.Human.Velocity.z).magnitude:0.0}";
+            status.text = $"HEALTH  {Session.Human.Health:000}    |    RAIL  {(cycle > 0 ? $"{(1 - cycle) * 100:0}%" : "READY")}\n{clock}    |    SCORE  {match.Scores[Session.Human.Id]}    |    SPEED  {new Vector2(Session.Human.Velocity.x, Session.Human.Velocity.z).magnitude:0.0}";
             notice.text = match.Phase == MatchPhase.Countdown ? $"STAND BY\n{Mathf.CeilToInt((180 - match.Tick) / 60f)}" :
                 match.Phase == MatchPhase.SuddenDeath ? "SUDDEN DEATH // NEXT KILL WINS\n" + Session.Feed :
                 !Session.Human.Alive ? "RESPAWNING\n" + Session.Feed : Session.Feed;

@@ -58,6 +58,17 @@ namespace RailArena.Simulation
 
         public bool IsActive => Phase == MatchPhase.Playing || Phase == MatchPhase.SuddenDeath;
 
+        public static MatchState FromAuthority(int tick, MatchPhase phase, int winner, int firstScore, int secondScore)
+        {
+            if (tick < 0 || phase > MatchPhase.Results || winner < -1 || winner > 1 ||
+                (phase == MatchPhase.Results) != (winner >= 0))
+                throw new ArgumentException("Invalid authoritative match state.");
+            var state = new MatchState(new[] { 0, 1 }, false) { Tick = tick, Phase = phase, Winner = winner };
+            state.scores[0] = firstScore;
+            state.scores[1] = secondScore;
+            return state;
+        }
+
         private void ResolveTimeLimit()
         {
             int best = int.MinValue;

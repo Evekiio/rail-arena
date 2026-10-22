@@ -1,8 +1,10 @@
 # Validation record - October 22, 2026
 
-Status: **offline milestone, incomplete game**. The full objective has not been achieved.
+Status: **offline milestone and initial online integration, incomplete game**. The full objective has not been achieved.
 
-The independent direct-IP networking core now has real loopback transport tests. All 20 simulation, character and networking cases passed in `Validation/network-core-editmode.json`. See `docs/NETWORKING.md` for exact coverage. This does not establish playable online duels; gameplay integration and two-client standalone testing remain incomplete.
+The initial direct-IP session integration passed all 22 EditMode cases and a rebuilt Windows player test using two separate processes over loopback UDP. Evidence: `Validation/online-session-editmode.json`, `Validation/online-session-build.json` and `Validation/Duel-Corrected/`. In the 45-second smoke test, the host recorded 30 shots, 13 deaths and 10 pad launches; the client received 898 snapshots, acknowledged 2,690 inputs and measured maximum continuous-life correction of 0.0449 m. Both logged zero errors. This establishes initial session activity, not complete match/rematch or internet acceptance. See `docs/NETWORKING.md` for scope and the initial serialization failure and fix.
+
+The shared-loop changes also passed a fresh 45.02-second offline regression: 143 shots, 62 deaths, four pickups, 45 pad launches, zero errors and zero void deaths (`Validation/online-change-offline-regression.json`). Hidden-window timing was mean 6.96 ms and p95 6.97 ms; the runs were concurrent and these values are not a visible rendering benchmark.
 
 ## Armored character integration
 
@@ -38,8 +40,8 @@ Machine: Intel Core i7-8700K, NVIDIA GeForce RTX 2080, approximately 64 GB syste
 - The requested standalone screenshot did not materialize during hidden-window testing; Editor captures are not presented as standalone screenshots.
 - Long-duration bot reliability and separate difficulty acceptance tests.
 - Complete standalone mechanical boundary tests, timed results/rematch interaction and settings interaction.
-- Online duel implementation, prediction, reconciliation, interpolation, rewind, compatibility and disconnect behavior.
-- Two-client testing, simulated packet loss/latency and actual remote-network testing.
+- Validated 200 ms hit rewind; prediction/interpolation and combat presentation acceptance under impaired networking.
+- Full two-client timed match, results, rematch, compatibility and disconnect scenarios; simulated packet loss/latency and actual remote-network testing.
 - Further character polish and creative approval, dedicated first-person arms, weapon, effects, audio and arena art.
 - Public repository publication and portfolio-ready README/screenshots.
 

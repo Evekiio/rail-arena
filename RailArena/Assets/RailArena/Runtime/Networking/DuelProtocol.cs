@@ -27,6 +27,10 @@ namespace RailArena.Networking
         public int AirborneTicks;
         public int Score;
         public int LastInput;
+        public bool Grounded;
+        public int ShotSerial;
+        public int HitSerial;
+        public Vector3 ShotEnd;
     }
 
     public sealed class DuelSnapshot
@@ -58,8 +62,18 @@ namespace RailArena.Networking
     {
         public const int MaximumDatagram = 1200;
         public const int MaximumInputBatch = 6;
-        public const ushort Version = 1;
+        public const ushort Version = 2;
         private const uint Magic = 0x52414C52;
+
+        public static MovementCommand CommandForWire(MovementCommand command)
+        {
+            command.Move = Vector2.ClampMagnitude(command.Move, 1);
+            command.Move.x = Mathf.Clamp(command.Move.x, -1, 1);
+            command.Move.y = Mathf.Clamp(command.Move.y, -1, 1);
+            command.Yaw = Mathf.Repeat(command.Yaw, 360);
+            command.Pitch = Mathf.Clamp(Mathf.DeltaAngle(0, command.Pitch), -89, 89);
+            return command;
+        }
 
         public static byte[] Encode(DuelPacket packet)
         {
@@ -203,6 +217,7 @@ namespace RailArena.Networking
                 writer.Write(actor.Yaw); writer.Write(actor.Pitch);
                 writer.Write(actor.Health); writer.Write(actor.NextShotTick); writer.Write(actor.RespawnTick);
                 writer.Write(actor.PadReadyTick); writer.Write(actor.AirborneTicks); writer.Write(actor.Score); writer.Write(actor.LastInput);
+                writer.Write(actor.Grounded); writer.Write(actor.ShotSerial); writer.Write(actor.HitSerial); WriteVector(writer, actor.ShotEnd);
             }
             foreach (int tick in state.PickupTicks) writer.Write(tick);
         }
@@ -211,7 +226,8 @@ namespace RailArena.Networking
         {
             var state = new DuelSnapshot { Round = Nonnegative(reader.ReadInt32()), Tick = Nonnegative(reader.ReadInt32()),
                 Phase = (MatchPhase)reader.ReadByte(), Winner = reader.ReadSByte() };
-            if (state.Phase > MatchPhase.Results || state.Winner < -1 || state.Winner > 1) throw new ArgumentException("Invalid match state.");
+            if (state.Phase > MatchPhase.Results || state.Winner < -1 || state.Winner > 1 ||
+                (state.Phase == MatchPhase.Results) != (state.Winner >= 0)) throw new ArgumentException("Invalid match state.");
             for (int i = 0; i < 2; i++)
             {
                 state.Actors[i] = new ActorSnapshot
@@ -220,7 +236,9 @@ namespace RailArena.Networking
                     Yaw = Finite(reader.ReadSingle(), -360, 360), Pitch = Finite(reader.ReadSingle(), -89, 89),
                     Health = Range(reader.ReadInt32(), 0, 100), NextShotTick = Nonnegative(reader.ReadInt32()),
                     RespawnTick = Nonnegative(reader.ReadInt32()), PadReadyTick = Nonnegative(reader.ReadInt32()),
-                    AirborneTicks = Range(reader.ReadInt32(), 0, 2), Score = reader.ReadInt32(), LastInput = Nonnegative(reader.ReadInt32())
+                    AirborneTicks = Range(reader.ReadInt32(), 0, 2), Score = reader.ReadInt32(), LastInput = Nonnegative(reader.ReadInt32()),
+                    Grounded = ReadBool(reader), ShotSerial = Nonnegative(reader.ReadInt32()), HitSerial = Nonnegative(reader.ReadInt32()),
+                    ShotEnd = ReadVector(reader, 10000)
                 };
             }
             for (int i = 0; i < 3; i++) state.PickupTicks[i] = Nonnegative(reader.ReadInt32());

@@ -17,6 +17,32 @@ namespace RailArena.Tests
         { Sequence = sequence, Move = new Vector2(.5f, -.5f), Yaw = 120, Pitch = -30, Jump = true, Fire = true } };
 
         [Test]
+        public void OutboundControlsNormalizeFloatingPointOvershootAndWrappedAimWithoutRelaxingDecode()
+        {
+            var command = new MovementCommand { Move = new Vector2(1.00000012f, 0), Yaw = 721, Pitch = 359, Sequence = 1 };
+            var normalized = DuelProtocol.CommandForWire(command);
+            Assert.That(normalized.Move.x, Is.EqualTo(1));
+            Assert.That(normalized.Yaw, Is.EqualTo(1));
+            Assert.That(normalized.Pitch, Is.EqualTo(-1));
+            var packet = new DuelPacket { Kind = DuelMessage.Input, Inputs = new[] { new DuelInput { Command = command } } };
+            Assert.Throws<ArgumentException>(() => DuelProtocol.Encode(packet));
+            packet.Inputs[0].Command = normalized;
+            Assert.DoesNotThrow(() => DuelProtocol.Encode(packet));
+        }
+
+        [Test]
+        public void ReplicaMatchPreservesAuthorityTimeScoresAndWinner()
+        {
+            var playing = MatchState.FromAuthority(1000, MatchPhase.Playing, -1, 3, -2);
+            Assert.That(playing.Tick, Is.EqualTo(1000));
+            Assert.That(playing.Scores[1], Is.EqualTo(-2));
+            var result = MatchState.FromAuthority(36120, MatchPhase.Results, 1, 3, 4);
+            Assert.That(result.Winner, Is.EqualTo(1));
+            Assert.Throws<ArgumentException>(() => MatchState.FromAuthority(10, MatchPhase.Playing, 1, 0, 0));
+            Assert.Throws<ArgumentException>(() => MatchState.FromAuthority(10, MatchPhase.Results, -1, 0, 0));
+        }
+
+        [Test]
         public void ProtocolRoundTripsCommandsAndRejectsEveryTruncationAndTrailingBytes()
         {
             var source = new DuelPacket { Kind = DuelMessage.Input, Session = 9851, Sequence = 4, Round = 2,

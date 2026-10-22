@@ -21,13 +21,19 @@ namespace RailArena
         public Transform Head;
         public BotBrain Brain;
         public ContenderPresentation Presentation;
+        public bool? GroundedOverride;
+        public bool Grounded => GroundedOverride ?? (Controller.enabled && Controller.isGrounded);
+        public int ShotSerial;
+        public int HitSerial;
+        public Vector3 LastShotEnd;
         public bool Alive => Health > 0;
         public Vector3 Eye => transform.position + Vector3.up * 1.58f;
         public Vector3 AimDirection => Quaternion.Euler(Command.Pitch, Command.Yaw, 0) * Vector3.forward;
 
         public void Move(MovementTuning tuning)
         {
-            Velocity = ArenaMovement.Integrate(Velocity, Command, Controller.isGrounded && AirborneTicks == 0, tuning, 1f / CombatRules.TickRate);
+            Velocity = ArenaMovement.Integrate(Velocity, Command, Grounded && AirborneTicks == 0, tuning, 1f / CombatRules.TickRate);
+            GroundedOverride = null;
             if (AirborneTicks > 0) AirborneTicks--;
             var flags = Controller.Move(Velocity / CombatRules.TickRate);
             if ((flags & CollisionFlags.Below) != 0) LastGroundedPosition = transform.position;
@@ -38,6 +44,7 @@ namespace RailArena
         public void Place(Vector3 position)
         {
             Controller.enabled = false;
+            GroundedOverride = null;
             transform.position = position;
             Velocity = Vector3.zero;
             Controller.enabled = true;

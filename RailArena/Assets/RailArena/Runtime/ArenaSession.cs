@@ -6,7 +6,7 @@ using UnityEngine.Rendering.Universal;
 
 namespace RailArena
 {
-    public sealed class ArenaSession : MonoBehaviour
+    public sealed partial class ArenaSession : MonoBehaviour
     {
         public ArenaWorld World;
         public MovementTuning Tuning;
@@ -15,7 +15,7 @@ namespace RailArena
         public Material RailMaterial;
         public List<ArenaActor> Actors { get; } = new();
         public MatchState Match { get; private set; }
-        public ArenaActor Human => Actors.Count > 0 ? Actors[0] : null;
+        public ArenaActor Human => Actors.Count > LocalPlayerId ? Actors[LocalPlayerId] : null;
         public int Difficulty { get; private set; } = 1;
         public int BotCount { get; private set; } = 3;
         public TargetScenario Scenario { get; private set; }
@@ -62,6 +62,12 @@ namespace RailArena
 
         public void StartSession(bool practice, int bots, int difficulty, TargetScenario scenario)
         {
+            DisconnectNetwork();
+            StartSessionCore(practice, bots, difficulty, scenario);
+        }
+
+        private void StartSessionCore(bool practice, int bots, int difficulty, TargetScenario scenario)
+        {
             foreach (var actor in Actors) Destroy(actor.gameObject);
             Actors.Clear();
             Practice = practice;
@@ -90,7 +96,8 @@ namespace RailArena
         public void SetPaused(bool pause)
         {
             Paused = pause;
-            bool playing = Running && !pause && Match.Phase != MatchPhase.Results;
+            bool playing = Running && !pause && !OnlineWaiting && Match.Phase != MatchPhase.Results;
+            if (pause && IsOnline && Human != null) Human.Command = new MovementCommand { Yaw = yaw, Pitch = pitch };
             Cursor.lockState = playing ? CursorLockMode.Locked : CursorLockMode.None;
             Cursor.visible = !playing;
             hud?.RefreshMenu();
@@ -98,6 +105,7 @@ namespace RailArena
 
         public void MainMenu()
         {
+            DisconnectNetwork();
             Match = null;
             foreach (var actor in Actors) Destroy(actor.gameObject);
             Actors.Clear();
@@ -108,8 +116,9 @@ namespace RailArena
 
         private void Update()
         {
+            UpdateNetwork();
             if (Keyboard.current?.escapeKey.wasPressedThisFrame == true && Running) SetPaused(!Paused);
-            if (!Running || Paused || AutomatedHuman || Match.Phase == MatchPhase.Results) return;
+            if (!Running || OnlineWaiting || Paused || AutomatedHuman || Match.Phase == MatchPhase.Results) return;
             var mouse = Mouse.current;
             if (mouse != null)
             {
@@ -125,11 +134,13 @@ namespace RailArena
                 Human.Command = new MovementCommand { Move = new Vector2(x, y), Yaw = yaw, Pitch = pitch,
                     Jump = keyboard?.spaceKey.isPressed == true, Fire = mouse?.leftButton.isPressed == true };
             }
+            else Human.Command = new MovementCommand { Yaw = yaw, Pitch = pitch };
         }
 
         private void LateUpdate()
         {
             if (!Running) return;
+            InterpolateOpponent();
             View.transform.SetPositionAndRotation(Human.Eye, Quaternion.Euler(pitch, yaw, 0));
             recoil = Mathf.MoveTowards(recoil, 0, Time.unscaledDeltaTime * 5);
             weapon.localPosition = new Vector3(.33f, -.3f, .62f - recoil * .15f);
@@ -138,7 +149,13 @@ namespace RailArena
 
         private void FixedUpdate()
         {
-            if (!Running || Paused || Match.Phase == MatchPhase.Results) return;
+            if (IsOnline) { OnlineFixedUpdate(); return; }
+            AdvanceAuthority();
+        }
+
+        private void AdvanceAuthority()
+        {
+            if (!Running || (Paused && !IsOnline) || Match.Phase == MatchPhase.Results) return;
             Match.Advance();
             if (Match.Phase == MatchPhase.Results)
             {
@@ -156,8 +173,8 @@ namespace RailArena
                     continue;
                 }
                 if (!Match.IsActive) continue;
-                if (actor.Bot || AutomatedHuman) actor.Command = actor.Brain.Think(this, actor);
-                actor.Move(Tuning);
+                if (actor.Bot || (AutomatedHuman && (!IsOnline || actor == Human))) actor.Command = actor.Brain.Think(this, actor);
+                MoveActor(actor, tick, true);
                 if (actor.transform.position.y < -20)
                 {
                     Match.RecordVoidDeath(actor.Id);
@@ -165,18 +182,6 @@ namespace RailArena
                     VoidTraces.Add($"tick={tick} actor={actor.DisplayName} lastGround={actor.LastGroundedPosition} velocity={actor.Velocity}");
                     Kill(actor, actor, "VOID");
                     continue;
-                }
-                foreach (var pad in World.Pads)
-                {
-                    Vector3 offset = actor.transform.position - pad.transform.position;
-                    if (tick >= actor.PadReadyTick && Mathf.Abs(offset.y) < 1 && new Vector2(offset.x, offset.z).magnitude < 1.5f)
-                    {
-                        actor.Velocity = pad.Launch(actor.transform.position, Tuning.Gravity);
-                        actor.AirborneTicks = 2;
-                        if (actor.Bot || AutomatedHuman) actor.Brain.Launched(World.NearestNode(pad.Destination));
-                        actor.PadReadyTick = tick + 90;
-                        padCount++;
-                    }
                 }
                 foreach (var pickup in World.Pickups)
                 {
@@ -214,6 +219,7 @@ namespace RailArena
                 if (box != null)
                 {
                     box.Actor.Health = CombatRules.ApplyDamage(box.Actor.Health, box.Region);
+                    box.Actor.HitSerial++;
                     box.Actor.Presentation.Hit();
                     if (!box.Actor.Alive)
                     {
@@ -223,18 +229,25 @@ namespace RailArena
                 }
                 break;
             }
+            actor.ShotSerial++;
+            actor.LastShotEnd = end;
+            ShowShot(actor, origin, end);
+            if (Match.Phase == MatchPhase.Results) { SetPaused(false); hud.RefreshMenu(); }
+        }
+
+        private void ShowShot(ArenaActor actor, Vector3 origin, Vector3 end)
+        {
             var effect = new GameObject("Rail discharge").AddComponent<LineRenderer>();
             effect.sharedMaterial = RailMaterial;
             effect.positionCount = 2;
-            effect.SetPosition(0, actor.Bot ? actor.Presentation.Muzzle.position : weapon.TransformPoint(new Vector3(0, .12f, .5f)));
+            effect.SetPosition(0, actor == Human ? weapon.TransformPoint(new Vector3(0, .12f, .5f)) : actor.Presentation.Muzzle.position);
             effect.SetPosition(1, end);
             effect.startWidth = .065f;
             effect.endWidth = .025f;
             effect.numCapVertices = 4;
             Destroy(effect.gameObject, .18f);
-            if (!actor.Bot) { recoil = 1; audioSource.PlayOneShot(shotSound, .7f); }
+            if (actor == Human) { recoil = 1; audioSource.PlayOneShot(shotSound, .7f); }
             else AudioSource.PlayClipAtPoint(shotSound, origin, .2f);
-            if (Match.Phase == MatchPhase.Results) { SetPaused(false); hud.RefreshMenu(); }
         }
 
         private void Kill(ArenaActor victim, ArenaActor killer, string reason)
@@ -271,8 +284,8 @@ namespace RailArena
             root.layer = 9;
             var actor = root.AddComponent<ArenaActor>();
             actor.Id = id;
-            actor.DisplayName = id == 0 ? "YOU" : new[] { "", "ION", "CINDER", "VECTOR", "HEX", "EMBER", "NOVA", "FLUX" }[id];
-            actor.Bot = id != 0;
+            actor.DisplayName = id == LocalPlayerId ? "YOU" : IsOnline ? (id == 0 ? "HOST" : "CHALLENGER") : new[] { "", "ION", "CINDER", "VECTOR", "HEX", "EMBER", "NOVA", "FLUX" }[id];
+            actor.Bot = !IsOnline && id != 0;
             actor.Brain = new BotBrain(7291 + id * 917);
             actor.Controller = root.AddComponent<CharacterController>();
             actor.Controller.height = 1.8f;
@@ -283,7 +296,7 @@ namespace RailArena
             var prefab = Resources.Load<GameObject>("Characters/Contender");
             if (prefab == null) throw new System.InvalidOperationException("The animated contender prefab is missing.");
             actor.Model = Instantiate(prefab, root.transform, false).transform;
-            foreach (var part in actor.Model.GetComponentsInChildren<Transform>(true)) part.gameObject.layer = actor.Bot ? 8 : 10;
+            foreach (var part in actor.Model.GetComponentsInChildren<Transform>(true)) part.gameObject.layer = id == LocalPlayerId ? 10 : 8;
             actor.Presentation = actor.Model.GetComponent<ContenderPresentation>();
             actor.Presentation.Initialize(actor, this);
             actor.Head = actor.Presentation.Animator.GetBoneTransform(HumanBodyBones.Head);

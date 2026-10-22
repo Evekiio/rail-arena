@@ -46,7 +46,7 @@ namespace RailArena
             foreach (var hitbox in GetComponentsInChildren<Hitbox>(true))
             {
                 hitbox.Actor = owner;
-                hitbox.gameObject.layer = owner.Bot ? 8 : 10;
+                hitbox.gameObject.layer = owner.Id == authority.LocalPlayerId ? 10 : 8;
             }
         }
 
@@ -61,7 +61,7 @@ namespace RailArena
             float speed = new Vector2(actor.Velocity.x, actor.Velocity.z).magnitude;
             Vector3 aimForward = Quaternion.Euler(0, actor.Command.Yaw, 0) * Vector3.forward;
             bool backwards = speed > .5f && Vector3.Dot(actor.Velocity, aimForward) < -speed * .2f;
-            bool onGround = actor.Controller.enabled && actor.Controller.isGrounded && actor.AirborneTicks == 0;
+            bool onGround = actor.Grounded && actor.AirborneTicks == 0;
             Animator.SetFloat(Speed, backwards ? -speed : speed, .09f, Time.deltaTime);
             Animator.SetFloat(Vertical, actor.Velocity.y);
             Animator.SetBool(Grounded, onGround);
