@@ -17,7 +17,7 @@ This is an interim audit against `OBJECTIVE.md`, not a completion claim. A passi
 | 100 health, head/body/limb damage, mixed hits | Corrected bone-scale geometry regression and standalone head/body/limb/mixed sequences | Dynamic aiming and visual alignment review |
 | Health +25, cap 100, return after 1200 ticks, no regeneration/armor | Standalone full-health rejection, contention, healing/cap and exact return boundaries | Visible pickup interaction review |
 | Two-second respawns, void penalty, sudden death | Standalone exact respawn/void boundaries and full integer-clock tied-leader next-kill resolution | Native interaction and final real-time regression |
-| Original floating arena, ramps/gaps/four pads, reference direction | Foundry scene, reference review, repeated traversal without void deaths in short soaks | Final arena art, flow/readability and visible play review |
+| Original floating arena, ramps/gaps/four pads, reference direction | Foundry scene, reference review, ten-minute bot traversal; first original surface-art pass with unchanged collider/navigation signature | Further architecture/backdrop/lighting art, flow/readability and visible play review |
 | Bots navigate, see targets, move/fire, seek health, respawn | Ten-minute per-actor navigation/stall samples at all difficulties with zero voids/errors; isolated LOS/reaction/health-seeking checks | Broader seed coverage, visual/tactical quality and fairness review |
 | Same rules for bots/humans and offline/online | Shared 60 Hz authority and movement; no online bot participants | Final regression with complete mechanics scenarios |
 | Stationary, moving and combat repeatable scenarios | Implemented main/pause configuration | Native scenario selection and damage acceptance |

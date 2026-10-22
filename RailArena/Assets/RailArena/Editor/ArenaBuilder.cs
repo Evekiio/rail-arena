@@ -165,7 +165,8 @@ namespace RailArena.Editor
             EditorSceneManager.SaveScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene(), Folder + "/Foundry.unity");
             EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(Folder + "/Foundry.unity", true) };
             AssetDatabase.SaveAssets();
-            Debug.Log("Foundry scene created: 4 launch pads, 3 health pickups, 8 spawns, 9 route nodes.");
+            FoundryArtBuilder.Apply();
+            Debug.Log($"Foundry scene created: {world.Pads.Length} launch pads, {world.Pickups.Length} health pickups, {world.Spawns.Length} spawns, {world.Nodes.Length} route nodes.");
         }
 
         private static void Stars()

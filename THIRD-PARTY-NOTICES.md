@@ -1,5 +1,7 @@
 # Third-party notices
 
+The Foundry surface-art generator and its new panel textures, meshes and materials are original Rail Arena work under MIT, not third-party assets. See `docs/ARENA-ART.md` for editable sources and scope.
+
 The RA-01 railgun geometry, Blender generation script, materials and presentation integration are original Rail Arena work under the repository MIT license. Its source and reproduction instructions are recorded in `docs/WEAPONS.md`.
 
 The MIT license applies to original Rail Arena code. It does not relicense Unity, its runtime or its packages.

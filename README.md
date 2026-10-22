@@ -8,9 +8,9 @@ The target is immediate offline bot matches and practice, plus direct-IP two-hum
 
 Public source: [Evekiio/rail-arena](https://github.com/Evekiio/rail-arena). Tested development milestones are pushed as work progresses; a finished downloadable release is not available yet.
 
-![Foundry practice with the original RA-01 railgun](RailArena/Assets/Validation/railgun-first-person.png)
+![Foundry surface-art pass with the original RA-01 railgun](RailArena/Assets/Validation/foundry-surface-first-person.png)
 
-*Actual Unity Editor camera capture from the weapon milestone. First-person arms and final arena art are unfinished; this is not a standalone or native-input acceptance screenshot.*
+*Actual Unity Editor camera capture from the first Foundry surface-art pass. First-person arms and final arena art are unfinished; this is not a standalone or native-input acceptance screenshot.*
 
 ## Project
 
@@ -33,6 +33,8 @@ git lfs pull
 ## Current implementation
 
 The editable Foundry arena now includes a lower loop, elevated bridge and wings, four ramps, four launch pads, three health pickups and eight spawn positions. Offline bot match and untimed practice use the same local 60 Hz authority, with configurable bot count, three difficulty levels and stationary, moving or combat targets.
+
+The first [arena surface-art pass](docs/ARENA-ART.md) adds original panel textures, beveled covers, vents, warning markings and directional launch fields while preserving the collider/navigation signature.
 
 The first gameplay pass includes location-based hitboxes, a rail cooldown, deaths and respawns, health restoration, countdown, time limit, void scoring and tied-leader sudden death. Menus, a HUD, scoreboard, results, restart and basic settings are implemented. Characters now use a textured armored humanoid, three mesh LODs, four palette variants, retargeted locomotion/jump/landing/hit/death animations and two-hand aiming IK. See [character sources, editing and limitations](docs/CHARACTERS.md). The original [RA-01 railgun](docs/WEAPONS.md) now has editable Blender source, two mesh LODs and cooldown-driven actuator/energy feedback in first and third person. First-person arms, sound and arena presentation still need polish. **The full online acceptance criteria remain incomplete.**
 
