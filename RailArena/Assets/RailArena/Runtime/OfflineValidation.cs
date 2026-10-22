@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Globalization;
 using UnityEngine;
 
 namespace RailArena
@@ -11,6 +12,20 @@ namespace RailArena
     public sealed class OfflineValidation : MonoBehaviour
     {
         [Serializable]
+        private sealed class ActorProgress
+        {
+            public string name;
+            public int lives;
+            public int routeNodes;
+            public float sampledDistanceMetres;
+            public float longestStationarySeconds;
+            public float longestWithoutRouteSeconds;
+            [NonSerialized] public int life, previousNodes;
+            [NonSerialized] public Vector3 previousPosition, progressAnchor;
+            [NonSerialized] public float stationary, withoutRoute;
+        }
+
+        [Serializable]
         private sealed class Report
         {
             public string editorVersion;
@@ -18,6 +33,13 @@ namespace RailArena
             public string processor;
             public string gpu;
             public int memoryMB;
+            public string fingerprint;
+            public int requestedSeconds;
+            public int difficulty;
+            public int bots;
+            public int minimumShots;
+            public int minimumDeaths;
+            public int minimumPadLaunches;
             public float elapsedSeconds;
             public float meanFrameMs;
             public float p95FrameMs;
@@ -26,6 +48,7 @@ namespace RailArena
             public string telemetry;
             public string[] contenders;
             public string[] voidTraces;
+            public ActorProgress[] actorProgress;
             public bool passed;
         }
 
@@ -54,13 +77,40 @@ namespace RailArena
             string output = outputIndex >= 0 && outputIndex + 1 < args.Length ? Path.GetFullPath(args[outputIndex + 1]) :
                 Path.Combine(Application.persistentDataPath, "offline-validation.json");
             Directory.CreateDirectory(Path.GetDirectoryName(output));
+            int duration = ReadOption(args, "--validation-seconds", 45, 45, 1800);
+            int difficulty = ReadOption(args, "--validation-difficulty", 1, 0, 2);
+            int bots = ReadOption(args, "--validation-bots", 7, 1, 7);
+            // Preserve the original seven-bot gates, while requiring activity appropriate to population.
+            int minimumShots = (bots + 1) * 4 - 1;
+            int minimumDeaths = Math.Max(1, bots - 1);
+            int minimumPadLaunches = bots + 2;
             var session = FindFirstObjectByType<ArenaSession>();
             session.AutomatedHuman = true;
-            session.StartSession(true, 7, 1, TargetScenario.Combat);
+            session.StartSession(true, bots, difficulty, TargetScenario.Combat);
+            var progress = new ActorProgress[session.Actors.Count];
+            for (int i = 0; i < progress.Length; i++)
+            {
+                var actor = session.Actors[i];
+                progress[i] = new ActorProgress { name = actor.DisplayName, life = actor.Life, lives = 1,
+                    previousPosition = actor.transform.position, progressAnchor = actor.transform.position };
+            }
             float start = Time.realtimeSinceStartup;
             yield return new WaitForSecondsRealtime(5);
             measuring = true;
-            yield return new WaitForSecondsRealtime(40);
+            float lastSample = Time.realtimeSinceStartup;
+            while (Time.realtimeSinceStartup - start < duration)
+            {
+                yield return new WaitForSecondsRealtime(1);
+                float now = Time.realtimeSinceStartup;
+                Sample(session, progress, now - lastSample);
+                lastSample = now;
+                File.WriteAllText(output + ".progress.tmp", JsonUtility.ToJson(new Report
+                {
+                    elapsedSeconds = now - start, difficulty = difficulty, bots = bots,
+                    requestedSeconds = duration, actorProgress = progress,
+                    telemetry = session.Telemetry(), exceptions = errors, voidDeaths = session.VoidDeaths
+                }, true));
+            }
             measuring = false;
             var names = new List<string>();
             foreach (var actor in session.Actors)
@@ -73,18 +123,71 @@ namespace RailArena
                 editorVersion = Application.unityVersion, platform = Application.platform.ToString(),
                 processor = SystemInfo.processorType, gpu = SystemInfo.graphicsDeviceName,
                 memoryMB = SystemInfo.systemMemorySize, elapsedSeconds = Time.realtimeSinceStartup - start,
+                fingerprint = Networking.BuildIdentity.Fingerprint, requestedSeconds = duration, difficulty = difficulty, bots = bots,
+                minimumShots = minimumShots, minimumDeaths = minimumDeaths, minimumPadLaunches = minimumPadLaunches,
                 meanFrameMs = frames.Count == 0 ? 0 : total / frames.Count,
                 p95FrameMs = frames.Count == 0 ? 0 : frames[Mathf.Min(frames.Count - 1, (int)(frames.Count * .95f))],
                 exceptions = errors, voidDeaths = session.VoidDeaths,
                 telemetry = session.Telemetry(), contenders = names.ToArray(),
                 voidTraces = session.VoidTraces.ToArray(),
-                passed = errors == 0 && session.Match.Tick >= 2400 && session.VoidDeaths <= 2 &&
-                    session.ShotsFired > 30 && session.Deaths > 5 && session.PadLaunches > 8
+                actorProgress = progress,
+                passed = errors == 0 && session.Match.Tick >= (duration - 5) * 60 && session.VoidDeaths <= 2 &&
+                    session.ShotsFired >= minimumShots && session.Deaths >= minimumDeaths &&
+                    session.PadLaunches >= minimumPadLaunches && ProgressPassed(progress)
             };
             File.WriteAllText(output, JsonUtility.ToJson(report, true));
             ScreenCapture.CaptureScreenshot(output + ".png");
             yield return new WaitForSecondsRealtime(1);
             Application.Quit(report.passed ? 0 : 1);
+        }
+
+        private static int ReadOption(string[] args, string option, int fallback, int minimum, int maximum)
+        {
+            int index = Array.IndexOf(args, option);
+            if (index < 0) return fallback;
+            if (index + 1 >= args.Length || !int.TryParse(args[index + 1], NumberStyles.Integer, CultureInfo.InvariantCulture, out int value) ||
+                value < minimum || value > maximum) throw new ArgumentException($"{option} requires {minimum} through {maximum}.");
+            return value;
+        }
+
+        private static void Sample(ArenaSession session, ActorProgress[] progress, float seconds)
+        {
+            for (int i = 0; i < progress.Length; i++)
+            {
+                var actor = session.Actors[i];
+                var sample = progress[i];
+                Vector3 position = actor.transform.position;
+                int nodes = actor.Brain.NodesReached;
+                if (sample.life != actor.Life)
+                {
+                    sample.life = actor.Life; sample.lives++;
+                    sample.previousPosition = sample.progressAnchor = position;
+                    sample.previousNodes = 0;
+                    sample.stationary = sample.withoutRoute = 0;
+                }
+                int delta = Mathf.Max(0, nodes - sample.previousNodes);
+                sample.routeNodes += delta;
+                sample.previousNodes = nodes;
+                if (actor.Alive)
+                {
+                    sample.sampledDistanceMetres += Vector3.Distance(position, sample.previousPosition);
+                    if (Vector3.Distance(position, sample.progressAnchor) >= .5f)
+                    { sample.progressAnchor = position; sample.stationary = 0; }
+                    else sample.stationary += seconds;
+                    sample.withoutRoute = delta > 0 ? 0 : sample.withoutRoute + seconds;
+                    sample.longestStationarySeconds = Mathf.Max(sample.longestStationarySeconds, sample.stationary);
+                    sample.longestWithoutRouteSeconds = Mathf.Max(sample.longestWithoutRouteSeconds, sample.withoutRoute);
+                }
+                else sample.stationary = sample.withoutRoute = 0;
+                sample.previousPosition = position;
+            }
+        }
+
+        private static bool ProgressPassed(ActorProgress[] progress)
+        {
+            foreach (var actor in progress)
+                if (actor.routeNodes < 3 || actor.longestStationarySeconds >= 10 || actor.longestWithoutRouteSeconds >= 20) return false;
+            return true;
         }
     }
 }

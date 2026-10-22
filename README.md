@@ -2,11 +2,15 @@
 
 An original railgun arena shooter for Windows, inspired by Quake III Arena's movement and Unreal Tournament's readable arenas and bot combat.
 
-**Under development. The offline gameplay milestone is available locally; this is not the complete game or a published release.**
+**Under development. Offline play and direct-IP duel builds are available locally; this is not the complete game or a published release.**
 
 The target is immediate offline bot matches and practice, plus direct-IP two-human duels. The complete scope and acceptance criteria are in [the objective](docs/OBJECTIVE.md).
 
 Public source: [Evekiio/rail-arena](https://github.com/Evekiio/rail-arena). Tested development milestones are pushed as work progresses; a finished downloadable release is not available yet.
+
+![Foundry practice with the original RA-01 railgun](RailArena/Assets/Validation/railgun-first-person.png)
+
+*Actual Unity Editor camera capture from the weapon milestone. First-person arms and final arena art are unfinished; this is not a standalone or native-input acceptance screenshot.*
 
 ## Project
 
@@ -33,6 +37,18 @@ The editable Foundry arena now includes a lower loop, elevated bridge and wings,
 The first gameplay pass includes location-based hitboxes, a rail cooldown, deaths and respawns, health restoration, countdown, time limit, void scoring and tied-leader sudden death. Menus, a HUD, scoreboard, results, restart and basic settings are implemented. Characters now use a textured armored humanoid, three mesh LODs, four palette variants, retargeted locomotion/jump/landing/hit/death animations and two-hand aiming IK. See [character sources, editing and limitations](docs/CHARACTERS.md). The original [RA-01 railgun](docs/WEAPONS.md) now has editable Blender source, two mesh LODs and cooldown-driven actuator/energy feedback in first and third person. First-person arms, sound and arena presentation still need polish. **The full online acceptance criteria remain incomplete.**
 
 Initial direct-IP duel integration is now available from **ONLINE DUEL // DIRECT IP**. Host and join use the same build and selected UDP port, then both players ready up. The host owns gameplay, while the client predicts/reconciles movement and interpolates the opponent. Bounded 200 ms hit rewind is implemented and covered by historical geometry tests and a two-player standalone smoke test. Complete match/rematch acceptance, impairment testing and remote-network verification remain incomplete. See [networking coverage and remaining integration](docs/NETWORKING.md).
+
+## Validation snapshot
+
+| Evidence | Scope |
+| --- | --- |
+| 40 EditMode tests passing | Shared simulation, actual character geometry and animation, bot reaction/aim/occlusion/health seeking, protocol, rewind and camera continuity |
+| 28 standalone mechanics checks passing | Accelerated real authority with actual hurtboxes; exact combat, pickup, respawn and match-clock boundaries |
+| Full ten-minute network-candidate match and rematch | Two local processes under configured delay/jitter/5% loss; historical fingerprint, not the final art build |
+| Latest corrected-hitbox network smoke | Real UDP, 60 seconds, simulated delay/loss, zero application errors |
+| Human acceptance still open | Keyboard/mouse feel, settings, visible and sound-on quality, native two-human duel, final build and real internet path |
+
+Reports identify their build and limitations. See [the acceptance matrix](docs/ACCEPTANCE.md), [validation record](docs/VALIDATION.md), [bot checks](docs/BOT-VALIDATION.md) and [direct-IP hosting guide](docs/HOSTING.md).
 
 ## Play the local build
 
@@ -61,6 +77,8 @@ Passing simulation tests alone does not establish playability, movement fidelity
 
 For the development Windows build, run `tools/Test-Offline.ps1` to execute a repeatable 45-second local combat smoke test with seven bots and an automated human input driver. It saves counters, errors, void traces and frame timing. This automation does not validate human input feel or menu clicks. Hidden-window frame timing is not a visible-window rendering benchmark.
 
+The same runner accepts `-Duration 600 -Difficulty 0 -Bots 7` for a ten-minute easy session; difficulty values 1 and 2 select medium and hard. Per-actor route and sampled stall measurements are described in [bot validation](docs/BOT-VALIDATION.md).
+
 Run `tools/Test-Mechanics.ps1` for 28 accelerated standalone authority checks covering actual hurtbox damage, held-fire cooldowns, pickups, respawns, void scoring, match clocks, sudden death and untimed practice. See [scenario scope and the bone-scale regression it discovered](docs/MECHANICS-VALIDATION.md). These checks do not substitute for native playtesting or real-time multiplayer.
 
 Build the current saved scene through the running pinned Editor:
@@ -69,7 +87,7 @@ Build the current saved scene through the running pinned Editor:
 unity command script eval --project-path .\RailArena --caller plugin --skill unity-cli --timeout 600 -- --code 'RailArena.Editor.ArenaBuilder.BuildWindows();'
 ```
 
-The scene and editable tuning live under `Assets/RailArena/Generated`. `Rail Arena > Build Foundry scene` regenerates these generated assets from the builder; manual changes to generated assets should be preserved separately before regeneration. Hosting and firewall instructions will accompany the online implementation.
+The scene and editable tuning live under `Assets/RailArena/Generated`. `Rail Arena > Build Foundry scene` regenerates these generated assets from the builder; manual changes to generated assets should be preserved separately before regeneration. See the [direct-IP hosting, firewall and port-forwarding guide](docs/HOSTING.md) for manual connection steps and the remaining remote-network acceptance.
 
 ## License
 

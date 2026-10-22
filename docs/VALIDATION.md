@@ -2,6 +2,14 @@
 
 Status: **offline milestone and initial online integration, incomplete game**. The full objective has not been achieved.
 
+## Bot reliability and hosting milestone
+
+All 40 EditMode tests passed, including seven isolated reaction/aim/occlusion/health-seeking cases (`Validation/bot-brain-editmode.json`). Three concurrent real-time ten-minute seven-bot practice runs passed at easy/medium/hard (`Validation/Bot-Soak-600s/difficulty-*.json`, fingerprint `c2070a17...`): 2559/2674/2576 shots, 141/305/516 deaths, zero application exceptions and zero void deaths. Every actor accumulated at least 244 sampled route nodes. Longest sampled stationary time was under 1.1 seconds and time without route progress about 3.01 seconds. These are ten-minute sampled reliability observations, not infinite/all-seed coverage or a rendering benchmark. Definitions, thresholds and raw report scope are in `BOT-VALIDATION.md`.
+
+An additional one-bot smoke exposed the runner's population-independent death floor. The failed sample is retained. Population-aware activity gates preserve the original seven-bot thresholds; a separately built candidate (`e0968521...`, `Validation/bot-population-build.json`) passed fresh one-bot and seven-bot smoke runs. Production bot/gameplay behavior was not changed.
+
+`HOSTING.md` now supplies implementation-checked manual LAN, firewall and router-forwarding steps with primary documentation sources. Command availability and PowerShell syntax were checked, but no host firewall/router settings were changed and no remote-network acceptance is claimed. The user currently wants automated duel validation and development focused on mechanics, physics, graphics, models and bot/solo testing, without requiring them to test multiplayer now.
+
 ## Metre-sized hurtboxes and standalone mechanics
 
 The new standalone runner uncovered an inherited 100x FBX bone-scale error in the original hurtbox builder. Earlier combat activity did not prove correct region geometry. The generator now compensates collider scale and uses world-space limb lengths; only hurtboxes were regenerated. All 33 EditMode tests, including real prefab geometry bounds and hit/miss checks, pass. All 28 accelerated standalone mechanics scenarios pass on corrected build `a6326328...`, including exact damage/cooldown/pickup/respawn boundaries and complete integer match clocks. See `MECHANICS-VALIDATION.md` for scope, original failure and reproduction.
