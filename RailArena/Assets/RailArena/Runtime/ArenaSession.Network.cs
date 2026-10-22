@@ -34,6 +34,7 @@ namespace RailArena
         private int clientTick;
         private int clientRound;
         private int snapshotCadence;
+        private int displayedTick;
         private double snapshotTime;
         private const int InterpolationTicks = 6;
 
@@ -73,7 +74,7 @@ namespace RailArena
             remoteInputs = null;
             prediction.Clear(); interpolation.Clear();
             receivedSnapshot = null;
-            inputSequence = clientRound = clientTick = LastAcknowledgedInput = snapshotCadence = SnapshotsReceived = 0;
+            inputSequence = clientRound = clientTick = LastAcknowledgedInput = snapshotCadence = SnapshotsReceived = displayedTick = 0;
             MaximumCorrection = 0;
             OutboundClamps = 0;
         }
@@ -113,7 +114,8 @@ namespace RailArena
                 {
                     remoteInputs.Consume(Match.Tick + 1, out var input);
                     Actors[1].Command = input.Command;
-                    Actors[1].ViewedTick = input.ViewedTick;
+                    Actors[1].ViewedTick = remoteInputs.Shot?.ViewedTick ?? input.ViewedTick;
+                    Actors[1].ShotCommand = remoteInputs.Shot?.Command ?? input.Command;
                     AdvanceAuthority();
                 }
                 // Keep lobby/results snapshots flowing even while the match clock is stopped.
@@ -139,7 +141,7 @@ namespace RailArena
                 }
                 command = DuelProtocol.CommandForWire(command);
                 command.Sequence = ++inputSequence;
-                var input = new DuelInput { Command = command, ViewedTick = Math.Max(0, (int)Math.Floor(RemoteViewTick)) };
+                var input = new DuelInput { Command = command, ViewedTick = displayedTick };
                 prediction.Add(input);
                 Human.Command = command;
                 if (Human.Alive && Match.IsActive)
@@ -204,7 +206,7 @@ namespace RailArena
                     if (wasAlive != actor.Alive) actor.SetAlive(actor.Alive);
                     actor.Controller.enabled = false;
                 }
-                if (!wasAlive && actor.Alive) actor.Brain = new BotBrain(7291 + actor.Id * 917 + state.Tick);
+                if (newRound || (!wasAlive && actor.Alive)) actor.Brain = new BotBrain(7291 + actor.Id * 917 + state.Tick);
                 if (authoritative.ShotSerial > actor.ShotSerial && !newRound && actor != Human)
                 { actor.Presentation.Fired(); ShowShot(actor, actor.Eye, authoritative.ShotEnd); }
                 if (authoritative.HitSerial > actor.HitSerial && !newRound) actor.Presentation.Hit();
@@ -226,6 +228,7 @@ namespace RailArena
             }
             Human.Command = liveCommand;
             if (!newRound && continuousLife) MaximumCorrection = Mathf.Max(MaximumCorrection, Vector3.Distance(oldPrediction, Human.transform.position));
+            if (interpolation.Count == 0) displayedTick = state.Tick;
             if (interpolation.Count == 0 || state.Tick > interpolation[interpolation.Count - 1].Tick) interpolation.Add(state);
             while (interpolation.Count > 32) interpolation.RemoveAt(0);
             for (int i = 0; i < 3; i++)
@@ -262,6 +265,8 @@ namespace RailArena
                 if (frame.Tick >= tick) break;
             }
             float blend = first.Tick == second.Tick ? 1 : Mathf.Clamp01((float)(tick - first.Tick) / (second.Tick - first.Tick));
+            // Shots identify the pose actually displayed, including a held pose during snapshot loss.
+            displayedTick = (int)Math.Floor(first.Tick + (second.Tick - first.Tick) * (double)blend);
             var a = first.Actors[0]; var b = second.Actors[0];
             var opponent = Actors[0];
             opponent.transform.position = Vector3.Lerp(a.Position, b.Position, blend);

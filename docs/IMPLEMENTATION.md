@@ -2,7 +2,7 @@
 
 Target: Unity **6000.6.7f1**, URP **17.6.0**, Windows keyboard and mouse.
 
-The complete objective is the acceptance contract. Work is in progress. A local offline Windows milestone has been built; multiplayer remains unimplemented and unvalidated.
+The complete objective is the acceptance contract. Work is in progress. Offline play and initial host-authoritative direct-IP duels are implemented. Bounded hit rewind and local two-process smoke tests have passed; full-match, rematch and impaired-network acceptance are being extended. Current evidence and remaining limits are recorded in `docs/VALIDATION.md` and `docs/NETWORKING.md`.
 
 Sequence:
 1. Pinned URP project and shared 60 Hz simulation, with deterministic rule tests.
@@ -13,7 +13,7 @@ Sequence:
 
 The initial environment check confirmed the exact Editor and an active Unity Personal license. Restricted sandbox discovery reported no Editor and an invalid GitHub login; the same read-only checks outside the sandbox confirmed both were available. Use explicit project paths to avoid touching other Unity projects.
 
-The user will place game references in `F:\Rail Arena\References`. Check this folder before final visual design. It is excluded from public source by default except for its README. Gameplay simulation proceeds independently.
+Supplied game references in `F:\Rail Arena\References` were reviewed in `docs/REFERENCE-REVIEW.md`. They are excluded from public source by default except for the folder README. Public source and tested milestones are published at [Evekiio/rail-arena](https://github.com/Evekiio/rail-arena).
 
 ## Research
 

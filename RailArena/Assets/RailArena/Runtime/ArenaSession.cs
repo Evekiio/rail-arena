@@ -218,7 +218,8 @@ namespace RailArena
             shotCount++;
             Vector3 origin = actor.Eye;
             int viewedTick = IsOnline && actor.Id != LocalPlayerId ? actor.ViewedTick : Match.Tick;
-            var hit = hitHistory.Trace(Match.Tick, viewedTick, actor);
+            var hit = hitHistory.Trace(Match.Tick, viewedTick, actor,
+                IsOnline && actor.Id != LocalPlayerId ? actor.ShotCommand : (MovementCommand?)null);
             if (!hit.ValidTime) RejectedShotTimes++;
             else if (viewedTick < Match.Tick) RewoundShots++;
             Vector3 end = hit.End;

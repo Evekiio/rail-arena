@@ -13,6 +13,7 @@ namespace RailArena.Networking
         private int lastConsumeTick = -1;
         public int LastConsumed { get; private set; }
         public int PendingCount => pending.Count;
+        public DuelInput? Shot { get; private set; }
 
         public void Add(DuelInput[] inputs)
         {
@@ -29,12 +30,20 @@ namespace RailArena.Networking
             input = default;
             if (authorityTick <= lastConsumeTick) return false;
             lastConsumeTick = authorityTick;
+            Shot = null;
             if (pending.Count > 0)
             {
-                using var entries = pending.GetEnumerator();
-                entries.MoveNext();
-                input = entries.Current.Value;
-                pending.Remove(entries.Current.Key);
+                bool jump = false;
+                foreach (var entry in pending)
+                {
+                    input = entry.Value;
+                    jump |= input.Command.Jump;
+                    if (input.Command.Fire) Shot = input;
+                }
+                // Never turn a burst into extra simulation steps or a permanent input delay.
+                pending.Clear();
+                input.Command.Fire = Shot.HasValue;
+                input.Command.Jump = jump;
                 LastConsumed = input.Command.Sequence;
                 previous = input.Command;
                 lastCommandTick = authorityTick;

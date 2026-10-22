@@ -1,0 +1,21 @@
+{
+  "dateUtc": "2026-10-22",
+  "buildFingerprint": "9c50d65e05adc52f1d09a2b03b52f7793b62ff6d7b6bd250d88476a407fc8429",
+  "method": "Windows Computer Use against a separately launched visible Windows player; observations recorded by the engineering agent, not an automated assertion report",
+  "verified": [
+    "A native mouse click opened ONLINE DUEL // DIRECT IP from the main menu",
+    "The UDP port field accepted native text entry and displayed 19999",
+    "JOIN HOST opened the connecting ready room",
+    "An unused local port timed out and returned to the menu with a readable connection error",
+    "A native mouse click launched untimed practice and displayed the starting countdown",
+    "The live practice session showed bot combat, player health loss, death and respawn",
+    "A native mouse click on the gameplay surface fired the railgun and displayed the cooldown",
+    "The native test window closed through Alt+F4 without affecting the hidden validation peers"
+  ],
+  "unverified": [
+    "Keyboard movement, jump and pause acceptance; short injected key taps did not yield an unambiguous settled result",
+    "Mouse sensitivity and sustained movement feel",
+    "Sound-on quality and player creative approval",
+    "Native host/join with a real second human and native rematch/settings interaction"
+  ]
+}

@@ -29,6 +29,14 @@ namespace RailArena
             public int rewoundShots;
             public int rejectedTimes;
             public int[] actorShots;
+            public bool fullMatch;
+            public bool resultsSeen;
+            public bool rematchStarted;
+            public int completedTick;
+            public int completedWinner = -1;
+            public int[] completedScores;
+            public int[] completedShots;
+            public float elapsedSeconds;
             public string connection;
             public bool passed;
         }
@@ -55,15 +63,35 @@ namespace RailArena
             string output = Path.GetFullPath(Value("--validation-output", "duel-" + role + ".json"));
             int port = int.Parse(Value("--validation-port", "7777"));
             float duration = Mathf.Clamp(float.Parse(Value("--validation-duration", "45"), System.Globalization.CultureInfo.InvariantCulture), 20, 900);
+            bool fullMatch = Array.IndexOf(args, "--validation-full-match") >= 0;
             var session = FindFirstObjectByType<ArenaSession>();
             session.AutomatedHuman = true;
             if (role == "host") session.HostDuel(port); else session.JoinDuel("127.0.0.1", port);
             float started = Time.realtimeSinceStartup;
             bool readied = false;
+            bool rematchReady = false;
+            int completedTick = 0;
+            int completedWinner = -1;
+            int[] completedScores = null;
+            int[] completedShots = null;
             while (Time.realtimeSinceStartup - started < duration)
             {
                 if (!readied && session.IsOnline && session.ConnectionStatus.StartsWith("CONNECTED"))
                 { session.ToggleReady(); readied = true; }
+                if (fullMatch && session.NetworkRound == 1 && session.Match?.Phase == Simulation.MatchPhase.Results)
+                {
+                    if (!rematchReady)
+                    {
+                        completedTick = session.Match.Tick;
+                        completedWinner = session.Match.Winner;
+                        completedScores = new[] { session.Match.Scores[0], session.Match.Scores[1] };
+                        completedShots = Array.ConvertAll(session.Actors.ToArray(), actor => actor.ShotSerial);
+                        session.ToggleReady();
+                        rematchReady = true;
+                        Debug.Log($"DUEL_RESULTS tick={completedTick} winner={completedWinner} scores={completedScores[0]},{completedScores[1]}");
+                    }
+                }
+                if (fullMatch && rematchReady && session.NetworkRound == 2 && session.Match.Tick >= 900) break;
                 yield return null;
             }
             int observed = 0;
@@ -76,7 +104,17 @@ namespace RailArena
             report.rewoundShots = session.RewoundShots;
             report.rejectedTimes = session.RejectedShotTimes;
             report.actorShots = Array.ConvertAll(session.Actors.ToArray(), actor => actor.ShotSerial);
-            report.passed = errors == 0 && session.IsOnline && report.round == 1 && report.tick > 900 &&
+            report.fullMatch = fullMatch;
+            report.resultsSeen = rematchReady;
+            report.rematchStarted = rematchReady && report.round == 2;
+            report.completedTick = completedTick;
+            report.completedWinner = completedWinner;
+            report.completedScores = completedScores;
+            report.completedShots = completedShots;
+            report.elapsedSeconds = Time.realtimeSinceStartup - started;
+            bool matchPassed = fullMatch ? report.rematchStarted && completedTick >= Simulation.CombatRules.CountdownTicks + Simulation.CombatRules.MatchTicks &&
+                completedWinner >= 0 && completedShots[0] > 0 && completedShots[1] > 0 : report.round == 1;
+            report.passed = errors == 0 && session.IsOnline && matchPassed && report.tick >= 900 &&
                 report.actorShots.Length == 2 && report.actorShots[0] > 0 && report.actorShots[1] > 0 &&
                 (role == "host" ? report.shots > 1 && report.rewoundShots > 0 : report.snapshots > 30 && report.acknowledged > 300);
             Directory.CreateDirectory(Path.GetDirectoryName(output));

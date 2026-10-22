@@ -252,8 +252,11 @@ namespace RailArena.Editor
         }
 
         public static void BuildWindows()
+            => BuildWindowsTo("../Builds/Windows/RailArena.exe");
+
+        public static void BuildWindowsTo(string output)
         {
-            var result = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, "../Builds/Windows/RailArena.exe",
+            var result = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, output,
                 BuildTarget.StandaloneWindows64, BuildOptions.Development);
             if (result.summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded)
                 throw new System.Exception("Windows build failed: " + result.summary.result);

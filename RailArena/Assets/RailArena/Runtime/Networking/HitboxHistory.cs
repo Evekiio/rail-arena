@@ -100,10 +100,11 @@ namespace RailArena.Networking
             }
         }
 
-        public HistoricalHit Trace(int authorityTick, int viewedTick, ArenaActor shooter)
+        public HistoricalHit Trace(int authorityTick, int viewedTick, ArenaActor shooter, MovementCommand? shot = null)
         {
             if (disposed) throw new ObjectDisposedException(nameof(HitboxHistory));
-            var ray = new Ray(shooter.Eye, shooter.AimDirection);
+            Vector3 direction = shot.HasValue ? Quaternion.Euler(shot.Value.Pitch, shot.Value.Yaw, 0) * Vector3.forward : shooter.AimDirection;
+            var ray = new Ray(shooter.Eye, direction);
             float nearest = 180;
             Vector3 end = ray.GetPoint(nearest);
             if (Physics.Raycast(ray, out var wall, nearest, 1 << 0, QueryTriggerInteraction.Ignore))

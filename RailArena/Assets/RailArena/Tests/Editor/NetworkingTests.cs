@@ -211,24 +211,41 @@ namespace RailArena.Tests
         }
 
         [Test]
-        public void InputQueueDeduplicatesOrdersBoundsAndConsumesOneCommandPerTick()
+        public void InputQueueDeduplicatesBoundsAndConsumesFreshMovementOncePerTick()
         {
             var queue = new DuelInputQueue();
             queue.Add(new[] { Input(3), Input(1), Input(2), Input(1), Input(int.MaxValue) });
             Assert.That(queue.PendingCount, Is.EqualTo(3));
             Assert.That(queue.Consume(10, out var first), Is.True);
-            Assert.That(first.Command.Sequence, Is.EqualTo(1));
+            Assert.That(first.Command.Sequence, Is.EqualTo(3));
+            Assert.That(queue.PendingCount, Is.Zero);
             Assert.That(queue.Consume(10, out _), Is.False);
-            queue.Consume(11, out var second);
-            Assert.That(second.Command.Sequence, Is.EqualTo(2));
             queue.Add(new[] { Input(1) });
-            queue.Consume(12, out var third);
-            Assert.That(third.Command.Sequence, Is.EqualTo(3));
+            Assert.That(queue.PendingCount, Is.Zero);
             queue.Consume(13, out var held);
             Assert.That(held.Command.Move.sqrMagnitude, Is.GreaterThan(0));
             Assert.That(held.Command.Fire || held.Command.Jump, Is.False);
             queue.Consume(22, out var stopped);
             Assert.That(stopped.Command.Move, Is.EqualTo(Vector2.zero));
+        }
+
+        [Test]
+        public void JitterBurstKeepsNewestMovementAndPreservesQuickFireAimTimestampAndJump()
+        {
+            var queue = new DuelInputQueue();
+            var fire = Input(1); fire.Command.Yaw = 30; fire.ViewedTick = 50; fire.Command.Jump = false;
+            var jump = Input(2); jump.Command.Fire = false;
+            var latest = Input(3); latest.Command.Fire = latest.Command.Jump = false; latest.Command.Yaw = 90; latest.ViewedTick = 52;
+            queue.Add(new[] { latest, fire, jump });
+            queue.Consume(60, out var input);
+            Assert.That(input.Command.Sequence, Is.EqualTo(3));
+            Assert.That(input.Command.Yaw, Is.EqualTo(90));
+            Assert.That(input.Command.Jump && input.Command.Fire, Is.True);
+            Assert.That(queue.Shot.Value.Command.Yaw, Is.EqualTo(30));
+            Assert.That(queue.Shot.Value.ViewedTick, Is.EqualTo(50));
+            queue.Consume(61, out var continued);
+            Assert.That(continued.Command.Fire || continued.Command.Jump, Is.False);
+            Assert.That(queue.Shot, Is.Null);
         }
 
         private static DuelSnapshot Snapshot(int round, int tick) => new() { Round = round, Tick = tick,
