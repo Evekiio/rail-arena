@@ -65,7 +65,17 @@ namespace RailArena.Editor
             var lod = instance.AddComponent<LODGroup>();
             lod.SetLODs(lods);
             lod.RecalculateBounds();
-            // Hurtboxes follow the same bones as the visible skinned mesh.
+            Hurtboxes(animator);
+            Weapon(instance.transform, presentation);
+            PrefabUtility.SaveAsPrefabAsset(instance, "Assets/Resources/Characters/Contender.prefab");
+            UnityEngine.Object.DestroyImmediate(instance);
+            AssetDatabase.SaveAssets();
+            Debug.Log("Animated contender built with humanoid retargeting, three LODs and bone-following hitboxes.");
+        }
+
+        private static void Hurtboxes(Animator animator)
+        {
+            // Collider dimensions are metres, independent of the imported FBX bone units.
             Box(animator, HumanBodyBones.Head, HitRegion.Head, new Vector3(0, .075f, 0), new Vector3(.32f, .34f, .31f));
             Box(animator, HumanBodyBones.Chest, HitRegion.Body, new Vector3(0, .04f, 0), new Vector3(.47f, .43f, .29f));
             Box(animator, HumanBodyBones.Hips, HitRegion.Body, new Vector3(0, .04f, 0), new Vector3(.4f, .28f, .27f));
@@ -77,11 +87,22 @@ namespace RailArena.Editor
             Limb(animator, HumanBodyBones.LeftLowerLeg, HumanBodyBones.LeftFoot, .11f);
             Limb(animator, HumanBodyBones.RightUpperLeg, HumanBodyBones.RightLowerLeg, .13f);
             Limb(animator, HumanBodyBones.RightLowerLeg, HumanBodyBones.RightFoot, .11f);
-            Weapon(instance.transform, presentation);
-            PrefabUtility.SaveAsPrefabAsset(instance, "Assets/Resources/Characters/Contender.prefab");
-            UnityEngine.Object.DestroyImmediate(instance);
+        }
+
+        [MenuItem("Rail Arena/Update contender hurtboxes")]
+        public static void UpdateHurtboxes()
+        {
+            const string path = "Assets/Resources/Characters/Contender.prefab";
+            var root = PrefabUtility.LoadPrefabContents(path);
+            try
+            {
+                foreach (var hitbox in root.GetComponentsInChildren<Hitbox>(true))
+                    UnityEngine.Object.DestroyImmediate(hitbox.gameObject);
+                Hurtboxes(root.GetComponent<Animator>());
+                PrefabUtility.SaveAsPrefabAsset(root, path);
+            }
+            finally { PrefabUtility.UnloadPrefabContents(root); }
             AssetDatabase.SaveAssets();
-            Debug.Log("Animated contender built with humanoid retargeting, three LODs and bone-following hitboxes.");
         }
 
         private static AnimatorController Controller()
@@ -189,6 +210,7 @@ namespace RailArena.Editor
         {
             var obj = new GameObject(region + " hurtbox");
             obj.transform.SetParent(animator.GetBoneTransform(bone), false);
+            SetMetreScale(obj.transform);
             obj.layer = 8;
             var box = obj.AddComponent<BoxCollider>();
             box.center = center;
@@ -206,11 +228,20 @@ namespace RailArena.Editor
             obj.transform.SetParent(first, false);
             obj.transform.localPosition = localEnd / 2;
             obj.transform.localRotation = Quaternion.FromToRotation(Vector3.up, localEnd.normalized);
+            SetMetreScale(obj.transform);
             var capsule = obj.AddComponent<CapsuleCollider>();
             capsule.radius = radius;
-            capsule.height = localEnd.magnitude + radius;
+            capsule.height = Vector3.Distance(first.position, last.position) + radius;
             capsule.isTrigger = true;
             obj.AddComponent<Hitbox>().Region = HitRegion.Limb;
+        }
+
+        private static void SetMetreScale(Transform transform)
+        {
+            Vector3 scale = transform.lossyScale;
+            if (Mathf.Min(Mathf.Abs(scale.x), Mathf.Abs(scale.y), Mathf.Abs(scale.z)) < .000001f)
+                throw new InvalidOperationException("A hurtbox cannot inherit a zero bone scale.");
+            transform.localScale = new Vector3(1 / Mathf.Abs(scale.x), 1 / Mathf.Abs(scale.y), 1 / Mathf.Abs(scale.z));
         }
 
         private static Material Skin(string name, Color tint)

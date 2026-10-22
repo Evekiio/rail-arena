@@ -2,6 +2,14 @@
 
 Status: **offline milestone and initial online integration, incomplete game**. The full objective has not been achieved.
 
+## Metre-sized hurtboxes and standalone mechanics
+
+The new standalone runner uncovered an inherited 100x FBX bone-scale error in the original hurtbox builder. Earlier combat activity did not prove correct region geometry. The generator now compensates collider scale and uses world-space limb lengths; only hurtboxes were regenerated. All 33 EditMode tests, including real prefab geometry bounds and hit/miss checks, pass. All 28 accelerated standalone mechanics scenarios pass on corrected build `a6326328...`, including exact damage/cooldown/pickup/respawn boundaries and complete integer match clocks. See `MECHANICS-VALIDATION.md` for scope, original failure and reproduction.
+
+The corrected build's normal 45-second seven-bot standalone soak passed with 192 shots, 22 deaths, two pickups, 55 pad launches, zero application exceptions and zero void deaths (`Validation/mechanics-offline.json`). This is a short-run regression, not long-duration bot or difficulty acceptance.
+
+The same corrected build passed a 60-second two-process impaired UDP smoke test (`Validation/Duel-MetreHurtboxes/`): host recorded 56 shots, nine deaths and 28 validated rewinds, and both peers recorded zero errors. The relay recorded 308 drops and 193 reordered sends under configured 25 ms one-way delay, +/-10 ms jitter and 5% loss. Maximum raw client correction was 0.7855 m. This does not repeat full-match/rematch or actual internet acceptance.
+
 ## Original railgun milestone
 
 Build `15f0d82be90b69f3f2d6ec23c8a8ffc4bdbd3362a19d12b7891c022c527af8f4` adds the editable original RA-01 weapon in first and third person (`WEAPONS.md`). All 32 EditMode regression cases passed (`Validation/weapon-editmode.json`), and the Windows build succeeded (`weapon-build.json`). The 45-second standalone offline run passed with 147 shots, 61 deaths, four pickups, 41 pad launches, zero exceptions and zero void deaths (`weapon-offline.json`). Hidden-window loop timing is not a visible rendering benchmark.

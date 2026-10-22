@@ -11,10 +11,10 @@ This is an interim audit against `OBJECTIVE.md`, not a completion claim. A passi
 | Direct-IP host/join, port, ready-up | Real two-process UDP tests; native port entry and unused-host timeout | Native two-human connection path and standalone bind/full/incompatible errors |
 | Ten-minute countdown, results, rematch | Normal and impaired runs completed tick 36180, matching results and round two; impaired scores 102-66 | Final-build regression after presentation changes and native acceptance |
 | Quake-style acceleration, air control, hopping, momentum | Shared tuning derived from reference units; simulation tests; bot traversal | Sustained keyboard/mouse movement feel and fidelity review |
-| Rail-only, unlimited ammo, 90-tick cadence | Shared rules and cooldown-boundary tests; sustained combat | Standalone boundary scenarios and weapon feedback review |
-| 100 health, head/body/limb damage, mixed hits | Shared damage tests, bone hurtbox tests, integrated combat | Explicit standalone tests for every hit region and mixed sequence |
-| Health +25, cap 100, return after 1200 ticks, no regeneration/armor | Shared rule tests and pickup activity counters | Standalone pickup timing/contention boundaries |
-| Two-second respawns, void penalty, sudden death | Shared rule tests; integrated deaths/respawns | Standalone exact boundaries and tied-leader sudden-death scenario |
+| Rail-only, unlimited ammo, 90-tick cadence | Shared rules; standalone held-fire boundaries; sustained combat | Weapon feedback and native input review |
+| 100 health, head/body/limb damage, mixed hits | Corrected bone-scale geometry regression and standalone head/body/limb/mixed sequences | Dynamic aiming and visual alignment review |
+| Health +25, cap 100, return after 1200 ticks, no regeneration/armor | Standalone full-health rejection, contention, healing/cap and exact return boundaries | Visible pickup interaction review |
+| Two-second respawns, void penalty, sudden death | Standalone exact respawn/void boundaries and full integer-clock tied-leader next-kill resolution | Native interaction and final real-time regression |
 | Original floating arena, ramps/gaps/four pads, reference direction | Foundry scene, reference review, repeated traversal without void deaths in short soaks | Final arena art, flow/readability and visible play review |
 | Bots navigate, see targets, move/fire, seek health, respawn | Explicit node graph and LOS code; standalone shots/deaths/pickups/pads | Long-run stuck-rate and isolated difficulty/LOS acceptance |
 | Same rules for bots/humans and offline/online | Shared 60 Hz authority and movement; no online bot participants | Final regression with complete mechanics scenarios |
@@ -33,3 +33,5 @@ This is an interim audit against `OBJECTIVE.md`, not a completion claim. A passi
 | Portfolio README, screenshots, hosting guide | Current development README, real Editor captures, notices and validation reports | Finished presentation, downloadable build and verified operating guide |
 
 Current evidence is indexed in `VALIDATION.md`, networking details in `NETWORKING.md`, and model provenance/limitations in `CHARACTERS.md`. Source milestones must continue to be pushed under the policy in `DEVELOPMENT.md`.
+
+`MECHANICS-VALIDATION.md` explains the 28 accelerated standalone checks and the inherited-bone-scale hitbox bug they discovered. Historical combat counts are not proof of corrected geometry; use build-specific evidence.

@@ -61,6 +61,8 @@ Passing simulation tests alone does not establish playability, movement fidelity
 
 For the development Windows build, run `tools/Test-Offline.ps1` to execute a repeatable 45-second local combat smoke test with seven bots and an automated human input driver. It saves counters, errors, void traces and frame timing. This automation does not validate human input feel or menu clicks. Hidden-window frame timing is not a visible-window rendering benchmark.
 
+Run `tools/Test-Mechanics.ps1` for 28 accelerated standalone authority checks covering actual hurtbox damage, held-fire cooldowns, pickups, respawns, void scoring, match clocks, sudden death and untimed practice. See [scenario scope and the bone-scale regression it discovered](docs/MECHANICS-VALIDATION.md). These checks do not substitute for native playtesting or real-time multiplayer.
+
 Build the current saved scene through the running pinned Editor:
 
 ```powershell

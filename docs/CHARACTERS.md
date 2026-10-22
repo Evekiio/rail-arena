@@ -27,6 +27,8 @@ The supplied skeleton has wrist bones but no articulated finger rig. A fixed com
 
 The regression suite checks the humanoid Avatar, LOD structure, eleven bone-following hurtboxes, forward/backward foot motion without root displacement, and head descent during death. Current results are in `Validation/character-editmode.json`.
 
+The later scale regression in `Validation/mechanics-editmode.json` also verifies metre-sized world geometry despite the FBX's 100x bone scale. Head/body boxes compensate inherited scale; limb radii are in metres and heights follow world-space bone distances. `ContenderBuilder.UpdateHurtboxes()` regenerates just the eleven hurtboxes. Standalone region/damage checks and the original failure are detailed in `MECHANICS-VALIDATION.md`.
+
 The `CharacterMotionReview.Capture()` Editor helper records a controlled 24 fps LOD0 review through Unity's normal animation and IK loop. Its sequence is idle, run, backwards, jump and death. The jump arc is staged for visual inspection. The resulting `Validation/CharacterMotion/Contender-Motion-Review.mp4` is not gameplay or native-input acceptance evidence. A normal standalone bot soak is recorded separately.
 
 Creative quality still requires human review of the actual moving result. Close finger detail, dedicated first-person arms, more individually modeled contenders and a bespoke eight-direction movement set are possible further improvements; they are not represented as completed here.
