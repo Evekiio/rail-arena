@@ -1,0 +1,63 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\Rail Arena\\RailArena"
+    },
+    "server": {
+      "version": "0.0.1",
+      "port": 7800
+    },
+    "commands": [
+      {
+        "command": "job batch",
+        "name": "batch",
+        "group": "job",
+        "description": "Run multiple registered commands in one transactional request. Later ops can reference earlier results with \"$<id-or-index>.<jsonPath>\" (e.g. \"$0.instanceId\"; \"$$\" escapes a literal '$'). transactional=true (default) groups every op into one Undo step and reverts all applied ops if any op fails; commands that mutate outside the Undo system (asset/file/settings writes) are rejected unless transactional=false. on_error=abort|continue (continue forces transactional=false); dry_run validates without mutating; timeout (seconds, default 60) bounds execution — when it is about to run out the remaining ops are skipped and a transactional batch rolls back (submit long batches with \"job\": true). Excludes build run, build.target switch, the package commands, editor.playmode start/stop/pause, script recompile, script eval, script eval_file, script run, editor invoke_menu, scene open/scene create, async commands (test run/test list), runtime-only commands, and nested job batch.",
+        "tags": [
+          "batch"
+        ],
+        "package": "Unity.Pipeline.Editor"
+      },
+      {
+        "command": "script eval",
+        "name": "eval",
+        "group": "script",
+        "description": "Evaluate C# code dynamically using Roslyn compiler",
+        "tags": [
+          "scripts/eval"
+        ],
+        "package": "Unity.Pipeline"
+      },
+      {
+        "command": "script eval_file",
+        "name": "eval_file",
+        "group": "script",
+        "description": "Evaluate C# code read from a .cs file on disk",
+        "tags": [
+          "scripts/eval"
+        ],
+        "package": "Unity.Pipeline"
+      },
+      {
+        "command": "script run",
+        "name": "run",
+        "group": "script",
+        "description": "Compile a project C# file in memory (no domain reload) and execute a named static entry point. The builder-pattern path for bulk construction. Still arbitrary code execution — shares script eval's capability gate.",
+        "tags": [
+          "scripts/eval"
+        ],
+        "package": "Unity.Pipeline.Editor"
+      }
+    ],
+    "count": 4,
+    "total": 4,
+    "offset": 0,
+    "limit": null
+  },
+  "errors": [],
+  "warnings": []
+}
