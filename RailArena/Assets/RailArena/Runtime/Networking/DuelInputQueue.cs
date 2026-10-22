@@ -42,17 +42,20 @@ namespace RailArena.Networking
                 }
                 // Never turn a burst into extra simulation steps or a permanent input delay.
                 pending.Clear();
+                // Hold only the newest physical state, not a tap aggregated from an older command.
+                previous = input.Command;
                 input.Command.Fire = Shot.HasValue;
                 input.Command.Jump = jump;
                 LastConsumed = input.Command.Sequence;
-                previous = input.Command;
                 lastCommandTick = authorityTick;
                 return true;
             }
-            // Brief loss preserves motion, never an unacknowledged fire or jump.
+            // Space is a held bunny-hop control. Preserve it with motion during brief loss.
+            // Fire remains a one-time received intent with its original viewed-tick evidence.
             input.Command = previous;
-            input.Command.Fire = input.Command.Jump = false;
-            if ((long)authorityTick - lastCommandTick > 9) input.Command.Move = default;
+            input.Command.Fire = false;
+            if ((long)authorityTick - lastCommandTick > 9)
+            { input.Command.Move = default; input.Command.Jump = false; }
             return true;
         }
     }

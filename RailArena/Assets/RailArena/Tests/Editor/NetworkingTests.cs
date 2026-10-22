@@ -224,9 +224,51 @@ namespace RailArena.Tests
             Assert.That(queue.PendingCount, Is.Zero);
             queue.Consume(13, out var held);
             Assert.That(held.Command.Move.sqrMagnitude, Is.GreaterThan(0));
-            Assert.That(held.Command.Fire || held.Command.Jump, Is.False);
+            Assert.That(held.Command.Fire, Is.False);
+            Assert.That(held.Command.Jump, Is.True);
             queue.Consume(22, out var stopped);
             Assert.That(stopped.Command.Move, Is.EqualTo(Vector2.zero));
+            Assert.That(stopped.Command.Jump, Is.False);
+        }
+
+        [Test]
+        public void HeldJumpSurvivesPacketGapAtLandingAndExpiresWithMovementGrace()
+        {
+            var queue = new DuelInputQueue();
+            var held = Input(1); held.Command.Fire = false;
+            queue.Add(new[] { held });
+            queue.Consume(100, out _);
+            queue.Consume(101, out var atLanding);
+            var tuning = ScriptableObject.CreateInstance<MovementTuning>();
+            try
+            {
+                // The client still holds Space; both peers reach ground during the missing packet.
+                var client = ArenaMovement.Integrate(Vector3.down, held.Command, true, tuning, 1f / CombatRules.TickRate);
+                var host = ArenaMovement.Integrate(Vector3.down, atLanding.Command, true, tuning, 1f / CombatRules.TickRate);
+                Assert.That(host.y, Is.EqualTo(client.y).Within(.00001f), "Missing packet must not cancel the held landing jump");
+                Assert.That(host.y, Is.GreaterThan(0));
+                queue.Consume(109, out var graceBoundary);
+                Assert.That(graceBoundary.Command.Jump, Is.True);
+                queue.Consume(110, out var expired);
+                Assert.That(expired.Command.Jump, Is.False);
+                Assert.That(expired.Command.Move, Is.EqualTo(Vector2.zero));
+                Assert.That(expired.Command.Fire, Is.False);
+            }
+            finally { UnityEngine.Object.DestroyImmediate(tuning); }
+        }
+
+        [Test]
+        public void ReleasedJumpIsNotHeldByAnAggregatedTapOrRedundantPacket()
+        {
+            var queue = new DuelInputQueue();
+            var held = Input(1);
+            var released = Input(2); released.Command.Jump = released.Command.Fire = false;
+            queue.Add(new[] { held, released });
+            queue.Consume(100, out var tap);
+            Assert.That(tap.Command.Jump, Is.True, "The short tap is delivered once");
+            queue.Add(new[] { held });
+            queue.Consume(101, out var gap);
+            Assert.That(gap.Command.Jump || gap.Command.Fire, Is.False, "Released state must win over the older tap");
         }
 
         [Test]

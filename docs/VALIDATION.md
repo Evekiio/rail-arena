@@ -2,6 +2,18 @@
 
 Status: **offline milestone and initial online integration, incomplete game**. The full objective has not been achieved.
 
+## Held-Space continuation during packet loss
+
+The host's short-loss fallback previously cleared held jump while continuing movement. A deterministic queue/shared-integrator regression reproduced a landing mismatch: +8.0208 m/s client vertical velocity versus -1.4167 m/s host (`Validation/held-jump-initial-tests.json`, one expected failing test). The queue now retains the latest held-jump state for the existing inclusive nine-tick/150 ms movement grace. It stores the newest state before older taps are aggregated, so release and redundant old packets cannot turn a tap into a held jump. Fire still requires received intent and retains its original aim/viewed tick. Cooldowns, jump physics, authority step count and offline behavior are unchanged.
+
+All 51 Editor-suite tests passed after the fix (`held-jump-tests.json`), including landing consistency, grace expiry, release and old-packet checks. The Windows candidate fingerprint is `90e132609d582e2d847102019380594e84935897792bf02073b854755a777e17`; its build and all 35 accelerated standalone mechanics checks passed (`held-jump-build.json`, `held-jump-mechanics.json`).
+
+Separate 60-second two-process runs passed with zero application errors. Clean loopback recorded 53 host shots, nine deaths, 18 pad launches and 27 rewound shots (`Duel-HeldJump-Clean/`); the impaired run recorded 59 shots, five deaths, 18 pad launches and 30 rewound shots (`Duel-HeldJump-Impaired/`). Its relay dropped 309 packets and recorded 223 reordered sends at configured 25 ms +/-10 ms one-way delay and 5% loss. Raw maximum client corrections were 0.3428 m clean and 0.7969 m impaired. These are individual samples, not an isolated before/after comparison or proof that reconciliation feel is solved. The runners use automated human-slot input, not physical keyboard interaction, and do not reach full-match/rematch or an actual internet path. The shared-integrator regression proves the held-jump boundary specifically; combat counters do not prove that boundary independently.
+
+This fixes one confirmed input-state mismatch. The preceding movement-preview build's largest raw correction also coincided with a nine-tick backward prediction-clock adjustment. Prediction clock/replay timing remains a separate open concern; the held-jump fix is not a claim that all large corrections or movement-feel issues are resolved.
+
+The tested executable is now `Builds/Windows/RailArena.exe`, promoted with unchanged executable SHA-256. Its predecessor is preserved at `Builds/PreviousWindows-dff8c764` (`Validation/held-jump-promotion.json`). Native input, real internet duel and final-build full-match acceptance remain open.
+
 ## First-person movement feedback
 
 Original procedural weapon/arm motion now responds to ground travel, look input, airborne fade, landing and session/respawn raise, with recoil pitch. Camera aim, authority, movement, hurtboxes and weapon rules remain separate. The renderer-only class has no simulation references. See `FIRST-PERSON-ARMS.md` for bounds and remaining art work.
