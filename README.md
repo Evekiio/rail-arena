@@ -12,6 +12,8 @@ Rail Arena is a Windows game and AI engineering portfolio project by **Sanders R
 
 > **Pre-alpha client:** [Download for Windows x64](https://github.com/Evekiio/rail-arena/releases/download/v0.1.0-pre-alpha.1/RailArena-v0.1.0-pre-alpha.1-Windows-x64.zip) Ã‚Â· [Release notes and limitations](docs/PRE-ALPHA.md). Extract the whole ZIP, then run `RailArena.exe`. This is an unfinished portfolio build for playtesting; concept artwork and planned arena features are distinguished from the current client below.
 
+Current source includes [aim and camera settings improvements](docs/AIM-SETTINGS.md): independent zoom sensitivity, adjustable vertical FOV, invert Y and clearer sliders. The downloadable pre-alpha above remains the earlier release checkpoint.
+
 ## Approved design / next production milestone
 
 The [design lock v1](docs/DESIGN.md) sets the next target: four contenders offline, two-human online duels, a 0.6-second semi-auto rifle, 75/40/30 location damage, five-minute or 20-kill matches, slow partial regeneration and one fixed portal pair. **These are approved requirements, not claims about the existing builds.**
