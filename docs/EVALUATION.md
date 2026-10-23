@@ -2,6 +2,8 @@
 
 Launch `F:\Rail Arena\Builds\Evaluation\RailArena.exe`. Keep the whole Evaluation folder together. This is a non-development Windows player, built with Unity 6000.6.7f1. It is a working evaluation checkpoint, not final acceptance of the full objective.
 
+For a portable local copy, extract `Builds/Packages/RailArena-Evaluation-fa2cb0af.zip` completely and run its `RailArena.exe`. The package includes launch instructions, licenses and a per-file SHA-256 manifest. It is a local evaluation artifact, not a published release. See [package verification](../Validation/evaluation-package.json).
+
 ## A focused first session (15–20 minutes)
 
 1. **Solo movement (5 minutes):** PRACTICE, BOTS 0 // SOLO. Test mouse aim, WASD acceleration, air strafing, held-Space hopping, ramps, gaps and all four jump pads. Fall into the void and confirm respawn. Judge responsiveness and visibility while moving quickly.

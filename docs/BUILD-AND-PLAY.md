@@ -36,6 +36,14 @@ This compiles the saved enabled scenes. Save intentional scene edits first. **Ra
 
 Builds are local and ignored by Git. Source, Unity metadata and licensed binary assets are published through Git/LFS. Keep your own build folder separate from the supplied players.
 
+To make a portable ZIP after building, use Python 3.9+ and the fingerprint recorded by that build (not an identity from newer edited source):
+
+```powershell
+python tools/package_playtest.py --build Builds/Evaluation --output Builds/Packages/MyEvaluation.zip --fingerprint fa2cb0af271399bb89d693dc5768b378a1aa832c50f6720cf21953329edb7bc4
+```
+
+This example identifies the supplied evaluation build. Choose a new output filename; the packager refuses to overwrite files, excludes Unity's backup folder, includes notices and verifies every ZIP entry. Extract the entire ZIP before running the EXE. Build identity is supplied from the build record; the packager verifies file integrity, not embedded identity or gameplay acceptance.
+
 ## Repeat the automated checks
 
 The validation runners require a Development Build. The existing `Builds/Windows` player is suitable. Run from the repository root:
