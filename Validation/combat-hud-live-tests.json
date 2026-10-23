@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "command": "command test status",
+  "data": {
+    "command": "test status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 1.58,
+      "summary": {
+        "total": 1,
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "RailArena.Tests.CombatHudTests.LiveHudTracksCombatAndProductionKeyboardMapping",
+          "Status": "Failed",
+          "Duration": 1.249365,
+          "Message": "  Expected: greater than 0.100000001f\r\n  But was:  0.0f\r\n",
+          "StackTrace": "at RailArena.Tests.CombatHudTests+<LiveHudTracksCombatAndProductionKeyboardMapping>d__0.MoveNext () [0x005a3] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\CombatHudTests.cs:64\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@ee3fe9477490\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\Rail Arena\\RailArena"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

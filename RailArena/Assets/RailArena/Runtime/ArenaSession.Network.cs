@@ -22,6 +22,7 @@ namespace RailArena
         public int NetworkRound => link?.Round ?? 0;
         public int LastAcknowledgedInput { get; private set; }
         public int PendingInputs => prediction.Count;
+        public int LocalSimulationTick => IsOnline && LocalPlayerId == 1 ? clientTick : Match?.Tick ?? 0;
         public int SnapshotsReceived { get; private set; }
         public float MaximumCorrection { get; private set; }
         public float MaximumActiveCorrection { get; private set; }

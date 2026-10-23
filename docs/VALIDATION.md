@@ -2,6 +2,18 @@
 
 Status: **offline milestone and initial online integration, incomplete game**. The full objective has not been achieved.
 
+## Combat HUD and software input mapping
+
+The combat HUD now has separate health, score/speed, rail-cycle and match cards, a fixed center readiness reticle, scoreboard backdrop and explicit death/countdown states. Local client charge presentation uses the prediction clock; opponent presentation retains authority time. Gameplay authority and combat rules are unchanged. See `COMBAT-HUD.md` for implementation and fixture details.
+
+All 64 Editor-suite tests passed (`combat-hud-tests.json`). The new live test uses an Input System virtual keyboard through production code to verify W/Space movement and jumping, Tab hold/release, Escape pause/resume, frozen offline ticks while paused, death visibility, health/rail meters and canvas bounds. It explicitly observes advancing frames/ticks. Editor focus overrides are test-only and restored. This is software mapping evidence, not physical/native keyboard acceptance. Early fixture failures are retained separately.
+
+Both development and ordinary non-development Windows builds succeeded with source fingerprint `94ab8a777cf585f3cf2c98ac962346fa33965a9eed7549d81c772c187b3779d4`. The development build passed all 35 standalone mechanics checks and 45-second seven-bot combat: 2,673 ticks, 183 shots, 21 deaths, two pickups, 56 pad launches, zero exceptions and zero void deaths. The hidden run recorded mean 6.96 ms / p95 6.96 ms loop timing; overlapping automation is not a visible rendering benchmark. Its 60-second impaired duel passed with 57 shots, seven deaths, 30 rewinds and zero peer errors. Relay conditions were 25 ms one-way delay, +/-10 ms jitter and 5% configured loss; 309 packets were dropped and 203 reordered. Active/raw maximum reconciliation was 0.9166 m, phase-change maximum 0.1335 m. These samples do not establish better movement feel or an internet path. Full-match/rematch evidence remains tied to `235d7b84`.
+
+The non-development player was launched through its native menu into three-bot practice. Actual standalone screenshots in `Validation/CombatHud/` show READY, amber 1.4-second firing recovery with visible rail, and a 1.5-second respawn with red zero health and hidden reticle/weapon. These unedited window captures were visually inspected; no sound-on or physical keyboard acceptance is inferred. The README hero now shows this build.
+
+Reports: `combat-hud-build.json`, `combat-hud-playtest-build.json`, `combat-hud-mechanics.json`, `combat-hud-offline.json`, `Duel-CombatHud-Impaired/`. The tested development build was promoted to `Builds/Windows/RailArena.exe` with all 313 files verified unchanged; the prior player is preserved in `Builds/PreviousWindows-6b469475`. The non-development player is `Builds/HudPlaytest/RailArena.exe`. See `combat-hud-promotion.json`.
+
 ## Standalone mouse/settings review and build variants
 
 `ArenaBuilder.BuildWindowsPlaytestTo(output, nativeInputReview)` now builds without the Development option; its optional second argument adds only the opt-in native-input diagnostic define. The existing development builder and enabled scene selection remain intact. Ordinary non-development builds exclude the diagnostic and automation harnesses. Unity's [build-mode documentation](https://docs.unity.com/en-us/engine/6000.6/manual/building-and-publishing/building-introduction) distinguishes release/runtime requirements from the development Profiler/assertion configuration. These are unfinished playtest builds, not published releases.

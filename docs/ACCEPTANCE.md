@@ -2,6 +2,8 @@
 
 This is an interim audit against `OBJECTIVE.md`, not a completion claim. A passing smoke test proves only its recorded conditions. Historical reports identify their build fingerprint; they do not automatically certify a newer build.
 
+Latest presentation milestone: build `94ab8a77` passes 64 Editor-suite tests, including live software keyboard movement/jump/scoreboard/pause/resume and HUD state checks, plus 35 standalone mechanics checks, a seven-bot smoke and an impaired UDP smoke. Native mouse review observed the new HUD in ready, recovery and respawn states. Physical keyboard, sound-on, creative quality, final-build full-match and internet acceptance remain open. See `COMBAT-HUD.md` and the latest section of `VALIDATION.md`.
+
 | Requirement | Current evidence | Remaining acceptance |
 | --- | --- | --- |
 | Unity 6000.6.7f1, URP, pinned dependencies | ProjectVersion, package manifest/lockfile, successful Windows build records | Final clean-clone build check |

@@ -181,6 +181,16 @@ namespace RailArena.Tests
             Assert.That(session.LargestActiveCorrection.distance, Is.EqualTo(2).Within(.001));
         }
 
+        [Test]
+        public void LocalPresentationUsesPredictionClockWithoutAdvancingAuthorityClock()
+        {
+            typeof(ArenaSession).GetField("link", PrivateInstance).SetValue(session,
+                DuelLink.Join(new IPEndPoint(IPAddress.Loopback, 65000), 123));
+            typeof(ArenaSession).GetField("clientTick", PrivateInstance).SetValue(session, 210);
+            Assert.That(session.LocalSimulationTick, Is.EqualTo(210));
+            Assert.That(session.Match.Tick, Is.EqualTo(200));
+        }
+
         [TestCase(0, 2)]
         [TestCase(2, 0)]
         public void InterpolatedLaunchCounterDrivesAirAndLandingAnimation(int oldAirborne, int newAirborne)

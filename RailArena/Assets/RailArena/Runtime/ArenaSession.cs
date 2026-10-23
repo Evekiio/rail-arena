@@ -169,7 +169,7 @@ namespace RailArena
             View.transform.SetPositionAndRotation(eye, Quaternion.Euler(pitch, yaw, 0));
             reconciliationView.Decay(Time.unscaledDeltaTime);
             recoil = Mathf.MoveTowards(recoil, 0, Time.unscaledDeltaTime * 5);
-            weaponPresentation.SetCharge((Human.NextShotTick - Match.Tick) / (float)CombatRules.ShotIntervalTicks);
+            weaponPresentation.SetCharge((Human.NextShotTick - LocalSimulationTick) / (float)CombatRules.ShotIntervalTicks);
             if (!Human.Alive || Paused) weaponMotion.Reset(false);
             else
             {

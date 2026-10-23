@@ -1,8 +1,6 @@
-using System.Text;
 using RailArena.Simulation;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 
 namespace RailArena
@@ -12,10 +10,6 @@ namespace RailArena
         public ArenaSession Session;
         private Transform canvas;
         private GameObject menu;
-        private UnityEngine.UI.Text status;
-        private UnityEngine.UI.Text notice;
-        private UnityEngine.UI.Text score;
-        private UnityEngine.UI.Text crosshair;
         private int bots = 3;
         private int difficulty = 1;
         private TargetScenario scenario;
@@ -32,13 +26,7 @@ namespace RailArena
             scaler.referenceResolution = new Vector2(1920, 1080);
             scaler.matchWidthOrHeight = .5f;
             new GameObject("Input", typeof(EventSystem), typeof(InputSystemUIInputModule));
-            status = Text(canvas, "Status", "", 30, new Vector2(.04f, .03f), new Vector2(.8f, .12f));
-            notice = Text(canvas, "Notice", "", 24, new Vector2(.2f, .78f), new Vector2(.8f, .94f));
-            notice.alignment = TextAnchor.MiddleCenter;
-            score = Text(canvas, "Scoreboard", "", 25, new Vector2(.32f, .25f), new Vector2(.68f, .74f));
-            crosshair = Text(canvas, "Crosshair", "+", 32, new Vector2(.48f, .48f), new Vector2(.52f, .52f));
-            crosshair.alignment = TextAnchor.MiddleCenter;
-            crosshair.color = cyan;
+            BuildCombatHud();
             RefreshMenu();
         }
 
@@ -130,28 +118,10 @@ namespace RailArena
 
         private void Update()
         {
-            if (status == null) return;
+            if (combatRoot == null) return;
             if (connectionStatus != null) connectionStatus.text = Session.ConnectionStatus;
-            bool running = Session.Running;
-            crosshair.enabled = running && !Session.Paused && Session.Human.Alive;
-            status.enabled = notice.enabled = running;
-            score.enabled = running && (Keyboard.current?.tabKey.isPressed == true);
-            if (!running) return;
-            var match = Session.Match;
-            float cycle = Mathf.Clamp01((Session.Human.NextShotTick - match.Tick) / 90f);
-            int seconds = match.RemainingTicks / 60;
-            string clock = Session.Practice ? "PRACTICE" : $"{seconds / 60:00}:{seconds % 60:00}";
-            status.text = $"HEALTH  {Session.Human.Health:000}    |    RAIL  {(cycle > 0 ? $"{(1 - cycle) * 100:0}%" : "READY")}\n{clock}    |    SCORE  {match.Scores[Session.Human.Id]}    |    SPEED  {new Vector2(Session.Human.Velocity.x, Session.Human.Velocity.z).magnitude:0.0}";
-            notice.text = match.Phase == MatchPhase.Countdown ? $"STAND BY\n{Mathf.CeilToInt((180 - match.Tick) / 60f)}" :
-                match.Phase == MatchPhase.SuddenDeath ? "SUDDEN DEATH // NEXT KILL WINS\n" + Session.Feed :
-                !Session.Human.Alive ? "RESPAWNING\n" + Session.Feed : Session.Feed;
-            if (score.enabled)
-            {
-                var builder = new StringBuilder("FOUNDRY // SCOREBOARD\n\n");
-                foreach (var actor in Session.Actors) builder.AppendLine($"{actor.DisplayName,-14} {match.Scores[actor.Id],4}");
-                score.text = builder.ToString();
-            }
-            if (match.Phase == MatchPhase.Results && menu == null) RefreshMenu();
+            UpdateCombatHud();
+            if (Session.Running && Session.Match.Phase == MatchPhase.Results && menu == null) RefreshMenu();
         }
 
         private void Button(string title, UnityEngine.Events.UnityAction action, ref float y, bool interactable = true)

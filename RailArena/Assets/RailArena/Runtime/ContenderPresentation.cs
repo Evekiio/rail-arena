@@ -60,7 +60,8 @@ namespace RailArena
             bool worldPaused = session.Paused && !session.IsOnline;
             Animator.speed = worldPaused ? 0 : 1;
             if (worldPaused) return;
-            Railgun.SetCharge((actor.NextShotTick - session.Match.Tick) / (float)Simulation.CombatRules.ShotIntervalTicks);
+            int chargeTick = actor == session.Human ? session.LocalSimulationTick : session.Match.Tick;
+            Railgun.SetCharge((actor.NextShotTick - chargeTick) / (float)Simulation.CombatRules.ShotIntervalTicks);
             float speed = new Vector2(actor.Velocity.x, actor.Velocity.z).magnitude;
             Vector3 aimForward = Quaternion.Euler(0, actor.Command.Yaw, 0) * Vector3.forward;
             bool backwards = speed > .5f && Vector3.Dot(actor.Velocity, aimForward) < -speed * .2f;
