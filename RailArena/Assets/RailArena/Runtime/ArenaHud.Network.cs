@@ -10,7 +10,7 @@ namespace RailArena
 
         private void NetworkPanel(string title)
         {
-            if (menu != null) Destroy(menu);
+            if (menu != null) { menu.SetActive(false); Destroy(menu); }
             menu = new GameObject("Connection menu", typeof(RectTransform), typeof(UnityEngine.UI.Image));
             menu.transform.SetParent(canvas, false);
             Rect(menu, Vector2.zero, Vector2.one);
@@ -40,15 +40,20 @@ namespace RailArena
             NetworkPanel(results ? "DUEL COMPLETE" : "DUEL // READY ROOM");
             if (results) Text(menu.transform, "Winner", "WINNER: " + Session.Actors[Session.Match.Winner].DisplayName, 32,
                 new Vector2(.095f, .69f), new Vector2(.9f, .77f));
-            connectionStatus = Text(menu.transform, "Connection status", Session.ConnectionStatus, 30,
-                new Vector2(.095f, .48f), new Vector2(.94f, .66f));
+            connectionStatus = Text(menu.transform, "Connection status", Session.ConnectionStatus, results?21:30,
+                new Vector2(.095f, results ? .54f:.48f), new Vector2(results ? .46f:.94f, .66f));
             float y = .35f;
             Button(results ? "READY / CANCEL REMATCH" : "READY / CANCEL READY", Session.ToggleReady, ref y);
             Button("DISCONNECT", Session.MainMenu, ref y);
             Button("QUIT", Session.QuitGame, ref y);
+            if(results)
+            {
+                var final=CreateStandings(menu.transform,"FinalStandings","FINAL STANDINGS",new Vector2(.50f,.18f),new Vector2(.97f,.66f));
+                RefreshStandings(final);
+            }
             Text(menu.transform, "Ready help", results ? "Both players must ready up for another duel." :
-                "Both players must ready up.\nThe host then starts the three-second countdown.", 25,
-                new Vector2(.53f, .25f), new Vector2(.94f, .4f));
+                "Both players must ready up.\nThe host then starts the three-second countdown.", results?20:25,
+                new Vector2(results ? .095f:.53f, results ? .10f:.25f), new Vector2(results ? .46f:.94f, results ? .18f:.4f));
         }
 
         private void Input(string label, string value, float y, UnityEngine.Events.UnityAction<string> changed, int limit)

@@ -273,6 +273,7 @@ namespace RailArena
             if (!hit.ValidTime) RejectedShotTimes++;
             else if (viewedTick < Match.Tick) RewoundShots++;
             Vector3 end = hit.End;
+            Match.RecordShot(actor.Id,hit.Actor == null ? (HitRegion?)null : hit.Region);
             if (hit.Actor != null)
             {
                 var victim = hit.Actor;

@@ -65,7 +65,7 @@ namespace RailArena
                     () => Session.StartSession(true, bots, difficulty, scenario), ref y);
                 Button("ONLINE DUEL // DIRECT IP", OnlineMenu, ref y);
             }
-            if (!Session.IsOnline)
+            if (!Session.IsOnline && !results)
             {
                 Text(menu.transform,"Setup heading",Session.Running ? "NEXT SESSION / OFFLINE SETUP" : "OFFLINE SETUP",22,
                     new Vector2(.53f,.70f),new Vector2(.94f,.74f)).color = cyan;
@@ -82,6 +82,12 @@ namespace RailArena
             Button("SETTINGS", Settings, ref y);
             if (Session.Running) Button("MAIN MENU", Session.MainMenu, ref y);
             Button("QUIT", Session.QuitGame, ref y);
+            if(results)
+            {
+                var final=CreateStandings(menu.transform,"FinalStandings","FINAL STANDINGS",new Vector2(.50f,.21f),new Vector2(.97f,.70f));
+                RefreshStandings(final);
+            }
+            else
             Text(menu.transform,"Controls",Session.IsOnline ? "W A S D  MOVE     SPACE  JUMP\nLEFT CLICK  FIRE     HOLD RIGHT  1.5x ZOOM\nESC  PAUSE     TAB  SCOREBOARD" :
                 "0 BOTS = SOLO / ADD BOTS FOR TARGET DRILLS\nBOT MATCHES ALWAYS USE COMBAT AI\n\nW A S D  MOVE     SPACE  JUMP\nLEFT CLICK  FIRE     HOLD RIGHT  1.5x ZOOM\nESC  PAUSE     TAB  SCOREBOARD",21,
                 new Vector2(.53f,.13f),new Vector2(.94f,Session.IsOnline ? .64f : .34f));
