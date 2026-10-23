@@ -1,0 +1,18 @@
+var gun = UnityEngine.GameObject.Find("Hand grip calibration");
+var arms = gun.GetComponentInChildren<RailArena.FirstPersonArms>();
+var weapon = gun.GetComponent<RailArena.RailgunPresentation>();
+foreach (bool left in new[] { false, true })
+{
+    int start = left ? 0 : 15;
+    var hand = arms.Animator.GetBoneTransform(left ? UnityEngine.HumanBodyBones.LeftHand : UnityEngine.HumanBodyBones.RightHand);
+    var forward = (arms.Hands.Joints[start + 6].position - hand.position).normalized;
+    var across = (arms.Hands.Joints[start + 12].position - arms.Hands.Joints[start + 3].position).normalized;
+    var current = UnityEngine.Quaternion.LookRotation(UnityEngine.Vector3.Cross(across, forward), forward);
+    var desired = UnityEngine.Quaternion.LookRotation(left ? gun.transform.up : -gun.transform.forward,
+        left ? gun.transform.right : -gun.transform.right);
+    var correction = desired * UnityEngine.Quaternion.Inverse(current);
+    var grip = left ? weapon.LeftGrip : weapon.RightGrip;
+    grip.rotation = correction * grip.rotation;
+    grip.localPosition = left ? new UnityEngine.Vector3(-.24f, -.1f, -.03f) : new UnityEngine.Vector3(.15f, -.16f, -.08f);
+}
+return new { frame = UnityEngine.Time.frameCount, right = weapon.RightGrip.localRotation, left = weapon.LeftGrip.localRotation };

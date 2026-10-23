@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "command": "command script eval",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "var gun = UnityEngine.GameObject.Find(\"Hand grip calibration\");\nvar arms = gun.GetComponentInChildren<RailArena.FirstPersonArms>();\nvar weapon = gun.GetComponent<RailArena.RailgunPresentation>();\nforeach (bool left in new[] { false, true })\n{\n    int start = left ? 0 : 15;\n    var hand = arms.Animator.GetBoneTransform(left ? UnityEngine.HumanBodyBones.LeftHand : UnityEngine.HumanBodyBones.RightHand);\n    var forward = (arms.Hands.Joints[start + 6].position - hand.position).normalized;\n    var across = (arms.Hands.Joints[start + 12].position - arms.Hands.Joints[start + 3].position).normalized;\n    var current = UnityEngine.Quaternion.LookRotation(UnityEngine.Vector3.Cross(across, forward), forward);\n    var desired = UnityEngine.Quaternion.LookRotation(left ? gun.transform.up : -gun.transform.forward,\n        left ? gun.transform.right : -gun.transform.right);\n    var correction = desired * UnityEngine.Quaternion.Inverse(current);\n    var grip = left ? weapon.LeftGrip : weapon.RightGrip;\n    grip.rotation = correction * grip.rotation;\n    grip.localPosition = left ? new UnityEngine.Vector3(-.24f, -.1f, -.03f) : new UnityEngine.Vector3(.15f, -.16f, -.08f);\n}\nreturn new { frame = UnityEngine.Time.frameCount, right = weapon.RightGrip.localRotation, left = weapon.LeftGrip.localRotation };\n"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": "{ frame = 1477, right = (-0.07942, -0.72261, -0.11314, 0.67730), left = (-0.54732, 0.57778, -0.42473, 0.43153) }"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\Rail Arena\\RailArena"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

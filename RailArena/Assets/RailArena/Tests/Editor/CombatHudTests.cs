@@ -29,6 +29,11 @@ namespace RailArena.Tests
             UnityEngine.UI.Text Label(string name) => texts.Single(t => t.name == name);
             Assert.That(Label("ModeValue").text, Is.EqualTo("SOLO PRACTICE"));
             Assert.That(Label("RailValue").text, Is.EqualTo("STAND BY"));
+            var contender = session.Human.Presentation;
+            Assert.That(Vector3.Angle(contender.Hands.Joints[6].position - contender.Animator.GetBoneTransform(HumanBodyBones.LeftHand).position,
+                contender.Weapon.right), Is.LessThan(1));
+            Assert.That(Vector3.Angle(contender.Hands.Joints[21].position - contender.Animator.GetBoneTransform(HumanBodyBones.RightHand).position,
+                -contender.Weapon.right), Is.LessThan(1));
             while (!session.Match.IsActive) session.Match.Advance();
             foreach (var pickup in session.World.Pickups) pickup.AvailableTick = int.MaxValue;
             session.Human.Health = 25;

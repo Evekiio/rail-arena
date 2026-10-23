@@ -1,0 +1,30 @@
+var gun = UnityEngine.GameObject.Find("Hand grip calibration");
+var arms = gun.GetComponentInChildren<RailArena.FirstPersonArms>();
+var root = new UnityEngine.GameObject("Contact calibration camera");
+var camera = root.AddComponent<UnityEngine.Camera>(); camera.enabled = false;
+camera.fieldOfView = 50; camera.nearClipPlane = .01f; camera.farClipPlane = 10;
+camera.clearFlags = UnityEngine.CameraClearFlags.SolidColor; camera.backgroundColor = new UnityEngine.Color(.025f, .035f, .05f);
+camera.cullingMask = (1 << 11) | 1;
+root.AddComponent<UnityEngine.Rendering.Universal.UniversalAdditionalCameraData>().renderPostProcessing = true;
+var target = new UnityEngine.RenderTexture(1280, 720, 24); target.Create(); camera.targetTexture = target;
+var pixels = new UnityEngine.Texture2D(1280, 720, UnityEngine.TextureFormat.RGB24, false);
+var previous = UnityEngine.RenderTexture.active;
+try
+{
+    foreach (bool left in new[] { false, true })
+    {
+        var hand = arms.Animator.GetBoneTransform(left ? UnityEngine.HumanBodyBones.LeftHand : UnityEngine.HumanBodyBones.RightHand);
+        var center = hand.position + gun.transform.forward * .035f;
+        camera.transform.position = center + gun.transform.right * (left ? -.28f : .28f) + gun.transform.up * .09f - gun.transform.forward * .1f;
+        camera.transform.LookAt(center); camera.Render(); UnityEngine.RenderTexture.active = target;
+        pixels.ReadPixels(new UnityEngine.Rect(0, 0, 1280, 720), 0, 0); pixels.Apply();
+        System.IO.File.WriteAllBytes("F:/Rail Arena/Validation/HandRig/Calibration-" + (left ? "Left" : "Right") + ".png", pixels.EncodeToPNG());
+    }
+    return new { frame = UnityEngine.Time.frameCount, right = gun.GetComponent<RailArena.RailgunPresentation>().RightGrip.localRotation,
+        left = gun.GetComponent<RailArena.RailgunPresentation>().LeftGrip.localRotation };
+}
+finally
+{
+    UnityEngine.RenderTexture.active = previous; camera.targetTexture = null; target.Release();
+    UnityEngine.Object.DestroyImmediate(root); UnityEngine.Object.DestroyImmediate(target); UnityEngine.Object.DestroyImmediate(pixels);
+}

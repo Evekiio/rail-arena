@@ -72,6 +72,192 @@
       ]
     }
   ],
+  "handRig": {
+    "fingerBones": 30,
+    "weightedVertices": {
+      "LeftHand": 5989,
+      "RightHand": 5799
+    },
+    "skin": [
+      {
+        "mesh": "char1",
+        "vertices": 169701,
+        "maximumInfluences": 4,
+        "maximumWeightError": 5.21540641784668e-08,
+        "fingerGroups": {
+          "LeftHandThumb1": 1394,
+          "LeftHandThumb2": 1398,
+          "LeftHandThumb3": 996,
+          "LeftHandIndex1": 1339,
+          "LeftHandIndex2": 1573,
+          "LeftHandIndex3": 929,
+          "LeftHandMiddle1": 1619,
+          "LeftHandMiddle2": 1604,
+          "LeftHandMiddle3": 879,
+          "LeftHandRing1": 1257,
+          "LeftHandRing2": 1263,
+          "LeftHandRing3": 710,
+          "LeftHandPinky1": 510,
+          "LeftHandPinky2": 581,
+          "LeftHandPinky3": 329,
+          "RightHandThumb1": 1366,
+          "RightHandThumb2": 1342,
+          "RightHandThumb3": 804,
+          "RightHandIndex1": 1179,
+          "RightHandIndex2": 1299,
+          "RightHandIndex3": 701,
+          "RightHandMiddle1": 1549,
+          "RightHandMiddle2": 1627,
+          "RightHandMiddle3": 881,
+          "RightHandRing1": 1265,
+          "RightHandRing2": 1228,
+          "RightHandRing3": 690,
+          "RightHandPinky1": 665,
+          "RightHandPinky2": 755,
+          "RightHandPinky3": 409
+        }
+      }
+    ],
+    "rightWristLocalGuides": {
+      "Thumb": [
+        [
+          -0.027,
+          0.045,
+          -0.032
+        ],
+        [
+          -0.035,
+          0.067,
+          -0.055
+        ],
+        [
+          -0.035,
+          0.084,
+          -0.073
+        ],
+        [
+          -0.031,
+          0.095,
+          -0.082
+        ]
+      ],
+      "Index": [
+        [
+          -0.022,
+          0.101,
+          -0.003
+        ],
+        [
+          -0.024,
+          0.139,
+          -0.008
+        ],
+        [
+          -0.026,
+          0.169,
+          -0.012
+        ],
+        [
+          -0.026,
+          0.191,
+          -0.017
+        ]
+      ],
+      "Middle": [
+        [
+          0.004,
+          0.106,
+          0.017
+        ],
+        [
+          0.004,
+          0.147,
+          0.01
+        ],
+        [
+          0.001,
+          0.179,
+          0.008
+        ],
+        [
+          0,
+          0.204,
+          0.002
+        ]
+      ],
+      "Ring": [
+        [
+          0.026,
+          0.1,
+          0.029
+        ],
+        [
+          0.039,
+          0.135,
+          0.024
+        ],
+        [
+          0.048,
+          0.164,
+          0.02
+        ],
+        [
+          0.054,
+          0.182,
+          0.014
+        ]
+      ],
+      "Pinky": [
+        [
+          0.044,
+          0.085,
+          0.025
+        ],
+        [
+          0.058,
+          0.112,
+          0.03
+        ],
+        [
+          0.068,
+          0.137,
+          0.028
+        ],
+        [
+          0.073,
+          0.155,
+          0.02
+        ]
+      ]
+    },
+    "bindGripDegrees": {
+      "Thumb": [
+        0,
+        0,
+        0
+      ],
+      "Index": [
+        32,
+        35,
+        12
+      ],
+      "Middle": [
+        45,
+        50,
+        20
+      ],
+      "Ring": [
+        45,
+        50,
+        20
+      ],
+      "Pinky": [
+        50,
+        55,
+        20
+      ]
+    }
+  },
   "lods": [
     {
       "path": "F:\\Rail Arena\\RailArena\\Assets\\ThirdParty\\Grab3D\\Contender_LOD0.fbx",
@@ -83,7 +269,7 @@
     },
     {
       "path": "F:\\Rail Arena\\RailArena\\Assets\\ThirdParty\\Grab3D\\Contender_LOD2.fbx",
-      "triangles": 8358
+      "triangles": 8359
     }
   ]
 }

@@ -21,7 +21,7 @@ Quaternius's free CC0 Standard animation library supplies idle, walking, jogging
 
 Root motion is disabled. Animation does not move the character controller or change movement acceleration, damage, health, cooldowns or respawn timing. Hurtboxes follow the skeleton; their hit regions retain the same damage values. Dead bodies remain visible for their death animation while their hurtboxes and controller are disabled, then reset at the normal respawn. Cosmetic gravity and bone clearance settle the visual body onto the deck without changing the authoritative actor position.
 
-The supplied skeleton has wrist bones but no articulated finger rig. A fixed combat grip is authored in the mesh; individual finger animation is not claimed. Directional movement uses lower-body turning and backwards clips rather than a complete authored eight-direction strafe library. A separate arm-only first-person rig is now derived from this same base; see `FIRST-PERSON-ARMS.md` for generation, IK, scope and remaining hand/animation polish.
+The upstream skeleton had wrist bones only. Rail Arena now adds 30 weighted finger joints, an authored RA-01 grip profile and a subtle recoil-driven trigger/support response shared by the contender and view arms. See `HAND-ARTICULATION.md` for source and quality limits. Directional movement uses lower-body turning and backwards clips rather than a complete authored eight-direction strafe library. The arm-only first-person rig is derived from the same base; see `FIRST-PERSON-ARMS.md`.
 
 ## Validation and review
 

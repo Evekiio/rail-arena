@@ -5,6 +5,7 @@ namespace RailArena
     /// <summary>Animation observes authority; root motion never drives the gameplay controller.</summary>
     public sealed class ContenderPresentation : MonoBehaviour
     {
+        public HandArticulation Hands;
         public Animator Animator;
         public Transform Weapon;
         public Transform RightGrip;
@@ -99,6 +100,7 @@ namespace RailArena
 
         private void LateUpdate()
         {
+            if (actor != null) Hands.SetRecoil(actor.Alive ? recoil : 0);
             if (actor == null || actor.Alive) return;
             bool paused = session.Paused && !session.IsOnline;
 #if UNITY_EDITOR
@@ -120,7 +122,7 @@ namespace RailArena
         private void Hand(AvatarIKGoal hand, Transform grip)
         {
             Animator.SetIKPositionWeight(hand, 1);
-            Animator.SetIKRotationWeight(hand, .65f);
+            Animator.SetIKRotationWeight(hand, 1);
             Animator.SetIKPosition(hand, grip.position);
             Animator.SetIKRotation(hand, grip.rotation);
         }

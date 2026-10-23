@@ -29,6 +29,9 @@ namespace RailArena.Tests
                 foreach (var id in new[] { HumanBodyBones.LeftUpperArm, HumanBodyBones.LeftLowerArm, HumanBodyBones.LeftHand,
                     HumanBodyBones.RightUpperArm, HumanBodyBones.RightLowerArm, HumanBodyBones.RightHand })
                     indices.Add(Array.IndexOf(arms.Surface.bones, arms.Animator.GetBoneTransform(id)));
+                foreach (var id in new[] { HumanBodyBones.LeftHand, HumanBodyBones.RightHand })
+                    for (int i = 0; i < arms.Surface.bones.Length; i++)
+                        if (arms.Surface.bones[i].IsChildOf(arms.Animator.GetBoneTransform(id))) indices.Add(i);
                 foreach (var w in mesh.boneWeights)
                 {
                     float arm = (indices.Contains(w.boneIndex0) ? w.weight0 : 0) + (indices.Contains(w.boneIndex1) ? w.weight1 : 0) +
@@ -58,6 +61,7 @@ namespace RailArena.Tests
                     {
                         bool airborne = frame >= 8 && frame < 16;
                         float recoil = frame >= 20 ? Mathf.Max(0, 1 - (frame - 20) / 12f) : 0;
+                        arms.SetRecoil(recoil);
                         motion.Step(1f / 60, airborne ? new Vector3(12, -20, 0) : new Vector3(10, -1, 0),
                             !airborne, new Vector2(2, -1), recoil);
                         var aim = Quaternion.Euler(pose.x, pose.y, 0);
@@ -66,6 +70,10 @@ namespace RailArena.Tests
                         yield return null;
                         Assert.That(Vector3.Distance(arms.Animator.GetBoneTransform(HumanBodyBones.LeftHand).position, weapon.LeftGrip.position), Is.LessThan(.015f));
                         Assert.That(Vector3.Distance(arms.Animator.GetBoneTransform(HumanBodyBones.RightHand).position, weapon.RightGrip.position), Is.LessThan(.015f));
+                        Assert.That(Vector3.Angle(arms.Hands.Joints[6].position - arms.Animator.GetBoneTransform(HumanBodyBones.LeftHand).position,
+                            gun.transform.right), Is.LessThan(1));
+                        Assert.That(Vector3.Angle(arms.Hands.Joints[21].position - arms.Animator.GetBoneTransform(HumanBodyBones.RightHand).position,
+                            -gun.transform.right), Is.LessThan(1));
                     }
                 }
                 finally { Object.DestroyImmediate(gun); }

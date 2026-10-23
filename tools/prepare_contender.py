@@ -16,28 +16,10 @@ meshes = [o for o in bpy.data.objects if o.type == 'MESH']
 armature.animation_data_clear()
 for bone in armature.pose.bones:
     bone.matrix_basis.identity()
-# The supplied rig has wrist bones but no finger bones. Author a fixed combat grip in
-# hand-local space rather than leaving open palms floating through the railgun.
-for mesh in meshes:
-    for name in ('LeftHand', 'RightHand'):
-        group = mesh.vertex_groups.get(name)
-        if group is None:
-            continue
-        hand_world = armature.matrix_world @ armature.data.bones[name].matrix_local
-        to_hand = hand_world.inverted() @ mesh.matrix_world
-        from_hand = mesh.matrix_world.inverted() @ hand_world
-        for vertex in mesh.data.vertices:
-            if not any(w.group == group.index and w.weight > .6 for w in vertex.groups):
-                continue
-            point = to_hand @ vertex.co
-            if point.y <= .085:
-                continue
-            distance = point.y - .085
-            angle = min(1.75, distance / .12 * 1.75)
-            radius = .12 / 1.75
-            point.y = .085 + math.sin(angle) * radius
-            point.z -= radius * (1 - math.cos(angle))
-            vertex.co = from_hand @ point
+# Add original finger joints and bind the authored combat grip before LOD reduction.
+sys.path.insert(0, os.path.dirname(__file__))
+from hand_rig import articulate
+hand_report = articulate(armature, meshes)
 images = []
 for image in bpy.data.images:
     if image.type != 'IMAGE':
@@ -56,7 +38,7 @@ for material in bpy.data.materials:
              'links': [l.to_socket.name for s in n.outputs for l in s.links]}
             for n in material.node_tree.nodes if n.type == 'TEX_IMAGE' and n.image]})
 bpy.ops.wm.save_as_mainfile(filepath=os.path.join(source_dir, 'ArmoredContender.blend'))
-report = {'images': images, 'materials': material_report, 'lods': []}
+report = {'images': images, 'materials': material_report, 'handRig': hand_report, 'lods': []}
 for level, ratio in enumerate((.25, .10, .035)):
     bpy.ops.object.select_all(action='DESELECT')
     armature.select_set(True)

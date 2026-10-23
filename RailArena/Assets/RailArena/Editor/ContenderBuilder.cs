@@ -37,6 +37,9 @@ namespace RailArena.Editor
             animator.applyRootMotion = false;
             var presentation = instance.AddComponent<ContenderPresentation>();
             presentation.Animator = animator;
+            presentation.Hands = instance.AddComponent<HandArticulation>();
+            presentation.Hands.Configure(instance.transform);
+            HandGripAuthoring.Apply(presentation.Hands);
             presentation.Skins = skins;
             var bones = instance.GetComponentsInChildren<Transform>().ToDictionary(t => t.name);
             var renderers = new List<Renderer>();
@@ -57,6 +60,7 @@ namespace RailArena.Editor
                     renderer.localBounds = imported.localBounds;
                 }
                 renderer.sharedMaterial = skins[0];
+                renderer.quality = SkinQuality.Bone4;
                 renderer.updateWhenOffscreen = true;
                 renderers.Add(renderer);
                 lods[level] = new LOD(new[] { .18f, .065f, .012f }[level], new Renderer[] { renderer });

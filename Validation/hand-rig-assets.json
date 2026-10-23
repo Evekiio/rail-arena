@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "command": "command script eval",
+  "data": {
+    "command": "script eval",
+    "parameters": {
+      "code": "UnityEditor.PlayerSettings.SetPreloadedAssets(new UnityEngine.Object[]{UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.InputSystem.InputActionAsset>(\"Assets/InputSystem_Actions.inputactions\")}); UnityEditor.AssetDatabase.SaveAssets(); var a=UnityEngine.Resources.Load<UnityEngine.GameObject>(\"Characters/ViewArms\").GetComponent<RailArena.FirstPersonArms>(); return new { preloaded=UnityEditor.PlayerSettings.GetPreloadedAssets().Length, vertices=a.Surface.sharedMesh.vertexCount, triangles=a.Surface.sharedMesh.triangles.Length/3, joints=a.Hands.Joints.Length };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "preloaded": 1,
+        "vertices": 18377,
+        "triangles": 16116,
+        "joints": 30
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\Rail Arena\\RailArena"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

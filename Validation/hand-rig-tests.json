@@ -1,0 +1,560 @@
+{
+  "success": true,
+  "command": "command test status",
+  "data": {
+    "command": "test status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 4.67,
+      "summary": {
+        "total": 76,
+        "passed": 76,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.DifficultyControlsReactionAndBoundedImperfectAim(0,48,5.0f)",
+          "Status": "Passed",
+          "Duration": 0.1246477,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.DifficultyControlsReactionAndBoundedImperfectAim(1,27,2.5f)",
+          "Status": "Passed",
+          "Duration": 0.0066745,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.DifficultyControlsReactionAndBoundedImperfectAim(2,14,1.0f)",
+          "Status": "Passed",
+          "Duration": 0.0053336,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.EditedReactionAffectsNewSessionAndLaterAssetEditsDoNotChangeItsSnapshot",
+          "Status": "Passed",
+          "Duration": 0.0036175,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.InvalidBotTuningRejectsZeroIntervalsNonfiniteValuesAndUnknownDifficulty",
+          "Status": "Passed",
+          "Duration": 0.0183798,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.LowHealthChoosesRouteTowardAvailablePickup",
+          "Status": "Passed",
+          "Duration": 0.0042004,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.OcclusionStopsFireAndReappearanceRequiresFreshReaction(0,48)",
+          "Status": "Passed",
+          "Duration": 0.0074361,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.OcclusionStopsFireAndReappearanceRequiresFreshReaction(1,27)",
+          "Status": "Passed",
+          "Duration": 0.004474,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.OcclusionStopsFireAndReappearanceRequiresFreshReaction(2,14)",
+          "Status": "Passed",
+          "Duration": 0.0043516,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.CharacterTests.AllLocomotionAndAirLoopsAreMarkedToRepeat",
+          "Status": "Passed",
+          "Duration": 0.0031557,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.CharacterTests.AnimatedHurtboxesUseMetresDespiteImportedBoneScale",
+          "Status": "Passed",
+          "Duration": 0.0066611,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.CharacterTests.ContenderHasValidHumanoidLodsAndBoneFollowingHurtboxes",
+          "Status": "Passed",
+          "Duration": 0.0042334,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.CharacterTests.RetargetedLocomotionMovesFeetWithoutRootMotionAndDeathLowersHead(8.0f)",
+          "Status": "Passed",
+          "Duration": 0.0054376,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.CharacterTests.RetargetedLocomotionMovesFeetWithoutRootMotionAndDeathLowersHead(-8.0f)",
+          "Status": "Passed",
+          "Duration": 0.001995,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.CombatHudTests.LiveHudTracksCombatAndProductionKeyboardMapping",
+          "Status": "Passed",
+          "Duration": 2.0571953,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.FirstPersonArmsTests.BothWristsFollowSharedGripsThroughAimTravelLandingAndRecoil",
+          "Status": "Passed",
+          "Duration": 0.7178923,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.FirstPersonArmsTests.ThirdPersonPresentationUsesCanonicalWeaponGripMarkers",
+          "Status": "Passed",
+          "Duration": 0.0066848,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.FirstPersonArmsTests.ViewModelRetainsOnlyArmWeightedGeometryAndHasNoGameplayComponents",
+          "Status": "Passed",
+          "Duration": 0.0927411,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.FirstPersonWeaponMotionTests.ExtremeTravelAndLookStayBoundedAndSettleAtRest",
+          "Status": "Passed",
+          "Duration": 0.0098837,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.FirstPersonWeaponMotionTests.LandingUsesFallSpeedAndResetPreventsPhantomImpact",
+          "Status": "Passed",
+          "Duration": 0.003029,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.FirstPersonWeaponMotionTests.LookSwayConvergesEquallyAcrossRenderRates",
+          "Status": "Passed",
+          "Duration": 0.0004834,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.HandArticulationTests.EveryFingerJointHasNormalizedVisibleSkin(\"Characters/Contender\")",
+          "Status": "Passed",
+          "Duration": 0.2068563,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.HandArticulationTests.EveryFingerJointHasNormalizedVisibleSkin(\"Characters/ViewArms\")",
+          "Status": "Passed",
+          "Duration": 0.0471534,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.HandArticulationTests.RecoilDeformsFingersWithoutMovingWristsAndReturnsExactlyToGrip(\"Characters/Contender\")",
+          "Status": "Passed",
+          "Duration": 0.0811635,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.HandArticulationTests.RecoilDeformsFingersWithoutMovingWristsAndReturnsExactlyToGrip(\"Characters/ViewArms\")",
+          "Status": "Passed",
+          "Duration": 0.0092932,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.ConnectedPeerTimeoutDoesNotRequireAWorkingLeavePacket",
+          "Status": "Passed",
+          "Duration": 0.0724149,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.ForgedHandshakeWrongSessionAndReorderedReadyCannotChangeHostState",
+          "Status": "Passed",
+          "Duration": 0.2319853,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.HeldJumpSurvivesPacketGapAtLandingAndExpiresWithMovementGrace",
+          "Status": "Passed",
+          "Duration": 0.0052473,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.IncompatibleBuildIsRejectedAndAbsentHostTimesOut",
+          "Status": "Passed",
+          "Duration": 0.0258057,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.InputQueueDeduplicatesBoundsAndConsumesFreshMovementOncePerTick",
+          "Status": "Passed",
+          "Duration": 0.0015768,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.JitterBurstKeepsNewestMovementAndPreservesQuickFireAimTimestampAndJump",
+          "Status": "Passed",
+          "Duration": 0.0008673,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.OutboundControlsNormalizeFloatingPointOvershootAndWrappedAimWithoutRelaxingDecode",
+          "Status": "Passed",
+          "Duration": 0.0031813,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.ProtocolRejectsNonfiniteUnboundedAndUnorderedInputs",
+          "Status": "Passed",
+          "Duration": 0.0008131,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.ProtocolRoundTripsAuthoritativeSnapshotAndSurvivesGarbage",
+          "Status": "Passed",
+          "Duration": 0.0334074,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.ProtocolRoundTripsCommandsAndRejectsEveryTruncationAndTrailingBytes",
+          "Status": "Passed",
+          "Duration": 0.0078456,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.RealUdpPeersHandshakeReadyExchangeInputsSnapshotsRematchAndDisconnect",
+          "Status": "Passed",
+          "Duration": 0.1475625,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.RealUdpSocketsRejectOversizedTrafficAndCanRebindAfterDisposal",
+          "Status": "Passed",
+          "Duration": 0.0032937,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.ReleasedJumpIsNotHeldByAnAggregatedTapOrRedundantPacket",
+          "Status": "Passed",
+          "Duration": 0.0007124,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.ReplicaMatchPreservesAuthorityTimeScoresAndWinner",
+          "Status": "Passed",
+          "Duration": 0.0020497,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RailFeedbackTests.RepeatedShotsReuseFixedPoolWithoutCollidersAndResetAllEffects",
+          "Status": "Passed",
+          "Duration": 0.0161787,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RailFeedbackTests.SynthesizedCuesHaveFiniteBoundedSamplesAndFadedEndpoints(Shot)",
+          "Status": "Passed",
+          "Duration": 0.0120518,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RailFeedbackTests.SynthesizedCuesHaveFiniteBoundedSamplesAndFadedEndpoints(Hit)",
+          "Status": "Passed",
+          "Duration": 0.0013382,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RailFeedbackTests.SynthesizedCuesHaveFiniteBoundedSamplesAndFadedEndpoints(Elimination)",
+          "Status": "Passed",
+          "Duration": 0.0020082,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RailFeedbackTests.SynthesizedCuesHaveFiniteBoundedSamplesAndFadedEndpoints(Hurt)",
+          "Status": "Passed",
+          "Duration": 0.0010952,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.ReconciliationViewTests.CameraOffsetCannotCrossStaticWall",
+          "Status": "Passed",
+          "Duration": 0.0016724,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.ReconciliationViewTests.CorrectionPreservesViewWithoutMovingCorrectedActorPosition",
+          "Status": "Passed",
+          "Duration": 0.000312,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.ReconciliationViewTests.ExponentialDecayIsIndependentOfFramePartitionAndSettles",
+          "Status": "Passed",
+          "Duration": 0.0004112,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.ReconciliationViewTests.TeleportsAndExplicitLifeChangesResetCameraOffset",
+          "Status": "Passed",
+          "Duration": 0.0003019,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RewindTests.EarlierPoseCanBeHitAfterTargetMovesWithoutMovingLiveActors",
+          "Status": "Passed",
+          "Duration": 0.006035,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RewindTests.ExactlyTwelveTicksAreAllowedButFutureExpiredAndUncapturedTimesAreRejected",
+          "Status": "Passed",
+          "Duration": 0.0009353,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RewindTests.PreviousLifeCannotDamageRespawnedTargetAndNewShooterUsesCurrentOrigin",
+          "Status": "Passed",
+          "Duration": 0.0011771,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RewindTests.RotatedScaledCapsuleUsesItsRecordedGeometryAndRegion",
+          "Status": "Passed",
+          "Duration": 0.0017879,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RewindTests.StaticWorldBlocksRewoundTargets",
+          "Status": "Passed",
+          "Duration": 0.0008465,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SimulationTests.CountdownBlocksScoringAndTiedLeadersPlayNextKillSuddenDeath",
+          "Status": "Passed",
+          "Duration": 0.0015613,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SimulationTests.FiringIsAllowedOnlyAtCooldownBoundaryAndWhileAlive",
+          "Status": "Passed",
+          "Duration": 0.0002447,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SimulationTests.JumpPreservesHorizontalMomentumWhileGroundFrictionSlows",
+          "Status": "Passed",
+          "Duration": 0.0005565,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SimulationTests.LocationDamageCombinesAndNeverBecomesNegative",
+          "Status": "Passed",
+          "Duration": 0.0004762,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SimulationTests.PickupsCapHealthAndCannotResurrect",
+          "Status": "Passed",
+          "Duration": 0.0003244,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SimulationTests.PracticeIsUntimedAndVoidDeathsSubtractOne",
+          "Status": "Passed",
+          "Duration": 0.0005252,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SimulationTests.SoloPracticeAllowsOneParticipantWithoutChangingTimedMatchMinimum",
+          "Status": "Passed",
+          "Duration": 0.0007405,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SimulationTests.StrafeAccelerationCanAddSpeedWithoutClampingMomentum",
+          "Status": "Passed",
+          "Duration": 0.000474,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.ActiveMovementMismatchRemainsInBothRawAndActiveMeasurements",
+          "Status": "Passed",
+          "Duration": 0.020101,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.CodecRejectsNonpositiveLifeNumbers(0)",
+          "Status": "Passed",
+          "Duration": 0.0134157,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.CodecRejectsNonpositiveLifeNumbers(-1)",
+          "Status": "Passed",
+          "Duration": 0.0134578,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.InterpolatedLaunchCounterDrivesAirAndLandingAnimation(0,2)",
+          "Status": "Passed",
+          "Duration": 0.015181,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.InterpolatedLaunchCounterDrivesAirAndLandingAnimation(2,0)",
+          "Status": "Passed",
+          "Duration": 0.0135549,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.LocalNewLifeDiscardsOldPredictionAndViewCorrection",
+          "Status": "Passed",
+          "Duration": 0.0265602,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.LocalPresentationUsesPredictionClockWithoutAdvancingAuthorityClock",
+          "Status": "Passed",
+          "Duration": 0.0159947,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.MissedDeathSnapshotStillAdvancesLifeAndResetsPresentation",
+          "Status": "Passed",
+          "Duration": 0.013664,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.NewLivesAndRoundsSuppressStaleConfirmationCounters",
+          "Status": "Passed",
+          "Duration": 0.0142052,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.OpponentDamageConfirmsHitOnceAndDistinguishesElimination",
+          "Status": "Passed",
+          "Duration": 0.0143478,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.OwnDamageDoesNotConfirmAnOutgoingHit",
+          "Status": "Passed",
+          "Duration": 0.0132571,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.RematchRaisesViewWeaponEvenWhenLifeNumberReturnsToOne",
+          "Status": "Passed",
+          "Duration": 0.0141445,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.RemoteCooldownAndPadTimingRefreshWithoutARespawn",
+          "Status": "Passed",
+          "Duration": 0.0137549,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.RemoteRespawnSnapsToSpawnAndDiscardsPreviousLifeInterpolation",
+          "Status": "Passed",
+          "Duration": 0.0135108,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.ResultsFreezeRetainsRawCorrectionButSeparatesItFromActivePlay",
+          "Status": "Passed",
+          "Duration": 0.0134627,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\Rail Arena\\RailArena"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

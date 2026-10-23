@@ -32,6 +32,12 @@ namespace RailArena.Editor
                     if (index < 0) throw new InvalidOperationException("The source mesh lacks an arm skin bone: " + id);
                     armBones.Add(index);
                 }
+                foreach (var id in new[] { HumanBodyBones.LeftHand, HumanBodyBones.RightHand })
+                {
+                    var hand = animator.GetBoneTransform(id);
+                    for (int i = 0; i < renderer.bones.Length; i++)
+                        if (renderer.bones[i].IsChildOf(hand)) armBones.Add(i);
+                }
                 Mesh mesh = ExtractArms(renderer.sharedMesh, armBones);
                 var old = AssetDatabase.LoadAssetAtPath<Mesh>(MeshPath);
                 if (old == null) AssetDatabase.CreateAsset(mesh, MeshPath);
@@ -53,6 +59,10 @@ namespace RailArena.Editor
                 animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
                 var view = root.AddComponent<FirstPersonArms>();
                 view.Animator = animator; view.Surface = renderer;
+                renderer.quality = SkinQuality.Bone4;
+                view.Hands = root.AddComponent<HandArticulation>();
+                view.Hands.Configure(root.transform);
+                HandGripAuthoring.Apply(view.Hands);
                 // Relative to the railgun: keeps the shoulder cuts below the first-person frame.
                 root.transform.localPosition = new Vector3(-.23f, -1.65f, -.37f);
                 foreach (var part in root.GetComponentsInChildren<Transform>(true)) part.gameObject.layer = 11;

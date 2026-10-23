@@ -7,6 +7,7 @@ namespace RailArena
     {
         public Animator Animator;
         public SkinnedMeshRenderer Surface;
+        public HandArticulation Hands;
         private RailgunPresentation weapon;
 
         public static FirstPersonArms CreateOnWeapon(RailgunPresentation railgun)
@@ -26,6 +27,8 @@ namespace RailArena
             Animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
         }
 
+        public void SetRecoil(float strength) => Hands.SetRecoil(strength);
+
         private void OnAnimatorIK(int layer)
         {
             if (weapon == null) return;
@@ -40,7 +43,7 @@ namespace RailArena
         private void Hand(AvatarIKGoal hand, Transform grip)
         {
             Animator.SetIKPositionWeight(hand, 1);
-            Animator.SetIKRotationWeight(hand, .85f);
+            Animator.SetIKRotationWeight(hand, 1);
             Animator.SetIKPosition(hand, grip.position);
             Animator.SetIKRotation(hand, grip.rotation);
         }

@@ -1,0 +1,38 @@
+var gun = UnityEngine.GameObject.Find("Hand grip calibration");
+var hands = gun.GetComponentInChildren<RailArena.HandArticulation>();
+var original = UnityEngine.Resources.Load<UnityEngine.GameObject>("Characters/ViewArms").GetComponent<RailArena.HandArticulation>();
+for (int i = 0; i < 30; i++) hands.GripRotations[i] = original.GripRotations[i];
+hands.Pose(0);
+gun.GetComponent<RailArena.RailgunPresentation>().RightGrip.localPosition = new UnityEngine.Vector3(.15f, -.16f, -.08f);
+var contacts = new[] { new UnityEngine.Vector3(-.135f,-.035f,-.055f), new UnityEngine.Vector3(-.08f,-.085f,-.045f),
+    new UnityEngine.Vector3(-.08f,-.085f,-.01f), new UnityEngine.Vector3(-.08f,-.085f,.015f), new UnityEngine.Vector3(-.095f,-.09f,.038f),
+    new UnityEngine.Vector3(.07f,-.07f,-.11f), new UnityEngine.Vector3(.005f,-.105f,-.029f),
+    new UnityEngine.Vector3(-.02f,-.15f,-.145f), new UnityEngine.Vector3(-.005f,-.18f,-.14f), new UnityEngine.Vector3(.015f,-.195f,-.13f) };
+var lengths = new[] { .015f, .023f, .025f, .02f, .02f };
+var errors = new System.Collections.Generic.List<string>();
+for (int finger = 0; finger < 10; finger++)
+{
+    if (finger == 0) { errors.Add("Left support thumb retains its natural pose; no forced contact."); continue; }
+    int start = finger * 3;
+    var end = hands.Joints[start + 2];
+    var previous = (end.position - hands.Joints[start + 1].position).normalized;
+    var axis = UnityEngine.Vector3.up; float best = -1;
+    foreach (var candidate in new[] { UnityEngine.Vector3.up, -UnityEngine.Vector3.up, UnityEngine.Vector3.right, -UnityEngine.Vector3.right, UnityEngine.Vector3.forward, -UnityEngine.Vector3.forward })
+    {
+        float agreement = UnityEngine.Vector3.Dot(end.TransformDirection(candidate).normalized, previous);
+        if (agreement > best) { best = agreement; axis = candidate; }
+    }
+    var offset = axis * (lengths[finger % 5] / end.TransformVector(axis).magnitude);
+    var target = gun.transform.TransformPoint(contacts[finger]);
+    for (int iteration = 0; iteration < 60; iteration++)
+        for (int segment = 2; segment >= 0; segment--)
+        {
+            var joint = hands.Joints[start + segment];
+            var delta = UnityEngine.Quaternion.FromToRotation(end.TransformPoint(offset) - joint.position, target - joint.position);
+            joint.rotation = UnityEngine.Quaternion.RotateTowards(UnityEngine.Quaternion.identity, delta, 8) * joint.rotation;
+            joint.localRotation = UnityEngine.Quaternion.RotateTowards(hands.GripRotations[start + segment], joint.localRotation, segment == 1 ? 100 : 75);
+        }
+    errors.Add(end.name + " error=" + UnityEngine.Vector3.Distance(end.TransformPoint(offset), target));
+}
+for (int i = 0; i < 30; i++) hands.GripRotations[i] = hands.Joints[i].localRotation;
+return string.Join("\n", errors);

@@ -178,6 +178,7 @@ namespace RailArena
             }
             weapon.localPosition = FirstPersonWeaponMotion.RestPosition + weaponMotion.Offset - Vector3.forward * (recoil * RailgunPresentation.ViewRecoilTravel);
             weapon.localRotation = weaponMotion.Rotation;
+            viewArms.SetRecoil(Human.Alive && !Paused ? recoil : 0);
             weapon.gameObject.SetActive(Human.Alive && !Paused);
         }
 
