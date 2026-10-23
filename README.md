@@ -8,9 +8,9 @@ The target is immediate offline bot matches and practice, plus direct-IP two-hum
 
 Public source: [Evekiio/rail-arena](https://github.com/Evekiio/rail-arena). Tested development milestones are pushed as work progresses; a finished downloadable release is not available yet.
 
-![Standalone bot practice with combat HUD and RA-01 rail discharge](Validation/CombatHud/Practice-RailCycle.jpg)
+![Standalone bot practice with combat HUD and RA-01 rail discharge](Validation/EvaluationNative/Rail-Firing.jpg)
 
-*Actual non-development Windows player from HUD milestone 94ab8a77 during native mouse firing in three-bot practice. Later rail effects and articulated-hand previews are documented separately. Glove/cuff cleanup, richer action animation and final arena polish remain unfinished. Physical keyboard acceptance remains open; software mapping has separate live tests.*
+*Actual non-development fa2cb0af player extracted from the local evaluation ZIP, during native mouse firing in three-bot practice. The rail trace, recovery HUD and running bot kill feed are visible. Glove/cuff cleanup, richer action animation and final arena polish remain unfinished. Physical keyboard acceptance remains open; software mapping has separate live tests.*
 
 The current view rig also has original procedural run bob, look sway, landing compression, respawn raise and recoil pitch. These move the weapon and hands while preserving camera aim. See [motion details and controlled preview scope](docs/FIRST-PERSON-ARMS.md).
 
