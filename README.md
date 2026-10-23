@@ -52,9 +52,9 @@ Direct-IP duel integration is available from **ONLINE DUEL // DIRECT IP**. Host 
 
 | Evidence | Scope |
 | --- | --- |
-| 76 Editor-suite tests passing | Shared simulation, model/animation, finger skin deformation and live wrist/palm alignment, bots, networking/lifecycle, HUD/input, effects and audio signals |
+| 77 Editor-suite tests passing | Shared simulation, model/animation, finger skin deformation and live wrist/palm alignment, bots, networking/lifecycle, HUD/input, effects and audio signals |
 | 37 standalone mechanics checks passing | Accelerated real authority with actual hurtboxes; combat/pickup/respawn/match boundaries, hit/elimination feedback, solo movement/fire/respawn and mode switching |
-| Full ten-minute match and rematch on current build ba7f4cc8 | Separate clean and impaired local UDP runs; matching result tick, scores and life numbers, zero application errors; large client corrections under concurrent import/build load remain a movement-quality limitation |
+| Full ten-minute match and rematch on preceding build ba7f4cc8 | Separate clean and impaired local UDP runs; matching result tick, scores and life numbers, zero application errors; large client corrections under concurrent import/build load remain a movement-quality limitation |
 | Replicated respawn lifecycle | Version 3 snapshots reset stale input, interpolation and view state, including missed-death and rematch regressions |
 | Native mouse/settings review | Solo menu/launch, aiming/firing, sensitivity/volume save and relaunch, resolution changes and fullscreen toggle; [evidence and limits](docs/NATIVE-INPUT-REVIEW.md) |
 | Human acceptance still open | Keyboard controls and mouse feel, display-mode persistence, sound-on quality, native two-human duel, release qualification and real internet path |
@@ -83,7 +83,9 @@ flowchart LR
 
 ## Play the local build
 
-For the current local non-development playtest, launch `Builds/HandPlaytest/RailArena.exe`. Follow the [build and play guide](docs/BUILD-AND-PLAY.md) to open the project, make your own Windows build and test solo or with bots. `Builds/Windows/RailArena.exe` remains the development player used by automated runners. These are unfinished local builds, not downloadable releases.
+Start with the [15–20 minute evaluation guide](docs/EVALUATION.md), including current progress, known quality gaps and the goals to assess.
+
+For the current local non-development playtest, launch `Builds/Evaluation/RailArena.exe`. Follow the [build and play guide](docs/BUILD-AND-PLAY.md) to open the project, make your own Windows build and test solo or with bots. `Builds/Windows/RailArena.exe` remains the development player used by automated runners. These are unfinished local builds, not downloadable releases.
 
 Choose **OFFLINE BOT MATCH** or **PRACTICE**. Set bot count, difficulty and target behavior before starting. During a session, press Escape to pause; changing the configuration and choosing **RESTART SESSION** applies it. Native keyboard acceptance is still open as documented above.
 

@@ -195,6 +195,24 @@ namespace RailArena.Tests
         }
 
         [Test]
+        public void CatchUpPhysicsAppliesAvailableAuthorityBeforePredicting()
+        {
+            using var receiver = new System.Net.Sockets.UdpClient(0);
+            var endpoint = (IPEndPoint)receiver.Client.LocalEndPoint;
+            var peer = DuelLink.Join(new IPEndPoint(IPAddress.Loopback, endpoint.Port), 123);
+            typeof(ArenaSession).GetField("link", PrivateInstance).SetValue(session, peer);
+            typeof(DuelLink).GetProperty(nameof(DuelLink.State)).SetValue(peer, DuelLinkState.Connected);
+            typeof(DuelLink).GetProperty(nameof(DuelLink.Round)).SetValue(peer, 1);
+            typeof(DuelLink).GetProperty(nameof(DuelLink.LatestSnapshot)).SetValue(peer, State(1, 230, 1, 1));
+
+            typeof(ArenaSession).GetMethod("OnlineFixedUpdate", PrivateInstance).Invoke(session, null);
+
+            Assert.That(session.Match.Tick, Is.EqualTo(230), "Catch-up must not wait for the next render Update to apply authority.");
+            Assert.That(session.LocalSimulationTick, Is.EqualTo(231));
+            Assert.That(session.PendingInputs, Is.EqualTo(1));
+        }
+
+        [Test]
         public void OpponentDamageConfirmsHitOnceAndDistinguishesElimination()
         {
             var state = State(1, 203, 1, 1);

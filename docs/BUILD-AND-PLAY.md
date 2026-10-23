@@ -4,7 +4,7 @@ This is the stable local playtest handoff. Offline solo and bot play are ready f
 
 ## Play now on this PC
 
-Launch `F:\Rail Arena\Builds\HandPlaytest\RailArena.exe` for the non-development player. Keep its entire folder together; the EXE depends on the adjacent data folder and DLLs. No account, server or internet connection is needed for offline play.
+Launch `F:\Rail Arena\Builds\Evaluation\RailArena.exe` for the non-development player. Keep its entire folder together; the EXE depends on the adjacent data folder and DLLs. No account, server or internet connection is needed for offline play.
 
 1. Choose **PRACTICE**. Set **BOTS** to **0 // SOLO** for movement testing, or choose 1–7 bots and a difficulty for combat.
 2. Start untimed practice. Use WASD to move, mouse to aim, left mouse to fire, Space to jump/keep hopping, Tab for scores and Escape for pause/settings.
@@ -12,7 +12,7 @@ Launch `F:\Rail Arena\Builds\HandPlaytest\RailArena.exe` for the non-development
 4. With bots, test head/body/limb hits, health pickups, deaths and respawns. Try stationary and strafing target scenarios before normal combat.
 5. Use **OFFLINE BOT MATCH** for the timed match and results flow. The starting countdown lasts three seconds; rail recovery is 1.5 seconds.
 
-The development player at `Builds/Windows/RailArena.exe` is the version used by automated validation. Both local handoff players use fingerprint `ba7f4cc8ae51fe48c3e349a3124c11ab73e6a464d76b76f6d7e052dc4a276dae`.
+The development player at `Builds/Windows/RailArena.exe` is the version used by automated validation. Both local handoff players use fingerprint `fa2cb0af271399bb89d693dc5768b378a1aa832c50f6720cf21953329edb7bc4`.
 
 ## Open and build the editable project
 
@@ -51,7 +51,7 @@ These exercise actual standalone authority. They do not establish physical keybo
 
 - Character fingers and weapon grips are articulated, but glove/cuff seams, some intersections and richer action animation still need polish. The unfinished sleeve experiment is preserved locally under ignored `ArtSource/Candidates/ArmLiner-Handoff`, outside the shipping project.
 - Automated mechanics, offline combat and local simulated-network duels have passed. Physical keyboard acceptance, movement feel, sound-on review and native two-human host-to-rematch acceptance remain for human testing.
-- A different-internet-connection duel has not been verified. The current development build has full ten-minute local match/rematch coverage, clean and impaired, with large client corrections under concurrent import/build load. This does not establish smooth movement or native human interaction.
+- A different-internet-connection duel has not been verified. The preceding ba7f4cc8 build has full ten-minute local match/rematch coverage, clean and impaired, with large client corrections under concurrent import/build load. The current fa2cb0af build adds a tested receive-before-physics fix and has a 60-second impaired-duel regression. This does not establish smooth movement or native human interaction.
 - This is a playable development checkpoint, not a finished release or final visual-quality signoff.
 
 If something fails, record the mode, bot count/difficulty, steps, expected result and actual result. The normal Windows player log is `%USERPROFILE%\AppData\LocalLow\Evekiio\Rail Arena\Player.log`; check the company/product names in Project Settings if you change them.

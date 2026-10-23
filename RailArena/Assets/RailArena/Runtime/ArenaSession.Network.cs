@@ -128,7 +128,10 @@ namespace RailArena
 
         private void OnlineFixedUpdate()
         {
-            if (link.State != DuelLinkState.Connected) return;
+            // Unity may run several catch-up physics steps before the next Update.
+            // Receive authority and controls before simulating any of those steps.
+            UpdateNetwork();
+            if (link == null || link.State != DuelLinkState.Connected) return;
             if (link.IsHost)
             {
                 if ((link.Round == 0 || Match.Phase == MatchPhase.Results) && link.LocalReady && link.RemoteReady)

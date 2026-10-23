@@ -2,7 +2,9 @@
 
 This is an interim audit against `OBJECTIVE.md`, not a completion claim. A passing smoke test proves only its recorded conditions. Historical reports identify their build fingerprint; they do not automatically certify a newer build.
 
-Latest presentation milestone: build `ba7f4cc8` passes 76 Editor-suite tests, 37 standalone mechanics checks, a seven-bot smoke and an impaired UDP smoke. Added finger articulation and a fitted grip have skinned-deformation, live wrist/palm-alignment and controlled animation/closeup evidence. Glove/cuff surface defects remain visible. Native mouse review of preceding HUD build `94ab8a77` observed ready, recovery and respawn states; later native effect review stopped at a firewall prompt. Physical keyboard, sound-on, creative quality, final-build full-match and internet acceptance remain open. See `HAND-ARTICULATION.md` and `VALIDATION.md`.
+Latest evaluation checkpoint: `fa2cb0af` passes 77 Editor tests, 37 mechanics checks, seven-bot smoke and impaired-duel smoke after receiving network state before catch-up physics. It has not repeated the full match/rematch on this runtime change. See `EVALUATION.md` for the user review path.
+
+Preceding presentation milestone: build `ba7f4cc8` passes 76 Editor-suite tests, 37 standalone mechanics checks, a seven-bot smoke and an impaired UDP smoke. Added finger articulation and a fitted grip have skinned-deformation, live wrist/palm-alignment and controlled animation/closeup evidence. Glove/cuff surface defects remain visible. Native mouse review of preceding HUD build `94ab8a77` observed ready, recovery and respawn states; later native effect review stopped at a firewall prompt. Physical keyboard, sound-on, creative quality, final-build full-match and internet acceptance remain open. See `HAND-ARTICULATION.md` and `VALIDATION.md`.
 
 | Requirement | Current evidence | Remaining acceptance |
 | --- | --- | --- |
