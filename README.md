@@ -83,7 +83,7 @@ flowchart LR
 
 ## Play the local build
 
-For the local non-development playtest, launch `Builds/NativeReviewPlayer/RailArena.exe`; its diagnostic marker has been removed. `Builds/Windows/RailArena.exe` remains the development player used by automated runners. These are unfinished local builds, not downloadable releases.
+For the current local non-development playtest, launch `Builds/HandPlaytest/RailArena.exe`. Follow the [build and play guide](docs/BUILD-AND-PLAY.md) to open the project, make your own Windows build and test solo or with bots. `Builds/Windows/RailArena.exe` remains the development player used by automated runners. These are unfinished local builds, not downloadable releases.
 
 Choose **OFFLINE BOT MATCH** or **PRACTICE**. Set bot count, difficulty and target behavior before starting. During a session, press Escape to pause; changing the configuration and choosing **RESTART SESSION** applies it. Native keyboard acceptance is still open as documented above.
 
@@ -116,7 +116,7 @@ The same runner accepts `-Duration 600 -Difficulty 0 -Bots 7` for a ten-minute e
 
 Bot reaction, aim and decision profiles are editable in `Assets/Resources/BotTuning.asset`; restart the session to apply changes. See [bot tuning](docs/BOT-TUNING.md) for units, preserved defaults and validation.
 
-Run `tools/Test-Mechanics.ps1` for 35 accelerated standalone authority checks covering actual hurtbox damage, held-fire cooldowns, pickups, respawns, void scoring, match clocks, sudden death, untimed practice and solo-to-bot mode switching. See [scenario scope and the bone-scale regression it discovered](docs/MECHANICS-VALIDATION.md). These checks do not substitute for native playtesting or real-time multiplayer.
+Run `tools/Test-Mechanics.ps1` for 37 accelerated standalone authority checks covering actual hurtbox damage, held-fire cooldowns, pickups, respawns, void scoring, match clocks, sudden death, untimed practice and solo-to-bot mode switching. See [scenario scope and the bone-scale regression it discovered](docs/MECHANICS-VALIDATION.md). These checks do not substitute for native playtesting or real-time multiplayer.
 
 Build the current saved scene through the running pinned Editor:
 

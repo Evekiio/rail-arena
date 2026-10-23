@@ -229,3 +229,11 @@ Machine: Intel Core i7-8700K, NVIDIA GeForce RTX 2080, approximately 64 GB syste
 - Portfolio-ready README/screenshots and a downloadable Windows release. Public source publication is verified at `https://github.com/Evekiio/rail-arena`; the initial upload included all commits through `914fcd2` and 22 LFS objects (105 MB). See `Validation/github-publication.json` and the development delivery policy.
 
 Repeat the current smoke/soak with `tools/Test-Offline.ps1`. Stationary and moving target modes can also be selected from the main or pause menu and applied by starting/restarting a session. No completion claim should be based on this milestone.
+
+### Local user playtest handoff (2026-10-22)
+
+The project is restored to the tested articulated-hand baseline, fingerprint `ba7f4cc8ae51fe48c3e349a3124c11ab73e6a464d76b76f6d7e052dc4a276dae`. Editor recompilation completed without errors, and the restored preloaded input asset produces the same source fingerprint as both supplied Windows players. No gameplay changes are introduced by this handoff.
+
+Fresh standalone regression: [37 mechanics checks](../Validation/handoff-mechanics.json) passed with zero errors. The [45-second seven-bot medium smoke](../Validation/handoff-offline.json) passed with 191 shots, 21 deaths, 2 pickups, 57 pad launches, zero exceptions and zero void deaths. Hidden-window timings are diagnostic, not visible gameplay performance acceptance. Earlier 76-test Editor and impaired-duel evidence remains baseline evidence; those suites were not rerun for this documentation-only handoff.
+
+Use [Build and play](BUILD-AND-PLAY.md) for the current non-development player, exact project opening/build instructions and a solo/bot playtest sequence. The unsuccessful sleeve candidate is preserved locally outside Assets and excluded from this build. Physical keyboard/mouse feel, sound-on quality, final visual polish, native two-human interaction and a different internet path remain unaccepted. This checkpoint enables user testing and does not close the full game objective.
