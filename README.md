@@ -12,7 +12,15 @@ Rail Arena is a Windows game and AI engineering portfolio project by **Sanders R
 
 > **Playable development project.** Offline practice, bot matches and direct-IP duel integration are implemented. Final presentation, human playtesting and internet multiplayer acceptance remain in progress. There is no finished downloadable release yet. The banner and character artwork are concept references.
 
+## Approved design / next production milestone
+
+The [design lock v1](docs/DESIGN.md) sets the next target: four contenders offline, two-human online duels, a 0.6-second semi-auto rifle, 75/40/30 location damage, five-minute or 20-kill matches, slow partial regeneration and one fixed portal pair. **These are approved requirements, not claims about the existing builds.**
+
+The [design review package](ArtSource/Original/Design-v1/README.md) contains the shared headless Blender greybox, matching views, new concept sheets and a per-asset register. Detailed modeling requires creator approval; runtime migration and playtesting follow the [implementation gates](docs/DESIGN-IMPLEMENTATION.md). Existing gameplay summaries below describe prior milestones where they differ.
+
 ## The game
+
+The experience below describes the approved design target. Existing builds still use earlier rules while migration is pending.
 
 Aim is more interesting when the target shoots back.
 
@@ -24,21 +32,21 @@ The design draws on Quake III Arena's movement and Unreal Tournament's arena rea
 | --- | --- |
 | **Solo practice** | Explore the arena, learn routes and work on movement with unlimited respawns and no opponents. |
 | **Target practice** | Use stationary, moving or combat bot behavior to isolate precision or practice under pressure. |
-| **Bot matches** | Face 1–7 bots across three difficulty levels in timed matches with scoring, results and restart. |
+| **Bot matches** | Approved target: face 1–3 distinct bots across three difficulty levels, with scoring, results and restart. |
 | **Direct-IP duel** | Host or join a two-human match, ready up, compete and rematch. Integration is implemented; full human and remote-network acceptance is still open. |
 
 ### Precision with consequences
 
-- **Make the shot count.** Unlimited ammunition, a 1.5-second rail cycle and location-based damage: 100 to the head, 50 to the body, 34 to a limb.
+- **Make the shot count.** Approved target: unlimited ammunition, one shot per click, a 0.6-second rail cycle and 75/40/30 head/body/limb damage.
 - **Keep moving.** Ground acceleration, air control and momentum preservation support a movement-driven practice loop, without sprint or stamina.
 - **Play the arena.** Ramps, gaps, four jump pads and contested health pickups create routes and decisions beyond holding an angle.
-- **Stay in the loop.** Untimed practice supports repetition; ten-minute matches add a countdown, scoreboard, results and tied-leader sudden death.
+- **Stay in the loop.** Untimed practice supports repetition; five-minute or 20-kill matches add a countdown, scoreboard, results and tied-leader sudden death.
 
 The goal is enjoyable, repeatable practice inside a real game. Claims about measurable aim improvement require player studies; this project does not yet establish training outcomes.
 
 ### A complete game with a deliberate boundary
 
-The first-version target is **one polished original arena, one satisfying railgun, offline practice and bot combat, and a complete two-human direct-IP duel loop**. Responsive controls, readable feedback, dependable shutdown and a clean path from launch to rematch are part of that target.
+The first-version target is **one polished original arena, one satisfying railgun, offline practice and bot combat with four total contenders, one fixed portal pair, and a complete two-human direct-IP duel loop**. Responsive controls, readable feedback, dependable shutdown and a clean path from launch to rematch are part of that target.
 
 Cloud accounts, matchmaking services, progression economies, monetization, extra weapons, spectators and online bots are outside this version's scope. See the [full gameplay and completion contract](docs/OBJECTIVE.md).
 
