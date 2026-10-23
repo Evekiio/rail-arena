@@ -1,0 +1,148 @@
+{
+  "version": 1,
+  "purpose": "Expanded modeling concept references for four Rail Arena characters",
+  "status": "review candidate; new unseen-surface extensions await creator approval",
+  "generationTool": "built-in image_gen.imagegen",
+  "approvedSource": {
+    "file": "Approved-Concept.png",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1944898,
+    "sha256": "d22f6121ed9c98b39bdb66f8023c841b14f19e049bf93d5a47204735fa1ee92d"
+  },
+  "characters": [
+    "Player",
+    "Bot01",
+    "Bot02",
+    "Bot03"
+  ],
+  "coverage": {
+    "sheets": 16,
+    "bodyTurnaroundViews": 32,
+    "bodyAxialViews": 8,
+    "largeHeadInspections": 24,
+    "equipmentDetailSheets": 4
+  },
+  "imageValidation": "PNG signatures, every chunk CRC, IDAT decompression, native dimensions and SHA-256",
+  "visualReview": "See Visual-Review.json; qualitative concept consistency, not calibrated 3D registration",
+  "exactSharedMeshProjection": false,
+  "gameAssetsModified": false,
+  "poleGuides": "Headless Blender orthographic top/bottom projections; guides constrain camera/occlusion, not final appearance",
+  "selectedSheets": [
+    {
+      "file": "Player-Turnaround.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1855952,
+      "sha256": "e16dd75d616580512165b02487175d44bb7289d77625a8feb00e55f2fbf32255"
+    },
+    {
+      "file": "Player-Head.png",
+      "width": 1312,
+      "height": 1199,
+      "bytes": 1889522,
+      "sha256": "8f61e078868ec485d5c8dda634202fcb325a2a83d620b6d6b9f24a09f9bd2dd3"
+    },
+    {
+      "file": "Player-Details.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2069413,
+      "sha256": "2dddd9fa103285196ab5e4964780dc8801bd1fc5601d09784ee075f65bc9af83"
+    },
+    {
+      "file": "Player-Axial.png",
+      "width": 1717,
+      "height": 916,
+      "bytes": 1797765,
+      "sha256": "7e8f13271aaa3cd1b0d543b88a522ef0c7429b7693c948baf84aa2062501a12a"
+    },
+    {
+      "file": "Bot01-Turnaround.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1772155,
+      "sha256": "fb27e76c9b7ffa78ee5451b6d05d2b676eae92e54b8f99142cb826610abb4f76"
+    },
+    {
+      "file": "Bot01-Head.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1973479,
+      "sha256": "952e131763c7a57758d01ff46e6d61b292a55381a38fcf41d39d64856520dda8"
+    },
+    {
+      "file": "Bot01-Details.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2109112,
+      "sha256": "6f69f1c77007d49e37a4fbabec1a4fee05d57181160180512cb4b68037becccc"
+    },
+    {
+      "file": "Bot01-Axial.png",
+      "width": 1717,
+      "height": 916,
+      "bytes": 1749289,
+      "sha256": "a8f8ec67c7760d3dd260606dd1bdec7ae5f0fecf2a0fa9d006a5ccbff1353d1d"
+    },
+    {
+      "file": "Bot02-Turnaround.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1899693,
+      "sha256": "aa8311f92ed722f97c9e4185bb3af7d3481815f8011a6cf8e1a951920b07856b"
+    },
+    {
+      "file": "Bot02-Head.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2185035,
+      "sha256": "e1dfe40597f719ca9e1f3671dbdf7eeb1727d8c3bb71df21bd97832db0db9d14"
+    },
+    {
+      "file": "Bot02-Details.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2270946,
+      "sha256": "88b56d71711662320e96cc099b2c1c67f4adbe59204cb4c0bc8b0c69a3abb1f0"
+    },
+    {
+      "file": "Bot02-Axial.png",
+      "width": 1918,
+      "height": 820,
+      "bytes": 1831737,
+      "sha256": "9f879e7ac73120d8d75c02d28f9965a407c16fcb4a3d6b7d7ae83a8748707597"
+    },
+    {
+      "file": "Bot03-Turnaround.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1874131,
+      "sha256": "3be379dfeb9e9aa125e7fca163869c92a024468a72ff9e37564b24f509f3eec4"
+    },
+    {
+      "file": "Bot03-Head.png",
+      "width": 1312,
+      "height": 1199,
+      "bytes": 1945480,
+      "sha256": "84a799ff51e24795ba993712f04552e68d853f6fdbaeb5cfa42bb353cb093ad2"
+    },
+    {
+      "file": "Bot03-Details.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2095501,
+      "sha256": "1dd033e4fabbb97bdd19ea9c56ba246b22c98911bc9829d7487c31e6b8dcdaa5"
+    },
+    {
+      "file": "Bot03-Axial.png",
+      "width": 1717,
+      "height": 916,
+      "bytes": 1800125,
+      "sha256": "82190ec73639d8563ac294dc06ec9f1329e9b33347162b7735abf599d5ec0191"
+    }
+  ],
+  "excluded": [
+    "All files outside Final; especially Axial-Rejected-Perspective.png"
+  ]
+}

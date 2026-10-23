@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rail Arena | Character references v1</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#171c22;color:#eef1f3;font:16px/1.5 system-ui,sans-serif}
+header,nav,main,footer{max-width:1500px;margin:auto;padding:14px 24px}h1{font-size:28px;margin:0}
+header p{color:#b8c3cd;margin:4px 0}nav{display:flex;gap:10px;flex-wrap:wrap;padding-top:0}
+button,a{font:inherit}button{border:1px solid #5c6b78;background:#252f39;color:#e9eef3;border-radius:6px;padding:8px 18px;cursor:pointer}
+button[aria-pressed=true]{background:#a5d9df;color:#14232a;border-color:#a5d9df}button:focus-visible,a:focus-visible{outline:3px solid #efbd76;outline-offset:4px}
+a{color:#a5d9df}main{padding-top:0}figure{margin:0;background:#c9c9c7;border-radius:8px;overflow:hidden}
+figure a{display:block}img{display:block;max-width:100%;max-height:calc(100vh - 300px);width:auto;height:auto;margin:auto;object-fit:contain}
+figcaption{padding:10px 14px;background:#252f39;color:#d3dde5;font-size:14px}footer{color:#b8c3cd;font-size:14px}
+.links{display:flex;gap:20px;flex-wrap:wrap}.badge{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#efbd76}
+@media(max-width:600px){header,nav,main,footer{padding-left:12px;padding-right:12px}h1{font-size:22px}button{padding:7px 12px}img{max-height:none}}
+</style>
+<header><span class="badge">Design references v1 · Review candidate</span><h1>Rail Arena / Contenders</h1>
+<p>Four characters. Ten body directions each, larger head studies and construction details.</p></header>
+<nav aria-label="Character" id="characters"></nav>
+<nav aria-label="Reference sheet" id="sheets"></nav>
+<main><figure><a id="full" target="_blank" rel="noopener"><img id="sheet" alt=""></a><figcaption id="caption"></figcaption></figure></main>
+<footer><div class="links"><a href="MODELING-GUIDE.md">Modeling guide and fixed side details</a><a href="Approved-Concept.png" target="_blank" rel="noopener">Original approved concept</a><a href="manifest.json">File manifest</a><a href="PromptSet.json">Prompts and provenance</a></div>
+<p>Click the sheet for its full native image. These are concept illustrations; high/low and under-jaw inspections are not calibrated camera projections. New unseen-surface details remain proposed until reviewed.</p>
+<noscript><p>JavaScript is disabled. Open a sheet directly:</p><ul><li><a href="Player-Turnaround.png">Player-Turnaround.png</a></li><li><a href="Player-Head.png">Player-Head.png</a></li><li><a href="Player-Details.png">Player-Details.png</a></li><li><a href="Player-Axial.png">Player-Axial.png</a></li><li><a href="Bot01-Turnaround.png">Bot01-Turnaround.png</a></li><li><a href="Bot01-Head.png">Bot01-Head.png</a></li><li><a href="Bot01-Details.png">Bot01-Details.png</a></li><li><a href="Bot01-Axial.png">Bot01-Axial.png</a></li><li><a href="Bot02-Turnaround.png">Bot02-Turnaround.png</a></li><li><a href="Bot02-Head.png">Bot02-Head.png</a></li><li><a href="Bot02-Details.png">Bot02-Details.png</a></li><li><a href="Bot02-Axial.png">Bot02-Axial.png</a></li><li><a href="Bot03-Turnaround.png">Bot03-Turnaround.png</a></li><li><a href="Bot03-Head.png">Bot03-Head.png</a></li><li><a href="Bot03-Details.png">Bot03-Details.png</a></li><li><a href="Bot03-Axial.png">Bot03-Axial.png</a></li></ul></noscript></footer>
+<script>
+const names={"Player": "Player", "Bot01": "Bot 01", "Bot02": "Bot 02", "Bot03": "Bot 03"};let character='Player',kind='Turnaround';
+const types={Turnaround:'Body · 8 views',Head:'Head · 6 views',Details:'Equipment and details',Axial:'Top / bottom'};
+function draw(){
+ const file=character+'-'+kind+'.png';document.getElementById('sheet').src=file;
+ document.getElementById('sheet').alt=names[character]+' — '+types[kind];
+ document.getElementById('full').href=file;
+ document.getElementById('caption').textContent=names[character]+' / '+types[kind]+' · '+file;
+ document.querySelectorAll('#characters button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.key===character));
+ document.querySelectorAll('#sheets button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.key===kind));
+}
+function buttons(id,items,select){for(const [key,label] of Object.entries(items)){
+ const b=document.createElement('button');b.type='button';b.dataset.key=key;b.textContent=label;
+ b.onclick=()=>{select(key);draw()};document.getElementById(id).appendChild(b);
+}}
+buttons('characters',names,k=>character=k);buttons('sheets',types,k=>kind=k);draw();
+</script></html>
