@@ -1,4 +1,10 @@
+![Rail Arena logo and four contender concepts in a stylized arena](docs/branding/rail-arena-banner.png)
+
+*Concept brand art. The gameplay capture below shows a separate development milestone.*
+
 # Rail Arena
+
+[Play and build](docs/BUILD-AND-PLAY.md) · [Character references](docs/CHARACTER-REFERENCES.md) · [Brand kit](docs/branding/README.md) · [Validation](docs/VALIDATION.md)
 
 An original railgun arena shooter for Windows, inspired by Quake III Arena's movement and Unreal Tournament's readable arenas and bot combat.
 
@@ -19,6 +25,21 @@ The [combat HUD](docs/COMBAT-HUD.md) now separates health, score/speed, rail rec
 [Combat feedback](docs/COMBAT-FEEDBACK.md) adds pooled rail core/halo, muzzle and impact effects, authoritative hit/elimination markers, damage edges and four original audio cues with editable synthesis source and WAV review exports.
 
 [Articulated hands](docs/HAND-ARTICULATION.md) add 30 weighted finger joints, an editable fitted grip profile and a subtle trigger/support response for first- and third-person models. The controlled motion preview and contact closeups document progress and remaining surface defects.
+
+## Character references
+
+The approved visual direction is high-detail, low-poly sci-fi armor with distinct faces, hair and readable color palettes. The expanded pack provides **four sheets per character**: eight body directions, larger head studies, equipment details, and guided top/bottom concepts.
+
+![Approved player and three bot character concepts](ArtSource/Original/StylizedContenders/References-v1/Final/Approved-Concept.png)
+
+| Character | Body · 8 views | Head · 6 studies | Equipment details | Top / bottom |
+| --- | --- | --- | --- | --- |
+| Player · ivory / cyan | [Turnaround](ArtSource/Original/StylizedContenders/References-v1/Final/Player-Turnaround.png) | [Head](ArtSource/Original/StylizedContenders/References-v1/Final/Player-Head.png) | [Details](ArtSource/Original/StylizedContenders/References-v1/Final/Player-Details.png) | [Top / bottom](ArtSource/Original/StylizedContenders/References-v1/Final/Player-Axial.png) |
+| Bot 01 · terracotta / amber | [Turnaround](ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Turnaround.png) | [Head](ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Head.png) | [Details](ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Details.png) | [Top / bottom](ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Axial.png) |
+| Bot 02 · slate / ivory | [Turnaround](ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Turnaround.png) | [Head](ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Head.png) | [Details](ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Details.png) | [Top / bottom](ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Axial.png) |
+| Bot 03 · plum / copper | [Turnaround](ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Turnaround.png) | [Head](ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Head.png) | [Details](ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Details.png) | [Top / bottom](ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Axial.png) |
+
+[Browse all sixteen sheets and the modeling notes](docs/CHARACTER-REFERENCES.md). These are concept/modeling references; the new hidden-surface details remain review candidates. Exact geometric consistency and final model quality must be checked on the shared 3D masters. Runtime art can differ while production continues.
 
 ## Project
 

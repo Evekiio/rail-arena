@@ -1,0 +1,73 @@
+{
+  "reviewType": "Visual inspection of generated images in the conversation, followed by file-integrity verification",
+  "scope": "Sixteen selected concept reference sheets for Player, Bot01, Bot02 and Bot03",
+  "requirements": [
+    {
+      "requirement": "All four approved characters have separate references",
+      "evidence": [
+        "Player-Turnaround.png",
+        "Bot01-Turnaround.png",
+        "Bot02-Turnaround.png",
+        "Bot03-Turnaround.png"
+      ],
+      "result": "covered"
+    },
+    {
+      "requirement": "Body reference coverage around 360 degrees",
+      "evidence": "Eight labeled directions per character: front, front-right, right, back-right, back, back-left, left, front-left",
+      "result": "visually checked; duplicated and reversed directions corrected"
+    },
+    {
+      "requirement": "Additional upper/lower and fine-detail coverage",
+      "evidence": "Four Head sheets, four Details sheets and four guided Axial sheets: crown/under-jaw, high/low body, full-body top/bottom, glove palm/back, boot outer/inner/top/sole, chest/back and waist front/back",
+      "result": "covered as concept inspections with camera-guided poles; not calibrated final shared-mesh projections"
+    },
+    {
+      "requirement": "Approved identities, style and major costume features preserved",
+      "evidence": "Compared against Approved-Concept.png and cross-checked head/detail sheets against each character turnaround",
+      "result": "qualitatively reviewed; new unseen surfaces proposed for creator review"
+    },
+    {
+      "requirement": "Anatomical-side continuity",
+      "evidence": "Bot01 single right-thigh holster; Bot03 right locs/left cropped temple and right long/left copper-edged short thigh panel; player outer/inner right-boot distinction",
+      "result": "visually reviewed; fixed side rules recorded in MODELING-GUIDE.md"
+    },
+    {
+      "requirement": "Usable saved project artifacts",
+      "evidence": "Final PNGs, offline viewer, modeling guide, prompts, manifest and verified ZIP",
+      "result": "file validation performed by tools/package_contender_references.py"
+    },
+    {
+      "requirement": "Headless work and unchanged runtime assets",
+      "evidence": "Image generation, filesystem packaging and Blender background orthographic-guide rendering; no visible Blender/Unity/editor/player/browser windows launched for this reference task",
+      "result": "met"
+    }
+  ],
+  "corrections": [
+    "Bot01 front-left figure changed to the opposite cheek/direction; near-side left thigh kept free of a second holster; bottom-right figure scale aligned.",
+    "Bot03 body right/left profiles swapped into correct cells; front-right quarter direction corrected; fixed anatomical side of locs/cropped temple retained.",
+    "Bot03 large left-head view changed from two-eye three-quarter portrait to one-eye left profile.",
+    "Player inner right boot redrawn from the opposite side; BODY TOP/BOTTOM detail labels replaced with HIGH/LOW ANGLE to match actual views.",
+    "Selected full-body axial sheets follow headless true-pole camera guides. Corrected rough-guide shoulder interiors, underside palms, side tags, Bot01/Bot03 sole orientation and Bot02 accidental player-style ivory tread inserts."
+  ],
+  "excludedAttempts": [
+    {
+      "file": "../Axial-Rejected-Perspective.png",
+      "reason": "Not true pole projections; perspective/pose and tread drift. Excluded from selected images, viewer and ZIP."
+    },
+    {
+      "file": "all other PNGs outside Final",
+      "reason": "Generation inputs/intermediate corrections, not alternate selected designs."
+    }
+  ],
+  "limits": [
+    "These are independent generated concept drawings, not renders of one canonical 3D mesh. They do not prove exact geometric or pixel registration.",
+    "Newly illustrated hidden backs/soles/palms/underside transitions are design extensions and are not creator-approved yet.",
+    "Exact orthographic geometry, fixed physical dimensions and perfect final character quality require subsequent shared-mesh modeling and rendered verification."
+  ],
+  "approval": {
+    "originalConcept": "creator-approved",
+    "expandedReferences": "review candidate",
+    "finishedModels": "not assessed in this reference task"
+  }
+}
