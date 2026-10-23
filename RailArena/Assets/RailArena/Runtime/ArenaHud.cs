@@ -80,6 +80,7 @@ namespace RailArena
                 { scenario=(TargetScenario)(((int)scenario+1)%3); RefreshMenu(); },ref setupY,minX:.53f,maxX:.94f);
             }
             Button("SETTINGS", Settings, ref y);
+            if(!results)Button("HOW TO PLAY", QuickStart, ref y);
             if (Session.Running) Button("MAIN MENU", Session.MainMenu, ref y);
             Button("QUIT", Session.QuitGame, ref y);
             if(results)
@@ -91,7 +92,7 @@ namespace RailArena
             Text(menu.transform,"Controls",Session.IsOnline ? "W A S D  MOVE     SPACE  JUMP\nLEFT CLICK  FIRE     HOLD RIGHT  1.5x ZOOM\nESC  PAUSE     TAB  SCOREBOARD" :
                 "0 BOTS = SOLO / ADD BOTS FOR TARGET DRILLS\nBOT MATCHES ALWAYS USE COMBAT AI\n\nW A S D  MOVE     SPACE  JUMP\nLEFT CLICK  FIRE     HOLD RIGHT  1.5x ZOOM\nESC  PAUSE     TAB  SCOREBOARD",21,
                 new Vector2(.53f,.13f),new Vector2(.94f,Session.IsOnline ? .64f : .34f));
-            if (!Session.IsOnline) Text(menu.transform,"Weapon help","ONE RIFLE. KEEP MOVING.\nUnlimited energy / 0.6 second recovery\nHEAD 100   /   BODY 50   /   LIMB 34",22,
+            if (!Session.IsOnline) Text(menu.transform,"Weapon help",WeaponSummary,22,
                 new Vector2(.095f,.16f),new Vector2(.46f,.29f));
             Text(menu.transform, "Version", "IN DEVELOPMENT  //  OFFLINE / DIRECT-IP PLAYTEST", 18,
                 new Vector2(.095f, .035f), new Vector2(.9f, .085f)).color = new Color(.55f, .63f, .7f);
