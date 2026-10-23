@@ -10,7 +10,7 @@ Existing normal and zoom sensitivity preference keys are retained. If a player h
 
 The two-column settings layout separates aim/camera from audio/display. Sliders show the selected numeric value, a filled track and inset handle travel. Invert Y updates its label without rebuilding the settings controls.
 
-The current settings header also links to [reticle appearance](RETICLE-SETTINGS.md). The linked settings images have been refreshed for that entry point; the qualification reports below retain the original aim-settings checkpoint. Current reticle tests and build evidence live in `Validation/Reticle`.
+The current settings header also links to [reticle appearance](RETICLE-SETTINGS.md) and [visual comfort](VISUAL-COMFORT.md). The linked settings images have been refreshed for those entry points; the qualification reports below retain the original aim-settings checkpoint. Current follow-up evidence lives in `Validation/Reticle` and `Validation/VisualComfort`.
 
 ## Qualification
 

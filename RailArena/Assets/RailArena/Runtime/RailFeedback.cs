@@ -8,6 +8,7 @@ namespace RailArena
     {
         public const int Capacity = 12;
         public const float BeamSeconds = .24f;
+        public ComfortPreferences Preferences { get; internal set; } = new();
         private sealed class Pulse
         {
             public GameObject Root;
@@ -97,8 +98,17 @@ namespace RailArena
             line.startColor = line.endColor = color;
         }
 
-        private static void Animate(Pulse pulse, float age)
+        private void Animate(Pulse pulse, float age)
         {
+            if (Preferences.ReducedFlash)
+            {
+                float reducedFade = Mathf.Clamp01(1 - age / .14f);
+                Appearance(pulse.Core, .022f, new Color(.35f,.65f,.75f,reducedFade*.65f), reducedFade > 0);
+                Appearance(pulse.Halo, .13f, Color.clear, false);
+                Appearance(pulse.Muzzle, .025f, Color.clear, false);
+                Appearance(pulse.Impact, .014f, new Color(.65f,.45f,.2f,reducedFade*.7f), pulse.HasImpact && age < .12f);
+                return;
+            }
             float fade = Mathf.Clamp01(1 - age / BeamSeconds);
             Appearance(pulse.Core, .032f * (.4f + fade * .6f), new Color(1.6f, 2.5f, 3, fade), fade > 0);
             Appearance(pulse.Halo, .13f, new Color(.03f, .55f, 1.1f, fade * fade * .3f), fade > 0);
