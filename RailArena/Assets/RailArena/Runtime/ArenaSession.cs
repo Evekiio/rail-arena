@@ -18,6 +18,7 @@ namespace RailArena
         public int Difficulty { get; private set; } = 1;
         public BotSettings BotSettings { get; private set; }
         public int BotCount { get; private set; } = 3;
+        public int SelectedOfflineCharacter { get; private set; }
         public TargetScenario Scenario { get; private set; }
         public bool Paused { get; private set; }
         public bool Running => Match != null;
@@ -58,6 +59,7 @@ namespace RailArena
             Application.runInBackground = true;
             Application.targetFrameRate = 144;
             Aim.Load();
+            SelectedOfflineCharacter = OfflineRoster.NormalizeCharacter(PlayerPrefs.GetInt("offlineCharacter",0));
             AudioListener.volume = PlayerPrefs.GetFloat("volume", .65f);
             View = Camera.main;
             View.fieldOfView = Aim.FieldOfView;
@@ -74,6 +76,13 @@ namespace RailArena
             StartSessionCore(practice, bots, difficulty, scenario);
         }
 
+        public void SelectOfflineCharacter(int character)
+        {
+            SelectedOfflineCharacter = OfflineRoster.NormalizeCharacter(character);
+            PlayerPrefs.SetInt("offlineCharacter",SelectedOfflineCharacter);
+            PlayerPrefs.Save();
+        }
+
         private void StartSessionCore(bool practice, int bots, int difficulty, TargetScenario scenario)
         {
             var botTuning = Resources.Load<BotTuning>("BotTuning");
@@ -83,9 +92,9 @@ namespace RailArena
             foreach (var actor in Actors) Destroy(actor.gameObject);
             Actors.Clear();
             Practice = practice;
-            BotCount = Mathf.Clamp(bots, practice ? 0 : 1, 7);
+            BotCount = Mathf.Clamp(bots, practice ? 0 : 1, CombatRules.MaximumBots);
             Difficulty = Mathf.Clamp(difficulty, 0, 2);
-            Scenario = scenario;
+            Scenario = practice ? scenario : TargetScenario.Combat;
             var ids = new List<int>();
             for (int i = 0; i <= BotCount; i++)
             {
@@ -326,7 +335,8 @@ namespace RailArena
             root.layer = 9;
             var actor = root.AddComponent<ArenaActor>();
             actor.Id = id;
-            actor.DisplayName = id == LocalPlayerId ? "YOU" : IsOnline ? (id == 0 ? "HOST" : "CHALLENGER") : new[] { "", "ION", "CINDER", "VECTOR", "HEX", "EMBER", "NOVA", "FLUX" }[id];
+            actor.CharacterId = IsOnline ? id : OfflineRoster.CharacterForActor(SelectedOfflineCharacter,id);
+            actor.DisplayName = id == LocalPlayerId ? "YOU" : IsOnline ? (id == 0 ? "HOST" : "CHALLENGER") : OfflineRoster.BotName(actor.CharacterId);
             actor.Bot = !IsOnline && id != 0;
             actor.Brain = new BotBrain(7291 + id * 917);
             actor.Controller = root.AddComponent<CharacterController>();
@@ -335,7 +345,7 @@ namespace RailArena
             actor.Controller.center = Vector3.up * .9f;
             actor.Controller.stepOffset = .3f;
             actor.Controller.slopeLimit = 50;
-            string characterPath = id == 0 ? "Characters/Contender" : $"Characters/Stylized/Bot{1 + (id - 1) % 3:00}";
+            string characterPath = OfflineRoster.PrefabPath(actor.CharacterId);
             var prefab = Resources.Load<GameObject>(characterPath);
             if (prefab == null) throw new System.InvalidOperationException("The animated contender prefab is missing.");
             actor.Model = Instantiate(prefab, root.transform, false).transform;

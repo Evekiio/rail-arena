@@ -50,7 +50,7 @@ namespace RailArena
             var localForward = restHead.inverse.MultiplyVector(transform.forward).normalized;
             var localUp = restHead.inverse.MultiplyVector(transform.up).normalized;
             headAimOffset = Quaternion.Inverse(Quaternion.LookRotation(localForward, localUp));
-            ApplySkin(owner.Id);
+            ApplySkin(owner.CharacterId);
             foreach (var hitbox in GetComponentsInChildren<Hitbox>(true))
             {
                 hitbox.Actor = owner;
