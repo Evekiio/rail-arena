@@ -306,7 +306,7 @@ namespace RailArena.Editor
             }
         }
 
-        private static string GameplaySignature(ArenaWorld world)
+        public static string GameplaySignature(ArenaWorld world)
         {
             var parts = new List<string>();
             string V(Vector3 v) => $"{v.x:R},{v.y:R},{v.z:R}";

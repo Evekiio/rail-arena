@@ -14,6 +14,8 @@ Rail Arena is a Windows game and AI engineering portfolio project by **Sanders R
 
 Current source includes [aim and camera settings improvements](docs/AIM-SETTINGS.md): independent zoom sensitivity, adjustable vertical FOV, invert Y and clearer sliders. The downloadable pre-alpha above remains the earlier release checkpoint.
 
+The current playable arena also has a [daylight and cloud-world presentation](docs/FOUNDRY-LIGHTING.md), with matching before/after renders and an unchanged gameplay-geometry check. This is separate from the proposed Foundry v2 map and new environment models.
+
 ## Approved design / next production milestone
 
 The [design lock v1](docs/DESIGN.md) sets the next target: four contenders offline, two-human online duels, a 0.6-second semi-auto rifle, 75/40/30 location damage, five-minute or 20-kill matches, slow partial regeneration and one fixed portal pair. **These are approved requirements, not claims about the existing builds.**
