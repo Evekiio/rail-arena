@@ -9,7 +9,6 @@ namespace RailArena
         private GameObject combatRoot, crosshairRoot, scoreboardPanel;
         private UnityEngine.UI.Text healthValue, railValue, modeValue, clockValue, statsValue, notice;
         private UnityEngine.UI.Image healthFill, railFill;
-        private readonly UnityEngine.UI.Image[] crosshairMarks = new UnityEngine.UI.Image[5];
         private readonly UnityEngine.UI.Image[] hitMarks = new UnityEngine.UI.Image[4];
         private readonly UnityEngine.UI.Image[] damageEdges = new UnityEngine.UI.Image[4];
         private GameObject hitMarker;
@@ -44,24 +43,8 @@ namespace RailArena
             notice = Text(combatRoot.transform, "Notice", "", 28, new Vector2(.22f, .75f), new Vector2(.78f, .87f));
             notice.alignment = TextAnchor.MiddleCenter;
 
-            crosshairRoot = new GameObject("Crosshair", typeof(RectTransform));
-            crosshairRoot.transform.SetParent(combatRoot.transform, false);
-            Rect(crosshairRoot, new Vector2(.5f, .5f), new Vector2(.5f, .5f));
-            crosshairRoot.GetComponent<RectTransform>().sizeDelta = new Vector2(36, 36);
-            var bounds = new[]
-            {
-                new Vector4(.47f, .72f, .53f, .98f), new Vector4(.47f, .02f, .53f, .28f),
-                new Vector4(.02f, .47f, .28f, .53f), new Vector4(.72f, .47f, .98f, .53f),
-                new Vector4(.47f, .47f, .53f, .53f)
-            };
-            for (int i = 0; i < bounds.Length; i++)
-            {
-                var b = bounds[i];
-                Graphic(crosshairRoot.transform, "Outline" + i, new Vector2(b.x - .025f, b.y - .025f),
-                    new Vector2(b.z + .025f, b.w + .025f), new Color(0, 0, 0, .85f));
-                crosshairMarks[i] = Graphic(crosshairRoot.transform, "Mark" + i,
-                    new Vector2(b.x, b.y), new Vector2(b.z, b.w), cyan);
-            }
+            combatReticle = CreateReticle(combatRoot.transform, "Crosshair");
+            crosshairRoot = combatReticle.Root.gameObject;
             liveStandings=CreateStandings(combatRoot.transform,"ScoreboardPanel","FOUNDRY / LIVE STANDINGS",new Vector2(.12f,.23f),new Vector2(.88f,.77f));
             scoreboardPanel=liveStandings.Root;
             combatRoot.SetActive(false);
@@ -108,7 +91,7 @@ namespace RailArena
             railValue.color = railColor;
             railFill.rectTransform.anchorMax = new Vector2(locked ? 0 : ready, 1);
             railFill.color = railColor;
-            foreach (var mark in crosshairMarks) mark.color = railColor;
+            combatReticle.Apply(Session.Reticle, locked);
             crosshairRoot.SetActive(human.Alive);
             float hit = Session.Feedback.HitStrength;
             hitMarker.SetActive(hit > 0 && human.Alive);

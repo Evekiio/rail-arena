@@ -31,6 +31,7 @@ namespace RailArena
         public List<string> VoidTraces { get; } = new();
         public string Feed { get; private set; } = "";
         public AimPreferences Aim { get; } = new();
+        public ReticlePreferences Reticle { get; } = new();
         public float Sensitivity { get => Aim.Sensitivity; set => Aim.Sensitivity = value; }
         public Camera View { get; private set; }
         private ArenaHud hud;
@@ -59,6 +60,7 @@ namespace RailArena
             Application.runInBackground = true;
             Application.targetFrameRate = 144;
             Aim.Load();
+            Reticle.Load();
             SelectedOfflineCharacter = OfflineRoster.NormalizeCharacter(PlayerPrefs.GetInt("offlineCharacter",0));
             AudioListener.volume = PlayerPrefs.GetFloat("volume", .65f);
             View = Camera.main;

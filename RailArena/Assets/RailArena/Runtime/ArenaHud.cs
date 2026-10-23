@@ -103,6 +103,8 @@ namespace RailArena
         {
             foreach (Transform child in menu.transform) { child.gameObject.SetActive(false); Destroy(child.gameObject); }
             Text(menu.transform, "Title", "SETTINGS", 64, new Vector2(.1f, .78f), new Vector2(.8f, .9f));
+            float reticleY = .815f;
+            Button("RETICLE SETTINGS", ReticleSettings, ref reticleY, minX: .66f, maxX: .91f);
             Text(menu.transform, "Aim heading", "AIM / CAMERA", 22, new Vector2(.1f,.71f), new Vector2(.48f,.76f)).color = cyan;
             Text(menu.transform, "Display heading", "AUDIO / DISPLAY", 22, new Vector2(.55f,.71f), new Vector2(.94f,.76f)).color = cyan;
             string SensitivityValue(float value) => value.ToString("0.000", System.Globalization.CultureInfo.InvariantCulture);

@@ -10,6 +10,8 @@ Existing normal and zoom sensitivity preference keys are retained. If a player h
 
 The two-column settings layout separates aim/camera from audio/display. Sliders show the selected numeric value, a filled track and inset handle travel. Invert Y updates its label without rebuilding the settings controls.
 
+The current settings header also links to [reticle appearance](RETICLE-SETTINGS.md). The linked settings images have been refreshed for that entry point; the qualification reports below retain the original aim-settings checkpoint. Current reticle tests and build evidence live in `Validation/Reticle`.
+
 ## Qualification
 
 The pinned Unity 6000.6.7f1 suite passes 98/98 tests, including preference migration/persistence, invalid values, zoom magnification, vertical-only inversion, live settings interactions and slider endpoints at 720p/1080p. [Test report](../Validation/AimSettings/tests.xml).
