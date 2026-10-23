@@ -49,6 +49,8 @@ namespace RailArena
             public string[] contenders;
             public string[] voidTraces;
             public ActorProgress[] actorProgress;
+            public int[] statisticsShots, statisticsHits, statisticsHeadshots, statisticsKills, statisticsDeaths, statisticsVoids;
+            public bool statisticsPassed;
             public bool passed;
         }
 
@@ -135,6 +137,24 @@ namespace RailArena
                     session.ShotsFired >= minimumShots && session.Deaths >= minimumDeaths &&
                     session.PadLaunches >= minimumPadLaunches && ProgressPassed(progress)
             };
+            var participants=session.Actors.ToArray();
+            report.statisticsShots=Array.ConvertAll(participants,actor=>session.Match.Statistics[actor.Id].Shots);
+            report.statisticsHits=Array.ConvertAll(participants,actor=>session.Match.Statistics[actor.Id].Hits);
+            report.statisticsHeadshots=Array.ConvertAll(participants,actor=>session.Match.Statistics[actor.Id].Headshots);
+            report.statisticsKills=Array.ConvertAll(participants,actor=>session.Match.Statistics[actor.Id].Kills);
+            report.statisticsDeaths=Array.ConvertAll(participants,actor=>session.Match.Statistics[actor.Id].Deaths);
+            report.statisticsVoids=Array.ConvertAll(participants,actor=>session.Match.Statistics[actor.Id].VoidDeaths);
+            int shots=0,hits=0,hitEvents=0,deaths=0,kills=0,voids=0;
+            report.statisticsPassed=true;
+            foreach(var actor in participants)
+            {
+                var stats=session.Match.Statistics[actor.Id];
+                shots+=stats.Shots; hits+=stats.Hits; hitEvents+=actor.HitSerial;
+                deaths+=stats.Deaths; kills+=stats.Kills; voids+=stats.VoidDeaths;
+                report.statisticsPassed &= stats.Shots==actor.ShotSerial && session.Match.Scores[actor.Id]==stats.Kills-stats.VoidDeaths;
+            }
+            report.statisticsPassed &= shots==session.ShotsFired && hits==hitEvents && deaths==session.Deaths && kills+voids==deaths;
+            report.passed &= report.statisticsPassed;
             File.WriteAllText(output, JsonUtility.ToJson(report, true));
             ScreenCapture.CaptureScreenshot(output + ".png");
             yield return new WaitForSecondsRealtime(1);

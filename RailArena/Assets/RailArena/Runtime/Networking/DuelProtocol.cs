@@ -32,6 +32,7 @@ namespace RailArena.Networking
         public int ShotSerial;
         public int HitSerial;
         public Vector3 ShotEnd;
+        public CombatStatistics Statistics;
     }
 
     public sealed class DuelSnapshot
@@ -63,7 +64,7 @@ namespace RailArena.Networking
     {
         public const int MaximumDatagram = 1200;
         public const int MaximumInputBatch = 6;
-        public const ushort Version = 3;
+        public const ushort Version = 4;
         private const uint Magic = 0x52414C52;
 
         public static MovementCommand CommandForWire(MovementCommand command)
@@ -219,6 +220,9 @@ namespace RailArena.Networking
                 writer.Write(actor.Health); writer.Write(actor.Life); writer.Write(actor.NextShotTick); writer.Write(actor.RespawnTick);
                 writer.Write(actor.PadReadyTick); writer.Write(actor.AirborneTicks); writer.Write(actor.Score); writer.Write(actor.LastInput);
                 writer.Write(actor.Grounded); writer.Write(actor.ShotSerial); writer.Write(actor.HitSerial); WriteVector(writer, actor.ShotEnd);
+                writer.Write(actor.Statistics.Kills); writer.Write(actor.Statistics.Deaths);
+                writer.Write(actor.Statistics.Shots); writer.Write(actor.Statistics.Hits);
+                writer.Write(actor.Statistics.Headshots); writer.Write(actor.Statistics.VoidDeaths);
             }
             foreach (int tick in state.PickupTicks) writer.Write(tick);
         }
@@ -240,7 +244,9 @@ namespace RailArena.Networking
                     RespawnTick = Nonnegative(reader.ReadInt32()), PadReadyTick = Nonnegative(reader.ReadInt32()),
                     AirborneTicks = Range(reader.ReadInt32(), 0, 2), Score = reader.ReadInt32(), LastInput = Nonnegative(reader.ReadInt32()),
                     Grounded = ReadBool(reader), ShotSerial = Nonnegative(reader.ReadInt32()), HitSerial = Nonnegative(reader.ReadInt32()),
-                    ShotEnd = ReadVector(reader, 10000)
+                    ShotEnd = ReadVector(reader, 10000),
+                    Statistics = new CombatStatistics(reader.ReadInt32(),reader.ReadInt32(),reader.ReadInt32(),
+                        reader.ReadInt32(),reader.ReadInt32(),reader.ReadInt32())
                 };
             }
             for (int i = 0; i < 3; i++) state.PickupTicks[i] = Nonnegative(reader.ReadInt32());

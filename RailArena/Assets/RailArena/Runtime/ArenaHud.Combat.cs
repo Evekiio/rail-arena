@@ -1,4 +1,3 @@
-using System.Text;
 using RailArena.Simulation;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,7 +7,7 @@ namespace RailArena
     public sealed partial class ArenaHud
     {
         private GameObject combatRoot, crosshairRoot, scoreboardPanel;
-        private UnityEngine.UI.Text healthValue, railValue, modeValue, clockValue, statsValue, notice, score;
+        private UnityEngine.UI.Text healthValue, railValue, modeValue, clockValue, statsValue, notice;
         private UnityEngine.UI.Image healthFill, railFill;
         private readonly UnityEngine.UI.Image[] crosshairMarks = new UnityEngine.UI.Image[5];
         private readonly UnityEngine.UI.Image[] hitMarks = new UnityEngine.UI.Image[4];
@@ -63,9 +62,8 @@ namespace RailArena
                 crosshairMarks[i] = Graphic(crosshairRoot.transform, "Mark" + i,
                     new Vector2(b.x, b.y), new Vector2(b.z, b.w), cyan);
             }
-            scoreboardPanel = Graphic(combatRoot.transform, "ScoreboardPanel", new Vector2(.3f, .23f),
-                new Vector2(.7f, .74f), new Color(.015f, .025f, .045f, .95f)).gameObject;
-            score = Text(scoreboardPanel.transform, "Scoreboard", "", 27, new Vector2(.07f, .04f), new Vector2(.93f, .96f));
+            liveStandings=CreateStandings(combatRoot.transform,"ScoreboardPanel","FOUNDRY / LIVE STANDINGS",new Vector2(.12f,.23f),new Vector2(.88f,.77f));
+            scoreboardPanel=liveStandings.Root;
             combatRoot.SetActive(false);
         }
 
@@ -130,9 +128,7 @@ namespace RailArena
             scoreboardPanel.SetActive(Keyboard.current?.tabKey.isPressed == true);
             if (scoreboardPanel.activeSelf)
             {
-                var builder = new StringBuilder("FOUNDRY // SCOREBOARD\n\n");
-                foreach (var actor in Session.Actors) builder.AppendLine($"{actor.DisplayName,-14} {match.Scores[actor.Id],4}");
-                score.text = builder.ToString();
+                RefreshStandings(liveStandings);
             }
         }
 

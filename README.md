@@ -18,6 +18,8 @@ The current playable arena also has a [daylight and cloud-world presentation](do
 
 [Offline setup](docs/OFFLINE-ROSTER.md) now lets you choose any of the four existing appearances, with matching first-person palettes and a unique 0–3-bot roster. Combat matches and practice target drills have clear, separate behavior.
 
+[Combat statistics and standings](docs/COMBAT-STATISTICS.md) add live and final tables for points, kills/deaths, accuracy, hits/shots and head hits, including host-authoritative duel totals.
+
 ## Approved design / next production milestone
 
 The [design lock v1](docs/DESIGN.md) sets the next target: four contenders offline, two-human online duels, a 0.6-second semi-auto rifle, 75/40/30 location damage, five-minute or 20-kill matches, slow partial regeneration and one fixed portal pair. **These are approved requirements, not claims about the existing builds.**

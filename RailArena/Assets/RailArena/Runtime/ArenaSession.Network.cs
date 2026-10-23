@@ -222,7 +222,8 @@ namespace RailArena
                     NextShotTick = actor.NextShotTick, RespawnTick = actor.RespawnTick, PadReadyTick = actor.PadReadyTick,
                     AirborneTicks = actor.AirborneTicks, Score = Match.Scores[actor.Id],
                     LastInput = actor.Id == 1 ? remoteInputs.LastConsumed : 0, Grounded = actor.Grounded,
-                    ShotSerial = actor.ShotSerial, HitSerial = actor.HitSerial, ShotEnd = actor.LastShotEnd };
+                    ShotSerial = actor.ShotSerial, HitSerial = actor.HitSerial, ShotEnd = actor.LastShotEnd,
+                    Statistics = Match.Statistics[actor.Id] };
             for (int i = 0; i < 3; i++) state.PickupTicks[i] = World.Pickups[i].AvailableTick;
             return state;
         }
@@ -247,7 +248,8 @@ namespace RailArena
             receivedSnapshot = state;
             SnapshotsReceived++;
             snapshotTime = Time.realtimeSinceStartupAsDouble;
-            Match = MatchState.FromAuthority(state.Tick, state.Phase, state.Winner, state.Actors[0].Score, state.Actors[1].Score);
+            Match = MatchState.FromAuthority(state.Tick,state.Phase,state.Winner,state.Actors[0].Score,state.Actors[1].Score,
+                state.Actors[0].Statistics,state.Actors[1].Statistics);
             Vector3 oldPrediction = Human.transform.position;
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
             var correction = new PredictionCorrection { tick = state.Tick, previousClientTick = clientTick,

@@ -33,6 +33,8 @@ namespace RailArena
             public int rejectedTimes;
             public int[] actorShots;
             public int[] actorLives;
+            public int[] statisticsShots, hits, headshots, kills, statisticsDeaths, voidDeaths;
+            public bool statisticsPassed;
             public bool fullMatch;
             public bool resultsSeen;
             public bool rematchStarted;
@@ -123,6 +125,18 @@ namespace RailArena
             report.largestPhaseChangeCorrection = session.LargestPhaseChangeCorrection;
             report.actorShots = Array.ConvertAll(session.Actors.ToArray(), actor => actor.ShotSerial);
             report.actorLives = Array.ConvertAll(session.Actors.ToArray(), actor => actor.Life);
+            report.statisticsShots=Array.ConvertAll(session.Actors.ToArray(),actor=>session.Match.Statistics[actor.Id].Shots);
+            report.hits=Array.ConvertAll(session.Actors.ToArray(),actor=>session.Match.Statistics[actor.Id].Hits);
+            report.headshots=Array.ConvertAll(session.Actors.ToArray(),actor=>session.Match.Statistics[actor.Id].Headshots);
+            report.kills=Array.ConvertAll(session.Actors.ToArray(),actor=>session.Match.Statistics[actor.Id].Kills);
+            report.statisticsDeaths=Array.ConvertAll(session.Actors.ToArray(),actor=>session.Match.Statistics[actor.Id].Deaths);
+            report.voidDeaths=Array.ConvertAll(session.Actors.ToArray(),actor=>session.Match.Statistics[actor.Id].VoidDeaths);
+            report.statisticsPassed=true;
+            for(int actor=0;actor<session.Actors.Count;actor++)
+                report.statisticsPassed &= report.statisticsShots[actor]==report.actorShots[actor] &&
+                    session.Match.Scores[actor]==report.kills[actor]-report.voidDeaths[actor] &&
+                    report.hits[actor]==session.Actors[1-actor].HitSerial &&
+                    report.kills[actor]==report.statisticsDeaths[1-actor]-report.voidDeaths[1-actor];
             report.fullMatch = fullMatch;
             report.resultsSeen = rematchReady;
             report.rematchStarted = rematchReady && report.round == 2;
@@ -134,7 +148,7 @@ namespace RailArena
             report.elapsedSeconds = Time.realtimeSinceStartup - started;
             bool matchPassed = fullMatch ? report.rematchStarted && completedTick >= Simulation.CombatRules.CountdownTicks + Simulation.CombatRules.MatchTicks &&
                 completedWinner >= 0 && completedShots[0] > 0 && completedShots[1] > 0 : report.round == 1;
-            report.passed = errors == 0 && session.IsOnline && matchPassed && report.tick >= 900 &&
+            report.passed = errors == 0 && report.statisticsPassed && session.IsOnline && matchPassed && report.tick >= 900 &&
                 report.actorShots.Length == 2 && report.actorShots[0] > 0 && report.actorShots[1] > 0 &&
                 Array.Exists(fullMatch ? completedLives ?? Array.Empty<int>() : report.actorLives, life => life > 1) &&
                 (role == "host" ? report.shots > 1 && report.rewoundShots > 0 : report.snapshots > 30 && report.acknowledged > 300);
