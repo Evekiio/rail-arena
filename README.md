@@ -16,6 +16,8 @@ Current source includes [aim and camera settings improvements](docs/AIM-SETTINGS
 
 The current playable arena also has a [daylight and cloud-world presentation](docs/FOUNDRY-LIGHTING.md), with matching before/after renders and an unchanged gameplay-geometry check. This is separate from the proposed Foundry v2 map and new environment models.
 
+[Offline setup](docs/OFFLINE-ROSTER.md) now lets you choose any of the four existing appearances, with matching first-person palettes and a unique 0–3-bot roster. Combat matches and practice target drills have clear, separate behavior.
+
 ## Approved design / next production milestone
 
 The [design lock v1](docs/DESIGN.md) sets the next target: four contenders offline, two-human online duels, a 0.6-second semi-auto rifle, 75/40/30 location damage, five-minute or 20-kill matches, slow partial regeneration and one fixed portal pair. **These are approved requirements, not claims about the existing builds.**

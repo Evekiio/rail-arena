@@ -79,8 +79,8 @@ namespace RailArena
             Directory.CreateDirectory(Path.GetDirectoryName(output));
             int duration = ReadOption(args, "--validation-seconds", 45, 45, 1800);
             int difficulty = ReadOption(args, "--validation-difficulty", 1, 0, 2);
-            int bots = ReadOption(args, "--validation-bots", 7, 1, 7);
-            // Preserve the original seven-bot gates, while requiring activity appropriate to population.
+            int bots = ReadOption(args, "--validation-bots", 3, 1, Simulation.CombatRules.MaximumBots);
+            // Require activity appropriate to the approved population.
             int minimumShots = (bots + 1) * 4 - 1;
             int minimumDeaths = Math.Max(1, bots - 1);
             int minimumPadLaunches = bots + 2;

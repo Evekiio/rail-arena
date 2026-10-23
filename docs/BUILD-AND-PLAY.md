@@ -2,6 +2,8 @@
 
 # Build and play Rail Arena
 
+**Current source:** [offline setup](OFFLINE-ROSTER.md) now supports 0–3 bots and saved character selection. Timed matches always use combat AI; stationary/moving targets are untimed practice options. The local checkpoint instructions below describe older builds and do not override current source behavior.
+
 This is the stable local playtest handoff. Offline solo and bot play are ready for your own testing. Final art quality and full human/internet multiplayer acceptance remain open.
 
 ## Play now on this PC

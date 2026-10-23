@@ -50,7 +50,7 @@ namespace RailArena
             string title = results ? "MATCH COMPLETE" : Session.Running ? "PAUSED" : "RAIL ARENA";
             Text(menu.transform, "Title", title, 72, new Vector2(.09f, .8f), new Vector2(.8f, .92f)).color = cyan;
             Text(menu.transform, "Subtitle", results ? $"WINNER: {Session.Actors[Session.Match.Winner].DisplayName}" :
-                "FOUNDRY // ORBITAL COMBAT FACILITY", 24, new Vector2(.095f, .735f), new Vector2(.8f, .8f));
+                "FOUNDRY // PRECISION COMBAT ARENA", 24, new Vector2(.095f, .735f), new Vector2(.8f, .8f));
             float y = .66f;
             if (Session.Running)
             {
@@ -60,23 +60,33 @@ namespace RailArena
             else
             {
                 Button(bots == 0 ? "BOT MATCH // SELECT 1+ BOT" : "OFFLINE BOT MATCH",
-                    () => Session.StartSession(false, bots, difficulty, scenario), ref y, bots > 0);
+                    () => Session.StartSession(false, bots, difficulty, TargetScenario.Combat), ref y, bots > 0);
                 Button(bots == 0 ? "SOLO PRACTICE // UNTIMED" : "PRACTICE // UNTIMED",
                     () => Session.StartSession(true, bots, difficulty, scenario), ref y);
                 Button("ONLINE DUEL // DIRECT IP", OnlineMenu, ref y);
             }
             if (!Session.IsOnline)
             {
-            Button(bots == 0 ? "BOTS  0 // SOLO   +" : $"BOTS  {bots}   +", () =>
-            { bots = !Session.Running || Session.Practice ? (bots + 1) % 8 : bots % 7 + 1; RefreshMenu(); }, ref y);
-            Button($"DIFFICULTY  {new[] { "CADET", "VETERAN", "ACE" }[difficulty]}", () => { difficulty = (difficulty + 1) % 3; RefreshMenu(); }, ref y);
-            Button($"TARGETS  {scenario.ToString().ToUpperInvariant()}", () => { scenario = (TargetScenario)(((int)scenario + 1) % 3); RefreshMenu(); }, ref y);
+                Text(menu.transform,"Setup heading",Session.Running ? "NEXT SESSION / OFFLINE SETUP" : "OFFLINE SETUP",22,
+                    new Vector2(.53f,.70f),new Vector2(.94f,.74f)).color = cyan;
+                float setupY = .61f;
+                Button("CHARACTER // " + OfflineRoster.Label(Session.SelectedOfflineCharacter), () =>
+                { Session.SelectOfflineCharacter((Session.SelectedOfflineCharacter+1)%OfflineRoster.CharacterCount); RefreshMenu(); },ref setupY,minX:.53f,maxX:.94f);
+                Button(bots == 0 ? "BOTS  0 // SOLO   +" : $"BOTS  {bots}   +", () =>
+                { bots = !Session.Running || Session.Practice ? (bots+1)%(CombatRules.MaximumBots+1) : bots%CombatRules.MaximumBots+1; RefreshMenu(); },ref setupY,minX:.53f,maxX:.94f);
+                Button($"DIFFICULTY  {new[] { "CADET", "VETERAN", "ACE" }[difficulty]}", () =>
+                { difficulty=(difficulty+1)%3; RefreshMenu(); },ref setupY,minX:.53f,maxX:.94f);
+                Button($"PRACTICE TARGETS // {scenario.ToString().ToUpperInvariant()}", () =>
+                { scenario=(TargetScenario)(((int)scenario+1)%3); RefreshMenu(); },ref setupY,minX:.53f,maxX:.94f);
             }
             Button("SETTINGS", Settings, ref y);
             if (Session.Running) Button("MAIN MENU", Session.MainMenu, ref y);
             Button("QUIT", Session.QuitGame, ref y);
-            Text(menu.transform, "Controls", "W A S D  MOVE     SPACE  JUMP     MOUSE  AIM / FIRE\nESC  PAUSE     TAB  SCOREBOARD\n\nUnlimited energy. Click to fire. 0.6 second cycle.\nHOLD RIGHT MOUSE  1.5x ZOOM\nHEAD 100   /   BODY 50   /   LIMB 34", 22,
-                new Vector2(.53f, .24f), new Vector2(.94f, .64f));
+            Text(menu.transform,"Controls",Session.IsOnline ? "W A S D  MOVE     SPACE  JUMP\nLEFT CLICK  FIRE     HOLD RIGHT  1.5x ZOOM\nESC  PAUSE     TAB  SCOREBOARD" :
+                "0 BOTS = SOLO / ADD BOTS FOR TARGET DRILLS\nBOT MATCHES ALWAYS USE COMBAT AI\n\nW A S D  MOVE     SPACE  JUMP\nLEFT CLICK  FIRE     HOLD RIGHT  1.5x ZOOM\nESC  PAUSE     TAB  SCOREBOARD",21,
+                new Vector2(.53f,.13f),new Vector2(.94f,Session.IsOnline ? .64f : .34f));
+            if (!Session.IsOnline) Text(menu.transform,"Weapon help","ONE RIFLE. KEEP MOVING.\nUnlimited energy / 0.6 second recovery\nHEAD 100   /   BODY 50   /   LIMB 34",22,
+                new Vector2(.095f,.16f),new Vector2(.46f,.29f));
             Text(menu.transform, "Version", "IN DEVELOPMENT  //  OFFLINE / DIRECT-IP PLAYTEST", 18,
                 new Vector2(.095f, .035f), new Vector2(.9f, .085f)).color = new Color(.55f, .63f, .7f);
             if (!string.IsNullOrEmpty(Session.ConnectionError)) Text(menu.transform, "Connection error", Session.ConnectionError, 22,

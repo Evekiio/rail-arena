@@ -12,6 +12,25 @@ namespace RailArena.Tests
 {
     public sealed class CarbineProductionTests
     {
+        private bool hadCharacterSelection;
+        private int characterSelection;
+
+        [SetUp]
+        public void UseCanonicalRosterForProductionReview()
+        {
+            hadCharacterSelection=PlayerPrefs.HasKey("offlineCharacter");
+            characterSelection=PlayerPrefs.GetInt("offlineCharacter");
+            PlayerPrefs.SetInt("offlineCharacter",0);
+        }
+
+        [TearDown]
+        public void RestoreCharacterSelection()
+        {
+            if(hadCharacterSelection)PlayerPrefs.SetInt("offlineCharacter",characterSelection);
+            else PlayerPrefs.DeleteKey("offlineCharacter");
+            PlayerPrefs.Save();
+        }
+
         [Serializable] sealed class Review
         {
             public System.Collections.Generic.List<string> contacts=new System.Collections.Generic.List<string>();

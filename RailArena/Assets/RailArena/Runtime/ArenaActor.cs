@@ -6,6 +6,7 @@ namespace RailArena
     public sealed class ArenaActor : MonoBehaviour
     {
         public int Id;
+        public int CharacterId;
         public string DisplayName;
         public bool Bot;
         public int Health = 100;
