@@ -41,6 +41,13 @@ namespace RailArena.Tests
             Assert.That(rail.anchorMax.x, Is.InRange(.45f, .65f));
             Assert.That(Label("RailValue").text, Does.StartWith("CYCLE"));
             Assert.That(root.GetComponentsInChildren<UnityEngine.UI.Graphic>(true).All(g => !g.raycastTarget), Is.True);
+            session.Feedback.ConfirmHit(false); session.Feedback.Damaged();
+            yield return Frames(2);
+            Assert.That(root.transform.Find("HitConfirmation").gameObject.activeSelf, Is.True);
+            Assert.That(root.transform.Find("DamageEdge0").GetComponent<UnityEngine.UI.Image>().color.a, Is.GreaterThan(0));
+            session.Feedback.ResetFeedback();
+            yield return Frames(2);
+            Assert.That(root.transform.Find("HitConfirmation").gameObject.activeSelf, Is.False);
             var crosshair = root.transform.Find("Crosshair");
             Canvas.ForceUpdateCanvases();
             var viewport = root.GetComponentInParent<Canvas>().pixelRect;

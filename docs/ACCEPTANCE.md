@@ -2,7 +2,7 @@
 
 This is an interim audit against `OBJECTIVE.md`, not a completion claim. A passing smoke test proves only its recorded conditions. Historical reports identify their build fingerprint; they do not automatically certify a newer build.
 
-Latest presentation milestone: build `94ab8a77` passes 64 Editor-suite tests, including live software keyboard movement/jump/scoreboard/pause/resume and HUD state checks, plus 35 standalone mechanics checks, a seven-bot smoke and an impaired UDP smoke. Native mouse review observed the new HUD in ready, recovery and respawn states. Physical keyboard, sound-on, creative quality, final-build full-match and internet acceptance remain open. See `COMBAT-HUD.md` and the latest section of `VALIDATION.md`.
+Latest presentation milestone: build `dbee8241` passes 72 Editor-suite tests, 37 standalone mechanics checks, a seven-bot smoke and an impaired UDP smoke. New rail/hit/damage feedback has Editor-render, snapshot/lifecycle and audio-signal evidence. Native mouse review of preceding HUD build `94ab8a77` observed ready, recovery and respawn states; the latest native effect review stopped at a firewall prompt. Physical keyboard, sound-on, creative quality, final-build full-match and internet acceptance remain open. See `COMBAT-FEEDBACK.md` and `VALIDATION.md`.
 
 | Requirement | Current evidence | Remaining acceptance |
 | --- | --- | --- |

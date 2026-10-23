@@ -157,6 +157,8 @@ namespace RailArena
             Expect("Tick 180 activates combat and lethal headshot scores once", Target.Health == 0 && session.ShotsFired == 1 &&
                 session.Match.Scores[0] == 1 && session.Match.Phase == MatchPhase.Playing,
                 $"health={Target.Health}, shots={session.ShotsFired}, score={session.Match.Scores[0]}");
+            Expect("Authority confirms lethal hit with elimination feedback", session.Feedback.ConfirmedHits == 1 &&
+                session.Feedback.LastHitWasKill, $"hits={session.Feedback.ConfirmedHits}, lethal={session.Feedback.LastHitWasKill}");
             Target.Command = new MovementCommand { Fire = true };
             Advance(119);
             Expect("Dead actor cannot fire or respawn before 120 ticks", !Target.Alive && Target.Life == life && session.ShotsFired == 1,
@@ -171,6 +173,8 @@ namespace RailArena
             int first = session.Match.Tick;
             int count = session.ShotsFired;
             Expect("First body shot deals 50", Target.Health == 50, "health=" + Target.Health);
+            Expect("Nonlethal damage confirms a hit without elimination", session.Feedback.ConfirmedHits == 2 &&
+                !session.Feedback.LastHitWasKill, $"hits={session.Feedback.ConfirmedHits}, lethal={session.Feedback.LastHitWasKill}");
             Aim(HitRegion.Body);
             Advance(89);
             Expect("Held fire cannot discharge during next 89 ticks", session.ShotsFired == count && Target.Health == 50,

@@ -11,6 +11,9 @@ namespace RailArena
         private UnityEngine.UI.Text healthValue, railValue, modeValue, clockValue, statsValue, notice, score;
         private UnityEngine.UI.Image healthFill, railFill;
         private readonly UnityEngine.UI.Image[] crosshairMarks = new UnityEngine.UI.Image[5];
+        private readonly UnityEngine.UI.Image[] hitMarks = new UnityEngine.UI.Image[4];
+        private readonly UnityEngine.UI.Image[] damageEdges = new UnityEngine.UI.Image[4];
+        private GameObject hitMarker;
         private readonly Color amber = new(1, .7f, .3f);
         private readonly Color warning = new(1, .35f, .3f);
 
@@ -19,6 +22,7 @@ namespace RailArena
             combatRoot = new GameObject("CombatHud", typeof(RectTransform));
             combatRoot.transform.SetParent(canvas, false);
             Rect(combatRoot, Vector2.zero, Vector2.one);
+            BuildFeedbackHud();
             var health = Card("HealthPanel", new Vector2(.035f, .04f), new Vector2(.22f, .18f));
             Text(health, "HealthLabel", "HEALTH", 19, new Vector2(.08f, .71f), new Vector2(.93f, .96f));
             healthValue = Text(health, "HealthValue", "100", 60, new Vector2(.08f, .2f), new Vector2(.92f, .79f));
@@ -108,6 +112,13 @@ namespace RailArena
             railFill.color = railColor;
             foreach (var mark in crosshairMarks) mark.color = railColor;
             crosshairRoot.SetActive(human.Alive);
+            float hit = Session.Feedback.HitStrength;
+            hitMarker.SetActive(hit > 0 && human.Alive);
+            var hitColor = Session.Feedback.LastHitWasKill ? warning : Color.white;
+            hitColor.a = hit;
+            foreach (var mark in hitMarks) mark.color = hitColor;
+            var damageColor = new Color(1, .12f, .06f, Session.Feedback.DamageStrength * .7f);
+            foreach (var edge in damageEdges) edge.color = damageColor;
             statsValue.text = $"SCORE  {match.Scores[human.Id]}\nSPEED  {new Vector2(human.Velocity.x, human.Velocity.z).magnitude:0.0}";
             modeValue.text = Session.IsOnline ? "DIRECT-IP DUEL" : Session.Practice ?
                 (Session.BotCount == 0 ? "SOLO PRACTICE" : $"PRACTICE // {Session.BotCount} BOTS") : $"BOT MATCH // {Session.BotCount} BOTS";
@@ -123,6 +134,31 @@ namespace RailArena
                 foreach (var actor in Session.Actors) builder.AppendLine($"{actor.DisplayName,-14} {match.Scores[actor.Id],4}");
                 score.text = builder.ToString();
             }
+        }
+
+        private void BuildFeedbackHud()
+        {
+            var bounds = new[] { new Vector4(0, 0, 1, .008f), new Vector4(0, .992f, 1, 1),
+                new Vector4(0, 0, .0045f, 1), new Vector4(.9955f, 0, 1, 1) };
+            for (int i = 0; i < bounds.Length; i++)
+            {
+                var b = bounds[i];
+                damageEdges[i] = Graphic(combatRoot.transform, "DamageEdge" + i,
+                    new Vector2(b.x, b.y), new Vector2(b.z, b.w), Color.clear);
+            }
+            hitMarker = new GameObject("HitConfirmation", typeof(RectTransform));
+            hitMarker.transform.SetParent(combatRoot.transform, false);
+            Rect(hitMarker, new Vector2(.5f, .5f), new Vector2(.5f, .5f));
+            for (int i = 0; i < hitMarks.Length; i++)
+            {
+                float x = i % 2 == 0 ? -1 : 1, y = i < 2 ? -1 : 1;
+                var mark = Graphic(hitMarker.transform, "HitMark" + i, new Vector2(.5f, .5f), new Vector2(.5f, .5f), Color.white);
+                mark.rectTransform.sizeDelta = new Vector2(13, 2.5f);
+                mark.rectTransform.anchoredPosition = new Vector2(x * 12, y * 12);
+                mark.rectTransform.localRotation = Quaternion.Euler(0, 0, x * y > 0 ? 45 : -45);
+                hitMarks[i] = mark;
+            }
+            hitMarker.SetActive(false);
         }
     }
 }

@@ -10,11 +10,13 @@ Public source: [Evekiio/rail-arena](https://github.com/Evekiio/rail-arena). Test
 
 ![Standalone bot practice with combat HUD and RA-01 rail discharge](Validation/CombatHud/Practice-RailCycle.jpg)
 
-*Actual non-development Windows player during native mouse firing in three-bot practice, showing the amber rail recovery meter. Finger/action animation and final arena polish remain unfinished. Physical keyboard acceptance remains open; software mapping has separate live tests.*
+*Actual non-development Windows player from HUD milestone 94ab8a77 during native mouse firing in three-bot practice. The later rail-effect render is documented separately. Finger/action animation and final arena polish remain unfinished. Physical keyboard acceptance remains open; software mapping has separate live tests.*
 
 The current view rig also has original procedural run bob, look sway, landing compression, respawn raise and recoil pitch. These move the weapon and hands while preserving camera aim. See [motion details and controlled preview scope](docs/FIRST-PERSON-ARMS.md).
 
 The [combat HUD](docs/COMBAT-HUD.md) now separates health, score/speed, rail recovery and match state, with a fixed readiness reticle and a readable scoreboard backdrop. Joining-player charge displays follow the local prediction clock.
+
+[Combat feedback](docs/COMBAT-FEEDBACK.md) adds pooled rail core/halo, muzzle and impact effects, authoritative hit/elimination markers, damage edges and four original audio cues with editable synthesis source and WAV review exports.
 
 ## Project
 
@@ -48,8 +50,8 @@ Direct-IP duel integration is available from **ONLINE DUEL // DIRECT IP**. Host 
 
 | Evidence | Scope |
 | --- | --- |
-| 64 Editor-suite tests passing | Shared simulation, model geometry, view-arm IK/motion, bots, networking/lifecycle, charge clocks and live HUD/input mapping through movement/jump/scoreboard/pause/resume |
-| 35 standalone mechanics checks passing | Accelerated real authority with actual hurtboxes; exact combat, pickup, respawn and match-clock boundaries, plus solo movement/fire/respawn and mode switching |
+| 72 Editor-suite tests passing | Shared simulation, model/animation, bots, networking/lifecycle, live HUD/input mapping, confirmation counters, effect pool and audio signal checks |
+| 37 standalone mechanics checks passing | Accelerated real authority with actual hurtboxes; combat/pickup/respawn/match boundaries, hit/elimination feedback, solo movement/fire/respawn and mode switching |
 | Full ten-minute match and rematch on life-aware build 235d7b84 | Separate clean and impaired local UDP runs; matching result tick, scores and life numbers, with zero application errors; newer presentation changes have separate regression reports |
 | Replicated respawn lifecycle | Version 3 snapshots reset stale input, interpolation and view state, including missed-death and rematch regressions |
 | Native mouse/settings review | Solo menu/launch, aiming/firing, sensitivity/volume save and relaunch, resolution changes and fullscreen toggle; [evidence and limits](docs/NATIVE-INPUT-REVIEW.md) |

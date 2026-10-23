@@ -1,0 +1,31 @@
+var session = UnityEngine.Object.FindFirstObjectByType<RailArena.ArenaSession>();
+if (!UnityEngine.Application.isPlaying || UnityEngine.Time.frameCount <= 3143 || session.Match.Tick <= 180)
+    throw new System.InvalidOperationException("Live frames and simulation ticks must advance before review.");
+var source = session.View;
+var gun = source.GetComponentInChildren<RailArena.RailgunPresentation>();
+var ray = new UnityEngine.Ray(source.transform.position, source.transform.forward);
+bool impact = UnityEngine.Physics.Raycast(ray, out var wall, 180, 1 << 0, UnityEngine.QueryTriggerInteraction.Ignore);
+var end = impact ? wall.point : ray.GetPoint(180);
+var cameraRoot = new UnityEngine.GameObject("Controlled rail review camera");
+var camera = cameraRoot.AddComponent<UnityEngine.Camera>(); camera.CopyFrom(source); camera.enabled = false;
+cameraRoot.AddComponent<UnityEngine.Rendering.Universal.UniversalAdditionalCameraData>().renderPostProcessing = true;
+camera.transform.SetPositionAndRotation(source.transform.position, source.transform.rotation);
+var target = new UnityEngine.RenderTexture(1280, 720, 24); target.Create();
+var pixels = new UnityEngine.Texture2D(1280, 720, UnityEngine.TextureFormat.RGB24, false);
+var previous = UnityEngine.RenderTexture.active;
+string path = "F:/Rail Arena/Validation/RailFeedback/Editor-RailPulse.png";
+try
+{
+    session.Feedback.Shot(gun.Muzzle.position, end, source.transform.position, true, impact);
+    camera.targetTexture = target; camera.Render(); UnityEngine.RenderTexture.active = target;
+    pixels.ReadPixels(new UnityEngine.Rect(0, 0, 1280, 720), 0, 0); pixels.Apply();
+    System.IO.File.WriteAllBytes(path, pixels.EncodeToPNG());
+    return new { path, frame = UnityEngine.Time.frameCount, tick = session.Match.Tick, impact, end,
+        scope = "Controlled cosmetic shot in live Editor camera render; excludes overlay HUD and is not native standalone acceptance" };
+}
+finally
+{
+    UnityEngine.RenderTexture.active = previous; camera.targetTexture = null; target.Release();
+    UnityEngine.Object.DestroyImmediate(target); UnityEngine.Object.DestroyImmediate(pixels);
+    UnityEngine.Object.DestroyImmediate(cameraRoot); session.Feedback.ResetFeedback();
+}

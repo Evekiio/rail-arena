@@ -1,0 +1,532 @@
+{
+  "success": true,
+  "command": "command test status",
+  "data": {
+    "command": "test status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 4.55,
+      "summary": {
+        "total": 72,
+        "passed": 48,
+        "failed": 24,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.DifficultyControlsReactionAndBoundedImperfectAim(0,48,5.0f)",
+          "Status": "Failed",
+          "Duration": 0.098942,
+          "Message": "System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.BotBrainTests.Setup (System.Int32 difficulty) [0x00128] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\BotBrainTests.cs:34 \r\n  at RailArena.Tests.BotBrainTests.DifficultyControlsReactionAndBoundedImperfectAim (System.Int32 difficulty, System.Int32 reactionTicks, System.Single maximumError) [0x00000] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\BotBrainTests.cs:55 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.DifficultyControlsReactionAndBoundedImperfectAim(1,27,2.5f)",
+          "Status": "Failed",
+          "Duration": 0.0051504,
+          "Message": "System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.BotBrainTests.Setup (System.Int32 difficulty) [0x00128] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\BotBrainTests.cs:34 \r\n  at RailArena.Tests.BotBrainTests.DifficultyControlsReactionAndBoundedImperfectAim (System.Int32 difficulty, System.Int32 reactionTicks, System.Single maximumError) [0x00000] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\BotBrainTests.cs:55 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.DifficultyControlsReactionAndBoundedImperfectAim(2,14,1.0f)",
+          "Status": "Failed",
+          "Duration": 0.0039961,
+          "Message": "System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.BotBrainTests.Setup (System.Int32 difficulty) [0x00128] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\BotBrainTests.cs:34 \r\n  at RailArena.Tests.BotBrainTests.DifficultyControlsReactionAndBoundedImperfectAim (System.Int32 difficulty, System.Int32 reactionTicks, System.Single maximumError) [0x00000] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\BotBrainTests.cs:55 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.EditedReactionAffectsNewSessionAndLaterAssetEditsDoNotChangeItsSnapshot",
+          "Status": "Failed",
+          "Duration": 0.0053346,
+          "Message": "System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.BotBrainTests.Setup (System.Int32 difficulty) [0x00128] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\BotBrainTests.cs:34 \r\n  at RailArena.Tests.BotBrainTests.EditedReactionAffectsNewSessionAndLaterAssetEditsDoNotChangeItsSnapshot () [0x00024] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\BotBrainTests.cs:145 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.InvalidBotTuningRejectsZeroIntervalsNonfiniteValuesAndUnknownDifficulty",
+          "Status": "Passed",
+          "Duration": 0.0201695,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.LowHealthChoosesRouteTowardAvailablePickup",
+          "Status": "Failed",
+          "Duration": 0.004173,
+          "Message": "System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.BotBrainTests.Setup (System.Int32 difficulty) [0x00128] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\BotBrainTests.cs:34 \r\n  at RailArena.Tests.BotBrainTests.LowHealthChoosesRouteTowardAvailablePickup () [0x00000] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\BotBrainTests.cs:123 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.OcclusionStopsFireAndReappearanceRequiresFreshReaction(0,48)",
+          "Status": "Failed",
+          "Duration": 0.0049734,
+          "Message": "System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.BotBrainTests.Setup (System.Int32 difficulty) [0x00128] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\BotBrainTests.cs:34 \r\n  at RailArena.Tests.BotBrainTests.OcclusionStopsFireAndReappearanceRequiresFreshReaction (System.Int32 difficulty, System.Int32 reactionTicks) [0x00000] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\BotBrainTests.cs:86 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.OcclusionStopsFireAndReappearanceRequiresFreshReaction(1,27)",
+          "Status": "Failed",
+          "Duration": 0.0036172,
+          "Message": "System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.BotBrainTests.Setup (System.Int32 difficulty) [0x00128] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\BotBrainTests.cs:34 \r\n  at RailArena.Tests.BotBrainTests.OcclusionStopsFireAndReappearanceRequiresFreshReaction (System.Int32 difficulty, System.Int32 reactionTicks) [0x00000] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\BotBrainTests.cs:86 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.BotBrainTests.OcclusionStopsFireAndReappearanceRequiresFreshReaction(2,14)",
+          "Status": "Failed",
+          "Duration": 0.0035738,
+          "Message": "System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.BotBrainTests.Setup (System.Int32 difficulty) [0x00128] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\BotBrainTests.cs:34 \r\n  at RailArena.Tests.BotBrainTests.OcclusionStopsFireAndReappearanceRequiresFreshReaction (System.Int32 difficulty, System.Int32 reactionTicks) [0x00000] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\BotBrainTests.cs:86 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.CharacterTests.AllLocomotionAndAirLoopsAreMarkedToRepeat",
+          "Status": "Passed",
+          "Duration": 0.0038523,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.CharacterTests.AnimatedHurtboxesUseMetresDespiteImportedBoneScale",
+          "Status": "Passed",
+          "Duration": 0.0250111,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.CharacterTests.ContenderHasValidHumanoidLodsAndBoneFollowingHurtboxes",
+          "Status": "Passed",
+          "Duration": 0.0050562,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.CharacterTests.RetargetedLocomotionMovesFeetWithoutRootMotionAndDeathLowersHead(8.0f)",
+          "Status": "Passed",
+          "Duration": 0.0058393,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.CharacterTests.RetargetedLocomotionMovesFeetWithoutRootMotionAndDeathLowersHead(-8.0f)",
+          "Status": "Passed",
+          "Duration": 0.0018894,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.CombatHudTests.LiveHudTracksCombatAndProductionKeyboardMapping",
+          "Status": "Passed",
+          "Duration": 1.9966387,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.FirstPersonArmsTests.BothWristsFollowSharedGripsThroughAimTravelLandingAndRecoil",
+          "Status": "Passed",
+          "Duration": 1.0672112,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.FirstPersonArmsTests.ThirdPersonPresentationUsesCanonicalWeaponGripMarkers",
+          "Status": "Passed",
+          "Duration": 0.0080341,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.FirstPersonArmsTests.ViewModelRetainsOnlyArmWeightedGeometryAndHasNoGameplayComponents",
+          "Status": "Passed",
+          "Duration": 0.0706157,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.FirstPersonWeaponMotionTests.ExtremeTravelAndLookStayBoundedAndSettleAtRest",
+          "Status": "Passed",
+          "Duration": 0.0329466,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.FirstPersonWeaponMotionTests.LandingUsesFallSpeedAndResetPreventsPhantomImpact",
+          "Status": "Passed",
+          "Duration": 0.0030814,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.FirstPersonWeaponMotionTests.LookSwayConvergesEquallyAcrossRenderRates",
+          "Status": "Passed",
+          "Duration": 0.0005447,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.ConnectedPeerTimeoutDoesNotRequireAWorkingLeavePacket",
+          "Status": "Passed",
+          "Duration": 0.0593213,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.ForgedHandshakeWrongSessionAndReorderedReadyCannotChangeHostState",
+          "Status": "Passed",
+          "Duration": 0.2270803,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.HeldJumpSurvivesPacketGapAtLandingAndExpiresWithMovementGrace",
+          "Status": "Passed",
+          "Duration": 0.0167928,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.IncompatibleBuildIsRejectedAndAbsentHostTimesOut",
+          "Status": "Passed",
+          "Duration": 0.027248,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.InputQueueDeduplicatesBoundsAndConsumesFreshMovementOncePerTick",
+          "Status": "Passed",
+          "Duration": 0.0014613,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.JitterBurstKeepsNewestMovementAndPreservesQuickFireAimTimestampAndJump",
+          "Status": "Passed",
+          "Duration": 0.000891,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.OutboundControlsNormalizeFloatingPointOvershootAndWrappedAimWithoutRelaxingDecode",
+          "Status": "Passed",
+          "Duration": 0.0024045,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.ProtocolRejectsNonfiniteUnboundedAndUnorderedInputs",
+          "Status": "Passed",
+          "Duration": 0.0010615,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.ProtocolRoundTripsAuthoritativeSnapshotAndSurvivesGarbage",
+          "Status": "Passed",
+          "Duration": 0.0252737,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.ProtocolRoundTripsCommandsAndRejectsEveryTruncationAndTrailingBytes",
+          "Status": "Passed",
+          "Duration": 0.0048781,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.RealUdpPeersHandshakeReadyExchangeInputsSnapshotsRematchAndDisconnect",
+          "Status": "Passed",
+          "Duration": 0.1450402,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.RealUdpSocketsRejectOversizedTrafficAndCanRebindAfterDisposal",
+          "Status": "Passed",
+          "Duration": 0.0022621,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.ReleasedJumpIsNotHeldByAnAggregatedTapOrRedundantPacket",
+          "Status": "Passed",
+          "Duration": 0.0006061,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.NetworkingTests.ReplicaMatchPreservesAuthorityTimeScoresAndWinner",
+          "Status": "Passed",
+          "Duration": 0.0025269,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RailFeedbackTests.RepeatedShotsReuseFixedPoolWithoutCollidersAndResetAllEffects",
+          "Status": "Failed",
+          "Duration": 0.0058957,
+          "Message": "  Expected: 48\r\n  But was:  0\r\n",
+          "StackTrace": "at RailArena.Tests.RailFeedbackTests.RepeatedShotsReuseFixedPoolWithoutCollidersAndResetAllEffects () [0x0001a] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\RailFeedbackTests.cs:41\r\n"
+        },
+        {
+          "FullName": "RailArena.Tests.RailFeedbackTests.SynthesizedCuesHaveFiniteBoundedSamplesAndFadedEndpoints(Shot)",
+          "Status": "Passed",
+          "Duration": 0.015491,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RailFeedbackTests.SynthesizedCuesHaveFiniteBoundedSamplesAndFadedEndpoints(Hit)",
+          "Status": "Passed",
+          "Duration": 0.0022522,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RailFeedbackTests.SynthesizedCuesHaveFiniteBoundedSamplesAndFadedEndpoints(Elimination)",
+          "Status": "Passed",
+          "Duration": 0.0036724,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RailFeedbackTests.SynthesizedCuesHaveFiniteBoundedSamplesAndFadedEndpoints(Hurt)",
+          "Status": "Passed",
+          "Duration": 0.0022075,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.ReconciliationViewTests.CameraOffsetCannotCrossStaticWall",
+          "Status": "Passed",
+          "Duration": 0.0022613,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.ReconciliationViewTests.CorrectionPreservesViewWithoutMovingCorrectedActorPosition",
+          "Status": "Passed",
+          "Duration": 0.0006935,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.ReconciliationViewTests.ExponentialDecayIsIndependentOfFramePartitionAndSettles",
+          "Status": "Passed",
+          "Duration": 0.0006801,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.ReconciliationViewTests.TeleportsAndExplicitLifeChangesResetCameraOffset",
+          "Status": "Passed",
+          "Duration": 0.0006197,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RewindTests.EarlierPoseCanBeHitAfterTargetMovesWithoutMovingLiveActors",
+          "Status": "Passed",
+          "Duration": 0.0060195,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RewindTests.ExactlyTwelveTicksAreAllowedButFutureExpiredAndUncapturedTimesAreRejected",
+          "Status": "Passed",
+          "Duration": 0.0013226,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RewindTests.PreviousLifeCannotDamageRespawnedTargetAndNewShooterUsesCurrentOrigin",
+          "Status": "Passed",
+          "Duration": 0.0013111,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RewindTests.RotatedScaledCapsuleUsesItsRecordedGeometryAndRegion",
+          "Status": "Passed",
+          "Duration": 0.0025709,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.RewindTests.StaticWorldBlocksRewoundTargets",
+          "Status": "Passed",
+          "Duration": 0.0010591,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SimulationTests.CountdownBlocksScoringAndTiedLeadersPlayNextKillSuddenDeath",
+          "Status": "Passed",
+          "Duration": 0.0016886,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SimulationTests.FiringIsAllowedOnlyAtCooldownBoundaryAndWhileAlive",
+          "Status": "Passed",
+          "Duration": 0.0003973,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SimulationTests.JumpPreservesHorizontalMomentumWhileGroundFrictionSlows",
+          "Status": "Passed",
+          "Duration": 0.0008904,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SimulationTests.LocationDamageCombinesAndNeverBecomesNegative",
+          "Status": "Passed",
+          "Duration": 0.0004533,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SimulationTests.PickupsCapHealthAndCannotResurrect",
+          "Status": "Passed",
+          "Duration": 0.0003551,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SimulationTests.PracticeIsUntimedAndVoidDeathsSubtractOne",
+          "Status": "Passed",
+          "Duration": 0.000512,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SimulationTests.SoloPracticeAllowsOneParticipantWithoutChangingTimedMatchMinimum",
+          "Status": "Passed",
+          "Duration": 0.0009271,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SimulationTests.StrafeAccelerationCanAddSpeedWithoutClampingMomentum",
+          "Status": "Passed",
+          "Duration": 0.0006685,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.ActiveMovementMismatchRemainsInBothRawAndActiveMeasurements",
+          "Status": "Failed",
+          "Duration": 0.0355143,
+          "Message": "SetUp : System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "--SetUp\r\n  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.SnapshotLifecycleTests.Setup () [0x00101] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:47 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.CodecRejectsNonpositiveLifeNumbers(0)",
+          "Status": "Failed",
+          "Duration": 0.0050984,
+          "Message": "SetUp : System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "--SetUp\r\n  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.SnapshotLifecycleTests.Setup () [0x00101] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:47 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.CodecRejectsNonpositiveLifeNumbers(-1)",
+          "Status": "Failed",
+          "Duration": 0.003718,
+          "Message": "SetUp : System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "--SetUp\r\n  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.SnapshotLifecycleTests.Setup () [0x00101] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:47 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.InterpolatedLaunchCounterDrivesAirAndLandingAnimation(0,2)",
+          "Status": "Failed",
+          "Duration": 0.0035549,
+          "Message": "SetUp : System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "--SetUp\r\n  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.SnapshotLifecycleTests.Setup () [0x00101] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:47 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.InterpolatedLaunchCounterDrivesAirAndLandingAnimation(2,0)",
+          "Status": "Failed",
+          "Duration": 0.0043165,
+          "Message": "SetUp : System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "--SetUp\r\n  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.SnapshotLifecycleTests.Setup () [0x00101] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:47 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.LocalNewLifeDiscardsOldPredictionAndViewCorrection",
+          "Status": "Failed",
+          "Duration": 0.0050162,
+          "Message": "SetUp : System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "--SetUp\r\n  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.SnapshotLifecycleTests.Setup () [0x00101] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:47 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.LocalPresentationUsesPredictionClockWithoutAdvancingAuthorityClock",
+          "Status": "Failed",
+          "Duration": 0.0038242,
+          "Message": "SetUp : System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "--SetUp\r\n  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.SnapshotLifecycleTests.Setup () [0x00101] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:47 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.MissedDeathSnapshotStillAdvancesLifeAndResetsPresentation",
+          "Status": "Failed",
+          "Duration": 0.0046035,
+          "Message": "SetUp : System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "--SetUp\r\n  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.SnapshotLifecycleTests.Setup () [0x00101] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:47 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.NewLivesAndRoundsSuppressStaleConfirmationCounters",
+          "Status": "Failed",
+          "Duration": 0.0041647,
+          "Message": "SetUp : System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "--SetUp\r\n  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.SnapshotLifecycleTests.Setup () [0x00101] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:47 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.OpponentDamageConfirmsHitOnceAndDistinguishesElimination",
+          "Status": "Failed",
+          "Duration": 0.0037532,
+          "Message": "SetUp : System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "--SetUp\r\n  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.SnapshotLifecycleTests.Setup () [0x00101] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:47 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.OwnDamageDoesNotConfirmAnOutgoingHit",
+          "Status": "Failed",
+          "Duration": 0.0032383,
+          "Message": "SetUp : System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "--SetUp\r\n  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.SnapshotLifecycleTests.Setup () [0x00101] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:47 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.RematchRaisesViewWeaponEvenWhenLifeNumberReturnsToOne",
+          "Status": "Failed",
+          "Duration": 0.0040111,
+          "Message": "SetUp : System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "--SetUp\r\n  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.SnapshotLifecycleTests.Setup () [0x00101] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:47 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.RemoteCooldownAndPadTimingRefreshWithoutARespawn",
+          "Status": "Failed",
+          "Duration": 0.004095,
+          "Message": "SetUp : System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "--SetUp\r\n  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.SnapshotLifecycleTests.Setup () [0x00101] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:47 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.RemoteRespawnSnapsToSpawnAndDiscardsPreviousLifeInterpolation",
+          "Status": "Failed",
+          "Duration": 0.0029346,
+          "Message": "SetUp : System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "--SetUp\r\n  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.SnapshotLifecycleTests.Setup () [0x00101] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:47 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        },
+        {
+          "FullName": "RailArena.Tests.SnapshotLifecycleTests.ResultsFreezeRetainsRawCorrectionButSeparatesItFromActivePlay",
+          "Status": "Failed",
+          "Duration": 0.0040931,
+          "Message": "SetUp : System.NullReferenceException : Object reference not set to an instance of an object",
+          "StackTrace": "--SetUp\r\n  at RailArena.ArenaSession.StartSessionCore (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x001be] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:103 \r\n  at RailArena.ArenaSession.StartSession (System.Boolean practice, System.Int32 bots, System.Int32 difficulty, RailArena.TargetScenario scenario) [0x00006] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\ArenaSession.cs:73 \r\n  at RailArena.Tests.SnapshotLifecycleTests.Setup () [0x00101] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Tests\\Editor\\SnapshotLifecycleTests.cs:47 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 "
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\Rail Arena\\RailArena"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

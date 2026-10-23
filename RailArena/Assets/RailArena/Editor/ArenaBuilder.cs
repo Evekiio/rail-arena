@@ -154,7 +154,6 @@ namespace RailArena.Editor
             Save(session.Tuning, "Movement.asset");
             session.PlayerMaterial = trim;
             session.BotMaterial = Material("Contender orange", new Color(.95f, .2f, .05f), false);
-            session.RailMaterial = cyan;
             PlayerSettings.productName = "Rail Arena";
             PlayerSettings.companyName = "Evekiio";
             PlayerSettings.runInBackground = true;

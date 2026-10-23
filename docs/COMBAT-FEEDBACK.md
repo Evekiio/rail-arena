@@ -1,0 +1,19 @@
+# Rail and damage feedback
+
+The RA-01 now uses a pooled cosmetic pulse with a bright narrow core, wider cyan halo, brief muzzle star and amber impact sparks. Lines fade and narrow over 0.24 seconds. The 12-slot pool owns 48 line renderers, reuses them between shots, casts no shadows and creates no colliders. A small original additive URP shader is included as a Resources asset so player builds retain it. The old per-shot GameObject creation and timed destruction are removed.
+
+![Controlled live Editor camera render of rail pulse and impact](../Validation/RailFeedback/Editor-RailPulse.png)
+
+This is a controlled cosmetic shot rendered from the live Editor camera after observed frame/tick progress, excluding overlay HUD. It is not a native standalone screenshot or proof of player input. The exact capture snippet and observed result are saved beside the image.
+
+Local hits briefly display a white cross around the fixed aiming reticle; eliminations use red. Incoming damage briefly lights thin screen edges without moving the camera or obscuring the center. Four original synthesized cues distinguish discharge, hit, elimination and incoming damage. Local cues are non-positional; other contenders' shots use linear distance attenuation from 6 to 75 metres, with Doppler disabled. Master volume still controls all cues.
+
+Authority emits confirmations only after actual hurtbox damage. A joining client confirms an outgoing hit only when the opponent's replicated damage counter increases within the same life/round. Since online duels contain exactly two humans and do not allow self-damage, that counter identifies damage caused by the local player. Duplicate counters do not replay sounds or markers. New lives and rounds suppress stale confirmations; a death and respawn entirely skipped by snapshots can therefore omit a confirmation. Predicted firing alone never confirms damage. The client's predicted beam is clipped against current arena walls, while the host continues to own damage and historical hit validation. No packet format, firing cadence, damage or movement rule changes.
+
+Sources are `RailFeedback.cs`, `RailAudio.cs`, `ArenaHud.Combat.cs`, and `Resources/Effects/RailPulse.shader`. All are original MIT work, with no downloaded samples or assets. Audio review exports are in `ArtSource/Original/Audio/`: [shot](../ArtSource/Original/Audio/RA01-Shot.wav), [hit](../ArtSource/Original/Audio/RA01-Hit.wav), [elimination](../ArtSource/Original/Audio/RA01-Elimination.wav), [hurt](../ArtSource/Original/Audio/RA01-Hurt.wav). Regenerate through **Rail Arena > Export original rail audio review**, or call `RailArena.Editor.RailAudioReview.Export()` in the project Editor. Runtime audio is generated once per session component from the same source; WAV files are review artifacts.
+
+All four mono 44.1 kHz PCM exports decoded completely. Tests check finite bounded samples, nonzero signal and faded endpoints; reports include individual peak and RMS values. These are signal checks, not listening, final mix/headroom, occlusion or creative-quality acceptance. Sound-on review remains open.
+
+Evidence: 72 passing Editor-suite tests, including actual snapshot confirmation/deduplication/lifecycle paths, fixed pool reuse, shader support and live HUD indicators; 37 standalone authority checks include lethal/nonlethal confirmations. Failed initial fixtures are retained separately: edit-mode fixtures needed explicit initialization of their cosmetic component, while headless bot fixtures retain optional presentation. See `VALIDATION.md` for build fingerprints and standalone smoke results.
+
+The non-development player reached its menu, but a Windows firewall permission prompt prevented native effect inspection. It was left untouched and that review process was closed without changing security settings. The automated standalone and Editor render results do not substitute for native or internet acceptance.

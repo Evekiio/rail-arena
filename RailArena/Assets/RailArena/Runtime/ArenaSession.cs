@@ -12,7 +12,6 @@ namespace RailArena
         public MovementTuning Tuning;
         public Material PlayerMaterial;
         public Material BotMaterial;
-        public Material RailMaterial;
         public List<ArenaActor> Actors { get; } = new();
         public MatchState Match { get; private set; }
         public ArenaActor Human => Actors.Count > LocalPlayerId ? Actors[LocalPlayerId] : null;
@@ -35,8 +34,7 @@ namespace RailArena
         private ArenaHud hud;
         private float yaw;
         private float pitch;
-        private AudioSource audioSource;
-        private AudioClip shotSound;
+        public RailFeedback Feedback { get; private set; }
         private int shotCount;
         private int deathCount;
         private int pickupCount;
@@ -62,8 +60,7 @@ namespace RailArena
             View = Camera.main;
             View.fieldOfView = 100;
             View.GetUniversalAdditionalCameraData().renderPostProcessing = true;
-            audioSource = gameObject.AddComponent<AudioSource>();
-            shotSound = CreateShotSound();
+            Feedback = gameObject.AddComponent<RailFeedback>();
             hud = gameObject.AddComponent<ArenaHud>();
             hud.Session = this;
             CreateWeapon();
@@ -102,6 +99,7 @@ namespace RailArena
             RewoundShots = RejectedShotTimes = 0;
             foreach (var pickup in World.Pickups) { pickup.AvailableTick = 0; pickup.SetAvailable(true); }
             Feed = "";
+            Feedback?.ResetFeedback();
             shotCount = deathCount = pickupCount = padCount = 0;
             VoidDeaths = 0;
             VoidTraces.Clear();
@@ -125,6 +123,7 @@ namespace RailArena
 
         public void MainMenu()
         {
+            Feedback?.ResetFeedback();
             hitHistory?.Dispose();
             hitHistory = null;
             DisconnectNetwork();
@@ -238,7 +237,6 @@ namespace RailArena
 
         private void Shoot(ArenaActor actor)
         {
-            if (shotSound == null) shotSound = CreateShotSound();
             actor.NextShotTick = Match.Tick + CombatRules.ShotIntervalTicks;
             actor.Presentation.Fired();
             shotCount++;
@@ -255,6 +253,8 @@ namespace RailArena
                 victim.Health = CombatRules.ApplyDamage(victim.Health, hit.Region);
                 victim.HitSerial++;
                 victim.Presentation.Hit();
+                if (victim == Human) Feedback.Damaged();
+                if (actor == Human) Feedback.ConfirmHit(!victim.Alive);
                 if (!victim.Alive)
                 {
                     Match.RecordKill(actor.Id, victim.Id);
@@ -269,17 +269,9 @@ namespace RailArena
 
         private void ShowShot(ArenaActor actor, Vector3 origin, Vector3 end)
         {
-            var effect = new GameObject("Rail discharge").AddComponent<LineRenderer>();
-            effect.sharedMaterial = RailMaterial;
-            effect.positionCount = 2;
-            effect.SetPosition(0, actor == Human ? weaponPresentation.Muzzle.position : actor.Presentation.Muzzle.position);
-            effect.SetPosition(1, end);
-            effect.startWidth = .065f;
-            effect.endWidth = .025f;
-            effect.numCapVertices = 4;
-            Destroy(effect.gameObject, .18f);
-            if (actor == Human) { recoil = 1; audioSource.PlayOneShot(shotSound, .7f); }
-            else AudioSource.PlayClipAtPoint(shotSound, origin, .2f);
+            var muzzle = actor == Human ? weaponPresentation.Muzzle.position : actor.Presentation.Muzzle.position;
+            Feedback.Shot(muzzle, end, origin, actor == Human, (end - origin).sqrMagnitude < 179.9f * 179.9f);
+            if (actor == Human) recoil = 1;
         }
 
         private void Kill(ArenaActor victim, ArenaActor killer, string reason)
@@ -347,23 +339,6 @@ namespace RailArena
             viewArms = FirstPersonArms.CreateOnWeapon(weaponPresentation);
             foreach (var part in weapon.GetComponentsInChildren<Transform>(true)) part.gameObject.layer = 11;
             weapon.gameObject.SetActive(false);
-        }
-
-        private static AudioClip CreateShotSound()
-        {
-            const int rate = 44100;
-            var data = new float[rate / 3];
-            var random = new System.Random(197);
-            for (int i = 0; i < data.Length; i++)
-            {
-                float t = i / (float)rate;
-                float envelope = Mathf.Exp(-t * 22);
-                data[i] = envelope * (.5f * Mathf.Sin(2 * Mathf.PI * (950 * t - 1000 * t * t)) +
-                    .35f * ((float)random.NextDouble() * 2 - 1));
-            }
-            var clip = AudioClip.Create("Original rail discharge", data.Length, 1, rate, false);
-            clip.SetData(data, 0);
-            return clip;
         }
 
         public string Telemetry() => $"ticks={Match?.Tick} shots={shotCount} deaths={deathCount} pickups={pickupCount} pads={padCount}";

@@ -2,6 +2,18 @@
 
 Status: **offline milestone and initial online integration, incomplete game**. The full objective has not been achieved.
 
+## Rail, hit and damage feedback
+
+Build `dbee8241851f96f6c3b729426fece372b6556ac856045c670c7beff8b5f1baf4` adds pooled core/halo/muzzle/impact effects, authoritative local hit and elimination cues, damage edges and four original synthesized sound cues. Snapshot damage counters support joining-client confirmation without a protocol change. Predicted shots do not confirm damage. See `COMBAT-FEEDBACK.md` for attribution, lifecycle suppression and remaining visual/audio limits.
+
+All 72 Editor-suite tests passed (`rail-feedback-tests.json`). New coverage checks real snapshot confirmation/deduplication, own versus opponent damage, stale new-life/round suppression, unchanged renderer pool identities/no colliders, shader support, live HUD indicators and finite/faded audio samples. Initial 24 failures came from edit-mode cosmetic initialization and headless fixture presentation; retained in `rail-feedback-initial-tests.json`. The corrected tests explicitly initialize the cosmetic fixture, and session reset remains safe without presentation in headless fixtures.
+
+Both development and ordinary non-development Windows builds succeeded (`rail-feedback-build.json`, `rail-feedback-playtest-build.json`). All 37 standalone mechanics checks passed, including lethal/nonlethal feedback through actual authority damage. Seven-bot combat ran 45 seconds: 2,692 ticks, 188 shots, 23 deaths, two pickups, 53 pad launches, zero exceptions and zero void deaths. Mean/p95 hidden-loop times were 6.96/7.00 ms, with other automated work overlapping; this is not a visible rendering benchmark. The 60-second impaired duel passed with 62 shots, seven deaths, 28 rewinds and zero peer errors. Configured relay conditions were 25 ms one-way delay, +/-10 ms jitter and 5% loss, with 309 drops and 225 reordered sends. Actual applied delay reached 133.7 ms during overlapping work. Active/raw reconciliation maximum was 1.1622 m, phase-change maximum 0.1335 m; these are samples, not improved movement-feel evidence. Full-match/rematch evidence remains tied to `235d7b84`.
+
+The four original mono 44.1 kHz PCM WAV exports decoded completely, with per-clip peak/RMS records (`rail-feedback-audio.json`, `ArtSource/Original/Audio/review.json`). Sound-on and final combined-mix acceptance remain unperformed. A live controlled Editor camera render showed core/halo, muzzle and impact effects after frame 3143 advanced to 7618 and tick 180 to 2113 (`Validation/RailFeedback/`). This excludes overlay UI and is not native player evidence. Native inspection of the non-development player was stopped at a Windows firewall permission prompt; the prompt was untouched and the owned review player closed. No security settings were changed.
+
+Standalone reports: `rail-feedback-mechanics.json`, `rail-feedback-offline.json`, `Duel-RailFeedback-Impaired/`. The tested development build is promoted to `Builds/Windows/RailArena.exe`, preserving its predecessor; promotion details are in `rail-feedback-promotion.json`. The separate non-development player is `Builds/FeedbackPlaytest/RailArena.exe`.
+
 ## Combat HUD and software input mapping
 
 The combat HUD now has separate health, score/speed, rail-cycle and match cards, a fixed center readiness reticle, scoreboard backdrop and explicit death/countdown states. Local client charge presentation uses the prediction clock; opponent presentation retains authority time. Gameplay authority and combat rules are unchanged. See `COMBAT-HUD.md` for implementation and fixture details.

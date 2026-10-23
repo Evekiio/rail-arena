@@ -43,6 +43,9 @@ namespace RailArena.Tests
                 world.Pickups[i].Visuals = Array.Empty<Renderer>();
             }
             session = root.AddComponent<ArenaSession>(); session.World = world;
+            var feedback = root.AddComponent<RailFeedback>();
+            typeof(RailFeedback).GetMethod("Awake", PrivateInstance).Invoke(feedback, null);
+            typeof(ArenaSession).GetProperty(nameof(ArenaSession.Feedback)).SetValue(session, feedback);
             tuning = ScriptableObject.CreateInstance<MovementTuning>(); session.Tuning = tuning;
             session.StartSession(true, 1, 1, TargetScenario.Combat);
             typeof(ArenaSession).GetProperty(nameof(ArenaSession.LocalPlayerId)).SetValue(session, 1);
@@ -189,6 +192,45 @@ namespace RailArena.Tests
             typeof(ArenaSession).GetField("clientTick", PrivateInstance).SetValue(session, 210);
             Assert.That(session.LocalSimulationTick, Is.EqualTo(210));
             Assert.That(session.Match.Tick, Is.EqualTo(200));
+        }
+
+        [Test]
+        public void OpponentDamageConfirmsHitOnceAndDistinguishesElimination()
+        {
+            var state = State(1, 203, 1, 1);
+            state.Actors[0].HitSerial = 1; state.Actors[0].Health = 50;
+            Apply(state);
+            Assert.That(session.Feedback.ConfirmedHits, Is.EqualTo(1));
+            Assert.That(session.Feedback.LastHitWasKill, Is.False);
+            state.Tick = 206; Apply(state);
+            Assert.That(session.Feedback.ConfirmedHits, Is.EqualTo(1), "Duplicate counters must not replay cues.");
+            state.Tick = 209; state.Actors[0].HitSerial = 2; state.Actors[0].Health = 0;
+            Apply(state);
+            Assert.That(session.Feedback.ConfirmedHits, Is.EqualTo(2));
+            Assert.That(session.Feedback.LastHitWasKill, Is.True);
+            Assert.That(session.Feedback.DamageCues, Is.Zero);
+        }
+
+        [Test]
+        public void OwnDamageDoesNotConfirmAnOutgoingHit()
+        {
+            var state = State(1, 203, 1, 1);
+            state.Actors[1].HitSerial = 1; state.Actors[1].Health = 50;
+            Apply(state);
+            Assert.That(session.Feedback.DamageCues, Is.EqualTo(1));
+            Assert.That(session.Feedback.ConfirmedHits, Is.Zero);
+        }
+
+        [Test]
+        public void NewLivesAndRoundsSuppressStaleConfirmationCounters()
+        {
+            var state = State(1, 326, 2, 1); state.Actors[0].HitSerial = 7;
+            Apply(state);
+            Assert.That(session.Feedback.ConfirmedHits, Is.Zero);
+            state = State(2, 180, 1, 1); state.Actors[0].HitSerial = 8;
+            Apply(state);
+            Assert.That(session.Feedback.ConfirmedHits, Is.Zero);
+            Assert.That(session.Feedback.HitStrength, Is.Zero);
         }
 
         [TestCase(0, 2)]

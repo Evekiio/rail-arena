@@ -178,7 +178,9 @@ namespace RailArena
                     {
                         Human.NextShotTick = clientTick + CombatRules.ShotIntervalTicks;
                         Human.Presentation.Fired();
-                        ShowShot(Human, Human.Eye, Human.Eye + Human.AimDirection * 180);
+                        var ray = new Ray(Human.Eye, Human.AimDirection);
+                        var end = Physics.Raycast(ray, out var wall, 180, 1 << 0, QueryTriggerInteraction.Ignore) ? wall.point : ray.GetPoint(180);
+                        ShowShot(Human, Human.Eye, end);
                     }
                 }
             }
@@ -209,6 +211,7 @@ namespace RailArena
             if (receivedSnapshot != null && state.Round == receivedSnapshot.Round && state.Tick < receivedSnapshot.Tick) return;
             bool newRound = state.Round != clientRound;
             bool localLifeChanged = Human.Life != state.Actors[LocalPlayerId].Life;
+            if (newRound || localLifeChanged) Feedback.ResetFeedback();
             var previousPhase = Match.Phase;
             bool wasResults = previousPhase == MatchPhase.Results;
             if (newRound)
@@ -254,7 +257,13 @@ namespace RailArena
                 if (newRound || lifeChanged || (!wasAlive && actor.Alive)) actor.Brain = new BotBrain(7291 + actor.Id * 917 + state.Tick);
                 if (authoritative.ShotSerial > actor.ShotSerial && !newRound && !lifeChanged && actor != Human)
                 { actor.Presentation.Fired(); ShowShot(actor, actor.Eye, authoritative.ShotEnd); }
-                if (authoritative.HitSerial > actor.HitSerial && !newRound && !lifeChanged) actor.Presentation.Hit();
+                if (authoritative.HitSerial > actor.HitSerial && !newRound && !lifeChanged)
+                {
+                    actor.Presentation.Hit();
+                    if (actor == Human) Feedback.Damaged();
+                    // Online matches contain exactly two humans: only the local player can damage this opponent.
+                    else if (!localLifeChanged) Feedback.ConfirmHit(!actor.Alive);
+                }
                 actor.ShotSerial = authoritative.ShotSerial;
                 actor.HitSerial = authoritative.HitSerial;
                 if (wasAlive && !actor.Alive) Feed = $"{Actors[1 - actor.Id].DisplayName}  >  {actor.DisplayName}";
