@@ -166,6 +166,7 @@ namespace RailArena.Editor
             EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(Folder + "/Foundry.unity", true) };
             AssetDatabase.SaveAssets();
             FoundryArtBuilder.Apply();
+            FoundryLightingBuilder.Apply();
             Debug.Log($"Foundry scene created: {world.Pads.Length} launch pads, {world.Pickups.Length} health pickups, {world.Spawns.Length} spawns, {world.Nodes.Length} route nodes.");
         }
 

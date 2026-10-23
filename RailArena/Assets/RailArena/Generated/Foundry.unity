@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.3, g: 0.35, b: 0.45, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
-  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientSkyColor: {r: 0.56, g: 0.68, b: 0.75, a: 1}
+  m_AmbientEquatorColor: {r: 0.4, g: 0.5, b: 0.55, a: 1}
+  m_AmbientGroundColor: {r: 0.22, g: 0.29, b: 0.33, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 3
+  m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: b6889f547b261a14085b8023a5fb3546, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -35,9 +35,9 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0.45
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 50082379}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -483,8 +483,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 13
   m_Type: 1
-  m_Color: {r: 0.65, g: 0.78, b: 1, a: 1}
-  m_Intensity: 2
+  m_Color: {r: 0.99, g: 0.94, b: 0.84, a: 1}
+  m_Intensity: 1.35
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -546,7 +546,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 50082378}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.37361234, y: -0.19996415, z: 0.08282786, w: 0.9019799}
+  m_LocalRotation: {x: 0.14555332, y: 0.8544435, z: -0.35139683, w: 0.3539221}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4325,7 +4325,7 @@ Camera:
   m_GameObject: {fileID: 588151705}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.008, g: 0.014, b: 0.035, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -4511,7 +4511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &599375676
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5656,7 +5656,6 @@ MonoBehaviour:
   Tuning: {fileID: 11400000, guid: e98e1be3e800206498ebe18e8599b641, type: 2}
   PlayerMaterial: {fileID: 2100000, guid: 9d6ea67e48164ac458a28f68b95f557a, type: 2}
   BotMaterial: {fileID: 2100000, guid: f88fcd1396169464eacf8d591a9c7ac0, type: 2}
-  Sensitivity: 0.12
 --- !u!4 &826479297
 Transform:
   m_ObjectHideFlags: 0

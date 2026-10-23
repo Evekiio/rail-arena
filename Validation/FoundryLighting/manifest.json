@@ -1,0 +1,33 @@
+{
+  "unityVersion": "6000.6.7f1",
+  "geometryUnchanged": true,
+  "renders": [
+    {
+      "file": "Before-Overview.png",
+      "sha256": "f28c5e60c8b9a4f8ec43552d4f1e212f975a9fdde33fecd2b82225f5d9ced9bf"
+    },
+    {
+      "file": "After-Overview.png",
+      "sha256": "639978df3797231a44dace42e908a0b0c36af16dacc14cd33477f288219d2914"
+    },
+    {
+      "file": "Before-LowerRoute.png",
+      "sha256": "6beaee00692b15d9a6af929a820c2429462ec3c2d33b1c9706bf3aa66afc0490"
+    },
+    {
+      "file": "After-LowerRoute.png",
+      "sha256": "fe011ca876fafc9bc9de63b38de5e0dd46800668dfce7760a1bdbff498680d95"
+    },
+    {
+      "file": "Player-Ready.png",
+      "sha256": "66542b75cb91ace8a353705ca8e1a1894e43debdf2ad93e724e547d8a4e2162b"
+    }
+  ],
+  "scope": "Existing playable arena; cosmetic sky and lighting only. The v2 Foundry map and new environment models remain separate review candidates.",
+  "limits": [
+    "Controlled Unity camera renders omit screen-space HUD",
+    "No 1080p/144fps certification",
+    "No human visual/input acceptance",
+    "Published client release unchanged"
+  ]
+}
