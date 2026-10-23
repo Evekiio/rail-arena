@@ -1,56 +1,112 @@
-![Rail Arena logo and four contender concepts in a stylized arena](docs/branding/rail-arena-banner.png)
-
-*Concept brand art. The gameplay capture below shows a separate development milestone.*
+![Rail Arena brand banner with four contender concepts](docs/branding/rail-arena-banner.png)
 
 # Rail Arena
 
-[Play and build](docs/BUILD-AND-PLAY.md) · [Character references](docs/CHARACTER-REFERENCES.md) · [Brand kit](docs/branding/README.md) · [Validation](docs/VALIDATION.md)
+### One railgun. Every shot matters.
 
-An original railgun arena shooter for Windows, inspired by Quake III Arena's movement and Unreal Tournament's readable arenas and bot combat.
+**An arena shooter built to make aim practice feel like play.**
 
-**Under development. Offline play and direct-IP duel builds are available locally; this is not the complete game or a published release.**
+Rail Arena is a Windows game and AI engineering portfolio project by **Sanders Riddle**, built with modern AI agentic workflows. The vision is a complete, focused aim trainer and arena game: sharpen your precision, learn to shoot while moving, and turn another practice session into one more match.
 
-The target is immediate offline bot matches and practice, plus direct-IP two-human duels. The complete scope and acceptance criteria are in [the objective](docs/OBJECTIVE.md).
+[Explore the vision](#the-game) · [Build and play](docs/BUILD-AND-PLAY.md) · [Character designs](docs/CHARACTER-REFERENCES.md) · [Engineering evidence](docs/VALIDATION.md)
 
-Public source: [Evekiio/rail-arena](https://github.com/Evekiio/rail-arena). Tested development milestones are pushed as work progresses; a finished downloadable release is not available yet.
+> **Playable development project.** Offline practice, bot matches and direct-IP duel integration are implemented. Final presentation, human playtesting and internet multiplayer acceptance remain in progress. There is no finished downloadable release yet. The banner and character artwork are concept references.
 
-![Standalone bot practice with combat HUD and RA-01 rail discharge](Validation/EvaluationNative/Rail-Firing.jpg)
+## The game
 
-*Actual non-development fa2cb0af player extracted from the local evaluation ZIP, during native mouse firing in three-bot practice. The rail trace, recovery HUD and running bot kill feed are visible. Glove/cuff cleanup, richer action animation and final arena polish remain unfinished. Physical keyboard acceptance remains open; software mapping has separate live tests.*
+Aim is more interesting when the target shoots back.
 
-The current view rig also has original procedural run bob, look sway, landing compression, respawn raise and recoil pitch. These move the weapon and hands while preserving camera aim. See [motion details and controlled preview scope](docs/FIRST-PERSON-ARMS.md).
+Rail Arena puts precision inside a compact sci-fi arena: elevated platforms, momentum-driven movement, jump pads and a railgun that rewards a well-timed shot. Practice at your own pace, fight bots, or work toward a head-to-head duel where positioning matters as much as your crosshair.
 
-The [combat HUD](docs/COMBAT-HUD.md) now separates health, score/speed, rail recovery and match state, with a fixed readiness reticle and a readable scoreboard backdrop. Joining-player charge displays follow the local prediction clock.
+The design draws on Quake III Arena's movement and Unreal Tournament's arena readability, with original characters, weapons and environments. Its identity is deliberately focused: **one weapon, a readable battlefield, and skill you can feel improving.**
 
-[Combat feedback](docs/COMBAT-FEEDBACK.md) adds pooled rail core/halo, muzzle and impact effects, authoritative hit/elimination markers, damage edges and four original audio cues with editable synthesis source and WAV review exports.
+| Experience | What it is for |
+| --- | --- |
+| **Solo practice** | Explore the arena, learn routes and work on movement with unlimited respawns and no opponents. |
+| **Target practice** | Use stationary, moving or combat bot behavior to isolate precision or practice under pressure. |
+| **Bot matches** | Face 1–7 bots across three difficulty levels in timed matches with scoring, results and restart. |
+| **Direct-IP duel** | Host or join a two-human match, ready up, compete and rematch. Integration is implemented; full human and remote-network acceptance is still open. |
 
-[Articulated hands](docs/HAND-ARTICULATION.md) add 30 weighted finger joints, an editable fitted grip profile and a subtle trigger/support response for first- and third-person models. The controlled motion preview and contact closeups document progress and remaining surface defects.
+### Precision with consequences
 
-## Character references
+- **Make the shot count.** Unlimited ammunition, a 1.5-second rail cycle and location-based damage: 100 to the head, 50 to the body, 34 to a limb.
+- **Keep moving.** Ground acceleration, air control and momentum preservation support a movement-driven practice loop, without sprint or stamina.
+- **Play the arena.** Ramps, gaps, four jump pads and contested health pickups create routes and decisions beyond holding an angle.
+- **Stay in the loop.** Untimed practice supports repetition; ten-minute matches add a countdown, scoreboard, results and tied-leader sudden death.
 
-The approved visual direction is high-detail, low-poly sci-fi armor with distinct faces, hair and readable color palettes. The expanded pack provides **four sheets per character**: eight body directions, larger head studies, equipment details, and guided top/bottom concepts.
+The goal is enjoyable, repeatable practice inside a real game. Claims about measurable aim improvement require player studies; this project does not yet establish training outcomes.
 
-![Approved player and three bot character concepts](ArtSource/Original/StylizedContenders/References-v1/Final/Approved-Concept.png)
+### A complete game with a deliberate boundary
 
-| Character | Body · 8 views | Head · 6 studies | Equipment details | Top / bottom |
-| --- | --- | --- | --- | --- |
-| Player · ivory / cyan | [Turnaround](ArtSource/Original/StylizedContenders/References-v1/Final/Player-Turnaround.png) | [Head](ArtSource/Original/StylizedContenders/References-v1/Final/Player-Head.png) | [Details](ArtSource/Original/StylizedContenders/References-v1/Final/Player-Details.png) | [Top / bottom](ArtSource/Original/StylizedContenders/References-v1/Final/Player-Axial.png) |
-| Bot 01 · terracotta / amber | [Turnaround](ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Turnaround.png) | [Head](ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Head.png) | [Details](ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Details.png) | [Top / bottom](ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Axial.png) |
-| Bot 02 · slate / ivory | [Turnaround](ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Turnaround.png) | [Head](ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Head.png) | [Details](ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Details.png) | [Top / bottom](ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Axial.png) |
-| Bot 03 · plum / copper | [Turnaround](ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Turnaround.png) | [Head](ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Head.png) | [Details](ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Details.png) | [Top / bottom](ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Axial.png) |
+The first-version target is **one polished original arena, one satisfying railgun, offline practice and bot combat, and a complete two-human direct-IP duel loop**. Responsive controls, readable feedback, dependable shutdown and a clean path from launch to rematch are part of that target.
 
-[Browse all sixteen sheets and the modeling notes](docs/CHARACTER-REFERENCES.md). These are concept/modeling references; the new hidden-surface details remain review candidates. Exact geometric consistency and final model quality must be checked on the shared 3D masters. Runtime art can differ while production continues.
+Cloud accounts, matchmaking services, progression economies, monetization, extra weapons, spectators and online bots are outside this version's scope. See the [full gameplay and completion contract](docs/OBJECTIVE.md).
 
-## Project
+## Designed to be recognizable
 
-- Unity **6000.6.7f1**, pinned in `RailArena/ProjectSettings/ProjectVersion.txt`.
-- Universal Render Pipeline **17.6.0**.
-- C# gameplay simulation at **60 ticks per second**.
-- Local Git with LFS for binary artwork and audio.
+Ivory armor. Graphite silhouettes. Cyan energy. Distinct contenders built around a high-detail, low-poly visual direction.
 
-Open the `RailArena` folder in the exact Editor version. Package versions are recorded in the manifest and lockfile. Unity licensing and the first package restore are required for development. The intended offline game will not require an account or external service.
+![Approved concept designs for the player and three bots](ArtSource/Original/StylizedContenders/References-v1/Final/Approved-Concept.png)
 
-Clone with Git LFS installed so the binary models, textures and animation sources are restored:
+| Contender | Visual identity | Reference sheet |
+| --- | --- | --- |
+| **Player** | Ivory armor, teal cowl and cyan accents | [Turnaround](ArtSource/Original/StylizedContenders/References-v1/Final/Player-Turnaround.png) |
+| **Bot 01** | Terracotta armor and amber energy | [Turnaround](ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Turnaround.png) |
+| **Bot 02** | Slate, ivory and cool teal | [Turnaround](ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Turnaround.png) |
+| **Bot 03** | Plum armor and copper detailing | [Turnaround](ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Turnaround.png) |
+
+[Explore all sixteen character sheets](docs/CHARACTER-REFERENCES.md), including head studies, equipment details and top/bottom concepts. These guide modeling; they are not screenshots or a promise of final runtime appearance. Newly extended hidden surfaces remain review candidates, and geometric consistency must be resolved in the shared 3D models.
+
+The [brand kit](docs/branding/README.md) includes the transparent logo, banner, palette and usage notes.
+
+## AI engineering, applied to a playable product
+
+**Created by Sanders Riddle as a portfolio project in AI Solutions and AI Engineering.** Rail Arena explores how modern AI agents can help turn a creative brief into working software, editable assets and inspectable evidence.
+
+The engineering challenge spans gameplay rules, real-time networking, asset pipelines, process lifecycle management and validation. The value of the workflow is in connecting those pieces into a maintainable product, then checking that the result behaves as intended.
+
+| Workflow | How it appears in this project |
+| --- | --- |
+| **Define the contract** | Explicit gameplay rules, version pins, scope boundaries and completion criteria give agents concrete constraints. |
+| **Implement and integrate** | Agent-assisted C# development and scripted asset pipelines connect simulation, bots, networking and presentation. |
+| **Create and refine assets** | AI-generated concept references support visual exploration; editable Blender sources and Unity assets support implementation. Concept approval and model quality remain separate decisions. |
+| **Verify with evidence** | Automated mechanics checks, standalone runners, network scenarios and build-specific reports make results reviewable. |
+| **Keep the operator in control** | Project instructions require headless Unity work by default, permission before visible windows, bounded processes and cleanup. |
+
+AI assistance is part of the development process. In-game opponents use configurable gameplay logic; they are not LLM-driven agents. Generated output is reviewed and tested, and automated checks do not substitute for human judgment about fun, feel or visual quality.
+
+## Built for inspection
+
+**Unity 6000.6.7f1 · URP 17.6.0 · C# · Windows keyboard and mouse · Git LFS**
+
+The gameplay core runs at **60 ticks per second**. Offline play uses local authority; online duels use host authority with client prediction, reconciliation, opponent interpolation and bounded hit rewind up to 200 ms.
+
+```mermaid
+flowchart LR
+    Human[Player input] --> Simulation[Shared gameplay simulation]
+    Bots[Offline bot decisions] --> Simulation
+    Network[Direct-IP duel inputs] --> Simulation
+    Simulation --> Rules[Movement, hits, health and scoring]
+    Rules --> State[Authoritative state]
+    State --> View[Characters, weapon, HUD and audio]
+    State --> Client[Client reconciliation and interpolation]
+```
+
+Gameplay authority determines damage and movement. Presentation observes state. Keeping those responsibilities separate makes rules easier to test and allows practice and competitive modes to share the same foundation.
+
+Explore the [implementation record](docs/IMPLEMENTATION.md), [networking](docs/NETWORKING.md), [bot tuning](docs/BOT-TUNING.md), [weapon pipeline](docs/WEAPONS.md) and [combat feedback](docs/COMBAT-FEEDBACK.md).
+
+### What the evidence establishes
+
+Automated coverage includes simulation rules, standalone combat mechanics, bot scenarios, replicated respawn behavior, local duel/rematch scenarios and simulated network impairment. Reports identify the builds and conditions they cover.
+
+The remaining quality gates include physical keyboard/mouse feel, sound-on review, final art and animation polish, native two-human play from hosting through rematch, and a duel across real internet connections. Some impaired-network runs exposed large client corrections under concurrent import/build load; smooth multiplayer remains a quality target.
+
+**Passing tests is evidence of specific behavior, not a finished-game claim.** Read the [validation record](docs/VALIDATION.md), [acceptance matrix](docs/ACCEPTANCE.md) and [native input review](docs/NATIVE-INPUT-REVIEW.md) for results and limits.
+
+## Build it. Play it. Inspect it.
+
+The repository contains the editable Unity project and source assets. Windows builds are currently local and are not included as public release downloads.
 
 ```powershell
 git lfs install
@@ -59,102 +115,27 @@ cd rail-arena
 git lfs pull
 ```
 
-## Current implementation
+Use **Unity 6000.6.7f1** with Windows build support and open the `RailArena` subfolder. Unity licensing and the initial package restore are required for development. Follow the [build and play guide](docs/BUILD-AND-PLAY.md) for exact steps, or the [evaluation guide](docs/EVALUATION.md) for a focused playtest. Automation should follow the repository's [headless execution instructions](AGENTS.md).
 
-The editable Foundry arena now includes a lower loop, elevated bridge and wings, four ramps, four launch pads, three health pickups and eight spawn positions. Offline bot match and untimed practice use the same local 60 Hz authority, with configurable bot count, three difficulty levels and stationary, moving or combat targets.
-
-The first [arena surface-art pass](docs/ARENA-ART.md) adds original panel textures, beveled covers, vents, warning markings and directional launch fields while preserving the collider/navigation signature.
-
-The first gameplay pass includes location-based hitboxes, a rail cooldown, deaths and respawns, health restoration, countdown, time limit, void scoring and tied-leader sudden death. Menus, a HUD, scoreboard, results, restart and basic settings are implemented. Characters now use a textured armored humanoid, three mesh LODs, four palette variants, retargeted locomotion/jump/landing/hit/death animations and two-hand aiming IK. See [character sources, editing and limitations](docs/CHARACTERS.md). The original [RA-01 railgun](docs/WEAPONS.md) has editable Blender source, two mesh LODs and cooldown-driven feedback. [First-person armored arms](docs/FIRST-PERSON-ARMS.md) now share its grips and recoil. Hand/action-animation, sound and arena polish remain. **The full online acceptance criteria remain incomplete.**
-
-Direct-IP duel integration is available from **ONLINE DUEL // DIRECT IP**. Host and join use the same build and selected UDP port, then both players ready up. The host owns gameplay, while the client predicts/reconciles movement and interpolates the opponent. Bounded 200 ms hit rewind has geometry tests and integrated UDP evidence. Automated local match/rematch and delay/loss reports identify their builds; native human interaction, reconciliation feel and a real internet path remain unverified. See [networking coverage and remaining integration](docs/NETWORKING.md).
-
-## Validation snapshot
-
-| Evidence | Scope |
-| --- | --- |
-| 77 Editor-suite tests passing | Shared simulation, model/animation, finger skin deformation and live wrist/palm alignment, bots, networking/lifecycle, HUD/input, effects and audio signals |
-| 37 standalone mechanics checks passing | Accelerated real authority with actual hurtboxes; combat/pickup/respawn/match boundaries, hit/elimination feedback, solo movement/fire/respawn and mode switching |
-| Full ten-minute match and rematch on preceding build ba7f4cc8 | Separate clean and impaired local UDP runs; matching result tick, scores and life numbers, zero application errors; large client corrections under concurrent import/build load remain a movement-quality limitation |
-| Replicated respawn lifecycle | Version 3 snapshots reset stale input, interpolation and view state, including missed-death and rematch regressions |
-| Native mouse/settings review | Solo menu/launch, aiming/firing, sensitivity/volume save and relaunch, resolution changes and fullscreen toggle; [evidence and limits](docs/NATIVE-INPUT-REVIEW.md) |
-| Human acceptance still open | Keyboard controls and mouse feel, display-mode persistence, sound-on quality, native two-human duel, release qualification and real internet path |
-
-Reports identify their build and limitations. See [the acceptance matrix](docs/ACCEPTANCE.md), [validation record](docs/VALIDATION.md), [bot checks](docs/BOT-VALIDATION.md) and [direct-IP hosting guide](docs/HOSTING.md).
-
-## Architecture
-
-```mermaid
-flowchart LR
-    Local["Local keyboard and mouse"] --> Commands["MovementCommand"]
-    Bots["Offline BotBrain"] -->|offline commands| Authority["ArenaSession: 60 Hz authority"]
-    Commands -->|host or offline| Authority
-    Commands -->|challenger| Client["Duel client: predict and replay"]
-    Client --> Inputs["Bounded UDP commands"]
-    Inputs --> Authority
-    Authority --> Rules["Movement, rail hits, pickups, scores and clock"]
-    Rules --> Snapshots["Snapshots: pose, health, life and results"]
-    Snapshots --> Client
-    Client --> View["Opponent interpolation and camera continuity"]
-    Rules --> Presentation["Animation, weapon feedback, HUD and audio"]
-    View --> Presentation
-```
-
-`RailArena.Simulation` contains movement integration and match/combat rules. Runtime authority supplies collision resolution and hit geometry; the client reuses movement and pad logic. `Networking` owns bounded codecs, the two-peer link, input queue, historical hit tracing and camera continuity. Presentation observes actor state and never grants damage or movement. Life identity separates respawn teleports from ordinary motion, clearing stale prediction and interpolation state. Online slots are human-only; automated validation supplies controls without adding an online bot mode.
-
-## Play the local build
-
-Start with the [15–20 minute evaluation guide](docs/EVALUATION.md), including current progress, known quality gaps and the goals to assess.
-
-For the current local non-development playtest, launch `Builds/Evaluation/RailArena.exe`. Follow the [build and play guide](docs/BUILD-AND-PLAY.md) to open the project, make your own Windows build and test solo or with bots. `Builds/Windows/RailArena.exe` remains the development player used by automated runners. These are unfinished local builds, not downloadable releases.
-
-Choose **OFFLINE BOT MATCH** or **PRACTICE**. Set bot count, difficulty and target behavior before starting. During a session, press Escape to pause; changing the configuration and choosing **RESTART SESSION** applies it. Native keyboard acceptance is still open as documented above.
-
-Choose **QUIT** from the main menu, pause menu or duel ready/results room to close the player. **MAIN MENU** and **DISCONNECT** leave the application open. Closing the window or using Alt+F4 also releases the active network session. Automated development players receive their runner's process ID and a runtime limit; they exit with failure if the runner terminates or the limit expires, even if shell cleanup is interrupted.
-
-Run `tools/Test-Shutdown.ps1` against the development player for automated window-close, owner-exit and timeout checks. See [shutdown behavior and evidence](docs/SHUTDOWN.md).
-
-For movement and arena testing alone, cycle **BOTS** to **0 // SOLO**, then choose **SOLO PRACTICE // UNTIMED**. It has no opponents or network connection. Movement, rail firing, pickups, jump pads, void scoring and unlimited respawns use the normal authority. Timed bot matches require at least one bot. Solo practice can restart with bots after changing the count in the pause menu.
+On the development PC, the non-development evaluation player is `Builds/Evaluation/RailArena.exe`; keep its adjacent data and DLLs together. Choose **PRACTICE** for solo or bot training, **OFFLINE BOT MATCH** for a timed session, or **ONLINE DUEL // DIRECT IP** for host/join. Offline play needs no account or external service. [Direct-IP setup](docs/HOSTING.md) covers ports, firewall and hosting requirements.
 
 | Control | Action |
 | --- | --- |
 | W A S D | Move |
 | Mouse | Aim |
-| Left mouse | Fire railgun |
+| Left mouse | Fire |
 | Space | Jump; hold to keep hopping |
 | Tab | Hold scoreboard |
 | Escape | Pause and settings |
 
-No sprint, stamina, armor or ammo pickups are used. Health is 100; headshots deal 100, body hits 50 and limb hits 34. Health pickups restore 25 and return after 20 seconds. The rail cycles every 1.5 seconds.
+Choose **QUIT** to exit. **MAIN MENU** and **DISCONNECT** return to menus while keeping the application open. See [shutdown behavior](docs/SHUTDOWN.md) for lifecycle checks and runner safeguards.
 
-## Tests
+## Project notes
 
-With the Unity CLI installed:
+- **Creator:** Sanders Riddle
+- **Portfolio focus:** AI Solutions / AI Engineering, agentic development workflows, gameplay systems and reproducible validation
+- **Status:** Active development toward a complete Windows aim trainer and arena game
+- **Source:** [Evekiio/rail-arena](https://github.com/Evekiio/rail-arena)
+- **License:** Original project code is [MIT licensed](LICENSE); see [third-party notices](THIRD-PARTY-NOTICES.md) for assets and dependencies.
 
-```powershell
-unity test .\RailArena --mode EditMode --filter RailArena.Tests --output .\Validation\editmode.xml
-```
-
-Passing simulation tests alone does not establish playability, movement fidelity, bot quality or multiplayer reliability. Standalone, visual and simulated-network validation remain required.
-
-For the development Windows build, run `tools/Test-Offline.ps1` to execute a repeatable 45-second local combat smoke test with seven bots and an automated human input driver. It saves counters, errors, void traces and frame timing. This automation does not validate human input feel or menu clicks. Hidden-window frame timing is not a visible-window rendering benchmark.
-
-The same runner accepts `-Duration 600 -Difficulty 0 -Bots 7` for a ten-minute easy session; difficulty values 1 and 2 select medium and hard. Per-actor route and sampled stall measurements are described in [bot validation](docs/BOT-VALIDATION.md).
-
-Bot reaction, aim and decision profiles are editable in `Assets/Resources/BotTuning.asset`; restart the session to apply changes. See [bot tuning](docs/BOT-TUNING.md) for units, preserved defaults and validation.
-
-Run `tools/Test-Mechanics.ps1` for 37 accelerated standalone authority checks covering actual hurtbox damage, held-fire cooldowns, pickups, respawns, void scoring, match clocks, sudden death, untimed practice and solo-to-bot mode switching. See [scenario scope and the bone-scale regression it discovered](docs/MECHANICS-VALIDATION.md). These checks do not substitute for native playtesting or real-time multiplayer.
-
-Build the current saved scene through the running pinned Editor:
-
-```powershell
-unity command script eval --project-path .\RailArena --caller plugin --skill unity-cli --timeout 600 -- --code 'RailArena.Editor.ArenaBuilder.BuildWindows();'
-```
-
-The scene and editable tuning live under `Assets/RailArena/Generated`. `Rail Arena > Build Foundry scene` regenerates these generated assets from the builder; manual changes to generated assets should be preserved separately before regeneration. See the [direct-IP hosting, firewall and port-forwarding guide](docs/HOSTING.md) for manual connection steps and the remaining remote-network acceptance.
-
-For a non-development local playtest build, use `ArenaBuilder.BuildWindowsPlaytestTo(output)`; the automated validation runners still require the development build. The optional input-review variant and exact commands are documented in [native input review](docs/NATIVE-INPUT-REVIEW.md). Build mode does not change the project's unfinished release status.
-
-## License
-
-Original project code is MIT licensed. See [LICENSE](LICENSE) and [third-party notices](THIRD-PARTY-NOTICES.md). Inspiration references are documented in [the implementation record](docs/IMPLEMENTATION.md). No Quake or Unreal maps, characters, sounds, branding or code are bundled.
+Rail Arena uses original project assets and documented dependencies. No Quake or Unreal maps, characters, sounds, branding or code are bundled.
