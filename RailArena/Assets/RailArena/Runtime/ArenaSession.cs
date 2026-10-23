@@ -32,6 +32,7 @@ namespace RailArena
         public string Feed { get; private set; } = "";
         public AimPreferences Aim { get; } = new();
         public ReticlePreferences Reticle { get; } = new();
+        public ComfortPreferences Comfort { get; } = new();
         public float Sensitivity { get => Aim.Sensitivity; set => Aim.Sensitivity = value; }
         public Camera View { get; private set; }
         private ArenaHud hud;
@@ -61,12 +62,14 @@ namespace RailArena
             Application.targetFrameRate = 144;
             Aim.Load();
             Reticle.Load();
+            Comfort.Load();
             SelectedOfflineCharacter = OfflineRoster.NormalizeCharacter(PlayerPrefs.GetInt("offlineCharacter",0));
             AudioListener.volume = PlayerPrefs.GetFloat("volume", .65f);
             View = Camera.main;
             View.fieldOfView = Aim.FieldOfView;
             View.GetUniversalAdditionalCameraData().renderPostProcessing = true;
             Feedback = gameObject.AddComponent<RailFeedback>();
+            Feedback.Preferences = Comfort;
             hud = gameObject.AddComponent<ArenaHud>();
             hud.Session = this;
             CreateWeapon();
@@ -189,16 +192,17 @@ namespace RailArena
             reconciliationView.Decay(Time.unscaledDeltaTime);
             recoil = Mathf.MoveTowards(recoil, 0, Time.unscaledDeltaTime * 5);
             weaponPresentation.SetCharge((Human.NextShotTick - LocalSimulationTick) / (float)CombatRules.ShotIntervalTicks);
-            if (!Human.Alive || Paused) weaponMotion.Reset(false);
+            if (!Human.Alive || Paused || !Comfort.WeaponMotion) weaponMotion.Reset(false);
             else
             {
                 if (weaponMotionLife != Human.Life) weaponMotion.Reset(true);
                 weaponMotionLife = Human.Life;
                 weaponMotion.Step(Time.unscaledDeltaTime, Human.Velocity, Human.Grounded && Human.AirborneTicks == 0, lookMotion, recoil);
             }
-            weapon.localPosition = FirstPersonWeaponMotion.RestPosition + weaponMotion.Offset - Vector3.forward * (recoil * RailgunPresentation.ViewRecoilTravel);
+            float visibleRecoil = Comfort.WeaponMotion ? recoil : 0;
+            weapon.localPosition = FirstPersonWeaponMotion.RestPosition + weaponMotion.Offset - Vector3.forward * (visibleRecoil * RailgunPresentation.ViewRecoilTravel);
             weapon.localRotation = weaponMotion.Rotation;
-            viewArms.SetRecoil(Human.Alive && !Paused ? recoil : 0);
+            viewArms.SetRecoil(Human.Alive && !Paused ? visibleRecoil : 0);
             weapon.gameObject.SetActive(Human.Alive && !Paused);
         }
 

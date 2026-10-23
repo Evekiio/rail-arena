@@ -98,7 +98,7 @@ namespace RailArena
             var hitColor = Session.Feedback.LastHitWasKill ? warning : Color.white;
             hitColor.a = hit;
             foreach (var mark in hitMarks) mark.color = hitColor;
-            var damageColor = new Color(1, .12f, .06f, Session.Feedback.DamageStrength * .7f);
+            var damageColor = new Color(1, .12f, .06f, Session.Feedback.DamageStrength * Session.Comfort.DamageEdgeOpacity);
             foreach (var edge in damageEdges) edge.color = damageColor;
             statsValue.text = $"SCORE  {match.Scores[human.Id]}\nSPEED  {new Vector2(human.Velocity.x, human.Velocity.z).magnitude:0.0}";
             modeValue.text = Session.IsOnline ? "DIRECT-IP DUEL" : Session.Practice ?
