@@ -436,12 +436,12 @@
     {
       "id": "WEAPON-RIFLE",
       "family": "weapon",
-      "purpose": "Enclosed ceramic precision rail rifle",
+      "purpose": "Approved enclosed precision carbine",
       "dimensions": {
-        "lengthMetres": 1.2,
-        "widthMetres": 0.25,
-        "heightMetres": 0.45,
-        "note": "Envelope target, not manufacturing dimensions"
+        "lengthMetres": 1.0,
+        "widthMetres": 0.1,
+        "heightMetres": 0.33,
+        "note": "Approved envelope; integrated production asset"
       },
       "requiredViews": [
         "front",
@@ -470,19 +470,27 @@
       ],
       "collisionRole": "presentation only",
       "references": [
-        "ArtSource/Original/Design-v1/Sources/User-Rifle-Reference.png"
+        "ArtSource/Original/PrecisionCarbine-References-v3/README.md",
+        "ArtSource/Original/PrecisionCarbine-References-v3/index.html",
+        "ArtSource/Original/PrecisionCarbine-References-v3/RailRifle-Six-View.png",
+        "ArtSource/Original/PrecisionCarbine-References-v3/Assembly-Dimensions.csv",
+        "ArtSource/Original/PrecisionCarbine-Production-v1/README.md"
       ],
       "intendedReferences": [
-        "ArtSource/Original/Design-v1/Sources/User-Rifle-Reference.png"
+        "ArtSource/Original/PrecisionCarbine-References-v3/README.md",
+        "ArtSource/Original/PrecisionCarbine-References-v3/index.html",
+        "ArtSource/Original/PrecisionCarbine-References-v3/RailRifle-Six-View.png",
+        "ArtSource/Original/PrecisionCarbine-References-v3/Assembly-Dimensions.csv"
       ],
-      "approvalStatus": "blocked-incomplete-views",
-      "approvalEvidence": null,
-      "notes": "Single user source only. New multi-view design reference blocked by prior image-service filtering. Prior RA-01 is historical context, not accepted replacement. Do not begin detailed modeling.",
+      "approvalStatus": "design-approved-integrated-human-acceptance-pending",
+      "approvalEvidence": "Explicit creator approval and production authorization in chat, October 23, 2026",
+      "notes": "Creator approved October 23, 2026. Production asset, atlas, LODs and fitted shared weapon installed. See ArtSource/Original/PrecisionCarbine-Production-v1/README.md; human acceptance and performance qualification remain open.",
       "remainingRequirements": [
-        "new complete multi-view reference"
+        "human acceptance of installed visual/finger contact/animation",
+        "external duel acceptance and measured performance qualification"
       ],
-      "coverageStatus": "partial; see remainingRequirements",
-      "detailedModelingAllowed": false
+      "coverageStatus": "Integrated production asset; acceptance gates remain",
+      "detailedModelingAllowed": true
     },
     {
       "id": "MAP-FOUNDRY",
@@ -518,36 +526,28 @@
       ],
       "collisionRole": "Master gameplay geometry proposal; no runtime integration",
       "references": [
-        "ArtSource/Original/Design-v1/Greybox/Overview.png",
-        "ArtSource/Original/Design-v1/Greybox/Top.png",
-        "ArtSource/Original/Design-v1/Greybox/LowerPlan.png",
-        "ArtSource/Original/Design-v1/Greybox/UpperPlan.png",
-        "ArtSource/Original/Design-v1/Greybox/North.png",
-        "ArtSource/Original/Design-v1/Greybox/South.png",
-        "ArtSource/Original/Design-v1/Greybox/East.png",
-        "ArtSource/Original/Design-v1/Greybox/West.png",
-        "ArtSource/Original/Design-v1/Greybox/Section-Y0.png",
-        "ArtSource/Original/Design-v1/Greybox/Player-Lower.png",
-        "ArtSource/Original/Design-v1/Greybox/Player-Bridge.png",
-        "ArtSource/Original/Design-v1/Greybox/Player-Wing.png"
+        "ArtSource/Original/Foundry-Arena-v2/Master-Plan.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Lower-Deck.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Wing-Deck.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Upper-Deck.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Section-EW-N8.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Section-NS-X0.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Map.json",
+        "ArtSource/Original/Foundry-Arena-v2/Environment-Kit.json"
       ],
       "intendedReferences": [
-        "ArtSource/Original/Design-v1/Greybox/Overview.png",
-        "ArtSource/Original/Design-v1/Greybox/Top.png",
-        "ArtSource/Original/Design-v1/Greybox/LowerPlan.png",
-        "ArtSource/Original/Design-v1/Greybox/UpperPlan.png",
-        "ArtSource/Original/Design-v1/Greybox/North.png",
-        "ArtSource/Original/Design-v1/Greybox/South.png",
-        "ArtSource/Original/Design-v1/Greybox/East.png",
-        "ArtSource/Original/Design-v1/Greybox/West.png",
-        "ArtSource/Original/Design-v1/Greybox/Section-Y0.png",
-        "ArtSource/Original/Design-v1/Greybox/Player-Lower.png",
-        "ArtSource/Original/Design-v1/Greybox/Player-Bridge.png",
-        "ArtSource/Original/Design-v1/Greybox/Player-Wing.png"
+        "ArtSource/Original/Foundry-Arena-v2/Master-Plan.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Lower-Deck.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Wing-Deck.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Upper-Deck.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Section-EW-N8.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Section-NS-X0.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Map.json",
+        "ArtSource/Original/Foundry-Arena-v2/Environment-Kit.json"
       ],
       "approvalStatus": "awaiting-creator-review",
       "approvalEvidence": null,
-      "notes": "Balance, traversal and spawn safety require actual-controller tests. Existing illustration topology is not authoritative.",
+      "notes": "Foundry v2 is current: duel-first, opaque shot-blocking gates, revised spawns/landings. V1 Blender master is historical. Actual-controller and creator layout approval remain open.",
       "remainingRequirements": [
         "creator layout review",
         "actual-controller traversal and visibility tests"
@@ -598,7 +598,7 @@
       ],
       "approvalStatus": "awaiting-creator-review",
       "approvalEvidence": null,
-      "notes": "16m ramp assembly: 7m rise, 2m flat turnout, 7m rise. Resolve illustrated joint/view discrepancies against the greybox before approval.",
+      "notes": "Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.",
       "remainingRequirements": [
         "cross-sheet back/underside consistency review",
         "master-aligned joint verification"
@@ -649,7 +649,7 @@
       ],
       "approvalStatus": "awaiting-creator-review",
       "approvalEvidence": null,
-      "notes": "16m ramp assembly: 7m rise, 2m flat turnout, 7m rise. Resolve illustrated joint/view discrepancies against the greybox before approval.",
+      "notes": "Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.",
       "remainingRequirements": [
         "cross-sheet back/underside consistency review",
         "master-aligned joint verification"
@@ -700,7 +700,7 @@
       ],
       "approvalStatus": "awaiting-creator-review",
       "approvalEvidence": null,
-      "notes": "16m ramp assembly: 7m rise, 2m flat turnout, 7m rise. Resolve illustrated joint/view discrepancies against the greybox before approval.",
+      "notes": "Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.",
       "remainingRequirements": [
         "cross-sheet back/underside consistency review",
         "master-aligned joint verification"
@@ -751,7 +751,7 @@
       ],
       "approvalStatus": "awaiting-creator-review",
       "approvalEvidence": null,
-      "notes": "16m ramp assembly: 7m rise, 2m flat turnout, 7m rise. Resolve illustrated joint/view discrepancies against the greybox before approval.",
+      "notes": "Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.",
       "remainingRequirements": [
         "cross-sheet back/underside consistency review",
         "master-aligned joint verification"
@@ -802,7 +802,7 @@
       ],
       "approvalStatus": "awaiting-creator-review",
       "approvalEvidence": null,
-      "notes": "16m ramp assembly: 7m rise, 2m flat turnout, 7m rise. Resolve illustrated joint/view discrepancies against the greybox before approval.",
+      "notes": "Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.",
       "remainingRequirements": [
         "cross-sheet back/underside consistency review",
         "master-aligned joint verification"
@@ -853,7 +853,7 @@
       ],
       "approvalStatus": "awaiting-creator-review",
       "approvalEvidence": null,
-      "notes": "16m ramp assembly: 7m rise, 2m flat turnout, 7m rise. Resolve illustrated joint/view discrepancies against the greybox before approval.",
+      "notes": "Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.",
       "remainingRequirements": [
         "cross-sheet back/underside consistency review",
         "master-aligned joint verification"
@@ -904,7 +904,7 @@
       ],
       "approvalStatus": "awaiting-creator-review",
       "approvalEvidence": null,
-      "notes": "16m ramp assembly: 7m rise, 2m flat turnout, 7m rise. Resolve illustrated joint/view discrepancies against the greybox before approval.",
+      "notes": "Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.",
       "remainingRequirements": [
         "cross-sheet back/underside consistency review",
         "master-aligned joint verification"
@@ -955,7 +955,7 @@
       ],
       "approvalStatus": "awaiting-creator-review",
       "approvalEvidence": null,
-      "notes": "16m ramp assembly: 7m rise, 2m flat turnout, 7m rise. Resolve illustrated joint/view discrepancies against the greybox before approval.",
+      "notes": "Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.",
       "remainingRequirements": [
         "cross-sheet back/underside consistency review",
         "master-aligned joint verification"

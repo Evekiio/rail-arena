@@ -5,7 +5,7 @@ namespace RailArena
     /// <summary>Bounded view-weapon motion; never writes camera, actor or simulation state.</summary>
     public sealed class FirstPersonWeaponMotion
     {
-        public static readonly Vector3 RestPosition = new(.33f, -.3f, .62f);
+        public static readonly Vector3 RestPosition = new(.20f, -.20f, .58f);
         public Vector3 Offset { get; private set; }
         public Quaternion Rotation { get; private set; } = Quaternion.identity;
         private float phase, movement, landingStrength, landingAge = 10, raiseAge = 10;

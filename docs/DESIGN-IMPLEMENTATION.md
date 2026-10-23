@@ -2,6 +2,10 @@
 
 Authority: [design lock](DESIGN.md). The approved rules differ from existing published and local builds. Do not describe those builds as v1 design-compliant until migration tests pass.
 
+## Carbine integration, October 23
+
+The approved precision carbine replaces the shared weapon and all contender presentations. Its [production handoff](../ArtSource/Original/PrecisionCarbine-Production-v1/README.md) records geometry, textures, LODs, fitting, build and validation evidence. Rifle input now latches valid click edges until one simulation sample, discards cooldown clicks, uses a 36-tick cooldown and provides tangent-correct 1.5x hold zoom. The existing 100/50/34 damage remains unchanged; 75/40/30 and the other design migrations below remain pending. Do not infer full design compliance from this asset integration.
+
 ## Ordered work
 
 | Stage | Completion evidence |

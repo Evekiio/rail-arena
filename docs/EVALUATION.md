@@ -1,10 +1,12 @@
+> Historical evaluation checkpoint. For the current downloadable client, see [pre-alpha release notes](PRE-ALPHA.md).
+
 # Rail Arena evaluation checkpoint
 
 Launch `F:\Rail Arena\Builds\Evaluation\RailArena.exe`. Keep the whole Evaluation folder together. This is a non-development Windows player, built with Unity 6000.6.7f1. It is a working evaluation checkpoint, not final acceptance of the full objective.
 
 For a portable local copy, extract `Builds/Packages/RailArena-Evaluation-fa2cb0af.zip` completely and run its `RailArena.exe`. The package includes launch instructions, licenses and a per-file SHA-256 manifest. It is a local evaluation artifact, not a published release. See [package verification](../Validation/evaluation-package.json).
 
-## A focused first session (15–20 minutes)
+## A focused first session (15â€“20 minutes)
 
 1. **Solo movement (5 minutes):** PRACTICE, BOTS 0 // SOLO. Test mouse aim, WASD acceleration, air strafing, held-Space hopping, ramps, gaps and all four jump pads. Fall into the void and confirm respawn. Judge responsiveness and visibility while moving quickly.
 2. **Controlled combat (3 minutes):** Restart with one stationary target, then one strafing target. Try head, torso and limb shots. Check rail recovery, hit/elimination feedback and respawn. Head damage is 100, torso 50, limbs 34; recovery is 1.5 seconds.
@@ -16,7 +18,7 @@ For a portable local copy, extract `Builds/Packages/RailArena-Evaluation-fa2cb0a
 
 | Goal | Current state | What your review can decide |
 | --- | --- | --- |
-| Immediate solo and 1–7 bot play | Implemented, standalone regression coverage | Movement feel, fun, difficulty and arena flow |
+| Immediate solo and 1â€“7 bot play | Implemented, standalone regression coverage | Movement feel, fun, difficulty and arena flow |
 | Shared combat rules and match lifecycle | 37 standalone mechanics checks; 77 Editor tests | Visible aiming/hit alignment and readable feedback |
 | Host-authoritative direct-IP duel | Implemented; current build has an impaired smoke; preceding build has clean/impaired full match and rematch evidence | Optional later two-human interaction review |
 | Prediction/reconciliation | Receive-before-physics catch-up fix tested; corrections remain measurable | Smoothness remains an engineering/feel goal |

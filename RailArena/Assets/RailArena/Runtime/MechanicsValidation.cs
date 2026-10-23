@@ -176,24 +176,24 @@ namespace RailArena
             Expect("Nonlethal damage confirms a hit without elimination", session.Feedback.ConfirmedHits == 2 &&
                 !session.Feedback.LastHitWasKill, $"hits={session.Feedback.ConfirmedHits}, lethal={session.Feedback.LastHitWasKill}");
             Aim(HitRegion.Body);
-            Advance(89);
-            Expect("Held fire cannot discharge during next 89 ticks", session.ShotsFired == count && Target.Health == 50,
+            Advance(35);
+            Expect("Shot intent cannot discharge during next 35 cooldown ticks", session.ShotsFired == count && Target.Health == 50,
                 $"shots={session.ShotsFired}, health={Target.Health}");
             Advance(1); Shooter.Command = default;
-            Expect("Second body shot fires exactly 90 ticks later and kills", Target.Health == 0 && session.ShotsFired == count + 1 &&
-                session.Match.Tick - first == 90, $"health={Target.Health}, shots={session.ShotsFired}, interval={session.Match.Tick - first}");
+            Expect("Second body shot fires exactly 36 ticks later and kills", Target.Health == 0 && session.ShotsFired == count + 1 &&
+                session.Match.Tick - first == 36, $"health={Target.Health}, shots={session.ShotsFired}, interval={session.Match.Tick - first}");
             Advance(120); PlaceForShots();
             Fire(HitRegion.Limb);
             Expect("First limb shot deals 34", Target.Health == 66, "health=" + Target.Health);
-            Advance(89); Fire(HitRegion.Limb);
+            Advance(35); Fire(HitRegion.Limb);
             Expect("Second limb shot leaves 32 health", Target.Health == 32, "health=" + Target.Health);
-            Advance(89); Fire(HitRegion.Limb);
+            Advance(35); Fire(HitRegion.Limb);
             Expect("Third limb shot kills without negative health", Target.Health == 0, "health=" + Target.Health);
             Advance(120); PlaceForShots();
             Fire(HitRegion.Body);
-            Advance(89); Fire(HitRegion.Limb);
+            Advance(35); Fire(HitRegion.Limb);
             Expect("Mixed body and limb damage leaves 16 health", Target.Health == 16, "health=" + Target.Health);
-            Advance(89); Fire(HitRegion.Limb);
+            Advance(35); Fire(HitRegion.Limb);
             Expect("Mixed hit sequence kills and records one kill", Target.Health == 0 && session.Match.Scores[0] == 4,
                 $"health={Target.Health}, score={session.Match.Scores[0]}");
             Advance(120);

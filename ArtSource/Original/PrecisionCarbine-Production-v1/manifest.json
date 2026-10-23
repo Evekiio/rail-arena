@@ -1,0 +1,895 @@
+{
+  "standalone": {
+    "mechanics": {
+      "fingerprint": "f630a5489d011bf14e3853c1d11a892bb61ad943323cd423f0ba8bf28f915000",
+      "clock": "Accelerated integer ticks through normal authority; not real-time or native input acceptance",
+      "elapsedSeconds": 3.030139207839966,
+      "errors": 0,
+      "failure": "",
+      "checks": [
+        {
+          "name": "Countdown blocks fire and damage through tick 179",
+          "tick": 179,
+          "passed": true,
+          "observed": "shots=0, health=100, phase=Countdown"
+        },
+        {
+          "name": "Tick 180 activates combat and lethal headshot scores once",
+          "tick": 180,
+          "passed": true,
+          "observed": "health=0, shots=1, score=1"
+        },
+        {
+          "name": "Authority confirms lethal hit with elimination feedback",
+          "tick": 180,
+          "passed": true,
+          "observed": "hits=1, lethal=True"
+        },
+        {
+          "name": "Dead actor cannot fire or respawn before 120 ticks",
+          "tick": 299,
+          "passed": true,
+          "observed": "alive=False, life=1, shots=1"
+        },
+        {
+          "name": "Respawn at exact 120-tick boundary restores 100 health and new life",
+          "tick": 300,
+          "passed": true,
+          "observed": "health=100, life=2, nextShot=300"
+        },
+        {
+          "name": "First body shot deals 50",
+          "tick": 301,
+          "passed": true,
+          "observed": "health=50"
+        },
+        {
+          "name": "Nonlethal damage confirms a hit without elimination",
+          "tick": 301,
+          "passed": true,
+          "observed": "hits=2, lethal=False"
+        },
+        {
+          "name": "Shot intent cannot discharge during next 35 cooldown ticks",
+          "tick": 336,
+          "passed": true,
+          "observed": "shots=2, health=50"
+        },
+        {
+          "name": "Second body shot fires exactly 36 ticks later and kills",
+          "tick": 337,
+          "passed": true,
+          "observed": "health=0, shots=3, interval=36"
+        },
+        {
+          "name": "First limb shot deals 34",
+          "tick": 458,
+          "passed": true,
+          "observed": "health=66"
+        },
+        {
+          "name": "Second limb shot leaves 32 health",
+          "tick": 494,
+          "passed": true,
+          "observed": "health=32"
+        },
+        {
+          "name": "Third limb shot kills without negative health",
+          "tick": 530,
+          "passed": true,
+          "observed": "health=0"
+        },
+        {
+          "name": "Mixed body and limb damage leaves 16 health",
+          "tick": 687,
+          "passed": true,
+          "observed": "health=16"
+        },
+        {
+          "name": "Mixed hit sequence kills and records one kill",
+          "tick": 723,
+          "passed": true,
+          "observed": "health=0, score=4"
+        },
+        {
+          "name": "Full-health actors leave pickup available",
+          "tick": 844,
+          "passed": true,
+          "observed": "availableTick=0"
+        },
+        {
+          "name": "Contested pickup heals exactly one actor by 25",
+          "tick": 845,
+          "passed": true,
+          "observed": "healths=75/50, availableTick=2045"
+        },
+        {
+          "name": "Pickup remains absent for next 1199 ticks",
+          "tick": 2044,
+          "passed": true,
+          "observed": "healths=75/50, visible=False"
+        },
+        {
+          "name": "Pickup returns and can be recollected at exact 1200 ticks",
+          "tick": 2045,
+          "passed": true,
+          "observed": "healths=100/50, availableTick=3245"
+        },
+        {
+          "name": "Pickup caps 90 health at 100",
+          "tick": 2046,
+          "passed": true,
+          "observed": "health=100"
+        },
+        {
+          "name": "No passive health regeneration over 600 ticks",
+          "tick": 2646,
+          "passed": true,
+          "observed": "health=40"
+        },
+        {
+          "name": "Void death subtracts one point and disables actor",
+          "tick": 2647,
+          "passed": true,
+          "observed": "health=0, score=-1, voids=1"
+        },
+        {
+          "name": "Void victim remains dead until respawn boundary",
+          "tick": 2766,
+          "passed": true,
+          "observed": "life=5"
+        },
+        {
+          "name": "Void victim respawns at 120 ticks",
+          "tick": 2767,
+          "passed": true,
+          "observed": "life=6"
+        },
+        {
+          "name": "Timed match remains playing one tick before ten-minute boundary",
+          "tick": 36179,
+          "passed": true,
+          "observed": "phase=Playing, remaining=1"
+        },
+        {
+          "name": "Tied leaders enter sudden death at tick 36180",
+          "tick": 36180,
+          "passed": true,
+          "observed": "phase=SuddenDeath"
+        },
+        {
+          "name": "Next tied-leader kill resolves sudden death",
+          "tick": 36181,
+          "passed": true,
+          "observed": "phase=Results, winner=0, score=1"
+        },
+        {
+          "name": "Results stop authority clock and respawn",
+          "tick": 36181,
+          "passed": true,
+          "observed": "tick=36181, targetAlive=False"
+        },
+        {
+          "name": "Unique leader wins at normal time limit",
+          "tick": 36180,
+          "passed": true,
+          "observed": "phase=Results, winner=0"
+        },
+        {
+          "name": "Practice stays active beyond timed-match limit",
+          "tick": 36780,
+          "passed": true,
+          "observed": "phase=Playing, practice=True"
+        },
+        {
+          "name": "Practice still respawns at 120 ticks after time limit",
+          "tick": 36901,
+          "passed": true,
+          "observed": "health=100, life=2"
+        },
+        {
+          "name": "Solo practice creates only the human with no network",
+          "tick": 0,
+          "passed": true,
+          "observed": "actors=1, bots=0, online=False"
+        },
+        {
+          "name": "Solo authority moves and fires without a target",
+          "tick": 210,
+          "passed": true,
+          "observed": "travel=3.716398, shots=1, health=100"
+        },
+        {
+          "name": "Solo practice stays active beyond match limit",
+          "tick": 36390,
+          "passed": true,
+          "observed": "phase=Playing, actors=1"
+        },
+        {
+          "name": "Solo void death still scores minus one",
+          "tick": 36391,
+          "passed": true,
+          "observed": "health=0, score=-1"
+        },
+        {
+          "name": "Solo void respawn preserves exact 120-tick boundary",
+          "tick": 36511,
+          "passed": true,
+          "observed": "deadBeforeBoundary=True, health=100, life=2"
+        },
+        {
+          "name": "Solo can restart into configured bot practice",
+          "tick": 0,
+          "passed": true,
+          "observed": "actors=2, difficulty=2, scenario=Moving"
+        },
+        {
+          "name": "Timed bot match retains at least one bot",
+          "tick": 0,
+          "passed": true,
+          "observed": "actors=2, bots=1, practice=False"
+        }
+      ],
+      "passed": true
+    },
+    "offline": {
+      "editorVersion": "6000.6.7f1",
+      "platform": "WindowsPlayer",
+      "processor": "Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz",
+      "gpu": "Null Device",
+      "memoryMB": 65375,
+      "fingerprint": "f630a5489d011bf14e3853c1d11a892bb61ad943323cd423f0ba8bf28f915000",
+      "requestedSeconds": 45,
+      "difficulty": 1,
+      "bots": 3,
+      "minimumShots": 15,
+      "minimumDeaths": 2,
+      "minimumPadLaunches": 5,
+      "elapsedSeconds": 45.1227912902832,
+      "meanFrameMs": 6.961180686950684,
+      "p95FrameMs": 7.004400730133057,
+      "exceptions": 0,
+      "voidDeaths": 0,
+      "telemetry": "ticks=2709 shots=200 deaths=15 pickups=2 pads=22",
+      "contenders": [
+        "YOU: health=100, position=(18.01, 6.77, 3.66), routeNodesThisLife=1",
+        "ION: health=100, position=(-14.81, 8.17, -8.48), routeNodesThisLife=3",
+        "CINDER: health=0, position=(-17.87, 3.35, 10.66), routeNodesThisLife=8",
+        "VECTOR: health=66, position=(-18.42, 2.67, 12.48), routeNodesThisLife=4"
+      ],
+      "voidTraces": [],
+      "actorProgress": [
+        {
+          "name": "YOU",
+          "lives": 6,
+          "routeNodes": 17,
+          "sampledDistanceMetres": 235.78125,
+          "longestStationarySeconds": 1.00433349609375,
+          "longestWithoutRouteSeconds": 2.004730224609375
+        },
+        {
+          "name": "ION",
+          "lives": 5,
+          "routeNodes": 17,
+          "sampledDistanceMetres": 298.43304443359375,
+          "longestStationarySeconds": 1.0033912658691406,
+          "longestWithoutRouteSeconds": 2.006622314453125
+        },
+        {
+          "name": "CINDER",
+          "lives": 3,
+          "routeNodes": 18,
+          "sampledDistanceMetres": 315.83367919921875,
+          "longestStationarySeconds": 1.0019207000732422,
+          "longestWithoutRouteSeconds": 2.00848388671875
+        },
+        {
+          "name": "VECTOR",
+          "lives": 4,
+          "routeNodes": 18,
+          "sampledDistanceMetres": 300.5959167480469,
+          "longestStationarySeconds": 1.0048255920410156,
+          "longestWithoutRouteSeconds": 2.005613327026367
+        }
+      ],
+      "passed": true
+    },
+    "host": {
+      "role": "host",
+      "fingerprint": "f630a5489d011bf14e3853c1d11a892bb61ad943323cd423f0ba8bf28f915000",
+      "round": 1,
+      "tick": 2637,
+      "errors": 0,
+      "shots": 58,
+      "observedShots": 58,
+      "deaths": 10,
+      "pads": 14,
+      "snapshots": 0,
+      "acknowledged": 0,
+      "pending": 0,
+      "correction": 0.0,
+      "maximumActiveCorrection": 0.0,
+      "maximumPhaseChangeCorrection": 0.0,
+      "largestActiveCorrection": {
+        "tick": 0,
+        "acknowledged": 0,
+        "pending": 0,
+        "previousClientTick": 0,
+        "distance": 0.0,
+        "predicted": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "authority": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "replayed": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "previousVelocity": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "correctedVelocity": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "previousGrounded": false,
+        "authorityGrounded": false,
+        "replayGrounded": false,
+        "previousPadReady": 0,
+        "authorityPadReady": 0,
+        "replayPadReady": 0,
+        "previousAirborne": 0,
+        "authorityAirborne": 0,
+        "previousPhase": 0,
+        "authorityPhase": 0,
+        "replayMovementTicks": 0,
+        "movementClockShift": 0
+      },
+      "largestPhaseChangeCorrection": {
+        "tick": 0,
+        "acknowledged": 0,
+        "pending": 0,
+        "previousClientTick": 0,
+        "distance": 0.0,
+        "predicted": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "authority": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "replayed": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "previousVelocity": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "correctedVelocity": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "previousGrounded": false,
+        "authorityGrounded": false,
+        "replayGrounded": false,
+        "previousPadReady": 0,
+        "authorityPadReady": 0,
+        "replayPadReady": 0,
+        "previousAirborne": 0,
+        "authorityAirborne": 0,
+        "previousPhase": 0,
+        "authorityPhase": 0,
+        "replayMovementTicks": 0,
+        "movementClockShift": 0
+      },
+      "correctionSamples": [],
+      "outboundClamps": 0,
+      "rewoundShots": 32,
+      "rejectedTimes": 0,
+      "actorShots": [
+        26,
+        32
+      ],
+      "actorLives": [
+        10,
+        1
+      ],
+      "fullMatch": false,
+      "resultsSeen": false,
+      "rematchStarted": false,
+      "completedTick": 0,
+      "completedWinner": -1,
+      "completedScores": [],
+      "completedShots": [],
+      "completedLives": [],
+      "elapsedSeconds": 45.0042839050293,
+      "connection": "CONNECTED // HOST\nYOU NOT READY  /  OPPONENT NOT READY",
+      "passed": true
+    },
+    "client": {
+      "role": "client",
+      "fingerprint": "f630a5489d011bf14e3853c1d11a892bb61ad943323cd423f0ba8bf28f915000",
+      "round": 1,
+      "tick": 2693,
+      "errors": 0,
+      "shots": 0,
+      "observedShots": 58,
+      "deaths": 0,
+      "pads": 0,
+      "snapshots": 898,
+      "acknowledged": 2691,
+      "pending": 3,
+      "correction": 0.04487663507461548,
+      "maximumActiveCorrection": 3.243894752813503e-05,
+      "maximumPhaseChangeCorrection": 0.04487663507461548,
+      "largestActiveCorrection": {
+        "tick": 1028,
+        "acknowledged": 1026,
+        "pending": 0,
+        "previousClientTick": 1028,
+        "distance": 3.243894752813503e-05,
+        "predicted": {
+          "x": -18.057809829711914,
+          "y": 5.523882865905762,
+          "z": 5.402286529541016
+        },
+        "authority": {
+          "x": -18.057777404785156,
+          "y": 5.523882865905762,
+          "z": 5.402285575866699
+        },
+        "replayed": {
+          "x": -18.057777404785156,
+          "y": 5.523882865905762,
+          "z": 5.402285575866699
+        },
+        "previousVelocity": {
+          "x": 0.13673657178878784,
+          "y": -1.0,
+          "z": -9.99909782409668
+        },
+        "correctedVelocity": {
+          "x": 0.13673657178878784,
+          "y": -1.0,
+          "z": -9.99909782409668
+        },
+        "previousGrounded": true,
+        "authorityGrounded": true,
+        "replayGrounded": true,
+        "previousPadReady": 591,
+        "authorityPadReady": 591,
+        "replayPadReady": 591,
+        "previousAirborne": 0,
+        "authorityAirborne": 0,
+        "previousPhase": 1,
+        "authorityPhase": 1,
+        "replayMovementTicks": 0,
+        "movementClockShift": 0
+      },
+      "largestPhaseChangeCorrection": {
+        "tick": 182,
+        "acknowledged": 180,
+        "pending": 0,
+        "previousClientTick": 182,
+        "distance": 0.04487663507461548,
+        "predicted": {
+          "x": 16.0,
+          "y": 0.20000000298023224,
+          "z": 19.0
+        },
+        "authority": {
+          "x": 16.014907836914062,
+          "y": 0.15833337604999542,
+          "z": 18.99254608154297
+        },
+        "replayed": {
+          "x": 16.014907836914062,
+          "y": 0.15833337604999542,
+          "z": 18.99254608154297
+        },
+        "previousVelocity": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "correctedVelocity": {
+          "x": 0.4472135901451111,
+          "y": -1.2500001192092896,
+          "z": -0.22360678017139435
+        },
+        "previousGrounded": false,
+        "authorityGrounded": false,
+        "replayGrounded": false,
+        "previousPadReady": 0,
+        "authorityPadReady": 0,
+        "replayPadReady": 0,
+        "previousAirborne": 0,
+        "authorityAirborne": 0,
+        "previousPhase": 0,
+        "authorityPhase": 1,
+        "replayMovementTicks": 0,
+        "movementClockShift": 0
+      },
+      "correctionSamples": [],
+      "outboundClamps": 195,
+      "rewoundShots": 0,
+      "rejectedTimes": 0,
+      "actorShots": [
+        26,
+        32
+      ],
+      "actorLives": [
+        10,
+        1
+      ],
+      "fullMatch": false,
+      "resultsSeen": false,
+      "rematchStarted": false,
+      "completedTick": 0,
+      "completedWinner": -1,
+      "completedScores": [],
+      "completedShots": [],
+      "completedLives": [],
+      "elapsedSeconds": 45.00231170654297,
+      "connection": "CONNECTED // CHALLENGER\nYOU NOT READY  /  OPPONENT NOT READY",
+      "passed": true
+    }
+  },
+  "status": "integrated; human acceptance and performance qualification pending",
+  "creatorDesignApproved": true,
+  "geometry": {
+    "passed": true,
+    "approvedGeometryUnchanged": true,
+    "manifold": true,
+    "nondegenerate": true,
+    "finite": true,
+    "atlasUvInBounds": true,
+    "triangles": 6174,
+    "editableParts": 79,
+    "masterSha256": "89ebd3820aee5a5ad0139124c67e1d78e265212648ba37c7d253fc2b5a177adb",
+    "finalFittedAnchors": true
+  },
+  "exports": {
+    "passed": true,
+    "lods": [
+      {
+        "level": 0,
+        "triangles": 6174,
+        "dimensionsMetres": [
+          0.10000002384185791,
+          1.0,
+          0.32991446554660797
+        ],
+        "finite": true,
+        "normalsUnitLength": true,
+        "uvInBounds": true,
+        "manifold": true,
+        "degenerates": 0
+      },
+      {
+        "level": 1,
+        "triangles": 5666,
+        "dimensionsMetres": [
+          0.10000002384185791,
+          1.0,
+          0.32991446554660797
+        ],
+        "finite": true,
+        "normalsUnitLength": true,
+        "uvInBounds": true,
+        "manifold": true,
+        "degenerates": 0
+      },
+      {
+        "level": 2,
+        "triangles": 2682,
+        "dimensionsMetres": [
+          0.10000002384185791,
+          0.9995500147342682,
+          0.32920698821544647
+        ],
+        "finite": true,
+        "normalsUnitLength": true,
+        "uvInBounds": true,
+        "manifold": true,
+        "degenerates": 0
+      }
+    ]
+  },
+  "unity": {
+    "contacts": [
+      "FP 0 RightHand error=0.0000 wrist=(0.235, 1.475, 0.477) target=(0.235, 1.475, 0.477) shoulderL=(-0.179, 1.474, 0.328)",
+      "FP 0 LeftHand error=0.0000 wrist=(0.125, 1.390, 0.750) target=(0.125, 1.390, 0.750) shoulderL=(-0.179, 1.474, 0.328)",
+      "TP 0 RightHand error=0.0000 wrist=(0.126, 1.455, 0.209) target=(0.126, 1.455, 0.209) shoulderL=(-0.173, 1.372, 0.029) shoulderR=(0.076, 1.395, -0.145)",
+      "TP 0 LeftHand error=0.0000 wrist=(0.016, 1.370, 0.482) target=(0.016, 1.370, 0.482) shoulderL=(-0.173, 1.372, 0.029) shoulderR=(0.076, 1.395, -0.145)",
+      "FP 1 RightHand error=0.0000 wrist=(0.235, 1.475, 0.477) target=(0.235, 1.475, 0.477) shoulderL=(-0.179, 1.471, 0.323)",
+      "FP 1 LeftHand error=0.0000 wrist=(0.125, 1.390, 0.750) target=(0.125, 1.390, 0.750) shoulderL=(-0.179, 1.471, 0.323)",
+      "TP 1 RightHand error=0.0000 wrist=(0.126, 1.455, 0.209) target=(0.126, 1.455, 0.209) shoulderL=(-0.173, 1.372, 0.029) shoulderR=(0.076, 1.395, -0.145)",
+      "TP 1 LeftHand error=0.0000 wrist=(0.016, 1.370, 0.482) target=(0.016, 1.370, 0.482) shoulderL=(-0.173, 1.372, 0.029) shoulderR=(0.076, 1.395, -0.145)",
+      "FP 2 RightHand error=0.0000 wrist=(0.235, 1.475, 0.477) target=(0.235, 1.475, 0.477) shoulderL=(-0.179, 1.471, 0.323)",
+      "FP 2 LeftHand error=0.0000 wrist=(0.125, 1.390, 0.750) target=(0.125, 1.390, 0.750) shoulderL=(-0.179, 1.471, 0.323)",
+      "TP 2 RightHand error=0.0000 wrist=(0.126, 1.455, 0.209) target=(0.126, 1.455, 0.209) shoulderL=(-0.173, 1.372, 0.029) shoulderR=(0.076, 1.395, -0.145)",
+      "TP 2 LeftHand error=0.0000 wrist=(0.016, 1.370, 0.482) target=(0.016, 1.370, 0.482) shoulderL=(-0.173, 1.372, 0.029) shoulderR=(0.076, 1.395, -0.145)",
+      "FP 3 RightHand error=0.0000 wrist=(0.235, 1.475, 0.477) target=(0.235, 1.475, 0.477) shoulderL=(-0.179, 1.471, 0.323)",
+      "FP 3 LeftHand error=0.0000 wrist=(0.125, 1.390, 0.750) target=(0.125, 1.390, 0.750) shoulderL=(-0.179, 1.471, 0.323)",
+      "TP 3 RightHand error=0.0000 wrist=(0.126, 1.456, 0.210) target=(0.126, 1.456, 0.210) shoulderL=(-0.173, 1.372, 0.030) shoulderR=(0.076, 1.396, -0.144)",
+      "TP 3 LeftHand error=0.0000 wrist=(0.016, 1.371, 0.483) target=(0.016, 1.371, 0.483) shoulderL=(-0.173, 1.372, 0.030) shoulderR=(0.076, 1.396, -0.144)"
+    ],
+    "unityVersion": "6000.6.7f1",
+    "captures": 32,
+    "maximumWristError": 6.419616624953051e-07,
+    "maximumShoulderError": 0.0,
+    "scope": "Installed production prefabs, normal Animator/IK loop; controlled offline presentation, not human acceptance or performance qualification"
+  },
+  "tests": {
+    "passed": 90,
+    "failed": 0
+  },
+  "orthographicBounds": [
+    {
+      "view": "Left",
+      "maximumErrorPixels": 0.7340820312499545
+    },
+    {
+      "view": "Right",
+      "maximumErrorPixels": 0.7340820312499545
+    },
+    {
+      "view": "Top",
+      "maximumErrorPixels": 0.20000000000004547
+    },
+    {
+      "view": "Bottom",
+      "maximumErrorPixels": 0.20000000000004547
+    },
+    {
+      "view": "Front",
+      "maximumErrorPixels": 0.7340820312499545
+    },
+    {
+      "view": "Back",
+      "maximumErrorPixels": 0.7340820312499545
+    }
+  ],
+  "windowsBuild": {
+    "unityVersion": "6000.6.7f1",
+    "compatibilityIdentity": "f630a5489d011bf14e3853c1d11a892bb61ad943323cd423f0ba8bf28f915000",
+    "executableSha256": "9806abde4a406ed68647e9505852c49f6aa72a372f4f084e2aa2821affea57a2",
+    "succeeded": true
+  },
+  "maps": {
+    "size": 2048,
+    "materials": 2,
+    "normal": "Flat tangent normal, geometry-authored facets/bevels"
+  },
+  "files": [
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Carbine-Studio.png",
+      "sha256": "71767121e6ad095f78e5c0538e693cae86f7b736deb2fc60cb4ad055f9789ca6"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Clean/RailRifle-Back.png",
+      "sha256": "cbbb7c5f9f035c5a8e37d42d24bfbeab9656a58d73ca26771c0fdc1bbce507cb"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Clean/RailRifle-Bottom.png",
+      "sha256": "4e96618b99042850e04a5f458d5ec32d9a5d7bd00eb6aeb2f75f7876bbd85b34"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Clean/RailRifle-Front.png",
+      "sha256": "f648b36089a9503f576089ee1d3317a3d45ec2dcecd37d3479568ac34d8c1aa6"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Clean/RailRifle-Left.png",
+      "sha256": "925633617bfbdf7c7990a7dd71225f3be40d287c761d04c979742e196f9c831f"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Clean/RailRifle-Right.png",
+      "sha256": "6d614fa8d02f21e26f1394d013a5a934e57f25c57372aad6d4acb82605217f94"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Clean/RailRifle-Top.png",
+      "sha256": "881a9e7b0bc6510047e48e4921e9e62d622e927725d7ca8c33730083ce760a3c"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Export-Validation.json",
+      "sha256": "40d0e15064b1c4d28ba10eac550882d949f64b7f38bf1a611c1d4861d262089c"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Final-Anchors.json",
+      "sha256": "8c8045e0a4ea440a9f62feb90d32c51bb4bbf791b5e5a79ca243f8b6a8a7078a"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Geometry-Validation.json",
+      "sha256": "f5029955cd1d09f3c4df5500834c7c896a3e237e888869d22b4efd34a56a6ae4"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/index.html",
+      "sha256": "d5566ef26b02e8be570b4e71aeace594a23cbe22ce39ab6d1c41e4f3358f3faa"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Precision-Carbine.blend",
+      "sha256": "89ebd3820aee5a5ad0139124c67e1d78e265212648ba37c7d253fc2b5a177adb"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Previous/Hand grip.json",
+      "sha256": "507a052089a354b9a10fc9b4a3c9bd75374dc6ca3ebc00524ccba78a36a883fa"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Previous/Railgun.prefab",
+      "sha256": "389166357bbc71beee905ad0a87a36a877df8ee50749d25700245b07b2dcf8b3"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Previous/RailgunBuilder.cs.txt",
+      "sha256": "c39823b473250d4942f1466d244c323e758aeeed25ec2f045ea035263c5f6807"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Production.json",
+      "sha256": "670978c4c5cd129717210b971c1287677ccf21904f12676b95d25eb9faae6b35"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/README.md",
+      "sha256": "857e645c535bdc6a61ebf98a9bf8b8b499c04523f3bbaaf238d31610d43ae5a4"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/SurfaceAtlas.json",
+      "sha256": "659d911cf22d6ca64efe13aacddca50d3c75294a331489d345fbdbb654744f9f"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/FP-0-Fire.png",
+      "sha256": "e7334b98bd076781a9e4436976fdc83e2132856975109800d3a636e2ab01c833"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/FP-0-Normal.png",
+      "sha256": "c03e87d9dd50d8faa1f691a5ad552b852defa63b7c66b4d3a8247abfbbf2429a"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/FP-0-Reset.png",
+      "sha256": "e99534b81dc5026aa91000f0101120b6058d271f6c414f462612eb0d02fa9d4d"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/FP-0-Zoom.png",
+      "sha256": "b09ea0f44292fa468006f88ec4ebcb35af665d9bbcb0824da48f4d4db254e397"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/FP-1-Fire.png",
+      "sha256": "84c399629ef97aa9ce7fb468812c8f659591caca78523ec7ae038c5eb76da070"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/FP-1-Normal.png",
+      "sha256": "3dd0126c82766d7e3ed4e6d8e7ed2ddfd208a28e43f9f0588b36930616a40cc4"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/FP-1-Reset.png",
+      "sha256": "79075cded4ce99f8d61f0e091e18bbb75882f0396530025d060f109e0fa5c11f"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/FP-1-Zoom.png",
+      "sha256": "420656387ac5478b69b6060bade581130c2a720e04437c961c9e0079e1ce9110"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/FP-2-Fire.png",
+      "sha256": "d8d6138ed8d7340899589d8b16fc14fb3fd776d3a6c8a06876f6442464957de5"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/FP-2-Normal.png",
+      "sha256": "f5d7129c33bf85366bf9ed67331961aac3bdfc604236f033cbaf941f77334e9d"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/FP-2-Reset.png",
+      "sha256": "fd40a19125f7299497d676a23a39ed0d4375d29df484ccd995b9d2335421d126"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/FP-2-Zoom.png",
+      "sha256": "fd02d1365ba08b4ab6a52bf06a5d07855837ca45be3f4f55dfb302432efed020"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/FP-3-Fire.png",
+      "sha256": "907f1bb2ad3685f905acc978cee5e5fabf2b9abd8524be22632549635ec9eead"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/FP-3-Normal.png",
+      "sha256": "19f46b2837e29216577fb6e9acf1a6f479f5fc90110cec50b14160b940a1d225"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/FP-3-Reset.png",
+      "sha256": "8423b125cb10b4c8c3e8dce8c9fd5afcb677043fb8e67c8c6f4a4431d25723a6"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/FP-3-Zoom.png",
+      "sha256": "4b1d9b9307f22107f373c55f845372ce291dcf8f8ddf877dbd7597ab392af904"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/TP-0-LOD0.png",
+      "sha256": "d66a296f0d495cb2c095f9b133f77c5b88c35fb49598baf470819e8874cc86ec"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/TP-0-LOD1.png",
+      "sha256": "3e053dce2e42f4cd5ee1fcaa4545c6428a3e08e187cc7725f16fdb31de398f58"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/TP-0-LOD2.png",
+      "sha256": "d32d0c92f344657adc8706bebc4b0aa83a033bed45257b80deb62236fcb8ba45"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/TP-0-Side.png",
+      "sha256": "765e7a83de148a821ea8ac20cdb59bae28d9a5bd0012ffbe8b6a7da0f3092e62"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/TP-1-LOD0.png",
+      "sha256": "f45fcef09325b65d183b0664d993bb25eb3b9b1c9d99cdb1b3cc7336c0ca367a"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/TP-1-LOD1.png",
+      "sha256": "4251c5d4af11f7721271111ffec6bd328e766cb532b8344c3e1e9b726862e95b"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/TP-1-LOD2.png",
+      "sha256": "9d6009b536248475cb9beee478f0ab1340e364437b456066e42caefef1a2159c"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/TP-1-Side.png",
+      "sha256": "f288ab6915b9c94a5bf8ab3bf48346e49399b11ea62e8066bcd7c5a1d5e62dbe"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/TP-2-LOD0.png",
+      "sha256": "56f03032131ddb6e2c255cff903de2b96a22a7c656a7016247c3dba43d460a77"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/TP-2-LOD1.png",
+      "sha256": "9b6addcc9be02c02b9b81e3fc662d19d1d469562c2a584ad4cc99cf8a0d12e7c"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/TP-2-LOD2.png",
+      "sha256": "179fb7da3efb94ddbb39c0b87a1ec40fe1d04244eed9823cee1f356a53d0b3c1"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/TP-2-Side.png",
+      "sha256": "bc60eb31def4ac25487bf89a75260123b9f477c9ba9cc9861c391a917ce82bb3"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/TP-3-LOD0.png",
+      "sha256": "9088877f79f9be12b4cb9f791f3f26d1e97123b6cb5b5db1c1a3b42f9d036681"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/TP-3-LOD1.png",
+      "sha256": "36a6d9f7582a215efcc078e50a61436880fe3c9ec2d0f34d5202b38a5087d2e7"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/TP-3-LOD2.png",
+      "sha256": "afecc09736e43958d757631da63ee5a3d36c706e72d41acd4e2c749cd856aabf"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity/TP-3-Side.png",
+      "sha256": "4040c3ac7407209cee7b6c698a7dc0ac11c6ea03cd15ec8a0d219862a4f484f5"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Unity-Validation.json",
+      "sha256": "7f048dbe680ebfc73b6e83c08988a003421d02b545cbc0c19047b93020cc37e9"
+    },
+    {
+      "file": "ArtSource/Original/PrecisionCarbine-Production-v1/Windows-Build.json",
+      "sha256": "5d0e48fabd3fa6d7814476870c9a2851ba4bd26605fbe16901645c5f7df8b6a2"
+    }
+  ],
+  "liveAssets": {
+    "RailArena\\Assets\\Resources\\Weapons\\Railgun.prefab": "620e58c6a7de9da1628c9a27b86d5e480f731193ff6c8c670dda24982c97feca",
+    "RailArena\\Assets\\RailArena\\Characters\\Hand grip.json": "777eb53877f5627b90352c826d0377f5242df5b6b0619deaf87cd7348290ad3a"
+  }
+}

@@ -2,18 +2,20 @@
 
 The chosen direction is detailed armored sci-fi contenders using free assets and original work only.
 
-The game now uses one textured humanoid base with four material variants. These share the same silhouette and hit rules; they are not four separately sculpted characters. The CC0 base is Grab3D's Sci-Fi Soldier. Its AI-assisted origin and license are preserved in the third-party notices.
+The new approved direction uses four original low-poly contender meshes with modeled faces, hair, layered armor and clothing, palette textures and three LODs per character. See [the stylized contender sources and regeneration workflow](STYLIZED-CONTENDERS.md). They retain the same animation skeleton and hit rules. The skeleton comes from Grab3D's CC0 Sci-Fi Soldier; its AI-assisted origin and license remain disclosed in the third-party notices. The old textured soldier geometry is retained as historical source, not reused in the new visible meshes.
 
 ## Editable assets
 
 - `ArtSource/ThirdParty/Grab3D/Original_Soldier.fbx`: the downloaded rigged source.
 - `ArtSource/ThirdParty/Grab3D/ArmoredContender.blend`: packed Blender master with the combat grip adjustment.
 - `tools/prepare_contender.py`: reproducible texture extraction, grip shaping and LOD export.
-- `RailArena/Assets/Resources/Characters/Contender.prefab`: the game-ready prefab.
+- `ArtSource/Original/StylizedContenders`: four editable Blender masters and their export reports.
+- `RailArena/Assets/Resources/Characters/Contender.prefab`: the player prefab.
+- `RailArena/Assets/Resources/Characters/Stylized`: three distinct bot prefabs.
 - `RailArena/Assets/RailArena/Characters/Contender.controller`: editable animation graph.
 - `ContenderBuilder.cs`: generates the prefab, materials, LOD group, weapon attachment and hurtboxes through the Editor.
 
-The original rigged source has approximately 239k triangles. Its three exported LODs target approximately 60k, 24k and 8k triangles, with 2K base color, normal, metallic and roughness textures. Metallic and inverted roughness are packed into Unity's metallic/smoothness map. The Blender master has packed textures for portability.
+The historical rigged source has approximately 239k triangles. The original stylized meshes instead use a compact palette texture and modeled surface detail. Actual triangle counts and bounds for each new LOD are in `ArtSource/Original/StylizedContenders/*-Preparation.json`; the original Blender masters retain individual parts and packed palette textures.
 
 ## Animation
 
@@ -31,6 +33,6 @@ The later scale regression in `Validation/mechanics-editmode.json` also verifies
 
 The `CharacterMotionReview.Capture()` Editor helper records a controlled 24 fps LOD0 review through Unity's normal animation and IK loop. Its sequence is idle, run, backwards, jump and death. The jump arc is staged for visual inspection. The resulting `Validation/CharacterMotion/Contender-Motion-Review.mp4` is not gameplay or native-input acceptance evidence. A normal standalone bot soak is recorded separately.
 
-Creative quality still requires review of the actual moving result. Close finger detail, authored first-person actions, more individually modeled contenders and a bespoke eight-direction movement set remain further improvements.
+Creative quality still requires review of the actual moving result. The four new meshes are the current modeling pass; close finger contact, authored first-person actions, facial animation and a bespoke eight-direction movement set remain further improvements.
 
 The current motion preview includes the original RA-01 railgun described in `WEAPONS.md`. Its attachment preserves the existing wrist IK targets. Opening an online pause menu now leaves animation and cosmetic corpse settling active, consistent with the continuing online authority; offline pause still freezes them. Editor branch checks are recorded in `Validation/weapon-pause-online.json` and `weapon-pause-offline.json`. These checks use a listening host without a connected peer and do not establish complete two-player pause acceptance.

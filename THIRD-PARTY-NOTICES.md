@@ -1,6 +1,8 @@
 # Third-party notices
 
-The first-person arm mesh is an arm-only CC0 derivative of the Grab3D contender described below, retaining its disclosed AI-assisted origin. It reuses the existing textures and Quaternius CC0 idle motion. The extraction/attachment code is original MIT work; this is not a claim that the underlying character was sculpted originally for Rail Arena. See `docs/FIRST-PERSON-ARMS.md`.
+The new stylized player and three bots use original procedurally modeled visible geometry and palette textures under MIT. Their skeleton is retained from the CC0 Grab3D source described below, including its disclosed AI-assisted provenance; the shared Quaternius motion clips remain CC0 dependencies. The new first-person arms are extracted from that original stylized geometry. The approved concept sheet is AI-generated design-reference artwork. See `docs/STYLIZED-CONTENDERS.md`.
+
+The historical first-person arm mesh is an arm-only CC0 derivative of the Grab3D contender, retaining its disclosed AI-assisted origin. It reuses the original textures and Quaternius CC0 idle motion. The extraction/attachment code is original MIT work; the historical base is not represented as an original Rail Arena sculpture. See `docs/FIRST-PERSON-ARMS.md`.
 
 The added 30-joint finger rig, skin-weight preparation, fitted grip data and procedural trigger/support response are original Rail Arena work on that CC0 base. The modified mesh and textures retain the base's provenance; no third-party paid or restricted hand/animation assets were acquired. See `docs/HAND-ARTICULATION.md`.
 
@@ -27,3 +29,7 @@ The character currently uses locomotion, jump, hit and death clips from the firs
 Files supplied in the local `References` folder are design references and are excluded from publication by default. Rejected character candidates under `ArtSource/Candidates` are also excluded. No third-party audio has been incorporated.
 
 Quake III Arena and Unreal Tournament are named only to identify design inspirations. Their original code and game assets are not part of this project.
+
+## User-supplied weapon shape references
+
+Reference-only photographs under the rifle/carbine reference packages retain their original watermarks and source records. They are supplied design inputs, not original Rail Arena artwork or game textures; the project's software license does not grant rights to third-party photographic content, marks or branding. These photographs are not shipped in the playable client. Original carbine meshes, textures and rendered construction studies are authored separately.

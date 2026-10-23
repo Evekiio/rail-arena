@@ -1,3 +1,29 @@
+# Pre-alpha release qualification / October 23, 2026
+
+Version **0.1.0-pre-alpha.1**: [release guide](PRE-ALPHA.md) and [exact build/ZIP evidence](../Validation/PreAlpha/release-validation.json). Fresh pinned Unity tests passed 90/90; 37 standalone mechanics checks, a 45-second four-contender offline run and a 45-second loopback duel passed. Both peers and the portable archive agree on the recorded compatibility identity. The archive verifies all 193 shipped files and includes its own per-file manifest.
+
+Headless test scheduling now waits for an actual post-animation player frame. Bone-space arm solving handles mirrored imports and runs after camera motion; menu replacements deactivate the preceding view immediately. No visible windows were opened. Human acceptance and measured rendering performance remain open.
+
+---
+
+# Precision carbine qualification / October 23, 2026
+
+The creator-approved 1m carbine is integrated through the shared weapon resource, builder, four contender prefabs and first-person forearms. The [production package](../ArtSource/Original/PrecisionCarbine-Production-v1/README.md) links editable sources, surface maps, calibrated reference comparisons and installed Unity captures.
+
+- Pinned Unity 6000.6.7f1: **90/90 EditMode and entered-PlayMode tests passed**, including wrist contact through extreme aim/motion, finger articulation, trigger/recovery, feedback, HUD, simulation, lifecycle/shutdown and networking.
+- 32 actual Unity captures cover all four appearances, default FOV, 1.5x zoom, fire/reset and three LODs. Measured contact errors are below 1 micrometre for wrists and zero at the shoulder anchor in controlled idle captures. These measurements are target alignment, not proof that every skin vertex is free of intersections.
+- Blender master and all three exported LODs passed finite geometry, unit normals, degenerates, manifold topology, UV and bounds checks. Approved geometry is unchanged. Six 2048px orthographic silhouette bounds agree within one pixel.
+- Ordinary Windows x64 and development validation builds succeeded. Compatibility identity: `019856e26a767ee232c94d6f162a9799d5275a8c9ff3c114b308a435e3112ae5`; checkpoint source inputs matched that identity; see the pre-alpha record above for the current client.
+- **37/37 standalone mechanics checks passed**, including the revised 36-tick cooldown and actual authority feedback.
+- Four-contender offline CPU/headless run, 45 seconds: 2,718 ticks, 208 shots, 11 deaths, two pickups, 27 pad launches, zero exceptions. All contender traversal/progress checks passed.
+- Local two-process duel, 45 seconds: both peers passed with the same identity and zero errors; host recorded 59 shots, 10 deaths and 31 rewound shots; client received 899 snapshots and acknowledged 2,694 inputs.
+
+All Blender/Unity jobs were headless and bounded. Standalone checks used batch mode with graphics disabled. No visible windows or GitHub publication were requested or performed. The first standalone attempt used the ordinary build, which deliberately excludes validation hooks, and timed out; its owned process was cleaned up. The development validation build corrected that setup issue. Earlier failed fitting captures/test reports are superseded by the final passing evidence.
+
+Remaining gates: human review of final fingers/shoulder/animation/optic framing and sound, physical-input acceptance, external-peer duel, LOD transition readability in combat and a documented 1080p/144fps four-contender rendering benchmark. Existing 100/50/34 damage remains unchanged; broader gameplay design migration is separate.
+
+---
+
 # Validation record - October 22, 2026
 
 Status: **offline milestone and initial online integration, incomplete game**. The full objective has not been achieved.

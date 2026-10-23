@@ -1,0 +1,858 @@
+[
+  {
+    "id": "FLOOR-4",
+    "purpose": "Main floor bay",
+    "dimensions": [
+      4,
+      4,
+      0.6
+    ],
+    "instances": 77,
+    "countPolicy": "fixed",
+    "collision": "walkable",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "FLOOR-4x2",
+    "purpose": "Half-width closure",
+    "dimensions": [
+      4,
+      2,
+      0.6
+    ],
+    "instances": 49,
+    "countPolicy": "fixed",
+    "collision": "walkable",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "EDGE",
+    "purpose": "Contrasting deck lip",
+    "dimensions": [
+      4,
+      0.15,
+      0.15
+    ],
+    "instances": null,
+    "countPolicy": "derive tiling during greybox import",
+    "collision": "cosmetic; no snagging collider",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "BEAM",
+    "purpose": "Understructure beam",
+    "dimensions": [
+      4,
+      0.4,
+      0.8
+    ],
+    "instances": null,
+    "countPolicy": "derive tiling during greybox import",
+    "collision": "cosmetic",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "PAD",
+    "purpose": "Recessed launch device",
+    "dimensions": [
+      2,
+      2,
+      0.35
+    ],
+    "instances": 4,
+    "countPolicy": "fixed",
+    "collision": "separate trigger; flush walking surface",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "PORTAL",
+    "purpose": "Shared A/B housing",
+    "dimensions": [
+      2.4,
+      0.8,
+      2.8
+    ],
+    "instances": 2,
+    "countPolicy": "fixed",
+    "collision": "housing/opaque field block shots; entry plane separate",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "HEALTH",
+    "purpose": "Pedestal and plus marker",
+    "dimensions": [
+      0.8,
+      0.8,
+      0.25
+    ],
+    "instances": 3,
+    "countPolicy": "fixed",
+    "collision": "nonblocking art; pickup trigger separate",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "COVER-01",
+    "purpose": "Reusable cover variant",
+    "dimensions": [
+      2,
+      1,
+      1.2
+    ],
+    "instances": 4,
+    "placements": [
+      "Wing-LowCover-1_-1",
+      "Wing-LowCover-1_1",
+      "Wing-LowCover1_-1",
+      "Wing-LowCover1_1"
+    ],
+    "collision": "exact footprint/height from Map.json",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "COVER-02",
+    "purpose": "Reusable cover variant",
+    "dimensions": [
+      1.6,
+      4,
+      3.4
+    ],
+    "instances": 2,
+    "placements": [
+      "Underpass-Pier-1",
+      "Underpass-Pier1"
+    ],
+    "collision": "exact footprint/height from Map.json",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "COVER-03",
+    "purpose": "Reusable cover variant",
+    "dimensions": [
+      1.5,
+      2.4,
+      2.6
+    ],
+    "instances": 2,
+    "placements": [
+      "Bridge-Screen-1",
+      "Bridge-Screen1"
+    ],
+    "collision": "exact footprint/height from Map.json",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "COVER-04",
+    "purpose": "Reusable cover variant",
+    "dimensions": [
+      2,
+      2,
+      2.6
+    ],
+    "instances": 8,
+    "placements": [
+      "LongLane-Elbow-1_-1",
+      "Corner-Screen-1_-1",
+      "LongLane-Elbow-1_1",
+      "Corner-Screen-1_1",
+      "LongLane-Elbow1_-1",
+      "Corner-Screen1_-1",
+      "LongLane-Elbow1_1",
+      "Corner-Screen1_1"
+    ],
+    "collision": "exact footprint/height from Map.json",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "COVER-05",
+    "purpose": "Reusable cover variant",
+    "dimensions": [
+      2.4,
+      2.8,
+      2.6
+    ],
+    "instances": 4,
+    "placements": [
+      "CrossLane-Elbow-1_-1",
+      "CrossLane-Elbow-1_1",
+      "CrossLane-Elbow1_-1",
+      "CrossLane-Elbow1_1"
+    ],
+    "collision": "exact footprint/height from Map.json",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "COVER-06",
+    "purpose": "Reusable cover variant",
+    "dimensions": [
+      3.2,
+      1.6,
+      2.6
+    ],
+    "instances": 4,
+    "placements": [
+      "InnerSpawn-Lip-1_-1",
+      "InnerSpawn-Lip-1_1",
+      "InnerSpawn-Lip1_-1",
+      "InnerSpawn-Lip1_1"
+    ],
+    "collision": "exact footprint/height from Map.json",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "COVER-07",
+    "purpose": "Reusable cover variant",
+    "dimensions": [
+      1.2,
+      2.8,
+      2.6
+    ],
+    "instances": 4,
+    "placements": [
+      "InnerSpawn-Screen-1",
+      "InnerSpawn-ScreenMirror-1",
+      "InnerSpawn-Screen1",
+      "InnerSpawn-ScreenMirror1"
+    ],
+    "collision": "exact footprint/height from Map.json",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "COVER-08",
+    "purpose": "Reusable cover variant",
+    "dimensions": [
+      1,
+      2,
+      2.6
+    ],
+    "instances": 2,
+    "placements": [
+      "Portal-Baffle-1",
+      "Portal-Baffle1"
+    ],
+    "collision": "exact footprint/height from Map.json",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "RAMP",
+    "purpose": "Shared two-incline ramp assembly",
+    "dimensions": [
+      16,
+      4,
+      4
+    ],
+    "instances": 4,
+    "profileRuns": [
+      6.5,
+      3,
+      6.5
+    ],
+    "profileHeights": [
+      0,
+      2,
+      2,
+      4
+    ],
+    "collision": "walkable profile; four assemblies, not extra gameplay ramps",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "VENT",
+    "purpose": "Nonblocking environment dressing/world",
+    "instances": 10,
+    "placements": [
+      [
+        -27.8,
+        -12,
+        -0.8
+      ],
+      [
+        -27.8,
+        0,
+        -0.8
+      ],
+      [
+        -27.8,
+        12,
+        -0.8
+      ],
+      [
+        27.8,
+        -12,
+        -0.8
+      ],
+      [
+        27.8,
+        0,
+        -0.8
+      ],
+      [
+        27.8,
+        12,
+        -0.8
+      ],
+      [
+        -12,
+        -19.8,
+        -0.8
+      ],
+      [
+        12,
+        -19.8,
+        -0.8
+      ],
+      [
+        -12,
+        19.8,
+        -0.8
+      ],
+      [
+        12,
+        19.8,
+        -0.8
+      ]
+    ],
+    "countPolicy": "fixed initial art target",
+    "collision": "none",
+    "mounting": "flush/inset or distant background; never protrude into movement lanes",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "CONDUIT",
+    "purpose": "Nonblocking environment dressing/world",
+    "instances": 8,
+    "placements": [
+      [
+        -27.8,
+        -6,
+        -0.4
+      ],
+      [
+        -27.8,
+        6,
+        -0.4
+      ],
+      [
+        27.8,
+        -6,
+        -0.4
+      ],
+      [
+        27.8,
+        6,
+        -0.4
+      ],
+      [
+        -18,
+        -19.8,
+        -0.4
+      ],
+      [
+        18,
+        -19.8,
+        -0.4
+      ],
+      [
+        -18,
+        19.8,
+        -0.4
+      ],
+      [
+        18,
+        19.8,
+        -0.4
+      ]
+    ],
+    "countPolicy": "fixed initial art target",
+    "collision": "none",
+    "mounting": "flush/inset or distant background; never protrude into movement lanes",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "FLOODLIGHT",
+    "purpose": "Nonblocking environment dressing/world",
+    "instances": 12,
+    "placements": [
+      [
+        -27.7,
+        -14,
+        0.03
+      ],
+      [
+        -27.7,
+        0,
+        0.03
+      ],
+      [
+        -27.7,
+        14,
+        0.03
+      ],
+      [
+        27.7,
+        -14,
+        0.03
+      ],
+      [
+        27.7,
+        0,
+        0.03
+      ],
+      [
+        27.7,
+        14,
+        0.03
+      ],
+      [
+        -18,
+        -19.7,
+        0.03
+      ],
+      [
+        0,
+        -19.7,
+        0.03
+      ],
+      [
+        18,
+        -19.7,
+        0.03
+      ],
+      [
+        -18,
+        19.7,
+        0.03
+      ],
+      [
+        0,
+        19.7,
+        0.03
+      ],
+      [
+        18,
+        19.7,
+        0.03
+      ]
+    ],
+    "countPolicy": "fixed initial art target",
+    "collision": "none",
+    "mounting": "flush/inset or distant background; never protrude into movement lanes",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "WEST-TURBINE-LANDMARK",
+    "purpose": "Nonblocking environment dressing/world",
+    "instances": 1,
+    "placements": [
+      [
+        -90,
+        0,
+        -10
+      ]
+    ],
+    "countPolicy": "fixed initial art target",
+    "collision": "none",
+    "mounting": "flush/inset or distant background; never protrude into movement lanes",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "EAST-SPLIT-FIN-LANDMARK",
+    "purpose": "Nonblocking environment dressing/world",
+    "instances": 1,
+    "placements": [
+      [
+        90,
+        0,
+        -10
+      ]
+    ],
+    "countPolicy": "fixed initial art target",
+    "collision": "none",
+    "mounting": "flush/inset or distant background; never protrude into movement lanes",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "NORTH-THREE-BAR-SIGN",
+    "purpose": "Nonblocking environment dressing/world",
+    "instances": 1,
+    "placements": [
+      [
+        0,
+        18,
+        2.7
+      ]
+    ],
+    "countPolicy": "fixed initial art target",
+    "collision": "none",
+    "mounting": "flush/inset or distant background; never protrude into movement lanes",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "SOUTH-TWO-CHEVRON-SIGN",
+    "purpose": "Nonblocking environment dressing/world",
+    "instances": 1,
+    "placements": [
+      [
+        0,
+        -18,
+        2.7
+      ]
+    ],
+    "countPolicy": "fixed initial art target",
+    "collision": "none",
+    "mounting": "flush/inset or distant background; never protrude into movement lanes",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "SKY",
+    "purpose": "Nonblocking environment dressing/world",
+    "instances": 1,
+    "placements": [
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "countPolicy": "fixed initial art target",
+    "collision": "none",
+    "mounting": "flush/inset or distant background; never protrude into movement lanes",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "DISTANT-ISLAND",
+    "purpose": "Nonblocking environment dressing/world",
+    "instances": 8,
+    "placements": [
+      [
+        200.0,
+        0.0,
+        -35
+      ],
+      [
+        141.4213562373095,
+        141.4213562373095,
+        -50
+      ],
+      [
+        1.2246467991473532e-14,
+        200.0,
+        -65
+      ],
+      [
+        -141.42135623730948,
+        141.4213562373095,
+        -35
+      ],
+      [
+        -200.0,
+        2.4492935982947064e-14,
+        -50
+      ],
+      [
+        -141.42135623730954,
+        -141.42135623730948,
+        -65
+      ],
+      [
+        -3.6739403974420595e-14,
+        -200.0,
+        -35
+      ],
+      [
+        141.42135623730948,
+        -141.42135623730954,
+        -50
+      ]
+    ],
+    "countPolicy": "fixed initial art target",
+    "collision": "none",
+    "mounting": "flush/inset or distant background; never protrude into movement lanes",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  },
+  {
+    "id": "DISTANT-CITADEL",
+    "purpose": "Nonblocking environment dressing/world",
+    "instances": 3,
+    "placements": [
+      [
+        200,
+        0,
+        -30
+      ],
+      [
+        -141.42,
+        141.42,
+        -45
+      ],
+      [
+        0,
+        -200,
+        -60
+      ]
+    ],
+    "countPolicy": "fixed initial art target",
+    "collision": "none",
+    "mounting": "flush/inset or distant background; never protrude into movement lanes",
+    "requiredReferences": [
+      "front",
+      "back",
+      "left/right",
+      "top",
+      "underside",
+      "three-quarter",
+      "material separation"
+    ],
+    "approval": "awaiting layout/art review",
+    "editableMasterRequired": true
+  }
+]

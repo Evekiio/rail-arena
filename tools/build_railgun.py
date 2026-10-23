@@ -35,9 +35,9 @@ def material(name, color, metal, rough, emission=0):
 
 
 materials = {
-    'Gunmetal': material('Gunmetal', (.045, .065, .085), .85, .28),
-    'Titanium': material('Titanium', (.39, .46, .52), .85, .24),
-    'Ceramic': material('Ceramic', (.71, .75, .72), .15, .34),
+    'Gunmetal': material('Gunmetal', (.025, .038, .052), .72, .38),
+    'Titanium': material('Titanium', (.24, .30, .35), .8, .32),
+    'Ceramic': material('Ceramic', (.48, .53, .51), .1, .4),
     'Copper': material('Copper', (.56, .19, .055), .8, .27),
     'Rubber': material('Rubber', (.014, .022, .028), .05, .62),
     'Energy': material('Energy', (.015, .65, 1), .25, .22, 3),
@@ -120,7 +120,9 @@ def ring(name, location, radius, thickness, surface):
 
 profile('Receiver', [(-.28, -.065), (-.28, .045), (-.20, .105), (.12, .075), (.19, .015), (.13, -.075)], .17, 'Gunmetal')
 box('Upper receiver armor', (0, .092, -.045), (.135, .027, .24), 'Ceramic')
-box('Rear shoulder bridge', (0, .025, -.33), (.11, .105, .19), 'Titanium', .009)
+profile('Stock upper spar', [(-.425, .072), (-.24, .063), (-.24, .026), (-.425, .038)], .075, 'Titanium')
+profile('Stock lower spar', [(-.425, -.040), (-.25, -.034), (-.25, -.058), (-.425, -.070)], .06, 'Gunmetal')
+box('Stock heel coupling', (0, .004, -.405), (.09, .13, .025), 'Gunmetal')
 box('Shoulder pad', (0, .015, -.437), (.13, .17, .032), 'Rubber', .007)
 for i in range(6):
     box('Stock traction rib', (0, -.05 + i * .026, -.456), (.12, .008, .007), 'Gunmetal', .001)
@@ -135,11 +137,16 @@ box('Support mount', (-.095, -.026, .015), (.045, .018, .16), 'Titanium')
 
 tube('Accelerator bore', (0, .015, .385), .032, .022, .66, 'Gunmetal')
 for side in (-1, 1):
-    box('Acceleration rail', (side * .067, .045, .36), (.034, .045, .68), 'Titanium', .006)
+    rail = profile('Tapered acceleration rail', [(.02, .025), (.02, .066), (.58, .066),
+                    (.70, .042), (.70, .022)], .034, 'Titanium', .003)
+    rail.location.x = -side * .067
     box('Rail energy seam', (side * .067, .070, .365), (.014, .005, .60), 'Energy', .001)
     box('Ventral brace', (side * .061, -.058, .35), (.026, .024, .60), 'Gunmetal')
     for z in (.13, .35, .57):
-        box('Ceramic standoff', (side * .078, -.018, z), (.028, .095, .105), 'Ceramic', .009)
+        standoff = profile('Faceted ceramic standoff', [(z-.055, -.053), (z-.055, .012),
+                            (z-.029, .033), (z+.046, .015), (z+.055, -.035), (z+.03, -.061)],
+                            .028, 'Ceramic', .004)
+        standoff.location.x = -side * .078
         box('Retaining plate', (side * .096, -.015, z), (.014, .054, .060), 'Titanium', .003)
         for dy in (-.017, .017):
             box('Captive fastener', (side * .105, -.015 + dy, z), (.006, .010, .014), 'Gunmetal', .002)
@@ -149,7 +156,14 @@ for station in range(7):
 for z in (.08, .29, .50, .68):
     tube('Flux isolator collar', (0, .015, z), .053, .033, .018, 'Gunmetal')
     ring('Ion pulse band', (0, .015, z + .011), .049, .0025, 'Energy')
-tube('Muzzle armor', (0, .015, .705), .062, .027, .047, 'Titanium')
+tube('Octagonal muzzle armor', (0, .015, .705), .062, .027, .047, 'Titanium', sides=8)
+for side in (-1, 1):
+    box('Muzzle retaining lug', (side * .055, .015, .690), (.025, .035, .052), 'Gunmetal', .003)
+    for station in range(4):
+        z = .18 + station * .12
+        box('Rail cooling shoe', (side * .071, -.073, z), (.036, .013, .075), 'Titanium', .002)
+        for fin in range(3):
+            box('Cooling shoe fin', (side * .071, -.083, z-.024+fin*.024), (.043, .009, .006), 'Gunmetal', .001)
 tube('Muzzle ceramic lip', (0, .015, .732), .049, .026, .012, 'Ceramic')
 ring('Muzzle pulse aperture', (0, .015, .733), .028, .0025, 'Energy')
 
@@ -160,10 +174,34 @@ for side in (-1, 1):
         box('Receiver vent', (side * .102, .004, -.17 + i * .026), (.006, .035, .008), 'Titanium', .001)
     box('Power indicator', (side * .102, .044, -.10), (.006, .008, .10), 'Energy', .001)
 box('Top sight riser', (0, .122, -.025), (.045, .030, .13), 'Gunmetal')
-box('Sight housing', (0, .152, -.025), (.065, .043, .15), 'Titanium', .007)
-box('Sight dark recess', (0, .159, -.025), (.052, .018, .12), 'Rubber', .003)
-box('Sight aiming line', (0, .171, -.025), (.008, .005, .095), 'Energy', .001)
+for side in (-1, 1):
+    box('Open sight hood side', (side*.028, .151, -.025), (.009, .042, .10), 'Titanium', .002)
+box('Open sight hood roof', (0, .173, -.025), (.065, .009, .10), 'Titanium', .002)
+box('Sight aiming bead', (0, .138, .008), (.004, .006, .008), 'Energy', .001)
+for side in (-1, 1):
+    for index in range(3):
+        box('Charge status lamp', (side*.106, -.022, -.060-index*.022), (.004, .008, .012), 'Energy', .001)
+    box('Receiver service latch', (side*.094, -.047, -.205), (.018, .016, .026), 'Copper', .002)
+    for index in range(4):
+        box('Receiver rear heat sink', (side*.065, .060, -.245+index*.015), (.025, .020, .006), 'Gunmetal', .001)
+
+# Raised identification remains editable text in the master and becomes mesh in the exports.
+bpy.ops.object.text_add(location=point((-.108, .027, -.035)), rotation=(math.pi/2, 0, math.pi/2))
+label = bpy.context.object
+label.data.body = 'RA-01'
+label.data.size = .016
+label.data.extrude = .00025
+label.data.space_character = 1.15
+label.name = 'RA-01 receiver identification'
+label.data.materials.append(materials['Titanium'])
 box('Actuator_Gunmetal', (0, -.055, .015), (.075, .032, .13), 'Gunmetal')
+
+# Save individually named parts, not only the joined export surfaces.
+bpy.ops.wm.save_as_mainfile(filepath=os.path.join(source, 'Railgun.blend'))
+bpy.context.view_layer.objects.active = label
+label.select_set(True)
+bpy.ops.object.convert(target='MESH')
+parts.append((bpy.context.object, 'Titanium', False))
 
 # Collapse static details by surface so the high-detail mesh costs six material draws.
 groups = []
@@ -184,10 +222,11 @@ for surface in materials:
     groups.append(joined)
 actuator = next(obj for obj, _, moving in parts if moving)
 groups.append(actuator)
-bpy.ops.wm.save_as_mainfile(filepath=os.path.join(source, 'Railgun.blend'))
 
 report = {'creator': 'Evekiio / Rail Arena', 'license': 'MIT', 'units': 'metres',
-          'design': 'Original twin-rail induction accelerator; no downloaded meshes or textures', 'lods': []}
+          'design': 'Refined RA-01: tapered rails, skeletal stock, faceted insulators, open sight and cooling shoes',
+          'master': 'Individually named editable mesh parts and receiver text; no downloaded meshes or textures',
+          'muzzleUnity': [0, .015, .742], 'gripGeometryPreserved': True, 'lods': []}
 for level, ratio in ((0, 1), (1, .30)):
     copies = []
     bpy.ops.object.select_all(action='DESELECT')
@@ -218,16 +257,18 @@ floor = bpy.context.object
 floor.data.materials.append(material('Studio floor', (.055, .065, .08), .15, .45))
 scene = bpy.context.scene
 scene.render.engine = 'CYCLES'
-scene.cycles.samples = 32
+scene.cycles.samples = 24
+scene.render.threads_mode = 'FIXED'
+scene.render.threads = 4
 scene.cycles.use_denoising = True
 scene.render.resolution_x = 1400; scene.render.resolution_y = 1000; scene.render.resolution_percentage = 100
 scene.world = bpy.data.worlds.new('Studio world'); scene.world.use_nodes = True
 scene.world.node_tree.nodes['Background'].inputs[0].default_value = (.08, .10, .14, 1)
 scene.world.node_tree.nodes['Background'].inputs[1].default_value = .4
 for name, location, power, color, size in (
-    ('Key', (1.0, -.9, 1.8), 500, (.8, .9, 1), 1.6),
-    ('Fill', (-1.1, -.4, .9), 300, (.35, .7, 1), 1.3),
-    ('Rim', (0, 1.2, 1.4), 700, (1, .55, .27), 1.1)):
+    ('Key', (1.0, -.9, 1.8), 180, (.8, .9, 1), 1.6),
+    ('Fill', (-1.1, -.4, .9), 100, (.35, .7, 1), 1.3),
+    ('Rim', (0, 1.2, 1.4), 240, (1, .55, .27), 1.1)):
     light = bpy.data.lights.new(name, 'AREA'); light.energy = power; light.color = color; light.shape = 'DISK'; light.size = size
     obj = bpy.data.objects.new(name, light); bpy.context.collection.objects.link(obj); obj.location = location
     obj.rotation_euler = (Vector((0, -.1, 0)) - obj.location).to_track_quat('-Z', 'Y').to_euler()
@@ -237,4 +278,9 @@ obj.rotation_euler = (Vector((0, -.12, -.02)) - obj.location).to_track_quat('-Z'
 camera.lens = 55; scene.camera = obj
 scene.render.filepath = os.path.join(source, 'Railgun-Studio.png')
 bpy.ops.render.render(write_still=True)
+for name, location in (('Side', (1.95, -.1, .28)), ('Rear', (1.2, 1.7, .95))):
+    obj.location = location
+    obj.rotation_euler = (Vector((0, -.12, -.02)) - obj.location).to_track_quat('-Z', 'Y').to_euler()
+    scene.render.filepath = os.path.join(source, 'Railgun-' + name + '.png')
+    bpy.ops.render.render(write_still=True)
 print(json.dumps(report))

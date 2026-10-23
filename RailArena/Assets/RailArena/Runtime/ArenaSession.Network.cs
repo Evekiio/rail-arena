@@ -117,6 +117,7 @@ namespace RailArena
 
         private void ReleaseSessionResources()
         {
+            enabled = false;
             DisconnectNetwork();
             hitHistory?.Dispose();
             hitHistory = null;

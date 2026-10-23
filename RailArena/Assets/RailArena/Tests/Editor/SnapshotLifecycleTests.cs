@@ -138,8 +138,8 @@ namespace RailArena.Tests
             var actor = session.Actors[0];
             var update = typeof(ContenderPresentation).GetMethod("Update", PrivateInstance);
             update.Invoke(actor.Presentation, null);
-            var actuator = actor.Presentation.Railgun.Actuators[0];
-            Vector3 ready = actuator.localPosition;
+            var trigger = actor.Presentation.Railgun.Triggers[0];
+            Quaternion ready = trigger.localRotation;
             var state = State(1, 203, 1, 1);
             state.Actors[0].NextShotTick = 293;
             state.Actors[0].PadReadyTick = 303;
@@ -147,7 +147,7 @@ namespace RailArena.Tests
             Assert.That(actor.NextShotTick, Is.EqualTo(293));
             Assert.That(actor.PadReadyTick, Is.EqualTo(303));
             update.Invoke(actor.Presentation, null);
-            Assert.That(Vector3.Distance(ready, actuator.localPosition), Is.GreaterThan(.02f));
+            Assert.That(Quaternion.Angle(ready, trigger.localRotation), Is.GreaterThan(7f));
         }
 
         [Test]

@@ -33,11 +33,11 @@ namespace RailArena.Tests
             Assert.That(Vector3.Angle(contender.Hands.Joints[6].position - contender.Animator.GetBoneTransform(HumanBodyBones.LeftHand).position,
                 contender.Weapon.right), Is.LessThan(1));
             Assert.That(Vector3.Angle(contender.Hands.Joints[21].position - contender.Animator.GetBoneTransform(HumanBodyBones.RightHand).position,
-                -contender.Weapon.right), Is.LessThan(1));
+                contender.Weapon.TransformDirection(new Vector3(0, -1, .15f).normalized)), Is.LessThan(1));
             while (!session.Match.IsActive) session.Match.Advance();
             foreach (var pickup in session.World.Pickups) pickup.AvailableTick = int.MaxValue;
             session.Human.Health = 25;
-            session.Human.NextShotTick = session.LocalSimulationTick + 45;
+            session.Human.NextShotTick = session.LocalSimulationTick + 18;
             yield return Frames(2);
             Assert.That(Label("HealthValue").text, Is.EqualTo("025"));
             var health = root.transform.Find("HealthPanel/HealthFillTrack/HealthFill").GetComponent<RectTransform>();

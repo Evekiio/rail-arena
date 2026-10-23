@@ -46,6 +46,7 @@ namespace RailArena
         private readonly FirstPersonWeaponMotion weaponMotion = new();
         private int weaponMotionLife;
         private Vector2 lookMotion;
+        private readonly WeaponClickLatch clickLatch = new();
         private Networking.HitboxHistory hitHistory;
         public int RewoundShots { get; private set; }
         public int RejectedShotTimes { get; private set; }
@@ -93,7 +94,7 @@ namespace RailArena
                 actor.Place(World.Spawns[i % World.Spawns.Length].position);
             }
             Match = new MatchState(ids, practice);
-            if (viewArms != null) viewArms.Surface.sharedMaterial = Human.Presentation.BodyRenderers[0].sharedMaterial;
+            if (viewArms != null) ContenderPresentation.ApplyPalette(viewArms.Surface, Human.Presentation.BodyRenderers[0].sharedMaterial);
             hitHistory = new Networking.HitboxHistory(Actors);
             hitHistory.Capture(0);
             RewoundShots = RejectedShotTimes = 0;
@@ -106,6 +107,7 @@ namespace RailArena
             yaw = 90;
             pitch = 0;
             recoil = 0;
+            clickLatch.Reset();
             weaponMotion.Reset(true);
             weaponMotionLife = Human.Life;
             SetPaused(false);
@@ -114,6 +116,7 @@ namespace RailArena
         public void SetPaused(bool pause)
         {
             Paused = pause;
+            clickLatch.Reset();
             bool playing = Running && !pause && !OnlineWaiting && Match.Phase != MatchPhase.Results;
             if (pause && IsOnline && Human != null) Human.Command = new MovementCommand { Yaw = yaw, Pitch = pitch };
             Cursor.lockState = playing ? CursorLockMode.Locked : CursorLockMode.None;
@@ -140,24 +143,30 @@ namespace RailArena
             lookMotion = Vector2.zero;
             UpdateNetwork();
             if (Keyboard.current?.escapeKey.wasPressedThisFrame == true && Running) SetPaused(!Paused);
-            if (!Running || OnlineWaiting || Paused || AutomatedHuman || Match.Phase == MatchPhase.Results) return;
+            if (!Running || OnlineWaiting || Paused || AutomatedHuman || Match.Phase == MatchPhase.Results)
+            { clickLatch.Reset(); View.fieldOfView = 100; return; }
             var mouse = Mouse.current;
+            bool zoom = mouse?.rightButton.isPressed == true;
+            View.fieldOfView = zoom ? 2 * Mathf.Atan(Mathf.Tan(50 * Mathf.Deg2Rad) / 1.5f) * Mathf.Rad2Deg : 100;
             if (mouse != null)
             {
                 var delta = mouse.delta.ReadValue();
-                lookMotion = delta * Sensitivity;
-                yaw += delta.x * Sensitivity;
-                pitch = Mathf.Clamp(pitch - delta.y * Sensitivity, -89, 89);
+                float sensitivity = zoom ? PlayerPrefs.GetFloat("zoomSensitivity", Sensitivity) : Sensitivity;
+                lookMotion = delta * sensitivity;
+                yaw += delta.x * sensitivity;
+                pitch = Mathf.Clamp(pitch - delta.y * sensitivity, -89, 89);
             }
             if (Human.Alive)
             {
                 var keyboard = Keyboard.current;
                 float x = (keyboard?.dKey.isPressed == true ? 1 : 0) - (keyboard?.aKey.isPressed == true ? 1 : 0);
                 float y = (keyboard?.wKey.isPressed == true ? 1 : 0) - (keyboard?.sKey.isPressed == true ? 1 : 0);
+                clickLatch.Sample(mouse?.leftButton.wasPressedThisFrame == true, Match.IsActive &&
+                    CombatRules.CanFire(LocalSimulationTick, Human.NextShotTick, true));
                 Human.Command = new MovementCommand { Move = new Vector2(x, y), Yaw = yaw, Pitch = pitch,
-                    Jump = keyboard?.spaceKey.isPressed == true, Fire = mouse?.leftButton.isPressed == true };
+                    Jump = keyboard?.spaceKey.isPressed == true, Fire = false };
             }
-            else Human.Command = new MovementCommand { Yaw = yaw, Pitch = pitch };
+            else { clickLatch.Reset(); Human.Command = new MovementCommand { Yaw = yaw, Pitch = pitch }; }
         }
 
         private void LateUpdate()
@@ -184,6 +193,13 @@ namespace RailArena
 
         private void FixedUpdate()
         {
+            if (Running && Human != null && !AutomatedHuman)
+            {
+                var command = Human.Command;
+                command.Fire = clickLatch.Consume();
+                Human.Command = command;
+
+            }
             if (IsOnline) { OnlineFixedUpdate(); return; }
             AdvanceAuthority();
         }
@@ -319,7 +335,8 @@ namespace RailArena
             actor.Controller.center = Vector3.up * .9f;
             actor.Controller.stepOffset = .3f;
             actor.Controller.slopeLimit = 50;
-            var prefab = Resources.Load<GameObject>("Characters/Contender");
+            string characterPath = id == 0 ? "Characters/Contender" : $"Characters/Stylized/Bot{1 + (id - 1) % 3:00}";
+            var prefab = Resources.Load<GameObject>(characterPath);
             if (prefab == null) throw new System.InvalidOperationException("The animated contender prefab is missing.");
             actor.Model = Instantiate(prefab, root.transform, false).transform;
             foreach (var part in actor.Model.GetComponentsInChildren<Transform>(true)) part.gameObject.layer = id == LocalPlayerId ? 10 : 8;
