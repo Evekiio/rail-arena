@@ -180,7 +180,7 @@ namespace RailArena.Editor
             mesh.RecalculateNormals(); mesh.RecalculateTangents(); return mesh;
         }
 
-        private static Mesh BeveledCube()
+        internal static Mesh BeveledCube()
         {
             // Intersect an inset cube with corner cuts. Flat normals retain crisp machined faces.
             var vertices = new List<Vector3>(); var triangles = new List<int>(); var uv = new List<Vector2>();
