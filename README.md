@@ -8,7 +8,7 @@
 
 Rail Arena is a Windows game and AI engineering portfolio project by **Sanders Riddle**, built with modern AI agentic workflows. The vision is a complete, focused aim trainer and arena game: sharpen your precision, learn to shoot while moving, and turn another practice session into one more match.
 
-[Explore the vision](#the-game) · [Build and play](docs/BUILD-AND-PLAY.md) · [Character designs](docs/CHARACTER-REFERENCES.md) · [Engineering evidence](docs/VALIDATION.md)
+[Explore the vision](#the-game) · [Build and play](docs/BUILD-AND-PLAY.md) · [Character designs](docs/CHARACTER-REFERENCES.md) · [Arena references](ArtSource/Original/ArenaReferences-v1/README.md) · [Engineering evidence](docs/VALIDATION.md)
 
 > **Playable development project.** Offline practice, bot matches and direct-IP duel integration are implemented. Final presentation, human playtesting and internet multiplayer acceptance remain in progress. There is no finished downloadable release yet. The banner and character artwork are concept references.
 
@@ -58,6 +58,31 @@ Ivory armor. Graphite silhouettes. Cyan energy. Distinct contenders built around
 [Explore all sixteen character sheets](docs/CHARACTER-REFERENCES.md), including head studies, equipment details and top/bottom concepts. These guide modeling; they are not screenshots or a promise of final runtime appearance. Newly extended hidden surfaces remain review candidates, and geometric consistency must be resolved in the shared 3D models.
 
 The [brand kit](docs/branding/README.md) includes the transparent logo, banner, palette and usage notes.
+
+## Building the world of Rail Arena
+
+A floating industrial arena above an ocean of clouds. Ivory structures, graphite frames, teal recesses and restrained cyan energy tie the battlefield to its contenders.
+
+![Foundry arena environment concept with elevated wings and lower routes](ArtSource/Original/ArenaReferences-v1/01-Arena-Hero.png)
+
+*Environment concept for review, not a gameplay screenshot or a validated competitive layout.*
+
+The new **six-sheet environment pack** translates that direction into a Blender modeling brief:
+
+| Reference | Design focus |
+| --- | --- |
+| [Arena overview](ArtSource/Original/ArenaReferences-v1/01-Arena-Hero.png) | Floating architecture, elevated wings and player-height atmosphere |
+| [Layout proposal](ArtSource/Original/ArenaReferences-v1/02-Arena-Layout.png) | Routes, cover, deck levels, spawn candidates and sightlines |
+| [Modular architecture](ArtSource/Original/ArenaReferences-v1/03-Modular-Architecture.png) | Floors, walls, ramps, bridge beams, cover and landing modules |
+| [Environment objects](ArtSource/Original/ArenaReferences-v1/04-Environment-Props.png) | Equipment cabinets, crates, vents, lighting and health pedestals |
+| [Jump pads and portal study](ArtSource/Original/ArenaReferences-v1/07-Traversal-Devices.png) | Pad construction and activation states; an optional portal design |
+| [World and sky](ArtSource/Original/ArenaReferences-v1/08-World-Sky.png) | Distant floating islands, atmosphere and directional lighting studies |
+
+The proposed blockout explores a 56 × 40 metre envelope, three height levels, paired routes, four jump pads, three health locations and eight spawn candidates. These are design targets for review. The images contain cross-view inconsistencies; the [modeling handoff](ArtSource/Original/ArenaReferences-v1/README.md) records them and defines which written constraints take precedence.
+
+The next production step is one shared greybox master, followed by actual-controller tests of movement, spawn exposure, bot navigation and sightlines before detailed art. Portals remain optional concepts outside the current gameplay implementation. The sky studies are mood references, not seamless skybox textures.
+
+The new rifle and combat/blood-effects reference sheets remain undelivered after image-service filtering. Existing weapon and feedback systems are documented separately; this pack adds no new runtime assets or mechanics. [Browse the full pack, prompts and validation manifest](ArtSource/Original/ArenaReferences-v1/README.md).
 
 ## AI engineering, applied to a playable product
 
