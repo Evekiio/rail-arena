@@ -167,6 +167,7 @@ namespace RailArena.Editor
             AssetDatabase.SaveAssets();
             FoundryArtBuilder.Apply();
             FoundryLightingBuilder.Apply();
+            HealthPickupArtBuilder.Apply();
             Debug.Log($"Foundry scene created: {world.Pads.Length} launch pads, {world.Pickups.Length} health pickups, {world.Spawns.Length} spawns, {world.Nodes.Length} route nodes.");
         }
 

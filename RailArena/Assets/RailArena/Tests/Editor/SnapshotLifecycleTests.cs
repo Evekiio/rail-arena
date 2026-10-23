@@ -251,6 +251,23 @@ namespace RailArena.Tests
             Assert.That(session.Feedback.HitStrength, Is.Zero);
         }
 
+        [Test]
+        public void PickupArtFollowsAuthorityAndIgnoresStaleSnapshots()
+        {
+            var pickup=session.World.Pickups[0];
+            var art=Object.Instantiate(Resources.Load<GameObject>("Environment/HealthBeacon"),pickup.transform,false);
+            pickup.Presentation=art.GetComponent<HealthPickupVisual>();
+            pickup.Visuals=new[]{pickup.Presentation.Marker};
+            var state=State(1,400,1,1);state.PickupTicks[0]=600;Apply(state);
+            Assert.That(pickup.Presentation.Marker.enabled,Is.False);
+            Assert.That(pickup.Presentation.Status.sharedMaterial,Is.SameAs(pickup.Presentation.DepletedMaterial));
+            state=State(1,600,1,1);state.PickupTicks[0]=600;Apply(state);
+            Assert.That(pickup.Presentation.Marker.enabled,Is.True);
+            state=State(1,599,1,1);state.PickupTicks[0]=800;Apply(state);
+            Assert.That(pickup.Presentation.Marker.enabled,Is.True);
+            Assert.That(pickup.AvailableTick,Is.EqualTo(600));
+        }
+
         [TestCase(0, 2)]
         [TestCase(2, 0)]
         public void InterpolatedLaunchCounterDrivesAirAndLandingAnimation(int oldAirborne, int newAirborne)
