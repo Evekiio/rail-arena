@@ -29,7 +29,8 @@ namespace RailArena
         public int PadLaunches => padCount;
         public List<string> VoidTraces { get; } = new();
         public string Feed { get; private set; } = "";
-        public float Sensitivity = .12f;
+        public AimPreferences Aim { get; } = new();
+        public float Sensitivity { get => Aim.Sensitivity; set => Aim.Sensitivity = value; }
         public Camera View { get; private set; }
         private ArenaHud hud;
         private float yaw;
@@ -56,10 +57,10 @@ namespace RailArena
             Time.fixedDeltaTime = 1f / CombatRules.TickRate;
             Application.runInBackground = true;
             Application.targetFrameRate = 144;
-            Sensitivity = PlayerPrefs.GetFloat("sensitivity", .12f);
+            Aim.Load();
             AudioListener.volume = PlayerPrefs.GetFloat("volume", .65f);
             View = Camera.main;
-            View.fieldOfView = 100;
+            View.fieldOfView = Aim.FieldOfView;
             View.GetUniversalAdditionalCameraData().renderPostProcessing = true;
             Feedback = gameObject.AddComponent<RailFeedback>();
             hud = gameObject.AddComponent<ArenaHud>();
@@ -144,17 +145,16 @@ namespace RailArena
             UpdateNetwork();
             if (Keyboard.current?.escapeKey.wasPressedThisFrame == true && Running) SetPaused(!Paused);
             if (!Running || OnlineWaiting || Paused || AutomatedHuman || Match.Phase == MatchPhase.Results)
-            { clickLatch.Reset(); View.fieldOfView = 100; return; }
+            { clickLatch.Reset(); View.fieldOfView = Aim.FieldOfView; return; }
             var mouse = Mouse.current;
             bool zoom = mouse?.rightButton.isPressed == true;
-            View.fieldOfView = zoom ? 2 * Mathf.Atan(Mathf.Tan(50 * Mathf.Deg2Rad) / 1.5f) * Mathf.Rad2Deg : 100;
+            View.fieldOfView = Aim.ViewFov(zoom);
             if (mouse != null)
             {
-                var delta = mouse.delta.ReadValue();
-                float sensitivity = zoom ? PlayerPrefs.GetFloat("zoomSensitivity", Sensitivity) : Sensitivity;
-                lookMotion = delta * sensitivity;
-                yaw += delta.x * sensitivity;
-                pitch = Mathf.Clamp(pitch - delta.y * sensitivity, -89, 89);
+                var delta = Aim.LookDelta(mouse.delta.ReadValue(), zoom);
+                lookMotion = delta;
+                yaw += delta.x;
+                pitch = Mathf.Clamp(pitch - delta.y, -89, 89);
             }
             if (Human.Alive)
             {
