@@ -7,6 +7,7 @@ $railBuildPath = (Resolve-Path -LiteralPath $Build).Path
 $railOutputPath = [IO.Path]::GetFullPath($Output)
 [IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($railOutputPath)) | Out-Null
 $railArguments = @('--validate-mechanics', '--validation-output', ('"' + $railOutputPath + '"'),
+    '--validation-owner-pid', $PID, '--validation-timeout', 120,
     '-logFile', ('"' + $railOutputPath + '.log"'), '-screen-width', '1280', '-screen-height', '720', '-screen-fullscreen', '0')
 $railStarted = [DateTime]::UtcNow
 $railProcess = Start-Process -FilePath $railBuildPath -ArgumentList $railArguments -WindowStyle Hidden -PassThru

@@ -89,6 +89,10 @@ For the current local non-development playtest, launch `Builds/Evaluation/RailAr
 
 Choose **OFFLINE BOT MATCH** or **PRACTICE**. Set bot count, difficulty and target behavior before starting. During a session, press Escape to pause; changing the configuration and choosing **RESTART SESSION** applies it. Native keyboard acceptance is still open as documented above.
 
+Choose **QUIT** from the main menu, pause menu or duel ready/results room to close the player. **MAIN MENU** and **DISCONNECT** leave the application open. Closing the window or using Alt+F4 also releases the active network session. Automated development players receive their runner's process ID and a runtime limit; they exit with failure if the runner terminates or the limit expires, even if shell cleanup is interrupted.
+
+Run `tools/Test-Shutdown.ps1` against the development player for automated window-close, owner-exit and timeout checks. See [shutdown behavior and evidence](docs/SHUTDOWN.md).
+
 For movement and arena testing alone, cycle **BOTS** to **0 // SOLO**, then choose **SOLO PRACTICE // UNTIMED**. It has no opponents or network connection. Movement, rail firing, pickups, jump pads, void scoring and unlimited respawns use the normal authority. Timed bot matches require at least one bot. Solo practice can restart with bots after changing the count in the pause menu.
 
 | Control | Action |

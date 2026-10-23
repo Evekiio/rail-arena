@@ -70,7 +70,7 @@ namespace RailArena
             }
             Button("SETTINGS", Settings, ref y);
             if (Session.Running) Button("MAIN MENU", Session.MainMenu, ref y);
-            else Button("QUIT", Application.Quit, ref y);
+            Button("QUIT", Session.QuitGame, ref y);
             Text(menu.transform, "Controls", "W A S D  MOVE     SPACE  JUMP     MOUSE  AIM / FIRE\nESC  PAUSE     TAB  SCOREBOARD\n\nUnlimited rail charges. 1.5 second cycle.\nHEAD 100   /   BODY 50   /   LIMB 34", 22,
                 new Vector2(.53f, .24f), new Vector2(.94f, .64f));
             Text(menu.transform, "Version", "IN DEVELOPMENT  //  OFFLINE / DIRECT-IP PLAYTEST", 18,

@@ -21,6 +21,7 @@ try {
         $railRolePort = if ($railRole -eq 'client' -and $ClientPort -gt 0) { $ClientPort } else { $Port }
         $railArguments = @('--validate-duel-role', $railRole, '--validation-port', $railRolePort,
             '--validation-duration', $Duration, '--validation-output', ('"' + $railOutput + '"'),
+            '--validation-owner-pid', $PID, '--validation-timeout', ($Duration + 60),
             '-logFile', ('"' + $railOutput + '.log"'), '-screen-width', '1280', '-screen-height', '720', '-screen-fullscreen', '0')
         if ($FullMatch) { $railArguments += '--validation-full-match' }
         $railProcesses += Start-Process -FilePath $railBuildPath -ArgumentList $railArguments -WindowStyle Hidden -PassThru

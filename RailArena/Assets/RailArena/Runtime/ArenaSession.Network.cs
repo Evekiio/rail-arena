@@ -106,7 +106,24 @@ namespace RailArena
             OutboundClamps = 0;
         }
 
-        private void OnDestroy() { DisconnectNetwork(); hitHistory?.Dispose(); }
+        public void QuitGame()
+        {
+            ReleaseSessionResources();
+            PlayerPrefs.Save();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Application.Quit();
+        }
+
+        private void ReleaseSessionResources()
+        {
+            DisconnectNetwork();
+            hitHistory?.Dispose();
+            hitHistory = null;
+        }
+
+        private void OnApplicationQuit() => ReleaseSessionResources();
+        private void OnDestroy() => ReleaseSessionResources();
 
         private void UpdateNetwork()
         {

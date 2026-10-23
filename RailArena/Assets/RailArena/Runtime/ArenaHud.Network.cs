@@ -45,6 +45,7 @@ namespace RailArena
             float y = .35f;
             Button(results ? "READY / CANCEL REMATCH" : "READY / CANCEL READY", Session.ToggleReady, ref y);
             Button("DISCONNECT", Session.MainMenu, ref y);
+            Button("QUIT", Session.QuitGame, ref y);
             Text(menu.transform, "Ready help", results ? "Both players must ready up for another duel." :
                 "Both players must ready up.\nThe host then starts the three-second countdown.", 25,
                 new Vector2(.53f, .25f), new Vector2(.94f, .4f));
