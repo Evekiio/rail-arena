@@ -252,6 +252,21 @@ namespace RailArena.Editor
             AssetDatabase.CreateAsset(asset, path);
         }
 
+        [MenuItem("Rail Arena/Build Windows playtest...")]
+        public static void BuildWindowsPlaytestMenu()
+        {
+            if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
+            string output = EditorUtility.SaveFilePanel("Build Windows playtest",
+                System.IO.Path.GetFullPath("../Builds"), "RailArena", "exe");
+            if (string.IsNullOrEmpty(output)) return;
+            BuildWindowsPlaytestTo(output);
+            EditorUtility.RevealInFinder(output);
+        }
+
+        [MenuItem("Rail Arena/Build Windows playtest...", true)]
+        private static bool CanBuildWindowsPlaytest()
+            => !EditorApplication.isPlayingOrWillChangePlaymode && !EditorApplication.isCompiling && !BuildPipeline.isBuildingPlayer;
+
         public static void BuildWindows()
             => BuildWindowsTo("../Builds/Windows/RailArena.exe");
 

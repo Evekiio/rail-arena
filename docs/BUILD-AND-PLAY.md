@@ -22,7 +22,9 @@ For a fresh clone, install Git LFS, clone the public repository and run `git lfs
 
 Open `Assets/RailArena/Generated/Foundry.unity`, then press Play to test in the Editor. Click the Game view to give it input focus.
 
-For a Windows build through the Editor UI, open **File > Build Profiles**, select the Windows platform, switch platform if necessary, retain the existing enabled Foundry scene and choose **Build**. Choose a new folder such as `Builds/MyPlaytest` and leave Development Build disabled for normal playtesting. Run the resulting EXE with all adjacent files present.
+For a Windows build, leave Play mode and choose **Rail Arena > Build Windows playtest...**. Save intentional scene changes when prompted, then choose `RailArena.exe` in a new folder such as `Builds/MyPlaytest`. This uses the existing enabled scenes and creates a non-development Windows player, then reveals the EXE. Run it with all adjacent files present. Cancelling either dialog leaves the existing build intact.
+
+You can also use **File > Build Profiles**, select Windows, retain the enabled Foundry scene and choose **Build** with Development Build disabled.
 
 Alternatively, with this project's Editor running and the Unity CLI installed, run from the repository root in PowerShell:
 
