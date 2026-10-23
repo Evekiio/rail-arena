@@ -54,7 +54,7 @@ Direct-IP duel integration is available from **ONLINE DUEL // DIRECT IP**. Host 
 | --- | --- |
 | 76 Editor-suite tests passing | Shared simulation, model/animation, finger skin deformation and live wrist/palm alignment, bots, networking/lifecycle, HUD/input, effects and audio signals |
 | 37 standalone mechanics checks passing | Accelerated real authority with actual hurtboxes; combat/pickup/respawn/match boundaries, hit/elimination feedback, solo movement/fire/respawn and mode switching |
-| Full ten-minute match and rematch on life-aware build 235d7b84 | Separate clean and impaired local UDP runs; matching result tick, scores and life numbers, with zero application errors; newer presentation changes have separate regression reports |
+| Full ten-minute match and rematch on current build ba7f4cc8 | Separate clean and impaired local UDP runs; matching result tick, scores and life numbers, zero application errors; large client corrections under concurrent import/build load remain a movement-quality limitation |
 | Replicated respawn lifecycle | Version 3 snapshots reset stale input, interpolation and view state, including missed-death and rematch regressions |
 | Native mouse/settings review | Solo menu/launch, aiming/firing, sensitivity/volume save and relaunch, resolution changes and fullscreen toggle; [evidence and limits](docs/NATIVE-INPUT-REVIEW.md) |
 | Human acceptance still open | Keyboard controls and mouse feel, display-mode persistence, sound-on quality, native two-human duel, release qualification and real internet path |

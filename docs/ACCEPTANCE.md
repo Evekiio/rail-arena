@@ -6,14 +6,14 @@ Latest presentation milestone: build `ba7f4cc8` passes 76 Editor-suite tests, 37
 
 | Requirement | Current evidence | Remaining acceptance |
 | --- | --- | --- |
-| Unity 6000.6.7f1, URP, pinned dependencies | ProjectVersion, package manifest/lockfile, successful Windows build records | Final clean-clone build check |
+| Unity 6000.6.7f1, URP, pinned dependencies | ProjectVersion, package manifest/lockfile, successful Windows build records | Fresh GitHub clone/build and 37 mechanics checks passed on the licensed local machine; fresh-machine setup remains unverified |
 | Editable gameplay and bot tuning | Movement asset and validated bot profile asset; session snapshots and behavioral edit/isolation tests | Native tuning workflow and broader balancing review |
 | Local Git/LFS and public MIT source | Public Evekiio/rail-arena; binary source assets in LFS; licenses/notices | Final source and artifact audit |
 | Offline bot match, 1-7 bots, three difficulties | Three real-time ten-minute seven-bot difficulty soaks; isolated reaction/aim/LOS tests; fresh one/seven-bot smoke | Native configuration acceptance, broader seed/population coverage and fairness review |
 | Untimed practice, unlimited respawns, restart/configuration | Rule tests, native practice launch, live deaths/respawns | Native restart and configuration acceptance |
 | Zero-bot solo practice for movement/arena testing | Single-participant rule regression; native zero-bot selector and solo launch; standalone movement/fire/untimed/void/respawn/mode-switch checks | Native keyboard movement/jump/pause and sustained mouse feel |
 | Direct-IP host/join, port, ready-up | Real two-process UDP tests; native port entry and unused-host timeout | Native two-human connection path and standalone bind/full/incompatible errors |
-| Ten-minute countdown, results, rematch | 235d7b84 clean/impaired runs completed tick 36180 with matching scores/lives and round two >=900 ticks | Native results/rematch interaction, release-build regression and remote-network acceptance |
+| Ten-minute countdown, results, rematch | ba7f4cc8 clean/impaired full runs completed tick 36180 with matching scores/lives and round two >=900 ticks | Native results/rematch interaction, non-development full-duel regression and remote-network acceptance |
 | Quake-style acceleration, air control, hopping, momentum | Shared tuning derived from reference units; simulation tests; bot traversal | Sustained keyboard/mouse movement feel and fidelity review |
 | Rail-only, unlimited ammo, 90-tick cadence | Shared rules; standalone held-fire boundaries; sustained combat | Weapon feedback and native input review |
 | 100 health, head/body/limb damage, mixed hits | Corrected bone-scale geometry regression and standalone head/body/limb/mixed sequences | Dynamic aiming and visual alignment review |
@@ -38,4 +38,4 @@ Latest presentation milestone: build `ba7f4cc8` passes 76 Editor-suite tests, 37
 
 Current evidence is indexed in `VALIDATION.md`, networking details in `NETWORKING.md`, and model provenance/limitations in `CHARACTERS.md`. Source milestones must continue to be pushed under the policy in `DEVELOPMENT.md`.
 
-`MECHANICS-VALIDATION.md` explains the current 35 accelerated standalone checks, including the original 28 that discovered the inherited-bone-scale hitbox bug. Historical combat counts are not proof of corrected geometry; use build-specific evidence.
+`MECHANICS-VALIDATION.md` explains the current 37 accelerated standalone checks, including the original 28 that discovered the inherited-bone-scale hitbox bug. Historical combat counts are not proof of corrected geometry; use build-specific evidence.

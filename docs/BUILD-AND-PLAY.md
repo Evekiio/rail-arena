@@ -51,7 +51,7 @@ These exercise actual standalone authority. They do not establish physical keybo
 
 - Character fingers and weapon grips are articulated, but glove/cuff seams, some intersections and richer action animation still need polish. The unfinished sleeve experiment is preserved locally under ignored `ArtSource/Candidates/ArmLiner-Handoff`, outside the shipping project.
 - Automated mechanics, offline combat and local simulated-network duels have passed. Physical keyboard acceptance, movement feel, sound-on review and native two-human host-to-rematch acceptance remain for human testing.
-- A different-internet-connection duel has not been verified. The newer presentation build has short network regression coverage; the full ten-minute match/rematch evidence identifies an earlier gameplay build.
+- A different-internet-connection duel has not been verified. The current development build has full ten-minute local match/rematch coverage, clean and impaired, with large client corrections under concurrent import/build load. This does not establish smooth movement or native human interaction.
 - This is a playable development checkpoint, not a finished release or final visual-quality signoff.
 
 If something fails, record the mode, bot count/difficulty, steps, expected result and actual result. The normal Windows player log is `%USERPROFILE%\AppData\LocalLow\Evekiio\Rail Arena\Player.log`; check the company/product names in Project Settings if you change them.
