@@ -67,18 +67,32 @@ namespace RailArena.Tests
                         var aim = Quaternion.Euler(pose.x, pose.y, 0);
                         gun.transform.SetPositionAndRotation(FirstPersonWeaponMotion.RestPosition + aim *
                             (motion.Offset - Vector3.forward * (recoil * RailgunPresentation.ViewRecoilTravel)), aim * motion.Rotation);
-                        yield return null;
-                        Assert.That(Vector3.Distance(arms.Animator.GetBoneTransform(HumanBodyBones.LeftHand).position, weapon.LeftGrip.position), Is.LessThan(.015f));
-                        Assert.That(Vector3.Distance(arms.Animator.GetBoneTransform(HumanBodyBones.RightHand).position, weapon.RightGrip.position), Is.LessThan(.015f));
+                        yield return WaitForContactFrame(arms);
+                        Assert.That(Vector3.Distance(arms.Animator.GetBoneTransform(HumanBodyBones.LeftHand).position, weapon.LeftGrip.position), Is.LessThan(.015f),
+                            $"pose={pose} frame={frame} enabled={arms.enabled} active={arms.gameObject.activeInHierarchy} animator={arms.Animator.enabled} speed={arms.Animator.speed} wrist={arms.Animator.GetBoneTransform(HumanBodyBones.LeftHand).position:F3} target={weapon.LeftGrip.position:F3} root={arms.transform.position:F3} solved={arms.LastPoseFrame} now={Time.frameCount} upper={arms.Animator.GetBoneTransform(HumanBodyBones.LeftUpperArm).position:F3} lower={arms.Animator.GetBoneTransform(HumanBodyBones.LeftLowerArm).position:F3} upperLocal={arms.transform.InverseTransformPoint(arms.Animator.GetBoneTransform(HumanBodyBones.LeftUpperArm).position):F3}");
+                        Assert.That(Vector3.Distance(arms.Animator.GetBoneTransform(HumanBodyBones.RightHand).position, weapon.RightGrip.position), Is.LessThan(.015f),
+                            $"pose={pose} frame={frame} enabled={arms.enabled} animator={arms.Animator.enabled} speed={arms.Animator.speed} wrist={arms.Animator.GetBoneTransform(HumanBodyBones.RightHand).position:F3} target={weapon.RightGrip.position:F3} root={arms.transform.position:F3} solved={arms.LastPoseFrame} now={Time.frameCount} upper={arms.Animator.GetBoneTransform(HumanBodyBones.LeftUpperArm).position:F3} lower={arms.Animator.GetBoneTransform(HumanBodyBones.LeftLowerArm).position:F3} upperLocal={arms.transform.InverseTransformPoint(arms.Animator.GetBoneTransform(HumanBodyBones.LeftUpperArm).position):F3}");
                         Assert.That(Vector3.Angle(arms.Hands.Joints[6].position - arms.Animator.GetBoneTransform(HumanBodyBones.LeftHand).position,
                             gun.transform.right), Is.LessThan(1));
                         Assert.That(Vector3.Angle(arms.Hands.Joints[21].position - arms.Animator.GetBoneTransform(HumanBodyBones.RightHand).position,
-                            -gun.transform.right), Is.LessThan(1));
+                            gun.transform.TransformDirection(new Vector3(0, -1, .15f).normalized)), Is.LessThan(1));
                     }
                 }
                 finally { Object.DestroyImmediate(gun); }
             }
             yield return new ExitPlayMode();
+        }
+
+        private static IEnumerator WaitForContactFrame(FirstPersonArms arms)
+        {
+            int previous = Time.frameCount;
+            float deadline = Time.realtimeSinceStartup + 5;
+            while (Time.frameCount <= previous || arms.LastPoseFrame != Time.frameCount)
+            {
+                Assert.That(Time.realtimeSinceStartup, Is.LessThan(deadline), "Player contact frame stopped advancing");
+                UnityEditor.EditorApplication.QueuePlayerLoopUpdate();
+                yield return null;
+            }
         }
 
         [UnityTearDown]

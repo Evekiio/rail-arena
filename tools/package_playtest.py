@@ -31,17 +31,17 @@ def package(build, output, fingerprint):
     for name in ("LICENSE", "THIRD-PARTY-NOTICES.md"):
         files[name] = (root / name).read_bytes()
     files["START-HERE.txt"] = (
-        "Rail Arena - evaluation checkpoint\n\n"
+        "Rail Arena - pre-alpha 0.1.0-pre-alpha.1\n\n"
         "Extract this entire ZIP, then run RailArena.exe. Keep all adjacent files.\n"
-        "Windows keyboard/mouse: WASD move, mouse aim, left mouse fire, Space jump,\n"
+        "Windows keyboard/mouse: WASD move, mouse aim, left click fire, hold right mouse 1.5x zoom, Space jump,\n"
         "Tab scoreboard, Escape pause/settings. Choose PRACTICE and 0 // SOLO\n"
-        "or 1-7 bots. Offline play needs no account, server or internet.\n\n"
+        "or 1-3 bots for the intended four-contender scope. Offline play needs no account, server or internet.\n\n"
         "This is unfinished: character/action polish, native control feel and real\n"
         "internet multiplayer acceptance remain open. Local/simulated tests are\n"
         "documented separately from human acceptance.\n\n"
         "Build fingerprint: " + fingerprint + "\n"
         "Source and evaluation guide:\n"
-        "https://github.com/Evekiio/rail-arena/blob/main/docs/EVALUATION.md\n"
+        "https://github.com/Evekiio/rail-arena/blob/main/docs/PRE-ALPHA.md\n"
     ).encode("utf-8")
     manifest = {name: hashlib.sha256(data).hexdigest() for name, data in files.items()}
     files["package-manifest.json"] = (json.dumps(

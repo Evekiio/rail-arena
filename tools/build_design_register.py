@@ -43,21 +43,23 @@ for character in ('Player','Bot01','Bot02','Bot03'):
         ['idle','movement','fire','zoom'],'presentation only; shared rig',
         [ref('FirstPerson-Arms')])
 
-add('WEAPON-RIFLE','weapon','Enclosed ceramic precision rail rifle',
-    {'lengthMetres':1.2,'widthMetres':.25,'heightMetres':.45,'note':'Envelope target, not manufacturing dimensions'},
+add('WEAPON-RIFLE','weapon','Approved enclosed precision carbine',
+    {'lengthMetres':1.0,'widthMetres':.1,'heightMetres':.33,'note':'Approved envelope; integrated production asset'},
     six+['grip contact','muzzle marker','moving parts'],palette,
     ['idle','fire','36-tick recovery','zoom'],'presentation only',
-        ['ArtSource/Original/Design-v1/Sources/User-Rifle-Reference.png'],
-        status='blocked-incomplete-views',notes='Single user source only. New multi-view design reference blocked by prior image-service filtering. Prior RA-01 is historical context, not accepted replacement. Do not begin detailed modeling.')
+    ['ArtSource/Original/PrecisionCarbine-References-v3/'+name for name in
+     ('README.md','index.html','RailRifle-Six-View.png','Assembly-Dimensions.csv')],
+    status='design-approved-integrated-human-acceptance-pending',
+    notes='Creator approved October 23, 2026. Production asset, atlas, LODs and fitted shared weapon installed. See ArtSource/Original/PrecisionCarbine-Production-v1/README.md; human acceptance and performance qualification remain open.')
 
 add('MAP-FOUNDRY','arena','One shared review blockout',
     {'footprintMetres':[56,40],'deckHeightsMetres':[0,2,4]},
     ['top','lower plan','upper plan','north','south','east','west','section','player-height'],
     ['semantic greybox colors'],['static'], 'Master gameplay geometry proposal; no runtime integration',
-    ['ArtSource/Original/Design-v1/Greybox/'+n+'.png' for n in
-     ('Overview','Top','LowerPlan','UpperPlan','North','South','East','West','Section-Y0',
-      'Player-Lower','Player-Bridge','Player-Wing')],
-    notes='Balance, traversal and spawn safety require actual-controller tests. Existing illustration topology is not authoritative.')
+    ['ArtSource/Original/Foundry-Arena-v2/'+n for n in
+     ('Master-Plan.svg','Lower-Deck.svg','Wing-Deck.svg','Upper-Deck.svg',
+      'Section-EW-N8.svg','Section-NS-X0.svg','Map.json','Environment-Kit.json')],
+    notes='Foundry v2 is current: duel-first, opaque shot-blocking gates, revised spawns/landings. V1 Blender master is historical. Actual-controller and creator layout approval remain open.')
 
 architecture=[('FLOOR',[4,4,.4]),('WALL',[4,.4,4]),('LOW-COVER',[2,.4,1.2]),
               ('PYLON',[2,2,4]),('RAMP',[16,4,4]),('BRIDGE-BEAM',[4,.4,.8]),
@@ -67,7 +69,7 @@ for name,size in architecture:
         {'boundingBoxMetres':size,'note':'Ramp uses 16m run / 4m rise; reconcile snap grid before detail lock'},
         six+['snap joints'],palette,['static'],'walkable/cover only where master specifies; trim cosmetic',
         [ref('Architecture-Resolved'),ref('Hidden-Construction-v2')],
-        notes='16m ramp assembly: 7m rise, 2m flat turnout, 7m rise. Resolve illustrated joint/view discrepancies against the greybox before approval.')
+        notes='Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.')
 
 props=[('CRATE',[2,1,1.2],'hard cover'),('CABINET',[1.4,.8,1.7],'hard cover'),
        ('VENT',[1,1,2.4],'cosmetic unless placed as explicit master cover'),
@@ -147,6 +149,8 @@ for asset in ASSETS:
     family=asset['family']
     if family=='audio':
         missing=['sound production','sound-on approval']
+    elif family=='weapon':
+        missing=['human acceptance of installed visual/finger contact/animation','external duel acceptance and measured performance qualification']
     elif family=='arena':
         missing=['creator layout review','actual-controller traversal and visibility tests']
     elif family=='characters':
@@ -171,14 +175,18 @@ for asset in ASSETS:
         missing=['new complete multi-view reference']
     asset['remainingRequirements']=missing
     asset['coverageStatus']='partial; see remainingRequirements'
-    asset['detailedModelingAllowed']=False
+    asset['detailedModelingAllowed']=family=='weapon'
+    if family=='weapon':
+        asset['approvalEvidence']='Explicit creator approval and production authorization in chat, October 23, 2026'
+        asset['references'].append('ArtSource/Original/PrecisionCarbine-Production-v1/README.md')
+        asset['coverageStatus']='Integrated production asset; acceptance gates remain'
 (PACK/'AssetRegister.json').write_text(json.dumps(register,indent=2)+'\n',encoding='utf-8')
 rows=['# Rail Arena asset review register','','Authority: [design](../../../docs/DESIGN.md). '
       'A sheet link means a reference exists, not that every required view is complete or approved. '
       'See AssetRegister.json for dimensions, states, required views and blockers.','',
       '| ID | Family | Status | Reference coverage |','| --- | --- | --- | --- |']
 for asset in ASSETS:
-    refs=' · '.join(f'[{Path(p).stem}](../../../{p})' for p in asset['references']) or 'Missing / blocked'
+    refs=' Ã‚Â· '.join(f'[{Path(p).stem}](../../../{p})' for p in asset['references']) or 'Missing / blocked'
     rows.append(f"| {asset['id']} | {asset['family']} | {asset['approvalStatus']} | {refs} |")
 (PACK/'ASSET-REGISTER.md').write_text('\n'.join(rows)+'\n',encoding='utf-8')
 images=sorted((PACK/'Concepts').glob('*.png'))+sorted((PACK/'Greybox').glob('*.png'))
@@ -186,7 +194,7 @@ images=[p for p in images if not p.with_stem(p.stem+'-v2').exists()]
 gallery=['<!doctype html><meta charset="utf-8"><title>Rail Arena design review</title>',
          '<style>body{background:#121a22;color:#efe9d9;font:17px system-ui;max-width:1400px;margin:40px auto;padding:20px}a{color:#48dae8}img{width:100%;height:auto}section{margin:40px 0}h1{font-size:44px}</style>',
          '<h1>Rail Arena / Design v1</h1><p>Creator-review candidates. Design approved; final art, geometry and runtime acceptance remain separate.</p>',
-         '<p><a href="../../../docs/DESIGN.md">Design lock</a> · <a href="ASSET-REGISTER.md">Asset register</a></p>']
+         '<p><a href="../../../docs/DESIGN.md">Design lock</a> Ã‚Â· <a href="ASSET-REGISTER.md">Asset register</a></p>']
 for p in images:
     relative=p.relative_to(PACK).as_posix()
     gallery.append(f'<section><h2>{html.escape(p.stem)}</h2><a href="{relative}"><img loading="lazy" src="{relative}" alt="{html.escape(p.stem)}"></a></section>')

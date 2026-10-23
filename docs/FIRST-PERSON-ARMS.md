@@ -1,11 +1,11 @@
 # First-person armored arms
 
-The view model includes textured armored forearms and articulated hands derived from the existing CC0 Grab3D contender, with 30 added finger joints and a fitted RA-01 grip. This is an arm-only derivative of the disclosed AI-assisted base, not a newly sculpted original character. It reuses the licensed textures, humanoid skeleton and Quaternius CC0 idle animation. No paid assets or additional downloaded artwork are introduced. See [hand articulation](HAND-ARTICULATION.md) for source, animation, fitting and remaining quality limits.
+The new view model extracts original low-poly forearms and articulated gloves from the approved stylized player model, with 30 finger joints and the calibrated RA-01 grip. It uses the new palette texture, the retained CC0 humanoid skeleton and Quaternius CC0 idle animation. The earlier textured CC0 soldier-derived arm rig is historical. See [stylized contender modeling](STYLIZED-CONTENDERS.md) and [hand articulation](HAND-ARTICULATION.md) for source, animation, fitting and validation boundaries.
 
 ## Editable assets and generation
 
 - `Assets/Resources/Characters/ViewArms.prefab`: arm-only view rig and editable mount pose relative to the weapon.
-- `Assets/RailArena/Characters/View arms.asset`: remapped mesh with 18,377 vertices and 16,116 triangles.
+- `Assets/RailArena/Characters/View arms.asset`: arm-only mesh remapped from the original stylized player skin, retaining palette UVs and finger weights.
 - `Assets/RailArena/Characters/View arms.controller`: looping ready pose with the normal humanoid IK pass.
 - `FirstPersonArmsBuilder.cs`: extracts triangles whose three vertices each have at least 60% combined weight on upper-arm, lower-arm, hand or finger-descendant bones, then removes unused vertices while retaining UVs, normals, tangents, weights and bind poses.
 - `FirstPersonArms.cs`: cosmetic grip IK, elbow hints and shared attachment setup.

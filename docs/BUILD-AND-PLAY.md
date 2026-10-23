@@ -1,3 +1,5 @@
+> Current client: [Windows pre-alpha release](PRE-ALPHA.md). Extract the complete ZIP and run `RailArena.exe`. The current carbine uses click-only fire, a 0.6-second cycle and 1.5x hold-right-mouse zoom. Older checkpoint instructions below are retained as history.
+
 # Build and play Rail Arena
 
 This is the stable local playtest handoff. Offline solo and bot play are ready for your own testing. Final art quality and full human/internet multiplayer acceptance remain open.
@@ -6,7 +8,7 @@ This is the stable local playtest handoff. Offline solo and bot play are ready f
 
 Launch `F:\Rail Arena\Builds\Evaluation\RailArena.exe` for the non-development player. Keep its entire folder together; the EXE depends on the adjacent data folder and DLLs. No account, server or internet connection is needed for offline play.
 
-1. Choose **PRACTICE**. Set **BOTS** to **0 // SOLO** for movement testing, or choose 1–7 bots and a difficulty for combat.
+1. Choose **PRACTICE**. Set **BOTS** to **0 // SOLO** for movement testing, or choose 1â€“7 bots and a difficulty for combat.
 2. Start untimed practice. Use WASD to move, mouse to aim, left mouse to fire, Space to jump/keep hopping, Tab for scores and Escape for pause/settings.
 3. Try the ramps, gaps and four jump pads. Fire while moving, fall off and respawn, then restart with bots from the pause menu.
 4. With bots, test head/body/limb hits, health pickups, deaths and respawns. Try stationary and strafing target scenarios before normal combat.

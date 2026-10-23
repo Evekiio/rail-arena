@@ -9,7 +9,7 @@ namespace RailArena.Simulation
     {
         public const int TickRate = 60;
         public const int MaximumHealth = 100;
-        public const int ShotIntervalTicks = 90;
+        public const int ShotIntervalTicks = 36;
         public const int RespawnTicks = 120;
         public const int PickupRespawnTicks = 1200;
         public const int CountdownTicks = 180;

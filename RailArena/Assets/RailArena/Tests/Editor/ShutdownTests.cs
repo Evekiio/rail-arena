@@ -40,6 +40,7 @@ namespace RailArena.Tests
             // Application.Quit is ignored in the Editor; the real menu action still releases resources.
             quit.onClick.Invoke();
             Assert.That(session.IsOnline, Is.False);
+            Assert.That(session.enabled, Is.False, "Released session resources must not be used by another simulation tick.");
             using (var rebound = new DuelSocket(port)) Assert.That(rebound.LocalEndPoint.Port, Is.EqualTo(port));
             session.QuitGame();
             Assert.That(Cursor.lockState, Is.EqualTo(CursorLockMode.None));

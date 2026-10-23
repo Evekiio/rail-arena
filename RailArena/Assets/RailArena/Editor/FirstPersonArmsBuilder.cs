@@ -17,16 +17,28 @@ namespace RailArena.Editor
         [MenuItem("Rail Arena/Build first-person arms")]
         public static void Build()
         {
-            var source = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/ThirdParty/Grab3D/Contender_LOD0.fbx");
+            bool stylized = StylizedContenderBuilder.ModelsReady;
+            var source = AssetDatabase.LoadAssetAtPath<GameObject>(stylized ?
+                "Assets/Resources/Characters/Contender.prefab" : "Assets/ThirdParty/Grab3D/Contender_LOD0.fbx");
             var root = Object.Instantiate(source);
             try
             {
                 root.name = "First person armored arms";
                 var animator = root.GetComponent<Animator>();
                 var renderer = root.GetComponentInChildren<SkinnedMeshRenderer>();
+                if (stylized)
+                {
+                    var presentation = root.GetComponent<ContenderPresentation>();
+                    renderer = (SkinnedMeshRenderer)presentation.BodyRenderers[0];
+                    Object.DestroyImmediate(presentation.Weapon.gameObject);
+                    foreach (var other in presentation.BodyRenderers.Skip(1)) Object.DestroyImmediate(other.gameObject);
+                    foreach (var hitbox in root.GetComponentsInChildren<Hitbox>(true)) Object.DestroyImmediate(hitbox.gameObject);
+                    Object.DestroyImmediate(root.GetComponent<LODGroup>());
+                    Object.DestroyImmediate(presentation);
+                }
                 var armBones = new HashSet<int>();
-                foreach (var id in new[] { HumanBodyBones.LeftUpperArm, HumanBodyBones.LeftLowerArm, HumanBodyBones.LeftHand,
-                    HumanBodyBones.RightUpperArm, HumanBodyBones.RightLowerArm, HumanBodyBones.RightHand })
+                foreach (var id in new[] { HumanBodyBones.LeftLowerArm, HumanBodyBones.LeftHand,
+                    HumanBodyBones.RightLowerArm, HumanBodyBones.RightHand })
                 {
                     int index = Array.IndexOf(renderer.bones, animator.GetBoneTransform(id));
                     if (index < 0) throw new InvalidOperationException("The source mesh lacks an arm skin bone: " + id);
@@ -49,7 +61,8 @@ namespace RailArena.Editor
                     old.bounds = mesh.bounds; old.UploadMeshData(false); EditorUtility.SetDirty(old); Object.DestroyImmediate(mesh);
                 }
                 renderer.sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(MeshPath);
-                renderer.sharedMaterial = AssetDatabase.LoadAssetAtPath<Material>(Root + "/Ion.mat");
+                renderer.sharedMaterial = AssetDatabase.LoadAssetAtPath<Material>(stylized ?
+                    StylizedContenderBuilder.ArtRoot + "/Player.mat" : Root + "/Ion.mat");
                 renderer.localBounds = renderer.sharedMesh.bounds;
                 renderer.updateWhenOffscreen = true;
                 renderer.shadowCastingMode = ShadowCastingMode.Off;
@@ -60,11 +73,12 @@ namespace RailArena.Editor
                 var view = root.AddComponent<FirstPersonArms>();
                 view.Animator = animator; view.Surface = renderer;
                 renderer.quality = SkinQuality.Bone4;
-                view.Hands = root.AddComponent<HandArticulation>();
+                view.Hands = root.GetComponent<HandArticulation>();
+                if (view.Hands == null) view.Hands = root.AddComponent<HandArticulation>();
                 view.Hands.Configure(root.transform);
                 HandGripAuthoring.Apply(view.Hands);
                 // Relative to the railgun: keeps the shoulder cuts below the first-person frame.
-                root.transform.localPosition = new Vector3(-.23f, -1.65f, -.37f);
+                root.transform.localPosition = new Vector3(-.20f, -1.44f, -.17f);
                 foreach (var part in root.GetComponentsInChildren<Transform>(true)) part.gameObject.layer = 11;
                 PrefabUtility.SaveAsPrefabAsset(root, "Assets/Resources/Characters/ViewArms.prefab");
                 AssetDatabase.SaveAssets();
@@ -107,9 +121,10 @@ namespace RailArena.Editor
             var map = new Dictionary<int, int>();
             for (int i = 0; i < used.Length; i++) map[used[i]] = i;
             var positions = source.vertices; var normals = source.normals; var tangents = source.tangents; var uv = source.uv;
-            var mesh = new Mesh { name = "CC0 contender arm-only derivative", indexFormat = IndexFormat.UInt32,
+            var mesh = new Mesh { name = "Contender arm-only presentation", indexFormat = IndexFormat.UInt32,
                 vertices = used.Select(i => positions[i]).ToArray(), normals = used.Select(i => normals[i]).ToArray(),
-                tangents = used.Select(i => tangents[i]).ToArray(), uv = used.Select(i => uv[i]).ToArray(),
+                tangents = tangents.Length == positions.Length ? used.Select(i => tangents[i]).ToArray() : Array.Empty<Vector4>(),
+                uv = used.Select(i => uv[i]).ToArray(),
                 boneWeights = used.Select(i => sourceWeights[i]).ToArray(), bindposes = source.bindposes,
                 triangles = selected.Select(i => map[i]).ToArray() };
             mesh.RecalculateBounds(); return mesh;

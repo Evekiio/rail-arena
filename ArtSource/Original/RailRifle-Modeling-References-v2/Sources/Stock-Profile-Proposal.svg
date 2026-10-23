@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<defs>
+ <linearGradient id="ceramic" x2="0" y2="1"><stop stop-color="#e9e5d7"/><stop offset="1" stop-color="#c5c4b6"/></linearGradient>
+ <linearGradient id="graphite" x2="0" y2="1"><stop stop-color="#39464a"/><stop offset="1" stop-color="#182328"/></linearGradient>
+ <style>text{font-family:Arial,sans-serif;fill:#23363e}.label{font-size:22px;letter-spacing:1px}.line{fill:none;stroke:#738c95;stroke-width:2}</style>
+</defs>
+<rect width="1600" height="1000" fill="#edf0ec"/>
+<text x="70" y="90" font-size="42" font-weight="bold">RAIL ARENA / STOCK REVISION 02</text>
+<text x="70" y="135" font-size="23">SIDE-PROFILE DESIGN PROPOSAL / FOR APPROVAL</text>
+<text x="70" y="178" font-size="21">Based on the supplied stock shape; adapted to ivory, graphite and restrained cyan.</text>
+<g transform="translate(190 190) scale(1.4)">
+ <!-- One continuous structural shell; the inner subpath is the single opening. -->
+ <path fill="url(#ceramic)" fill-rule="evenodd" stroke="#536168" stroke-width="3" stroke-linejoin="round"
+ d="M94 102 L655 148 L690 170 L744 172 L760 190 L760 227 L699 241 L568 253 L442 278 L321 459 L271 477 L136 427 L98 380 L68 151 Z
+ M194 257 L350 270 L289 349 L260 391 L179 351 Z"/>
+ <!-- Faceted perimeter reinforces the reference's upper beam and lower web. -->
+ <path d="M107 123 L652 165 L679 185 L722 188 L731 211 L685 221 L552 233 L429 258 L308 438 L269 453 L153 408 L119 367 L91 154 Z
+ M184 238 L376 254 L305 357 L265 414 L157 359 Z" fill="none" stroke="#82908b" stroke-width="8" stroke-linejoin="round"/>
+ <!-- Raised cheek pad is graphite, with no photoreal carbon-fibre pattern. -->
+ <path d="M133 112 L622 151 L605 195 L176 165 L151 147 Z" fill="url(#graphite)" stroke="#58686b" stroke-width="3"/>
+ <path d="M157 126 L605 161" stroke="#5c6c70" stroke-width="4"/>
+ <!-- Solid attachment neck and lower channel. -->
+ <path d="M636 182 L741 188 L741 218 L688 229 L566 241 L451 268 L415 275 L439 244 L548 221 L626 211 Z" fill="#23353b"/>
+ <path d="M660 179 L744 183 L759 193 L759 220 L736 228 L736 191 Z" fill="#7b8787"/>
+ <path d="M175 187 L591 215" stroke="#49c9d2" stroke-width="5" fill="none"/>
+ <!-- The thick angled shoulder pad stays at the left rear. -->
+ <path d="M87 100 L117 103 L147 388 L164 427 L131 447 L96 411 L65 151 Z" fill="url(#graphite)" stroke="#162226" stroke-width="4"/>
+ <path d="M83 124 L109 383 L135 423" stroke="#657176" stroke-width="5" fill="none"/>
+ <path d="M91 169 L110 166 M96 212 L115 209 M101 255 L120 252 M106 298 L125 295 M111 341 L130 338" stroke="#111d21" stroke-width="7"/>
+ <!-- Graphite reinforcement is on the solid brace, not a second opening. -->
+ <path d="M377 267 L420 261 L310 426 L282 449 L245 434 L269 420 L291 395 Z" fill="#28383d"/>
+ <path d="M171 371 L251 419 L233 434 L154 403 Z" fill="#284249"/>
+ <!-- Small recessed sling socket replaces the old luminous stock disc. -->
+ <ellipse cx="280" cy="437" rx="17" ry="15" fill="#a6b1ac" stroke="#46565b" stroke-width="4"/>
+ <ellipse cx="280" cy="437" rx="10" ry="9" fill="#142329"/>
+</g>
+<path d="M1100 430 H1400 V360" class="line"/><text x="1180" y="340" class="label">RECEIVER →</text>
+<path d="M390 372 L370 290 H85" class="line"/><text x="70" y="270" class="label">BROAD CHEEK REST</text>
+<path d="M320 650 L160 680 H70" class="line"/><text x="70" y="720" class="label">THICK SHOULDER</text><text x="70" y="749" class="label">PAD</text>
+<path d="M530 650 L760 720 H1180" class="line"/><text x="1030" y="758" class="label">ONE REINFORCED OPENING</text>
+<text x="70" y="890" font-size="23">Rear / shoulder at left. Attachment to the existing receiver at right.</text>
+<text x="70" y="930" font-size="21">Editable silhouette study. Dimensions and hidden surfaces remain pending; not a calibrated construction sheet.</text>
+</svg>

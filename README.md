@@ -8,9 +8,9 @@
 
 Rail Arena is a Windows game and AI engineering portfolio project by **Sanders Riddle**, built with modern AI agentic workflows. The vision is a complete, focused aim trainer and arena game: sharpen your precision, learn to shoot while moving, and turn another practice session into one more match.
 
-[Explore the vision](#the-game) · [Build and play](docs/BUILD-AND-PLAY.md) · [Character designs](docs/CHARACTER-REFERENCES.md) · [Arena references](ArtSource/Original/ArenaReferences-v1/README.md) · [Engineering evidence](docs/VALIDATION.md)
+[Explore the vision](#the-game)  Ã‚Â·  [Build and play](docs/BUILD-AND-PLAY.md)  Ã‚Â·  [Character designs](docs/CHARACTER-REFERENCES.md)  Ã‚Â·  [Arena references](ArtSource/Original/Foundry-Arena-v2/References-v1/README.md)  Ã‚Â·  [Engineering evidence](docs/VALIDATION.md)
 
-> **Playable development project.** Offline practice, bot matches and direct-IP duel integration are implemented. Final presentation, human playtesting and internet multiplayer acceptance remain in progress. There is no finished downloadable release yet. The banner and character artwork are concept references.
+> **Pre-alpha client:** [Download for Windows x64](https://github.com/Evekiio/rail-arena/releases/download/v0.1.0-pre-alpha.1/RailArena-v0.1.0-pre-alpha.1-Windows-x64.zip) Ã‚Â· [Release notes and limitations](docs/PRE-ALPHA.md). Extract the whole ZIP, then run `RailArena.exe`. This is an unfinished portfolio build for playtesting; concept artwork and planned arena features are distinguished from the current client below.
 
 ## Approved design / next production milestone
 
@@ -32,7 +32,7 @@ The design draws on Quake III Arena's movement and Unreal Tournament's arena rea
 | --- | --- |
 | **Solo practice** | Explore the arena, learn routes and work on movement with unlimited respawns and no opponents. |
 | **Target practice** | Use stationary, moving or combat bot behavior to isolate precision or practice under pressure. |
-| **Bot matches** | Approved target: face 1–3 distinct bots across three difficulty levels, with scoring, results and restart. |
+| **Bot matches** | Approved target: face 1ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ3 distinct bots across three difficulty levels, with scoring, results and restart. |
 | **Direct-IP duel** | Host or join a two-human match, ready up, compete and rematch. Integration is implemented; full human and remote-network acceptance is still open. |
 
 ### Precision with consequences
@@ -48,7 +48,7 @@ The goal is enjoyable, repeatable practice inside a real game. Claims about meas
 
 The first-version target is **one polished original arena, one satisfying railgun, offline practice and bot combat with four total contenders, one fixed portal pair, and a complete two-human direct-IP duel loop**. Responsive controls, readable feedback, dependable shutdown and a clean path from launch to rematch are part of that target.
 
-Cloud accounts, matchmaking services, progression economies, monetization, extra weapons, spectators and online bots are outside this version's scope. See the [full gameplay and completion contract](docs/OBJECTIVE.md).
+Cloud accounts, matchmaking services, progression economies, monetization, extra weapons, spectators and online bots are outside this version's scope. See the [approved gameplay and completion contract](docs/DESIGN.md).
 
 ## Designed to be recognizable
 
@@ -69,6 +69,8 @@ The [brand kit](docs/branding/README.md) includes the transparent logo, banner, 
 
 ## Building the world of Rail Arena
 
+The current [Foundry arena specification](docs/ARENA-DESIGN.md) defines the duel-first layout, named zones, cover, spawn pockets, health, pad trajectories, opaque shot-blocking portals and environment kit. [Measured deck plans and placement data](ArtSource/Original/Foundry-Arena-v2/README.md) supersede the earlier blockout proposal. Layout review and live controller testing remain open.
+
 A floating industrial arena above an ocean of clouds. Ivory structures, graphite frames, teal recesses and restrained cyan energy tie the battlefield to its contenders.
 
 ![Foundry arena environment concept with elevated wings and lower routes](ArtSource/Original/ArenaReferences-v1/01-Arena-Hero.png)
@@ -83,14 +85,16 @@ The new **six-sheet environment pack** translates that direction into a Blender 
 | [Layout proposal](ArtSource/Original/ArenaReferences-v1/02-Arena-Layout.png) | Routes, cover, deck levels, spawn candidates and sightlines |
 | [Modular architecture](ArtSource/Original/ArenaReferences-v1/03-Modular-Architecture.png) | Floors, walls, ramps, bridge beams, cover and landing modules |
 | [Environment objects](ArtSource/Original/ArenaReferences-v1/04-Environment-Props.png) | Equipment cabinets, crates, vents, lighting and health pedestals |
-| [Jump pads and portal study](ArtSource/Original/ArenaReferences-v1/07-Traversal-Devices.png) | Pad construction and activation states; an optional portal design |
+| [Jump pads and portal study](ArtSource/Original/ArenaReferences-v1/07-Traversal-Devices.png) | Pad construction and activation states; a historical portal study |
 | [World and sky](ArtSource/Original/ArenaReferences-v1/08-World-Sky.png) | Distant floating islands, atmosphere and directional lighting studies |
 
-The proposed blockout explores a 56 × 40 metre envelope, three height levels, paired routes, four jump pads, three health locations and eight spawn candidates. These are design targets for review. The images contain cross-view inconsistencies; the [modeling handoff](ArtSource/Original/ArenaReferences-v1/README.md) records them and defines which written constraints take precedence.
+The proposed blockout explores a 56 ÃƒÆ’Ã†â€™:  40 metre envelope, three height levels, paired routes, four jump pads, three health locations and eight spawn candidates. These are design targets for review. The images contain cross-view inconsistencies; the [modeling handoff](ArtSource/Original/ArenaReferences-v1/README.md) records them and defines which written constraints take precedence.
 
-The next production step is one shared greybox master, followed by actual-controller tests of movement, spawn exposure, bot navigation and sightlines before detailed art. Portals remain optional concepts outside the current gameplay implementation. The sky studies are mood references, not seamless skybox textures.
+The [Foundry v2 reference pack](ArtSource/Original/Foundry-Arena-v2/References-v1/README.md) now provides an editable measured Blender master, 22 geometry views and eight environment concept sheets. These are review candidates. The next production step is actual-controller tests of movement, spawn exposure, bot navigation and sightlines before detailed art. One opaque, shot-blocking portal pair is now part of the approved target; it is not yet integrated into current gameplay. The sky studies are mood references, not seamless skybox textures.
 
 The new rifle and combat/blood-effects reference sheets remain undelivered after image-service filtering. Existing weapon and feedback systems are documented separately; this pack adds no new runtime assets or mechanics. [Browse the full pack, prompts and validation manifest](ArtSource/Original/ArenaReferences-v1/README.md).
+
+The approved [1.0m precision carbine](ArtSource/Original/PrecisionCarbine-Production-v1/README.md) now replaces the shared game weapon, including all four contenders and character-matched first-person forearms. The [production review package](ArtSource/Original/PrecisionCarbine-Production-v1/README.md) puts approved construction views beside final renders and installed Unity captures. It includes three LODs, a 2K surface atlas and reproducible headless builders. Fine visual acceptance and measured combat performance remain separate gates. [V3 references](ArtSource/Original/PrecisionCarbine-References-v3/README.md), [rifle v2](ArtSource/Original/RailRifle-Modeling-References-v2/README.md) and the [older benchmarks](ArtSource/Original/ProductionBenchmarks-v1/README.md) remain available as history.
 
 ## AI engineering, applied to a playable product
 
@@ -110,7 +114,7 @@ AI assistance is part of the development process. In-game opponents use configur
 
 ## Built for inspection
 
-**Unity 6000.6.7f1 · URP 17.6.0 · C# · Windows keyboard and mouse · Git LFS**
+**Unity 6000.6.7f1  Ã‚Â·  URP 17.6.0  Ã‚Â·  C#  Ã‚Â·  Windows keyboard and mouse  Ã‚Â·  Git LFS**
 
 The gameplay core runs at **60 ticks per second**. Offline play uses local authority; online duels use host authority with client prediction, reconciliation, opponent interpolation and bounded hit rewind up to 200 ms.
 
