@@ -30,6 +30,7 @@ namespace RailArena
         public int PadLaunches => padCount;
         public List<string> VoidTraces { get; } = new();
         public string Feed { get; private set; } = "";
+        public CombatFeed RecentCombat { get; } = new();
         public AimPreferences Aim { get; } = new();
         public ReticlePreferences Reticle { get; } = new();
         public ComfortPreferences Comfort { get; } = new();
@@ -115,6 +116,7 @@ namespace RailArena
             RewoundShots = RejectedShotTimes = 0;
             foreach (var pickup in World.Pickups) { pickup.AvailableTick = 0; pickup.SetAvailable(true); }
             Feed = "";
+            RecentCombat.Clear();
             Feedback?.ResetFeedback();
             shotCount = deathCount = pickupCount = padCount = 0;
             VoidDeaths = 0;
@@ -312,8 +314,14 @@ namespace RailArena
             victim.Health = 0;
             victim.RespawnTick = Match.Tick + CombatRules.RespawnTicks;
             victim.SetAlive(false);
-            Feed = killer == victim ? $"{victim.DisplayName} fell into the void" : $"{killer.DisplayName}  >  {victim.DisplayName}   {reason}";
+            PublishFeed(killer == victim ? $"{victim.DisplayName} fell into the void" : $"{killer.DisplayName}  >  {victim.DisplayName}   {reason}");
             deathCount++;
+        }
+
+        private void PublishFeed(string text)
+        {
+            Feed=text;
+            RecentCombat.Add(text,Time.realtimeSinceStartupAsDouble);
         }
 
         private void Respawn(ArenaActor actor)
