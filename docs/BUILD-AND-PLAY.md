@@ -1,69 +1,66 @@
-> Current client: [Windows pre-alpha release](PRE-ALPHA.md). Extract the complete ZIP and run `RailArena.exe`. The current carbine uses click-only fire, a 0.6-second cycle and 1.5x hold-right-mouse zoom. Older checkpoint instructions below are retained as history.
-
 # Build and play Rail Arena
 
-**Current source:** [offline setup](OFFLINE-ROSTER.md) now supports 0–3 bots and saved character selection. Timed matches always use combat AI; stationary/moving targets are untimed practice options. The local checkpoint instructions below describe older builds and do not override current source behavior.
+## Play the released checkpoint
 
-This is the stable local playtest handoff. Offline solo and bot play are ready for your own testing. Final art quality and full human/internet multiplayer acceptance remain open.
+[Download the Windows x64 pre-alpha](https://github.com/Evekiio/rail-arena/releases/tag/v0.1.0-pre-alpha.1). Extract the **entire ZIP** and run `RailArena.exe`, keeping the data folder, DLLs and adjacent files together. Offline play requires no Unity installation, account or internet connection.
 
-## Play now on this PC
+This ZIP is an older checkpoint. Its [release notes](PRE-ALPHA.md) describe its features and limitations. New source improvements on `main` are not automatically included in the download.
 
-Launch `F:\Rail Arena\Builds\Evaluation\RailArena.exe` for the non-development player. Keep its entire folder together; the EXE depends on the adjacent data folder and DLLs. No account, server or internet connection is needed for offline play.
+## Play current source
 
-1. Choose **PRACTICE**. Set **BOTS** to **0 // SOLO** for movement testing, or choose 1â€“7 bots and a difficulty for combat.
-2. Start untimed practice. Use WASD to move, mouse to aim, left mouse to fire, Space to jump/keep hopping, Tab for scores and Escape for pause/settings.
-3. Try the ramps, gaps and four jump pads. Fire while moving, fall off and respawn, then restart with bots from the pause menu.
-4. With bots, test head/body/limb hits, health pickups, deaths and respawns. Try stationary and strafing target scenarios before normal combat.
-5. Use **OFFLINE BOT MATCH** for the timed match and results flow. The starting countdown lasts three seconds; rail recovery is 1.5 seconds.
+Current source supports four selectable appearances, 0-3 unique offline bots, untimed practice and timed combat matches. Stationary/moving targets are practice options; timed matches use combat AI. Use [How to Play](QUICK-START.md) for the current menu flow and controls.
 
-The development player at `Builds/Windows/RailArena.exe` is the version used by automated validation. Both local handoff players use fingerprint `fa2cb0af271399bb89d693dc5768b378a1aa832c50f6720cf21953329edb7bc4`.
+The rifle uses click-only fire, a 0.6-second cycle, unlimited ammunition and hold-right-mouse 1.5x zoom. Current damage is 100/50/34; timed matches last ten minutes with tied-leader sudden death. The revised [approved design](DESIGN.md) remains a migration target.
 
-## Open and build the editable project
+## Prepare a checkout
 
-Install **Unity 6000.6.7f1** with Windows build support through Unity Hub. Use the exact version pinned in `RailArena/ProjectSettings/ProjectVersion.txt`. Unity licensing and initial package download are needed to develop; they are not needed to run the existing offline player.
-
-For a fresh clone, install Git LFS, clone the public repository and run `git lfs pull` before opening the project. Open **the `RailArena` subfolder**, not the repository root, through Unity Hub. Wait for imports and compilation to finish.
-
-Open `Assets/RailArena/Generated/Foundry.unity`, then press Play to test in the Editor. Click the Game view to give it input focus.
-
-For a Windows build, leave Play mode and choose **Rail Arena > Build Windows playtest...**. Save intentional scene changes when prompted, then choose `RailArena.exe` in a new folder such as `Builds/MyPlaytest`. This uses the existing enabled scenes and creates a non-development Windows player, then reveals the EXE. Run it with all adjacent files present. Cancelling either dialog leaves the existing build intact.
-
-You can also use **File > Build Profiles**, select Windows, retain the enabled Foundry scene and choose **Build** with Development Build disabled.
-
-Alternatively, with this project's Editor running and the Unity CLI installed, run from the repository root in PowerShell:
+Install Git LFS and the exact **Unity 6000.6.7f1** Editor with Windows build support. Licensing and initial package restore are required for development.
 
 ```powershell
-unity command script eval --project-path .\RailArena --caller plugin --skill unity-cli --timeout 600 -- --code 'RailArena.Editor.ArenaBuilder.BuildWindowsPlaytestTo("../Builds/MyPlaytest/RailArena.exe");'
+git lfs install
+git clone https://github.com/Evekiio/rail-arena.git
+cd rail-arena
+git lfs pull
 ```
 
-This compiles the saved enabled scenes. Save intentional scene edits first. **Rail Arena > Build Foundry scene** regenerates the arena and can replace generated scene/material edits; it is not required for an ordinary player build.
+The Unity project is the `RailArena` subfolder. Its version pin is in `ProjectSettings/ProjectVersion.txt`. Run commands below from the repository root.
 
-Builds are local and ignored by Git. Source, Unity metadata and licensed binary assets are published through Git/LFS. Keep your own build folder separate from the supplied players.
+## Headless development build
 
-To make a portable ZIP after building, use Python 3.9+ and the fingerprint recorded by that build (not an identity from newer edited source):
+With the Unity CLI installed and the pinned Editor licensed, run:
 
 ```powershell
-python tools/package_playtest.py --build Builds/Evaluation --output Builds/Packages/MyEvaluation.zip --fingerprint fa2cb0af271399bb89d693dc5768b378a1aa832c50f6720cf21953329edb7bc4
+unity run .\RailArena --editor-path 'D:\Unity Editor\6000.6.7f1\Editor\Unity.exe' --timeout 600 --no-tail --format json -- -job-worker-count 4 -executeMethod RailArena.Editor.ArenaBuilder.BuildWindows
 ```
 
-This example identifies the supplied evaluation build. Choose a new output filename; the packager refuses to overwrite files, excludes Unity's backup folder, includes notices and verifies every ZIP entry. Extract the entire ZIP before running the EXE. Build identity is supplied from the build record; the packager verifies file integrity, not embedded identity or gameplay acceptance.
+Replace the Editor path with the actual pinned installation path on your machine. This invokes the existing builder, builds enabled scenes and writes a **Development Build** to `Builds/Windows/RailArena.exe`. A fresh checkout needs its first import before compilation can finish. Inspect the command result; a process starting does not prove a successful build.
 
-## Repeat the automated checks
+Blender and Unity automation must follow [AGENTS.md](../AGENTS.md): headless by default, bounded jobs, sequential heavy work and owned-process cleanup. Visible windows require the operator's permission. Headless validation does not replace physical-input or sound-on acceptance.
 
-The validation runners require a Development Build. The existing `Builds/Windows` player is suitable. Run from the repository root:
+## Optional manual playtest build
+
+For an explicitly requested visible Editor session, open `RailArena` in Unity 6000.6.7f1. After imports finish, open `Assets/RailArena/Generated/Foundry.unity`. Use **Rail Arena > Build Windows playtest...** to choose a new executable path. This builds enabled scenes without Development Build. Keep the whole output folder together.
+
+**Build Foundry scene** regenerates scene/material content and is not needed for an ordinary player build. Save intentional edits before building. Local build folders are ignored by Git; do not infer their freshness from their filenames.
+
+## Validate the changed scope
+
+Choose tests relevant to the change and record their results. Avoid routinely adding unrelated fixtures to every check. Development players support the existing mechanics/offline/duel validation runners; use each runner's parameters and current build identity rather than copying historical seven-bot commands or old fingerprints.
+
+Verify source identity after building:
 
 ```powershell
-.\tools\Test-Mechanics.ps1
-.\tools\Test-Offline.ps1 -Duration 45 -Bots 7 -Difficulty 1
+python tools/verify_build_identity.py --project RailArena
 ```
 
-These exercise actual standalone authority. They do not establish physical keyboard/mouse feel, audible mix quality or a real internet connection. See [validation](VALIDATION.md) for build-specific evidence and [hosting](HOSTING.md) for direct-IP setup.
+This checks the recorded source identity, not human gameplay quality. Reports in [Validation](../Validation) and the [validation record](VALIDATION.md) identify the conditions tested. Native input, sound, real-internet duels and measured four-contender performance remain separate gates.
 
-## Known limits for this handoff
+## Portable packaging
 
-- Character fingers and weapon grips are articulated, but glove/cuff seams, some intersections and richer action animation still need polish. The unfinished sleeve experiment is preserved locally under ignored `ArtSource/Candidates/ArmLiner-Handoff`, outside the shipping project.
-- Automated mechanics, offline combat and local simulated-network duels have passed. Physical keyboard acceptance, movement feel, sound-on review and native two-human host-to-rematch acceptance remain for human testing.
-- A different-internet-connection duel has not been verified. The preceding ba7f4cc8 build has full ten-minute local match/rematch coverage, clean and impaired, with large client corrections under concurrent import/build load. The current fa2cb0af build adds a tested receive-before-physics fix and has a 60-second impaired-duel regression. This does not establish smooth movement or native human interaction.
-- This is a playable development checkpoint, not a finished release or final visual-quality signoff.
+Use the fingerprint belonging to the build being packaged, not newer edited source:
 
-If something fails, record the mode, bot count/difficulty, steps, expected result and actual result. The normal Windows player log is `%USERPROFILE%\AppData\LocalLow\Evekiio\Rail Arena\Player.log`; check the company/product names in Project Settings if you change them.
+```powershell
+python tools/package_playtest.py --build Builds/Windows --output Builds/Packages/MyPlaytest.zip --fingerprint <recorded-build-fingerprint>
+```
+
+Replace the placeholder before running. The packager refuses to overwrite an existing ZIP and verifies archive entries. Packaging does not establish gameplay acceptance or authorize publication. See [hosting](HOSTING.md) for direct-IP setup and [evaluation](EVALUATION.md) for review scenarios; older checkpoint records remain historical evidence.

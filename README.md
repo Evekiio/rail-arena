@@ -1,171 +1,82 @@
-![Rail Arena brand banner with four contender concepts](docs/branding/rail-arena-banner.png)
+![Rail Arena brand banner with contender concepts](docs/branding/rail-arena-banner.png)
 
 # Rail Arena
 
 ### One railgun. Every shot matters.
 
-**An arena shooter built to make aim practice feel like play.**
+**Aim practice with a reason to play one more match.**
 
-Rail Arena is a Windows game and AI engineering portfolio project by **Sanders Riddle**, built with modern AI agentic workflows. The vision is a complete, focused aim trainer and arena game: sharpen your precision, learn to shoot while moving, and turn another practice session into one more match.
+Rail Arena is a compact Windows FPS by **Sanders Riddle**, built as an **AI Solutions / AI Engineering portfolio project**. Land a precise shot, keep your momentum, and find a better angle. One weapon and a readable arena keep the focus on aim, movement and positioning.
 
-[Explore the vision](#the-game)  Ã‚Â·  [Build and play](docs/BUILD-AND-PLAY.md)  Ã‚Â·  [Character designs](docs/CHARACTER-REFERENCES.md)  Ã‚Â·  [Arena references](ArtSource/Original/Foundry-Arena-v2/References-v1/README.md)  Ã‚Â·  [Engineering evidence](docs/VALIDATION.md)
+[Download pre-alpha](https://github.com/Evekiio/rail-arena/releases/tag/v0.1.0-pre-alpha.1) | [Build and play](docs/BUILD-AND-PLAY.md) | [Design](docs/DESIGN.md) | [Validation](docs/VALIDATION.md)
 
-> **Pre-alpha client:** [Download for Windows x64](https://github.com/Evekiio/rail-arena/releases/download/v0.1.0-pre-alpha.1/RailArena-v0.1.0-pre-alpha.1-Windows-x64.zip) Ã‚Â· [Release notes and limitations](docs/PRE-ALPHA.md). Extract the whole ZIP, then run `RailArena.exe`. This is an unfinished portfolio build for playtesting; concept artwork and planned arena features are distinguished from the current client below.
+> **Active pre-alpha development.** The public Windows ZIP is an older playable checkpoint. `main` contains newer improvements. Approved concepts describe the production target; they do not establish completed integration, competitive balance or release readiness.
 
-Current source includes [aim and camera settings improvements](docs/AIM-SETTINGS.md): independent zoom sensitivity, adjustable vertical FOV, invert Y and clearer sliders. The downloadable pre-alpha above remains the earlier release checkpoint.
+## Pick your practice
 
-The current playable arena also has a [daylight and cloud-world presentation](docs/FOUNDRY-LIGHTING.md), with matching before/after renders and an unchanged gameplay-geometry check. This is separate from the proposed Foundry v2 map and new environment models.
-
-[Offline setup](docs/OFFLINE-ROSTER.md) now lets you choose any of the four existing appearances, with matching first-person palettes and a unique 0–3-bot roster. Combat matches and practice target drills have clear, separate behavior.
-
-[Combat statistics and standings](docs/COMBAT-STATISTICS.md) add live and final tables for points, kills/deaths, accuracy, hits/shots and head hits, including host-authoritative duel totals.
-
-[Reticle settings](docs/RETICLE-SETTINGS.md) let you save your aim-point size and color, with dark/bright previews and a steady color during rifle recovery.
-
-[Visual comfort controls](docs/VISUAL-COMFORT.md) add optional reduced shot flashes and a steady first-person weapon, while retaining aim, audio and combat feedback.
-
-[Amber health beacons](docs/HEALTH-BEACON.md) give the current arena readable plus markers and persistent depleted pedestals, with original pickup locations and rules preserved.
-
-[Traversal cues](docs/TRAVERSAL-CUES.md) correct the four pads' directional chevrons and mark their two shared landing centres without changing launch behavior.
-
-[How to Play](docs/QUICK-START.md) explains the current controls and modes, with an optional one-click solo practice start and contextual help while paused.
-
-[Recoverable duel connection errors](docs/DUEL-FORM.md) keep feedback beside the host/join fields, retain your draft and offer clear correction steps.
-
-[Recent combat feedback](docs/COMBAT-FEED.md) moves eliminations into a temporary corner feed and keeps respawn status readable during sudden death.
-
-## Approved design / next production milestone
-
-The [design lock v1](docs/DESIGN.md) sets the next target: four contenders offline, two-human online duels, a 0.6-second semi-auto rifle, 75/40/30 location damage, five-minute or 20-kill matches, slow partial regeneration and one fixed portal pair. **These are approved requirements, not claims about the existing builds.**
-
-The [design review package](ArtSource/Original/Design-v1/README.md) contains the shared headless Blender greybox, matching views, new concept sheets and a per-asset register. Detailed modeling requires creator approval; runtime migration and playtesting follow the [implementation gates](docs/DESIGN-IMPLEMENTATION.md). Existing gameplay summaries below describe prior milestones where they differ.
-
-## The game
-
-The experience below describes the approved design target. Existing builds still use earlier rules while migration is pending.
-
-Aim is more interesting when the target shoots back.
-
-Rail Arena puts precision inside a compact sci-fi arena: elevated platforms, momentum-driven movement, jump pads and a railgun that rewards a well-timed shot. Practice at your own pace, fight bots, or work toward a head-to-head duel where positioning matters as much as your crosshair.
-
-The design draws on Quake III Arena's movement and Unreal Tournament's arena readability, with original characters, weapons and environments. Its identity is deliberately focused: **one weapon, a readable battlefield, and skill you can feel improving.**
-
-| Experience | What it is for |
+| Mode in current source | The loop |
 | --- | --- |
-| **Solo practice** | Explore the arena, learn routes and work on movement with unlimited respawns and no opponents. |
-| **Target practice** | Use stationary, moving or combat bot behavior to isolate precision or practice under pressure. |
-| **Bot matches** | Approved target: face 1ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ3 distinct bots across three difficulty levels, with scoring, results and restart. |
-| **Direct-IP duel** | Host or join a two-human match, ready up, compete and rematch. Integration is implemented; full human and remote-network acceptance is still open. |
+| **Solo practice** | Explore, learn routes and repeat movement without a timer or opponents. |
+| **Target practice** | Work on stationary or moving targets, or practice against combat bots. |
+| **Offline bot match** | Choose an appearance and face up to three distinct bots across three difficulty profiles. Compete, review your results and rematch. |
+| **Direct-IP duel** | Host or join a two-human ready-room match. Both peers need the same build; human and real-internet acceptance remain open. |
 
-### Precision with consequences
+The current rifle fires one instant-hit shot per click, with **0.6-second recovery**, unlimited energy and **1.5x hold-to-zoom**. Momentum movement, hold-to-hop, ramps, four jump pads and contested health pickups give every shot a positioning decision. There is no reload, sprint or stamina system.
 
-- **Make the shot count.** Approved target: unlimited ammunition, one shot per click, a 0.6-second rail cycle and 75/40/30 head/body/limb damage.
-- **Keep moving.** Ground acceleration, air control and momentum preservation support a movement-driven practice loop, without sprint or stamina.
-- **Play the arena.** Ramps, gaps, four jump pads and contested health pickups create routes and decisions beyond holding an angle.
-- **Stay in the loop.** Untimed practice supports repetition; five-minute or 20-kill matches add a countdown, scoreboard, results and tied-leader sudden death.
+Current source uses 100 health, 100/50/34 head/body/limb damage, two-second respawns and ten-minute matches with tied-leader sudden death. The approved next rules differ; see the migration boundary below.
 
-The goal is enjoyable, repeatable practice inside a real game. Claims about measurable aim improvement require player studies; this project does not yet establish training outcomes.
+## Recent polish on main
 
-### A complete game with a deliberate boundary
-
-The first-version target is **one polished original arena, one satisfying railgun, offline practice and bot combat with four total contenders, one fixed portal pair, and a complete two-human direct-IP duel loop**. Responsive controls, readable feedback, dependable shutdown and a clean path from launch to rematch are part of that target.
-
-Cloud accounts, matchmaking services, progression economies, monetization, extra weapons, spectators and online bots are outside this version's scope. See the [approved gameplay and completion contract](docs/DESIGN.md).
-
-## Designed to be recognizable
-
-Ivory armor. Graphite silhouettes. Cyan energy. Distinct contenders built around a high-detail, low-poly visual direction.
-
-![Approved concept designs for the player and three bots](ArtSource/Original/StylizedContenders/References-v1/Final/Approved-Concept.png)
-
-| Contender | Visual identity | Reference sheet |
+| Area | What changed | Evidence and details |
 | --- | --- | --- |
-| **Player** | Ivory armor, teal cowl and cyan accents | [Turnaround](ArtSource/Original/StylizedContenders/References-v1/Final/Player-Turnaround.png) |
-| **Bot 01** | Terracotta armor and amber energy | [Turnaround](ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Turnaround.png) |
-| **Bot 02** | Slate, ivory and cool teal | [Turnaround](ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Turnaround.png) |
-| **Bot 03** | Plum armor and copper detailing | [Turnaround](ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Turnaround.png) |
+| **Control and visibility** | Independent zoom sensitivity, vertical FOV, invert Y, saved reticle size/color, reduced flashes and optional steady weapon | [Aim settings](docs/AIM-SETTINGS.md), [reticle](docs/RETICLE-SETTINGS.md), [comfort](docs/VISUAL-COMFORT.md) |
+| **Combat feedback** | Live/final statistics, a temporary corner elimination feed and readable respawn status during sudden death | [Statistics](docs/COMBAT-STATISTICS.md), [recent events](docs/COMBAT-FEED.md) |
+| **Getting into a match** | Four selectable appearances, unique offline rosters, optional quick-start help and recoverable duel-form errors | [Roster](docs/OFFLINE-ROSTER.md), [help](docs/QUICK-START.md), [duel setup](docs/DUEL-FORM.md) |
+| **Arena readability** | Daylight/cloud presentation, amber health beacons, corrected pad arrows and marked landing areas | [Lighting](docs/FOUNDRY-LIGHTING.md), [health](docs/HEALTH-BEACON.md), [traversal](docs/TRAVERSAL-CUES.md) |
 
-[Explore all sixteen character sheets](docs/CHARACTER-REFERENCES.md), including head studies, equipment details and top/bottom concepts. These guide modeling; they are not screenshots or a promise of final runtime appearance. Newly extended hidden surfaces remain review candidates, and geometric consistency must be resolved in the shared 3D models.
+These links include scoped validation and visual review captures. Controlled headless UI captures are labeled separately from gameplay renders. The public ZIP has not been rebuilt for these source updates.
 
-The [brand kit](docs/branding/README.md) includes the transparent logo, banner, palette and usage notes.
+## An original visual identity
 
-## Building the world of Rail Arena
+Ivory ceramic, graphite frames, teal cloth and restrained cyan energy connect the contenders, carbine and floating Foundry.
 
-The current [Foundry arena specification](docs/ARENA-DESIGN.md) defines the duel-first layout, named zones, cover, spawn pockets, health, pad trajectories, opaque shot-blocking portals and environment kit. [Measured deck plans and placement data](ArtSource/Original/Foundry-Arena-v2/README.md) supersede the earlier blockout proposal. Layout review and live controller testing remain open.
+![Approved contender concept artwork, not a runtime screenshot](ArtSource/Original/StylizedContenders/References-v1/Final/Approved-Concept.png)
 
-A floating industrial arena above an ocean of clouds. Ivory structures, graphite frames, teal recesses and restrained cyan energy tie the battlefield to its contenders.
+*Approved character concepts. Current models and final visual acceptance are separate from the artwork.*
 
-![Foundry arena environment concept with elevated wings and lower routes](ArtSource/Original/ArenaReferences-v1/01-Arena-Hero.png)
+| Asset family | Current status | Review material |
+| --- | --- | --- |
+| **Four contenders** | Stylized appearances integrated; detailed art, animation and silhouette review remain open | [Character references](docs/CHARACTER-REFERENCES.md), [model notes](docs/STYLIZED-CONTENDERS.md) |
+| **Precision carbine** | Shared replacement integrated with character-matched forearms, hand/shoulder fitting, three LODs and a 2K atlas | [Production review](ArtSource/Original/PrecisionCarbine-Production-v1/README.md) |
+| **Playable Foundry** | Existing gameplay geometry with lighting, pickup and traversal presentation improvements | [Current lighting](docs/FOUNDRY-LIGHTING.md) |
+| **Foundry v2** | Duel-first 56 x 40 m proposal with measured plans and concept references; runtime replacement and route qualification pending | [Arena specification](docs/ARENA-DESIGN.md), [reference package](ArtSource/Original/Foundry-Arena-v2/References-v1/README.md) |
+| **Brand** | Editable project identity and usage guidance | [Brand kit](docs/branding/README.md) |
 
-*Environment concept for review, not a gameplay screenshot or a validated competitive layout.*
+Historical artwork remains available for provenance. The [arena specification](docs/ARENA-DESIGN.md) and its measured placement data take precedence over conflicting early concept layouts.
 
-The new **six-sheet environment pack** translates that direction into a Blender modeling brief:
+## A focused production target
 
-| Reference | Design focus |
-| --- | --- |
-| [Arena overview](ArtSource/Original/ArenaReferences-v1/01-Arena-Hero.png) | Floating architecture, elevated wings and player-height atmosphere |
-| [Layout proposal](ArtSource/Original/ArenaReferences-v1/02-Arena-Layout.png) | Routes, cover, deck levels, spawn candidates and sightlines |
-| [Modular architecture](ArtSource/Original/ArenaReferences-v1/03-Modular-Architecture.png) | Floors, walls, ramps, bridge beams, cover and landing modules |
-| [Environment objects](ArtSource/Original/ArenaReferences-v1/04-Environment-Props.png) | Equipment cabinets, crates, vents, lighting and health pedestals |
-| [Jump pads and portal study](ArtSource/Original/ArenaReferences-v1/07-Traversal-Devices.png) | Pad construction and activation states; a historical portal study |
-| [World and sky](ArtSource/Original/ArenaReferences-v1/08-World-Sky.png) | Distant floating islands, atmosphere and directional lighting studies |
+The intended first version is **one polished original arena, one satisfying rifle, offline practice and bot combat, and two-human direct-IP duels**. The Foundry is a floating industrial arena above bright clouds, with lower circulation, elevated wings and a central bridge. Its layout favors flowing routes with deliberate exposure.
 
-The proposed blockout explores a 56 ÃƒÆ’Ã†â€™:  40 metre envelope, three height levels, paired routes, four jump pads, three health locations and eight spawn candidates. These are design targets for review. The images contain cross-view inconsistencies; the [modeling handoff](ArtSource/Original/ArenaReferences-v1/README.md) records them and defines which written constraints take precedence.
+The [approved design](docs/DESIGN.md) calls for five-minute or 20-kill matches, 75/40/30 damage, delayed partial regeneration and exactly one opaque, shot-blocking portal pair. **Those rule changes, portals and the new arena are not yet integrated into current gameplay.** [Implementation gates](docs/DESIGN-IMPLEMENTATION.md) separate design lock, layout resolution, concept approval, modeling and qualification.
 
-The [Foundry v2 reference pack](ArtSource/Original/Foundry-Arena-v2/References-v1/README.md) now provides an editable measured Blender master, 22 geometry views and eight environment concept sheets. These are review candidates. The next production step is actual-controller tests of movement, spawn exposure, bot navigation and sightlines before detailed art. One opaque, shot-blocking portal pair is now part of the approved target; it is not yet integrated into current gameplay. The sky studies are mood references, not seamless skybox textures.
+Cloud accounts, matchmaking services, progression economies, monetization, extra weapons, spectators and online bots are outside this version. Measurable aim improvement requires player studies; automated tests cannot establish training outcomes.
 
-The new rifle and combat/blood-effects reference sheets remain undelivered after image-service filtering. Existing weapon and feedback systems are documented separately; this pack adds no new runtime assets or mechanics. [Browse the full pack, prompts and validation manifest](ArtSource/Original/ArenaReferences-v1/README.md).
+## AI engineering through a playable product
 
-The approved [1.0m precision carbine](ArtSource/Original/PrecisionCarbine-Production-v1/README.md) now replaces the shared game weapon, including all four contenders and character-matched first-person forearms. The [production review package](ArtSource/Original/PrecisionCarbine-Production-v1/README.md) puts approved construction views beside final renders and installed Unity captures. It includes three LODs, a 2K surface atlas and reproducible headless builders. Fine visual acceptance and measured combat performance remain separate gates. [V3 references](ArtSource/Original/PrecisionCarbine-References-v3/README.md), [rifle v2](ArtSource/Original/RailRifle-Modeling-References-v2/README.md) and the [older benchmarks](ArtSource/Original/ProductionBenchmarks-v1/README.md) remain available as history.
+Rail Arena demonstrates Sanders Riddle's work across gameplay, real-time networking, editable asset pipelines and reproducible validation using modern AI agentic workflows.
 
-## AI engineering, applied to a playable product
+- **Explicit contracts:** pinned tools, shared gameplay rules and documented approval gates.
+- **Inspectable implementation:** C# simulation, configurable bot logic and host-authoritative duels with prediction, reconciliation, interpolation and bounded hit rewind.
+- **Editable creative work:** AI-assisted concepts support exploration; Blender masters, export scripts and Unity assets support production.
+- **Scoped verification:** relevant tests and build-specific reports support each change, with screenshots for visual work and documented limits.
+- **Operator control:** Blender and Unity automation stays headless, with bounded jobs, owned-process cleanup and permission before visible windows.
 
-**Created by Sanders Riddle as a portfolio project in AI Solutions and AI Engineering.** Rail Arena explores how modern AI agents can help turn a creative brief into working software, editable assets and inspectable evidence.
+The in-game bots use gameplay logic, not LLM calls. Human judgment still decides whether movement, sound, art and combat feel good.
 
-The engineering challenge spans gameplay rules, real-time networking, asset pipelines, process lifecycle management and validation. The value of the workflow is in connecting those pieces into a maintainable product, then checking that the result behaves as intended.
+## Build, play and inspect
 
-| Workflow | How it appears in this project |
-| --- | --- |
-| **Define the contract** | Explicit gameplay rules, version pins, scope boundaries and completion criteria give agents concrete constraints. |
-| **Implement and integrate** | Agent-assisted C# development and scripted asset pipelines connect simulation, bots, networking and presentation. |
-| **Create and refine assets** | AI-generated concept references support visual exploration; editable Blender sources and Unity assets support implementation. Concept approval and model quality remain separate decisions. |
-| **Verify with evidence** | Automated mechanics checks, standalone runners, network scenarios and build-specific reports make results reviewable. |
-| **Keep the operator in control** | Project instructions require headless Unity work by default, permission before visible windows, bounded processes and cleanup. |
-
-AI assistance is part of the development process. In-game opponents use configurable gameplay logic; they are not LLM-driven agents. Generated output is reviewed and tested, and automated checks do not substitute for human judgment about fun, feel or visual quality.
-
-## Built for inspection
-
-**Unity 6000.6.7f1  Ã‚Â·  URP 17.6.0  Ã‚Â·  C#  Ã‚Â·  Windows keyboard and mouse  Ã‚Â·  Git LFS**
-
-The gameplay core runs at **60 ticks per second**. Offline play uses local authority; online duels use host authority with client prediction, reconciliation, opponent interpolation and bounded hit rewind up to 200 ms.
-
-```mermaid
-flowchart LR
-    Human[Player input] --> Simulation[Shared gameplay simulation]
-    Bots[Offline bot decisions] --> Simulation
-    Network[Direct-IP duel inputs] --> Simulation
-    Simulation --> Rules[Movement, hits, health and scoring]
-    Rules --> State[Authoritative state]
-    State --> View[Characters, weapon, HUD and audio]
-    State --> Client[Client reconciliation and interpolation]
-```
-
-Gameplay authority determines damage and movement. Presentation observes state. Keeping those responsibilities separate makes rules easier to test and allows practice and competitive modes to share the same foundation.
-
-Explore the [implementation record](docs/IMPLEMENTATION.md), [networking](docs/NETWORKING.md), [bot tuning](docs/BOT-TUNING.md), [weapon pipeline](docs/WEAPONS.md) and [combat feedback](docs/COMBAT-FEEDBACK.md).
-
-### What the evidence establishes
-
-Automated coverage includes simulation rules, standalone combat mechanics, bot scenarios, replicated respawn behavior, local duel/rematch scenarios and simulated network impairment. Reports identify the builds and conditions they cover.
-
-The remaining quality gates include physical keyboard/mouse feel, sound-on review, final art and animation polish, native two-human play from hosting through rematch, and a duel across real internet connections. Some impaired-network runs exposed large client corrections under concurrent import/build load; smooth multiplayer remains a quality target.
-
-**Passing tests is evidence of specific behavior, not a finished-game claim.** Read the [validation record](docs/VALIDATION.md), [acceptance matrix](docs/ACCEPTANCE.md) and [native input review](docs/NATIVE-INPUT-REVIEW.md) for results and limits.
-
-## Build it. Play it. Inspect it.
-
-The repository contains the editable Unity project and source assets. Windows builds are currently local and are not included as public release downloads.
+**Unity 6000.6.7f1 | URP 17.6.0 | C# | Windows x64 | Keyboard and mouse | Git LFS**
 
 ```powershell
 git lfs install
@@ -174,27 +85,25 @@ cd rail-arena
 git lfs pull
 ```
 
-Use **Unity 6000.6.7f1** with Windows build support and open the `RailArena` subfolder. Unity licensing and the initial package restore are required for development. Follow the [build and play guide](docs/BUILD-AND-PLAY.md) for exact steps, or the [evaluation guide](docs/EVALUATION.md) for a focused playtest. Automation should follow the repository's [headless execution instructions](AGENTS.md).
+For the existing client, [download the pre-alpha ZIP](https://github.com/Evekiio/rail-arena/releases/tag/v0.1.0-pre-alpha.1), extract every file and run `RailArena.exe`. Offline play needs no Unity installation, account or network connection. Read its [checkpoint-specific limitations](docs/PRE-ALPHA.md).
 
-On the development PC, the non-development evaluation player is `Builds/Evaluation/RailArena.exe`; keep its adjacent data and DLLs together. Choose **PRACTICE** for solo or bot training, **OFFLINE BOT MATCH** for a timed session, or **ONLINE DUEL // DIRECT IP** for host/join. Offline play needs no account or external service. [Direct-IP setup](docs/HOSTING.md) covers ports, firewall and hosting requirements.
+For current source, follow the [build guide](docs/BUILD-AND-PLAY.md). Keep the executable, data folder and DLLs together. [Direct-IP hosting](docs/HOSTING.md) covers ports and firewall setup.
 
 | Control | Action |
 | --- | --- |
-| W A S D | Move |
-| Mouse | Aim |
-| Left mouse | Fire |
-| Space | Jump; hold to keep hopping |
-| Tab | Hold scoreboard |
-| Escape | Pause and settings |
+| WASD / mouse | Move / aim |
+| Left click | Fire once |
+| Hold right mouse | 1.5x zoom |
+| Space, held | Jump / keep hopping |
+| Tab, held | Standings |
+| Escape | Pause / settings |
 
-Choose **QUIT** to exit. **MAIN MENU** and **DISCONNECT** return to menus while keeping the application open. See [shutdown behavior](docs/SHUTDOWN.md) for lifecycle checks and runner safeguards.
+Choose **QUIT** to exit; **MAIN MENU** and **DISCONNECT** keep the application open. [Shutdown notes](docs/SHUTDOWN.md) explain lifecycle safeguards.
 
-## Project notes
+## What remains to prove
 
-- **Creator:** Sanders Riddle
-- **Portfolio focus:** AI Solutions / AI Engineering, agentic development workflows, gameplay systems and reproducible validation
-- **Status:** Active development toward a complete Windows aim trainer and arena game
-- **Source:** [Evekiio/rail-arena](https://github.com/Evekiio/rail-arena)
-- **License:** Original project code is [MIT licensed](LICENSE); see [third-party notices](THIRD-PARTY-NOTICES.md) for assets and dependencies.
+Physical keyboard/mouse feel, sound-on review, final art and animation acceptance, human host-to-rematch play and real-internet duels remain open. The **1080p / 144 fps goal** needs documented reference-PC measurements during four-contender combat. Hidden-window checks and render captures do not certify it.
 
-Rail Arena uses original project assets and documented dependencies. No Quake or Unreal maps, characters, sounds, branding or code are bundled.
+[Validation record](docs/VALIDATION.md) | [Acceptance matrix](docs/ACCEPTANCE.md) | [Networking](docs/NETWORKING.md) | [Weapon pipeline](docs/WEAPONS.md) | [Implementation](docs/IMPLEMENTATION.md)
+
+Original project code is [MIT licensed](LICENSE). See [third-party notices](THIRD-PARTY-NOTICES.md) for asset/dependency terms. Quake III Arena and Unreal Tournament inform the genre direction; their maps, characters, sounds, branding and code are not bundled.
