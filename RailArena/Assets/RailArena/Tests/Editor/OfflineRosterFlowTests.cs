@@ -62,14 +62,15 @@ namespace RailArena.Tests
                 Assert.That(session.Scenario, Is.EqualTo(TargetScenario.Moving));
                 session.MainMenu();
                 yield return Frames(2);
-                // The menu cycles only valid offline appearances and populations.
-                int firstChoice = session.SelectedOfflineCharacter;
+                // Explicit portrait choices retain the same valid offline roster allocation.
+                ButtonStarting("CHARACTER //").onClick.Invoke();yield return Frames(1);
                 for (int i = 0; i < 4; i++)
                 {
-                    ButtonStarting("CHARACTER //").onClick.Invoke();
+                    GameObject.Find("Character card "+i).GetComponent<UnityEngine.UI.Button>().onClick.Invoke();
                     yield return Frames(1);
-                    Assert.That(session.SelectedOfflineCharacter, Is.EqualTo((firstChoice+i+1)%4));
+                    Assert.That(session.SelectedOfflineCharacter, Is.EqualTo(i));
                 }
+                ButtonStarting("BACK TO SETUP").onClick.Invoke();yield return Frames(1);
                 for (int i = 0; i < 4; i++)
                 {
                     ButtonStarting("BOTS  ").onClick.Invoke();

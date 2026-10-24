@@ -72,8 +72,7 @@ namespace RailArena
                 Text(menu.transform,"Setup heading",Session.Running ? "NEXT SESSION / OFFLINE SETUP" : "OFFLINE SETUP",22,
                     new Vector2(.53f,.70f),new Vector2(.94f,.74f)).color = cyan;
                 float setupY = .61f;
-                Button("CHARACTER // " + OfflineRoster.Label(Session.SelectedOfflineCharacter), () =>
-                { Session.SelectOfflineCharacter((Session.SelectedOfflineCharacter+1)%OfflineRoster.CharacterCount); RefreshMenu(); },ref setupY,minX:.53f,maxX:.94f);
+                Button("CHARACTER // " + OfflineRoster.Label(Session.SelectedOfflineCharacter), CharacterPicker,ref setupY,minX:.53f,maxX:.94f);
                 Button(bots == 0 ? "BOTS  0 // SOLO   +" : $"BOTS  {bots}   +", () =>
                 { bots = !Session.Running || Session.Practice ? (bots+1)%(CombatRules.MaximumBots+1) : bots%CombatRules.MaximumBots+1; RefreshMenu(); },ref setupY,minX:.53f,maxX:.94f);
                 Button($"DIFFICULTY  {new[] { "CADET", "VETERAN", "ACE" }[difficulty]}", () =>
