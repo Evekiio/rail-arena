@@ -117,8 +117,8 @@ namespace RailArena
             { Session.Aim.ZoomSensitivity = value; Session.Aim.Save(); });
             Slider("Vertical FOV", Session.Aim.FieldOfView, AimPreferences.MinimumFov, AimPreferences.MaximumFov, .35f, value => Mathf.RoundToInt(value) + " degrees", value =>
             { Session.Aim.FieldOfView = value; Session.Aim.Save(); }, wholeNumbers: true);
-            Slider("Master volume", AudioListener.volume, 0, 1, .61f, value => Mathf.RoundToInt(value * 100) + "%", value =>
-            { AudioListener.volume = value; PlayerPrefs.SetFloat("volume", value); }, .55f, .91f);
+            float audioY = .61f;
+            Button("AUDIO MIX / SOUND TEST", AudioSettings, ref audioY, minX: .55f, maxX: .91f);
             float y = .48f;
             Button("1920 x 1080", () => Screen.SetResolution(1920, 1080, Screen.fullScreenMode), ref y, minX: .55f, maxX: .91f);
             Button("1280 x 720", () => Screen.SetResolution(1280, 720, Screen.fullScreenMode), ref y, minX: .55f, maxX: .91f);

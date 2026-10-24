@@ -9,6 +9,7 @@ namespace RailArena
         public const int Capacity = 12;
         public const float BeamSeconds = .24f;
         public ComfortPreferences Preferences { get; internal set; } = new();
+        public SoundPreferences Sound { get; internal set; } = new();
         private sealed class Pulse
         {
             public GameObject Root;
@@ -49,7 +50,16 @@ namespace RailArena
                 pulse.Audio.rolloffMode = AudioRolloffMode.Linear; pulse.Audio.dopplerLevel = 0;
                 root.SetActive(false); pulses[i] = pulse;
             }
+            ApplySound();
         }
+
+        public void ApplySound()
+        {
+            localAudio.volume = Sound.Effects;
+            foreach (var pulse in pulses) pulse.Audio.volume = .5f * Sound.Effects;
+        }
+
+        public void PreviewShot() => localAudio.PlayOneShot(clips[(int)RailCue.Shot], .6f);
 
         private LineRenderer Line(Transform parent, string name, int count)
         {
@@ -76,7 +86,7 @@ namespace RailArena
             Star(pulse.Muzzle, muzzle, right, up, .13f, 4);
             Star(pulse.Impact, end - direction * .025f, right, up, .18f, 6);
             if (local) localAudio.PlayOneShot(clips[(int)RailCue.Shot], .6f);
-            else { pulse.Audio.clip = clips[(int)RailCue.Shot]; pulse.Audio.volume = .5f; pulse.Audio.Play(); }
+            else { pulse.Audio.clip = clips[(int)RailCue.Shot]; pulse.Audio.Play(); }
             Animate(pulse, 0);
         }
 
