@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace RailArena
 {
-    public enum RailCue { Shot, Hit, Elimination, Hurt }
+    public enum RailCue { Shot, Hit, Elimination, Hurt, Pickup, Launch }
 
     /// <summary>Original deterministic synthesis. No external samples or runtime random state.</summary>
     public static class RailAudio
@@ -11,7 +11,7 @@ namespace RailArena
 
         public static AudioClip Create(RailCue cue)
         {
-            float duration = cue == RailCue.Shot ? .55f : cue == RailCue.Elimination ? .24f : .14f;
+            float duration = cue switch {RailCue.Shot=>.55f,RailCue.Elimination=>.24f,RailCue.Pickup=>.32f,RailCue.Launch=>.38f,_=>.14f};
             var samples = new float[Mathf.CeilToInt(duration * SampleRate)];
             var random = new System.Random(197 + (int)cue);
             float filteredNoise = 0;
@@ -30,6 +30,16 @@ namespace RailArena
                     float coil = Mathf.Sin(2 * Mathf.PI * (1550 * t - 950 * t * t)) * Mathf.Exp(-t * 11);
                     signal = .45f * crack + .34f * body + .18f * coil + .16f * filteredNoise * Mathf.Exp(-t * 12);
                 }
+                else if (cue == RailCue.Pickup)
+                {
+                    bool second=t>=.12f;
+                    float noteTime=second?t-.12f:t;
+                    float noteLength=second?.20f:.12f;
+                    float noteEnvelope=Mathf.Min(1,noteTime/.005f)*Mathf.Clamp01((noteLength-noteTime)/.012f)*Mathf.Exp(-noteTime*13);
+                    signal=.48f*Mathf.Sin(2*Mathf.PI*(second?780:520)*noteTime)*noteEnvelope;
+                }
+                else if (cue == RailCue.Launch)
+                    signal=(.42f*Mathf.Sin(2*Mathf.PI*(190*t+1050*t*t))+.18f*filteredNoise)*Mathf.Exp(-t*9);
                 else if (cue == RailCue.Hurt)
                     signal = (.5f * filteredNoise + .32f * Mathf.Sin(2 * Mathf.PI * 95 * t)) * Mathf.Exp(-t * 27);
                 else

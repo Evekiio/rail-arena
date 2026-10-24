@@ -278,6 +278,7 @@ namespace RailArena
             {
                 var authoritative = state.Actors[actor.Id];
                 bool wasAlive = actor.Alive;
+                int previousHealth = actor.Health;
                 bool lifeChanged = actor.Life != authoritative.Life;
                 if (actor == Human || newRound || interpolation.Count == 0)
                     RestoreActor(actor, authoritative, actor == Human, newRound);
@@ -290,6 +291,8 @@ namespace RailArena
                     if (wasAlive != actor.Alive) actor.SetAlive(actor.Alive);
                     actor.Controller.enabled = false;
                 }
+                if(actor==Human && !newRound && !lifeChanged && wasAlive && actor.Alive && authoritative.Health>previousHealth)
+                    Feedback.PickedUp();
                 if (newRound || lifeChanged || (!wasAlive && actor.Alive)) actor.Brain = new BotBrain(7291 + actor.Id * 917 + state.Tick);
                 if (authoritative.ShotSerial > actor.ShotSerial && !newRound && !lifeChanged && actor != Human)
                 { actor.Presentation.Fired(); ShowShot(actor, actor.Eye, authoritative.ShotEnd); }
@@ -324,7 +327,7 @@ namespace RailArena
                 clientTick++;
                 Human.Command = input.Command;
                 if (Human.Alive && Match.IsActive)
-                { MoveActor(Human, clientTick, false); replayMovementTicks++; }
+                { MoveActor(Human, clientTick, false, false); replayMovementTicks++; }
                 if (Human.Alive && Match.IsActive && input.Command.Fire && CombatRules.CanFire(clientTick, Human.NextShotTick, true))
                     Human.NextShotTick = clientTick + CombatRules.ShotIntervalTicks;
             }
@@ -408,7 +411,7 @@ namespace RailArena
             opponent.Command = new MovementCommand { Yaw = Mathf.LerpAngle(a.Yaw, b.Yaw, blend), Pitch = Mathf.Lerp(a.Pitch, b.Pitch, blend) };
         }
 
-        private void MoveActor(ArenaActor actor, int tick, bool authoritative)
+        private void MoveActor(ArenaActor actor, int tick, bool authoritative, bool present = true)
         {
             actor.Move(Tuning);
             foreach (var pad in World.Pads)
@@ -420,6 +423,7 @@ namespace RailArena
                 if (actor.Bot || AutomatedHuman) actor.Brain.Launched(World.NearestNode(pad.Destination));
                 actor.PadReadyTick = tick + 90;
                 if (authoritative) padCount++;
+                if(present && actor==Human)Feedback.Launched();
             }
         }
 

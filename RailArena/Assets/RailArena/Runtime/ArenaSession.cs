@@ -266,6 +266,7 @@ namespace RailArena
                         pickup.AvailableTick = tick + CombatRules.PickupRespawnTicks;
                         pickup.SetAvailable(false);
                         pickupCount++;
+                        if(actor==Human)Feedback.PickedUp();
                     }
                 }
             }

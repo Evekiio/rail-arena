@@ -283,6 +283,56 @@ namespace RailArena.Tests
             Apply(State(2,180,1,1));Assert.That(session.RecentCombat.Entries,Is.Empty);Assert.That(session.Feed,Is.Empty);
         }
 
+        [Test]
+        public void LocalPickupSoundFollowsHealthGainWithoutReplayingOldLives()
+        {
+            var state=State(1,203,1,1);state.Actors[1].Health=50;Apply(state);
+            Assert.That(session.Feedback.PickupCues,Is.Zero);
+            state=State(1,206,1,1);state.Actors[1].Health=75;Apply(state);
+            Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
+            Apply(state);Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
+            Apply(State(1,205,1,1));Assert.That(session.Human.Health,Is.EqualTo(75));Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
+            state=State(1,209,1,1);state.Actors[0].Health=50;state.Actors[1].Health=75;Apply(state);
+            state=State(1,212,1,1);state.Actors[1].Health=75;Apply(state);
+            Assert.That(session.Feedback.PickupCues,Is.EqualTo(1),"Opponent recovery must not confirm a local pickup");
+            Apply(State(1,326,1,2));Assert.That(session.Feedback.PickupCues,Is.Zero);
+            Apply(State(2,200,1,1));Assert.That(session.Feedback.PickupCues,Is.Zero);
+        }
+
+        [Test]
+        public void AuthorityPickupSoundConfirmsOnlyTheLocalCollector()
+        {
+            foreach(var actor in session.Actors) {actor.Bot=false;actor.Controller.enabled=true;}
+            foreach(var pickup in session.World.Pickups)pickup.AvailableTick=int.MaxValue;
+            var local=session.Human;local.Health=50;
+            var first=session.World.Pickups[0];first.transform.position=local.transform.position+Vector3.up;first.AvailableTick=0;
+            typeof(ArenaSession).GetMethod("AdvanceAuthority",PrivateInstance).Invoke(session,null);
+            Assert.That(local.Health,Is.EqualTo(75));Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
+            typeof(ArenaSession).GetMethod("AdvanceAuthority",PrivateInstance).Invoke(session,null);
+            Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
+            var opponent=session.Actors[0];opponent.Place(Origin-Vector3.right*20);opponent.Health=50;
+            var second=session.World.Pickups[1];second.transform.position=opponent.transform.position+Vector3.up;second.AvailableTick=0;
+            typeof(ArenaSession).GetMethod("AdvanceAuthority",PrivateInstance).Invoke(session,null);
+            Assert.That(opponent.Health,Is.EqualTo(75));Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
+        }
+
+        [Test]
+        public void PredictedPadSoundIsNotDuplicatedBySnapshotReplay()
+        {
+            var local=session.Human;local.Bot=false;
+            var padObject=new GameObject("Cue test pad");padObject.transform.SetParent(root.transform);padObject.transform.position=local.transform.position;
+            var pad=padObject.AddComponent<JumpPad>();pad.Destination=local.transform.position+Vector3.forward*10;session.World.Pads=new[]{pad};
+            var move=typeof(ArenaSession).GetMethod("MoveActor",PrivateInstance);
+            move.Invoke(session,new object[]{local,201,false,true});
+            Assert.That(session.Feedback.LaunchCues,Is.EqualTo(1));Assert.That(local.Velocity.y,Is.GreaterThan(0));
+            Field<List<DuelInput>>("prediction").Add(new DuelInput {Command=new MovementCommand {Sequence=1}});
+            Apply(State(1,203,1,1));Assert.That(local.PadReadyTick,Is.EqualTo(294));
+            Assert.That(session.Feedback.LaunchCues,Is.EqualTo(1));
+            Apply(State(1,203,1,1));Assert.That(session.Feedback.LaunchCues,Is.EqualTo(1));
+            move.Invoke(session,new object[]{local,205,false,true});Assert.That(session.Feedback.LaunchCues,Is.EqualTo(1));
+            Assert.That(session.PadLaunches,Is.Zero,"Presentation must not add authority launch statistics");
+        }
+
         [TestCase(0, 2)]
         [TestCase(2, 0)]
         public void InterpolatedLaunchCounterDrivesAirAndLandingAnimation(int oldAirborne, int newAirborne)

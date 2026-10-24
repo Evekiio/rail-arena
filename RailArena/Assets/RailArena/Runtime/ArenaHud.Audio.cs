@@ -28,7 +28,7 @@ namespace RailArena
             string Percent(float value) => Mathf.RoundToInt(value * 100) + "%";
             Slider("Master volume", sound.Master, 0, 1, .55f, Percent, value => { sound.Master=value; Apply(); });
             Slider("Effects volume", sound.Effects, 0, 1, .36f, Percent, value => { sound.Effects=value; Apply(); });
-            Text(menu.transform, "Audio scope", "Master controls all game sound.\nEffects controls rifle shots, hit confirmation,\neliminations and damage cues.", 23,
+            Text(menu.transform, "Audio scope", "Master controls all game sound.\nEffects controls shots, hits, eliminations,\ndamage, local health pickups and pad launches.", 23,
                 new Vector2(.53f,.49f), new Vector2(.94f,.65f));
             Text(menu.transform, "Audio note", "The preview plays sound only: no shot, damage, score or visual effects.", 20,
                 new Vector2(.1f,.19f), new Vector2(.94f,.25f));
