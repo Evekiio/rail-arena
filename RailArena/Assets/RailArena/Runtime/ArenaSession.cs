@@ -35,6 +35,7 @@ namespace RailArena
         public ReticlePreferences Reticle { get; } = new();
         public ComfortPreferences Comfort { get; } = new();
         public FramePacingPreferences FramePacing { get; } = new();
+        public SoundPreferences Sound { get; } = new();
         public float Sensitivity { get => Aim.Sensitivity; set => Aim.Sensitivity = value; }
         public Camera View { get; private set; }
         private ArenaHud hud;
@@ -67,12 +68,15 @@ namespace RailArena
             Reticle.Load();
             Comfort.Load();
             SelectedOfflineCharacter = OfflineRoster.NormalizeCharacter(PlayerPrefs.GetInt("offlineCharacter",0));
-            AudioListener.volume = PlayerPrefs.GetFloat("volume", .65f);
+            Sound.Load();
+            Sound.ApplyMaster();
             View = Camera.main;
             View.fieldOfView = Aim.FieldOfView;
             View.GetUniversalAdditionalCameraData().renderPostProcessing = true;
             Feedback = gameObject.AddComponent<RailFeedback>();
             Feedback.Preferences = Comfort;
+            Feedback.Sound = Sound;
+            Feedback.ApplySound();
             hud = gameObject.AddComponent<ArenaHud>();
             hud.Session = this;
             CreateWeapon();

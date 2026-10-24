@@ -30,7 +30,7 @@ namespace RailArena.Tests
                 Button("SETTINGS").onClick.Invoke();
                 yield return Frames(2);
                 var sliders = Object.FindObjectsByType<UnityEngine.UI.Slider>(FindObjectsSortMode.None);
-                Assert.That(sliders.Length, Is.EqualTo(4));
+                Assert.That(sliders.Length, Is.EqualTo(3));
                 var zoom = sliders.Single(s => s.name == "Zoom sensitivity");
                 zoom.value = .08f;
                 sliders.Single(s => s.name == "Mouse sensitivity").value = .2f;
