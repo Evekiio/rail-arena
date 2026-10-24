@@ -259,6 +259,8 @@ namespace RailArena
             receivedSnapshot = state;
             SnapshotsReceived++;
             snapshotTime = Time.realtimeSinceStartupAsDouble;
+            var previousMatch=Match;
+            if(newRound) { Feed=""; RecentCombat.Clear(); }
             Match = MatchState.FromAuthority(state.Tick,state.Phase,state.Winner,state.Actors[0].Score,state.Actors[1].Score,
                 state.Actors[0].Statistics,state.Actors[1].Statistics);
             Vector3 oldPrediction = Human.transform.position;
@@ -300,7 +302,11 @@ namespace RailArena
                 }
                 actor.ShotSerial = authoritative.ShotSerial;
                 actor.HitSerial = authoritative.HitSerial;
-                if (wasAlive && !actor.Alive) Feed = $"{Actors[1 - actor.Id].DisplayName}  >  {actor.DisplayName}";
+                if (wasAlive && !actor.Alive && !newRound && !lifeChanged)
+                {
+                    bool fell=authoritative.Statistics.VoidDeaths>previousMatch.Statistics[actor.Id].VoidDeaths;
+                    PublishFeed(fell?$"{actor.DisplayName} fell into the void":$"{Actors[1-actor.Id].DisplayName}  >  {actor.DisplayName}");
+                }
             }
             if (newRound || localLifeChanged)
             {

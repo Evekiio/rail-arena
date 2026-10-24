@@ -268,6 +268,21 @@ namespace RailArena.Tests
             Assert.That(pickup.AvailableTick,Is.EqualTo(600));
         }
 
+        [Test]
+        public void RecentFeedDistinguishesVoidDeathsAndClearsOnNewRound()
+        {
+            var state=State(1,203,1,1);state.Actors[0].Health=0;state.Actors[0].Score=-1;
+            state.Actors[0].Statistics=new CombatStatistics(0,1,0,0,0,1);Apply(state);
+            Assert.That(session.RecentCombat.Entries.Count,Is.EqualTo(1));
+            Assert.That(session.Feed,Does.Contain("fell into the void"));
+            Apply(state);Assert.That(session.RecentCombat.Entries.Count,Is.EqualTo(1));
+            state=State(1,326,2,1);state.Actors[0].Score=-1;state.Actors[0].Statistics=new CombatStatistics(0,1,0,0,0,1);Apply(state);
+            state=State(1,329,2,1);state.Actors[0].Health=0;state.Actors[0].Score=-1;
+            state.Actors[0].Statistics=new CombatStatistics(0,2,0,0,0,1);Apply(state);
+            Assert.That(session.RecentCombat.Entries.Count,Is.EqualTo(2));Assert.That(session.Feed,Does.Contain("  >  "));
+            Apply(State(2,180,1,1));Assert.That(session.RecentCombat.Entries,Is.Empty);Assert.That(session.Feed,Is.Empty);
+        }
+
         [TestCase(0, 2)]
         [TestCase(2, 0)]
         public void InterpolatedLaunchCounterDrivesAirAndLandingAnimation(int oldAirborne, int newAirborne)

@@ -12,6 +12,8 @@ namespace RailArena
         private readonly UnityEngine.UI.Image[] hitMarks = new UnityEngine.UI.Image[4];
         private readonly UnityEngine.UI.Image[] damageEdges = new UnityEngine.UI.Image[4];
         private GameObject hitMarker;
+        private GameObject feedPanel;
+        private readonly UnityEngine.UI.Text[] feedRows = new UnityEngine.UI.Text[CombatFeed.Capacity];
         private readonly Color amber = new(1, .7f, .3f);
         private readonly Color warning = new(1, .35f, .3f);
 
@@ -42,6 +44,10 @@ namespace RailArena
             clockValue.alignment = TextAnchor.MiddleCenter;
             notice = Text(combatRoot.transform, "Notice", "", 28, new Vector2(.22f, .75f), new Vector2(.78f, .87f));
             notice.alignment = TextAnchor.MiddleCenter;
+            feedPanel=Graphic(combatRoot.transform,"CombatFeedPanel",new Vector2(.665f,.66f),new Vector2(.965f,.865f),new Color(.012f,.024f,.04f,.78f)).gameObject;
+            Text(feedPanel.transform,"Feed heading","RECENT ELIMINATIONS",16,new Vector2(.04f,.85f),new Vector2(.96f,.99f)).color=cyan;
+            for(int i=0;i<feedRows.Length;i++)
+                feedRows[i]=Text(feedPanel.transform,"Feed row "+i,"",18,new Vector2(.04f,.57f-i*.27f),new Vector2(.96f,.83f-i*.27f));
 
             combatReticle = CreateReticle(combatRoot.transform, "Crosshair");
             crosshairRoot = combatReticle.Root.gameObject;
@@ -106,9 +112,22 @@ namespace RailArena
             int seconds = match.RemainingTicks / CombatRules.TickRate;
             clockValue.text = Session.Practice ? "UNTIMED" : $"{seconds / 60:00}:{seconds % 60:00}";
             notice.text = match.Phase == MatchPhase.Countdown ? $"STAND BY // {Mathf.CeilToInt((CombatRules.CountdownTicks - match.Tick) / (float)CombatRules.TickRate)}" :
-                match.Phase == MatchPhase.SuddenDeath ? "SUDDEN DEATH // NEXT KILL WINS\n" + Session.Feed :
-                !human.Alive ? $"RESPAWNING // {Mathf.Max(0, human.RespawnTick - match.Tick) / (float)CombatRules.TickRate:0.0}s\n" + Session.Feed : Session.Feed;
-            scoreboardPanel.SetActive(Keyboard.current?.tabKey.isPressed == true);
+                !human.Alive ? $"RESPAWNING // {Mathf.Max(0, human.RespawnTick - match.Tick) / (float)CombatRules.TickRate:0.0}s" :
+                match.Phase == MatchPhase.SuddenDeath ? "SUDDEN DEATH // NEXT KILL WINS" : "";
+            double now=Time.realtimeSinceStartupAsDouble;
+            Session.RecentCombat.Prune(now);
+            var entries=Session.RecentCombat.Entries;
+            bool showStandings=Keyboard.current?.tabKey.isPressed==true;
+            feedPanel.SetActive(entries.Count>0 && !showStandings);
+            for(int i=0;i<feedRows.Length;i++)
+            {
+                var row=feedRows[i];row.gameObject.SetActive(i<entries.Count);
+                if(i>=entries.Count)continue;
+                var entry=entries[entries.Count-1-i];
+                row.text=entry.Text;
+                row.color=new Color(.91f,.94f,.96f,Mathf.Clamp01((float)((entry.ExpiresAt-now)/.5)));
+            }
+            scoreboardPanel.SetActive(showStandings);
             if (scoreboardPanel.activeSelf)
             {
                 RefreshStandings(liveStandings);
