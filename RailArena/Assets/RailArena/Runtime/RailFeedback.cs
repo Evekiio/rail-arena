@@ -8,6 +8,7 @@ namespace RailArena
     {
         public const int Capacity = 12;
         public const float BeamSeconds = .24f;
+        public const float PickupSeconds = 1.25f;
         public ComfortPreferences Preferences { get; internal set; } = new();
         public SoundPreferences Sound { get; internal set; } = new();
         private sealed class Pulse
@@ -23,11 +24,13 @@ namespace RailArena
         private Material material;
         private AudioSource localAudio;
         private int next;
-        private double hitUntil, damageUntil;
+        private double hitUntil, damageUntil, pickupUntil;
         public bool LastHitWasKill { get; private set; }
         public int ConfirmedHits { get; private set; }
         public int DamageCues { get; private set; }
         public int PickupCues { get; private set; }
+        public int LastPickupAmount { get; private set; }
+        public float PickupStrength => Mathf.Clamp01((float)((pickupUntil-Time.realtimeSinceStartupAsDouble)/.25));
         public int LaunchCues { get; private set; }
         public float HitStrength => Mathf.Clamp01((float)((hitUntil - Time.realtimeSinceStartupAsDouble) / .22));
         public float DamageStrength => Mathf.Clamp01((float)((damageUntil - Time.realtimeSinceStartupAsDouble) / .3));
@@ -149,12 +152,16 @@ namespace RailArena
 
         public void Damaged()
         {
+            pickupUntil = 0;
             DamageCues++; damageUntil = Time.realtimeSinceStartupAsDouble + .3;
             localAudio.PlayOneShot(clips[(int)RailCue.Hurt], .45f);
         }
 
-        public void PickedUp()
+        public void PickedUp(int restored)
         {
+            if(restored<=0)return;
+            LastPickupAmount=restored;
+            pickupUntil=Time.realtimeSinceStartupAsDouble+PickupSeconds;
             PickupCues++;
             localAudio.PlayOneShot(clips[(int)RailCue.Pickup], .35f);
         }
@@ -167,7 +174,7 @@ namespace RailArena
 
         public void ResetFeedback()
         {
-            hitUntil = damageUntil = 0; ConfirmedHits = DamageCues = PickupCues = LaunchCues = 0; LastHitWasKill = false;
+            hitUntil = damageUntil = pickupUntil = 0; LastPickupAmount = 0; ConfirmedHits = DamageCues = PickupCues = LaunchCues = 0; LastHitWasKill = false;
             localAudio.Stop();
             foreach (var pulse in pulses) { pulse.Audio.Stop(); pulse.Root.SetActive(false); }
         }

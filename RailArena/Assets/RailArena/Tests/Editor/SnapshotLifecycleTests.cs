@@ -289,7 +289,7 @@ namespace RailArena.Tests
             var state=State(1,203,1,1);state.Actors[1].Health=50;Apply(state);
             Assert.That(session.Feedback.PickupCues,Is.Zero);
             state=State(1,206,1,1);state.Actors[1].Health=75;Apply(state);
-            Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
+            Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));Assert.That(session.Feedback.LastPickupAmount,Is.EqualTo(25));
             Apply(state);Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
             Apply(State(1,205,1,1));Assert.That(session.Human.Health,Is.EqualTo(75));Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
             state=State(1,209,1,1);state.Actors[0].Health=50;state.Actors[1].Health=75;Apply(state);
@@ -299,15 +299,17 @@ namespace RailArena.Tests
             Apply(State(2,200,1,1));Assert.That(session.Feedback.PickupCues,Is.Zero);
         }
 
-        [Test]
-        public void AuthorityPickupSoundConfirmsOnlyTheLocalCollector()
+        [TestCase(50,75,25)]
+        [TestCase(98,100,2)]
+        public void AuthorityPickupSoundConfirmsOnlyTheLocalCollector(int startingHealth,int finalHealth,int restored)
         {
             foreach(var actor in session.Actors) {actor.Bot=false;actor.Controller.enabled=true;}
             foreach(var pickup in session.World.Pickups)pickup.AvailableTick=int.MaxValue;
-            var local=session.Human;local.Health=50;
+            var local=session.Human;local.Health=startingHealth;
             var first=session.World.Pickups[0];first.transform.position=local.transform.position+Vector3.up;first.AvailableTick=0;
             typeof(ArenaSession).GetMethod("AdvanceAuthority",PrivateInstance).Invoke(session,null);
-            Assert.That(local.Health,Is.EqualTo(75));Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
+            Assert.That(local.Health,Is.EqualTo(finalHealth));Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
+            Assert.That(session.Feedback.LastPickupAmount,Is.EqualTo(restored));
             typeof(ArenaSession).GetMethod("AdvanceAuthority",PrivateInstance).Invoke(session,null);
             Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
             var opponent=session.Actors[0];opponent.Place(Origin-Vector3.right*20);opponent.Health=50;

@@ -7,7 +7,7 @@ namespace RailArena
     public sealed partial class ArenaHud
     {
         private GameObject combatRoot, crosshairRoot, scoreboardPanel;
-        private UnityEngine.UI.Text healthValue, railValue, modeValue, clockValue, statsValue, notice;
+        private UnityEngine.UI.Text healthValue, healthGain, railValue, modeValue, clockValue, statsValue, notice;
         private UnityEngine.UI.Image healthFill, railFill;
         private readonly UnityEngine.UI.Image[] hitMarks = new UnityEngine.UI.Image[4];
         private readonly UnityEngine.UI.Image[] damageEdges = new UnityEngine.UI.Image[4];
@@ -25,7 +25,9 @@ namespace RailArena
             BuildFeedbackHud();
             var health = Card("HealthPanel", new Vector2(.035f, .04f), new Vector2(.22f, .18f));
             Text(health, "HealthLabel", "HEALTH", 19, new Vector2(.08f, .71f), new Vector2(.93f, .96f));
-            healthValue = Text(health, "HealthValue", "100", 60, new Vector2(.08f, .2f), new Vector2(.92f, .79f));
+            healthValue = Text(health, "HealthValue", "100", 60, new Vector2(.08f, .2f), new Vector2(.50f, .79f));
+            healthGain=Text(health,"HealthGain","",28,new Vector2(.52f,.37f),new Vector2(.94f,.8f));
+            healthGain.alignment=TextAnchor.MiddleRight;
             healthFill = Meter(health, "HealthFill", new Vector2(.08f, .1f), new Vector2(.92f, .17f));
 
             var stats = Card("StatsPanel", new Vector2(.235f, .04f), new Vector2(.365f, .18f));
@@ -92,6 +94,13 @@ namespace RailArena
             healthValue.color = human.Health <= 34 ? warning : Color.white;
             healthFill.rectTransform.anchorMax = new Vector2(Mathf.Clamp01(human.Health / 100f), 1);
             healthFill.color = healthValue.color;
+            float pickup=Session.Feedback.PickupStrength;
+            healthGain.gameObject.SetActive(pickup>0 && human.Alive);
+            if(healthGain.gameObject.activeSelf)
+            {
+                healthGain.text="+"+Session.Feedback.LastPickupAmount;
+                healthGain.color=new Color(amber.r,amber.g,amber.b,pickup);
+            }
             railValue.text = locked ? (human.Alive ? "STAND BY" : "OFFLINE") : remaining == 0 ? "READY" :
                 $"CYCLE // {Mathf.Ceil(remaining / 6f) / 10f:0.0}s";
             railValue.color = railColor;
