@@ -38,6 +38,10 @@ namespace RailArena.Tests
                             return new Vector3(point.x,point.y,0);
                         }).ToArray();
                         mesh.RecalculateBounds();
+                        // CanvasRenderer tint multiplies vertex color during native uGUI rendering.
+                        // State transitions live here, rather than in Graphic.color.
+                        var tint=graphic.canvasRenderer.GetColor();
+                        mesh.colors=mesh.colors.Select(color=>color*tint).ToArray();
                         var properties = new MaterialPropertyBlock();
                         properties.SetTexture("_MainTex",graphic.mainTexture);
                         properties.SetColor("_Color",Color.white);
