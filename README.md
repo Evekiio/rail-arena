@@ -33,7 +33,7 @@ Current source uses 100 health, 100/50/34 head/body/limb damage, two-second resp
 | **Sound controls** | Saved master/effects levels and a rifle preview without entering a match | [Audio mix](docs/AUDIO-MIX.md) |
 | **Combat feedback** | Live/final statistics, a temporary corner elimination feed and readable respawn status during sudden death | [Statistics](docs/COMBAT-STATISTICS.md), [recent events](docs/COMBAT-FEED.md) |
 | **Getting into a match** | Four selectable appearances, unique offline rosters, optional quick-start help and recoverable duel-form errors | [Roster](docs/OFFLINE-ROSTER.md), [help](docs/QUICK-START.md), [duel setup](docs/DUEL-FORM.md) |
-| **Arena readability** | Daylight/cloud presentation, distant floating islands, amber health beacons, corrected pad arrows and marked landing areas | [Lighting](docs/FOUNDRY-LIGHTING.md), [cloud sky](docs/CLOUD-SKY.md), [backdrop](docs/FOUNDRY-BACKDROP.md), [health](docs/HEALTH-BEACON.md), [traversal](docs/TRAVERSAL-CUES.md) |
+| **Arena readability** | Daylight/cloud presentation, distant floating islands, amber health beacons, corrected pad arrows, marked landing areas and void-edge warnings | [Lighting](docs/FOUNDRY-LIGHTING.md), [cloud sky](docs/CLOUD-SKY.md), [backdrop](docs/FOUNDRY-BACKDROP.md), [health](docs/HEALTH-BEACON.md), [traversal](docs/TRAVERSAL-CUES.md), [void edges](docs/VOID-EDGES.md) |
 
 These links include scoped validation and visual review captures. Controlled headless UI captures are labeled separately from gameplay renders. The public ZIP has not been rebuilt for these source updates.
 
