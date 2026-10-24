@@ -262,11 +262,12 @@ namespace RailArena
                     if (tick >= pickup.AvailableTick && actor.Health < 100 &&
                         (actor.transform.position + Vector3.up - pickup.transform.position).sqrMagnitude < 3)
                     {
+                        int previousHealth=actor.Health;
                         actor.Health = CombatRules.RestoreHealth(actor.Health);
                         pickup.AvailableTick = tick + CombatRules.PickupRespawnTicks;
                         pickup.SetAvailable(false);
                         pickupCount++;
-                        if(actor==Human)Feedback.PickedUp();
+                        if(actor==Human)Feedback.PickedUp(actor.Health-previousHealth);
                     }
                 }
             }

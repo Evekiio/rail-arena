@@ -1,6 +1,6 @@
 # Local pickup and jump-pad audio
 
-The local player now gets a short two-note health-pickup chime and a rising electromagnetic pad-launch cue. Both use original deterministic synthesis, the existing local effects source, master volume and effects volume. Their relative gains are .35 for health and .40 for launch; the six existing/new cue clips are created once and released with the feedback component.
+The [health-card readout](PICKUP-HUD.md) provides a visual counterpart to pickups. The local player gets a short two-note health-pickup chime and a rising electromagnetic pad-launch cue. Both use original deterministic synthesis, the existing local effects source, master volume and effects volume. Their relative gains are .35 for health and .40 for launch; the six existing/new cue clips are created once and released with the feedback component.
 
 Offline/host pickup audio follows the actual authoritative collection, only for the local collector. Live pad simulation/prediction plays the local launch cue. Reconciliation replay updates movement and pad readiness silently, so replaying pending inputs does not repeat the sound or add authority statistics.
 
@@ -16,6 +16,6 @@ The current audio-page captures at 720p/1080p update its effects description to 
 
 ## Scoped validation
 
-Twelve selected tests cover all six synthesized cues and the fixed visual/audio pool, the existing audio-mix flow, local/remote collector distinction, repeated/stale/new-life snapshots, actual pending-input pad replay and existing pad-readiness synchronization. Cue samples have finite bounded values and faded endpoints. Replay changes motion without emitting another launch cue or incrementing authority pad statistics.
+At the original local-audio checkpoint, twelve selected tests covered all six synthesized cues and the fixed visual/audio pool, the existing audio-mix flow, local/remote collector distinction, repeated/stale/new-life snapshots, actual pending-input pad replay and existing pad-readiness synchronization. Cue samples have finite bounded values and faded endpoints. Replay changes motion without emitting another launch cue or incrementing authority pad statistics.
 
 A pinned Unity 6000.6.7f1 headless Windows development build validates integration. No unrelated snapshot/full-game suite, broad combat soak, physical audio-output check, sound-on listening or FPS qualification is included. Human recognition, loudness and combat readability review remain open. The public pre-alpha ZIP is unchanged.

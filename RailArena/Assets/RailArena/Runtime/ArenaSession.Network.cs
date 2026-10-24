@@ -292,7 +292,7 @@ namespace RailArena
                     actor.Controller.enabled = false;
                 }
                 if(actor==Human && !newRound && !lifeChanged && wasAlive && actor.Alive && authoritative.Health>previousHealth)
-                    Feedback.PickedUp();
+                    Feedback.PickedUp(authoritative.Health-previousHealth);
                 if (newRound || lifeChanged || (!wasAlive && actor.Alive)) actor.Brain = new BotBrain(7291 + actor.Id * 917 + state.Tick);
                 if (authoritative.ShotSerial > actor.ShotSerial && !newRound && !lifeChanged && actor != Human)
                 { actor.Presentation.Fired(); ShowShot(actor, actor.Eye, authoritative.ShotEnd); }
