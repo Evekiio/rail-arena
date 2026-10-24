@@ -123,6 +123,8 @@ namespace RailArena
             Button("1920 x 1080", () => Screen.SetResolution(1920, 1080, Screen.fullScreenMode), ref y, minX: .55f, maxX: .91f);
             Button("1280 x 720", () => Screen.SetResolution(1280, 720, Screen.fullScreenMode), ref y, minX: .55f, maxX: .91f);
             Button("TOGGLE FULLSCREEN", () => Screen.fullScreen = !Screen.fullScreen, ref y, minX: .55f, maxX: .91f);
+            float frameY = .26f;
+            Button("FRAME PACING", FramePacingSettings, ref frameY, minX: .55f, maxX: .91f);
             y = .22f;
             UnityEngine.UI.Button invertButton = null;
             invertButton = Button("INVERT Y // " + (Session.Aim.InvertY ? "ON" : "OFF"), () =>

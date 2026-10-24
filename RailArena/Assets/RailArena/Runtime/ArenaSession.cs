@@ -34,6 +34,7 @@ namespace RailArena
         public AimPreferences Aim { get; } = new();
         public ReticlePreferences Reticle { get; } = new();
         public ComfortPreferences Comfort { get; } = new();
+        public FramePacingPreferences FramePacing { get; } = new();
         public float Sensitivity { get => Aim.Sensitivity; set => Aim.Sensitivity = value; }
         public Camera View { get; private set; }
         private ArenaHud hud;
@@ -60,7 +61,8 @@ namespace RailArena
         {
             Time.fixedDeltaTime = 1f / CombatRules.TickRate;
             Application.runInBackground = true;
-            Application.targetFrameRate = 144;
+            FramePacing.Load();
+            FramePacing.Apply();
             Aim.Load();
             Reticle.Load();
             Comfort.Load();
