@@ -39,6 +39,8 @@ namespace RailArena
                 Destroy(menu);
             }
             connectionStatus = null;
+            if(!Session.Running && !string.IsNullOrEmpty(Session.ConnectionError))
+            { OnlineMenu(); return; }
             if (Session.IsOnline && (Session.OnlineWaiting || Session.Match.Phase == MatchPhase.Results))
             { ConnectionLobby(); return; }
             bool results = Session.Running && Session.Match.Phase == MatchPhase.Results;
@@ -96,8 +98,6 @@ namespace RailArena
                 new Vector2(.095f,.16f),new Vector2(.46f,.29f));
             Text(menu.transform, "Version", "IN DEVELOPMENT  //  OFFLINE / DIRECT-IP PLAYTEST", 18,
                 new Vector2(.095f, .035f), new Vector2(.9f, .085f)).color = new Color(.55f, .63f, .7f);
-            if (!string.IsNullOrEmpty(Session.ConnectionError)) Text(menu.transform, "Connection error", Session.ConnectionError, 22,
-                new Vector2(.53f, .12f), new Vector2(.94f, .22f)).color = new Color(1, .65f, .3f);
         }
 
         private void Settings()

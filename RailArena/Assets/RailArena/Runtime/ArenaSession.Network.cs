@@ -15,6 +15,7 @@ namespace RailArena
         public bool OnlineWaiting => IsOnline && (link.State != DuelLinkState.Connected || link.Round == 0);
         public bool LocalReady => link != null && link.LocalReady;
         public string ConnectionError { get; private set; } = "";
+        public void ClearConnectionError() => ConnectionError = "";
         public string ConnectionStatus => link == null ? ConnectionError :
             link.State == DuelLinkState.Listening ? $"HOSTING // UDP {link.LocalEndPoint.Port}\nWaiting for a challenger" :
             link.State == DuelLinkState.Connecting ? "CONNECTING..." :
@@ -82,7 +83,17 @@ namespace RailArena
                 SetPaused(false);
             }
             catch (SocketException e)
-            { MainMenu(); ConnectionError = "Could not open UDP socket: " + e.SocketErrorCode; hud.RefreshMenu(); }
+            {
+                MainMenu();
+                Debug.LogWarning("Duel socket could not open: "+e.SocketErrorCode);
+                ConnectionError=e.SocketErrorCode switch
+                {
+                    SocketError.AddressAlreadyInUse => "That UDP port is already in use. Choose a different port, then try again.",
+                    SocketError.AccessDenied => "The system denied access to this UDP port. Try a different port or check network permissions.",
+                    _ => "Could not open the UDP connection. Check the port and network settings, then try again."
+                };
+                hud.RefreshMenu();
+            }
             catch (InvalidOperationException e)
             { MainMenu(); ConnectionError = e.Message; hud.RefreshMenu(); }
         }
