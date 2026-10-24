@@ -29,7 +29,7 @@ Current source uses 100 health, 100/50/34 head/body/limb damage, two-second resp
 
 | Area | What changed | Evidence and details |
 | --- | --- | --- |
-| **Control and visibility** | Independent zoom sensitivity, vertical FOV, invert Y, saved reticle size/color, reduced flashes and optional steady weapon | [Aim settings](docs/AIM-SETTINGS.md), [reticle](docs/RETICLE-SETTINGS.md), [comfort](docs/VISUAL-COMFORT.md) |
+| **Control and visibility** | Independent zoom sensitivity, vertical FOV, invert Y, saved reticle size/color, reduced flashes, optional steady weapon and saved VSync/FPS limits | [Aim settings](docs/AIM-SETTINGS.md), [reticle](docs/RETICLE-SETTINGS.md), [comfort](docs/VISUAL-COMFORT.md), [frame pacing](docs/FRAME-PACING.md) |
 | **Combat feedback** | Live/final statistics, a temporary corner elimination feed and readable respawn status during sudden death | [Statistics](docs/COMBAT-STATISTICS.md), [recent events](docs/COMBAT-FEED.md) |
 | **Getting into a match** | Four selectable appearances, unique offline rosters, optional quick-start help and recoverable duel-form errors | [Roster](docs/OFFLINE-ROSTER.md), [help](docs/QUICK-START.md), [duel setup](docs/DUEL-FORM.md) |
 | **Arena readability** | Daylight/cloud presentation, amber health beacons, corrected pad arrows and marked landing areas | [Lighting](docs/FOUNDRY-LIGHTING.md), [health](docs/HEALTH-BEACON.md), [traversal](docs/TRAVERSAL-CUES.md) |
