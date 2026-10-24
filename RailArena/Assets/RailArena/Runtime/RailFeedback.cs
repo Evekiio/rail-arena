@@ -19,7 +19,7 @@ namespace RailArena
             public bool HasImpact;
         }
         private readonly Pulse[] pulses = new Pulse[Capacity];
-        private readonly AudioClip[] clips = new AudioClip[4];
+        private readonly AudioClip[] clips = new AudioClip[System.Enum.GetValues(typeof(RailCue)).Length];
         private Material material;
         private AudioSource localAudio;
         private int next;
@@ -27,6 +27,8 @@ namespace RailArena
         public bool LastHitWasKill { get; private set; }
         public int ConfirmedHits { get; private set; }
         public int DamageCues { get; private set; }
+        public int PickupCues { get; private set; }
+        public int LaunchCues { get; private set; }
         public float HitStrength => Mathf.Clamp01((float)((hitUntil - Time.realtimeSinceStartupAsDouble) / .22));
         public float DamageStrength => Mathf.Clamp01((float)((damageUntil - Time.realtimeSinceStartupAsDouble) / .3));
 
@@ -151,9 +153,21 @@ namespace RailArena
             localAudio.PlayOneShot(clips[(int)RailCue.Hurt], .45f);
         }
 
+        public void PickedUp()
+        {
+            PickupCues++;
+            localAudio.PlayOneShot(clips[(int)RailCue.Pickup], .35f);
+        }
+
+        public void Launched()
+        {
+            LaunchCues++;
+            localAudio.PlayOneShot(clips[(int)RailCue.Launch], .4f);
+        }
+
         public void ResetFeedback()
         {
-            hitUntil = damageUntil = 0; ConfirmedHits = DamageCues = 0; LastHitWasKill = false;
+            hitUntil = damageUntil = 0; ConfirmedHits = DamageCues = PickupCues = LaunchCues = 0; LastHitWasKill = false;
             localAudio.Stop();
             foreach (var pulse in pulses) { pulse.Audio.Stop(); pulse.Root.SetActive(false); }
         }
