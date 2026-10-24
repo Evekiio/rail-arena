@@ -181,14 +181,16 @@ namespace RailArena
 
         private UnityEngine.UI.Button Button(string title, UnityEngine.Events.UnityAction action, ref float y, bool interactable = true, float minX = .095f, float maxX = .46f)
         {
-            var root = new GameObject(title, typeof(RectTransform), typeof(UnityEngine.UI.Image), typeof(UnityEngine.UI.Button));
+            var root = new GameObject(title, typeof(RectTransform), typeof(UnityEngine.UI.Image), typeof(MenuButton));
             root.transform.SetParent(menu.transform, false);
             Rect(root, new Vector2(minX, y), new Vector2(maxX, y + .055f));
             root.GetComponent<UnityEngine.UI.Image>().color = new Color(.055f, .1f, .15f);
-            var button = root.GetComponent<UnityEngine.UI.Button>();
+            var button = root.GetComponent<MenuButton>();
             button.interactable = interactable;
             button.onClick.AddListener(action);
-            Text(root.transform, "Label", title, 24, new Vector2(.035f, 0), Vector2.one).alignment = TextAnchor.MiddleLeft;
+            var caption=Text(root.transform, "Label", title, 24, new Vector2(.035f, 0), Vector2.one);
+            caption.alignment = TextAnchor.MiddleLeft;
+            button.ConfigureCaption(caption);
             y -= .073f;
             return button;
         }
