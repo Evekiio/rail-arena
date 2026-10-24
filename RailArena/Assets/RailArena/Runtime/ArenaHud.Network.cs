@@ -5,12 +5,14 @@ namespace RailArena
     public sealed partial class ArenaHud
     {
         private UnityEngine.UI.Text connectionStatus;
+        private GameObject connectionErrorPanel;
         private string hostAddress = "127.0.0.1";
         private string hostPort = "7777";
 
         private void NetworkPanel(string title)
         {
             if (menu != null) { menu.SetActive(false); Destroy(menu); }
+            connectionErrorPanel = null;
             menu = new GameObject("Connection menu", typeof(RectTransform), typeof(UnityEngine.UI.Image));
             menu.transform.SetParent(canvas, false);
             Rect(menu, Vector2.zero, Vector2.one);
@@ -22,14 +24,27 @@ namespace RailArena
         {
             connectionStatus = null;
             NetworkPanel("ONLINE DUEL");
-            Text(menu.transform, "Help", "Two humans. Host owns the match.\nUse the same game build on both computers.\n\nLAN: use the host's local IPv4 address.\nInternet: forward the selected UDP port to the host.\nAllow RailArena through the host's firewall.", 25,
-                new Vector2(.53f, .3f), new Vector2(.94f, .72f));
-            Input("HOST IPv4 ADDRESS", hostAddress, .66f, value => hostAddress = value, 45);
-            Input("UDP PORT", hostPort, .5f, value => hostPort = value, 5);
+            Text(menu.transform, "Help", "Two humans. Use the same build on both PCs.\n\nHOST: choose a UDP port from 1 to 65535.\nJOIN: enter the host's IPv4 address and port.\n127.0.0.1 connects to this computer only.\n\nLAN: use the host's local IPv4 address.\nInternet: forward that UDP port to the host.\nAllow RailArena through the host's firewall.", 24,
+                new Vector2(.53f, .39f), new Vector2(.94f, .74f));
+            Input("HOST IPv4 ADDRESS", hostAddress, .66f, value => { hostAddress = value; ClearFormError(); }, 45);
+            Input("UDP PORT", hostPort, .5f, value => { hostPort = value; ClearFormError(); }, 5);
             float y = .35f;
             Button("HOST DUEL", () => Session.HostDuel(Port()), ref y);
             Button("JOIN HOST", () => Session.JoinDuel(hostAddress.Trim(), Port()), ref y);
-            Button("BACK", RefreshMenu, ref y);
+            Button("BACK", () => { ClearFormError(); RefreshMenu(); }, ref y);
+            if(!string.IsNullOrEmpty(Session.ConnectionError))
+            {
+                var panel=Graphic(menu.transform,"Connection error panel",new Vector2(.53f,.14f),new Vector2(.94f,.36f),new Color(.16f,.09f,.045f));
+                connectionErrorPanel=panel.gameObject;
+                Text(panel.transform,"Error heading","CONNECTION NEEDS ATTENTION",20,new Vector2(.04f,.75f),new Vector2(.96f,.95f)).color=amber;
+                Text(panel.transform,"Connection error",Session.ConnectionError,24,new Vector2(.04f,.08f),new Vector2(.96f,.72f)).color=Color.white;
+            }
+        }
+
+        private void ClearFormError()
+        {
+            Session.ClearConnectionError();
+            if(connectionErrorPanel!=null)connectionErrorPanel.SetActive(false);
         }
 
         private int Port() => int.TryParse(hostPort, out int port) ? port : 0;
@@ -66,6 +81,7 @@ namespace RailArena
             var text = Text(root.transform, "Value", value, 28, new Vector2(.03f, .05f), new Vector2(.97f, .95f));
             text.alignment = TextAnchor.MiddleLeft;
             var field = root.GetComponent<UnityEngine.UI.InputField>();
+            field.targetGraphic=root.GetComponent<UnityEngine.UI.Image>();
             field.textComponent = text;
             field.text = value;
             field.characterLimit = limit;

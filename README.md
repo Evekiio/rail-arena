@@ -30,6 +30,8 @@ The current playable arena also has a [daylight and cloud-world presentation](do
 
 [How to Play](docs/QUICK-START.md) explains the current controls and modes, with an optional one-click solo practice start and contextual help while paused.
 
+[Recoverable duel connection errors](docs/DUEL-FORM.md) keep feedback beside the host/join fields, retain your draft and offer clear correction steps.
+
 ## Approved design / next production milestone
 
 The [design lock v1](docs/DESIGN.md) sets the next target: four contenders offline, two-human online duels, a 0.6-second semi-auto rifle, 75/40/30 location damage, five-minute or 20-kill matches, slow partial regeneration and one fixed portal pair. **These are approved requirements, not claims about the existing builds.**
