@@ -31,6 +31,12 @@ namespace RailArena.Tests
             camera.cullingMask = 1 << 30; camera.fieldOfView = 38; camera.aspect = .8f; camera.nearClipPlane = .05f; camera.farClipPlane = 20;
             var data = camera.GetUniversalAdditionalCameraData(); data.renderPostProcessing = true;
             data.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing; data.antialiasingQuality = AntialiasingQuality.High;
+            var key = new GameObject("Owned portrait soft key").AddComponent<Light>();
+            key.transform.SetParent(camera.transform, false); key.transform.localRotation = Quaternion.Euler(15,-20,0);
+            key.type = LightType.Directional; key.intensity = .65f; key.color = new Color(1,.94f,.85f); key.shadows = LightShadows.None; key.cullingMask = 1 << 30;
+            var fill = new GameObject("Owned portrait cool fill").AddComponent<Light>();
+            fill.transform.SetParent(camera.transform, false); fill.transform.localRotation = Quaternion.Euler(0,60,0);
+            fill.type = LightType.Directional; fill.intensity = .3f; fill.color = new Color(.72f,.85f,1); fill.shadows = LightShadows.None; fill.cullingMask = 1 << 30;
             string folder = "Assets/Resources/UI/ArtPassPortraits"; Directory.CreateDirectory(folder);
             foreach (var actor in session.Actors)
             {
@@ -45,8 +51,8 @@ namespace RailArena.Tests
             foreach (var actor in session.Actors)
             {
                 foreach (var item in actor.GetComponentsInChildren<Transform>(true)) item.gameObject.layer = 30;
-                camera.transform.position = actor.transform.position + new Vector3(.45f,1.25f,2.7f);
-                camera.transform.LookAt(actor.transform.position + Vector3.up * 1.1f);
+                camera.transform.position = actor.transform.position + new Vector3(.22f,1.5f,1.65f);
+                camera.transform.LookAt(actor.transform.position + Vector3.up * 1.3f);
                 yield return null;
                 var target = new RenderTexture(800,1000,24); var pixels = new Texture2D(800,1000,TextureFormat.RGB24,false);
                 var old = RenderTexture.active;

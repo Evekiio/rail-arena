@@ -27,6 +27,17 @@ The Unity project is the `RailArena` subfolder. Its version pin is in `ProjectSe
 
 ## Headless development build
 
+For the integrated Sky Gardens art version, use the production art builder. It prepares the versioned art assets, installs the presentation into the built basement scene, uses the production atmosphere pipeline and includes the opt-in mechanics, bots, duel and art-performance runners:
+
+```powershell
+$env:RA_ART_BUILD_OUTPUT = (Join-Path $PWD 'Builds/RailArena-ArtReview-New')
+unity run .\RailArena --editor-path 'D:\Unity Editor\6000.6.7f1\Editor\Unity.exe' --timeout 1800 --no-tail --format json -- -job-worker-count 4 -executeMethod RailArena.Editor.ArtSliceBuilder.Build
+```
+
+Choose a new output directory each time. The builder refuses to overwrite an existing folder and restores temporary render-pipeline settings and source identity after building. The package records its actual pipeline configuration and exact input list. A clean source checkout may reuse derived shader-cache artifacts from the same Unity version. Final public release remains held for Sanders' playtest acceptance.
+
+The following baseline builder retains the earlier presentation for comparison; it does not install the integrated art pass.
+
 With the Unity CLI installed and the pinned Editor licensed, run:
 
 ```powershell

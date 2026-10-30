@@ -21,7 +21,7 @@ for directory in ('Assets','Packages','ProjectSettings'):
 digest=hashlib.sha256();digest.update(f'RailArena/UDP/{version}/Windows64\n'.encode())
 for name,path in sorted(files):
  if args.overlay and (args.overlay/name).is_file():path=args.overlay/name
- encoded=name.encode();digest.update(struct.pack('<i',len(name.encode('utf-16-le'))//2));digest.update(encoded);data=path.read_bytes()
+ encoded=name.encode();digest.update(struct.pack('<i',len(encoded)));digest.update(encoded);data=path.read_bytes()
  if data.startswith(b'%YAML') or path.suffix.lower() in ('.cs','.json','.asmdef','.txt','.meta','.shader','.hlsl','.uss','.uxml','.inputactions'):
   data=data.decode('utf-8-sig').replace('\r\n','\n').replace('\r','\n').encode()
  digest.update(struct.pack('<q',len(data)));digest.update(data)

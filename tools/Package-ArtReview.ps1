@@ -30,10 +30,17 @@ Source commit: $SourceCommit
 This is a local review package. Public release and final artistic acceptance remain pending.
 Broader animation replacement and full reference coverage remain in production.
 "@ | Set-Content -LiteralPath (Join-Path $railPackageRoot 'README-REVIEW.txt')
-$railFiles=Get-ChildItem -LiteralPath $railPackageRoot -File -Recurse | Where-Object Name -ne 'PackageFiles.sha256'
+$railFiles=Get-ChildItem -LiteralPath $railPackageRoot -File -Recurse | Where-Object { $_.Name -ne 'PackageFiles.sha256' -and $_.FullName -notmatch 'BackUpThisFolder_ButDontShipItWithYourGame|DoNotShip' }
 $railLines=foreach($railFile in $railFiles){(Get-FileHash -LiteralPath $railFile.FullName -Algorithm SHA256).Hash.ToLowerInvariant()+'  '+$railFile.FullName.Substring($railPackageRoot.Length+1).Replace('\','/')}
 $railLines | Set-Content -LiteralPath (Join-Path $railPackageRoot 'PackageFiles.sha256')
 $railZip=$railPackageRoot+'.zip'
 if(Test-Path -LiteralPath $railZip){throw 'Archive already exists'}
-Compress-Archive -LiteralPath $railPackageRoot -DestinationPath $railZip -CompressionLevel Optimal
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+$railArchive=[IO.Compression.ZipFile]::Open($railZip,[IO.Compression.ZipArchiveMode]::Create)
+try {
+    foreach($railFile in @($railFiles)+(Get-Item -LiteralPath (Join-Path $railPackageRoot 'PackageFiles.sha256'))){
+        $railEntry=(Split-Path -Leaf $railPackageRoot)+'/'+$railFile.FullName.Substring($railPackageRoot.Length+1).Replace('\','/')
+        [IO.Compression.ZipFileExtensions]::CreateEntryFromFile($railArchive,$railFile.FullName,$railEntry,[IO.Compression.CompressionLevel]::Optimal)|Out-Null
+    }
+} finally {$railArchive.Dispose()}
 Get-FileHash -LiteralPath $railZip -Algorithm SHA256

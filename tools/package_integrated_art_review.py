@@ -25,6 +25,21 @@ for directory, span, name in families:
     sheet.save(directory / 'measured-sheet.png')
 
 sections = [('Gameplay / integrated captures', art/'Gate2/look-prototype'), ('Menus and HUD / three resolutions', art/'UiReview')]
+comparisons=art/'Comparisons';comparisons.mkdir(exist_ok=True)
+before_views={v['id']:v for v in json.loads((art/'Gate1/baseline-views/index.json').read_text())['views']}
+after_views={v['id']:v for v in json.loads((art/'Gate2/look-prototype/index.json').read_text())['views']}
+comparison_records=[]
+for name in ('garden-bridge','summit','basement','waterfall'):
+    for field in ('position','euler'):
+        assert all(abs(before_views[name][field][axis]-after_views[name][field][axis]) < .001 for axis in ('x','y','z')),(name,field)
+    pair=Image.new('RGB',(2560,790),'#102029');draw=ImageDraw.Draw(pair)
+    for x,label,directory in [(0,'BEFORE / serialized baseline',art/'Gate1/baseline-views'),(1280,'AFTER / integrated art',art/'Gate2/look-prototype')]:
+        draw.text((x+20,18),name.upper()+' / '+label,font=font,fill='white')
+        with Image.open(directory/f'{name}.png') as im:pair.paste(im.convert('RGB'),(x,70))
+    pair.save(comparisons/f'{name}-before-after.png')
+    comparison_records.append({'view':name,'cameraPosition':after_views[name]['position'],'cameraEuler':after_views[name]['euler'],'poseMatchTolerance':.001,'scope':'Same staged environment camera. Baseline PC pipeline versus integrated art/atmosphere; lighting changes are part of the pass. Not native gameplay acceptance.'})
+(comparisons/'comparison-evidence.json').write_text(json.dumps(comparison_records,indent=2)+'\n')
+sections.insert(0,('Before and after / matching environment cameras',comparisons))
 html = '<!doctype html><meta charset="utf-8"><title>Rail Arena integrated art review</title><style>body{background:#102029;color:#eef0df;font:17px system-ui;margin:32px}a{color:#6ce0d0}img{max-width:100%;height:auto}figure{margin:24px 0}section{display:grid;grid-template-columns:repeat(auto-fit,minmax(480px,1fr));gap:20px}</style><h1>Rail Arena v1 alpha / integrated art review</h1><p>Direction approved. Production continues without intermediate approval holds. Final native input, sound and artistic acceptance: Sanders playtest. Public release held.</p><p><a href="Gate1/index.html">Full baseline inventory</a> · <a href="Gate2/RifleActions/index.html">Reload motion and contacts</a> · <a href="Gate2/PRODUCTION-STATUS.md">Production status and exceptions</a></p>'
 for title, directory in sections:
     html += f'<h2>{title}</h2><section>'
@@ -62,7 +77,7 @@ for entry in entries:
         if 'Canopy' in path or '/Nature/' in path:
             family='canopy';category='nature';directory=art/'Nature/Canopy';master=directory/'SkyGarden-Canopy-v1.blend';references=directory/'production.json';sheet=directory/'measured-sheet.png';dimensions=[1,1,1]
         elif 'Medical' in path or 'HealthCore' in path:
-            family='medical-core';category='pickups';directory=art/'Devices/HealthCore';master=directory/'Medical-Core-v1.blend';references=directory/'production.json';sheet=directory/'measured-sheet.png';dimensions=json.loads(references.read_text()).get('dimensionsMetresXYZ');screenshot=art/'Gate2/look-prototype/health.png'
+            family='medical-core';category='pickups';directory=art/'Devices/HealthCore';master=directory/'Medical-Core-v1.blend';references=directory/'production.json';sheet=directory/'measured-sheet.png';dimensions=json.loads(references.read_text())['dimensionsBlenderXYZ'];screenshot=art/'Gate2/look-prototype/health.png'
         elif 'Rifle' in path or 'Reload' in path or 'Carbine' in path:
             family='carbine';category='weapons';master=art/'Gate2/RifleActions/Carbine-Reload-v1.blend';references=art/'Gate2/RifleActions/ReloadAction.json';screenshot=art/'Gate2/look-prototype/fps-hud.png'
     assert master.is_file(),master
