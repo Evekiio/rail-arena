@@ -1,0 +1,116 @@
+{
+  "id": "precision-carbine",
+  "source": "ArtSource/Original/PrecisionCarbine-Production-v1/Precision-Carbine.blend",
+  "sourceSha256": "89ebd3820aee5a5ad0139124c67e1d78e265212648ba37c7d253fc2b5a177adb",
+  "master": "ArtSource/Original/ArtPass-v1/Gate1/references/precision-carbine/precision-carbine-reference.blend",
+  "sourceKind": "weapon",
+  "axisConvention": "Blender (x,y,z) -> Unity (-y,z,x) for this weapon master",
+  "meshes": 79,
+  "dimensionsBlenderXYZMetres": [
+    1.0,
+    0.10000000149011612,
+    0.3299144506454468
+  ],
+  "centerBlenderXYZ": [
+    0.0,
+    0.0,
+    -0.014957211911678314
+  ],
+  "orthographicSpanMetres": 2.2,
+  "pixelsPerMetre": 349.09090909090907,
+  "resolution": 768,
+  "views": [
+    {
+      "name": "front",
+      "path": "ArtSource/Original/ArtPass-v1/Gate1/references/precision-carbine/front.png",
+      "cameraPosition": [
+        6.600000381469727,
+        0.0,
+        -0.014957211911678314
+      ],
+      "cameraEuler": [
+        1.5707963705062866,
+        -0.0,
+        1.5707963705062866
+      ],
+      "sha256": "1ddbe698d9a52c44d1a4c52e56eda4ad42829a31fba48d6cc76ada5fa19ccc9d"
+    },
+    {
+      "name": "rear",
+      "path": "ArtSource/Original/ArtPass-v1/Gate1/references/precision-carbine/rear.png",
+      "cameraPosition": [
+        -6.600000381469727,
+        0.0,
+        -0.014957211911678314
+      ],
+      "cameraEuler": [
+        1.5707963705062866,
+        -0.0,
+        -1.5707963705062866
+      ],
+      "sha256": "07b9cd37bf7f93881e4cf4c96fac38965045ae4b18f7674c16bf0add5c35b686"
+    },
+    {
+      "name": "left",
+      "path": "ArtSource/Original/ArtPass-v1/Gate1/references/precision-carbine/left.png",
+      "cameraPosition": [
+        0.0,
+        6.600000381469727,
+        -0.014957211911678314
+      ],
+      "cameraEuler": [
+        -1.570796251296997,
+        3.141592502593994,
+        -0.0
+      ],
+      "sha256": "dacca35b5ff32d74bc1030bdb515c6c4c155f2693323fcfe70d4d771f6b84486"
+    },
+    {
+      "name": "right",
+      "path": "ArtSource/Original/ArtPass-v1/Gate1/references/precision-carbine/right.png",
+      "cameraPosition": [
+        0.0,
+        -6.600000381469727,
+        -0.014957211911678314
+      ],
+      "cameraEuler": [
+        1.5707964897155762,
+        -0.0,
+        0.0
+      ],
+      "sha256": "89106968facbc43bdd8eab682cdc223def9274faa225bf0b3e86f904160c29be"
+    },
+    {
+      "name": "top",
+      "path": "ArtSource/Original/ArtPass-v1/Gate1/references/precision-carbine/top.png",
+      "cameraPosition": [
+        0.0,
+        0.0,
+        6.585042953491211
+      ],
+      "cameraEuler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "sha256": "6fccf393d6e5e606ab627b9ff784ad3df918e2337f91e490469cb06eb492162c"
+    },
+    {
+      "name": "bottom",
+      "path": "ArtSource/Original/ArtPass-v1/Gate1/references/precision-carbine/bottom.png",
+      "cameraPosition": [
+        0.0,
+        0.0,
+        -6.614957809448242
+      ],
+      "cameraEuler": [
+        8.742277657347586e-08,
+        3.1415927410125732,
+        -8.742277657347586e-08
+      ],
+      "sha256": "99645c6f276937645c7f37c979aea578caa149a59e5444a62b69b1a9adb2437e"
+    }
+  ],
+  "status": "Measured baseline geometry, not approved production art",
+  "limitations": "Existing source likeness and Unity parity are not certified by these sheets. Rest-pose renderer AABB; no artistic edits. Unity-export example is a reference copy, not a new runtime asset."
+}

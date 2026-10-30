@@ -1,0 +1,116 @@
+{
+  "id": "basement-deck",
+  "source": "ArtSource/Original/ArtPass-v1/Gate1/unity-audit.json",
+  "sourceSha256": "742a5fec0d6dba83b800e9688d39f702964659b76a60605643cf443f63d268a1",
+  "master": "ArtSource/Original/ArtPass-v1/Gate1/references/basement-deck/basement-deck-reference.blend",
+  "sourceKind": "unity-export",
+  "axisConvention": "Blender (x,y,z) -> Unity (x,z,-y)",
+  "meshes": 1,
+  "dimensionsBlenderXYZMetres": [
+    12.000001907348633,
+    12.000003814697266,
+    0.6000003814697266
+  ],
+  "centerBlenderXYZ": [
+    -9.5367431640625e-07,
+    0.0,
+    0.0
+  ],
+  "orthographicSpanMetres": 15.600004959106446,
+  "pixelsPerMetre": 49.23075358073414,
+  "resolution": 768,
+  "views": [
+    {
+      "name": "front",
+      "path": "ArtSource/Original/ArtPass-v1/Gate1/references/basement-deck/front.png",
+      "cameraPosition": [
+        -9.5367431640625e-07,
+        -46.80001449584961,
+        0.0
+      ],
+      "cameraEuler": [
+        1.5707964897155762,
+        -0.0,
+        0.0
+      ],
+      "sha256": "2255060b785f318fa6639947d4a76ad9ee2341f390f8028fd9d52791dc85c49b"
+    },
+    {
+      "name": "rear",
+      "path": "ArtSource/Original/ArtPass-v1/Gate1/references/basement-deck/rear.png",
+      "cameraPosition": [
+        -9.5367431640625e-07,
+        46.80001449584961,
+        0.0
+      ],
+      "cameraEuler": [
+        -1.570796251296997,
+        3.141592502593994,
+        -0.0
+      ],
+      "sha256": "c474179c017ab23183fce8ddde6cb43c892da76564b96804d7e9eecf1da80c72"
+    },
+    {
+      "name": "left",
+      "path": "ArtSource/Original/ArtPass-v1/Gate1/references/basement-deck/left.png",
+      "cameraPosition": [
+        -46.80001449584961,
+        0.0,
+        0.0
+      ],
+      "cameraEuler": [
+        1.5707963705062866,
+        -0.0,
+        -1.5707963705062866
+      ],
+      "sha256": "0e343631abc1df7fb9e353cf43ecf28823ab808aae6a402feb99ab27cf59b459"
+    },
+    {
+      "name": "right",
+      "path": "ArtSource/Original/ArtPass-v1/Gate1/references/basement-deck/right.png",
+      "cameraPosition": [
+        46.80001449584961,
+        0.0,
+        0.0
+      ],
+      "cameraEuler": [
+        1.5707963705062866,
+        -0.0,
+        1.5707963705062866
+      ],
+      "sha256": "5b336f39d261964cdc90240e73107c28de3d8c66f98e10c008f9d31c9d3511ae"
+    },
+    {
+      "name": "top",
+      "path": "ArtSource/Original/ArtPass-v1/Gate1/references/basement-deck/top.png",
+      "cameraPosition": [
+        -9.5367431640625e-07,
+        0.0,
+        46.80001449584961
+      ],
+      "cameraEuler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "sha256": "a662fa7358291c614dae88f3bafa220caf66d0430c5f53399e96e1f3716f2bf9"
+    },
+    {
+      "name": "bottom",
+      "path": "ArtSource/Original/ArtPass-v1/Gate1/references/basement-deck/bottom.png",
+      "cameraPosition": [
+        -9.5367431640625e-07,
+        0.0,
+        -46.80001449584961
+      ],
+      "cameraEuler": [
+        8.742277657347586e-08,
+        3.1415927410125732,
+        -8.742277657347586e-08
+      ],
+      "sha256": "cd5008de6b3604f1573512ae7fe5669e2e98a981fe21ea2efc9de600e02a0a3a"
+    }
+  ],
+  "status": "Measured baseline geometry, not approved production art",
+  "limitations": "Existing source likeness and Unity parity are not certified by these sheets. Rest-pose renderer AABB; no artistic edits. Unity-export example is a reference copy, not a new runtime asset."
+}
