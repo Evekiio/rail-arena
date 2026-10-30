@@ -47,7 +47,7 @@ for title, directory in sections:
     for p in sorted(directory.rglob('*.png')):
         html += f'<figure><img loading="lazy" src="{p.relative_to(art).as_posix()}"><figcaption>{p.stem}</figcaption></figure>'
     html += '</section>'
-html += '<h2>Measured canonical families</h2>'
+html += '<h2>Authored animation</h2><p><a href="Animation/index.html">Backward walk, jog and run: measured poses and armed playback</a></p><h2>Measured canonical families</h2>'
 for directory, _, name in families:
     html += f'<h3>{name}</h3><img loading="lazy" src="{(directory/"measured-sheet.png").relative_to(art).as_posix()}">'
 (art/'integrated-review.html').write_text(html,encoding='utf-8')
@@ -58,7 +58,7 @@ class Links(HTMLParser):
                 assert (art/value).resolve().is_file(), value
 Links().feed(html)
 paths=[]
-for directory in [root/'RailArena/Assets/RailArena/Art/ArtPass',root/'RailArena/Assets/Resources/Art',root/'RailArena/Assets/Resources/UI/ArtPassPortraits',art/'Characters',art/'Nature',art/'Devices',art/'Environment',art/'Gate2/RifleActions']:
+for directory in [root/'RailArena/Assets/RailArena/Art/ArtPass',root/'RailArena/Assets/Resources/Art',root/'RailArena/Assets/Resources/UI/ArtPassPortraits',art/'Characters',art/'Nature',art/'Devices',art/'Environment',art/'Gate2/RifleActions',art/'Animation']:
     paths += [p for p in directory.rglob('*') if p.is_file() and p.suffix not in ('.meta','.blend1','.blend2')]
 paths += [root/'RailArena/Assets/Resources/Effects'/name for name in ('CelSurface.shader','CelWater.shader','CelOutline.shader','SkyGardenClouds.shader','WorldGlyph.shader','ArtAtmosphere.shader')]
 entries=[{'id':'art-'+hashlib.sha256(p.relative_to(root).as_posix().encode()).hexdigest()[:16], 'path':p.relative_to(root).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'disposition':'refine','approval':'Art direction approved; final integrated playtest pending'} for p in sorted(set(paths))]
@@ -78,7 +78,9 @@ for entry in entries:
     else:
         rig=[]; dimensions=None; provenance='Original Rail Arena code-authored paint, Blender construction or promoted existing project graphics; existing source retained.'
         master=art/'Environment/SkyGardens-Stone-Art-v1.blend'; references=art/'Environment/Environment-Master.json'; sheet=None; screenshot=art/'Gate2/look-prototype/garden-bridge.png'
-        if 'Canopy' in path or '/Nature/' in path:
+        if '/Animation/' in path or 'ContenderRetreat' in path:
+            family='contender-retreat';category='animation';directory=art/'Animation';master=directory/'Contender-Retreat-v1.blend';references=directory/'retreat-production.json';sheet=directory/'References/RetreatWalk/measured-poses.png';screenshot=directory/'Retreat-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original authored contact paths and baked bone animation on the unchanged shared contender skeleton; inherited CC0 rig provenance retained.'
+        elif 'Canopy' in path or '/Nature/' in path:
             family='canopy';category='nature';directory=art/'Nature/Canopy';master=directory/'SkyGarden-Canopy-v1.blend';references=directory/'production.json';sheet=directory/'measured-sheet.png';dimensions=[1,1,1]
         elif 'Medical' in path or 'HealthCore' in path:
             family='medical-core';category='pickups';directory=art/'Devices/HealthCore';master=directory/'Medical-Core-v1.blend';references=directory/'production.json';sheet=directory/'measured-sheet.png';dimensions=json.loads(references.read_text())['dimensionsBlenderXYZ'];screenshot=art/'Gate2/look-prototype/health.png'
@@ -94,6 +96,10 @@ for entry in entries:
     relative=lambda p:p.relative_to(root).as_posix() if p else None
     if '/ArtPassPortraits/' in path:category='UI / UX'
     entry.update({'category':category,'family':family,'mapArea':'Sky Gardens / summit / four basement routes','runtimeUsage':'Production review build' if path.startswith('RailArena/') else 'Editable source or reference evidence; not runtime content','sourceMaster':relative(master),'sourceExportLocations':[path],'dimensionsMetresBlenderXYZ':dimensions,'dimensionAuthority':relative(references),'dependencies':[relative(references)],'referenceSheets':[relative(sheet)] if sheet else [],'rigBones':rig,'clips':['Carbine reload / 120 ticks'] if family=='carbine' else [],'provenance':provenance,'currentScreenshot':relative(screenshot),'referenceException':'Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.'})
+    if family=='contender-retreat':
+        entry['clips']=['RetreatWalk / 36 frames / 60 Hz','RetreatJog / 20 frames / 60 Hz','RetreatRun / 18 frames / 60 Hz']
+        entry['dependencies'] += ['RailArena/Assets/Resources/Art/ContenderRetreat.overrideController','ArtSource/Original/ArtPass-v1/Characters/Player-Production.json']
+        entry['runtimeUsage']='Sky Gardens art profile / four contenders' if path.startswith('RailArena/') else 'Editable animation master or measured playback evidence; not runtime content'
     if Path(path).suffix.lower()=='.png':
         with Image.open(root/path) as texture:entry['textureDimensionsPixelsWH']=list(texture.size)
 (art/'integrated-manifest.json').write_text(json.dumps({'schema':'rail-arena-art-delta/2','baseline':'Gate1/asset-manifest.json','entries':entries,'coverage':'Baseline inventory plus production delta; remaining reference and animation exceptions in PRODUCTION-STATUS.md'},indent=2)+'\n')

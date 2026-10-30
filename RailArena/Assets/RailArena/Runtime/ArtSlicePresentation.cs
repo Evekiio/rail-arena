@@ -47,7 +47,7 @@ namespace RailArena
                 BindCharacter(arms.gameObject).ApplyArms(arms, characters.variants[session.Human != null ? session.Human.CharacterId : session.SelectedOfflineCharacter]);
             }
             foreach (var actor in session.Actors)
-                BindCharacter(actor.gameObject).ApplyBody(actor, characters.variants[actor.CharacterId]);
+                BindCharacter(actor.gameObject).ApplyBody(actor, characters.variants[actor.CharacterId], characters.locomotionController);
             Apply(FindObjectsByType<Renderer>(FindObjectsInactive.Include, FindObjectsSortMode.None));
         }
 
@@ -59,7 +59,7 @@ namespace RailArena
             actorCount = session.Actors.Count; firstActor = first;
             foreach (var actor in session.Actors)
             {
-                BindCharacter(actor.gameObject).ApplyBody(actor, characters.variants[actor.CharacterId]);
+                BindCharacter(actor.gameObject).ApplyBody(actor, characters.variants[actor.CharacterId], characters.locomotionController);
                 Apply(actor.GetComponentsInChildren<Renderer>(true));
                 BindRifle(actor.Presentation.Railgun, actor);
             }

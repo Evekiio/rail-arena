@@ -12,7 +12,7 @@ Six equal-scale canonical views cover all four characters, stone cover, canopy a
 
 ## Remaining production and acceptance
 
-The broader character/FPS action library is not a fully authored replacement. Existing licensed locomotion includes reversed backward clips and accelerated jump/landing transitions; an authored motion batch and normal-speed review remain. Wrist reach tests do not certify palm/finger contact at every frame.
+Dedicated original backward walk, jog and run are installed in the Sky Gardens art profile source, replacing the three reversed clips. The nine-second armed playback covers all four identities at native clip rates, with measured sole clearance and numerical wrist alignment. See [authored locomotion](../../../../docs/AUTHORED-LOCOMOTION.md). Review-07 predates this animation batch; its replacement build is pending. Accelerated legacy jump/landing transitions and the broader character/FPS action library still need authored replacements. Wrist reach tests do not certify palm/finger contact at every frame.
 
 Full reference evidence for every baseline entry, complete variant/construction layers, structural undersides, remaining nature families and complete device geometry refinement remain unfinished. Older maps and experimental sources are retained. No claim of 100% reference coverage or AAA completion is made.
 
