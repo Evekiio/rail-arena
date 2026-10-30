@@ -4,6 +4,15 @@ namespace RailArena
 {
     public sealed partial class ArenaHud
     {
+        private Texture2D ContenderPortrait(int character)
+        {
+            if (FindAnyObjectByType<ArtSlicePresentation>() != null)
+            {
+                var portrait = Resources.Load<Texture2D>("UI/ArtPassPortraits/Character-" + character);
+                if (portrait != null) return portrait;
+            }
+            return Resources.Load<Texture2D>("UI/ContenderPortraits/Character-" + character);
+        }
         private void CharacterPicker()
         {
             BeginPage(RefreshMenu);
@@ -37,7 +46,7 @@ namespace RailArena
                 Rect(frame,new Vector2(.025f,.18f),new Vector2(.975f,.985f));
                 var portrait=new GameObject("Portrait "+i,typeof(RectTransform),typeof(UnityEngine.UI.RawImage),typeof(UnityEngine.UI.AspectRatioFitter));
                 portrait.transform.SetParent(frame.transform,false);Rect(portrait,Vector2.zero,Vector2.one);
-                var image=portrait.GetComponent<UnityEngine.UI.RawImage>();image.texture=Resources.Load<Texture2D>("UI/ContenderPortraits/Character-"+i);image.raycastTarget=false;
+                var image=portrait.GetComponent<UnityEngine.UI.RawImage>();image.texture=ContenderPortrait(i);image.raycastTarget=false;
                 var fit=portrait.GetComponent<UnityEngine.UI.AspectRatioFitter>();fit.aspectMode=UnityEngine.UI.AspectRatioFitter.AspectMode.FitInParent;fit.aspectRatio=.8f;
                 labels[i]=Text(card.transform,"Character label "+i,"",22,new Vector2(.025f,.015f),new Vector2(.975f,.16f));labels[i].alignment=TextAnchor.MiddleCenter;
             }

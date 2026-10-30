@@ -13,13 +13,19 @@
     }
   },
   "gate2": {
-    "status": "in production; playable visual slice",
+    "status": "in production; no intermediate approval stop",
     "approvalEvidence": null
   },
   "gate3": {
-    "status": "not started; requires Gate 2 approval",
+    "status": "full integration authorized; final user playtest pending",
     "approvalEvidence": null
   },
   "publicRelease": "hold until Sanders final approval",
-  "overallGoal": "active; full art production not complete"
+  "overallGoal": "active; full art production not complete",
+  "workflowOverride": {
+    "date": "2026-10-30",
+    "approver": "Sanders",
+    "statement": "Resume all work and don't get stuck or waiting my approval. I want the final working version and I'll play test as the beta tester / play tester / user QA gate.",
+    "effect": "Intermediate art gates are review milestones, not stop points. Continue through full integrated local build. Final Sanders playtest/QA remains acceptance; public release remains held."
+  }
 }

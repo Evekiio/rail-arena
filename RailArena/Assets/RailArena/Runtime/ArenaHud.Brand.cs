@@ -150,7 +150,7 @@ namespace RailArena
         {
             // One persistent configuration panel accompanies every launch choice.
             BrandChrome();
-            Text(menu.transform,"Title","ENTER THE FOUNDRY",62,new Vector2(.29f,.745f),new Vector2(.94f,.85f)).font=displayFont;
+            Text(menu.transform,"Title",Session.World.LayoutName.StartsWith("SKY GARDENS",StringComparison.Ordinal)?"ENTER SKY GARDENS":"ENTER THE FOUNDRY",62,new Vector2(.29f,.745f),new Vector2(.94f,.85f)).font=displayFont;
             Text(menu.transform,"Subtitle","Find your angle. Keep your momentum. Make the shot count.",21,
                 new Vector2(.29f,.70f),new Vector2(.94f,.755f)).color=Muted;
             float navigation=.76f;
@@ -170,7 +170,7 @@ namespace RailArena
             ActionCard("ONLINE DUEL // DIRECT IP","Host or join a two-player duel. Same build required.","duel",.185f).onClick.AddListener(OnlineMenu);
             var setup=Graphic(menu.transform,"Session setup panel",new Vector2(.69f,.14f),new Vector2(.96f,.67f),Surface);
             Text(setup.transform,"Setup heading","SESSION SETUP",22,new Vector2(.06f,.90f),new Vector2(.94f,.99f)).color=cyan;
-            Raw(setup.transform,"Selected contender portrait",Resources.Load<Texture2D>("UI/ContenderPortraits/Character-"+Session.SelectedOfflineCharacter),
+            Raw(setup.transform,"Selected contender portrait",ContenderPortrait(Session.SelectedOfflineCharacter),
                 new Vector2(.07f,.59f),new Vector2(.43f,.88f),.8f);
             Text(setup.transform,"Selected contender",OfflineRoster.Label(Session.SelectedOfflineCharacter).Replace(" / ","\n"),27,
                 new Vector2(.48f,.70f),new Vector2(.95f,.86f)).font=displayFont;

@@ -41,6 +41,7 @@ Shader "RailArena/CelSurface"
             float3 normalOS : NORMAL;
             float4 tangentOS : TANGENT;
             float2 uv : TEXCOORD0;
+            float2 staticLightmapUV : TEXCOORD1;
             UNITY_VERTEX_INPUT_INSTANCE_ID
         };
         struct Varyings
@@ -51,6 +52,7 @@ Shader "RailArena/CelSurface"
             half4 tangentWS : TEXCOORD2;
             float2 uv : TEXCOORD3;
             half fog : TEXCOORD4;
+            DECLARE_LIGHTMAP_OR_SH(lightmapUV, vertexSH, 5);
             UNITY_VERTEX_INPUT_INSTANCE_ID
             UNITY_VERTEX_OUTPUT_STEREO
         };
@@ -67,6 +69,8 @@ Shader "RailArena/CelSurface"
             o.tangentWS = half4(n.tangentWS, i.tangentOS.w * GetOddNegativeScale());
             o.uv = TRANSFORM_TEX(i.uv, _BaseMap);
             o.fog = ComputeFogFactor(p.positionCS.z);
+            OUTPUT_LIGHTMAP_UV(i.staticLightmapUV, unity_LightmapST, o.lightmapUV);
+            OUTPUT_SH(o.normalWS, o.vertexSH);
             return o;
         }
         void AlphaClip(float2 uv)
@@ -103,6 +107,10 @@ Shader "RailArena/CelSurface"
             #pragma multi_compile _ _CLUSTER_LIGHT_LOOP
             #pragma multi_compile_fragment _ _ADDITIONAL_LIGHT_SHADOWS
             #pragma multi_compile_fragment _ _SCREEN_SPACE_OCCLUSION
+            #pragma multi_compile _ LIGHTMAP_ON
+            #pragma multi_compile _ DIRLIGHTMAP_COMBINED
+            #pragma multi_compile _ LIGHTMAP_SHADOW_MIXING
+            #pragma multi_compile _ SHADOWS_SHADOWMASK
             #pragma shader_feature_local_fragment _ALPHATEST_ON
             #pragma shader_feature_local _NORMALMAP
             half4 Frag(Varyings i) : SV_Target
@@ -111,15 +119,18 @@ Shader "RailArena/CelSurface"
                 AlphaClip(i.uv);
                 half3 base = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, i.uv).rgb * _BaseColor.rgb;
                 half3 n = SurfaceNormal(i);
-                Light sun = GetMainLight(TransformWorldToShadowCoord(i.positionWS));
+                half4 shadowMask = SAMPLE_SHADOWMASK(i.lightmapUV);
+                Light sun = GetMainLight(TransformWorldToShadowCoord(i.positionWS), i.positionWS, shadowMask);
                 half exposure = saturate(dot(n, sun.direction)) * sun.shadowAttenuation;
                 half low = smoothstep(_BandLow - _BandSoftness, _BandLow + _BandSoftness, exposure);
                 half high = smoothstep(_BandHigh - _BandSoftness, _BandHigh + _BandSoftness, exposure);
                 half3 bands = lerp(lerp(_ShadowTint.rgb, _MidTint.rgb, low), half3(1,1,1), high);
                 half occlusion = lerp(1, SAMPLE_TEXTURE2D(_OcclusionMap, sampler_OcclusionMap, i.uv).g, _OcclusionStrength);
-                half3 ambient = max(SampleSH(n), half3(.04,.04,.04));
+                half3 bakedGI = SAMPLE_GI(i.lightmapUV, i.vertexSH, n);
+                MixRealtimeAndBakedGI(sun, n, bakedGI);
+                half3 ambient = max(bakedGI, half3(.04,.04,.04));
                 AmbientOcclusionFactor screenAO = GetScreenSpaceAmbientOcclusion(GetNormalizedScreenSpaceUV(i.positionCS));
-                half3 color = base * bands * (sun.color * .85 * screenAO.directAmbientOcclusion + ambient * .5 * screenAO.indirectAmbientOcclusion) * occlusion;
+                half3 color = base * (bands * sun.color * .85 * screenAO.directAmbientOcclusion + ambient * .65 * screenAO.indirectAmbientOcclusion) * occlusion;
                 half3 view = GetWorldSpaceNormalizeViewDir(i.positionWS);
                 half sheen = smoothstep(.93, .97, saturate(dot(n, SafeNormalize(sun.direction + view))));
                 color += sheen * _HighlightStrength * sun.color * sun.shadowAttenuation;
@@ -131,12 +142,12 @@ Shader "RailArena/CelSurface"
                 #if USE_CLUSTER_LIGHT_LOOP
                 for (uint lightIndex = 0; lightIndex < min(URP_FP_DIRECTIONAL_LIGHTS_COUNT, MAX_VISIBLE_LIGHTS); lightIndex++)
                 {
-                    Light light = GetAdditionalLight(lightIndex, i.positionWS, half4(1,1,1,1));
+                    Light light = GetAdditionalLight(lightIndex, i.positionWS, shadowMask);
                     color += base * light.color * light.distanceAttenuation * light.shadowAttenuation * saturate(dot(n, light.direction));
                 }
                 #endif
                 LIGHT_LOOP_BEGIN(count)
-                    Light light = GetAdditionalLight(lightIndex, i.positionWS, half4(1,1,1,1));
+                    Light light = GetAdditionalLight(lightIndex, i.positionWS, shadowMask);
                     color += base * light.color * light.distanceAttenuation * light.shadowAttenuation * saturate(dot(n, light.direction));
                 LIGHT_LOOP_END
                 #endif

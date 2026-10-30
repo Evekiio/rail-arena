@@ -15,13 +15,28 @@ namespace RailArena.Tests
     public sealed class BrandUiTests
     {
         private static readonly Vector2Int[] Sizes={new(1920,1080),new(1280,720),new(2560,1080)};
+        private RenderPipelineAsset originalPipeline;
+        private bool artPipeline;
 
         [UnityTest]
         public IEnumerator BrandedFlowsKeepSetupFocusBackNavigationAndReadableHud()
+            => Run(false);
+
+        [UnityTest]
+        public IEnumerator ArtPassFlowsKeepSetupFocusBackNavigationAndReadableHud()
+            => Run(true);
+
+        private IEnumerator Run(bool enhanced)
         {
-            EditorSceneManager.OpenScene("Assets/RailArena/Generated/Foundry.unity");
+            if(enhanced)
+            {
+                originalPipeline=QualitySettings.renderPipeline;artPipeline=true;
+                QualitySettings.renderPipeline=UnityEditor.AssetDatabase.LoadAssetAtPath<RenderPipelineAsset>("Assets/RailArena/Art/ArtPass/Atmosphere/SkyGardensPipeline.asset");
+            }
+            EditorSceneManager.OpenScene(enhanced?"Assets/RailArena/Generated/SkyGardensBasement.unity":"Assets/RailArena/Generated/Foundry.unity");
             yield return new EnterPlayMode();yield return Frames(3);
             var session=Object.FindAnyObjectByType<ArenaSession>();
+            if(enhanced){new GameObject("Integrated art UI review").AddComponent<ArtSlicePresentation>();yield return Frames(2);}
             var hud=session.GetComponent<ArenaHud>();
             session.MainMenu();yield return Frames(2);
             Assert.That(Resources.Load<Font>("UI/Brand/Fonts/Barlow-Regular"),Is.Not.Null);
@@ -86,7 +101,11 @@ namespace RailArena.Tests
             yield return new ExitPlayMode();
         }
 
-        [UnityTearDown] public IEnumerator Restore(){if(Application.isPlaying)yield return new ExitPlayMode();}
+        [UnityTearDown] public IEnumerator Restore()
+        {
+            if(Application.isPlaying)yield return new ExitPlayMode();
+            if(artPipeline){QualitySettings.renderPipeline=originalPipeline;artPipeline=false;}
+        }
         private static UnityEngine.UI.Button Button(string text)=>Object.FindObjectsByType<UnityEngine.UI.Button>(FindObjectsSortMode.None)
             .Single(button=>button.GetComponentInChildren<UnityEngine.UI.Text>().text==text);
         private static UnityEngine.UI.Button Starting(string prefix)=>Object.FindObjectsByType<UnityEngine.UI.Button>(FindObjectsSortMode.None)
@@ -117,7 +136,7 @@ namespace RailArena.Tests
                     RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
                     HeadlessUiReview.Draw(canvas,camera,target,clear:false);
                     RenderTexture.active=target;pixels.ReadPixels(new Rect(0,0,size.x,size.y),0,0);pixels.Apply();
-                    string folder=Path.GetFullPath(Path.Combine(Application.dataPath,"../../Validation/UI-Brand-2026-10-29/Captures"));
+                    string folder=Path.GetFullPath(Path.Combine(Application.dataPath,Object.FindAnyObjectByType<ArtSlicePresentation>()!=null?"../../ArtSource/Original/ArtPass-v1/UiReview":"../../Validation/UI-Brand-2026-10-29/Captures"));
                     Directory.CreateDirectory(folder);File.WriteAllBytes(Path.Combine(folder,$"{state}-{size.x}x{size.y}.png"),pixels.EncodeToPNG());
                     foreach(var text in canvas.GetComponentsInChildren<UnityEngine.UI.Text>())
                         Assert.That(text.cachedTextGenerator.characterCountVisible,Is.EqualTo(text.text.Length),state+" clipped text: "+text.name+" / "+text.text);

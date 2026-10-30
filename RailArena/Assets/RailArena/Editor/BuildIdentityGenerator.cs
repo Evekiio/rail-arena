@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -23,10 +24,7 @@ namespace RailArena.Editor
         public static string Generate()
         {
             AssetDatabase.SaveAssets();
-            var files = new[] { "Assets", "Packages", "ProjectSettings" }
-                .SelectMany(root => Directory.EnumerateFiles(root, "*", SearchOption.AllDirectories))
-                .Select(path => path.Replace('\\', '/'))
-                .Where(Include).OrderBy(path => path, StringComparer.Ordinal).ToArray();
+            var files = InputPaths();
             using var hash = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
             // Include the wire contract and target in addition to source-controlled inputs.
             hash.AppendData(Encoding.UTF8.GetBytes("RailArena/UDP/" + Networking.DuelProtocol.Version + "/Windows64\n"));
@@ -62,9 +60,33 @@ namespace RailArena.Editor
             return identity;
         }
 
-        private static bool Include(string path)
+        public static string[] InputPaths()
         {
-            if (path.StartsWith(Output, StringComparison.Ordinal) || path.StartsWith("Assets/Validation", StringComparison.Ordinal)) return false;
+            var roots = EditorBuildSettings.scenes.Where(scene => scene.enabled).Select(scene => scene.path)
+                .Concat(AssetDatabase.GetAllAssetPaths().Where(path => path.StartsWith("Assets/", StringComparison.Ordinal) && path.Contains("/Resources/") && !AssetDatabase.IsValidFolder(path))).ToArray();
+            var runtimeDependencies = new HashSet<string>(AssetDatabase.GetDependencies(roots, true), StringComparer.Ordinal);
+            return new[] { "Assets", "Packages", "ProjectSettings" }
+                .SelectMany(root => Directory.EnumerateFiles(root, "*", SearchOption.AllDirectories))
+                .Select(path => path.Replace('\\', '/'))
+                .Where(path => Include(path, runtimeDependencies)).OrderBy(path => path, StringComparer.Ordinal).ToArray();
+        }
+
+        public static void ValidateActiveArtInputs()
+        {
+            var files = InputPaths();
+            const string geometry = "Assets/Validation/SkyGiCandidate/Outer-X-1.asset";
+            const string unused = "Assets/Validation/TraversalVfxCandidate/TraversalBurstLarge.vfx";
+            if (!files.Contains(geometry) || !files.Contains(geometry + ".meta")) throw new InvalidOperationException("Active scene geometry is absent from build identity");
+            if (files.Contains(unused)) throw new InvalidOperationException("Unused particle pilot must not affect build identity");
+            File.WriteAllLines("../Validation/art-build-identity-inputs.txt", files);
+            UnityEngine.Debug.Log("BUILD_IDENTITY_ACTIVE_ART_VERIFIED active GI geometry/meta included; unused VFX pilot excluded; files=" + files.Length);
+        }
+
+        private static bool Include(string path, ISet<string> runtimeDependencies)
+        {
+            if (path.StartsWith(Output, StringComparison.Ordinal)) return false;
+            if (path.StartsWith("Assets/Validation", StringComparison.Ordinal) &&
+                !runtimeDependencies.Contains(path.EndsWith(".meta", StringComparison.Ordinal) ? path.Substring(0, path.Length - 5) : path)) return false;
             if (path.Contains("/Editor/") || path.Contains("/Tests/") || path.EndsWith("/Editor.meta", StringComparison.Ordinal) ||
                 path.EndsWith("/Tests.meta", StringComparison.Ordinal)) return false;
             // Package caches and lockfiles outside these two manifests are not build inputs.

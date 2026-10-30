@@ -1,0 +1,501 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41538432558ace34eb6eaab697ffe721, type: 3}
+  m_Name: RifleReload
+  m_EditorClassIdentifier: RailArena.Runtime::RailArena.RifleReloadArt
+  magazinePivot: {x: 0, y: -0.09280565, z: 0.03216011}
+  samples:
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.075, y: -0.07, z: 0.17}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.075, y: -0.07, z: 0.17}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.075, y: -0.07, z: 0.17}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.075, y: -0.07, z: 0.17}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.075, y: -0.07, z: 0.17}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.075, y: -0.07, z: 0.17}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.075, y: -0.07, z: 0.17}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.075, y: -0.07, z: 0.17}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.075, y: -0.07, z: 0.17}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.075, y: -0.07, z: 0.17}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.07476389, y: -0.07014263, z: 0.16760996}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.07411111, y: -0.07060704, z: 0.16096297}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.073125, y: -0.07144801, z: 0.15084374}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.07188889, y: -0.07272031, z: 0.13803703}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.07048611, y: -0.07447873, z: 0.12332754}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.069, y: -0.07677803, z: 0.1075}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.06751389, y: -0.07967299, z: 0.09133913}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.06611111, y: -0.0832184, z: 0.07562961}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.064875, y: -0.08746903, z: 0.06115626}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.06388889, y: -0.09247965, z: 0.04870369}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.06323611, y: -0.09830505, z: 0.03905672}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.063, y: -0.105, z: 0.033}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: -0.00134553, z: -0.00008165}
+    magazineRotation: {x: 0, y: 0, z: -0.00065857, w: 0.9999998}
+    leftPosition: {x: -0.06300034, y: -0.11259168, z: 0.02937612}
+    leftRotation: {x: -0.43692797, y: -0.3277803, z: -0.61172426, w: 0.572233}
+  - magazineOffset: {x: 0, y: -0.00520085, z: -0.00032868}
+    magazineRotation: {x: 0, y: 0, z: -0.00255668, w: 0.9999967}
+    leftPosition: {x: -0.06300275, y: -0.12099686, z: 0.02644783}
+    leftRotation: {x: -0.43756, y: -0.32694787, z: -0.61279005, w: 0.5710928}
+  - magazineOffset: {x: 0, y: -0.01129407, z: -0.00074418}
+    magazineRotation: {x: 0, y: 0, z: -0.00557783, w: 0.99998444}
+    leftPosition: {x: -0.06300928, y: -0.13010475, z: 0.02413011}
+    leftRotation: {x: -0.43856204, y: -0.3256201, z: -0.6144837, w: 0.56927186}
+  - magazineOffset: {x: 0, y: -0.01935329, z: -0.00133125}
+    magazineRotation: {x: 0, y: 0, z: -0.00960547, w: 0.99995387}
+    leftPosition: {x: -0.063022, y: -0.13980454, z: 0.02233796}
+    leftRotation: {x: -0.43988988, y: -0.32384485, z: -0.61673754, w: 0.56683165}
+  - magazineOffset: {x: 0, y: -0.02910664, z: -0.002093}
+    magazineRotation: {x: 0, y: 0, z: -0.01452315, w: 0.99989456}
+    leftPosition: {x: -0.06304298, y: -0.1499854, z: 0.02098637}
+    leftRotation: {x: -0.44149843, y: -0.32166994, z: -0.61948293, w: 0.56383216}
+  - magazineOffset: {x: 0, y: -0.0402822, z: -0.00303253}
+    magazineRotation: {x: 0, y: 0, z: -0.02021458, w: 0.9997957}
+    leftPosition: {x: -0.06307427, y: -0.16053654, z: 0.01999033}
+    leftRotation: {x: -0.44334224, y: -0.31914297, z: -0.62265176, w: 0.560333}
+  - magazineOffset: {x: 0, y: -0.0526081, z: -0.00415293}
+    magazineRotation: {x: 0, y: 0, z: -0.02656376, w: 0.99964714}
+    leftPosition: {x: -0.06311794, y: -0.17134713, z: 0.01926484}
+    leftRotation: {x: -0.44537646, y: -0.31631222, z: -0.62617517, w: 0.55639434}
+  - magazineOffset: {x: 0, y: -0.06581242, z: -0.00545732}
+    magazineRotation: {x: 0, y: 0, z: -0.03345494, w: 0.9994402}
+    leftPosition: {x: -0.06317604, y: -0.18230636, z: 0.0187249}
+    leftRotation: {x: -0.4475572, y: -0.31322652, z: -0.6299842, w: 0.55207866}
+  - magazineOffset: {x: 0, y: -0.07962331, z: -0.00694879}
+    magazineRotation: {x: 0, y: 0, z: -0.04077255, w: 0.99916846}
+    leftPosition: {x: -0.06325065, y: -0.19330344, z: 0.01828549}
+    leftRotation: {x: -0.44984207, y: -0.30993557, z: -0.63401043, w: 0.5474502}
+  - magazineOffset: {x: 0, y: -0.09376884, z: -0.00863044}
+    magazineRotation: {x: 0, y: 0, z: -0.04840116, w: 0.998828}
+    leftPosition: {x: -0.06334383, y: -0.20422754, z: 0.01786162}
+    leftRotation: {x: -0.45219076, y: -0.30648997, z: -0.638185, w: 0.5425771}
+  - magazineOffset: {x: 0, y: -0.10797712, z: -0.01050538}
+    magazineRotation: {x: 0, y: 0, z: -0.05622528, w: 0.9984181}
+    leftPosition: {x: -0.06345764, y: -0.21496782, z: 0.01736827}
+    leftRotation: {x: -0.45456517, y: -0.30294093, z: -0.6424402, w: 0.5375303}
+  - magazineOffset: {x: 0, y: -0.12197629, z: -0.0125767}
+    magazineRotation: {x: 0, y: 0, z: -0.06412923, w: 0.9979416}
+    leftPosition: {x: -0.06359413, y: -0.22541356, z: 0.01672044}
+    leftRotation: {x: -0.45692927, y: -0.29934055, z: -0.6467085, w: 0.532385}
+  - magazineOffset: {x: 0, y: -0.1354944, z: -0.01484751}
+    magazineRotation: {x: 0, y: 0, z: -0.07199683, w: 0.9974049}
+    leftPosition: {x: -0.06375539, y: -0.2354538, z: 0.01583312}
+    leftRotation: {x: -0.45924994, y: -0.29574144, z: -0.6509236, w: 0.52722025}
+  - magazineOffset: {x: 0, y: -0.14825961, z: -0.01732091}
+    magazineRotation: {x: 0, y: 0, z: -0.07971145, w: 0.996818}
+    leftPosition: {x: -0.06394347, y: -0.24497785, z: 0.01462131}
+    leftRotation: {x: -0.4614963, y: -0.29219645, z: -0.6550205, w: 0.52211845}
+  - magazineOffset: {x: 0, y: -0.16, z: -0.02}
+    magazineRotation: {x: 0, y: 0, z: -0.08715572, w: 0.9961947}
+    leftPosition: {x: -0.06416042, y: -0.2538749, z: 0.013}
+    leftRotation: {x: -0.46363956, y: -0.2887588, z: -0.65893555, w: 0.5171661}
+  - magazineOffset: {x: -0.0015157, y: -0.17050031, z: -0.02287652}
+    magazineRotation: {x: 0, y: 0, z: -0.09422684, w: 0.99555075}
+    leftPosition: {x: -0.06586984, y: -0.2620546, z: 0.01091469}
+    leftRotation: {x: -0.46565685, y: -0.2854755, z: -0.6626155, w: 0.51244044}
+  - magazineOffset: {x: -0.00573509, y: -0.17977157, z: -0.02589677}
+    magazineRotation: {x: 0, y: 0, z: -0.10088284, w: 0.9948983}
+    leftPosition: {x: -0.07021257, y: -0.26950887, z: 0.0084329}
+    leftRotation: {x: -0.46754006, y: -0.28236768, z: -0.66604435, w: 0.50797427}
+  - magazineOffset: {x: -0.01216659, y: -0.18788153, z: -0.02899571}
+    magazineRotation: {x: 0, y: 0, z: -0.1070972, w: 0.99424857}
+    leftPosition: {x: -0.07670659, y: -0.27624997, z: 0.00565264}
+    leftRotation: {x: -0.46928474, y: -0.27945033, z: -0.66921526, w: 0.5037886}
+  - magazineOffset: {x: -0.02031862, y: -0.19489786, z: -0.03210826}
+    magazineRotation: {x: 0, y: 0, z: -0.11284337, w: 0.99361277}
+    leftPosition: {x: -0.08486986, y: -0.28229034, z: 0.00267195}
+    leftRotation: {x: -0.47088683, y: -0.27673855, z: -0.672121, w: 0.4999048}
+  - magazineOffset: {x: -0.02969959, y: -0.20088825, z: -0.03516939}
+    magazineRotation: {x: 0, y: 0, z: -0.11809498, w: 0.9930023}
+    leftPosition: {x: -0.09422036, y: -0.28764242, z: -0.00041115}
+    leftRotation: {x: -0.47234184, y: -0.27424753, z: -0.6747547, w: 0.49634412}
+  - magazineOffset: {x: -0.03981793, y: -0.20592034, z: -0.03811402}
+    magazineRotation: {x: 0, y: 0, z: -0.1228257, w: 0.99242824}
+    leftPosition: {x: -0.10427605, y: -0.29231843, z: -0.00349863}
+    leftRotation: {x: -0.4736456, y: -0.27199247, z: -0.6771088, w: 0.49312806}
+  - magazineOffset: {x: -0.05018206, y: -0.21006188, z: -0.0408771}
+    magazineRotation: {x: 0, y: 0, z: -0.12700936, w: 0.9919015}
+    leftPosition: {x: -0.1145549, y: -0.2963309, z: -0.00649249}
+    leftRotation: {x: -0.47479358, y: -0.26998878, z: -0.67917603, w: 0.4902776}
+  - magazineOffset: {x: -0.06030041, y: -0.21338058, z: -0.04339359}
+    magazineRotation: {x: 0, y: 0, z: -0.13061988, w: 0.99143255}
+    leftPosition: {x: -0.12457488, y: -0.29969206, z: -0.00929469}
+    leftRotation: {x: -0.4757811, y: -0.26825163, z: -0.68094844, w: 0.48781374}
+  - magazineOffset: {x: -0.06968138, y: -0.21594408, z: -0.04559841}
+    magazineRotation: {x: 0, y: 0, z: -0.1336313, w: 0.9910311}
+    leftPosition: {x: -0.13385397, y: -0.3024144, z: -0.0118072}
+    leftRotation: {x: -0.4766032, y: -0.26679635, z: -0.6824182, w: 0.48575643}
+  - magazineOffset: {x: -0.07783341, y: -0.21782008, z: -0.04742652}
+    magazineRotation: {x: 0, y: 0, z: -0.13601787, w: 0.9907063}
+    leftPosition: {x: -0.14191012, y: -0.3045102, z: -0.01393202}
+    leftRotation: {x: -0.47725427, y: -0.26563826, z: -0.68357694, w: 0.48412538}
+  - magazineOffset: {x: -0.08426491, y: -0.21907628, z: -0.04881286}
+    magazineRotation: {x: 0, y: 0, z: -0.13775398, w: 0.99046654}
+    leftPosition: {x: -0.14826134, y: -0.30599192, z: -0.0155711}
+    leftRotation: {x: -0.4777282, y: -0.26479244, z: -0.68441606, w: 0.48293924}
+  - magazineOffset: {x: -0.08848429, y: -0.21978036, z: -0.04969237}
+    magazineRotation: {x: 0, y: 0, z: -0.13881415, w: 0.9903185}
+    leftPosition: {x: -0.15242551, y: -0.30687186, z: -0.01662644}
+    leftRotation: {x: -0.47801822, y: -0.2642741, z: -0.6849265, w: 0.48221573}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.09, y: -0.22, z: -0.05}
+    magazineRotation: {x: 0, y: 0, z: -0.13917314, w: 0.9902681}
+    leftPosition: {x: -0.15392071, y: -0.30716243, z: -0.017}
+    leftRotation: {x: -0.47811678, y: -0.26409805, z: -0.68509877, w: 0.4819712}
+  - magazineOffset: {x: -0.08881658, y: -0.21921712, z: -0.04932408}
+    magazineRotation: {x: 0, y: 0, z: -0.13813229, w: 0.9904138}
+    leftPosition: {x: -0.15274912, y: -0.30651364, z: -0.01632408}
+    leftRotation: {x: -0.4778478, y: -0.26459226, z: -0.68458164, w: 0.4827064}
+  - magazineOffset: {x: -0.08550297, y: -0.21693218, z: -0.04743287}
+    magazineRotation: {x: 0, y: 0, z: -0.13516796, w: 0.9908227}
+    leftPosition: {x: -0.1494669, y: -0.3046105, z: -0.01443287}
+    leftRotation: {x: -0.4770783, y: -0.26599887, z: -0.68310565, w: 0.4847955}
+  - magazineOffset: {x: -0.08041421, y: -0.2132408, z: -0.04453118}
+    magazineRotation: {x: 0, y: 0, z: -0.13051844, w: 0.9914459}
+    leftPosition: {x: -0.14442287, y: -0.301518, z: -0.01153118}
+    leftRotation: {x: -0.47586063, y: -0.2682035, z: -0.6807814, w: 0.48805764}
+  - magazineOffset: {x: -0.07390533, y: -0.20823851, z: -0.04082385}
+    magazineRotation: {x: 0, y: 0, z: -0.12442257, w: 0.99222934}
+    leftPosition: {x: -0.13796584, y: -0.29730105, z: -0.00782385}
+    leftRotation: {x: -0.47424337, y: -0.27109078, z: -0.67771834, w: 0.49230653}
+  - magazineOffset: {x: -0.06633136, y: -0.20202094, z: -0.03651571}
+    magazineRotation: {x: 0, y: 0, z: -0.11711918, w: 0.99311787}
+    leftPosition: {x: -0.13044463, y: -0.29202458, z: -0.0035157}
+    leftRotation: {x: -0.4722744, y: -0.27454486, z: -0.67402583, w: 0.49735424}
+  - magazineOffset: {x: -0.05804734, y: -0.19468367, z: -0.03181156}
+    magazineRotation: {x: 0, y: 0, z: -0.10884631, w: 0.9940586}
+    leftPosition: {x: -0.12220807, y: -0.28575352, z: 0.00118844}
+    leftRotation: {x: -0.47000247, y: -0.2784495, z: -0.6698154, w: 0.5030139}
+  - magazineOffset: {x: -0.04940828, y: -0.18632224, z: -0.02691625}
+    magazineRotation: {x: 0, y: 0, z: -0.09984101, w: 0.99500346}
+    leftPosition: {x: -0.11360497, y: -0.27855286, z: 0.00608375}
+    leftRotation: {x: -0.4674793, y: -0.2826881, z: -0.66520095, w: 0.50910294}
+  - magazineOffset: {x: -0.04076923, y: -0.17703232, z: -0.02203459}
+    magazineRotation: {x: 0, y: 0, z: -0.09033947, w: 0.99591106}
+    leftPosition: {x: -0.10498416, y: -0.27048746, z: 0.01096541}
+    leftRotation: {x: -0.46476087, y: -0.2871443, z: -0.6602995, w: 0.5154449}
+  - magazineOffset: {x: -0.0324852, y: -0.16690943, z: -0.01737141}
+    magazineRotation: {x: 0, y: 0, z: -0.08057697, w: 0.9967484}
+    leftPosition: {x: -0.09669446, y: -0.26162234, z: 0.01562859}
+    leftRotation: {x: -0.46190837, y: -0.2917027, z: -0.6552308, w: 0.5218719}
+  - magazineOffset: {x: -0.02491124, y: -0.15604915, z: -0.01313154}
+    magazineRotation: {x: 0, y: 0, z: -0.07078842, w: 0.99749136}
+    leftPosition: {x: -0.08908467, y: -0.25202233, z: 0.01986846}
+    leftRotation: {x: -0.4589893, y: -0.29624897, z: -0.6501173, w: 0.5282255}
+  - magazineOffset: {x: -0.01840237, y: -0.1445471, z: -0.00951979}
+    magazineRotation: {x: 0, y: 0, z: -0.0612088, w: 0.998125}
+    leftPosition: {x: -0.08250364, y: -0.24175245, z: 0.02348021}
+    leftRotation: {x: -0.45607746, y: -0.30067104, z: -0.6450827, w: 0.53435755}
+  - magazineOffset: {x: -0.01331361, y: -0.13249885, z: -0.00674101}
+    magazineRotation: {x: 0, y: 0, z: -0.05207368, w: 0.9986433}
+    leftPosition: {x: -0.07730015, y: -0.23087764, z: 0.02625899}
+    leftRotation: {x: -0.4532533, y: -0.3048595, z: -0.6402519, w: 0.54013044}
+  - magazineOffset: {x: -0.01, y: -0.12, z: -0.005}
+    magazineRotation: {x: 0, y: 0, z: -0.04361939, w: 0.99904823}
+    leftPosition: {x: -0.07382307, y: -0.21946278, z: 0.028}
+    leftRotation: {x: -0.45060283, y: -0.30870757, z: -0.6357499, w: 0.5454162}
+  - magazineOffset: {x: -0.00786527, y: -0.10716432, z: -0.00393263}
+    magazineRotation: {x: 0, y: 0, z: -0.03603977, w: 0.99935037}
+    leftPosition: {x: -0.07151265, y: -0.20759721, z: 0.02906737}
+    leftRotation: {x: -0.44820112, y: -0.3121336, z: -0.6316778, w: 0.5501216}
+  - magazineOffset: {x: -0.00605826, y: -0.09417844, z: -0.00302913}
+    magazineRotation: {x: 0, y: 0, z: -0.02933808, w: 0.99956954}
+    leftPosition: {x: -0.0695569, y: -0.19546767, z: 0.02997087}
+    leftRotation: {x: -0.44606036, y: -0.3151438, z: -0.6280415, w: 0.55426484}
+  - magazineOffset: {x: -0.00455166, y: -0.08124717, z: -0.00227583}
+    magazineRotation: {x: 0, y: 0, z: -0.02346598, w: 0.9997246}
+    leftPosition: {x: -0.0679263, y: -0.18328528, z: 0.03072417}
+    leftRotation: {x: -0.44417468, y: -0.3177659, z: -0.6248222, w: 0.55788815}
+  - magazineOffset: {x: -0.00331816, y: -0.06857534, z: -0.00165908}
+    magazineRotation: {x: 0, y: 0, z: -0.01837577, w: 0.99983114}
+    leftPosition: {x: -0.06659126, y: -0.17126113, z: 0.03134092}
+    leftRotation: {x: -0.4425357, y: -0.3200263, z: -0.6220012, w: 0.56102985}
+  - magazineOffset: {x: -0.00233045, y: -0.05636778, z: -0.00116522}
+    magazineRotation: {x: 0, y: 0, z: -0.0140202, w: 0.9999017}
+    leftPosition: {x: -0.06552226, y: -0.15960638, z: 0.03183477}
+    leftRotation: {x: -0.44113308, y: -0.32195076, z: -0.61955917, w: 0.56372476}
+  - magazineOffset: {x: -0.00156122, y: -0.04482931, z: -0.00078061}
+    magazineRotation: {x: 0, y: 0, z: -0.01035225, w: 0.9999464}
+    leftPosition: {x: -0.06468972, y: -0.14853211, z: 0.03221939}
+    leftRotation: {x: -0.43995485, y: -0.32356378, z: -0.6174772, w: 0.5660051}
+  - magazineOffset: {x: -0.00098316, y: -0.03416477, z: -0.00049158}
+    magazineRotation: {x: 0, y: 0, z: -0.0073251, w: 0.9999732}
+    leftPosition: {x: -0.06406409, y: -0.13824947, z: 0.03250842}
+    leftRotation: {x: -0.43898752, y: -0.3248895, z: -0.61573565, w: 0.5679008}
+  - magazineOffset: {x: -0.00056896, y: -0.02457897, z: -0.00028448}
+    magazineRotation: {x: 0, y: 0, z: -0.00489196, w: 0.999988}
+    leftPosition: {x: -0.06361579, y: -0.12896958, z: 0.03271552}
+    leftRotation: {x: -0.43821603, y: -0.32595086, z: -0.61431545, w: 0.569439}
+  - magazineOffset: {x: -0.00029131, y: -0.01627673, z: -0.00014565}
+    magazineRotation: {x: 0, y: 0, z: -0.00300608, w: 0.99999547}
+    leftPosition: {x: -0.06331529, y: -0.12090349, z: 0.03285435}
+    leftRotation: {x: -0.4376244, y: -0.32677057, z: -0.61319715, w: 0.5706459}
+  - magazineOffset: {x: -0.00012289, y: -0.0094629, z: -0.00006144}
+    magazineRotation: {x: 0, y: 0, z: -0.00162073, w: 0.9999987}
+    leftPosition: {x: -0.06313302, y: -0.11426238, z: 0.03293855}
+    leftRotation: {x: -0.4371958, y: -0.32737058, z: -0.6123613, w: 0.57154566}
+  - magazineOffset: {x: -0.00003641, y: -0.00434229, z: -0.00001821}
+    magazineRotation: {x: 0, y: 0, z: -0.00068912, w: 0.99999976}
+    leftPosition: {x: -0.06303941, y: -0.10925735, z: 0.03298179}
+    leftRotation: {x: -0.4369125, y: -0.32777277, z: -0.6117886, w: 0.5721612}
+  - magazineOffset: {x: -0.00000455, y: -0.00111971, z: -0.00000228}
+    magazineRotation: {x: 0, y: 0, z: -0.00016448, w: 1}
+    leftPosition: {x: -0.06300493, y: -0.10609952, z: 0.03299772}
+    leftRotation: {x: -0.43675625, y: -0.32799834, z: -0.6114594, w: 0.57251495}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.063, y: -0.105, z: 0.033}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.063, y: -0.10638484, z: 0.033}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.063, y: -0.10995626, z: 0.033}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.063, y: -0.11483964, z: 0.033}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.063, y: -0.12016035, z: 0.033}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.063, y: -0.12504372, z: 0.033}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.063, y: -0.12861516, z: 0.033}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.063, y: -0.13, z: 0.033}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.063, y: -0.12921463, z: 0.033}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.063, y: -0.12704194, z: 0.033}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.063, y: -0.12375712, z: 0.033}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.063, y: -0.11963534, z: 0.033}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.063, y: -0.11495177, z: 0.033}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.063, y: -0.1099816, z: 0.033}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.063, y: -0.105, z: 0.033}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.0632021, y: -0.10023915, z: 0.03530724}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.06376468, y: -0.09575941, z: 0.04173008}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.06462222, y: -0.09157813, z: 0.05152025}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.06570915, y: -0.08771265, z: 0.06392944}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.06695995, y: -0.08418038, z: 0.07820937}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.06830905, y: -0.08099863, z: 0.09361174}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.06969095, y: -0.07818479, z: 0.10938825}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.07104006, y: -0.07575622, z: 0.12479062}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.07229085, y: -0.07373028, z: 0.13907057}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.07337779, y: -0.07212432, z: 0.15147975}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.07423532, y: -0.07095572, z: 0.1612699}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.07479791, y: -0.07024182, z: 0.16769277}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.075, y: -0.07, z: 0.17}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.075, y: -0.07, z: 0.17}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  - magazineOffset: {x: 0, y: 0, z: 0}
+    magazineRotation: {x: 0, y: 0, z: 0, w: 1}
+    leftPosition: {x: -0.075, y: -0.07, z: 0.17}
+    leftRotation: {x: -0.43670833, y: -0.32806882, z: -0.61135405, w: 0.5726281}
+  sourceSha256: 798d8d796738295920d6d71adf019169f4404902b02b9ff880969364766c0277

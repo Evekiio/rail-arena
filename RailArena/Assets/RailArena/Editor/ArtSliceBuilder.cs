@@ -6,6 +6,7 @@ using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 
 namespace RailArena.Editor
 {
@@ -25,9 +26,47 @@ namespace RailArena.Editor
             if (profile.SurfaceShader == null) throw new InvalidOperationException("Cel shader not imported");
             EditorUtility.SetDirty(profile); AssetDatabase.SaveAssets();
             PrepareStoneCover();
+            PrepareRifleReload();
+            ContenderArtBuilder.Prepare();
+            SkyNatureArtBuilder.Prepare();
+            HealthCoreArtBuilder.Prepare();
+            RifleSurfaceArtBuilder.Prepare();
+            SkyAtmosphereArtBuilder.Prepare();
+            StoneSurfaceArtBuilder.Prepare();
+            ArtAtmosphereBuilder.Prepare();
             var errors = ShaderUtil.GetShaderMessages(profile.SurfaceShader).Where(m => m.severity == UnityEditor.Rendering.ShaderCompilerMessageSeverity.Error).ToArray();
             if (errors.Length != 0) throw new InvalidOperationException(string.Join("\n", errors.Select(m => m.message)));
             Debug.Log("ART_SLICE_PROFILE_READY");
+        }
+
+        [Serializable] sealed class ReloadSource
+        {
+            public int fps;
+            public float durationSeconds;
+            public Vector3 magazinePivot;
+            public RifleReloadArt.Pose[] samples;
+            public string canonicalMasterSha256;
+        }
+
+        static void PrepareRifleReload()
+        {
+            const string folder = "../ArtSource/Original/ArtPass-v1/Gate2/RifleActions/";
+            var source = JsonUtility.FromJson<ReloadSource>(File.ReadAllText(folder + "ReloadAction.json"));
+            if (source.fps != Simulation.CombatRules.TickRate || source.durationSeconds != 2 || source.samples.Length != Simulation.RifleMagazine.ReloadTicks + 1)
+                throw new InvalidOperationException("Reload action timing must match existing authority");
+            using (var sha = System.Security.Cryptography.SHA256.Create())
+            {
+                string actual = BitConverter.ToString(sha.ComputeHash(File.ReadAllBytes(folder + "Carbine-Reload-v1.blend"))).Replace("-", "").ToLowerInvariant();
+                if (actual != source.canonicalMasterSha256) throw new InvalidOperationException("Authored action master hash mismatch");
+            }
+            const string path = "Assets/Resources/Art/RifleReload.asset";
+            var art = AssetDatabase.LoadAssetAtPath<RifleReloadArt>(path);
+            if (art == null) { art = ScriptableObject.CreateInstance<RifleReloadArt>(); AssetDatabase.CreateAsset(art, path); }
+            art.magazinePivot = source.magazinePivot; art.samples = source.samples; art.sourceSha256 = source.canonicalMasterSha256;
+            if (art.Evaluate(0).magazineOffset.sqrMagnitude > 1e-8f || art.Evaluate(1).magazineOffset.sqrMagnitude > 1e-8f)
+                throw new InvalidOperationException("Reload must begin and end with seated magazine");
+            EditorUtility.SetDirty(art); AssetDatabase.SaveAssets();
+            Debug.Log("ART_RIFLE_RELOAD_IMPORTED " + art.samples.Length + " samples / 2s");
         }
 
         static void PrepareStoneCover()
@@ -76,15 +115,26 @@ namespace RailArena.Editor
         public static void Build()
         {
             Prepare();
-            const string output = "../Builds/ArtSlice-Gate2-Review/RailArena.exe";
+            string folder = Environment.GetEnvironmentVariable("RA_ART_BUILD_OUTPUT") ?? "../Builds/RailArena-v1Alpha-ArtPass-Review-01";
+            string output = Path.Combine(folder, "RailArena.exe");
             if (Directory.Exists(Path.GetDirectoryName(output))) throw new IOException("Review output already exists; choose a new build identity");
+            var pipeline = QualitySettings.renderPipeline;
+            byte[] priorIdentity = File.ReadAllBytes("Assets/Resources/BuildIdentity.txt");
             try
             {
                 building = true;
+                QualitySettings.renderPipeline = AssetDatabase.LoadAssetAtPath<UniversalRenderPipelineAsset>(ArtAtmosphereBuilder.PipelinePath);
                 var result = BuildPipeline.BuildPlayer(new BuildPlayerOptions { scenes = EditorBuildSettings.scenes.Where(s => s.enabled).Select(s => s.path).ToArray(), locationPathName = output, target = BuildTarget.StandaloneWindows64, options = BuildOptions.Development });
                 if (result.summary.result != BuildResult.Succeeded) throw new InvalidOperationException("Art slice build failed");
+                File.WriteAllText(Path.Combine(folder,"BuildIdentity.txt"), File.ReadAllText("Assets/Resources/BuildIdentity.txt"));
+                Debug.Log("ART_PASS_REVIEW_BUILD " + Path.GetFullPath(output));
             }
-            finally { building = false; }
+            finally
+            {
+                building = false; QualitySettings.renderPipeline = pipeline;
+                File.WriteAllBytes("Assets/Resources/BuildIdentity.txt", priorIdentity);
+                AssetDatabase.ImportAsset("Assets/Resources/BuildIdentity.txt", ImportAssetOptions.ForceSynchronousImport);
+            }
         }
     }
 }
