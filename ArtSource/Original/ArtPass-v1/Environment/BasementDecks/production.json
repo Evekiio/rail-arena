@@ -1,0 +1,156 @@
+{
+  "id": "SG-BASEMENT-DECKS-v1",
+  "master": "Basement-Stone-Decks-v1.blend",
+  "masterSha256": "5a67d38fcc83f25b429732ef01879f3372e0ec357ab7af53797e0f531065b3f2",
+  "source": "deck-source.json",
+  "sourceSha256": "e887e55a820cbcb66aa143aa84c7db19b00a0509fe29d333c01659fd778fb364",
+  "axes": "Blender metres (x,y,z) -> Unity (x,z,-y); top-center pivot; source collision remains unchanged",
+  "provenance": "Original layered limestone, frieze, coping and underside construction authored in Blender from the audited collision hull; original paint maps",
+  "collision": "No new colliders. Visual vertices validated inside each exact 20-sided source hull and 0.6 metre vertical envelope. Original top planes, route transforms and device clearances remain authoritative. Hidden CollisionReference collection retains both exact source meshes.",
+  "materialSlots": [
+    "DeckIvory",
+    "DeckStone",
+    "DeckTeal",
+    "DeckBronze",
+    "DeckShade"
+  ],
+  "lods": [
+    {
+      "profile": "Staging",
+      "lod": 0,
+      "export": "RailArena\\Assets\\RailArena\\Art\\ArtPass\\Environment\\BasementDecks\\Staging-Deck-LOD0.fbx",
+      "exportSha256": "36c97d07d472aeee9032a3b592782220643cc94e685f5acc057535dc77c76ddc",
+      "triangles": 6876,
+      "parts": 273,
+      "materials": [
+        "DeckShade",
+        "DeckIvory",
+        "DeckTeal",
+        "DeckBronze",
+        "DeckStone"
+      ],
+      "topPivotUnityMetres": [
+        0,
+        0,
+        0
+      ],
+      "collisionGeometrySha256": "9d906cae4892f25086f19a99eebf2dacd40f4929adbb0d56a578f033c12121de",
+      "diameterMetres": 6.000000953674316,
+      "thicknessMetres": 0.6000000238418579
+    },
+    {
+      "profile": "Staging",
+      "lod": 1,
+      "export": "RailArena\\Assets\\RailArena\\Art\\ArtPass\\Environment\\BasementDecks\\Staging-Deck-LOD1.fbx",
+      "exportSha256": "d019a631250c9ed30b6353647a2cca9d2b9a67d9ec4c01c1056e2fa90e50fcb3",
+      "triangles": 3556,
+      "parts": 263,
+      "materials": [
+        "DeckShade",
+        "DeckIvory",
+        "DeckTeal",
+        "DeckBronze",
+        "DeckStone"
+      ],
+      "topPivotUnityMetres": [
+        0,
+        0,
+        0
+      ],
+      "collisionGeometrySha256": "9d906cae4892f25086f19a99eebf2dacd40f4929adbb0d56a578f033c12121de",
+      "diameterMetres": 6.000000953674316,
+      "thicknessMetres": 0.6000000238418579
+    },
+    {
+      "profile": "Staging",
+      "lod": 2,
+      "export": "RailArena\\Assets\\RailArena\\Art\\ArtPass\\Environment\\BasementDecks\\Staging-Deck-LOD2.fbx",
+      "exportSha256": "9e242d11f56f94067656e56b3fea236fd840cf7857535fc075006018a46f885b",
+      "triangles": 748,
+      "parts": 44,
+      "materials": [
+        "DeckStone",
+        "DeckTeal",
+        "DeckBronze",
+        "DeckIvory"
+      ],
+      "topPivotUnityMetres": [
+        0,
+        0,
+        0
+      ],
+      "collisionGeometrySha256": "9d906cae4892f25086f19a99eebf2dacd40f4929adbb0d56a578f033c12121de",
+      "diameterMetres": 6.000000953674316,
+      "thicknessMetres": 0.6000000238418579
+    },
+    {
+      "profile": "Basement",
+      "lod": 0,
+      "export": "RailArena\\Assets\\RailArena\\Art\\ArtPass\\Environment\\BasementDecks\\Basement-Deck-LOD0.fbx",
+      "exportSha256": "9c0596364c0dd59c3492080db32d636d4e0a786fb5547e04c9c726eba020a66b",
+      "triangles": 6876,
+      "parts": 273,
+      "materials": [
+        "DeckShade",
+        "DeckIvory",
+        "DeckTeal",
+        "DeckBronze",
+        "DeckStone"
+      ],
+      "topPivotUnityMetres": [
+        0,
+        0,
+        0
+      ],
+      "collisionGeometrySha256": "743a676df2b96df458af7233e9f873c69ae295d62e88e394174b8e24cd24394a",
+      "diameterMetres": 12.000001907348633,
+      "thicknessMetres": 0.6000000238418579
+    },
+    {
+      "profile": "Basement",
+      "lod": 1,
+      "export": "RailArena\\Assets\\RailArena\\Art\\ArtPass\\Environment\\BasementDecks\\Basement-Deck-LOD1.fbx",
+      "exportSha256": "9e3ac0d053997666e6a2ea9a60b6d00d550b3a78f4a89eb28079bec95038f627",
+      "triangles": 3556,
+      "parts": 263,
+      "materials": [
+        "DeckShade",
+        "DeckIvory",
+        "DeckTeal",
+        "DeckBronze",
+        "DeckStone"
+      ],
+      "topPivotUnityMetres": [
+        0,
+        0,
+        0
+      ],
+      "collisionGeometrySha256": "743a676df2b96df458af7233e9f873c69ae295d62e88e394174b8e24cd24394a",
+      "diameterMetres": 12.000001907348633,
+      "thicknessMetres": 0.6000000238418579
+    },
+    {
+      "profile": "Basement",
+      "lod": 2,
+      "export": "RailArena\\Assets\\RailArena\\Art\\ArtPass\\Environment\\BasementDecks\\Basement-Deck-LOD2.fbx",
+      "exportSha256": "fc1e5f572a554d93c4271e92d6ed38be4390af07816bc6af9243f85aa0a6e8c2",
+      "triangles": 748,
+      "parts": 44,
+      "materials": [
+        "DeckStone",
+        "DeckTeal",
+        "DeckBronze",
+        "DeckIvory"
+      ],
+      "topPivotUnityMetres": [
+        0,
+        0,
+        0
+      ],
+      "collisionGeometrySha256": "743a676df2b96df458af7233e9f873c69ae295d62e88e394174b8e24cd24394a",
+      "diameterMetres": 12.000001907348633,
+      "thicknessMetres": 0.6000000238418579
+    }
+  ],
+  "approval": "Direction approved; final integrated Sanders playtest pending"
+}

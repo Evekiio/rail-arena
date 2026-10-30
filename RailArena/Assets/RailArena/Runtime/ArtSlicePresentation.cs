@@ -38,6 +38,7 @@ namespace RailArena
             originalSkybox = RenderSettings.skybox;
             if (Profile.CloudSkybox != null) RenderSettings.skybox = Profile.CloudSkybox;
             InstallStoneCover();
+            InstallBasementDecks();
             InstallCanopies();
             InstallMedicalCores();
             wayfinding = gameObject.AddComponent<ArenaWayfindingArt>(); wayfinding.Initialize(session.World);
@@ -167,6 +168,27 @@ namespace RailArena
                 instance.transform.localScale = renderer.bounds.size;
                 coverInstances.Add(instance); hiddenCover[renderer] = renderer.enabled; renderer.enabled = false;
             }
+        }
+
+        void InstallBasementDecks()
+        {
+            foreach(var route in session.World.GetComponentsInChildren<BasementRoute>())
+                foreach(bool landing in new[]{false,true})
+                {
+                    var deck=landing?route.Landing:route.Staging;
+                    var source=deck.GetComponent<MeshRenderer>();var mesh=deck.GetComponent<MeshFilter>().sharedMesh;
+                    var prefab=Resources.Load<GameObject>("Art/"+(landing?"Basement":"Staging")+"StoneDeck");
+                    if(prefab==null)throw new System.InvalidOperationException("Measured basement deck art is missing");
+                    var top=deck.TransformPoint(new Vector3(mesh.bounds.center.x,mesh.bounds.max.y,mesh.bounds.center.z));
+                    var instance=Instantiate(prefab,top,Quaternion.identity);instance.name=route.name+" / "+(landing?"Basement":"Staging")+" authored stone";
+                    foreach(var item in instance.GetComponentsInChildren<Transform>(true))item.gameObject.layer=source.gameObject.layer;
+                    coverInstances.Add(instance);hiddenCover[source]=source.enabled;source.enabled=false;
+                    if(landing)
+                    {
+                        var marker=route.transform.Find("Landing marker").GetComponent<MeshRenderer>();
+                        hiddenCover[marker]=marker.enabled;marker.enabled=false;
+                    }
+                }
         }
 
         void InstallMedicalCores()

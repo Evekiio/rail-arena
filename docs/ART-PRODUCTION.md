@@ -19,6 +19,7 @@ Current milestone: **Gate 1 approved; playable art build delivered; full integra
 - [Current working build and validation handoff](ART-PASS-REVIEW.md)
 - [Current joined asset manifest](../ArtSource/Original/ArtPass-v1/current-asset-manifest.json), [register](../ArtSource/Original/ArtPass-v1/current-asset-register.csv) and [remaining gaps](../ArtSource/Original/ArtPass-v1/CURRENT-GAPS.md)
 - [Authored locomotion integration and evidence](AUTHORED-LOCOMOTION.md)
+- [Measured staging/basement stone kit](BASEMENT-STONE-KIT.md)
 
 The target is crisp anime cel shading for Sky Gardens including the summit and basement routes, with a measured 1080p/60 FPS target on the RTX 2080 with one human and three bots. Older maps are inventoried and preserved. Source ownership and visual approval must remain distinct from runtime inclusion and technical import validity.
 
