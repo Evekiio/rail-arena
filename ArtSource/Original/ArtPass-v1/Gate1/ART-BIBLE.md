@@ -1,6 +1,6 @@
 # Rail Arena / v1 alpha art bible
 
-**Gate 1 proposal. Approval authority: Sanders. Production art and final likeness remain unapproved.**
+**Gate 1 direction approved by Sanders on 2026-10-30. Production asset likeness and Gates 2/3 remain subject to review.**
 
 ## Intended result
 

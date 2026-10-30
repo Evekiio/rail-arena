@@ -1,0 +1,33 @@
+{
+  "id": "SG-COVER-2M-v1",
+  "version": 1,
+  "provenance": "Original procedural Blender construction authored for Rail Arena",
+  "master": "ArtSource\\Original\\ArtPass-v1\\Gate2\\StoneCover\\StoneCover-v1.blend",
+  "export": "RailArena\\Assets\\RailArena\\Art\\ArtSlice\\StoneCover-v1.fbx",
+  "blenderDimensionsMetresXYZ": [
+    2,
+    1,
+    1.2
+  ],
+  "unityDimensionsMetresXYZ": [
+    2,
+    1.2,
+    1
+  ],
+  "pivot": "envelope center",
+  "axes": "Unity(x,z,-y) from Blender(x,y,z)",
+  "orthographicSpanMetres": 2.6,
+  "parts": 19,
+  "views": [
+    "front.png",
+    "rear.png",
+    "left.png",
+    "right.png",
+    "top.png",
+    "bottom.png"
+  ],
+  "collision": "Existing 2 x 1.2 x 1 m envelope retained by runtime; visual art has no colliders",
+  "approval": "Gate 2 candidate, pending in-game slice review",
+  "masterSha256": "d757af493943d7879f3c249b520fcf10f73ed229211f6399b53bb4dc61fcbb1f",
+  "exportSha256": "72ad9aa74b58b8da9156f0757a133db0186e6e6f1a27552a0717170cc840128c"
+}

@@ -2,13 +2,18 @@
   "schema": "rail-arena-art-approvals/1",
   "approvingDeveloperDesigner": "Sanders",
   "gate1": {
-    "status": "awaiting review",
+    "status": "approved",
     "deliverable": "index.html",
     "manifestSha256": "984da32a5263bf2532b7768ea66425e81c56b6e61431c97bbbbcdc2cc90fe027",
-    "approvalEvidence": null
+    "approvalEvidence": {
+      "approver": "Sanders",
+      "statement": "The art is approved",
+      "context": "Direct user message following Gate 1 package review request",
+      "date": "2026-10-30"
+    }
   },
   "gate2": {
-    "status": "not started; requires Gate 1 approval",
+    "status": "in production; playable visual slice",
     "approvalEvidence": null
   },
   "gate3": {

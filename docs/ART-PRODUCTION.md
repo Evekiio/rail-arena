@@ -1,6 +1,6 @@
 # Rail Arena v1 alpha art production
 
-Current milestone: **Gate 1 candidate package; Sanders approval pending.** The overall goal remains the complete approved art-production plan. This package is the evidence and production basis for the first approval gate, not a completed graphical overhaul or permission to skip Gates 2 and 3.
+Current milestone: **Gate 1 approved by Sanders; Gate 2 playable visual slice in production.** The overall goal remains the complete approved art-production plan. This package is the evidence and production basis for the first approval gate, not a completed graphical overhaul or permission to skip Gates 2 and 3.
 
 - [Gate 1 review gallery](../ArtSource/Original/ArtPass-v1/Gate1/index.html)
 - [Art bible](../ArtSource/Original/ArtPass-v1/Gate1/ART-BIBLE.md)
@@ -9,6 +9,8 @@ Current milestone: **Gate 1 candidate package; Sanders approval pending.** The o
 - [Gap report](../ArtSource/Original/ArtPass-v1/Gate1/GAP-REPORT.md)
 - [Animation matrix](../ArtSource/Original/ArtPass-v1/Gate1/animation-matrix.csv)
 - [Production schedule](../ArtSource/Original/ArtPass-v1/Gate1/production-schedule.csv)
+- [Gate 2 current production and comparison gallery](../ArtSource/Original/ArtPass-v1/Gate2/index.html)
+- [Gate 2 remaining work](../ArtSource/Original/ArtPass-v1/Gate2/PRODUCTION-STATUS.md)
 
 The target is crisp anime cel shading for Sky Gardens including the summit and basement routes, with a measured 1080p/60 FPS target on the RTX 2080 with one human and three bots. Older maps are inventoried and preserved. Source ownership and visual approval must remain distinct from runtime inclusion and technical import validity.
 
@@ -26,4 +28,4 @@ Asset and instance IDs are separate: Unity files use their existing GUID; ArtSou
 
 The manifest explicitly flags conditional review-build inputs, Resources inclusion, candidates and legacy dependencies. Runtime-created content requires the owning code/state specification; an unreferenced serialized asset is not automatically safe to delete.
 
-Gate 1 has no gameplay or public release change. After Sanders approves it, production proceeds to the complete in-game visual slice, followed by full integration and final approval. GitHub source delivery follows the repository's normal PR process; public alpha packages change only after final visual approval.
+Gate 1 was approved by Sanders on 2026-10-30. Production is proceeding to the complete in-game visual slice, followed by full integration and final approval. The first cel/stone batch is a prototype, not the completed slice. GitHub source delivery follows the repository's normal PR process; public alpha packages change only after final visual approval.
