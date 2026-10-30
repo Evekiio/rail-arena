@@ -121,6 +121,7 @@ namespace RailArena.Editor
             if (Directory.Exists(Path.GetDirectoryName(output))) throw new IOException("Review output already exists; choose a new build identity");
             var pipeline = QualitySettings.renderPipeline;
             byte[] priorIdentity = File.ReadAllBytes("Assets/Resources/BuildIdentity.txt");
+            byte[] priorQuality = File.ReadAllBytes("ProjectSettings/QualitySettings.asset");
             try
             {
                 building = true;
@@ -136,10 +137,17 @@ namespace RailArena.Editor
             }
             finally
             {
-                building = false; QualitySettings.renderPipeline = pipeline;
-                File.WriteAllBytes("Assets/Resources/BuildIdentity.txt", priorIdentity);
-                AssetDatabase.ImportAsset("Assets/Resources/BuildIdentity.txt", ImportAssetOptions.ForceSynchronousImport);
+                building = false; RestoreBuildInputs(pipeline, priorIdentity, priorQuality);
             }
+        }
+
+        public static void RestoreBuildInputs(UnityEngine.Rendering.RenderPipelineAsset pipeline, byte[] identity, byte[] quality)
+        {
+            QualitySettings.renderPipeline = pipeline;
+            // The pipeline setter does not reliably flush ProjectSettings before batch-mode exit.
+            File.WriteAllBytes("ProjectSettings/QualitySettings.asset", quality);
+            File.WriteAllBytes("Assets/Resources/BuildIdentity.txt", identity);
+            AssetDatabase.ImportAsset("Assets/Resources/BuildIdentity.txt", ImportAssetOptions.ForceSynchronousImport);
         }
     }
 }

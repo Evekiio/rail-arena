@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace RailArena
 {
@@ -14,14 +15,14 @@ namespace RailArena
         [Serializable] sealed class Reading
         {
             public string view;
-            public int frames, validGpuSamples;
+            public int frames, validGpuSamples, nonBlackSamples;
             public float meanFrameMs, p95FrameMs;
             public double medianGpuMs = -1;
             public bool frameBudgetMet;
         }
         [Serializable] sealed class Report
         {
-            public string scope = "Hidden Windows player, normal camera rendering, High tier, one automated human and three bots. Fixed camera workload samples; native-input/audio and sustained competitive play acceptance remain open. GPU -1 means unavailable.";
+            public string scope = "Hidden Windows player with forced 1080p offscreen camera rendering and a synchronized one-pixel GPU readback each frame, High tier, one automated human and three bots. Timings include readback overhead; overlay HUD, native swapchain, input/audio and sustained competitive play acceptance remain open. GPU -1 means unavailable.";
             public string gpu, api, fingerprint;
             public int width, height, exceptions;
             public Reading[] views;
@@ -61,6 +62,10 @@ namespace RailArena
             session.AutomatedHuman = true; session.StartSession(true, 3, 1, TargetScenario.Combat);
             yield return new WaitForSecondsRealtime(5);
             view.cullingMask = (view.cullingMask | (1 << 8)) & ~(1 << 11);
+            view.enabled = false;
+            var targetTexture = new RenderTexture(1920,1080,24); targetTexture.Create();
+            var synchronizationPixel = new Texture2D(1,1,TextureFormat.RGB24,false);
+            var capturePixels = new Texture2D(1920,1080,TextureFormat.RGB24,false);
             var readings = new List<Reading>(); var timing = new FrameTiming[1];
             var portal = session.World.Portals[0];
             var poses = new[] {
@@ -75,6 +80,12 @@ namespace RailArena
                 var frames = new List<float>(); var gpu = new List<double>();
                 for (int frame = 0; frame < 240; frame++)
                 {
+                    LateUpdate();
+                    RenderPipeline.SubmitRenderRequest(view, new RenderPipeline.StandardRequest { destination = targetTexture });
+                    var previousTarget = RenderTexture.active;
+                    RenderTexture.active = targetTexture;
+                    synchronizationPixel.ReadPixels(new Rect(0,0,1,1),0,0,false);
+                    RenderTexture.active = previousTarget;
                     FrameTimingManager.CaptureFrameTimings(); yield return null;
                     if (frame < 60) continue;
                     frames.Add(Time.unscaledDeltaTime * 1000);
@@ -85,14 +96,22 @@ namespace RailArena
                     p95FrameMs = frames[(int)(frames.Count * .95f)], validGpuSamples = gpu.Count,
                     medianGpuMs = gpu.Count == 0 ? -1 : gpu[gpu.Count / 2] };
                 reading.frameBudgetMet = reading.p95FrameMs <= 16.67f; readings.Add(reading);
-                ScreenCapture.CaptureScreenshot(output + "." + pose.Item1 + ".png");
-                yield return new WaitForEndOfFrame(); yield return null;
+                var previousCaptureTarget = RenderTexture.active;
+                RenderTexture.active = targetTexture;
+                capturePixels.ReadPixels(new Rect(0,0,1920,1080),0,0,false); capturePixels.Apply();
+                RenderTexture.active = previousCaptureTarget;
+                var pixels = capturePixels.GetPixels32();
+                for (int pixel = 0; pixel < pixels.Length; pixel += 64)
+                    if (pixels[pixel].r > 8 || pixels[pixel].g > 8 || pixels[pixel].b > 8) reading.nonBlackSamples++;
+                File.WriteAllBytes(output + "." + pose.Item1 + ".png", capturePixels.EncodeToPNG());
+                yield return null;
             }
             var report = new Report { gpu = SystemInfo.graphicsDeviceName, api = SystemInfo.graphicsDeviceType.ToString(),
                 fingerprint = Resources.Load<TextAsset>("BuildIdentity").text.Trim(), width = Screen.width, height = Screen.height,
-                exceptions = errors, views = readings.ToArray(), passed = errors == 0 && Screen.width == 1920 && Screen.height == 1080,
+                exceptions = errors, views = readings.ToArray(), passed = errors == 0 && Screen.width == 1920 && Screen.height == 1080 && readings.TrueForAll(r => r.nonBlackSamples > 100),
                 allViewsWithinBudget = readings.TrueForAll(r => r.frameBudgetMet) };
             File.WriteAllText(output, JsonUtility.ToJson(report, true));
+            targetTexture.Release(); Destroy(targetTexture); Destroy(synchronizationPixel); Destroy(capturePixels);
             Application.Quit(report.passed ? 0 : 1);
         }
     }
