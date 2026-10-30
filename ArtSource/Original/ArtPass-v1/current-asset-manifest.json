@@ -4,10 +4,10 @@
   "productionDelta": "integrated-manifest.json",
   "summary": {
     "baselineEntries": 2224,
-    "productionEntries": 341,
+    "productionEntries": 396,
     "overlappingPaths": 0,
-    "currentUniquePaths": 2565,
-    "productionEvidencePaths": 341,
+    "currentUniquePaths": 2620,
+    "productionEvidencePaths": 396,
     "baselineOnlyPaths": 2224,
     "missingPaths": 0,
     "finalApprovedEntries": 0,
@@ -14700,6 +14700,1400 @@
       "evidenceState": "production-evidence-present",
       "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
       "productionSha256": "df3e1475cd2f4e360fed31e6c425b559dfac01572eafdb6b946fb808a71ed842"
+    },
+    {
+      "id": "art-73503981ada52922",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "baselineId": null,
+      "productionId": "art-73503981ada52922",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        12.000001907348633,
+        12.000001907348633,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "5a67d38fcc83f25b429732ef01879f3372e0ec357ab7af53797e0f531065b3f2"
+    },
+    {
+      "id": "art-e8c892cb68024cd4",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Paving-Cavity.png",
+      "baselineId": null,
+      "productionId": "art-e8c892cb68024cd4",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "7f4577bf3874ebdc97c0f29757b84cc326135746c05a9da4196b7739a99ddfc5"
+    },
+    {
+      "id": "art-8962a3c21faec2aa",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Paving-Normal.png",
+      "baselineId": null,
+      "productionId": "art-8962a3c21faec2aa",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "3c4b25712292f72e57b97f5295f04925f9a6a17b6b6dceb1e48996532e21c4f5"
+    },
+    {
+      "id": "art-4feb7897eb9b5aa3",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Paving-Painted.png",
+      "baselineId": null,
+      "productionId": "art-4feb7897eb9b5aa3",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "997e918c868b2d062312441e27044f494a7534de47068a6dcc146ae604cb76fd"
+    },
+    {
+      "id": "art-8c4a643619de395b",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/bottom.png",
+      "baselineId": null,
+      "productionId": "art-8c4a643619de395b",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        12.000001907348633,
+        12.000001907348633,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "dc2bcb246c855eda3e9a13fa791dab26fd32bc5b7f7f33b6d3445638b0edfc2c"
+    },
+    {
+      "id": "art-d456f2b402cc9c29",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/exploded.png",
+      "baselineId": null,
+      "productionId": "art-d456f2b402cc9c29",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        12.000001907348633,
+        12.000001907348633,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "48e7aadf2ae52a7de5eb7011cb110493cfd7f9b97d76727d00cbb19b382d253f"
+    },
+    {
+      "id": "art-b067e0bcdd6e8c7d",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/front.png",
+      "baselineId": null,
+      "productionId": "art-b067e0bcdd6e8c7d",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        12.000001907348633,
+        12.000001907348633,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "b3d6c24b09cf88267afa816d08b26105d76771c6e478ae8a4272676af117de0a"
+    },
+    {
+      "id": "art-14c44d4366b7fcfc",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/left.png",
+      "baselineId": null,
+      "productionId": "art-14c44d4366b7fcfc",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        12.000001907348633,
+        12.000001907348633,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "4fdf599b8fc74aff5a4f6cd38d3bfce302deb0d2df3132cfb1207cb3a5c112d5"
+    },
+    {
+      "id": "art-80865205cfedae05",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png",
+      "baselineId": null,
+      "productionId": "art-80865205cfedae05",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        12.000001907348633,
+        12.000001907348633,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "ac124db79a2a134daa10fca28417b513353fa9296d4340a3c4b080d23d632fac"
+    },
+    {
+      "id": "art-62f2cee7542bf7a5",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/rear.png",
+      "baselineId": null,
+      "productionId": "art-62f2cee7542bf7a5",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        12.000001907348633,
+        12.000001907348633,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "181fcef6ee96551b269ff161c841773ba1de3663afdd6241955cf99407532bad"
+    },
+    {
+      "id": "art-bd2e1d4186cfcf93",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/right.png",
+      "baselineId": null,
+      "productionId": "art-bd2e1d4186cfcf93",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        12.000001907348633,
+        12.000001907348633,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "f83a994a258f5c8075cc17d778f2b456056633e8479eb7e846f8ec1e3d6fd3c1"
+    },
+    {
+      "id": "art-fca9ea83941b0f92",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/top.png",
+      "baselineId": null,
+      "productionId": "art-fca9ea83941b0f92",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        12.000001907348633,
+        12.000001907348633,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "f83e4abbbd7664ba23859d37e07f901d64d96c1ee5cd68dadb1aa93b5177f4ea"
+    },
+    {
+      "id": "art-ac9a88a8cdf3b8db",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/bottom.png",
+      "baselineId": null,
+      "productionId": "art-ac9a88a8cdf3b8db",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        6.000000953674316,
+        6.000000953674316,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "9d0d6955c73f47d683dfe4a37fe1da5485701763c7274a8151bbad3f2e3a7746"
+    },
+    {
+      "id": "art-dc2a5b4283fd0fd7",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/exploded.png",
+      "baselineId": null,
+      "productionId": "art-dc2a5b4283fd0fd7",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        6.000000953674316,
+        6.000000953674316,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "b0c53d33ae2039186c7eb9a40d4fac55021fce2f99dd99b5613408294b135c28"
+    },
+    {
+      "id": "art-3faa43c00335da48",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/front.png",
+      "baselineId": null,
+      "productionId": "art-3faa43c00335da48",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        6.000000953674316,
+        6.000000953674316,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "8a15e37a2f54f85ec42f9ac91a1e7d6e95eaeaa22fa881cb1290bcc6d06c05ef"
+    },
+    {
+      "id": "art-2256d489dde20900",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/left.png",
+      "baselineId": null,
+      "productionId": "art-2256d489dde20900",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        6.000000953674316,
+        6.000000953674316,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "923de7175fb26377ccb5586759b9f861f02760cca97543d46dafc10d1b57d944"
+    },
+    {
+      "id": "art-4f9177dca3d651d4",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+      "baselineId": null,
+      "productionId": "art-4f9177dca3d651d4",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        6.000000953674316,
+        6.000000953674316,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "c1a2a3fe05867c6b9d50dd23b01648e3b00b8f20773e5d251e7e305a5f8bdf5a"
+    },
+    {
+      "id": "art-1922378ea411e57d",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/rear.png",
+      "baselineId": null,
+      "productionId": "art-1922378ea411e57d",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        6.000000953674316,
+        6.000000953674316,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "d3cc93885ac9b84313ac98d59dc5defa28155a6e1c7b80b5989abafbaca07d5d"
+    },
+    {
+      "id": "art-aaa2326d2a9e75d2",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/right.png",
+      "baselineId": null,
+      "productionId": "art-aaa2326d2a9e75d2",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        6.000000953674316,
+        6.000000953674316,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "aa534a1e8f9415f3f3663c89e254f3462cd2da731dcfaae475c8cf17dd0ab854"
+    },
+    {
+      "id": "art-2bceb5eac1db524d",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/top.png",
+      "baselineId": null,
+      "productionId": "art-2bceb5eac1db524d",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        6.000000953674316,
+        6.000000953674316,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "5729e284f58b0ca305a4e3918ad61505e290945440c28dcbf654a1d281fefd11"
+    },
+    {
+      "id": "art-03f0ff7580cf2395",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-lod0.png",
+      "baselineId": null,
+      "productionId": "art-03f0ff7580cf2395",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "2cebaf7949acb501c278b2a0bcdbe5a20e6aeec4b8d9c44916347df7b6a989e9"
+    },
+    {
+      "id": "art-cbdcca1c27269880",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-lod1.png",
+      "baselineId": null,
+      "productionId": "art-cbdcca1c27269880",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "1def9f89b741ef9a231a93d8dc5b168b085216d5b32f27213f21671b15107fc9"
+    },
+    {
+      "id": "art-08f5bd7adb8992f7",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-lod2.png",
+      "baselineId": null,
+      "productionId": "art-08f5bd7adb8992f7",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "4f9fd69f78619db119b84df5801bdf6a6c20d4b64ffcd3eb2db6963edf4f4463"
+    },
+    {
+      "id": "art-3ae0e3cdd80bf5bd",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png",
+      "baselineId": null,
+      "productionId": "art-3ae0e3cdd80bf5bd",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "2cebaf7949acb501c278b2a0bcdbe5a20e6aeec4b8d9c44916347df7b6a989e9"
+    },
+    {
+      "id": "art-8215e9ab31254916",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-before.png",
+      "baselineId": null,
+      "productionId": "art-8215e9ab31254916",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "97d8a3e3f5b91a71155d90a5d0bc50392449a2ac3869d056880afb28972a7f29"
+    },
+    {
+      "id": "art-75d09b9e3c03f014",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-comparison.png",
+      "baselineId": null,
+      "productionId": "art-75d09b9e3c03f014",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "d5210377c3ce04c6523ccc095348d6062fcc4f9cd64c8c31ea885b5e1520df7c"
+    },
+    {
+      "id": "art-59aef09a14f88013",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-underside-after.png",
+      "baselineId": null,
+      "productionId": "art-59aef09a14f88013",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "b29487a5b415cdf8c470ace6eaf7e9d5fa932863a6d8d49f33b0043ab6406710"
+    },
+    {
+      "id": "art-45d713d6296e1d07",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-underside-before.png",
+      "baselineId": null,
+      "productionId": "art-45d713d6296e1d07",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "5e1e835522104d2e004c85a4eb3ddf01450f875d1fbc66552d6867425ea561da"
+    },
+    {
+      "id": "art-8b013c345b9358dc",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-underside-comparison.png",
+      "baselineId": null,
+      "productionId": "art-8b013c345b9358dc",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "e46f2d5e501b198f883a98a436c591b4a5a835df02a691180cf2e49824d7c1c0"
+    },
+    {
+      "id": "art-7088691599fd599e",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/index.json",
+      "baselineId": null,
+      "productionId": "art-7088691599fd599e",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "3a83b13b37f9418cd80f67df697f84a67c7f2844371cc1c74f89ea6e02ab041c"
+    },
+    {
+      "id": "art-91f5da420259bb2f",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/staging-gameplay-after.png",
+      "baselineId": null,
+      "productionId": "art-91f5da420259bb2f",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "346db56d166230c9c982362af2abd6cc2a3d60697e051af692009f5c6f2d5629"
+    },
+    {
+      "id": "art-de4c174c88807674",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/staging-gameplay-before.png",
+      "baselineId": null,
+      "productionId": "art-de4c174c88807674",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "8eab3fe6b71ffd5949a45c2eee14917d1c919ba10f0f9ed488dd26b6bfd76798"
+    },
+    {
+      "id": "art-a6d33b932bdacef7",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/staging-gameplay-comparison.png",
+      "baselineId": null,
+      "productionId": "art-a6d33b932bdacef7",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "d48d05606c9f11c67f1ad604bf1995b5299481e5e0160681060e51fa1da6f605"
+    },
+    {
+      "id": "art-177c602bd303d8bc",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+      "baselineId": null,
+      "productionId": "art-177c602bd303d8bc",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "e887e55a820cbcb66aa143aa84c7db19b00a0509fe29d333c01659fd778fb364"
+    },
+    {
+      "id": "art-31f2d3fb6e87e851",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/index.html",
+      "baselineId": null,
+      "productionId": "art-31f2d3fb6e87e851",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "75d9fc21916579f2bbbc7f8a16fac8452f61df6fe32e546d72e443bfca808b7b"
+    },
+    {
+      "id": "art-3e3abb51990cf409",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/measured-construction.json",
+      "baselineId": null,
+      "productionId": "art-3e3abb51990cf409",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "1ed07808fb191139c1e7e2edce72e1a7ae2d4a76f8501843eb67f20830720903"
+    },
+    {
+      "id": "art-6df9cf9d4a41f775",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+      "baselineId": null,
+      "productionId": "art-6df9cf9d4a41f775",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "18115557ccc7c1f37ad4c54fce733961c5429653c2c5c6bea9d68fb17e7779a3"
+    },
+    {
+      "id": "art-aaf483998fd31f2c",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "baselineId": null,
+      "productionId": "art-aaf483998fd31f2c",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "9d7a29a4ae52b900ba92c5a9e9a22267ea7865451f54c3a641bd68ba88be2542"
+    },
+    {
+      "id": "art-1422f5519caadeab",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/review-evidence.json",
+      "baselineId": null,
+      "productionId": "art-1422f5519caadeab",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Canonical source, paint or measured/reference evidence; not installed artwork by itself",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "31828f529197667560e982f5881159f7a5a6d76d5827ff8236bda6d329069a50"
     },
     {
       "id": "art-00ae4e5447b08bc9",
@@ -42031,6 +43425,506 @@
       "productionSha256": "9b917b0d0b8ea2eda86013f3352be5e250d4e13b03103998496625da3be2136c"
     },
     {
+      "id": "unity:bcb73a5fa4ca59445861a215ab0dc91c",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BasementDecks/Basement-Deck-LOD0.fbx",
+      "baselineId": null,
+      "productionId": "art-2386fde5a0763b57",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Conditional Sky Gardens art profile / eight visual decks; original colliders retained",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        12.000001907348633,
+        12.000001907348633,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "9c0596364c0dd59c3492080db32d636d4e0a786fb5547e04c9c726eba020a66b"
+    },
+    {
+      "id": "unity:73283888377d354489639c9a2920299a",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BasementDecks/Basement-Deck-LOD1.fbx",
+      "baselineId": null,
+      "productionId": "art-5fc8566e68fa0b74",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Conditional Sky Gardens art profile / eight visual decks; original colliders retained",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        12.000001907348633,
+        12.000001907348633,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "9e3ac0d053997666e6a2ea9a60b6d00d550b3a78f4a89eb28079bec95038f627"
+    },
+    {
+      "id": "unity:72a808f42b242da4f9a82014eeda702b",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BasementDecks/Basement-Deck-LOD2.fbx",
+      "baselineId": null,
+      "productionId": "art-7ed9029b2568a95d",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Conditional Sky Gardens art profile / eight visual decks; original colliders retained",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        12.000001907348633,
+        12.000001907348633,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "fc1e5f572a554d93c4271e92d6ed38be4390af07816bc6af9243f85aa0a6e8c2"
+    },
+    {
+      "id": "unity:46163a401a7b4ab42b46c7137e48dc36",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BasementDecks/DeckBronze.mat",
+      "baselineId": null,
+      "productionId": "art-09588fd2cce40c31",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Conditional Sky Gardens art profile / eight visual decks; original colliders retained",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "6e0f1affad1a4dcf7b199a8b1d9346e4da55d0d18753be4935d49f0ab97af77c"
+    },
+    {
+      "id": "unity:de0b407afe6a68243bf3e2e810c624d0",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BasementDecks/DeckIvory.mat",
+      "baselineId": null,
+      "productionId": "art-5e2e22b31aeace0e",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Conditional Sky Gardens art profile / eight visual decks; original colliders retained",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "357755b26b7a6bd75c6adad4e4f43b8dbc2d00a861df9d4f6af01c773a36e1ee"
+    },
+    {
+      "id": "unity:89398ab974de5ba43bf628f2d35a9e1e",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BasementDecks/DeckShade.mat",
+      "baselineId": null,
+      "productionId": "art-b82b718e90f12d12",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Conditional Sky Gardens art profile / eight visual decks; original colliders retained",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "c44ea5a1cfe15a079e7f961edc5f1c3ecf86ac37c42f51ce66b8cbfa0f74cd54"
+    },
+    {
+      "id": "unity:1b44b445be1ec8649bb2c5ead07d47c7",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BasementDecks/DeckStone.mat",
+      "baselineId": null,
+      "productionId": "art-da8727b96db0e359",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Conditional Sky Gardens art profile / eight visual decks; original colliders retained",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "0e8fc6a44b39c73ee9fd5ef922958793351eed7a7f94292584812480b38f130d"
+    },
+    {
+      "id": "unity:6e9787183f9aa05408392ac4e2e8181f",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BasementDecks/DeckTeal.mat",
+      "baselineId": null,
+      "productionId": "art-6d78b43176dc7963",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Conditional Sky Gardens art profile / eight visual decks; original colliders retained",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "04f260dc41225a22d4e52b0bd1c01fb21d9260eaa210ba2b39994c651d4942bb"
+    },
+    {
+      "id": "unity:aabbbadd1916da8479cfcc467000064e",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BasementDecks/Paving-Cavity.png",
+      "baselineId": null,
+      "productionId": "art-b3fb63896972ad3e",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Conditional Sky Gardens art profile / eight visual decks; original colliders retained",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "7f4577bf3874ebdc97c0f29757b84cc326135746c05a9da4196b7739a99ddfc5"
+    },
+    {
+      "id": "unity:0549d1def4181974fb7569f9123581c8",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BasementDecks/Paving-Normal.png",
+      "baselineId": null,
+      "productionId": "art-331434308c7388d3",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Conditional Sky Gardens art profile / eight visual decks; original colliders retained",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "3c4b25712292f72e57b97f5295f04925f9a6a17b6b6dceb1e48996532e21c4f5"
+    },
+    {
+      "id": "unity:9934c5dff72770e40b9dde69684a4322",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BasementDecks/Paving-Painted.png",
+      "baselineId": null,
+      "productionId": "art-de6488e317d0bc7b",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Conditional Sky Gardens art profile / eight visual decks; original colliders retained",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "997e918c868b2d062312441e27044f494a7534de47068a6dcc146ae604cb76fd"
+    },
+    {
+      "id": "unity:6589674b9352e114c88cc6a15393e71e",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BasementDecks/Staging-Deck-LOD0.fbx",
+      "baselineId": null,
+      "productionId": "art-1cc2975dbec71708",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Conditional Sky Gardens art profile / eight visual decks; original colliders retained",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        6.000000953674316,
+        6.000000953674316,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "36c97d07d472aeee9032a3b592782220643cc94e685f5acc057535dc77c76ddc"
+    },
+    {
+      "id": "unity:b66a22c8316d00a45892d11e1952b1e5",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BasementDecks/Staging-Deck-LOD1.fbx",
+      "baselineId": null,
+      "productionId": "art-4cd4d9d1f0837248",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Conditional Sky Gardens art profile / eight visual decks; original colliders retained",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        6.000000953674316,
+        6.000000953674316,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "d019a631250c9ed30b6353647a2cca9d2b9a67d9ec4c01c1056e2fa90e50fcb3"
+    },
+    {
+      "id": "unity:b742ac522c41438489d4e2974a173a2f",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BasementDecks/Staging-Deck-LOD2.fbx",
+      "baselineId": null,
+      "productionId": "art-1a595f61cbef8d0c",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Conditional Sky Gardens art profile / eight visual decks; original colliders retained",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        6.000000953674316,
+        6.000000953674316,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "9e242d11f56f94067656e56b3fea236fd840cf7857535fc075006018a46f885b"
+    },
+    {
       "id": "unity:3d3f581e955206344bf570edcbc5a309",
       "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/Stone-Cavity.png",
       "baselineId": null,
@@ -64250,6 +66144,44 @@
       "referenceException": "Current per-asset reference requirements remain to be completed or explicitly excepted; baseline candidates are not certified masters."
     },
     {
+      "id": "unity:91e551745510fcd409d35424a9416abf",
+      "path": "RailArena/Assets/Resources/Art/BasementStoneDeck.prefab",
+      "baselineId": null,
+      "productionId": "art-abac5b292ef0fb28",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Conditional Sky Gardens art profile / eight visual decks; original colliders retained",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        12.000001907348633,
+        12.000001907348633,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "86ed05bb6d2c4dd8f31e4c473539819d94947cc701ccfc564b8dac7102efa58e"
+    },
+    {
       "id": "unity:18714cb22a5cb6f45b195b80d2b6e5cd",
       "path": "RailArena/Assets/Resources/Art/Canopy.prefab",
       "baselineId": null,
@@ -64554,6 +66486,44 @@
       "evidenceState": "production-evidence-present",
       "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
       "productionSha256": "fe38042e1ef64711d1144b0b40fac87bce3c4ba4c424eaa17c4d7f33892d7dc4"
+    },
+    {
+      "id": "unity:8b9931011cd49ad429c3ca7787397337",
+      "path": "RailArena/Assets/Resources/Art/StagingStoneDeck.prefab",
+      "baselineId": null,
+      "productionId": "art-fac73ede7e879265",
+      "category": "environment",
+      "mapArea": "Sky Gardens / four staging and four basement decks",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Conditional Sky Gardens art profile / eight visual decks; original colliders retained",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/Basement-Stone-Decks-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+      "dimensions": [
+        6.000000953674316,
+        6.000000953674316,
+        0.6000000238418579
+      ],
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/deck-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/paint-spec.json",
+        "RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Staging/measured-sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/References/Basement/measured-sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BasementDecks/UnityReview/basement-top-after.png"
+      ],
+      "provenance": "Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "a4edb11b4fdd7165bb7075b72c799a345ed5818043ba6a7e4124301715541875"
     },
     {
       "id": "unity:0fb7a14b530738e438e48f080cf58cb1",
