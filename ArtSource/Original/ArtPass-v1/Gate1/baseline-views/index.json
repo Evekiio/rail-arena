@@ -1,0 +1,200 @@
+{
+    "scope": "Current serialized Sky Gardens basement scene in Editor, PC pipeline. Conditional review-build rifle/water/atmosphere overrides are not applied. HUD is composed from actual uGUI geometry; not native input or player-build parity acceptance.",
+    "views": [
+        {
+            "id": "menu",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/baseline-views/menu.png",
+            "note": "Actual current menu components; offscreen uGUI composition",
+            "position": {
+                "x": 56.0,
+                "y": 47.0,
+                "z": -60.0
+            },
+            "euler": {
+                "x": 24.844215393066406,
+                "y": 316.9749450683594,
+                "z": 0.0
+            }
+        },
+        {
+            "id": "fps-hud",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/baseline-views/fps-hud.png",
+            "note": "Current first-person rifle, hands and combat HUD",
+            "position": {
+                "x": -25.5,
+                "y": 1.659999966621399,
+                "z": 17.5
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            }
+        },
+        {
+            "id": "garden-bridge",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/baseline-views/garden-bridge.png",
+            "note": "Fixed Editor baseline camera; visibility and gameplay acceptance are not inferred",
+            "position": {
+                "x": 25.0,
+                "y": 3.0,
+                "z": -14.0
+            },
+            "euler": {
+                "x": 356.0072021484375,
+                "y": 299.24884033203125,
+                "z": -1.0698138197540175e-7
+            }
+        },
+        {
+            "id": "summit",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/baseline-views/summit.png",
+            "note": "Fixed Editor baseline camera; visibility and gameplay acceptance are not inferred",
+            "position": {
+                "x": 14.0,
+                "y": 31.0,
+                "z": -16.0
+            },
+            "euler": {
+                "x": 20.62073516845703,
+                "y": 318.8140869140625,
+                "z": -9.122173878495232e-7
+            }
+        },
+        {
+            "id": "basement",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/baseline-views/basement.png",
+            "note": "Fixed Editor baseline camera; visibility and gameplay acceptance are not inferred",
+            "position": {
+                "x": 43.0,
+                "y": -3.0,
+                "z": 43.0
+            },
+            "euler": {
+                "x": 21.09136390686035,
+                "y": 225.0,
+                "z": 9.15076554974803e-7
+            }
+        },
+        {
+            "id": "waterfall",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/baseline-views/waterfall.png",
+            "note": "Fixed Editor baseline camera; visibility and gameplay acceptance are not inferred",
+            "position": {
+                "x": -35.0,
+                "y": -6.0,
+                "z": 23.0
+            },
+            "euler": {
+                "x": 26.387800216674805,
+                "y": 150.255126953125,
+                "z": 0.0
+            }
+        },
+        {
+            "id": "portal",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/baseline-views/portal.png",
+            "note": "Current live portal/device appearance",
+            "position": {
+                "x": 0.0,
+                "y": 1.5,
+                "z": 15.0
+            },
+            "euler": {
+                "x": 7.594643592834473,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "id": "pad",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/baseline-views/pad.png",
+            "note": "Current jump-pad appearance",
+            "position": {
+                "x": -22.0,
+                "y": 3.0,
+                "z": 8.0
+            },
+            "euler": {
+                "x": 30.963762283325195,
+                "y": 323.1300964355469,
+                "z": 9.956625035556499e-7
+            }
+        },
+        {
+            "id": "health",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/baseline-views/health.png",
+            "note": "Current animated health pickup appearance, sampled frame",
+            "position": {
+                "x": -12.0,
+                "y": 3.9200000762939453,
+                "z": -15.0
+            },
+            "euler": {
+                "x": 15.501363754272461,
+                "y": 326.3099365234375,
+                "z": 0.0
+            }
+        },
+        {
+            "id": "player",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/baseline-views/player.png",
+            "note": "Staged current imported character and weapon in the existing arena; not a natural gameplay pose",
+            "position": {
+                "x": 2.200000047683716,
+                "y": 1.5,
+                "z": 15.199999809265137
+            },
+            "euler": {
+                "x": 7.3368425369262695,
+                "y": 214.50852966308594,
+                "z": 4.3041077901762037e-7
+            }
+        },
+        {
+            "id": "bot01",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/baseline-views/bot01.png",
+            "note": "Staged current imported character and weapon in the existing arena; not a natural gameplay pose",
+            "position": {
+                "x": 2.200000047683716,
+                "y": 1.5,
+                "z": 15.199999809265137
+            },
+            "euler": {
+                "x": 7.3368425369262695,
+                "y": 214.50852966308594,
+                "z": 4.3041077901762037e-7
+            }
+        },
+        {
+            "id": "bot02",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/baseline-views/bot02.png",
+            "note": "Staged current imported character and weapon in the existing arena; not a natural gameplay pose",
+            "position": {
+                "x": 2.200000047683716,
+                "y": 1.5,
+                "z": 15.199999809265137
+            },
+            "euler": {
+                "x": 7.3368425369262695,
+                "y": 214.50852966308594,
+                "z": 4.3041077901762037e-7
+            }
+        },
+        {
+            "id": "bot03",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/baseline-views/bot03.png",
+            "note": "Staged current imported character and weapon in the existing arena; not a natural gameplay pose",
+            "position": {
+                "x": 2.200000047683716,
+                "y": 1.5,
+                "z": 15.199999809265137
+            },
+            "euler": {
+                "x": 7.3368425369262695,
+                "y": 214.50852966308594,
+                "z": 4.3041077901762037e-7
+            }
+        }
+    ]
+}

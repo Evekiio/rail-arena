@@ -2,6 +2,8 @@
 
 # Rail Arena
 
+Art production is underway for the current v1 alpha. See the [Gate 1 art inventory, measured references and approval workflow](docs/ART-PRODUCTION.md). The new art direction remains subject to Sanders' three approval gates; the public alpha package has not been replaced by a concept or reference build.
+
 ### One railgun. Every shot matters.
 
 **Aim practice with a reason to play one more match.**

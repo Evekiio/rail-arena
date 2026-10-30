@@ -1,0 +1,47 @@
+{
+  "schema": "rail-arena-cel-art-spec/1",
+  "status": "Gate 1 design proposal; not a runtime material asset",
+  "colorEncoding": "palette colors are sRGB; use explicit linear conversion in URP",
+  "diffuseBands": 3,
+  "initialBandThresholds": [
+    0.25,
+    0.65
+  ],
+  "initialTransitionSoftness": 0.03,
+  "outlinePixelsAt1080p": {
+    "minimum": 1,
+    "maximum": 2,
+    "selectiveSilhouetteOnly": true,
+    "distanceFade": true
+  },
+  "materials": [
+    "skin",
+    "hair",
+    "cloth",
+    "painted-armor",
+    "ceramic",
+    "enamel",
+    "bronze",
+    "stone",
+    "foliage",
+    "water",
+    "energy"
+  ],
+  "preserve": [
+    "alpha/cutout semantics",
+    "skinning",
+    "normal/tangent correctness",
+    "instancing",
+    "shadow receiving/casting",
+    "portal view textures",
+    "reduced-flash behavior"
+  ],
+  "gate2Evidence": [
+    "actual player and FPS camera",
+    "sunlight, bridge shade and basement shade",
+    "same-view before/after captures",
+    "normal-speed motion",
+    "measured 1080p/60 FPS workload"
+  ],
+  "performanceAcceptance": "One human plus three bots on RTX 2080, 1080p; 16.67 ms frame budget and sustained 60 FPS measured in representative gameplay. Unavailable GPU timers are unavailable evidence."
+}

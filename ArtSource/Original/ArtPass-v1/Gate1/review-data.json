@@ -1,0 +1,1959 @@
+{
+  "summary": {
+    "importedAssets": 1079,
+    "sourceFiles": 1145,
+    "inventoryEntries": 2224,
+    "rendererInstances": 1384,
+    "inspectedContainers": 11,
+    "importedClips": 47,
+    "missingScripts": 0,
+    "measuredSampleFamilies": 7,
+    "measuredSampleViews": 42,
+    "finalApprovedAssets": 0,
+    "referenceCoverage": "not complete; representative measured samples only",
+    "categories": {
+      "Supporting": 453,
+      "Environment": 752,
+      "Nature": 94,
+      "Interactive": 124,
+      "Characters": 342,
+      "Weapons": 218,
+      "Animation": 32,
+      "First-person": 14,
+      "VFX / lighting": 114,
+      "UI / UX": 81
+    },
+    "scopes": {
+      "no serialized active-use evidence": 530,
+      "other scene dependency": 49,
+      "active scene dependency": 146,
+      "isolated candidate / validation": 708,
+      "Resources included; runtime load unconfirmed": 49,
+      "conditional review-build input": 11,
+      "authoring / reference source": 731
+    },
+    "blenderMasters": 23,
+    "blenderObjects": 3392,
+    "blenderActions": 17,
+    "unresolvedImageBindings": 2
+  },
+  "families": [
+    {
+      "id": "family:weapon-current",
+      "name": "Precision carbine, optic, magazine and actuators",
+      "category": "Weapons",
+      "area": "All gameplay",
+      "disposition": "refine",
+      "canonicalMasterCandidate": "ArtSource/Original/PrecisionCarbine-Production-v1/Precision-Carbine.blend",
+      "sourceExists": true,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": {
+        "id": "precision-carbine",
+        "source": "ArtSource/Original/PrecisionCarbine-Production-v1/Precision-Carbine.blend",
+        "sourceSha256": "89ebd3820aee5a5ad0139124c67e1d78e265212648ba37c7d253fc2b5a177adb",
+        "master": "ArtSource/Original/ArtPass-v1/Gate1/references/precision-carbine/precision-carbine-reference.blend",
+        "sourceKind": "weapon",
+        "axisConvention": "Blender (x,y,z) -> Unity (-y,z,x) for this weapon master",
+        "meshes": 79,
+        "dimensionsBlenderXYZMetres": [
+          1.0,
+          0.10000000149011612,
+          0.3299144506454468
+        ],
+        "centerBlenderXYZ": [
+          0.0,
+          0.0,
+          -0.014957211911678314
+        ],
+        "orthographicSpanMetres": 2.2,
+        "pixelsPerMetre": 349.09090909090907,
+        "resolution": 768,
+        "views": [
+          {
+            "name": "front",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/precision-carbine/front.png",
+            "cameraPosition": [
+              6.600000381469727,
+              0.0,
+              -0.014957211911678314
+            ],
+            "cameraEuler": [
+              1.5707963705062866,
+              -0.0,
+              1.5707963705062866
+            ],
+            "sha256": "1ddbe698d9a52c44d1a4c52e56eda4ad42829a31fba48d6cc76ada5fa19ccc9d"
+          },
+          {
+            "name": "rear",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/precision-carbine/rear.png",
+            "cameraPosition": [
+              -6.600000381469727,
+              0.0,
+              -0.014957211911678314
+            ],
+            "cameraEuler": [
+              1.5707963705062866,
+              -0.0,
+              -1.5707963705062866
+            ],
+            "sha256": "07b9cd37bf7f93881e4cf4c96fac38965045ae4b18f7674c16bf0add5c35b686"
+          },
+          {
+            "name": "left",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/precision-carbine/left.png",
+            "cameraPosition": [
+              0.0,
+              6.600000381469727,
+              -0.014957211911678314
+            ],
+            "cameraEuler": [
+              -1.570796251296997,
+              3.141592502593994,
+              -0.0
+            ],
+            "sha256": "dacca35b5ff32d74bc1030bdb515c6c4c155f2693323fcfe70d4d771f6b84486"
+          },
+          {
+            "name": "right",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/precision-carbine/right.png",
+            "cameraPosition": [
+              0.0,
+              -6.600000381469727,
+              -0.014957211911678314
+            ],
+            "cameraEuler": [
+              1.5707964897155762,
+              -0.0,
+              0.0
+            ],
+            "sha256": "89106968facbc43bdd8eab682cdc223def9274faa225bf0b3e86f904160c29be"
+          },
+          {
+            "name": "top",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/precision-carbine/top.png",
+            "cameraPosition": [
+              0.0,
+              0.0,
+              6.585042953491211
+            ],
+            "cameraEuler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "sha256": "6fccf393d6e5e606ab627b9ff784ad3df918e2337f91e490469cb06eb492162c"
+          },
+          {
+            "name": "bottom",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/precision-carbine/bottom.png",
+            "cameraPosition": [
+              0.0,
+              0.0,
+              -6.614957809448242
+            ],
+            "cameraEuler": [
+              8.742277657347586e-08,
+              3.1415927410125732,
+              -8.742277657347586e-08
+            ],
+            "sha256": "99645c6f276937645c7f37c979aea578caa149a59e5444a62b69b1a9adb2437e"
+          }
+        ],
+        "status": "Measured baseline geometry, not approved production art",
+        "limitations": "Existing source likeness and Unity parity are not certified by these sheets. Rest-pose renderer AABB; no artistic edits. Unity-export example is a reference copy, not a new runtime asset.",
+        "sheet": "ArtSource/Original/ArtPass-v1/Gate1/references/precision-carbine/measured-sheet.png",
+        "sheetSha256": "63c0df3e71109ae1bbc73d8becd8e8fb3eb8bb39d92b66ee4869425c758e7a8f"
+      },
+      "approval": "pending Sanders Gate 1",
+      "notes": "Retain measured silhouette and open ADS optic; improve cel surface separation and magazine/action presentation. Repacked runtime candidate parity remains to be certified.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:weapon-legacy",
+      "name": "Original induction railgun",
+      "category": "Weapons",
+      "area": "Legacy",
+      "disposition": "archive-reference",
+      "canonicalMasterCandidate": "ArtSource/Original/Railgun/Railgun.blend",
+      "sourceExists": true,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Preserve editable source and earlier exports; not the current precision-carbine art target.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:player",
+      "name": "Player character",
+      "category": "Characters",
+      "area": "All gameplay",
+      "disposition": "refine",
+      "canonicalMasterCandidate": "ArtSource/Original/StylizedContenders/Player.blend",
+      "sourceExists": true,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": {
+        "id": "player",
+        "source": "ArtSource/Original/StylizedContenders/Player.blend",
+        "sourceSha256": "71c09ae2f7ab88ef3f729a06b98353f2519231350071bb06f0a966af11b33f01",
+        "master": "ArtSource/Original/ArtPass-v1/Gate1/references/player/player-reference.blend",
+        "sourceKind": "character",
+        "meshes": 215,
+        "dimensionsBlenderXYZMetres": [
+          1.0912144184112549,
+          0.3157101571559906,
+          1.8456908464431763
+        ],
+        "centerBlenderXYZ": [
+          -0.002336472272872925,
+          -0.0231449156999588,
+          0.9313454031944275
+        ],
+        "orthographicSpanMetres": 2.3993981003761293,
+        "pixelsPerMetre": 320.08027341507375,
+        "resolution": 768,
+        "views": [
+          {
+            "name": "front",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/player/front.png",
+            "cameraPosition": [
+              -0.002336472272872925,
+              -7.221339225769043,
+              0.9313454031944275
+            ],
+            "cameraEuler": [
+              1.570796251296997,
+              -0.0,
+              0.0
+            ],
+            "sha256": "17c14fac0530ef81175828d118d84eeb17ba07f3a18f63b14d06296510ee9ac1"
+          },
+          {
+            "name": "rear",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/player/rear.png",
+            "cameraPosition": [
+              -0.002336472272872925,
+              7.175049781799316,
+              0.9313454031944275
+            ],
+            "cameraEuler": [
+              1.570796251296997,
+              8.742279788975793e-08,
+              3.1415927410125732
+            ],
+            "sha256": "877d8f411fcbdfeee8f38c304f8e48d0169681025241912bd7e70115c35debda"
+          },
+          {
+            "name": "left",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/player/left.png",
+            "cameraPosition": [
+              -7.200531005859375,
+              -0.0231449156999588,
+              0.9313454031944275
+            ],
+            "cameraEuler": [
+              1.5707963705062866,
+              -0.0,
+              -1.5707963705062866
+            ],
+            "sha256": "4d66774fb4dad31f489dd999282c3d00efca5c62e243e3e2fe41af2e7f4cb3bb"
+          },
+          {
+            "name": "right",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/player/right.png",
+            "cameraPosition": [
+              7.195858001708984,
+              -0.0231449156999588,
+              0.9313454031944275
+            ],
+            "cameraEuler": [
+              1.5707963705062866,
+              -0.0,
+              1.5707963705062866
+            ],
+            "sha256": "cf53f1f36d9398336ebdb8e4e9bb29e504f7e1decf51fbf778ae0636b818bafa"
+          },
+          {
+            "name": "top",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/player/top.png",
+            "cameraPosition": [
+              -0.002336472272872925,
+              -0.0231449156999588,
+              8.129539489746094
+            ],
+            "cameraEuler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "sha256": "0df887ad77d90d7214091d71a69293621ca61ae5291bca948b663b6010655396"
+          },
+          {
+            "name": "bottom",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/player/bottom.png",
+            "cameraPosition": [
+              -0.002336472272872925,
+              -0.0231449156999588,
+              -6.266849040985107
+            ],
+            "cameraEuler": [
+              8.742277657347586e-08,
+              -3.1415927410125732,
+              -8.742278367890322e-08
+            ],
+            "sha256": "2e0b72b6cbc22562e5cff1d1d9f119562f4518c2705a74430d4e2f302cc86364"
+          }
+        ],
+        "status": "Measured baseline geometry, not approved production art",
+        "limitations": "Existing source likeness and Unity parity are not certified by these sheets. Rest-pose renderer AABB; no artistic edits. Unity-export example is a reference copy, not a new runtime asset.",
+        "sheet": "ArtSource/Original/ArtPass-v1/Gate1/references/player/measured-sheet.png",
+        "sheetSha256": "9211ba496aa1b0ecc5dae9fe4e617ffb71efcfe5c0ced4b058ff8e1146f30cff"
+      },
+      "approval": "pending Sanders Gate 1",
+      "notes": "Retain identity; refine anatomy, face, hair, armor, cloth and deformation against approved direction.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:bot01",
+      "name": "Bot 01 / terracotta and tied hair",
+      "category": "Characters",
+      "area": "All gameplay",
+      "disposition": "refine",
+      "canonicalMasterCandidate": "ArtSource/Original/StylizedContenders/Bot01.blend",
+      "sourceExists": true,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": {
+        "id": "bot01",
+        "source": "ArtSource/Original/StylizedContenders/Bot01.blend",
+        "sourceSha256": "81146f3f660e9e1af93ef6ede6914c49fc57fad1e43d3b2239a32c5c2bcb577f",
+        "master": "ArtSource/Original/ArtPass-v1/Gate1/references/bot01/bot01-reference.blend",
+        "sourceKind": "character",
+        "meshes": 199,
+        "dimensionsBlenderXYZMetres": [
+          1.0912144184112549,
+          0.3260003328323364,
+          1.8644999265670776
+        ],
+        "centerBlenderXYZ": [
+          -0.002336472272872925,
+          -0.017999820411205292,
+          0.9407499432563782
+        ],
+        "orthographicSpanMetres": 2.423849904537201,
+        "pixelsPerMetre": 316.8513027817366,
+        "resolution": 768,
+        "views": [
+          {
+            "name": "front",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot01/front.png",
+            "cameraPosition": [
+              -0.002336472272872925,
+              -7.289548873901367,
+              0.9407499432563782
+            ],
+            "cameraEuler": [
+              1.5707964897155762,
+              -0.0,
+              0.0
+            ],
+            "sha256": "ca13d7e60e48fe99cef3e678f90e3a59a7c519e39261cb4cdc2718896596ecbe"
+          },
+          {
+            "name": "rear",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot01/rear.png",
+            "cameraPosition": [
+              -0.002336472272872925,
+              7.253549575805664,
+              0.9407499432563782
+            ],
+            "cameraEuler": [
+              -1.570796251296997,
+              3.141592502593994,
+              -0.0
+            ],
+            "sha256": "9fd6fa62c83eb6e5921a5025c9b244a5eb4523e8c4becf29c0fa8a5ecbd9e1a1"
+          },
+          {
+            "name": "left",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot01/left.png",
+            "cameraPosition": [
+              -7.273885726928711,
+              -0.017999820411205292,
+              0.9407499432563782
+            ],
+            "cameraEuler": [
+              1.5707963705062866,
+              -0.0,
+              -1.5707963705062866
+            ],
+            "sha256": "f4c8f4838d64ae13fa9d6b051750dc63cecedd4528b973c43f51be9bb895ed8b"
+          },
+          {
+            "name": "right",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot01/right.png",
+            "cameraPosition": [
+              7.26921272277832,
+              -0.017999820411205292,
+              0.9407499432563782
+            ],
+            "cameraEuler": [
+              1.5707963705062866,
+              -0.0,
+              1.5707963705062866
+            ],
+            "sha256": "08e939f82376c988df387349d3008524e74eaa4fc70b17788e4d7e5d4a308445"
+          },
+          {
+            "name": "top",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot01/top.png",
+            "cameraPosition": [
+              -0.002336472272872925,
+              -0.017999820411205292,
+              8.212299346923828
+            ],
+            "cameraEuler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "sha256": "149ecff0c1eff819c675653a0de7c9e7d1f69200be4633a00d5a0c82e731f7a0"
+          },
+          {
+            "name": "bottom",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot01/bottom.png",
+            "cameraPosition": [
+              -0.002336472272872925,
+              -0.017999820411205292,
+              -6.330799102783203
+            ],
+            "cameraEuler": [
+              8.742277657347586e-08,
+              3.1415927410125732,
+              -8.742277657347586e-08
+            ],
+            "sha256": "1eaf7475237778b3ab54f65bc8cb4a83db3fed71b8d7bf526e10dc9a5d48fb57"
+          }
+        ],
+        "status": "Measured baseline geometry, not approved production art",
+        "limitations": "Existing source likeness and Unity parity are not certified by these sheets. Rest-pose renderer AABB; no artistic edits. Unity-export example is a reference copy, not a new runtime asset.",
+        "sheet": "ArtSource/Original/ArtPass-v1/Gate1/references/bot01/measured-sheet.png",
+        "sheetSha256": "33b6314cb312113b1e40b54cde5ffd4041d9d777719fa34d532b555db9a96367"
+      },
+      "approval": "pending Sanders Gate 1",
+      "notes": "Distinct head and armor silhouette, shared compatible skeleton and gameplay bounds.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:bot02",
+      "name": "Bot 02 / slate-teal and pale swept hair",
+      "category": "Characters",
+      "area": "All gameplay",
+      "disposition": "refine",
+      "canonicalMasterCandidate": "ArtSource/Original/StylizedContenders/Bot02.blend",
+      "sourceExists": true,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": {
+        "id": "bot02",
+        "source": "ArtSource/Original/StylizedContenders/Bot02.blend",
+        "sourceSha256": "5c2554bf367199a9767f7f71faf6b8fc7f82f704019bd8bade77ca9fd8a666e1",
+        "master": "ArtSource/Original/ArtPass-v1/Gate1/references/bot02/bot02-reference.blend",
+        "sourceKind": "character",
+        "meshes": 219,
+        "dimensionsBlenderXYZMetres": [
+          1.0912144184112549,
+          0.3157101571559906,
+          1.8546757698059082
+        ],
+        "centerBlenderXYZ": [
+          -0.002336472272872925,
+          -0.0231449156999588,
+          0.9358378648757935
+        ],
+        "orthographicSpanMetres": 2.411078500747681,
+        "pixelsPerMetre": 318.5296537470022,
+        "resolution": 768,
+        "views": [
+          {
+            "name": "front",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot02/front.png",
+            "cameraPosition": [
+              -0.002336472272872925,
+              -7.256380081176758,
+              0.9358378648757935
+            ],
+            "cameraEuler": [
+              1.5707964897155762,
+              -0.0,
+              0.0
+            ],
+            "sha256": "c221b44e225896842ab3fb43795881a5b94705faf699c48328f0853fee19b530"
+          },
+          {
+            "name": "rear",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot02/rear.png",
+            "cameraPosition": [
+              -0.002336472272872925,
+              7.210090637207031,
+              0.9358378648757935
+            ],
+            "cameraEuler": [
+              -1.570796251296997,
+              3.141592502593994,
+              -0.0
+            ],
+            "sha256": "5602f5ee6a1c207c1a3f73f49552b4a43f2e271d45e39b8b15956c8cbcb36b49"
+          },
+          {
+            "name": "left",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot02/left.png",
+            "cameraPosition": [
+              -7.23557186126709,
+              -0.0231449156999588,
+              0.9358378648757935
+            ],
+            "cameraEuler": [
+              1.5707963705062866,
+              -0.0,
+              -1.5707963705062866
+            ],
+            "sha256": "0b691e7bd3f09c414d58bac4131622c9ddeff7cae04c01d983afe9cc03185a3e"
+          },
+          {
+            "name": "right",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot02/right.png",
+            "cameraPosition": [
+              7.230898857116699,
+              -0.0231449156999588,
+              0.9358378648757935
+            ],
+            "cameraEuler": [
+              1.5707963705062866,
+              -0.0,
+              1.5707963705062866
+            ],
+            "sha256": "2dd9f0f9e1eee2fbd01d85718691d62c0188da02352d18663362db5ca22ef237"
+          },
+          {
+            "name": "top",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot02/top.png",
+            "cameraPosition": [
+              -0.002336472272872925,
+              -0.0231449156999588,
+              8.169073104858398
+            ],
+            "cameraEuler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "sha256": "b15e79b3648c22815298428728f39a29c9b9a0e4d1fdebe0aa0f61b250cc1821"
+          },
+          {
+            "name": "bottom",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot02/bottom.png",
+            "cameraPosition": [
+              -0.002336472272872925,
+              -0.0231449156999588,
+              -6.297397613525391
+            ],
+            "cameraEuler": [
+              8.742277657347586e-08,
+              3.1415927410125732,
+              -8.742277657347586e-08
+            ],
+            "sha256": "235e7f44810efa578074438b1ff392da254bf4e4e59df32d356df196e2a821a4"
+          }
+        ],
+        "status": "Measured baseline geometry, not approved production art",
+        "limitations": "Existing source likeness and Unity parity are not certified by these sheets. Rest-pose renderer AABB; no artistic edits. Unity-export example is a reference copy, not a new runtime asset.",
+        "sheet": "ArtSource/Original/ArtPass-v1/Gate1/references/bot02/measured-sheet.png",
+        "sheetSha256": "edd0e896f0ff976ba2d870ac29a5a49421a5c98c808e8a9c3b8a358e087ba525"
+      },
+      "approval": "pending Sanders Gate 1",
+      "notes": "Preserve identity and common gameplay dimensions; refine face, hair flow and readable cel planes.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:bot03",
+      "name": "Bot 03 / plum, copper and locs",
+      "category": "Characters",
+      "area": "All gameplay",
+      "disposition": "refine",
+      "canonicalMasterCandidate": "ArtSource/Original/StylizedContenders/Bot03.blend",
+      "sourceExists": true,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": {
+        "id": "bot03",
+        "source": "ArtSource/Original/StylizedContenders/Bot03.blend",
+        "sourceSha256": "dc73280ae6778ea8f721252dd9457428a7d9216a72945f784fb9ad4f0df2d727",
+        "master": "ArtSource/Original/ArtPass-v1/Gate1/references/bot03/bot03-reference.blend",
+        "sourceKind": "character",
+        "meshes": 207,
+        "dimensionsBlenderXYZMetres": [
+          1.0912144184112549,
+          0.3157101571559906,
+          1.816499948501587
+        ],
+        "centerBlenderXYZ": [
+          -0.002336472272872925,
+          -0.0231449156999588,
+          0.9167499542236328
+        ],
+        "orthographicSpanMetres": 2.361449933052063,
+        "pixelsPerMetre": 325.22391825915025,
+        "resolution": 768,
+        "views": [
+          {
+            "name": "front",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot03/front.png",
+            "cameraPosition": [
+              -0.002336472272872925,
+              -7.107494354248047,
+              0.9167499542236328
+            ],
+            "cameraEuler": [
+              1.570796251296997,
+              -0.0,
+              0.0
+            ],
+            "sha256": "e6083d86da45dec87fb1dd62bb16197ed40e294bbd673e5d05ca5a35e5cba3cc"
+          },
+          {
+            "name": "rear",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot03/rear.png",
+            "cameraPosition": [
+              -0.002336472272872925,
+              7.06120491027832,
+              0.9167499542236328
+            ],
+            "cameraEuler": [
+              1.570796251296997,
+              8.742279788975793e-08,
+              3.1415927410125732
+            ],
+            "sha256": "5431613967ef863d44055ce377cc78d6632368647d7bfe0b94d45f66c99a7aa7"
+          },
+          {
+            "name": "left",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot03/left.png",
+            "cameraPosition": [
+              -7.086686134338379,
+              -0.0231449156999588,
+              0.9167499542236328
+            ],
+            "cameraEuler": [
+              1.5707963705062866,
+              -0.0,
+              -1.5707963705062866
+            ],
+            "sha256": "caa4f1546e881c0b1ec202895383eb3319b83ff01a894412d29ef5a76b4f05d9"
+          },
+          {
+            "name": "right",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot03/right.png",
+            "cameraPosition": [
+              7.082013130187988,
+              -0.0231449156999588,
+              0.9167499542236328
+            ],
+            "cameraEuler": [
+              1.5707963705062866,
+              -0.0,
+              1.5707963705062866
+            ],
+            "sha256": "7bb419f9b407d55bb96997bcaed848060c930fccbcb88fe378572d12af31bbc5"
+          },
+          {
+            "name": "top",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot03/top.png",
+            "cameraPosition": [
+              -0.002336472272872925,
+              -0.0231449156999588,
+              8.001099586486816
+            ],
+            "cameraEuler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "sha256": "09c5435cc072b2d6006097f137be3ad542a2ad36cc62e9a2cefb86ff6b30d466"
+          },
+          {
+            "name": "bottom",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/bot03/bottom.png",
+            "cameraPosition": [
+              -0.002336472272872925,
+              -0.0231449156999588,
+              -6.167599678039551
+            ],
+            "cameraEuler": [
+              8.742277657347586e-08,
+              -3.1415927410125732,
+              -8.742278367890322e-08
+            ],
+            "sha256": "e52c2360ee77d16df4c2624640c7f852ad0bba3ac33ee230b82a6b79a9427fd1"
+          }
+        ],
+        "status": "Measured baseline geometry, not approved production art",
+        "limitations": "Existing source likeness and Unity parity are not certified by these sheets. Rest-pose renderer AABB; no artistic edits. Unity-export example is a reference copy, not a new runtime asset.",
+        "sheet": "ArtSource/Original/ArtPass-v1/Gate1/references/bot03/measured-sheet.png",
+        "sheetSha256": "17c0fe6925759013c888c8484002bd1aa93048008a3ebb3ac2b73f9be69667d5"
+      },
+      "approval": "pending Sanders Gate 1",
+      "notes": "Preserve identity and hair silhouette; refine facial anatomy, garment structure and silhouette.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:player-pilot",
+      "name": "Isolated player pilot",
+      "category": "Characters",
+      "area": "Candidate only",
+      "disposition": "archive-reference",
+      "canonicalMasterCandidate": "ArtSource/Original/PlayerPilot-v1/Player-Pilot.blend",
+      "sourceExists": true,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "A separate candidate, not the installed player. Evaluate useful construction details without silently replacing gameplay assets.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:fps-arms",
+      "name": "First-person arms, hands and grip contacts",
+      "category": "First-person",
+      "area": "First-person camera",
+      "disposition": "rebuild",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Derive an intentional arm/hand master from the approved player rig; create action and camera-clearance sheets.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:lower-kit",
+      "name": "Lower arena, ramps, bridge and underpass kit",
+      "category": "Environment",
+      "area": "Lower arena / middle bridge",
+      "disposition": "refine",
+      "canonicalMasterCandidate": "ArtSource/Original/SkyGardens-Blueprint-v2/SkyGardens-Construction.blend",
+      "sourceExists": true,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Keep collision footprint and gameplay route geometry. Add intentional trims, edge construction and structural supports.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:summit",
+      "name": "Summit deck, central cover and columns",
+      "category": "Environment",
+      "area": "Summit +22 m",
+      "disposition": "refine",
+      "canonicalMasterCandidate": "ArtSource/Original/SkyGardens-Blueprint-v2/SkyGardens-Construction.blend",
+      "sourceExists": true,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": {
+        "id": "summit",
+        "source": "ArtSource/Original/SkyGardens-Blueprint-v2/SkyGardens-Construction.blend",
+        "sourceSha256": "fff826d1350cb44329e61003dedfd0eda22d66afaf7df82d15b5081fa55e8f6f",
+        "master": "ArtSource/Original/ArtPass-v1/Gate1/references/summit/summit-reference.blend",
+        "sourceKind": "summit",
+        "meshes": 6,
+        "dimensionsBlenderXYZMetres": [
+          14.0,
+          14.0,
+          5.599998474121094
+        ],
+        "centerBlenderXYZ": [
+          0.0,
+          0.0,
+          24.200000762939453
+        ],
+        "orthographicSpanMetres": 18.2,
+        "pixelsPerMetre": 42.1978021978022,
+        "resolution": 768,
+        "views": [
+          {
+            "name": "front",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/summit/front.png",
+            "cameraPosition": [
+              0.0,
+              -54.60000228881836,
+              24.200000762939453
+            ],
+            "cameraEuler": [
+              1.5707964897155762,
+              -0.0,
+              0.0
+            ],
+            "sha256": "88b5a7f72d697c0e11d563cec88bf0d6ac1508514a007092e171f67e6551fc87"
+          },
+          {
+            "name": "rear",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/summit/rear.png",
+            "cameraPosition": [
+              0.0,
+              54.60000228881836,
+              24.200000762939453
+            ],
+            "cameraEuler": [
+              -1.570796251296997,
+              3.141592502593994,
+              -0.0
+            ],
+            "sha256": "028f01015bf7d568e5628016ea0748b08f9c31244157948cae142bc939a26cb3"
+          },
+          {
+            "name": "left",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/summit/left.png",
+            "cameraPosition": [
+              -54.60000228881836,
+              0.0,
+              24.200000762939453
+            ],
+            "cameraEuler": [
+              1.5707963705062866,
+              -0.0,
+              -1.5707963705062866
+            ],
+            "sha256": "e31e1404226a4355bef634e951da0d6fdcfdeb3bf18fcaeee4ddf2a7b24526cc"
+          },
+          {
+            "name": "right",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/summit/right.png",
+            "cameraPosition": [
+              54.60000228881836,
+              0.0,
+              24.200000762939453
+            ],
+            "cameraEuler": [
+              1.5707963705062866,
+              -0.0,
+              1.5707963705062866
+            ],
+            "sha256": "debdee2bc3911934a83959e1d87f8bd64bc6cd768b042c60d575f63a7c031f49"
+          },
+          {
+            "name": "top",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/summit/top.png",
+            "cameraPosition": [
+              0.0,
+              0.0,
+              78.80000305175781
+            ],
+            "cameraEuler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "sha256": "053a8971bb926935dfb6887574dafa51d12ea89c556e49f45086435eff91f473"
+          },
+          {
+            "name": "bottom",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/summit/bottom.png",
+            "cameraPosition": [
+              0.0,
+              0.0,
+              -30.400001525878906
+            ],
+            "cameraEuler": [
+              8.742277657347586e-08,
+              3.1415927410125732,
+              -8.742277657347586e-08
+            ],
+            "sha256": "30006df0d86a6dc4a79f87516d73a048f52b1f7e6414cdb49ce106e04883b371"
+          }
+        ],
+        "status": "Measured baseline geometry, not approved production art",
+        "limitations": "Existing source likeness and Unity parity are not certified by these sheets. Rest-pose renderer AABB; no artistic edits. Unity-export example is a reference copy, not a new runtime asset.",
+        "sheet": "ArtSource/Original/ArtPass-v1/Gate1/references/summit/measured-sheet.png",
+        "sheetSha256": "f67b6d9d6f64069781fa5b5178a2260349f6c8686e1a96322ca541af8dd622d1"
+      },
+      "approval": "pending Sanders Gate 1",
+      "notes": "Retain the four diagonal launch sectors, open exits and existing jump-pad landing clearances.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:basement",
+      "name": "Four staging and basement deck assemblies",
+      "category": "Environment",
+      "area": "Staging +14 m / basement -10 m",
+      "disposition": "rebuild",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": {
+        "id": "basement-deck",
+        "source": "ArtSource/Original/ArtPass-v1/Gate1/unity-audit.json",
+        "sourceSha256": "742a5fec0d6dba83b800e9688d39f702964659b76a60605643cf443f63d268a1",
+        "master": "ArtSource/Original/ArtPass-v1/Gate1/references/basement-deck/basement-deck-reference.blend",
+        "sourceKind": "unity-export",
+        "axisConvention": "Blender (x,y,z) -> Unity (x,z,-y)",
+        "meshes": 1,
+        "dimensionsBlenderXYZMetres": [
+          12.000001907348633,
+          12.000003814697266,
+          0.6000003814697266
+        ],
+        "centerBlenderXYZ": [
+          -9.5367431640625e-07,
+          0.0,
+          0.0
+        ],
+        "orthographicSpanMetres": 15.600004959106446,
+        "pixelsPerMetre": 49.23075358073414,
+        "resolution": 768,
+        "views": [
+          {
+            "name": "front",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/basement-deck/front.png",
+            "cameraPosition": [
+              -9.5367431640625e-07,
+              -46.80001449584961,
+              0.0
+            ],
+            "cameraEuler": [
+              1.5707964897155762,
+              -0.0,
+              0.0
+            ],
+            "sha256": "2255060b785f318fa6639947d4a76ad9ee2341f390f8028fd9d52791dc85c49b"
+          },
+          {
+            "name": "rear",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/basement-deck/rear.png",
+            "cameraPosition": [
+              -9.5367431640625e-07,
+              46.80001449584961,
+              0.0
+            ],
+            "cameraEuler": [
+              -1.570796251296997,
+              3.141592502593994,
+              -0.0
+            ],
+            "sha256": "c474179c017ab23183fce8ddde6cb43c892da76564b96804d7e9eecf1da80c72"
+          },
+          {
+            "name": "left",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/basement-deck/left.png",
+            "cameraPosition": [
+              -46.80001449584961,
+              0.0,
+              0.0
+            ],
+            "cameraEuler": [
+              1.5707963705062866,
+              -0.0,
+              -1.5707963705062866
+            ],
+            "sha256": "0e343631abc1df7fb9e353cf43ecf28823ab808aae6a402feb99ab27cf59b459"
+          },
+          {
+            "name": "right",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/basement-deck/right.png",
+            "cameraPosition": [
+              46.80001449584961,
+              0.0,
+              0.0
+            ],
+            "cameraEuler": [
+              1.5707963705062866,
+              -0.0,
+              1.5707963705062866
+            ],
+            "sha256": "5b336f39d261964cdc90240e73107c28de3d8c66f98e10c008f9d31c9d3511ae"
+          },
+          {
+            "name": "top",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/basement-deck/top.png",
+            "cameraPosition": [
+              -9.5367431640625e-07,
+              0.0,
+              46.80001449584961
+            ],
+            "cameraEuler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "sha256": "a662fa7358291c614dae88f3bafa220caf66d0430c5f53399e96e1f3716f2bf9"
+          },
+          {
+            "name": "bottom",
+            "path": "ArtSource/Original/ArtPass-v1/Gate1/references/basement-deck/bottom.png",
+            "cameraPosition": [
+              -9.5367431640625e-07,
+              0.0,
+              -46.80001449584961
+            ],
+            "cameraEuler": [
+              8.742277657347586e-08,
+              3.1415927410125732,
+              -8.742277657347586e-08
+            ],
+            "sha256": "cd5008de6b3604f1573512ae7fe5669e2e98a981fe21ea2efc9de600e02a0a3a"
+          }
+        ],
+        "status": "Measured baseline geometry, not approved production art",
+        "limitations": "Existing source likeness and Unity parity are not certified by these sheets. Rest-pose renderer AABB; no artistic edits. Unity-export example is a reference copy, not a new runtime asset.",
+        "sheet": "ArtSource/Original/ArtPass-v1/Gate1/references/basement-deck/measured-sheet.png",
+        "sheetSha256": "8d704a3a706dd0a4c07d3da0de74aa418afc20b851ba8c32c7a695f365b70d40"
+      },
+      "approval": "pending Sanders Gate 1",
+      "notes": "Current decks originate as Unity primitives. The measured sample is a geometry-derived reference copy; author a proper modular Blender master without changing tested jump gaps.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:cover",
+      "name": "Cover, parapets, piers and supports",
+      "category": "Environment",
+      "area": "Combat lanes",
+      "disposition": "refine",
+      "canonicalMasterCandidate": "ArtSource/Original/SkyGardens-Blueprint-v2/SkyGardens-Construction.blend",
+      "sourceExists": true,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Readable knee/chest/full cover proportions; preserve sightlines and avoid outline noise against opponents.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:foliage",
+      "name": "Trees, bark, shrubs, grass and vines",
+      "category": "Nature",
+      "area": "Gardens and platform edges",
+      "disposition": "rebuild",
+      "canonicalMasterCandidate": "ArtSource/Original/SkyGardens-Blueprint-v2/SkyGardens-Construction.blend",
+      "sourceExists": true,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Shaped leaf clusters, painted accents and controlled wind. Existing texture seams and tangent gaps require review.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:water",
+      "name": "Waterfalls, water lips, foam and spray",
+      "category": "Nature",
+      "area": "Garden edges / basement backdrop",
+      "disposition": "refine",
+      "canonicalMasterCandidate": "ArtSource/Original/SkyGardens-Blueprint-v2/SkyGardens-Construction.blend",
+      "sourceExists": true,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "A shared light-responsive cel water style with clear layered foam; preserve traversal visibility and restrained spray.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:sky",
+      "name": "Sky, cloud sea and distant ruins",
+      "category": "Nature",
+      "area": "Backdrop",
+      "disposition": "refine",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Separate gameplay and noncolliding scenery. Use quiet distant values, distinct levels and restrained atmosphere.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:health",
+      "name": "Health beacon and animated pickup",
+      "category": "Interactive",
+      "area": "Three health positions",
+      "disposition": "refine",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Create a canonical assembly and dimension/socket sheet; readable available/depleted states, float and spin.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:portals",
+      "name": "Portal frames, fields and live destination views",
+      "category": "Interactive",
+      "area": "Arena and basement returns",
+      "disposition": "refine",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Preserve gate openings, backing, exit capsule clearance and existing teleport rules. Deferred ADS/projection issue is tracked separately.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:pads",
+      "name": "Summit launch pads and basement return bounces",
+      "category": "Interactive",
+      "area": "Four summit launches / two basement returns",
+      "disposition": "refine",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Canonical Blender device, clear landing/return destination language and charge/burst/reduced-flash states.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:signage",
+      "name": "Route numbers, takeoff markers and destination signs",
+      "category": "Interactive",
+      "area": "All traversal",
+      "disposition": "rebuild",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "A consistent measured sign/decal kit, readable without enlarging or obstructing the gameplay surface.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:animation-fps",
+      "name": "First-person weapon and arm action library",
+      "category": "Animation",
+      "area": "First-person camera",
+      "disposition": "rebuild",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Authored action references and clips; match current fire, ADS, reload and interrupt timing.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:animation-body",
+      "name": "Shared character locomotion and action library",
+      "category": "Animation",
+      "area": "All characters",
+      "disposition": "refine",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Retain compatible licensed foundation where suitable; replace reversed/accelerated substitutes with authored directional actions.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:weapon-vfx",
+      "name": "Muzzle, shot, impact, hit and elimination feedback",
+      "category": "VFX / lighting",
+      "area": "Combat",
+      "disposition": "refine",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Short readable cel effects, correct muzzle origin, reduced-flash handling and sound synchronization.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:traversal-vfx",
+      "name": "Portal, pad and pickup effects",
+      "category": "VFX / lighting",
+      "area": "Traversal",
+      "disposition": "refine",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Keep the distracting cyan GPU cloud disabled; introduce only readable silhouettes and event-driven accents.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:lighting",
+      "name": "Cel lighting, shadows, grading and atmospheric tiers",
+      "category": "VFX / lighting",
+      "area": "Sky Gardens",
+      "disposition": "replace",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Shared URP cel-material response, clean contact shadows and controlled bloom; real performance evidence required.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:menus",
+      "name": "Main menu, setup, characters, pause, results and duel flows",
+      "category": "UI / UX",
+      "area": "Menus",
+      "disposition": "refine",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Retain name, core branding and input conventions; polished hierarchy, portraits, spacing and responsive states.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:hud",
+      "name": "HUD, icons, reticle, scoreboard and combat feed",
+      "category": "UI / UX",
+      "area": "Gameplay overlay",
+      "disposition": "refine",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Keep spread boundary truthful during animation, readable health/ammo and uncluttered central aiming space.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:settings",
+      "name": "Settings, visual comfort, audio and Physics Lab",
+      "category": "UI / UX",
+      "area": "Configuration",
+      "disposition": "refine",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Consistent controls and screenshot/export clarity; preserve exact tuning behavior and saved preferences.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:audio",
+      "name": "Weapon, traversal, pickup and interface cues",
+      "category": "Supporting",
+      "area": "Gameplay and menus",
+      "disposition": "retain",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Existing original/licensed cues remain; assess synchronization and polish with the visual actions, no new music project.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:legacy-maps",
+      "name": "Foundry and Twin Platforms",
+      "category": "Environment",
+      "area": "Older maps",
+      "disposition": "retain",
+      "canonicalMasterCandidate": "ArtSource/Original/Foundry-Models-v1/Foundry-Environment.blend",
+      "sourceExists": true,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Inventory and preserve, without a complete new production art rebuild in this milestone.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    },
+    {
+      "id": "family:provenance",
+      "name": "Licenses, fonts, icons, exports, LODs and build art",
+      "category": "Supporting",
+      "area": "Project-wide",
+      "disposition": "refine",
+      "canonicalMasterCandidate": null,
+      "sourceExists": false,
+      "sourceParity": "pending source/export and final art acceptance",
+      "measuredReference": null,
+      "approval": "pending Sanders Gate 1",
+      "notes": "Keep source attribution, import identity, export recipes, manifests and release-facing images synchronized.",
+      "requiredEvidence": [
+        "canonical master/export parity",
+        "measured sheets and assembly details",
+        "in-game visual and motion review",
+        "Sanders approval"
+      ]
+    }
+  ],
+  "animations": [
+    {
+      "id": "anim:first-person:idle",
+      "group": "first-person",
+      "action": "idle",
+      "existingClipCandidates": [],
+      "currentEvidence": "runtime motion code and existing arm rig; authored action coverage unverified",
+      "requiredViews": "FPS hip + ADS + side hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:first-person:ready/equip",
+      "group": "first-person",
+      "action": "ready/equip",
+      "existingClipCandidates": [],
+      "currentEvidence": "runtime motion code and existing arm rig; authored action coverage unverified",
+      "requiredViews": "FPS hip + ADS + side hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:first-person:fire",
+      "group": "first-person",
+      "action": "fire",
+      "existingClipCandidates": [],
+      "currentEvidence": "runtime motion code and existing arm rig; authored action coverage unverified",
+      "requiredViews": "FPS hip + ADS + side hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:first-person:recoil-recovery",
+      "group": "first-person",
+      "action": "recoil recovery",
+      "existingClipCandidates": [],
+      "currentEvidence": "runtime motion code and existing arm rig; authored action coverage unverified",
+      "requiredViews": "FPS hip + ADS + side hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:first-person:ADS-enter/exit",
+      "group": "first-person",
+      "action": "ADS enter/exit",
+      "existingClipCandidates": [],
+      "currentEvidence": "runtime motion code and existing arm rig; authored action coverage unverified",
+      "requiredViews": "FPS hip + ADS + side hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:first-person:magazine-reload",
+      "group": "first-person",
+      "action": "magazine reload",
+      "existingClipCandidates": [],
+      "currentEvidence": "runtime motion code and existing arm rig; authored action coverage unverified",
+      "requiredViews": "FPS hip + ADS + side hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:first-person:empty/reload",
+      "group": "first-person",
+      "action": "empty/reload",
+      "existingClipCandidates": [],
+      "currentEvidence": "runtime motion code and existing arm rig; authored action coverage unverified",
+      "requiredViews": "FPS hip + ADS + side hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:first-person:walk",
+      "group": "first-person",
+      "action": "walk",
+      "existingClipCandidates": [],
+      "currentEvidence": "runtime motion code and existing arm rig; authored action coverage unverified",
+      "requiredViews": "FPS hip + ADS + side hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:first-person:sprint",
+      "group": "first-person",
+      "action": "sprint",
+      "existingClipCandidates": [],
+      "currentEvidence": "runtime motion code and existing arm rig; authored action coverage unverified",
+      "requiredViews": "FPS hip + ADS + side hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:first-person:crouch",
+      "group": "first-person",
+      "action": "crouch",
+      "existingClipCandidates": [],
+      "currentEvidence": "runtime motion code and existing arm rig; authored action coverage unverified",
+      "requiredViews": "FPS hip + ADS + side hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:first-person:slide",
+      "group": "first-person",
+      "action": "slide",
+      "existingClipCandidates": [],
+      "currentEvidence": "runtime motion code and existing arm rig; authored action coverage unverified",
+      "requiredViews": "FPS hip + ADS + side hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:first-person:jump",
+      "group": "first-person",
+      "action": "jump",
+      "existingClipCandidates": [],
+      "currentEvidence": "runtime motion code and existing arm rig; authored action coverage unverified",
+      "requiredViews": "FPS hip + ADS + side hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:first-person:landing",
+      "group": "first-person",
+      "action": "landing",
+      "existingClipCandidates": [],
+      "currentEvidence": "runtime motion code and existing arm rig; authored action coverage unverified",
+      "requiredViews": "FPS hip + ADS + side hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:first-person:portal/pad-traversal",
+      "group": "first-person",
+      "action": "portal/pad traversal",
+      "existingClipCandidates": [],
+      "currentEvidence": "runtime motion code and existing arm rig; authored action coverage unverified",
+      "requiredViews": "FPS hip + ADS + side hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:idle",
+      "group": "character",
+      "action": "idle",
+      "existingClipCandidates": [
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Sword_Idle",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Idle_Loop",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Idle_Talking_Loop",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Spell_Simple_Idle_Loop",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Swim_Idle_Loop",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Pistol_Idle_Loop",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Sitting_Idle_Loop",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Idle_Torch_Loop",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Crouch_Idle_Loop"
+      ],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "refine",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:walk-forward",
+      "group": "character",
+      "action": "walk forward",
+      "existingClipCandidates": [
+        "RailArena/Assets/RailArena/Characters/Backward walk.anim#Backward walk",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Walk_Formal_Loop",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Walk_Loop"
+      ],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "refine",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:walk-backward",
+      "group": "character",
+      "action": "walk backward",
+      "existingClipCandidates": [
+        "RailArena/Assets/RailArena/Characters/Backward walk.anim#Backward walk",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Walk_Formal_Loop",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Sprint_Loop",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Walk_Loop"
+      ],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:strafe-left",
+      "group": "character",
+      "action": "strafe left",
+      "existingClipCandidates": [],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:strafe-right",
+      "group": "character",
+      "action": "strafe right",
+      "existingClipCandidates": [],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:sprint",
+      "group": "character",
+      "action": "sprint",
+      "existingClipCandidates": [
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Sprint_Loop"
+      ],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "refine",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:crouch-idle",
+      "group": "character",
+      "action": "crouch idle",
+      "existingClipCandidates": [
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Crouch_Fwd_Loop",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Crouch_Idle_Loop"
+      ],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:crouch-movement",
+      "group": "character",
+      "action": "crouch movement",
+      "existingClipCandidates": [
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Crouch_Fwd_Loop",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Crouch_Idle_Loop"
+      ],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:crouch-enter/exit",
+      "group": "character",
+      "action": "crouch enter/exit",
+      "existingClipCandidates": [
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Crouch_Fwd_Loop",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Crouch_Idle_Loop"
+      ],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:slide-entry",
+      "group": "character",
+      "action": "slide entry",
+      "existingClipCandidates": [],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:slide-loop",
+      "group": "character",
+      "action": "slide loop",
+      "existingClipCandidates": [],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:slide-exit",
+      "group": "character",
+      "action": "slide exit",
+      "existingClipCandidates": [],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "rebuild",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:jump-start",
+      "group": "character",
+      "action": "jump start",
+      "existingClipCandidates": [
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Jump_Land",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Jump_Start",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Jump_Loop"
+      ],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "refine",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:fall-loop",
+      "group": "character",
+      "action": "fall loop",
+      "existingClipCandidates": [
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Jump_Loop"
+      ],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "refine",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:landing",
+      "group": "character",
+      "action": "landing",
+      "existingClipCandidates": [
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Jump_Land"
+      ],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "refine",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:fire",
+      "group": "character",
+      "action": "fire",
+      "existingClipCandidates": [
+        "RailArena/Assets/RailArena/Art/ProductionBenchmarks/RifleFireRecovery.anim#RifleFireRecovery",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Pistol_Shoot",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Spell_Simple_Shoot"
+      ],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "refine",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:reload",
+      "group": "character",
+      "action": "reload",
+      "existingClipCandidates": [
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Pistol_Reload"
+      ],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "refine",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:hit-reaction",
+      "group": "character",
+      "action": "hit reaction",
+      "existingClipCandidates": [
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Hit_Chest",
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Hit_Head"
+      ],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "refine",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:death",
+      "group": "character",
+      "action": "death",
+      "existingClipCandidates": [
+        "RailArena/Assets/ThirdParty/Quaternius/UAL1_Standard.fbx#Armature|Death01"
+      ],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "refine",
+      "approval": "pending"
+    },
+    {
+      "id": "anim:character:respawn",
+      "group": "character",
+      "action": "respawn",
+      "existingClipCandidates": [],
+      "currentEvidence": "name-matched imported clips are candidates only; transition quality unverified",
+      "requiredViews": "front/side/rear at gameplay scale + foot/hand contact",
+      "requiredDeliverable": "Blender poses, timing/contact sheet, 24 FPS review strip, real-time playback, transition and interruption review",
+      "authoritativeTiming": "preserve current simulation; 250 RPM and current reload/respawn rules",
+      "disposition": "refine",
+      "approval": "pending"
+    }
+  ],
+  "schedule": [
+    {
+      "order": 1,
+      "gate": "Gate 1",
+      "batch": "Inventory, gap report, bible and measured samples",
+      "dependsOn": "current evidence audit",
+      "output": "This review package",
+      "acceptance": "Sanders approves direction, scope and reference standard"
+    },
+    {
+      "order": 2,
+      "gate": "Gate 2",
+      "batch": "Cel material/lighting prototype and modular garden slice",
+      "dependsOn": "Gate 1 approval",
+      "output": "Shared cel settings, measured environment kit and matching gameplay comparison",
+      "acceptance": "Crisp silhouette, deliberate shadows, playable clearance and measured budget"
+    },
+    {
+      "order": 3,
+      "gate": "Gate 2",
+      "batch": "Player, rifle, arms and first-person action slice",
+      "dependsOn": "approved direction and material prototype",
+      "output": "One refined player plus complete rifle/hands/actions in game",
+      "acceptance": "Visible improvement in hip/ADS, close-up and motion with preserved contacts/timing"
+    },
+    {
+      "order": 4,
+      "gate": "Gate 2",
+      "batch": "Device, nature, VFX, HUD and menu slice integration",
+      "dependsOn": "slice geometry and player integration",
+      "output": "Complete playable visual slice and before/after reel",
+      "acceptance": "Sanders approves the shared in-game look before bulk asset rebuilds"
+    },
+    {
+      "order": 5,
+      "gate": "Gate 3",
+      "batch": "Three bot variants and complete body action library",
+      "dependsOn": "Gate 2 approval",
+      "output": "Consistent four-character roster, authored directional/stance/death actions",
+      "acceptance": "Likeness, deformation, transitions, silhouettes and motion review"
+    },
+    {
+      "order": 6,
+      "gate": "Gate 3",
+      "batch": "Remaining arena, summit, staging, basement and devices",
+      "dependsOn": "approved modular kit",
+      "output": "Full map art, return devices, signs and environment detail",
+      "acceptance": "Every production family has sources/sheets, readable routes and safe collision clearances"
+    },
+    {
+      "order": 7,
+      "gate": "Gate 3",
+      "batch": "Nature, effects, all UI flows and presentation closure",
+      "dependsOn": "complete asset integration",
+      "output": "Unified water/foliage/sky, feedback, menus, portraits and HUD",
+      "acceptance": "Complete coverage gallery, state/readability review and licensing record"
+    },
+    {
+      "order": 8,
+      "gate": "Gate 3",
+      "batch": "Performance, focused final checks and local handoff",
+      "dependsOn": "integrated art",
+      "output": "Verified Windows build, checksums, source manifest, comparison reels and exceptions",
+      "acceptance": "Measured 1080p/60 FPS target, focused gameplay checks and Sanders final approval"
+    },
+    {
+      "order": 9,
+      "gate": "Publication",
+      "batch": "Publish current v1 alpha package",
+      "dependsOn": "Sanders final approval",
+      "output": "New prerelease, download links and preserved release history",
+      "acceptance": "Published package identity/checksum verified"
+    }
+  ]
+}
