@@ -2,7 +2,7 @@
     "scope": "Hidden Windows player with forced 1080p offscreen camera rendering and a synchronized one-pixel GPU readback each frame, High tier, one automated human and three bots. Timings include readback overhead; overlay HUD, native swapchain, input/audio and sustained competitive play acceptance remain open. GPU -1 means unavailable.",
     "gpu": "NVIDIA GeForce RTX 2080",
     "api": "Direct3D12",
-    "fingerprint": "84d08adda4d5b5d6351e1e2d7a6ff7aa462ecb3d50acf17f79505568a03ded0a",
+    "fingerprint": "e367421e2432d174c1e3dade3beab88e4089c16e6296f9b493fc113849d04929",
     "width": 1920,
     "height": 1080,
     "exceptions": 0,
@@ -12,28 +12,28 @@
             "frames": 180,
             "validGpuSamples": 0,
             "nonBlackSamples": 32400,
-            "meanFrameMs": 9.763940811157227,
-            "p95FrameMs": 11.101799964904785,
+            "meanFrameMs": 12.450424194335938,
+            "p95FrameMs": 22.97189712524414,
             "medianGpuMs": -1.0,
-            "frameBudgetMet": true
+            "frameBudgetMet": false
         },
         {
             "view": "summit",
             "frames": 180,
             "validGpuSamples": 0,
             "nonBlackSamples": 32400,
-            "meanFrameMs": 9.29043197631836,
-            "p95FrameMs": 11.762202262878418,
+            "meanFrameMs": 9.92994213104248,
+            "p95FrameMs": 17.267297744750977,
             "medianGpuMs": -1.0,
-            "frameBudgetMet": true
+            "frameBudgetMet": false
         },
         {
             "view": "basement",
             "frames": 180,
             "validGpuSamples": 0,
             "nonBlackSamples": 32400,
-            "meanFrameMs": 9.434203147888184,
-            "p95FrameMs": 11.303096771240234,
+            "meanFrameMs": 9.820921897888184,
+            "p95FrameMs": 14.840503692626953,
             "medianGpuMs": -1.0,
             "frameBudgetMet": true
         },
@@ -42,20 +42,20 @@
             "frames": 180,
             "validGpuSamples": 0,
             "nonBlackSamples": 32400,
-            "meanFrameMs": 10.449155807495117,
-            "p95FrameMs": 17.92739486694336,
+            "meanFrameMs": 11.008417129516602,
+            "p95FrameMs": 13.243906021118164,
             "medianGpuMs": -1.0,
-            "frameBudgetMet": false
+            "frameBudgetMet": true
         },
         {
             "view": "portal",
             "frames": 180,
             "validGpuSamples": 0,
             "nonBlackSamples": 32400,
-            "meanFrameMs": 10.41443157196045,
-            "p95FrameMs": 13.660898208618164,
+            "meanFrameMs": 11.110426902770996,
+            "p95FrameMs": 19.15640640258789,
             "medianGpuMs": -1.0,
-            "frameBudgetMet": true
+            "frameBudgetMet": false
         }
     ],
     "passed": true,

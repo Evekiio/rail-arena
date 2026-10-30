@@ -1,6 +1,6 @@
 # Rail Arena v1 alpha art production
 
-Current milestone: **Gate 1 approved by Sanders; Gate 2 playable visual slice in production.** The overall goal remains the complete approved art-production plan. This package is the evidence and production basis for the first approval gate, not a completed graphical overhaul or permission to skip Gates 2 and 3.
+Current milestone: **Gate 1 approved; playable art build delivered; full integrated production continues.** The full approved plan remains the objective. Intermediate gates are review milestones under Sanders' execution update below; final artistic/playtest acceptance remains pending.
 
 **Execution update, 2026-10-30:** Sanders directed: “Resume all work and don't get stuck or waiting my approval. I want the final working version and I'll play test as the beta tester / play tester / user QA gate.” Intermediate art gates now serve as production review milestones without approval stops. Continue through the full integrated local build; Sanders' final playtest remains acceptance. Public publication remains held until final approval. This direction supersedes the earlier stop-at-Gate-2 workflow in the original planning package.
 
@@ -17,6 +17,7 @@ Current milestone: **Gate 1 approved by Sanders; Gate 2 playable visual slice in
 - [Integrated gameplay, UI and measured-reference gallery](../ArtSource/Original/ArtPass-v1/integrated-review.html)
 - [Integrated production asset delta](../ArtSource/Original/ArtPass-v1/integrated-manifest.json)
 - [Current working build and validation handoff](ART-PASS-REVIEW.md)
+- [Current joined asset manifest](../ArtSource/Original/ArtPass-v1/current-asset-manifest.json), [register](../ArtSource/Original/ArtPass-v1/current-asset-register.csv) and [remaining gaps](../ArtSource/Original/ArtPass-v1/CURRENT-GAPS.md)
 - [Authored locomotion integration and evidence](AUTHORED-LOCOMOTION.md)
 
 The target is crisp anime cel shading for Sky Gardens including the summit and basement routes, with a measured 1080p/60 FPS target on the RTX 2080 with one human and three bots. Older maps are inventoried and preserved. Source ownership and visual approval must remain distinct from runtime inclusion and technical import validity.
