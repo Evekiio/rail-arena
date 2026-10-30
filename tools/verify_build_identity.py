@@ -1,7 +1,7 @@
 """Verify source compatibility against the same normalized inputs used by Unity's generator."""
 import argparse,hashlib,re,struct
 from pathlib import Path
-parser=argparse.ArgumentParser();parser.add_argument('--project',type=Path,default=Path('RailArena'));parser.add_argument('--inputs',type=Path,help='Exact Unity InputPaths manifest, required for active Validation dependencies');parser.add_argument('--identity',type=Path,help='Packaged BuildIdentity.txt when the source identity was restored after building');args=parser.parse_args();root=args.project.resolve()
+parser=argparse.ArgumentParser();parser.add_argument('--project',type=Path,default=Path('RailArena'));parser.add_argument('--inputs',type=Path,help='Exact Unity InputPaths manifest, required for active Validation dependencies');parser.add_argument('--identity',type=Path,help='Packaged BuildIdentity.txt when the source identity was restored after building');parser.add_argument('--overlay',type=Path,help='Packaged BuildConfiguration holding temporary build settings');args=parser.parse_args();root=args.project.resolve()
 protocol=(root/'Assets/RailArena/Runtime/Networking/DuelProtocol.cs').read_text()
 version=int(re.search(r'const (?:byte|int|ushort) Version\s*=\s*(\d+)',protocol).group(1))
 files=[]
@@ -20,6 +20,7 @@ for directory in ('Assets','Packages','ProjectSettings'):
   files.append((name,path))
 digest=hashlib.sha256();digest.update(f'RailArena/UDP/{version}/Windows64\n'.encode())
 for name,path in sorted(files):
+ if args.overlay and (args.overlay/name).is_file():path=args.overlay/name
  encoded=name.encode();digest.update(struct.pack('<i',len(name.encode('utf-16-le'))//2));digest.update(encoded);data=path.read_bytes()
  if data.startswith(b'%YAML') or path.suffix.lower() in ('.cs','.json','.asmdef','.txt','.meta','.shader','.hlsl','.uss','.uxml','.inputactions'):
   data=data.decode('utf-8-sig').replace('\r\n','\n').replace('\r','\n').encode()

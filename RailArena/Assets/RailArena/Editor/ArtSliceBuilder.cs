@@ -128,6 +128,9 @@ namespace RailArena.Editor
                 if (result.summary.result != BuildResult.Succeeded) throw new InvalidOperationException("Art slice build failed");
                 File.WriteAllText(Path.Combine(folder,"BuildIdentity.txt"), File.ReadAllText("Assets/Resources/BuildIdentity.txt"));
                 File.WriteAllLines(Path.Combine(folder,"BuildInputs.txt"), BuildIdentityGenerator.InputPaths());
+                string config = Path.Combine(folder, "BuildConfiguration/ProjectSettings");
+                Directory.CreateDirectory(config);
+                File.Copy("ProjectSettings/QualitySettings.asset", Path.Combine(config, "QualitySettings.asset"));
                 Debug.Log("ART_PASS_REVIEW_BUILD " + Path.GetFullPath(output));
             }
             finally
