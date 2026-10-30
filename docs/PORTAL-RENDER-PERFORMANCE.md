@@ -39,3 +39,7 @@ Startup logs also report stripped, unused depth-of-field/Panini post-process sha
 The first Review-11 duel attempt ran under restricted networking: both peers stayed at tick zero and the client timed out without game exceptions. Its reports are retained in `Validation/ArtPass-Review-11/Duel-RestrictedNetwork/`. Only the loopback duel was rerun with network access; the mechanics, bot and rendered-view runs were not repeated.
 
 The connected 45-second attempt passed statistics with no exceptions, but failed movement coverage because neither observer sampled a host slide. That report remains in `Duel45-MissingHostSlide/`. A 90-second run extends opportunities under the unchanged criteria; a later pass does not erase the shorter attempt's missing coverage. This smoke test is not a deterministic traversal/stance coverage proof.
+
+## Subsequent correction
+
+Review-12 corrects the under-bridge placement using a measured 17 cm offset per gate. Both standing/crouched traversal directions and full-world normal/ADS visibility now pass; see [the correction and limits](UNDERBRIDGE-PORTAL-VISIBILITY.md). This does not retroactively change the Review-11 profile workload or its mixed timing results.

@@ -1,6 +1,7 @@
 param(
     [Parameter(Mandatory=$true)][string]$BuildDirectory,
-    [Parameter(Mandatory=$true)][string]$OutputDirectory
+    [Parameter(Mandatory=$true)][string]$OutputDirectory,
+    [ValidateRange(20,900)][int]$DuelDuration=45
 )
 $ErrorActionPreference='Stop'
 $railBuild=(Resolve-Path -LiteralPath $BuildDirectory).Path
@@ -23,4 +24,4 @@ foreach($railMode in @('mechanics','bots','performance')){
         Write-Output "$railMode passed"
     }finally{if(-not $railJob.HasExited){$railJob.Kill()}}
 }
-& (Join-Path $PSScriptRoot 'Test-Duel.ps1') -Build $railPlayer -OutputDirectory (Join-Path $railEvidence 'Duel') -MovementModes
+& (Join-Path $PSScriptRoot 'Test-Duel.ps1') -Build $railPlayer -OutputDirectory (Join-Path $railEvidence 'Duel') -MovementModes -Duration $DuelDuration
