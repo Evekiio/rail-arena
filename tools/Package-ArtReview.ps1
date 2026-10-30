@@ -6,6 +6,13 @@ $ErrorActionPreference='Stop'
 $railPackageRoot=(Resolve-Path -LiteralPath $BuildDirectory).Path
 if (-not (Test-Path -LiteralPath (Join-Path $railPackageRoot 'RailArena.exe'))) { throw 'Windows player missing' }
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'Test-Duel.ps1') -Destination (Join-Path $railPackageRoot 'Test-Duel.ps1')
+$railRepository=Split-Path -Parent $PSScriptRoot
+foreach($railNotice in @('LICENSE','THIRD-PARTY-NOTICES.md')){Copy-Item -LiteralPath (Join-Path $railRepository $railNotice) -Destination (Join-Path $railPackageRoot $railNotice)}
+$railLicenseRoot=Join-Path $railPackageRoot 'Licenses';[IO.Directory]::CreateDirectory($railLicenseRoot)|Out-Null
+foreach($railLicense in @(@('Barlow','OFL.txt'),@('Grab3D','LICENSE.txt'),@('Quaternius','License.txt'),@('Lucide','LICENSE.txt'))){
+    $railSource=Join-Path $railRepository ('RailArena/Assets/ThirdParty/'+$railLicense[0]+'/'+$railLicense[1])
+    Copy-Item -LiteralPath $railSource -Destination (Join-Path $railLicenseRoot ($railLicense[0]+'-'+$railLicense[1]))
+}
 @'
 param([ValidateSet('Mechanics','Bots','Duel','Performance')][string]$Mode='Mechanics')
 $ErrorActionPreference='Stop'

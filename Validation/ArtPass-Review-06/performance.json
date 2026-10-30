@@ -1,0 +1,63 @@
+{
+    "scope": "Hidden Windows player with forced 1080p offscreen camera rendering and a synchronized one-pixel GPU readback each frame, High tier, one automated human and three bots. Timings include readback overhead; overlay HUD, native swapchain, input/audio and sustained competitive play acceptance remain open. GPU -1 means unavailable.",
+    "gpu": "NVIDIA GeForce RTX 2080",
+    "api": "Direct3D12",
+    "fingerprint": "3478db1a4468913295a6c1bd62f4d313090decb888021958e7b8aaf660bbfe8b",
+    "width": 1920,
+    "height": 1080,
+    "exceptions": 0,
+    "views": [
+        {
+            "view": "combat",
+            "frames": 180,
+            "validGpuSamples": 0,
+            "nonBlackSamples": 32400,
+            "meanFrameMs": 9.52790355682373,
+            "p95FrameMs": 11.551700592041016,
+            "medianGpuMs": -1.0,
+            "frameBudgetMet": true
+        },
+        {
+            "view": "summit",
+            "frames": 180,
+            "validGpuSamples": 0,
+            "nonBlackSamples": 32400,
+            "meanFrameMs": 9.124417304992676,
+            "p95FrameMs": 10.644402503967285,
+            "medianGpuMs": -1.0,
+            "frameBudgetMet": true
+        },
+        {
+            "view": "basement",
+            "frames": 180,
+            "validGpuSamples": 0,
+            "nonBlackSamples": 32400,
+            "meanFrameMs": 9.85334300994873,
+            "p95FrameMs": 11.871804237365723,
+            "medianGpuMs": -1.0,
+            "frameBudgetMet": true
+        },
+        {
+            "view": "foliage-waterfall",
+            "frames": 180,
+            "validGpuSamples": 0,
+            "nonBlackSamples": 32400,
+            "meanFrameMs": 10.335976600646973,
+            "p95FrameMs": 12.962896347045898,
+            "medianGpuMs": -1.0,
+            "frameBudgetMet": true
+        },
+        {
+            "view": "portal",
+            "frames": 180,
+            "validGpuSamples": 0,
+            "nonBlackSamples": 32400,
+            "meanFrameMs": 10.368517875671387,
+            "p95FrameMs": 12.616000175476074,
+            "medianGpuMs": -1.0,
+            "frameBudgetMet": true
+        }
+    ],
+    "passed": true,
+    "allViewsWithinBudget": true
+}

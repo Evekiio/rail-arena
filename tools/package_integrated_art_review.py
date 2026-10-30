@@ -25,6 +25,7 @@ for directory, span, name in families:
     sheet.save(directory / 'measured-sheet.png')
 
 sections = [('Gameplay / integrated captures', art/'Gate2/look-prototype'), ('Menus and HUD / three resolutions', art/'UiReview')]
+if (art/'StandaloneReview').exists():sections.insert(0,('Standalone Windows player / forced offscreen render; native swapchain and HUD excluded',art/'StandaloneReview'))
 comparisons=art/'Comparisons';comparisons.mkdir(exist_ok=True)
 before_views={v['id']:v for v in json.loads((art/'Gate1/baseline-views/index.json').read_text())['views']}
 after_views={v['id']:v for v in json.loads((art/'Gate2/look-prototype/index.json').read_text())['views']}
@@ -57,12 +58,15 @@ class Links(HTMLParser):
                 assert (art/value).resolve().is_file(), value
 Links().feed(html)
 paths=[]
-for directory in [root/'RailArena/Assets/RailArena/Art/ArtPass',root/'RailArena/Assets/Resources/Art',art/'Characters',art/'Nature',art/'Devices',art/'Environment',art/'Gate2/RifleActions']:
+for directory in [root/'RailArena/Assets/RailArena/Art/ArtPass',root/'RailArena/Assets/Resources/Art',root/'RailArena/Assets/Resources/UI/ArtPassPortraits',art/'Characters',art/'Nature',art/'Devices',art/'Environment',art/'Gate2/RifleActions']:
     paths += [p for p in directory.rglob('*') if p.is_file() and p.suffix not in ('.meta','.blend1','.blend2')]
+paths += [root/'RailArena/Assets/Resources/Effects'/name for name in ('CelSurface.shader','CelWater.shader','CelOutline.shader','SkyGardenClouds.shader','WorldGlyph.shader','ArtAtmosphere.shader')]
 entries=[{'id':'art-'+hashlib.sha256(p.relative_to(root).as_posix().encode()).hexdigest()[:16], 'path':p.relative_to(root).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'disposition':'refine','approval':'Art direction approved; final integrated playtest pending'} for p in sorted(set(paths))]
 for entry in entries:
     path = entry['path']; family = 'environment'; category = 'supporting'
     identity = next((n for n in ('Player','Bot01','Bot02','Bot03') if n in path), None)
+    if '/ArtPassPortraits/' in path:
+        identity=('Player','Bot01','Bot02','Bot03')[int(Path(path).stem.split('-')[-1])]
     if identity:
         family='character-'+identity; category='characters'
         spec=art/'Characters'/f'{identity}-Production.json'
@@ -80,9 +84,18 @@ for entry in entries:
             family='medical-core';category='pickups';directory=art/'Devices/HealthCore';master=directory/'Medical-Core-v1.blend';references=directory/'production.json';sheet=directory/'measured-sheet.png';dimensions=json.loads(references.read_text())['dimensionsBlenderXYZ'];screenshot=art/'Gate2/look-prototype/health.png'
         elif 'Rifle' in path or 'Reload' in path or 'Carbine' in path:
             family='carbine';category='weapons';master=art/'Gate2/RifleActions/Carbine-Reload-v1.blend';references=art/'Gate2/RifleActions/ReloadAction.json';screenshot=art/'Gate2/look-prototype/fps-hud.png'
+        elif 'StoneCover' in path:
+            family='stone-cover';category='environment';directory=art/'Gate2/StoneCover';master=directory/'StoneCover-v1.blend';references=directory/'reference.json';sheet=directory/'measured-sheet.png';dimensions=[2,1,1.2]
+        elif 'Contenders.asset' in path or 'CharacterContour' in path:
+            family='shared-contender-surface';category='characters';master=art/'Characters/Player-ArtPass-v1.blend';references=art/'Characters/Player-Production.json';sheet=art/'Characters/References/Player/measured-sheet.png';screenshot=art/'Gate2/look-prototype/player-face.png';provenance='Shared original cel presentation over the four refined contenders; existing CC0 rig provenance is preserved in Characters/README.md.'
+        elif 'Atmosphere' in path or 'SkyGarden' in path or 'Cel' in path:
+            family='sky-gardens-lighting';category='VFX / lighting';references=art/'Gate1/cel-material-spec.json'
     assert master.is_file(),master
     relative=lambda p:p.relative_to(root).as_posix() if p else None
+    if '/ArtPassPortraits/' in path:category='UI / UX'
     entry.update({'category':category,'family':family,'mapArea':'Sky Gardens / summit / four basement routes','runtimeUsage':'Production review build' if path.startswith('RailArena/') else 'Editable source or reference evidence; not runtime content','sourceMaster':relative(master),'sourceExportLocations':[path],'dimensionsMetresBlenderXYZ':dimensions,'dimensionAuthority':relative(references),'dependencies':[relative(references)],'referenceSheets':[relative(sheet)] if sheet else [],'rigBones':rig,'clips':['Carbine reload / 120 ticks'] if family=='carbine' else [],'provenance':provenance,'currentScreenshot':relative(screenshot),'referenceException':'Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.'})
+    if Path(path).suffix.lower()=='.png':
+        with Image.open(root/path) as texture:entry['textureDimensionsPixelsWH']=list(texture.size)
 (art/'integrated-manifest.json').write_text(json.dumps({'schema':'rail-arena-art-delta/2','baseline':'Gate1/asset-manifest.json','entries':entries,'coverage':'Baseline inventory plus production delta; remaining reference and animation exceptions in PRODUCTION-STATUS.md'},indent=2)+'\n')
 with (art/'integrated-asset-register.csv').open('w',newline='',encoding='utf-8') as stream:
     columns=['id','path','category','family','mapArea','runtimeUsage','sourceMaster','dimensionsMetresBlenderXYZ','dimensionAuthority','dependencies','referenceSheets','rigBones','clips','provenance','approval','currentScreenshot','disposition','referenceException','sha256']

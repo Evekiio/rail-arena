@@ -2,6 +2,8 @@
 
 Sanders approved the direction and authorized continuous production without intermediate approval holds. Final playtest is the artistic and user QA gate. Public release remains held for acceptance.
 
+**Working local milestone:** ArtPass Review-07 is built and packaged with runnable checks. All 39 mechanics checks, the three-bot match and both slide-enabled loopback peers passed. Five forced-render 1080p views met the measured frame budget; GPU timers and native acceptance remain unavailable/open. [Final validation](../../../../Validation/art-integrated-final.json) and [build handoff](../../../../docs/ART-PASS-REVIEW.md) record the exact scope and remaining production work.
+
 ## Implemented
 
 Four refined Blender character masters, original 2K painted atlases, twelve LODs, calibrated arms, selective contours and gameplay-derived portraits. Original two-second magazine/wrist reload follows unchanged simulation timing, with interruption/reset handling. Ivory painted stone, normal/cavity detail, modular covers, faceted tree canopies, floating medical cores, route labels and lower cloud banks are integrated. Revised rifle materials, light-responsive waterfall, baked-GI cel lighting and production Render Graph atmosphere are installed together. Existing gameplay, portal views and basement traversal remain authoritative. The distracting cyan particle cloud is not installed.
