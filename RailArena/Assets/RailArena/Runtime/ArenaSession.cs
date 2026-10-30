@@ -445,7 +445,7 @@ namespace RailArena
             actor.Brain = new BotBrain(7291 + id * 917);
             actor.Controller = root.AddComponent<CharacterController>();
             actor.Controller.height = 1.8f;
-            actor.Controller.radius = .36f;
+            actor.Controller.radius = ArenaActor.StandingRadius;
             actor.Controller.center = Vector3.up * .9f;
             actor.Controller.stepOffset = .3f;
             actor.Controller.slopeLimit = 50;

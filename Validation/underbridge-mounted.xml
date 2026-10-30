@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 23:17:55Z" end-time="2026-10-30 23:18:01Z" duration="5.3659225">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="285" result="Passed" start-time="2026-10-30 23:17:55Z" end-time="2026-10-30 23:18:01Z" duration="5.365923" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1424" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="285" result="Passed" start-time="2026-10-30 23:17:55Z" end-time="2026-10-30 23:18:01Z" duration="5.338090" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="38120" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1425" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="285" result="Passed" start-time="2026-10-30 23:17:55Z" end-time="2026-10-30 23:18:01Z" duration="5.306148" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1426" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="285" result="Passed" start-time="2026-10-30 23:17:56Z" end-time="2026-10-30 23:18:01Z" duration="5.276250" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1042" name="BasementRouteTests" fullname="RailArena.Tests.BasementRouteTests" classname="RailArena.Tests.BasementRouteTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 23:17:56Z" end-time="2026-10-30 23:17:58Z" duration="2.514316" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1043" name="FourSprintRoutesReachStagingAndBasement" fullname="RailArena.Tests.BasementRouteTests.FourSprintRoutesReachStagingAndBasement" methodname="FourSprintRoutesReachStagingAndBasement" classname="RailArena.Tests.BasementRouteTests" runstate="Runnable" seed="1686815240" result="Passed" start-time="2026-10-30 23:17:56Z" end-time="2026-10-30 23:17:58Z" duration="2.490965" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[BASEMENT_LANDING Basement route 1 lower=False tick=71 position=(13.336, 14.080, 14.043)
+BASEMENT_LANDING Basement route 1 lower=False tick=71 position=(13.690, 14.080, 13.690)
+BASEMENT_LANDING Basement route 1 lower=False tick=71 position=(14.043, 14.080, 13.336)
+BASEMENT_LANDING Basement route 1 lower=True tick=105 position=(29.684, -9.920, 30.391)
+BASEMENT_LANDING Basement route 1 lower=True tick=105 position=(30.038, -9.920, 30.038)
+BASEMENT_LANDING Basement route 1 lower=True tick=105 position=(30.391, -9.920, 29.684)
+BASEMENT_LANDING Basement route 4 lower=False tick=71 position=(-14.043, 14.080, 13.336)
+BASEMENT_LANDING Basement route 4 lower=False tick=71 position=(-13.690, 14.080, 13.690)
+BASEMENT_LANDING Basement route 4 lower=False tick=71 position=(-13.336, 14.080, 14.043)
+BASEMENT_LANDING Basement route 4 lower=True tick=105 position=(-30.391, -9.920, 29.684)
+BASEMENT_LANDING Basement route 4 lower=True tick=105 position=(-30.038, -9.920, 30.038)
+BASEMENT_LANDING Basement route 4 lower=True tick=105 position=(-29.684, -9.920, 30.391)
+BASEMENT_LANDING Basement route 3 lower=False tick=71 position=(-13.336, 14.080, -14.043)
+BASEMENT_LANDING Basement route 3 lower=False tick=71 position=(-13.690, 14.080, -13.690)
+BASEMENT_LANDING Basement route 3 lower=False tick=71 position=(-14.043, 14.080, -13.336)
+BASEMENT_LANDING Basement route 3 lower=True tick=105 position=(-29.684, -9.920, -30.391)
+BASEMENT_LANDING Basement route 3 lower=True tick=105 position=(-30.038, -9.920, -30.038)
+BASEMENT_LANDING Basement route 3 lower=True tick=105 position=(-30.391, -9.920, -29.684)
+BASEMENT_LANDING Basement route 2 lower=False tick=71 position=(14.043, 14.080, -13.336)
+BASEMENT_LANDING Basement route 2 lower=False tick=71 position=(13.690, 14.080, -13.690)
+BASEMENT_LANDING Basement route 2 lower=False tick=71 position=(13.336, 14.080, -14.043)
+BASEMENT_LANDING Basement route 2 lower=True tick=105 position=(30.391, -9.920, -29.684)
+BASEMENT_LANDING Basement route 2 lower=True tick=105 position=(30.038, -9.920, -30.038)
+BASEMENT_LANDING Basement route 2 lower=True tick=105 position=(29.684, -9.920, -30.391)
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1188" name="PortalCropRenderingReview" fullname="RailArena.Tests.PortalCropRenderingReview" classname="RailArena.Tests.PortalCropRenderingReview" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 23:17:58Z" end-time="2026-10-30 23:18:00Z" duration="1.633002" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1189" name="CroppedDestinationsPreservePhysicalLensAndScreenAlignment" fullname="RailArena.Tests.PortalCropRenderingReview.CroppedDestinationsPreservePhysicalLensAndScreenAlignment" methodname="CroppedDestinationsPreservePhysicalLensAndScreenAlignment" classname="RailArena.Tests.PortalCropRenderingReview" runstate="Runnable" seed="1735001107" result="Passed" start-time="2026-10-30 23:17:58Z" end-time="2026-10-30 23:18:00Z" duration="1.631595" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1420" name="UnderbridgePortalClearanceTests" fullname="RailArena.Tests.UnderbridgePortalClearanceTests" classname="RailArena.Tests.UnderbridgePortalClearanceTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 23:18:00Z" end-time="2026-10-30 23:18:01Z" duration="1.035228" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1421" name="BothBasementPairsExposeTheirAperturesAndTraverseBothWays" fullname="RailArena.Tests.UnderbridgePortalClearanceTests.BothBasementPairsExposeTheirAperturesAndTraverseBothWays" methodname="BothBasementPairsExposeTheirAperturesAndTraverseBothWays" classname="RailArena.Tests.UnderbridgePortalClearanceTests" runstate="Runnable" seed="472883894" result="Passed" start-time="2026-10-30 23:18:00Z" end-time="2026-10-30 23:18:01Z" duration="1.034471" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

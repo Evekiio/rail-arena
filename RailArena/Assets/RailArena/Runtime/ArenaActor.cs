@@ -6,6 +6,7 @@ namespace RailArena
     public sealed class ArenaActor : MonoBehaviour
     {
         public const float StandingHeight = 1.8f, CrouchingHeight = 1.2f;
+        public const float StandingRadius = .36f;
         public const float StandingEyeHeight = 1.58f, CrouchingEyeHeight = .98f;
         public bool IsCrouched { get; private set; }
         public SlideState Slide;
