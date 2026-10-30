@@ -1,49 +1,50 @@
-# Rail Arena v1 alpha: integrated art build 07
+# Rail Arena v1 alpha: integrated art build 08
 
-The Windows review package is working and includes the current graphical upgrades and runnable self-checks. Sanders' native playtest remains the final acceptance gate. The broader art-production goal remains active; this milestone does not claim complete animation replacement or 100% reference coverage.
+Review-08 includes the integrated graphical upgrades and original retreat animations for all four contenders. It is a local playtest milestone, not completion of the entire art-production plan. Sanders retains final native input, sound and artistic acceptance. Public publication remains held.
 
 ## Play and inspect
 
-Use `Builds/RailArena-v1Alpha-ArtPass-Review-07/RailArena.exe`, keeping its complete folder together, or extract `RailArena-v1Alpha-ArtPass-Review-07.zip` first. `G` opens Physics Lab. Existing controls and graphics presets remain in Settings.
+Launch `Builds/RailArena-v1Alpha-ArtPass-Review-08/RailArena.exe` with its folder intact, or extract the corresponding ZIP first. `G` opens Physics Lab. Existing controls and graphics presets remain in Settings.
 
-- [Integrated gameplay, menu and measured-reference gallery](../ArtSource/Original/ArtPass-v1/integrated-review.html)
-- [Inventory production delta](../ArtSource/Original/ArtPass-v1/integrated-manifest.json) and [asset register](../ArtSource/Original/ArtPass-v1/integrated-asset-register.csv)
-- [Normal-speed rifle reload and contact evidence](../ArtSource/Original/ArtPass-v1/Gate2/RifleActions/index.html)
-- [Validation and reproducibility record](../Validation/art-integrated-final.json)
-- [Portable archive checksum and verification](../Validation/art-package-verification.json)
+- [Integrated gameplay, menu and measured-reference gallery](../ArtSource/Original/ArtPass-v1/integrated-review.html).
+- [Armed retreat playback and measured poses](../ArtSource/Original/ArtPass-v1/Animation/index.html).
+- [Reload animation and contacts](../ArtSource/Original/ArtPass-v1/Gate2/RifleActions/index.html).
+- [Inventory delta](../ArtSource/Original/ArtPass-v1/integrated-manifest.json).
+- [Build validation](../Validation/art-integrated-final-08.json).
+- [Archive checksum and file verification](../Validation/art-package-verification-08.json).
 
-The package contains `Run-Checks.ps1`. Modes are `Mechanics`, `Bots`, `Duel` and `Performance`; results go to `TestResults`. It also contains shipping licenses, the exact build-input manifest, build identity, actual render configuration, validation evidence and a SHA-256 file manifest. Unity's backup/debug source folders are excluded from the archive.
+The portable package contains Run-Checks.ps1 (Mechanics, Bots, Duel, Performance), shipping licenses, source/build identities, render configuration, validation records and a SHA-256 manifest. Unity backup/debug source folders are excluded. Historical Review-07 is preserved.
 
 ## Installed presentation
 
-Four refined painted characters and calibrated arms; selective contours; closer studio-lit menu portraits; authored two-second magazine/wrist reload; revised rifle surfaces with the physical open optic preserved; ivory stone paint with normal/cavity detail; modular cover shells; faceted canopies; floating medical cores; depth-tested route labels; shaped cloud banks; responsive waterfalls; baked-GI cel lighting and the production atmosphere pass are integrated together.
+Four refined painted characters and calibrated arms, selective contours, studio-lit menu portraits, authored two-second magazine/wrist reload, revised rifle surfaces and physical optic, ivory stone paint and normal detail, modular cover shells, faceted canopies, floating medical cores, route labels, cloud banks, responsive waterfalls and the cel-lighting/atmosphere pass remain integrated together.
 
-Movement, damage, spread, firing cadence, reload timing, trajectories, collision and network authority are preserved. The distracting cyan particle cloud is absent. Older sources and unrelated diagnostic work remain preserved.
+This batch replaces reversed backward walk/jog/run with dedicated Blender-authored clips through the optional Sky Gardens controller override. Legacy maps retain their controller. Movement, damage, weapon spread/cadence, reload timing, trajectories, collision and network authority remain unchanged. The distracting cyan cloud remains absent. Unrelated diagnostic work is preserved.
 
 ## Validation
 
-- Five focused visual/reload/portrait tests passed, followed by the refreshed three-resolution UI capture and the source-restoration check.
-- All **39 mechanics checks** passed in the standalone player.
-- A 45-second match with one automated human and three bots passed: **170 shots, 7 deaths, 2 pickups, 19 pad launches, zero void deaths and zero exceptions**.
-- Both loopback duel peers passed statistics, shots, snapshots and movement coverage. Slide activity was confirmed for both actors. The test generator now requests the current slide command rather than the obsolete crouch-to-slide input.
-- The final build's source fingerprint was independently reproduced. Its executable, Unity player, gameplay assemblies, resource assets and level data are byte-identical to the validated build. The last build-recipe correction restores an unloaded source pipeline by its saved asset identity; it changes no runtime content. The real build leaves the source quality settings and identity unchanged.
+All 39 standalone mechanics checks passed. A 45-second match with three bots recorded 158 shots, 9 deaths, 2 pickups and 20 pad launches, with zero exceptions or void deaths. Both slide-enabled loopback duel peers passed statistics and movement checks. These automated tests do not establish real-internet or native-input acceptance.
+
+The original retreat library has valid humanoid imports, installed direction/root checks and a 540-frame armed playback covering 2,160 character samples. Staged sole clearance is approximately 8.4–8.5 mm. Numerical wrist reach checks do not certify every palm/finger surface or moving-world foot slip.
+
+The player built successfully from source commit `33a4480980c0a252abb4c15282469bee5f6419d6`. Its source fingerprint independently reproduces as `84d08adda4d5b5d6351e1e2d7a6ff7aa462ecb3d50acf17f79505568a03ded0a`. The build restores the source quality settings and diagnostic identity.
 
 ### Render workload
 
-RTX 2080, Direct3D12, 1920x1080, High preset, one automated human and three bots. Each view has 60 warmup frames and 180 samples. Rendering is forced into an offscreen target, followed by a synchronized one-pixel GPU readback; the times include that overhead. Exported images contain actual non-black rendered scenes.
+RTX 2080 / Direct3D12 / High / 1920x1080 / one automated human and three bots. Each view forces offscreen rendering with synchronized one-pixel GPU readback, 60 warmup frames and 180 samples. Readback overhead is included; overlay HUD and native swapchain are excluded. GPU timers returned zero valid samples.
 
-| View | Mean frame ms | 95th percentile ms |
+| View | Mean ms | P95 ms |
 |---|---:|---:|
-| Combat | 9.53 | 11.55 |
-| Summit | 9.12 | 10.64 |
-| Basement | 9.85 | 11.87 |
-| Foliage and waterfall | 10.34 | 12.96 |
-| Portal | 10.37 | 12.62 |
+| Combat | 9.76 | 11.10 |
+| Summit | 9.29 | 11.76 |
+| Basement | 9.43 | 11.30 |
+| Foliage / waterfall | 10.45 | **17.93** |
+| Portal | 10.41 | 13.66 |
 
-These samples meet the 16.67 ms render budget. Isolated GPU timings were unavailable. The runs used `-noaudio`; overlay HUD, visible swapchain, native input, audible playback and sustained competitive play remain unverified. Earlier hidden-swapchain measurements with black screenshots were discarded.
+The foliage/waterfall P95 exceeds the 16.67 ms target. Performance acceptance remains open; the report records this exception. Earlier black-swapchain timings are excluded.
 
-## Remaining production and QA
+## Continuing production and QA
 
-The full authored FPS/body action library, replacement of reversed backward locomotion and accelerated transitions, complete per-family reference/variant evidence and remaining environment/device construction detail continue in production. Wrist reach checks do not certify finger/palm contact at every interpolated frame. The deferred ADS/portal projection corner case remains recorded and is addressed if it blocks presentation or acceptance.
+Authored jump/landing and remaining FPS/body actions, moving-world stance transitions, complete reference/variant coverage and additional environment/device construction detail remain unfinished. See [production status](../ArtSource/Original/ArtPass-v1/Gate2/PRODUCTION-STATUS.md). The deferred ADS/portal corner case remains recorded for reproduction if it blocks acceptance.
 
-For playtest, inspect ADS and reload contacts, movement and slide readability, reticle accuracy bounds, all four basement routes and returns, character/menu states, Physics Lab, deaths, audio and sustained frame pacing. Real-internet multiplayer acceptance remains separate from loopback checks. Public alpha publication remains held for Sanders' final acceptance.
+Playtest ADS, reloads, retreat and slide readability, reticle bounds, all basement routes/returns, menu/character states, Physics Lab, deaths, sound and sustained frame pacing. Continue production without intermediate approval holds; final artistic approval remains Sanders' decision.

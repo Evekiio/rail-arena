@@ -74,7 +74,10 @@ namespace RailArena.Editor
             const string profilePath = "Assets/Resources/Art/Contenders.asset";
             var set = AssetDatabase.LoadAssetAtPath<ContenderArtSet>(profilePath);
             if (set == null) { set = ScriptableObject.CreateInstance<ContenderArtSet>(); AssetDatabase.CreateAsset(set, profilePath); }
-            set.variants = variants.ToArray(); EditorUtility.SetDirty(set); AssetDatabase.SaveAssets();
+            set.variants = variants.ToArray();
+            set.locomotionController = Resources.Load<RuntimeAnimatorController>("Art/ContenderRetreat");
+            if (set.locomotionController == null) throw new InvalidOperationException("Authored retreat controller is missing");
+            EditorUtility.SetDirty(set); AssetDatabase.SaveAssets();
         }
 
         sealed class DisposableMaterial : IDisposable

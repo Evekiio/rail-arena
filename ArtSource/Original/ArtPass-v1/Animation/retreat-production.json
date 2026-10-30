@@ -1,0 +1,50 @@
+{
+  "id": "ANIM-RETREAT-v1",
+  "master": "Contender-Retreat-v1.blend",
+  "masterSha256": "5104b714e4fdd5e3f64605b9b88bebfdd29ef9968df22479244d6d0094d4a125",
+  "sourceMaster": "ArtSource\\Original\\ArtPass-v1\\Characters\\Player-ArtPass-v1.blend",
+  "sourceMasterSha256": "6d31c2d0eee1627d197bcdeddb1ab156d1d72b13da17982134214cd92bca938e",
+  "axes": "Blender metres -> Unity (x,z,-y)",
+  "rig": "Unchanged shared contender rest skeleton",
+  "provenance": "Original authored IK contact paths and baked bone motion, not reversed or retimed forward clips",
+  "clips": [
+    {
+      "name": "RetreatWalk",
+      "fps": 60,
+      "frames": 36,
+      "durationSeconds": 0.6,
+      "loop": true,
+      "strideMetres": 0.53,
+      "swingAnkleLiftMetres": 0.075,
+      "hipLoweringMetres": 0.11,
+      "maximumAnkleTargetErrorMetres": 6.633588775604503e-05,
+      "contact": "Each foot stance: phase 0\u20130.5, swing: 0.5\u20131; right offset half a cycle. Controller supplies translation; root motion is absent."
+    },
+    {
+      "name": "RetreatJog",
+      "fps": 60,
+      "frames": 20,
+      "durationSeconds": 0.3333333333333333,
+      "loop": true,
+      "strideMetres": 0.74,
+      "swingAnkleLiftMetres": 0.105,
+      "hipLoweringMetres": 0.17,
+      "maximumAnkleTargetErrorMetres": 7.4496019733978e-05,
+      "contact": "Each foot stance: phase 0\u20130.5, swing: 0.5\u20131; right offset half a cycle. Controller supplies translation; root motion is absent."
+    },
+    {
+      "name": "RetreatRun",
+      "fps": 60,
+      "frames": 18,
+      "durationSeconds": 0.3,
+      "loop": true,
+      "strideMetres": 0.82,
+      "swingAnkleLiftMetres": 0.13,
+      "hipLoweringMetres": 0.22,
+      "maximumAnkleTargetErrorMetres": 9.206770081130758e-05,
+      "contact": "Each foot stance: phase 0\u20130.5, swing: 0.5\u20131; right offset half a cycle. Controller supplies translation; root motion is absent."
+    }
+  ],
+  "integration": "Installed through the optional Sky Gardens art-profile ContenderRetreat override; legacy controller assets are retained.",
+  "approval": "Final integrated Sanders playtest pending"
+}

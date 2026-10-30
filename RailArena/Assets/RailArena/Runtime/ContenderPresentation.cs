@@ -123,26 +123,7 @@ namespace RailArena
 
         private void LateUpdate()
         {
-            if (actor != null && actor.Alive)
-            {
-                Quaternion aim = Quaternion.Euler(Mathf.Clamp(actor.Command.Pitch, -65, 65), actor.Command.Yaw, 0);
-                ArmContactPose.AlignBody(Animator);
-                ApplyStance();
-                var chest = Animator.GetBoneTransform(HumanBodyBones.Chest);
-                var head = Animator.GetBoneTransform(HumanBodyBones.Head);
-                var leftArm = Animator.GetBoneTransform(HumanBodyBones.LeftUpperArm);
-                var rightArm = Animator.GetBoneTransform(HumanBodyBones.RightUpperArm);
-                var chestAxis = Vector3.ProjectOnPlane(rightArm.position - leftArm.position, Vector3.up);
-                var facing = Quaternion.FromToRotation(chestAxis, Quaternion.Euler(0, actor.Command.Yaw, 0) * Vector3.right);
-                chest.rotation = Quaternion.AngleAxis(35, Vector3.up) * facing * chest.rotation;
-                head.rotation = aim * headAimOffset;
-                var shoulder = Animator.GetBoneTransform(HumanBodyBones.RightUpperArm);
-                var contact = shoulder.position + aim * new Vector3(.015f, .02f, -.04f);
-                aim *= Quaternion.Euler(-2.5f * recoil, 0, 0);
-                Weapon.SetPositionAndRotation(contact - aim * Railgun.Shoulder.localPosition - aim * Vector3.forward * recoil * .025f, aim);
-                ArmContactPose.Apply(Animator, true, LeftGrip);
-                ArmContactPose.Apply(Animator, false, RightGrip);
-            }
+            ApplyCombatPose();
             if (actor != null) Hands.SetRecoil(actor.Alive ? recoil : 0);
             if (actor == null || actor.Alive) return;
             bool paused = session.Paused && !session.IsOnline;
@@ -160,6 +141,29 @@ namespace RailArena
                 transform.position += Vector3.up * (corpseGround + .01f - lowest);
                 corpseVelocity = 0;
             }
+        }
+
+        /// <summary>Shared live/review presentation pass; never writes the actor's authoritative movement.</summary>
+        public void ApplyCombatPose()
+        {
+            if (actor == null || !actor.Alive) return;
+            Quaternion aim = Quaternion.Euler(Mathf.Clamp(actor.Command.Pitch, -65, 65), actor.Command.Yaw, 0);
+            ArmContactPose.AlignBody(Animator);
+            ApplyStance();
+            var chest = Animator.GetBoneTransform(HumanBodyBones.Chest);
+            var head = Animator.GetBoneTransform(HumanBodyBones.Head);
+            var leftArm = Animator.GetBoneTransform(HumanBodyBones.LeftUpperArm);
+            var rightArm = Animator.GetBoneTransform(HumanBodyBones.RightUpperArm);
+            var chestAxis = Vector3.ProjectOnPlane(rightArm.position - leftArm.position, Vector3.up);
+            var facing = Quaternion.FromToRotation(chestAxis, Quaternion.Euler(0, actor.Command.Yaw, 0) * Vector3.right);
+            chest.rotation = Quaternion.AngleAxis(35, Vector3.up) * facing * chest.rotation;
+            head.rotation = aim * headAimOffset;
+            var shoulder = Animator.GetBoneTransform(HumanBodyBones.RightUpperArm);
+            var contact = shoulder.position + aim * new Vector3(.015f, .02f, -.04f);
+            aim *= Quaternion.Euler(-2.5f * recoil, 0, 0);
+            Weapon.SetPositionAndRotation(contact - aim * Railgun.Shoulder.localPosition - aim * Vector3.forward * recoil * .025f, aim);
+            ArmContactPose.Apply(Animator, true, LeftGrip);
+            ArmContactPose.Apply(Animator, false, RightGrip);
         }
 
         public void Fired() { recoilSpring.Fire(); }
