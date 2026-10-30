@@ -30,7 +30,7 @@ namespace RailArena.Editor
         }
         public static void Build()
         {
-            const string output = "../Builds/SkyGardens-BasementRoutes-2026-10-30/RailArena.exe";
+            const string output = "../Builds/SkyGardens-BasementBots-2026-10-30/RailArena.exe";
             if (Directory.Exists(Path.GetDirectoryName(output))) throw new IOException("Output already exists");
             var candidate = Load<UniversalRenderPipelineAsset>("Assets/Validation/AtmosphereCandidate/AtmospherePipeline.asset");
             var expected = Load<UniversalRenderPipelineAsset>("Assets/Settings/PC_RPAsset.asset");
@@ -47,6 +47,7 @@ namespace RailArena.Editor
         }
     }
 }
+
 
 
 

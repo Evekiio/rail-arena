@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 13:28:44Z" end-time="2026-10-30 13:28:47Z" duration="2.7627643">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="263" result="Passed" start-time="2026-10-30 13:28:44Z" end-time="2026-10-30 13:28:47Z" duration="2.762764" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1387" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="263" result="Passed" start-time="2026-10-30 13:28:44Z" end-time="2026-10-30 13:28:47Z" duration="2.748906" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="73480" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1388" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="263" result="Passed" start-time="2026-10-30 13:28:44Z" end-time="2026-10-30 13:28:47Z" duration="2.745192" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1389" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="263" result="Passed" start-time="2026-10-30 13:28:44Z" end-time="2026-10-30 13:28:47Z" duration="2.742078" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1029" name="BasementBotTests" fullname="RailArena.Tests.BasementBotTests" classname="RailArena.Tests.BasementBotTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 13:28:44Z" end-time="2026-10-30 13:28:47Z" duration="2.725278" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1030" name="BotCompletesAllFourBasementRoutesThroughAuthority" fullname="RailArena.Tests.BasementBotTests.BotCompletesAllFourBasementRoutesThroughAuthority" methodname="BotCompletesAllFourBasementRoutesThroughAuthority" classname="RailArena.Tests.BasementBotTests" runstate="Runnable" seed="823457211" result="Passed" start-time="2026-10-30 13:28:44Z" end-time="2026-10-30 13:28:47Z" duration="2.698779" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[BASEMENT_BOT_PROGRESS tick=0 position=(3.000, 22.080, 3.000) Idle route=0 trips=0 life=1
+BASEMENT_BOT trip=1 tick=570 position=(-2.380, 0.080, -0.174)
+BASEMENT_BOT trip=2 tick=1603 position=(-1.434, 4.080, -1.435)
+BASEMENT_BOT trip=3 tick=2606 position=(2.380, 0.080, 0.180)
+BASEMENT_BOT_PROGRESS tick=3000 position=(-4.848, 0.080, -14.306) Idle route=3 trips=3 life=1
+BASEMENT_BOT trip=4 tick=4451 position=(1.435, 4.080, 1.434)
+BASEMENT_BOT_COUNTS 1,1,1,1
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
