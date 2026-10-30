@@ -14,6 +14,7 @@ namespace RailArena.Editor
             PrepareRetreatCandidates();
             PrepareAirborneCandidates();
             ImportClips(new[] { "AdvanceWalk", "AdvanceJog", "AdvanceRun" }, "motion-advance-import.json");
+            PrepareStrafeCandidates();
             var original = Resources.Load<GameObject>("Characters/Contender").GetComponent<ContenderPresentation>().Animator.runtimeAnimatorController;
             foreach (string name in new[] { "Bot01", "Bot02", "Bot03" })
                 if (Resources.Load<GameObject>("Characters/Stylized/" + name).GetComponent<ContenderPresentation>().Animator.runtimeAnimatorController != original)
@@ -33,7 +34,7 @@ namespace RailArena.Editor
                 }
             if (changed != 6) throw new InvalidOperationException("Exactly six forward and backward locomotion clips must be replaced");
             controller.ApplyOverrides(overrides); EditorUtility.SetDirty(controller); AssetDatabase.SaveAssets();
-            Debug.Log("AUTHORED_LOCOMOTION_READY six dedicated gaits plus airborne states; legacy controller preserved");
+            Debug.Log("AUTHORED_LOCOMOTION_READY twelve cardinal gaits plus airborne states; legacy controller preserved");
         }
         static AnimatorController PrepareArtStateGraph(RuntimeAnimatorController original)
         {
@@ -47,6 +48,19 @@ namespace RailArena.Editor
             }
             if (graph == original) throw new InvalidOperationException("Legacy controller must remain unchanged");
             var states = graph.layers[0].stateMachine.states.ToDictionary(child => child.state.name, child => child.state);
+            foreach (string parameter in new[] { "MotionX", "MotionZ" })
+                if (!graph.parameters.Any(item => item.name == parameter)) graph.AddParameter(parameter, AnimatorControllerParameterType.Float);
+            var legacyTree = (BlendTree)((AnimatorController)original).layers[0].stateMachine.states.Single(child => child.state.name == "Locomotion").state.motion;
+            var tree = (BlendTree)states["Locomotion"].motion;
+            var children = legacyTree.children.Select(child => new ChildMotion
+            { motion = child.motion, position = new Vector2(0, child.threshold), timeScale = 1 }).ToList();
+            foreach (var direction in new[] { ("Left", -1), ("Right", 1) })
+            foreach (var gait in new[] { ("Walk", 1.5f), ("Jog", 4f), ("Run", 9f) })
+                children.Add(new ChildMotion { motion = AuthoredClip("Strafe" + direction.Item1 + gait.Item1), position = new Vector2(direction.Item2 * gait.Item2, 0), timeScale = 1 });
+            tree.name = "Authored directional locomotion"; tree.blendType = BlendTreeType.FreeformDirectional2D;
+            tree.blendParameter = "MotionX"; tree.blendParameterY = "MotionZ"; tree.useAutomaticThresholds = false; tree.children = children.ToArray();
+            states["Locomotion"].speed = 1; states["Locomotion"].speedParameterActive = false;
+            EditorUtility.SetDirty(tree); EditorUtility.SetDirty(states["Locomotion"]);
             foreach (var pair in new[] { ("Jump", "Takeoff"), ("Air", "AirborneHold"), ("Land", "LandingRecover") })
             {
                 var state = states[pair.Item1];
@@ -95,6 +109,9 @@ namespace RailArena.Editor
         public static void PrepareAirborneCandidates()
             => ImportClips(new[] { "Takeoff", "AirborneHold", "LandingRecover" }, "motion-airborne-import.json");
 
+        public static void PrepareStrafeCandidates()
+            => ImportClips(new[] { "StrafeLeftWalk", "StrafeLeftJog", "StrafeLeftRun", "StrafeRightWalk", "StrafeRightJog", "StrafeRightRun" }, "motion-strafe-import.json");
+
         static void ImportClips(string[] names, string evidenceFile)
         {
             var source = (ModelImporter)AssetImporter.GetAtPath("Assets/RailArena/Art/StylizedContenders/Player_LOD0.fbx");
@@ -112,7 +129,7 @@ namespace RailArena.Editor
                 importer.SaveAndReimport();
                 var settings = importer.defaultClipAnimations;
                 if (settings.Length != 1) throw new InvalidOperationException("One authored take is required per motion export: " + name);
-                settings[0].name = name; settings[0].loopTime = name.StartsWith("Retreat", StringComparison.Ordinal) || name.StartsWith("Advance", StringComparison.Ordinal) || name == "AirborneHold"; settings[0].loopPose = settings[0].loopTime;
+                settings[0].name = name; settings[0].loopTime = name.StartsWith("Retreat", StringComparison.Ordinal) || name.StartsWith("Advance", StringComparison.Ordinal) || name.StartsWith("Strafe", StringComparison.Ordinal) || name == "AirborneHold"; settings[0].loopPose = settings[0].loopTime;
                 settings[0].lockRootRotation = true; settings[0].lockRootPositionXZ = true; settings[0].lockRootHeightY = true;
                 settings[0].keepOriginalOrientation = true; settings[0].keepOriginalPositionXZ = true; settings[0].keepOriginalPositionY = true;
                 importer.clipAnimations = settings; importer.SaveAndReimport();

@@ -9,6 +9,8 @@ columns=list(rows[0])+['productionState','sourceMaster','measuredReferences','pl
 installed={
     ('character','walk forward'):('Animation/Forward','Contender-Advance-v1.blend','Advance-Playback.mp4','AdvanceWalk'),
     ('character','walk backward'):('Animation','Contender-Retreat-v1.blend','Retreat-Playback.mp4','RetreatWalk'),
+    ('character','strafe left'):('Animation/Strafe','Contender-Strafe-v1.blend','Strafe-Playback.mp4','StrafeLeftWalk'),
+    ('character','strafe right'):('Animation/Strafe','Contender-Strafe-v1.blend','Strafe-Playback.mp4','StrafeRightWalk'),
     ('character','sprint'):('Animation/Forward','Contender-Advance-v1.blend','Advance-Playback.mp4','AdvanceRun'),
     ('character','jump start'):('Animation/Airborne','Contender-Airborne-v1.blend','Controller-Jumps.mp4','Takeoff'),
     ('character','fall loop'):('Animation/Airborne','Contender-Airborne-v1.blend','Controller-Jumps.mp4','AirborneHold'),

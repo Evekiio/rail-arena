@@ -22,7 +22,7 @@ namespace RailArena
             if (actor.Presentation.BodyRenderers.Length != art.lods.Length) throw new InvalidOperationException("Contender LOD count differs from art set");
             if (owner == null) { owner = actor; originalBody = (Renderer[])actor.Presentation.BodyRenderers.Clone(); originalMotion = actor.Presentation.Animator.runtimeAnimatorController; }
             if (motion != null && actor.Presentation.Animator.runtimeAnimatorController != motion)
-                actor.Presentation.Animator.runtimeAnimatorController = motion;
+                actor.Presentation.SetMotionController(motion);
             for (int i = 0; i < art.lods.Length; i++)
                 actor.Presentation.BodyRenderers[i] = Apply((SkinnedMeshRenderer)actor.Presentation.BodyRenderers[i], actor.Presentation.Animator, art.lods[i], art.surface, art.outline);
         }
@@ -108,7 +108,7 @@ namespace RailArena
             if (owner != null && owner.Presentation != null)
             {
                 owner.Presentation.BodyRenderers = originalBody;
-                if (owner.Presentation.Animator != null) owner.Presentation.Animator.runtimeAnimatorController = originalMotion;
+                if (owner.Presentation.Animator != null) owner.Presentation.SetMotionController(originalMotion);
             }
             if (armsOwner != null) armsOwner.Surface = originalArms;
             foreach (var entry in lods) if (entry.Key != null) entry.Key.SetLODs(entry.Value);

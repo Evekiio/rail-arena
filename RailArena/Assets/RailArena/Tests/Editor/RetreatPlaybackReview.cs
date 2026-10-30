@@ -49,7 +49,9 @@ namespace RailArena.Tests
         public IEnumerator CaptureInstalledRetreatForAllFourIdentities() => CaptureGaits(false);
         [UnityTest]
         public IEnumerator CaptureInstalledAdvanceForAllFourIdentities() => CaptureGaits(true);
-        IEnumerator CaptureGaits(bool forward)
+        [UnityTest]
+        public IEnumerator CaptureInstalledStrafeForAllFourIdentities() => CaptureGaits(false, true);
+        IEnumerator CaptureGaits(bool forward, bool strafe=false)
         {
             EditorSceneManager.OpenScene("Assets/RailArena/Generated/SkyGardensBasement.unity");
             yield return new EnterPlayMode();yield return null;
@@ -80,20 +82,22 @@ namespace RailArena.Tests
             var material=new Material(Resources.Load<Material>("Art/StoneCover-Stone"));floor.GetComponent<Renderer>().sharedMaterial=material;
             var fill=new GameObject("Owned family portrait fill").AddComponent<Light>();fill.type=LightType.Directional;fill.intensity=.5f;fill.shadows=LightShadows.None;fill.cullingMask=1<<30;
             fill.transform.rotation=Quaternion.Euler(25,200,0);
-            var target=new RenderTexture(1920,1080,24);target.Create();var pixels=new Texture2D(1920,1080,TextureFormat.RGB24,false);
-            string folder=Path.GetFullPath("../Validation/"+(forward?"AdvancePlayback":"RetreatPlayback"));Directory.CreateDirectory(folder);
+            int width=strafe?1280:1920,height=strafe?720:1080;
+            var target=new RenderTexture(width,height,24);target.Create();var pixels=new Texture2D(width,height,TextureFormat.RGB24,false);
+            string folder=Path.GetFullPath("../Validation/"+(strafe?"StrafePlayback":forward?"AdvancePlayback":"RetreatPlayback"));Directory.CreateDirectory(folder);
             var csv=new System.Text.StringBuilder("frame,clip,phase,characterId,leftAnkleY,rightAnkleY,rootX,rootY,rootZ,minimumSoleY,leftWristError,rightWristError\n");
             int previousRate=Time.captureFramerate;Time.captureFramerate=60;int outputFrame=0;
             try
             {
-                foreach(var gait in forward?new[]{("AdvanceWalk",1.5f,.6f),("AdvanceJog",4f,20f/60),("AdvanceRun",9f,.3f)}:new[]{("RetreatWalk",-1.5f,.6f),("RetreatJog",-4f,20f/60),("RetreatRun",-9f,.3f)})
-                    for(int frame=0;frame<180;frame++,outputFrame++)
+                foreach(var gait in strafe?new[]{("StrafeLeftWalk",-1.5f,.6f),("StrafeLeftJog",-4f,20f/60),("StrafeLeftRun",-9f,.3f),("StrafeRightWalk",1.5f,.6f),("StrafeRightJog",4f,20f/60),("StrafeRightRun",9f,.3f)}:forward?new[]{("AdvanceWalk",1.5f,.6f),("AdvanceJog",4f,20f/60),("AdvanceRun",9f,.3f)}:new[]{("RetreatWalk",-1.5f,.6f),("RetreatJog",-4f,20f/60),("RetreatRun",-9f,.3f)})
+                    for(int frame=0;frame<(strafe?60:180);frame++,outputFrame++)
                     {
                         float phase=Mathf.Repeat(frame/(60*gait.Item3),1);
                         foreach(var actor in session.Actors)
                         {
-                            var animator=actor.Presentation.Animator;animator.SetFloat("Speed",gait.Item2);animator.SetFloat("Gait",1);animator.SetBool("Grounded",true);animator.SetBool("Dead",false);
+                            var animator=actor.Presentation.Animator;animator.SetFloat("Speed",strafe?Mathf.Abs(gait.Item2):gait.Item2);animator.SetFloat("MotionX",strafe?gait.Item2:0);animator.SetFloat("MotionZ",strafe?0:gait.Item2);animator.SetFloat("Gait",1);animator.SetBool("Grounded",true);animator.SetBool("Dead",false);
                             animator.Play("Locomotion",0,phase);animator.Update(0);actor.Presentation.ApplyCombatPose();actor.Presentation.Hands.Pose(0);
+                            Assert.That(Array.Exists(animator.GetCurrentAnimatorClipInfo(0), clip=>clip.clip.name==gait.Item1&&clip.weight>.999f),Is.True,"The sampled cardinal gait must use its authored clip at full blend weight");
                             Assert.That(animator.GetCurrentAnimatorStateInfo(0).normalizedTime,Is.EqualTo(phase).Within(.001f),"Manual pose time must remain exact while automatic Animator updates are disabled");
                             float left=animator.GetBoneTransform(HumanBodyBones.LeftFoot).position.y,right=animator.GetBoneTransform(HumanBodyBones.RightFoot).position.y;
                             Assert.That(Mathf.Min(left,right),Is.GreaterThan(.04f),gait.Item1+" retargeted ankles must remain above the deck");
@@ -106,7 +110,7 @@ namespace RailArena.Tests
                         // Allow native skinning to consume the post-Animator wrist/finger transforms before capture.
                         yield return null;
                         RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});var previous=RenderTexture.active;
-                        try{RenderTexture.active=target;pixels.ReadPixels(new Rect(0,0,1920,1080),0,0);pixels.Apply();File.WriteAllBytes(Path.Combine(folder,"frame-"+outputFrame.ToString("D4")+".png"),pixels.EncodeToPNG());}finally{RenderTexture.active=previous;}
+                        try{RenderTexture.active=target;pixels.ReadPixels(new Rect(0,0,width,height),0,0);pixels.Apply();File.WriteAllBytes(Path.Combine(folder,"frame-"+outputFrame.ToString("D4")+".png"),pixels.EncodeToPNG());}finally{RenderTexture.active=previous;}
                     }
                 File.WriteAllText(Path.Combine(folder,"Playback.csv"),csv.ToString());
             }

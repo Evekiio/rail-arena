@@ -45,6 +45,7 @@ sections.insert(0,('Before and after / matching environment cameras',comparisons
 html = '<!doctype html><meta charset="utf-8"><title>Rail Arena integrated art review</title><style>body{background:#102029;color:#eef0df;font:17px system-ui;margin:32px}a{color:#6ce0d0}img{max-width:100%;height:auto}figure{margin:24px 0}section{display:grid;grid-template-columns:repeat(auto-fit,minmax(480px,1fr));gap:20px}</style><h1>Rail Arena v1 alpha / integrated art review</h1><p>Direction approved. Production continues without intermediate approval holds. Final native input, sound and artistic acceptance: Sanders playtest. Public release held.</p><p><a href="Gate1/index.html">Full baseline inventory</a> · <a href="Gate2/RifleActions/index.html">Reload motion and contacts</a> · <a href="Gate2/PRODUCTION-STATUS.md">Production status and exceptions</a></p>'
 html += '<p><a href="current-asset-register.csv">Joined current inventory</a> · <a href="current-asset-manifest.json">Machine-readable current manifest</a> · <a href="CURRENT-GAPS.md">Coverage and remaining production gaps</a> · <a href="Environment/BasementDecks/index.html">Measured basement stone kit and construction layers</a></p>'
 html += '<p><a href="Performance/UnderbridgeMounted/index.html">Corrected under-bridge destinations and measured wall mounting</a></p>'
+html += '<p><a href="Animation/Strafe/index.html">Authored lateral gaits, measured poses and installed playback</a></p>'
 for title, directory in sections:
     html += f'<h2>{title}</h2><section>'
     for p in sorted(directory.rglob('*.png')):
@@ -63,7 +64,7 @@ Links().feed(html)
 paths=[]
 for directory in [root/'RailArena/Assets/RailArena/Art/ArtPass',root/'RailArena/Assets/Resources/Art',root/'RailArena/Assets/Resources/UI/ArtPassPortraits',art/'Characters',art/'Nature',art/'Devices',art/'Environment',art/'Gate2/RifleActions',art/'Animation']:
     paths += [p for p in directory.rglob('*') if p.is_file() and p.suffix not in ('.meta','.blend1','.blend2')]
-paths += [root/'RailArena/Assets/Resources/Effects'/name for name in ('CelSurface.shader','CelWater.shader','CelOutline.shader','SkyGardenClouds.shader','WorldGlyph.shader','ArtAtmosphere.shader')]
+paths += [root/'RailArena/Assets/Resources/Effects'/name for name in ('CelSurface.shader','CelWater.shader','CelOutline.shader','SkyGardenClouds.shader','WorldGlyph.shader','ArtAtmosphere.shader','TraversalEnergy.shader')]
 entries=[{'id':'art-'+hashlib.sha256(p.relative_to(root).as_posix().encode()).hexdigest()[:16], 'path':p.relative_to(root).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'disposition':'refine','approval':'Art direction approved; final integrated playtest pending'} for p in sorted(set(paths))]
 for entry in entries:
     path = entry['path']; family = 'environment'; category = 'supporting'
@@ -87,7 +88,11 @@ for entry in entries:
             if variant:
                 variant_spec=next(lod for lod in json.loads(references.read_text())['lods'] if lod['profile']==variant and lod['lod']==0)
                 dimensions=[variant_spec['diameterMetres'],variant_spec['diameterMetres'],variant_spec['thicknessMetres']]
-        elif '/Airborne/' in path or any(name in path for name in ('Takeoff','AirborneHold','LandingRecover','ContenderMotion.controller')):
+        elif any(name in path for name in ('ContenderMotion.controller','ContenderRetreat.overrideController')):
+            family='contender-motion-controller';category='animation';directory=art/'Animation/Strafe';master=directory/'Contender-Strafe-v1.blend';references=directory/'strafe-production.json';sheet=directory/'References/StrafeLeftWalk/measured-poses.png';screenshot=directory/'Strafe-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Independent Sky Gardens state graph combines original forward, backward, lateral and airborne masters; legacy controller preserved.'
+        elif '/Strafe/' in path or 'Strafe' in path:
+            family='contender-strafe';category='animation';directory=art/'Animation/Strafe';master=directory/'Contender-Strafe-v1.blend';references=directory/'strafe-production.json';sheet=directory/'References/StrafeLeftWalk/measured-poses.png';screenshot=directory/'Strafe-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original baked lateral IK contact paths on the unchanged shared skeleton; native-rate left/right walk, jog and run.'
+        elif '/Airborne/' in path or any(name in path for name in ('Takeoff','AirborneHold','LandingRecover')):
             family='contender-airborne';category='animation';directory=art/'Animation/Airborne';master=directory/'Contender-Airborne-v1.blend';references=directory/'airborne-production.json';sheet=directory/'References/Takeoff/measured-poses.png';screenshot=directory/'Airborne-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original authored takeoff, suspension and impact-recovery motion on the unchanged shared skeleton; simulation owns root translation.'
         elif '/Forward/' in path or 'Advance' in path:
             family='contender-advance';category='animation';directory=art/'Animation/Forward';master=directory/'Contender-Advance-v1.blend';references=directory/'forward-production.json';sheet=directory/'References/AdvanceWalk/measured-poses.png';screenshot=directory/'Advance-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original authored forward support/swing contact paths baked on the unchanged shared contender skeleton.'
@@ -105,14 +110,20 @@ for entry in entries:
             family='shared-contender-surface';category='characters';master=art/'Characters/Player-ArtPass-v1.blend';references=art/'Characters/Player-Production.json';sheet=art/'Characters/References/Player/measured-sheet.png';screenshot=art/'Gate2/look-prototype/player-face.png';provenance='Shared original cel presentation over the four refined contenders; existing CC0 rig provenance is preserved in Characters/README.md.'
         elif 'Atmosphere' in path or 'SkyGarden' in path or 'Cel' in path:
             family='sky-gardens-lighting';category='VFX / lighting';references=art/'Gate1/cel-material-spec.json'
+        elif 'TraversalEnergy.shader' in path:
+            family='traversal-surface-shader';category='VFX / lighting';master=root/path;references=art/'Gate1/cel-material-spec.json';provenance='Original editable portal/jump-pad shader source; aperture projection/remapping is authored in HLSL/C#, not standalone Blender geometry.'
     assert master.is_file(),master
     relative=lambda p:p.relative_to(root).as_posix() if p else None
     if '/ArtPassPortraits/' in path:category='UI / UX'
     entry.update({'category':category,'family':family,'mapArea':'Sky Gardens / summit / four basement routes','runtimeUsage':'Production review build' if path.startswith('RailArena/') else 'Editable source or reference evidence; not runtime content','sourceMaster':relative(master),'sourceExportLocations':[path],'dimensionsMetresBlenderXYZ':dimensions,'dimensionAuthority':relative(references),'dependencies':[relative(references)],'referenceSheets':[relative(sheet)] if sheet else [],'rigBones':rig,'clips':['Carbine reload / 120 ticks'] if family=='carbine' else [],'provenance':provenance,'currentScreenshot':relative(screenshot),'referenceException':'Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.'})
-    if family in ('contender-retreat','contender-advance','contender-airborne'):
+    if family in ('contender-retreat','contender-advance','contender-airborne','contender-strafe','contender-motion-controller'):
         entry['clips']=[f"{clip['name']} / {clip['frames']} frames / {clip['fps']} Hz" for clip in json.loads(references.read_text())['clips']]
         entry['dependencies'] += ['RailArena/Assets/Resources/Art/ContenderRetreat.overrideController','RailArena/Assets/Resources/Art/ContenderMotion.controller','ArtSource/Original/ArtPass-v1/Characters/Player-Production.json']
         entry['runtimeUsage']='Sky Gardens art profile / four contenders' if path.startswith('RailArena/') else 'Editable animation master or measured playback evidence; not runtime content'
+        if family=='contender-motion-controller':
+            sources=[art/'Animation/retreat-production.json',art/'Animation/Forward/forward-production.json',art/'Animation/Airborne/airborne-production.json',art/'Animation/Strafe/strafe-production.json']
+            entry['clips']=[clip['name'] for source in sources for clip in json.loads(source.read_text())['clips']]
+            entry['dependencies'] += [relative(source) for source in sources]
     if family=='basement-stone-decks':
         entry['mapArea']='Sky Gardens / four staging and four basement decks'
         entry['referenceSheets']=[relative(art/'Environment/BasementDecks/References'/name/'measured-sheet.png') for name in ('Staging','Basement')]

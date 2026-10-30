@@ -1,0 +1,57 @@
+{
+  "sourceMasterSha256": "b596eb5f707fd41020d94c1f46e99a8158d484233c5a525f5a63bd3660476412",
+  "frames": 360,
+  "fps": 60,
+  "durationSeconds": 6.0,
+  "identities": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "samples": 1440,
+  "minimumSoleHeightMetres": 0.008441,
+  "maximumStanceSoleHeightMetres": 0.008499,
+  "maximumNumericalWristTargetErrorMetres": 1e-06,
+  "scope": "Installed authored cardinal clips at native state/child speed 1, in-place with live weapon/wrist/finger code. Additional sampled diagonal/crouched/yaw poses check skin contact and unchanged actor root/velocity/controller height. Native skinning completes before capture. This is not moving-world foot-lock, native input/audio or performance acceptance.",
+  "timeRanges": {
+    "0-1 seconds": "StrafeLeftWalk",
+    "1-2 seconds": "StrafeLeftJog",
+    "2-3 seconds": "StrafeLeftRun",
+    "3-4 seconds": "StrafeRightWalk",
+    "4-5 seconds": "StrafeRightJog",
+    "5-6 seconds": "StrafeRightRun"
+  },
+  "remaining": [
+    "Full movement/stance combinations and native playtest",
+    "Broader full-action library; current forward/airborne evidence is linked by the production matrix"
+  ],
+  "blendSamples": 256,
+  "handednessValidated": true,
+  "legacyRestorationValidated": true,
+  "controllerDrivenTransitions": {
+    "frames": 360,
+    "scenarios": {
+      "standing": [
+        "Air",
+        "Jump",
+        "Land",
+        "Locomotion"
+      ],
+      "forward": [
+        "Air",
+        "Jump",
+        "Land",
+        "Locomotion"
+      ],
+      "retreat": [
+        "Air",
+        "Jump",
+        "Land",
+        "Locomotion"
+      ]
+    },
+    "minimumSoleHeightMetres": 0.005398,
+    "scope": "Existing discrete jump physics and actual controller state transitions; not lateral jump or full foot-lock certification."
+  }
+}

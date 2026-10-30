@@ -81,6 +81,11 @@ namespace RailArena.Editor
                     animator.SetBool("Grounded", phase != "Jump");
                     animator.SetFloat("Gait", 1);
                     animator.SetFloat("Speed", phase == "Run" ? 9 : phase == "Backwards" ? -9 : 0);
+                    foreach(var parameter in animator.parameters)
+                    {
+                        if(parameter.name=="MotionX")animator.SetFloat(parameter.nameHash,0);
+                        if(parameter.name=="MotionZ")animator.SetFloat(parameter.nameHash,phase=="Run"?9:phase=="Backwards"?-9:0);
+                    }
                     animator.Play(phase == "Death" ? "Base Layer.Death" : phase == "Jump" ? "Base Layer.Air" : "Base Layer.Locomotion", 0, 0);
                     for (int frame = 0; frame < frames; frame++)
                     {
