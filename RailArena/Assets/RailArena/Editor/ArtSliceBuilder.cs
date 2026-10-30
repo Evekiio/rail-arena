@@ -14,6 +14,7 @@ namespace RailArena.Editor
     {
         public int callbackOrder => 100;
         static bool building;
+        public static bool Building => building;
 
         public static void Prepare()
         {

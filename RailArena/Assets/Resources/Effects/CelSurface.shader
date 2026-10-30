@@ -111,8 +111,8 @@ Shader "RailArena/CelSurface"
             #pragma multi_compile _ DIRLIGHTMAP_COMBINED
             #pragma multi_compile _ LIGHTMAP_SHADOW_MIXING
             #pragma multi_compile _ SHADOWS_SHADOWMASK
-            #pragma shader_feature_local_fragment _ALPHATEST_ON
-            #pragma shader_feature_local _NORMALMAP
+            #pragma multi_compile_local_fragment _ _ALPHATEST_ON
+            #pragma multi_compile_local _ _NORMALMAP
             half4 Frag(Varyings i) : SV_Target
             {
                 UNITY_SETUP_INSTANCE_ID(i);
@@ -167,7 +167,7 @@ Shader "RailArena/CelSurface"
             #pragma fragment DepthFrag
             #pragma multi_compile_instancing
             #pragma multi_compile_vertex _ _CASTING_PUNCTUAL_LIGHT_SHADOW
-            #pragma shader_feature_local_fragment _ALPHATEST_ON
+            #pragma multi_compile_local_fragment _ _ALPHATEST_ON
             float3 _LightDirection, _LightPosition;
             Varyings ShadowVert(Attributes i)
             {
@@ -193,7 +193,7 @@ Shader "RailArena/CelSurface"
             #pragma vertex Vert
             #pragma fragment DepthFrag
             #pragma multi_compile_instancing
-            #pragma shader_feature_local_fragment _ALPHATEST_ON
+            #pragma multi_compile_local_fragment _ _ALPHATEST_ON
             half4 DepthFrag(Varyings i) : SV_Target { AlphaClip(i.uv); return i.positionCS.z; }
             ENDHLSL
         }
@@ -207,8 +207,8 @@ Shader "RailArena/CelSurface"
             #pragma vertex Vert
             #pragma fragment NormalFrag
             #pragma multi_compile_instancing
-            #pragma shader_feature_local_fragment _ALPHATEST_ON
-            #pragma shader_feature_local _NORMALMAP
+            #pragma multi_compile_local_fragment _ _ALPHATEST_ON
+            #pragma multi_compile_local _ _NORMALMAP
             #pragma multi_compile_fragment _ _GBUFFER_NORMALS_OCT
             half4 NormalFrag(Varyings i) : SV_Target
             {

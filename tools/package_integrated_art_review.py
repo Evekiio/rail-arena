@@ -1,6 +1,8 @@
 """Offline source/reference gallery; no browser or native acceptance claims."""
 import hashlib
 import json
+import csv
+from html.parser import HTMLParser
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
@@ -33,9 +35,41 @@ html += '<h2>Measured canonical families</h2>'
 for directory, _, name in families:
     html += f'<h3>{name}</h3><img loading="lazy" src="{(directory/"measured-sheet.png").relative_to(art).as_posix()}">'
 (art/'integrated-review.html').write_text(html,encoding='utf-8')
+class Links(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        for key, value in attrs:
+            if key in ('href','src'):
+                assert (art/value).resolve().is_file(), value
+Links().feed(html)
 paths=[]
 for directory in [root/'RailArena/Assets/RailArena/Art/ArtPass',root/'RailArena/Assets/Resources/Art',art/'Characters',art/'Nature',art/'Devices',art/'Environment',art/'Gate2/RifleActions']:
     paths += [p for p in directory.rglob('*') if p.is_file() and p.suffix not in ('.meta','.blend1','.blend2')]
 entries=[{'id':'art-'+hashlib.sha256(p.relative_to(root).as_posix().encode()).hexdigest()[:16], 'path':p.relative_to(root).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'disposition':'refine','approval':'Art direction approved; final integrated playtest pending'} for p in sorted(set(paths))]
+for entry in entries:
+    path = entry['path']; family = 'environment'; category = 'supporting'
+    identity = next((n for n in ('Player','Bot01','Bot02','Bot03') if n in path), None)
+    if identity:
+        family='character-'+identity; category='characters'
+        spec=art/'Characters'/f'{identity}-Production.json'
+        data=json.loads(spec.read_text()); dimensions=data['boundsMetresBlenderXYZ']
+        master=art/'Characters'/f'{identity}-ArtPass-v1.blend'
+        references=art/'Characters/References'/identity/'measurements.json'
+        sheet=references.parent/'measured-sheet.png'; screenshot=art/'Gate2/look-prototype'/('player-face.png' if identity=='Player' else identity.lower()+'-face.png')
+        rig=data.get('bones',[]); provenance='Existing CC0 foundation rig with upstream AI-assisted disclosure; original geometry refinements, UVs and paint. See Characters/README.md and ThirdParty/Grab3D/LICENSE.txt.'
+    else:
+        rig=[]; dimensions=None; provenance='Original Rail Arena code-authored paint, Blender construction or promoted existing project graphics; existing source retained.'
+        master=art/'Environment/SkyGardens-Stone-Art-v1.blend'; references=art/'Environment/Environment-Master.json'; sheet=None; screenshot=art/'Gate2/look-prototype/garden-bridge.png'
+        if 'Canopy' in path or '/Nature/' in path:
+            family='canopy';category='nature';directory=art/'Nature/Canopy';master=directory/'SkyGarden-Canopy-v1.blend';references=directory/'production.json';sheet=directory/'measured-sheet.png';dimensions=[1,1,1]
+        elif 'Medical' in path or 'HealthCore' in path:
+            family='medical-core';category='pickups';directory=art/'Devices/HealthCore';master=directory/'Medical-Core-v1.blend';references=directory/'production.json';sheet=directory/'measured-sheet.png';dimensions=json.loads(references.read_text()).get('dimensionsMetresXYZ');screenshot=art/'Gate2/look-prototype/health.png'
+        elif 'Rifle' in path or 'Reload' in path or 'Carbine' in path:
+            family='carbine';category='weapons';master=art/'Gate2/RifleActions/Carbine-Reload-v1.blend';references=art/'Gate2/RifleActions/ReloadAction.json';screenshot=art/'Gate2/look-prototype/fps-hud.png'
+    assert master.is_file(),master
+    relative=lambda p:p.relative_to(root).as_posix() if p else None
+    entry.update({'category':category,'family':family,'mapArea':'Sky Gardens / summit / four basement routes','runtimeUsage':'Production review build' if path.startswith('RailArena/') else 'Editable source or reference evidence; not runtime content','sourceMaster':relative(master),'sourceExportLocations':[path],'dimensionsMetresBlenderXYZ':dimensions,'dimensionAuthority':relative(references),'dependencies':[relative(references)],'referenceSheets':[relative(sheet)] if sheet else [],'rigBones':rig,'clips':['Carbine reload / 120 ticks'] if family=='carbine' else [],'provenance':provenance,'currentScreenshot':relative(screenshot),'referenceException':'Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.'})
 (art/'integrated-manifest.json').write_text(json.dumps({'schema':'rail-arena-art-delta/2','baseline':'Gate1/asset-manifest.json','entries':entries,'coverage':'Baseline inventory plus production delta; remaining reference and animation exceptions in PRODUCTION-STATUS.md'},indent=2)+'\n')
+with (art/'integrated-asset-register.csv').open('w',newline='',encoding='utf-8') as stream:
+    columns=['id','path','category','family','mapArea','runtimeUsage','sourceMaster','dimensionsMetresBlenderXYZ','dimensionAuthority','dependencies','referenceSheets','rigBones','clips','provenance','approval','currentScreenshot','disposition','referenceException','sha256']
+    writer=csv.DictWriter(stream,columns,extrasaction='ignore');writer.writeheader();writer.writerows({k:json.dumps(v) if isinstance(v,(dict,list)) else v for k,v in e.items()} for e in entries)
 print('INTEGRATED_ART_PACKAGE',len(entries),'assets;',len(families)*6,'measured views')
