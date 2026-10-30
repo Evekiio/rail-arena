@@ -95,7 +95,7 @@ namespace RailArena
         private void PlaceForShots()
         {
             // Sky Gardens has a wall across the original Foundry firing lane.
-            bool skyGardens = session.gameObject.scene.name == "SkyGardens";
+            bool skyGardens = session.gameObject.scene.name.StartsWith("SkyGardens", StringComparison.Ordinal);
             float shooterZ = skyGardens ? -12f : -22f;
             Shooter.Place(new Vector3(0, .08f, shooterZ));
             Target.Place(new Vector3(0, .08f, shooterZ + 6f));
@@ -297,7 +297,7 @@ namespace RailArena
             Expect("Solo authority moves and fires three rounds in half a second", Vector3.Distance(before, Shooter.transform.position) > 1 &&
                 session.ShotsFired == 3 && Shooter.Health == 100,
                 $"travel={Vector3.Distance(before, Shooter.transform.position)}, shots={session.ShotsFired}, health={Shooter.Health}");
-            Shooter.Place(new Vector3(0, .08f, session.gameObject.scene.name == "SkyGardens" ? -12f : -22f));
+            Shooter.Place(new Vector3(0, .08f, session.gameObject.scene.name.StartsWith("SkyGardens", StringComparison.Ordinal) ? -12f : -22f));
             Advance(36180);
             Expect("Solo practice stays active beyond match limit", session.Match.Phase == MatchPhase.Playing && session.Actors.Count == 1,
                 $"phase={session.Match.Phase}, actors={session.Actors.Count}");
@@ -325,6 +325,7 @@ namespace RailArena
     }
 }
 #endif
+
 
 
 
