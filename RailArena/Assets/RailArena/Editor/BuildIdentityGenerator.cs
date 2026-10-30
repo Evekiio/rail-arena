@@ -25,6 +25,8 @@ namespace RailArena.Editor
         {
             AssetDatabase.SaveAssets();
             var files = InputPaths();
+            Directory.CreateDirectory("../Validation");
+            File.WriteAllLines("../Validation/build-identity-inputs.txt", files);
             using var hash = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
             // Include the wire contract and target in addition to source-controlled inputs.
             hash.AppendData(Encoding.UTF8.GetBytes("RailArena/UDP/" + Networking.DuelProtocol.Version + "/Windows64\n"));

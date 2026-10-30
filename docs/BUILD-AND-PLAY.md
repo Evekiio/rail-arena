@@ -50,10 +50,10 @@ Choose tests relevant to the change and record their results. Avoid routinely ad
 Verify source identity after building:
 
 ```powershell
-python tools/verify_build_identity.py --project RailArena
+python tools/verify_build_identity.py --project RailArena --inputs Validation/build-identity-inputs.txt
 ```
 
-This checks the recorded source identity, not human gameplay quality. Reports in [Validation](../Validation) and the [validation record](VALIDATION.md) identify the conditions tested. Native input, sound, real-internet duels and measured four-contender performance remain separate gates.
+Unity writes the exact dependency manifest during identity generation. Active scene dependencies under `Assets/Validation` must be included; inactive pilots are excluded. For an art review build whose source identity is restored after building, use the package's `BuildInputs.txt` with `--inputs` and `BuildIdentity.txt` with `--identity`, against its clean source checkout. This checks source compatibility, not human gameplay quality. Reports in [Validation](../Validation) identify the conditions tested. Native input, sound, real-internet duels and measured four-contender performance remain separate gates.
 
 ## Portable packaging
 

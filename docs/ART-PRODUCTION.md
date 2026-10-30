@@ -14,6 +14,8 @@ Current milestone: **Gate 1 approved by Sanders; Gate 2 playable visual slice in
 - [Gate 2 current production and comparison gallery](../ArtSource/Original/ArtPass-v1/Gate2/index.html)
 - [Gate 2 remaining work](../ArtSource/Original/ArtPass-v1/Gate2/PRODUCTION-STATUS.md)
 - [Authored rifle action and normal-speed playback](../ArtSource/Original/ArtPass-v1/Gate2/RifleActions/index.html)
+- [Integrated gameplay, UI and measured-reference gallery](../ArtSource/Original/ArtPass-v1/integrated-review.html)
+- [Integrated production asset delta](../ArtSource/Original/ArtPass-v1/integrated-manifest.json)
 
 The target is crisp anime cel shading for Sky Gardens including the summit and basement routes, with a measured 1080p/60 FPS target on the RTX 2080 with one human and three bots. Older maps are inventoried and preserved. Source ownership and visual approval must remain distinct from runtime inclusion and technical import validity.
 
