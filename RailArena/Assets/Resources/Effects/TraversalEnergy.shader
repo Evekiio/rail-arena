@@ -1,6 +1,6 @@
 Shader "RailArena/TraversalEnergy"
 {
-    Properties { _PortalTex("Destination", 2D) = "black" {} _HasView("Live destination", Float) = 0  _Tint("Tint", Color) = (0, .5, 1, 1) _Mode("Pad mode", Float) = 0 _Clock("Clock", Float) = 0 _Burst("Burst", Float) = 0 _Calm("Reduced flash", Float) = 0 _Charge("Charge", Float) = 0 }
+    Properties { _PortalTex("Destination", 2D) = "black" {} _PortalViewport("Destination viewport", Vector) = (0,0,1,1) _HasView("Live destination", Float) = 0  _Tint("Tint", Color) = (0, .5, 1, 1) _Mode("Pad mode", Float) = 0 _Clock("Clock", Float) = 0 _Burst("Burst", Float) = 0 _Calm("Reduced flash", Float) = 0 _Charge("Charge", Float) = 0 }
     SubShader
     {
         Tags { "RenderPipeline"="UniversalPipeline" "RenderType"="Opaque" "Queue"="Geometry" }
@@ -14,6 +14,7 @@ Shader "RailArena/TraversalEnergy"
             TEXTURE2D(_PortalTex); SAMPLER(sampler_PortalTex);
             CBUFFER_START(UnityPerMaterial)
             float4 _PortalTex_TexelSize;
+            float4 _PortalViewport;
             float4 _Tint; float _Mode, _Clock, _Burst, _Calm, _Charge, _HasView;
             CBUFFER_END
             struct Attributes { float4 positionOS:POSITION; float2 uv:TEXCOORD0; };
@@ -34,6 +35,7 @@ Shader "RailArena/TraversalEnergy"
                 if (_Mode < .5 && _HasView > .5)
                 {
                     float2 uv = i.screen.xy / i.screen.w;
+                    uv=(uv-_PortalViewport.xy)/max(_PortalViewport.zw,float2(.00001,.00001));
                     half3 destination = SAMPLE_TEXTURE2D(_PortalTex, sampler_PortalTex, uv).rgb;
                     float border = smoothstep(.74,1,r);
                     return half4(destination * (1-border*.25) + _Tint.rgb * (field * (.035 + border*.5) + _Burst*.05),1);

@@ -12,6 +12,8 @@ namespace RailArena
         public RenderTexture Texture { get; private set; }
         public Camera DestinationCamera { get; private set; }
         public int RenderedFrames { get; private set; }
+        public bool CropToAperture { get; set; } = true;
+        public Rect Viewport { get; private set; } = PortalViewport.Full;
         private ArenaSession session;
         private bool[] hidden;
         private readonly Plane[] planes = new Plane[6];
@@ -40,10 +42,16 @@ namespace RailArena
             if (!GeometryUtility.TestPlanesAABB(planes, surface.bounds)) return false;
             int width = Mathf.Clamp(Mathf.RoundToInt(viewer.pixelWidth * .65f), 320, 960);
             int height = Mathf.Max(180, Mathf.RoundToInt(width / viewer.aspect));
+            Viewport=CropToAperture?PortalViewport.ForBounds(viewer,surface.bounds):PortalViewport.Full;
+            if(CropToAperture)
+            {
+                width=PortalViewport.TextureDimension(width,Viewport.width,Texture!=null?Texture.width:0);
+                height=PortalViewport.TextureDimension(height,Viewport.height,Texture!=null?Texture.height:0);
+            }
             if (Texture == null || Texture.width != width || Texture.height != height)
             {
                 ReleaseTexture(); Texture = new RenderTexture(width, height, 24, RenderTextureFormat.ARGB32)
-                { name = "Owned portal destination", antiAliasing = 1 }; Texture.Create();
+                { name = "Owned portal destination", antiAliasing = 1, wrapMode=TextureWrapMode.Clamp }; Texture.Create();
             }
             DestinationCamera.CopyFrom(viewer); DestinationCamera.enabled = false;
             DestinationCamera.targetTexture = Texture;
@@ -56,6 +64,7 @@ namespace RailArena
             Vector3 cameraNormal = worldToCamera.MultiplyVector(normal).normalized;
             Vector3 cameraPoint = worldToCamera.MultiplyPoint(point);
             DestinationCamera.projectionMatrix = DestinationCamera.CalculateObliqueMatrix(new Vector4(cameraNormal.x, cameraNormal.y, cameraNormal.z, -Vector3.Dot(cameraPoint, cameraNormal)));
+            DestinationCamera.projectionMatrix=PortalViewport.CropProjection(DestinationCamera.projectionMatrix,Viewport);
             // Hide all portal faces during the extra render: bounded cost, no recursive feedback or physics changes.
             var gates = session.World.Portals;
             try
@@ -64,6 +73,7 @@ namespace RailArena
                 { var renderer = gates[i].Presentation.Surface; hidden[i] = renderer.forceRenderingOff; renderer.forceRenderingOff = true; }
                 RenderPipeline.SubmitRenderRequest(DestinationCamera, new RenderPipeline.StandardRequest { destination = Texture });
                 surface.sharedMaterial.SetTexture("_PortalTex", Texture); surface.sharedMaterial.SetFloat("_HasView", 1);
+                surface.sharedMaterial.SetVector("_PortalViewport",new Vector4(Viewport.x,Viewport.y,Viewport.width,Viewport.height));
                 RenderedFrames++; return true;
             }
             finally

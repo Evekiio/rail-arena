@@ -34,7 +34,9 @@ namespace RailArena.Tests
                     {
                         camera.focalLength = Camera.FieldOfViewToFocalLength(fov, camera.sensorSize.y);
                         Assert.That(view.RenderView(camera), Is.True);
-                        var expected = camera.projectionMatrix; var actual = view.DestinationCamera.projectionMatrix;
+                        var expected = camera.projectionMatrix;
+                        var inverseCrop = PortalViewport.CropProjection(Matrix4x4.identity,view.Viewport).inverse;
+                        var actual = inverseCrop*view.DestinationCamera.projectionMatrix;
                         Assert.That(actual.m00, Is.EqualTo(expected.m00).Within(.0001f));
                         Assert.That(actual.m11, Is.EqualTo(expected.m11).Within(.0001f));
                         Assert.That(actual.m02, Is.EqualTo(expected.m02).Within(.0001f));
