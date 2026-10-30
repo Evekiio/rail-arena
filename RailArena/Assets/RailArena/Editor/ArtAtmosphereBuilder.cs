@@ -44,6 +44,10 @@ namespace RailArena.Editor
                 pipeline.name = "Sky Gardens art pipeline"; AssetDatabase.CreateAsset(pipeline, PipelinePath);
             }
             var serialized = new SerializedObject(pipeline);
+            if (new SerializedObject(renderer).FindProperty("m_RenderingMode").intValue != 2 || serialized.FindProperty("m_SoftShadowQuality").intValue != 3)
+                throw new InvalidOperationException("Art shader variant contract requires Forward+ and High soft-shadow quality; update the build variant policy before changing these settings");
+            if (!File.ReadAllText(BasementRouteBuilder.ScenePath).Contains("m_FogMode: 1"))
+                throw new InvalidOperationException("Art shader variant contract requires the current linear-fog scene");
             var renderers = serialized.FindProperty("m_RendererDataList"); renderers.arraySize = 1; renderers.GetArrayElementAtIndex(0).objectReferenceValue = renderer;
             serialized.ApplyModifiedPropertiesWithoutUndo(); EditorUtility.SetDirty(pipeline); AssetDatabase.SaveAssets();
             if (material.shader == null || renderer.rendererFeatures.Count == 0) throw new InvalidOperationException("Atmosphere production dependencies missing");
