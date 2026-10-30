@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using Unity.Profiling;
 namespace RailArena
 {
     /// <summary>Single-level destination view. Owns its camera and texture; never changes traversal physics.</summary>
@@ -14,6 +15,7 @@ namespace RailArena
         private ArenaSession session;
         private bool[] hidden;
         private readonly Plane[] planes = new Plane[6];
+        static readonly ProfilerMarker RenderMarker = new(ProfilerCategory.Render,"RailArena.PortalView");
         private void Awake()
         {
             session = FindFirstObjectByType<ArenaSession>();
@@ -26,6 +28,10 @@ namespace RailArena
         }
         private void LateUpdate() { if (session != null && session.View != null) RenderView(session.View); }
         public bool RenderView(Camera viewer)
+        {
+            using(RenderMarker.Auto())return RenderDestination(viewer);
+        }
+        bool RenderDestination(Camera viewer)
         {
             if (Gate == null || Gate.Exit == null || Gate.Presentation == null || Gate.Presentation.Surface == null) return false;
             var surface = Gate.Presentation.Surface;
