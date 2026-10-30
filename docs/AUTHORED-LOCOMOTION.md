@@ -1,6 +1,6 @@
 # Authored contender locomotion
 
-The Sky Gardens art profile source installs original forward/backward and left/right walk, jog and run, plus takeoff, airborne hold and landing recovery on all four contenders. The lateral batch is integrated in source for the next verified review build; historical Review-09 through Review-12 remain preserved.
+The Sky Gardens art profile source installs original forward/backward and left/right walk, jog and run, plus takeoff, airborne hold and landing recovery on all four contenders. Review-13 contains the lateral batch and all prior graphical/portal work; historical Review-09 through Review-12 remain preserved.
 
 The existing controller used reversed backward clips and accelerated jump/landing states. Its forward gait also penetrated the staged deck by up to 0.121 m before jumping, contaminating the landing-to-locomotion blend. `ContenderMotionArtBuilder` uses an independent art state graph with native-speed airborne states, six authored forward/backward overrides and six original lateral clips. A 13-child directional blend consumes actual velocity in the aim frame. The art locomotion state and its children play at native speed 1; the legacy graph retains its Gait multiplier. Legacy maps retain their original controller. Simulation, root movement, collider dimensions, weapon cadence and network messages are unchanged. The existing live combat-pose solve is reused for review capture.
 

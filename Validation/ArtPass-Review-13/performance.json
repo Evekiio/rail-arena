@@ -1,0 +1,69 @@
+{
+    "scope": "Version 2: observer stages after ArenaSession and before portal views; forced 1080p main rendering at EndOfFrame with synchronized one-pixel readback. High tier, 100-degree vertical FOV, one automated human and three bots. Timings include readback overhead. Earlier probes staged after portal views and are not equivalent portal workloads. Overlay HUD, native swapchain/input/audio and sustained visible-play acceptance remain open. GPU -1 means unavailable.",
+    "measurementVersion": 2,
+    "gpu": "NVIDIA GeForce RTX 2080",
+    "api": "Direct3D12",
+    "fingerprint": "07f5ebac560db2591c2c02c2d314c5f762e2026a63c15b00a2faa34e1575a5a8",
+    "width": 1920,
+    "height": 1080,
+    "exceptions": 0,
+    "views": [
+        {
+            "view": "combat",
+            "frames": 180,
+            "validGpuSamples": 0,
+            "nonBlackSamples": 32400,
+            "meanFrameMs": 16.132354736328125,
+            "p95FrameMs": 22.34229850769043,
+            "medianGpuMs": -1.0,
+            "frameBudgetMet": false,
+            "portalRenders": 720
+        },
+        {
+            "view": "summit",
+            "frames": 180,
+            "validGpuSamples": 0,
+            "nonBlackSamples": 32400,
+            "meanFrameMs": 13.856359481811523,
+            "p95FrameMs": 16.103797912597656,
+            "medianGpuMs": -1.0,
+            "frameBudgetMet": true,
+            "portalRenders": 540
+        },
+        {
+            "view": "basement",
+            "frames": 180,
+            "validGpuSamples": 0,
+            "nonBlackSamples": 32400,
+            "meanFrameMs": 13.835786819458008,
+            "p95FrameMs": 16.270797729492188,
+            "medianGpuMs": -1.0,
+            "frameBudgetMet": true,
+            "portalRenders": 540
+        },
+        {
+            "view": "foliage-waterfall",
+            "frames": 180,
+            "validGpuSamples": 0,
+            "nonBlackSamples": 32400,
+            "meanFrameMs": 13.566903114318848,
+            "p95FrameMs": 15.732001304626465,
+            "medianGpuMs": -1.0,
+            "frameBudgetMet": true,
+            "portalRenders": 540
+        },
+        {
+            "view": "portal",
+            "frames": 180,
+            "validGpuSamples": 0,
+            "nonBlackSamples": 32400,
+            "meanFrameMs": 12.519829750061035,
+            "p95FrameMs": 14.682100296020508,
+            "medianGpuMs": -1.0,
+            "frameBudgetMet": true,
+            "portalRenders": 360
+        }
+    ],
+    "passed": true,
+    "allViewsWithinBudget": false
+}
