@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 23:20:01Z" end-time="2026-10-30 23:20:04Z" duration="2.6453108">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="287" result="Passed" start-time="2026-10-30 23:20:01Z" end-time="2026-10-30 23:20:04Z" duration="2.645311" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1426" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="287" result="Passed" start-time="2026-10-30 23:20:01Z" end-time="2026-10-30 23:20:04Z" duration="2.625215" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="39412" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1427" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="287" result="Passed" start-time="2026-10-30 23:20:01Z" end-time="2026-10-30 23:20:04Z" duration="2.595567" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1428" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="287" result="Passed" start-time="2026-10-30 23:20:01Z" end-time="2026-10-30 23:20:04Z" duration="2.585432" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1420" name="UnderbridgePortalClearanceTests" fullname="RailArena.Tests.UnderbridgePortalClearanceTests" classname="RailArena.Tests.UnderbridgePortalClearanceTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-30 23:20:01Z" end-time="2026-10-30 23:20:04Z" duration="2.537062" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1422" name="CaptureUnobstructedDestinationsWithoutDiagnosticCharts" fullname="RailArena.Tests.UnderbridgePortalClearanceTests.CaptureUnobstructedDestinationsWithoutDiagnosticCharts" methodname="CaptureUnobstructedDestinationsWithoutDiagnosticCharts" classname="RailArena.Tests.UnderbridgePortalClearanceTests" runstate="Runnable" seed="916914377" result="Passed" start-time="2026-10-30 23:20:01Z" end-time="2026-10-30 23:20:04Z" duration="2.378848" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1421" name="WallMountIsIdempotent" fullname="RailArena.Tests.UnderbridgePortalClearanceTests.WallMountIsIdempotent" methodname="WallMountIsIdempotent" classname="RailArena.Tests.UnderbridgePortalClearanceTests" runstate="Runnable" seed="406892598" result="Passed" start-time="2026-10-30 23:20:04Z" end-time="2026-10-30 23:20:04Z" duration="0.137629" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[RailArena.Simulation.MovementTuning must be instantiated using the ScriptableObject.CreateInstance method instead of new MovementTuning.
+RailArena.Simulation.MovementTuning must be instantiated using the ScriptableObject.CreateInstance method instead of new MovementTuning.
+RailArena.Simulation.MovementTuning must be instantiated using the ScriptableObject.CreateInstance method instead of new MovementTuning.
+RailArena.Simulation.MovementTuning must be instantiated using the ScriptableObject.CreateInstance method instead of new MovementTuning.
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

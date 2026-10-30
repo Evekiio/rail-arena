@@ -31,7 +31,7 @@ namespace RailArena.Tests
             for(int y=0;y<16;y++)for(int x=0;x<16;x++)pattern.SetPixel(x,y,x<8?(y<8?Color.red:Color.green):(y<8?Color.blue:Color.yellow));pattern.Apply();
             var material=new Material(Shader.Find("Universal Render Pipeline/Unlit"));material.SetTexture("_BaseMap",pattern);chart.GetComponent<Renderer>().sharedMaterial=material;
             var target=new RenderTexture(840,480,24);target.Create();camera.targetTexture=target;var pixels=new Texture2D(840,480,TextureFormat.RGB24,false);
-            string folder=Path.GetFullPath("../ArtSource/Original/ArtPass-v1/Performance/PortalCrop");Directory.CreateDirectory(folder);var cases=new List<Case>();
+            string folder=Path.GetFullPath(Environment.GetEnvironmentVariable("RA_PORTAL_CROP_REVIEW_OUTPUT")??"../ArtSource/Original/ArtPass-v1/Performance/PortalCrop");Directory.CreateDirectory(folder);var cases=new List<Case>();
             float priorScale=Time.timeScale;Time.timeScale=0;
             try
             {
@@ -70,6 +70,11 @@ namespace RailArena.Tests
                         for(int y=bottom;y<=top;y++)for(int x=left;x<=right;x++)
                         { int index=y*840+x;var a=full[index];var b=cropped[index];var original=world[index];difference+=Math.Abs(a.r-b.r)+Math.Abs(a.g-b.g)+Math.Abs(a.b-b.b);count++;if(Mathf.Max(a.r,a.g,a.b)-Mathf.Min(a.r,a.g,a.b)>100)chartPixels++;if(Mathf.Max(original.r,original.g,original.b)-Mathf.Min(original.r,original.g,original.b)>100)worldChartPixels++; }
                         Assert.That(count,Is.GreaterThan(20));Assert.That(chartPixels,Is.GreaterThan(20),gate.name+" reference must actually expose the colour chart, not an occluding wall");float error=(float)(difference/(count*3*255));Assert.That(error,Is.LessThan(.025f),gate.name+" crop must preserve the chart's screen alignment");
+                        if(gate.name.StartsWith("Under bridge",StringComparison.Ordinal))
+                        {
+                            Assert.That(worldChartPixels,Is.GreaterThan(20),gate.name+" must expose its destination with the original map visible");
+                            Assert.That(occluder,Is.Empty,gate.name+" approach must expose the aperture");
+                        }
                         cases.Add(new Case{portal=gate.name,pose=ads?"wide-ADS-strafe":"normal",meanAbsoluteRgb=error,samples=count,chartPixels=chartPixels,worldChartPixels=worldChartPixels,worldOccluder=occluder,fullWidth=fullWidth,fullHeight=fullHeight,cropWidth=view.Texture.width,cropHeight=view.Texture.height,viewport=rect});
                         if(cases.Count<=2)
                         {

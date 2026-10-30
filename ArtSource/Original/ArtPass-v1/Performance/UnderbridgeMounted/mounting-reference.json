@@ -1,0 +1,30 @@
+{
+  "schema": "rail-arena-underbridge-mounting/1",
+  "units": "metres",
+  "scene": "RailArena/Assets/RailArena/Generated/SkyGardensBasement.unity",
+  "sceneSha256": "e2a4dcbc1259ec1768b86d5333eb744bbe02921bed4e0cbf83a390e21b2a6684",
+  "originalBounds": "Validation/underbridge-original-bounds.json",
+  "originalRootAbsX": 3.1,
+  "mountedRootAbsX": 2.9299996,
+  "pierInnerFaceAbsX": 3.0,
+  "rootShiftMetres": 0.1700004,
+  "fieldThickness": 0.06,
+  "fieldHeight": 2.2,
+  "fieldWidth": 1.4,
+  "entryOffset": 0.4,
+  "controllerRadius": 0.36,
+  "defaultSkinWidth": 0.08,
+  "minimumMargin": 0.03,
+  "defaultControllerEnvelope": 0.44,
+  "mountedEntryPlaneWallClearance": 0.4700004,
+  "fieldRearWallClearance": 0.0400004,
+  "scope": "Placement reference derived from original Unity bounds and the two saved transform changes, verified by real-controller approaches and live destination renders. This is not a complete Blender master or a full construction sheet for the portal family.",
+  "validation": {
+    "standingCrouchedLateralCrossings": 24,
+    "unobstructedEyeStrafeApertureRays": 36,
+    "allFourSummitBasementRoutes": true,
+    "normalAndWideAdsChartCases": 4,
+    "idempotence": true,
+    "nativeAcceptance": false
+  }
+}

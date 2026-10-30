@@ -47,6 +47,7 @@ namespace RailArena.Editor
                     var exitForward = i == 1 ? Vector3.right : Vector3.left;
                     below.transform.SetPositionAndRotation(direction * 48 + Vector3.up * -10, Quaternion.LookRotation(-exitForward));
                     exit.transform.SetPositionAndRotation(-exitForward * 3.1f, Quaternion.LookRotation(exitForward));
+                    UnderbridgePortalArtBuilder.Mount(exit);
                     below.Exit = exit; exit.Exit = below; below.DestinationName = "UNDER CENTER BRIDGE"; exit.DestinationName = "BASEMENT " + (i + 1);
                     gates.Add(below); gates.Add(exit);
                 }

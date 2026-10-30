@@ -2,7 +2,7 @@
 
 Sanders approved the direction and authorized continuous production without intermediate approval holds. Final playtest is the artistic and user QA gate. Public release remains held for acceptance.
 
-**Working local milestone:** ArtPass Review-11 adds aperture-cropped portal views to the complete Review-10 presentation. The controlled same-executable comparison reduces draw calls by 61–71%; overall timing is mixed. All 39 mechanics checks, the three-bot match and both extended 90-second loopback peers passed. Earlier failed duel reports remain preserved. The corrected main/portal benchmark stages one consistent observer pose. Combat P95 still exceeds 16.67 ms, GPU timers are unavailable, and native acceptance remains open. [Measured profile](../../../../docs/PORTAL-RENDER-PERFORMANCE.md), [validation](../../../../Validation/art-integrated-final-11.json) and [build handoff](../../../../docs/ART-PASS-REVIEW.md) record the scope. Historical packages remain preserved.
+**Working local milestone:** ArtPass Review-12 adds measured under-bridge wall mounting to the complete Review-11 presentation. Both fields now expose their destinations; the real-controller review covers both directions with 24 standing/crouched/lateral crossings and 36 unobstructed aperture rays. Original-world normal/ADS chart checks, uncharted destination captures, all four routes and mounting idempotence pass. Review-12 shipping mechanics, bot, local-duel and rendered-view evidence is recorded in the [validation](../../../../Validation/art-integrated-final-12.json) and [build handoff](../../../../docs/ART-PASS-REVIEW.md). Combat and basement P95 exceed 16.67 ms; GPU/native acceptance remains open. Historical packages are preserved.
 
 ## Implemented
 
@@ -18,7 +18,7 @@ Full reference evidence for every baseline entry, complete variant/construction 
 
 The eight staging/basement decks now have a source-integrated stone kit with radial paving, inlaid landing markers, friezes and ribbed undersides. Two metre-scaled profiles share a canonical Blender master with original collision reference meshes, twelve equal-scale orthographics, exploded construction views and three LODs each. The focused installed test preserves the original collider set, source mesh data, route/device transforms and removal behavior. [Kit evidence](../../../../docs/BASEMENT-STONE-KIT.md). Review-10 includes this batch. Other map structure and remaining device/nature construction remain unfinished.
 
-The original-world portal review exposed existing under-bridge pier occlusion. Measure and correct the aperture placement, then validate both traversal directions; isolated projection checks do not establish unobstructed map visibility. See [the open finding](../../../../docs/UNDERBRIDGE-PORTAL-VISIBILITY.md).
+The under-bridge pier occlusion and reverse traversal failure are corrected with calculated 17 cm mounting offsets. The existing route generator reproduces the placement. Complete portal family construction/Blender references and native acceptance remain open. See [the verified correction](../../../../docs/UNDERBRIDGE-PORTAL-VISIBILITY.md).
 
 Packaged mechanics, bot-match, targeted multiplayer and 1080p performance evidence remain separate from final visual acceptance. Hidden captures do not establish native input, sound or final artistic acceptance. Unavailable GPU samples remain unavailable.
 
