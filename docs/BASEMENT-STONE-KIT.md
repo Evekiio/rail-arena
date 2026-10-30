@@ -1,6 +1,6 @@
 # Measured basement stone kit
 
-The optional Sky Gardens art profile replaces four staging and four basement deck visuals with a Blender-authored limestone kit. Review-09 predates this batch; the next local package must finish its checks before becoming the current handoff. Other maps and original deck objects remain preserved.
+The optional Sky Gardens art profile replaces four staging and four basement deck visuals with a Blender-authored limestone kit. Review-10 is the verified portable package containing this batch; earlier packages remain preserved. Other maps and original deck objects remain preserved.
 
 ## Geometry and construction
 

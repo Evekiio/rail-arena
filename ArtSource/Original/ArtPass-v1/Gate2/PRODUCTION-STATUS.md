@@ -2,7 +2,7 @@
 
 Sanders approved the direction and authorized continuous production without intermediate approval holds. Final playtest is the artistic and user QA gate. Public release remains held for acceptance.
 
-**Working local milestone:** ArtPass Review-09 is built and packaged with runnable checks and nine original gait/airborne actions. All 39 mechanics checks, the three-bot match and both slide-enabled loopback peers passed. Five 1080p views rendered successfully; combat, summit and portal P95 exceed 16.67 ms in this run. GPU timers and native acceptance remain unavailable/open. [Validation](../../../../Validation/art-integrated-final-09.json) and [build handoff](../../../../docs/ART-PASS-REVIEW.md) record the exact scope. Historical packages remain preserved.
+**Working local milestone:** ArtPass Review-10 is built and packaged with runnable checks, the eight-deck stone kit and nine original gait/airborne actions. All 39 mechanics checks, the three-bot match and both slide-enabled loopback peers passed. Five 1080p views rendered successfully; combat, foliage/waterfall and portal P95 exceed 16.67 ms in this run. GPU timers and native acceptance remain unavailable/open. [Validation](../../../../Validation/art-integrated-final-10.json) and [build handoff](../../../../docs/ART-PASS-REVIEW.md) record the exact scope. Historical packages remain preserved.
 
 ## Implemented
 
@@ -16,7 +16,7 @@ Nine original body actions are installed in the Sky Gardens art-profile source: 
 
 Full reference evidence for every baseline entry, complete variant/construction layers, remaining architecture undersides, nature families and device geometry refinement remain unfinished. Older maps and experimental sources are retained. No claim of 100% reference coverage or AAA completion is made.
 
-The eight staging/basement decks now have a source-integrated stone kit with radial paving, inlaid landing markers, friezes and ribbed undersides. Two metre-scaled profiles share a canonical Blender master with original collision reference meshes, twelve equal-scale orthographics, exploded construction views and three LODs each. The focused installed test preserves the original collider set, source mesh data, route/device transforms and removal behavior. [Kit evidence](../../../../docs/BASEMENT-STONE-KIT.md). Review-09 predates this batch; the next local build is in preparation. Other map structure and remaining device/nature construction remain unfinished.
+The eight staging/basement decks now have a source-integrated stone kit with radial paving, inlaid landing markers, friezes and ribbed undersides. Two metre-scaled profiles share a canonical Blender master with original collision reference meshes, twelve equal-scale orthographics, exploded construction views and three LODs each. The focused installed test preserves the original collider set, source mesh data, route/device transforms and removal behavior. [Kit evidence](../../../../docs/BASEMENT-STONE-KIT.md). Review-10 includes this batch. Other map structure and remaining device/nature construction remain unfinished.
 
 Packaged mechanics, bot-match, targeted multiplayer and 1080p performance results will be recorded as they finish. Hidden captures do not establish native input, sound or final artistic acceptance. Unavailable GPU samples remain unavailable.
 

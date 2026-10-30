@@ -26,16 +26,21 @@ assert len(reports['performance']['views'])==5 and all(view['nonBlackSamples']>1
 files=['RailArena.exe','UnityPlayer.dll','RailArena_Data/Managed/RailArena.Runtime.dll','RailArena_Data/Managed/RailArena.Simulation.dll','RailArena_Data/resources.assets','RailArena_Data/resources.assets.resS','RailArena_Data/sharedassets0.assets','RailArena_Data/sharedassets0.assets.resS','RailArena_Data/level0']
 digest=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 comparisons=[]
+same_artifact=build.resolve()==validated.resolve()
 for name in files:
-    a,b=digest(build/name),digest(validated/name)
-    assert a==b,name
-    comparisons.append({'path':name,'sha256':a,'byteIdenticalToValidatedBuild':True})
+    actual=digest(build/name)
+    if same_artifact:
+        comparisons.append({'path':name,'sha256':actual,'scope':'Validation executed on this shipping artifact directly'})
+    else:
+        assert actual==digest(validated/name),name
+        comparisons.append({'path':name,'sha256':actual,'byteIdenticalToValidatedBuild':True})
 source_commit=subprocess.check_output(['git','-C',str(clean),'rev-parse','HEAD'],text=True).strip()
 for name in ('RailArena/ProjectSettings/QualitySettings.asset','RailArena/Assets/Resources/BuildIdentity.txt'):
     original=subprocess.check_output(['git','-C',str(clean),'show','HEAD:'+name])
     assert original.replace(b'\r\n',b'\n')==(clean/name).read_bytes().replace(b'\r\n',b'\n'),name
 record={'schema':'rail-arena-integrated-art-validation/1','build':build.relative_to(root).as_posix(),'sourceCommit':source_commit,'fingerprint':identity,'validatedPlayer':'Review-06; final Review-07 changes only Editor settings restoration','runtimeByteComparisons':comparisons,'sourceQualityAndIdentityRestored':True,'mechanicsChecks':39,'mechanicsPassed':True,'botMatch':{'seconds':reports['bots']['elapsedSeconds'],'bots':3,'telemetry':reports['bots']['telemetry'],'exceptions':reports['bots']['exceptions'],'voids':reports['bots']['statisticsVoids']},'duel':{role:{field:reports[role][field] for field in ('passed','errors','slideSamples','statisticsPassed')} for role in ('host','client')},'performance':reports['performance'],'discardedEvidence':'Review-05 hidden swapchain timings are invalid for graphics performance: screenshots were black. They are excluded from final evidence.','acceptanceRemaining':['Native visible-window input, audio and sustained playtest by Sanders','Real-internet multiplayer acceptance','Broader authored animation replacement and complete inventory reference coverage; see production status']}
 record['validatedPlayer']=f'Review-{args.validated_review}; shipped Review-{args.review} runtime files verified below'
+record['validationExecutedOnShippingArtifact']=same_artifact
 record['performanceTargetMet']=all(view['frameBudgetMet'] for view in reports['performance']['views'])
 record['performanceExceptions']=[{'view':view['view'],'meanFrameMs':view['meanFrameMs'],'p95FrameMs':view['p95FrameMs'],'targetMs':1000/60} for view in reports['performance']['views'] if not view['frameBudgetMet']]
 output=root/f'Validation/art-integrated-final-{args.review}.json';output.write_text(json.dumps(record,indent=2)+'\n')
@@ -54,4 +59,4 @@ Actual Windows player, RTX 2080 / Direct3D12, 1920x1080, High tier, one automate
 
 GPU timers returned no valid samples, so isolated GPU cost is unavailable. Overlay HUD, native swapchain/input/audio and sustained visible play remain Sanders' QA gate. Automated runs used -noaudio. Earlier black-swapchain readings are discarded.
 ''')
-print('FINAL_ART_EVIDENCE_VERIFIED',identity,'39 mechanics checks; bots; both duel peers; 5 rendered views; 9 byte-identical runtime files')
+print('FINAL_ART_EVIDENCE_VERIFIED',identity,'39 mechanics checks; bots; both duel peers; 5 rendered views;', 'shipping player validated directly' if same_artifact else '9 runtime files match the validated player')
