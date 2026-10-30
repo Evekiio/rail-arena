@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Passed" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 06:49:29Z" end-time="2026-10-30 06:49:36Z" duration="6.4286942">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="247" result="Passed" start-time="2026-10-30 06:49:29Z" end-time="2026-10-30 06:49:36Z" duration="6.428694" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1360" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="247" result="Passed" start-time="2026-10-30 06:49:29Z" end-time="2026-10-30 06:49:36Z" duration="6.409803" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="10580" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1361" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="247" result="Passed" start-time="2026-10-30 06:49:29Z" end-time="2026-10-30 06:49:36Z" duration="6.403776" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1362" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="247" result="Passed" start-time="2026-10-30 06:49:29Z" end-time="2026-10-30 06:49:36Z" duration="6.398922" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1148" name="PadEnergyNodeTests" fullname="RailArena.Tests.PadEnergyNodeTests" classname="RailArena.Tests.PadEnergyNodeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-30 06:49:30Z" end-time="2026-10-30 06:49:33Z" duration="3.024383" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1149" name="GraphReceivesRealPadPresentationControls" fullname="RailArena.Tests.PadEnergyNodeTests.GraphReceivesRealPadPresentationControls" methodname="GraphReceivesRealPadPresentationControls" classname="RailArena.Tests.PadEnergyNodeTests" runstate="Runnable" seed="224089758" result="Passed" start-time="2026-10-30 06:49:30Z" end-time="2026-10-30 06:49:32Z" duration="2.532673" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1151" name="ReflectedPadFunctionMatchesExistingEnergyFormula" fullname="RailArena.Tests.PadEnergyNodeTests.ReflectedPadFunctionMatchesExistingEnergyFormula" methodname="ReflectedPadFunctionMatchesExistingEnergyFormula" classname="RailArena.Tests.PadEnergyNodeTests" runstate="Runnable" seed="727716491" result="Passed" start-time="2026-10-30 06:49:32Z" end-time="2026-10-30 06:49:32Z" duration="0.010395" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1150" name="ShaderGraphPrototypeRendersSpatialEnergyVariation" fullname="RailArena.Tests.PadEnergyNodeTests.ShaderGraphPrototypeRendersSpatialEnergyVariation" methodname="ShaderGraphPrototypeRendersSpatialEnergyVariation" classname="RailArena.Tests.PadEnergyNodeTests" runstate="Runnable" seed="447128719" result="Passed" start-time="2026-10-30 06:49:32Z" end-time="2026-10-30 06:49:33Z" duration="0.461059" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAD_GRAPH_GREEN_RANGE 0.07601126 0.4257584
+PAD_GRAPH_CONTROLS change=0.21395483404398 active=0.334908969178796 calm=0.184199937744997
+PAD_GRAPH_ORIGINAL_DIFFERENCE 1.28790983580984E-06
+PAD_GRAPH_ORIGINAL_DIFFERENCE 1.31325417896733E-06
+PAD_GRAPH_ORIGINAL_DIFFERENCE 6.3298168242909E-07
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1157" name="PortalViewTests" fullname="RailArena.Tests.PortalViewTests" classname="RailArena.Tests.PortalViewTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 06:49:33Z" end-time="2026-10-30 06:49:34Z" duration="1.432375" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1158" name="DestinationViewsAreLiveAndPickupsAnimateWithoutMovingAuthority" fullname="RailArena.Tests.PortalViewTests.DestinationViewsAreLiveAndPickupsAnimateWithoutMovingAuthority" methodname="DestinationViewsAreLiveAndPickupsAnimateWithoutMovingAuthority" classname="RailArena.Tests.PortalViewTests" runstate="Runnable" seed="1726787204" result="Passed" start-time="2026-10-30 06:49:33Z" end-time="2026-10-30 06:49:34Z" duration="1.431005" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1266" name="TraversalEffectsTests" fullname="RailArena.Tests.TraversalEffectsTests" classname="RailArena.Tests.TraversalEffectsTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-30 06:49:34Z" end-time="2026-10-30 06:49:36Z" duration="1.891020" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1268" name="EffectsRespectPreferencesAndDoNotMoveColliders" fullname="RailArena.Tests.TraversalEffectsTests.EffectsRespectPreferencesAndDoNotMoveColliders" methodname="EffectsRespectPreferencesAndDoNotMoveColliders" classname="RailArena.Tests.TraversalEffectsTests" runstate="Runnable" seed="753524294" result="Passed" start-time="2026-10-30 06:49:34Z" end-time="2026-10-30 06:49:35Z" duration="1.499819" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1267" name="SynthesizedClipsHaveBoundedEnvelopesAndQuietLoopSeams" fullname="RailArena.Tests.TraversalEffectsTests.SynthesizedClipsHaveBoundedEnvelopesAndQuietLoopSeams" methodname="SynthesizedClipsHaveBoundedEnvelopesAndQuietLoopSeams" classname="RailArena.Tests.TraversalEffectsTests" runstate="Runnable" seed="707807732" result="Passed" start-time="2026-10-30 06:49:35Z" end-time="2026-10-30 06:49:36Z" duration="0.389937" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 03:40:43Z" end-time="2026-10-30 03:40:44Z" duration="1.3747913">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="203" result="Passed" start-time="2026-10-30 03:40:43Z" end-time="2026-10-30 03:40:44Z" duration="1.374791" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1280" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="203" result="Passed" start-time="2026-10-30 03:40:43Z" end-time="2026-10-30 03:40:44Z" duration="1.357212" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="73632" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1281" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="203" result="Passed" start-time="2026-10-30 03:40:43Z" end-time="2026-10-30 03:40:44Z" duration="1.351317" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1282" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="203" result="Passed" start-time="2026-10-30 03:40:43Z" end-time="2026-10-30 03:40:44Z" duration="1.346345" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1269" name="TraversalVfxDepthComparisonTests" fullname="RailArena.Tests.TraversalVfxDepthComparisonTests" classname="RailArena.Tests.TraversalVfxDepthComparisonTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 03:40:43Z" end-time="2026-10-30 03:40:44Z" duration="1.297684" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1270" name="CaptureSameSeedWithAndWithoutDepthCollision" fullname="RailArena.Tests.TraversalVfxDepthComparisonTests.CaptureSameSeedWithAndWithoutDepthCollision" methodname="CaptureSameSeedWithAndWithoutDepthCollision" classname="RailArena.Tests.TraversalVfxDepthComparisonTests" runstate="Runnable" seed="365673778" result="Passed" start-time="2026-10-30 03:40:43Z" end-time="2026-10-30 03:40:44Z" duration="1.272735" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[TRAVERSAL_DEPTH_COMPARISON free F:\Rail Arena\Validation\SkyGardens-Playable-2026-10-29\TraversalVfxDepthComparison\free-20261030-034044-322.png
+TRAVERSAL_DEPTH_COMPARISON depth F:\Rail Arena\Validation\SkyGardens-Playable-2026-10-29\TraversalVfxDepthComparison\depth-20261030-034044-480.png
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="8" result="Passed" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 18:05:29Z" end-time="2026-10-29 18:05:36Z" duration="6.4110311">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="174" result="Passed" start-time="2026-10-29 18:05:29Z" end-time="2026-10-29 18:05:36Z" duration="6.411031" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1238" name="RailArena.Tests.dll" fullname="F:/Rail Arena/Builds/Automatic-Rifle-2026-10-29/Project/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="174" result="Passed" start-time="2026-10-29 18:05:29Z" end-time="2026-10-29 18:05:36Z" duration="6.391662" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="68172" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1239" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="174" result="Passed" start-time="2026-10-29 18:05:29Z" end-time="2026-10-29 18:05:36Z" duration="6.387154" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1240" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="174" result="Passed" start-time="2026-10-29 18:05:29Z" end-time="2026-10-29 18:05:36Z" duration="6.382914" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1017" name="AutomaticRifleTests" fullname="RailArena.Tests.AutomaticRifleTests" classname="RailArena.Tests.AutomaticRifleTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-29 18:05:29Z" end-time="2026-10-29 18:05:30Z" duration="0.069227" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1018" name="HeldInputUses250RpmScheduleAndReleaseStopsWithoutQueuedBurst" fullname="RailArena.Tests.AutomaticRifleTests.HeldInputUses250RpmScheduleAndReleaseStopsWithoutQueuedBurst" methodname="HeldInputUses250RpmScheduleAndReleaseStopsWithoutQueuedBurst" classname="RailArena.Tests.AutomaticRifleTests" runstate="Runnable" seed="1206460236" result="Passed" start-time="2026-10-29 18:05:29Z" end-time="2026-10-29 18:05:30Z" duration="0.034493" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1107" name="MagazineHudTests" fullname="RailArena.Tests.MagazineHudTests" classname="RailArena.Tests.MagazineHudTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 18:05:30Z" end-time="2026-10-29 18:05:35Z" duration="5.965569" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1108" name="ReloadKeyBlocksFireCompletesAndHudFitsAllReviewSizes" fullname="RailArena.Tests.MagazineHudTests.ReloadKeyBlocksFireCompletesAndHudFitsAllReviewSizes" methodname="ReloadKeyBlocksFireCompletesAndHudFitsAllReviewSizes" classname="RailArena.Tests.MagazineHudTests" runstate="Runnable" seed="1224393967" result="Passed" start-time="2026-10-29 18:05:30Z" end-time="2026-10-29 18:05:35Z" duration="5.962382" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1168" name="RifleMagazineTests" fullname="RailArena.Tests.RifleMagazineTests" classname="RailArena.Tests.RifleMagazineTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-29 18:05:35Z" end-time="2026-10-29 18:05:36Z" duration="0.017476" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1170" name="EmptyMagazineCannotFireAndOnlyReloadCompletionRefillsIt" fullname="RailArena.Tests.RifleMagazineTests.EmptyMagazineCannotFireAndOnlyReloadCompletionRefillsIt" methodname="EmptyMagazineCannotFireAndOnlyReloadCompletionRefillsIt" classname="RailArena.Tests.RifleMagazineTests" runstate="Runnable" seed="1214693191" result="Passed" start-time="2026-10-29 18:05:35Z" end-time="2026-10-29 18:05:35Z" duration="0.000805" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1171" name="FullReloadIsIgnoredAndRepeatedRequestsCannotRestartAReload" fullname="RailArena.Tests.RifleMagazineTests.FullReloadIsIgnoredAndRepeatedRequestsCannotRestartAReload" methodname="FullReloadIsIgnoredAndRepeatedRequestsCannotRestartAReload" classname="RailArena.Tests.RifleMagazineTests" runstate="Runnable" seed="954900086" result="Passed" start-time="2026-10-29 18:05:35Z" end-time="2026-10-29 18:05:35Z" duration="0.000297" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1172" name="ReloadInputSurvivesOneBurstAndIsNeverRepeatedDuringPacketGaps" fullname="RailArena.Tests.RifleMagazineTests.ReloadInputSurvivesOneBurstAndIsNeverRepeatedDuringPacketGaps" methodname="ReloadInputSurvivesOneBurstAndIsNeverRepeatedDuringPacketGaps" classname="RailArena.Tests.RifleMagazineTests" runstate="Runnable" seed="1161732450" result="Passed" start-time="2026-10-29 18:05:35Z" end-time="2026-10-29 18:05:35Z" duration="0.004704" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1169" name="SustainedCadenceIsExactly250RpmWithoutFractionalDrift" fullname="RailArena.Tests.RifleMagazineTests.SustainedCadenceIsExactly250RpmWithoutFractionalDrift" methodname="SustainedCadenceIsExactly250RpmWithoutFractionalDrift" classname="RailArena.Tests.RifleMagazineTests" runstate="Runnable" seed="595027833" result="Passed" start-time="2026-10-29 18:05:35Z" end-time="2026-10-29 18:05:35Z" duration="0.000478" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1173" name="WirePreservesAmmoReloadDeadlineAndCadencePhaseAndRejectsInvalidState" fullname="RailArena.Tests.RifleMagazineTests.WirePreservesAmmoReloadDeadlineAndCadencePhaseAndRejectsInvalidState" methodname="WirePreservesAmmoReloadDeadlineAndCadencePhaseAndRejectsInvalidState" classname="RailArena.Tests.RifleMagazineTests" runstate="Runnable" seed="967518829" result="Passed" start-time="2026-10-29 18:05:35Z" end-time="2026-10-29 18:05:36Z" duration="0.009125" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1193" name="SnapshotLifecycleTests" fullname="RailArena.Tests.SnapshotLifecycleTests" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" testcasecount="24" result="Passed" start-time="2026-10-29 18:05:36Z" end-time="2026-10-29 18:05:36Z" duration="0.314581" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1194" name="MagazineReplayRestoresReloadAndConsumesPendingShotExactlyOnce" fullname="RailArena.Tests.SnapshotLifecycleTests.MagazineReplayRestoresReloadAndConsumesPendingShotExactlyOnce" methodname="MagazineReplayRestoresReloadAndConsumesPendingShotExactlyOnce" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="1193517472" result="Passed" start-time="2026-10-29 18:05:36Z" end-time="2026-10-29 18:05:36Z" duration="0.311144" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -34,6 +34,14 @@ namespace RailArena.Tests
         }
 
         [Test]
+        public void PreviousPortalEpochCannotHitTheEntryPositionGhost()
+        {
+            history = new HitboxHistory(new[] { shooter, target }); history.Capture(100);
+            target.TeleportSerial++; target.transform.position += Vector3.right * 60; history.Capture(101);
+            Assert.That(history.Trace(101, 100, shooter).Actor, Is.Null);
+        }
+
+        [Test]
         public void EarlierPoseCanBeHitAfterTargetMovesWithoutMovingLiveActors()
         {
             history = new HitboxHistory(new[] { shooter, target });

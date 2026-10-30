@@ -1,0 +1,67 @@
+{
+  "scope": "Four selectable existing offline appearances; unique 0-3-bot roster; no new model geometry or network schema",
+  "maximumContenders": 4,
+  "maximumBots": 3,
+  "references": [
+    "Player",
+    "Bot01",
+    "Bot02",
+    "Bot03"
+  ],
+  "renders": [
+    {
+      "file": "Character-0.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "a1b1bd63a602877cdb4d7e42af811ae8fe4fcc8cf664c420a44ceb33e622e7d3"
+    },
+    {
+      "file": "Character-1.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "9b9adddd776426d4f6c9e2a4744ea8ceba438d9b770a04d62c8a03f6cc61a5f5"
+    },
+    {
+      "file": "Character-2.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "396bca7c35281437c6142d4dacb40d72c6a84d87b9234ec03fd93985c9ae6aa7"
+    },
+    {
+      "file": "Character-3.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "2935d05a8da991710ec28a3df33d9ab8300ff8c326ec93fca0b4b56d547ec7d0"
+    },
+    {
+      "file": "Menu-1920x1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "d551eba37130ea24a281e3073ed48f218795b74a45eef690b050bb9e1555574e"
+    },
+    {
+      "file": "Menu-1280x720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "914c68ddce0c1bc6bf6e6fe7c84939368daee755a4224599b61d0adc495a0b95"
+    }
+  ],
+  "limits": [
+    "Menus are neutral-background renders of actual uGUI geometry/materials",
+    "First-person camera captures omit screen-space HUD",
+    "Shared first-person rig is palette-matched, not four newly authored arm meshes",
+    "No human input acceptance or FPS certification"
+  ]
+}

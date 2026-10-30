@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 04:48:18Z" end-time="2026-10-30 04:48:20Z" duration="2.0236714">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="229" result="Passed" start-time="2026-10-30 04:48:18Z" end-time="2026-10-30 04:48:20Z" duration="2.023671" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1331" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="229" result="Passed" start-time="2026-10-30 04:48:18Z" end-time="2026-10-30 04:48:20Z" duration="2.005484" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48872" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1332" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="229" result="Passed" start-time="2026-10-30 04:48:18Z" end-time="2026-10-30 04:48:20Z" duration="1.998795" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1333" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="229" result="Passed" start-time="2026-10-30 04:48:18Z" end-time="2026-10-30 04:48:20Z" duration="1.987974" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1320" name="TraversalVfxRampGeometryTests" fullname="RailArena.Tests.TraversalVfxRampGeometryTests" classname="RailArena.Tests.TraversalVfxRampGeometryTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 04:48:18Z" end-time="2026-10-30 04:48:20Z" duration="1.961352" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1321" name="RampSegmentsAreShearedRatherThanRectangularBoxes" fullname="RailArena.Tests.TraversalVfxRampGeometryTests.RampSegmentsAreShearedRatherThanRectangularBoxes" methodname="RampSegmentsAreShearedRatherThanRectangularBoxes" classname="RailArena.Tests.TraversalVfxRampGeometryTests" runstate="Runnable" seed="143242941" result="Passed" start-time="2026-10-30 04:48:18Z" end-time="2026-10-30 04:48:20Z" duration="1.936072" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[TRAVERSAL_RAMP_SHAPE R1 slope=(6.50, 2.00, -4.00) vertical=(0.00, 0.40, 0.00) normalizedDot=0.2534897
+TRAVERSAL_RAMP_SHAPE R2 slope=(6.50, 2.00, -4.00) vertical=(0.00, 0.40, 0.00) normalizedDot=0.2534897
+TRAVERSAL_RAMP_SHAPE R3 slope=(-6.50, 2.00, -4.00) vertical=(0.00, 0.40, 0.00) normalizedDot=0.2534897
+TRAVERSAL_RAMP_SHAPE R4 slope=(-6.50, 2.00, -4.00) vertical=(0.00, 0.40, 0.00) normalizedDot=0.2534897
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

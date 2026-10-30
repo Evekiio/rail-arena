@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 06:01:11Z" end-time="2026-10-30 06:01:14Z" duration="2.9817846">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="242" result="Passed" start-time="2026-10-30 06:01:11Z" end-time="2026-10-30 06:01:14Z" duration="2.981785" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1352" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="242" result="Passed" start-time="2026-10-30 06:01:11Z" end-time="2026-10-30 06:01:14Z" duration="2.963485" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="46356" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1353" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="242" result="Passed" start-time="2026-10-30 06:01:11Z" end-time="2026-10-30 06:01:14Z" duration="2.958475" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1354" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="242" result="Passed" start-time="2026-10-30 06:01:11Z" end-time="2026-10-30 06:01:14Z" duration="2.940808" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1012" name="AtmosphereCandidateTests" fullname="RailArena.Tests.AtmosphereCandidateTests" classname="RailArena.Tests.AtmosphereCandidateTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-30 06:01:11Z" end-time="2026-10-30 06:01:14Z" duration="2.926837" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1014" name="CandidateProducesFiniteDepthDependentOutput" fullname="RailArena.Tests.AtmosphereCandidateTests.CandidateProducesFiniteDepthDependentOutput" methodname="CandidateProducesFiniteDepthDependentOutput" classname="RailArena.Tests.AtmosphereCandidateTests" runstate="Runnable" seed="1616423916" result="Passed" start-time="2026-10-30 06:01:11Z" end-time="2026-10-30 06:01:13Z" duration="1.976998" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[ATMOSPHERE_CANDIDATE_MEAN_DIFFERENCE 0.0126003252224665
+]]></output>
+            </test-case>
+            <test-case id="1013" name="CandidateRespondsToAnOccludingShadowCaster" fullname="RailArena.Tests.AtmosphereCandidateTests.CandidateRespondsToAnOccludingShadowCaster" methodname="CandidateRespondsToAnOccludingShadowCaster" classname="RailArena.Tests.AtmosphereCandidateTests" runstate="Runnable" seed="591391457" result="Passed" start-time="2026-10-30 06:01:13Z" end-time="2026-10-30 06:01:14Z" duration="0.924311" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[ATMOSPHERE_SHADOW_MEAN_DIFFERENCE 0.00952351271613831
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

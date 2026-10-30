@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="15" result="Failed(Child)" total="15" passed="10" failed="5" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 15:27:21Z" end-time="2026-10-29 15:27:44Z" duration="22.2619633">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="153" result="Failed" site="Child" start-time="2026-10-29 15:27:21Z" end-time="2026-10-29 15:27:44Z" duration="22.261963" total="15" passed="10" failed="5" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1212" name="RailArena.Tests.dll" fullname="F:/Rail Arena/Builds/UI-Brand-2026-10-29/Project/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="153" result="Failed" site="Child" start-time="2026-10-29 15:27:21Z" end-time="2026-10-29 15:27:44Z" duration="22.249888" total="15" passed="10" failed="5" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="31488" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1213" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="153" result="Failed" site="Child" start-time="2026-10-29 15:27:21Z" end-time="2026-10-29 15:27:44Z" duration="22.247439" total="15" passed="10" failed="5" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1214" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="153" result="Failed" site="Child" start-time="2026-10-29 15:27:21Z" end-time="2026-10-29 15:27:44Z" duration="22.245147" total="15" passed="10" failed="5" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1010" name="AimSettingsHudTests" fullname="RailArena.Tests.AimSettingsHudTests" classname="RailArena.Tests.AimSettingsHudTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-10-29 15:27:22Z" end-time="2026-10-29 15:27:32Z" duration="10.637517" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1011" name="SettingsApplyLiveAndFitAtBothSupportedResolutions" fullname="RailArena.Tests.AimSettingsHudTests.SettingsApplyLiveAndFitAtBothSupportedResolutions" methodname="SettingsApplyLiveAndFitAtBothSupportedResolutions" classname="RailArena.Tests.AimSettingsHudTests" runstate="Runnable" seed="1133275688" result="Failed" start-time="2026-10-29 15:27:22Z" end-time="2026-10-29 15:27:32Z" duration="10.608630" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Player frames stopped advancing
+  Expected: less than 5.67964888f
+  But was:  10.368515f
+]]></message>
+                <stack-trace><![CDATA[at RailArena.Tests.AimSettingsHudTests+<Frames>d__3.MoveNext () [0x0003c] in F:\Rail Arena\Builds\UI-Brand-2026-10-29\Project\Assets\RailArena\Tests\Editor\AimSettingsHudTests.cs:128
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ee3fe9477490\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1012" name="AudioMixHudTests" fullname="RailArena.Tests.AudioMixHudTests" classname="RailArena.Tests.AudioMixHudTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-10-29 15:27:32Z" end-time="2026-10-29 15:27:33Z" duration="0.593559" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1013" name="SoundLevelsApplyToLocalAndRemoteCuesAndPreviewDoesNotFire" fullname="RailArena.Tests.AudioMixHudTests.SoundLevelsApplyToLocalAndRemoteCuesAndPreviewDoesNotFire" methodname="SoundLevelsApplyToLocalAndRemoteCuesAndPreviewDoesNotFire" classname="RailArena.Tests.AudioMixHudTests" runstate="Runnable" seed="1151211071" result="Failed" start-time="2026-10-29 15:27:32Z" end-time="2026-10-29 15:27:33Z" duration="0.592109" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at RailArena.Tests.AudioMixHudTests+<SoundLevelsApplyToLocalAndRemoteCuesAndPreviewDoesNotFire>d__0.MoveNext () [0x00615] in F:\Rail Arena\Builds\UI-Brand-2026-10-29\Project\Assets\RailArena\Tests\Editor\AudioMixHudTests.cs:50
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ee3fe9477490\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1026" name="BrandUiTests" fullname="RailArena.Tests.BrandUiTests" classname="RailArena.Tests.BrandUiTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-10-29 15:27:33Z" end-time="2026-10-29 15:27:33Z" duration="0.389442" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1027" name="BrandedFlowsKeepSetupFocusBackNavigationAndReadableHud" fullname="RailArena.Tests.BrandUiTests.BrandedFlowsKeepSetupFocusBackNavigationAndReadableHud" methodname="BrandedFlowsKeepSetupFocusBackNavigationAndReadableHud" classname="RailArena.Tests.BrandUiTests" runstate="Runnable" seed="1567203361" result="Failed" start-time="2026-10-29 15:27:33Z" end-time="2026-10-29 15:27:33Z" duration="0.388482" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: not null
+  But was:  null
+]]></message>
+                <stack-trace><![CDATA[at RailArena.Tests.BrandUiTests+<BrandedFlowsKeepSetupFocusBackNavigationAndReadableHud>d__1.MoveNext () [0x0017a] in F:\Rail Arena\Builds\UI-Brand-2026-10-29\Project\Assets\RailArena\Tests\Editor\BrandUiTests.cs:29
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ee3fe9477490\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1032" name="CharacterPickerTests" fullname="RailArena.Tests.CharacterPickerTests" classname="RailArena.Tests.CharacterPickerTests" runstate="Runnable" testcasecount="2" result="Failed" site="Child" start-time="2026-10-29 15:27:33Z" end-time="2026-10-29 15:27:34Z" duration="0.331825" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1034" name="PickerSavesExplicitChoiceAndDefersLiveAppearanceUntilNextSession" fullname="RailArena.Tests.CharacterPickerTests.PickerSavesExplicitChoiceAndDefersLiveAppearanceUntilNextSession" methodname="PickerSavesExplicitChoiceAndDefersLiveAppearanceUntilNextSession" classname="RailArena.Tests.CharacterPickerTests" runstate="Runnable" seed="342154401" result="Failed" start-time="2026-10-29 15:27:33Z" end-time="2026-10-29 15:27:34Z" duration="0.325419" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 4
+  But was:  6
+]]></message>
+                <stack-trace><![CDATA[at RailArena.Tests.CharacterPickerTests+<PickerSavesExplicitChoiceAndDefersLiveAppearanceUntilNextSession>d__3.MoveNext () [0x00193] in F:\Rail Arena\Builds\UI-Brand-2026-10-29\Project\Assets\RailArena\Tests\Editor\CharacterPickerTests.cs:43
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ee3fe9477490\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1033" name="PortraitsMatchInstalledPrefabDependencies" fullname="RailArena.Tests.CharacterPickerTests.PortraitsMatchInstalledPrefabDependencies" methodname="PortraitsMatchInstalledPrefabDependencies" classname="RailArena.Tests.CharacterPickerTests" runstate="Runnable" seed="1468930421" result="Failed" label="Error" start-time="2026-10-29 15:27:34Z" end-time="2026-10-29 15:27:34Z" duration="0.004612" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.IO.DirectoryNotFoundException : Could not find a part of the path "F:\Rail Arena\Builds\UI-Brand-2026-10-29\Validation\CharacterPicker\Portraits.json".]]></message>
+                <stack-trace><![CDATA[  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x00164] in <a8858c8db8794c73aac95c6a07c9f981>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <a8858c8db8794c73aac95c6a07c9f981>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, System.Boolean detectEncodingFromByteOrderMarks, System.Int32 bufferSize) [0x00055] in <a8858c8db8794c73aac95c6a07c9f981>:0 
+  at System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, System.Boolean detectEncodingFromByteOrderMarks) [0x00000] in <a8858c8db8794c73aac95c6a07c9f981>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamReader..ctor(string,System.Text.Encoding,bool)
+  at System.IO.File.InternalReadAllText (System.String path, System.Text.Encoding encoding) [0x00000] in <a8858c8db8794c73aac95c6a07c9f981>:0 
+  at System.IO.File.ReadAllText (System.String path) [0x0002c] in <a8858c8db8794c73aac95c6a07c9f981>:0 
+  at RailArena.Tests.CharacterPickerTests.PortraitsMatchInstalledPrefabDependencies () [0x00014] in F:\Rail Arena\Builds\UI-Brand-2026-10-29\Project\Assets\RailArena\Tests\Editor\CharacterPickerTests.cs:23 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <a8858c8db8794c73aac95c6a07c9f981>:0 ]]></stack-trace>
+              </failure>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1048" name="CombatHudTests" fullname="RailArena.Tests.CombatHudTests" classname="RailArena.Tests.CombatHudTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 15:27:34Z" end-time="2026-10-29 15:27:34Z" duration="0.820526" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1049" name="LiveHudTracksCombatAndProductionKeyboardMapping" fullname="RailArena.Tests.CombatHudTests.LiveHudTracksCombatAndProductionKeyboardMapping" methodname="LiveHudTracksCombatAndProductionKeyboardMapping" classname="RailArena.Tests.CombatHudTests" runstate="Runnable" seed="1730594296" result="Passed" start-time="2026-10-29 15:27:34Z" end-time="2026-10-29 15:27:34Z" duration="0.819679" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1050" name="CombatStatisticsHudTests" fullname="RailArena.Tests.CombatStatisticsHudTests" classname="RailArena.Tests.CombatStatisticsHudTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 15:27:34Z" end-time="2026-10-29 15:27:36Z" duration="1.388094" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1051" name="StandingsRankTiesAndResultsShowAuthoritativeTotals" fullname="RailArena.Tests.CombatStatisticsHudTests.StandingsRankTiesAndResultsShowAuthoritativeTotals" methodname="StandingsRankTiesAndResultsShowAuthoritativeTotals" classname="RailArena.Tests.CombatStatisticsHudTests" runstate="Runnable" seed="172399985" result="Passed" start-time="2026-10-29 15:27:34Z" end-time="2026-10-29 15:27:36Z" duration="1.386861" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1059" name="ComfortHudTests" fullname="RailArena.Tests.ComfortHudTests" classname="RailArena.Tests.ComfortHudTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 15:27:36Z" end-time="2026-10-29 15:27:37Z" duration="0.867265" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1060" name="ControlsPersistAndDisableViewMotionWithoutChangingAimOrCombat" fullname="RailArena.Tests.ComfortHudTests.ControlsPersistAndDisableViewMotionWithoutChangingAimOrCombat" methodname="ControlsPersistAndDisableViewMotionWithoutChangingAimOrCombat" classname="RailArena.Tests.ComfortHudTests" runstate="Runnable" seed="1007328552" result="Passed" start-time="2026-10-29 15:27:36Z" end-time="2026-10-29 15:27:37Z" duration="0.865820" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1070" name="CompetitivePresentationTests" fullname="RailArena.Tests.CompetitivePresentationTests" classname="RailArena.Tests.CompetitivePresentationTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 15:27:37Z" end-time="2026-10-29 15:27:38Z" duration="1.147425" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1071" name="InstalledSightAlignsAndCrouchPreservesFeetBodyScaleAndLifecycle" fullname="RailArena.Tests.CompetitivePresentationTests.InstalledSightAlignsAndCrouchPreservesFeetBodyScaleAndLifecycle" methodname="InstalledSightAlignsAndCrouchPreservesFeetBodyScaleAndLifecycle" classname="RailArena.Tests.CompetitivePresentationTests" runstate="Runnable" seed="1218395396" result="Passed" start-time="2026-10-29 15:27:37Z" end-time="2026-10-29 15:27:38Z" duration="1.145159" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1072" name="DuelFormHudTests" fullname="RailArena.Tests.DuelFormHudTests" classname="RailArena.Tests.DuelFormHudTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 15:27:38Z" end-time="2026-10-29 15:27:39Z" duration="1.099150" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1073" name="InvalidInputAndBusyPortStayOnFormAndRetryWithoutLosingDraft" fullname="RailArena.Tests.DuelFormHudTests.InvalidInputAndBusyPortStayOnFormAndRetryWithoutLosingDraft" methodname="InvalidInputAndBusyPortStayOnFormAndRetryWithoutLosingDraft" classname="RailArena.Tests.DuelFormHudTests" runstate="Runnable" seed="2010082565" result="Passed" start-time="2026-10-29 15:27:38Z" end-time="2026-10-29 15:27:39Z" duration="1.098013" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Duel socket could not open: AddressAlreadyInUse
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1086" name="FramePacingHudTests" fullname="RailArena.Tests.FramePacingHudTests" classname="RailArena.Tests.FramePacingHudTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 15:27:39Z" end-time="2026-10-29 15:27:40Z" duration="0.896535" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1087" name="FrameControlsPersistApplyAndExplainSyncPriority" fullname="RailArena.Tests.FramePacingHudTests.FrameControlsPersistApplyAndExplainSyncPriority" methodname="FrameControlsPersistApplyAndExplainSyncPriority" classname="RailArena.Tests.FramePacingHudTests" runstate="Runnable" seed="715508734" result="Passed" start-time="2026-10-29 15:27:39Z" end-time="2026-10-29 15:27:40Z" duration="0.895227" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1099" name="MenuButtonTests" fullname="RailArena.Tests.MenuButtonTests" classname="RailArena.Tests.MenuButtonTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 15:27:40Z" end-time="2026-10-29 15:27:41Z" duration="1.129969" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1100" name="NativeButtonStatesAreDistinctAndDisabledActionsStayBlocked" fullname="RailArena.Tests.MenuButtonTests.NativeButtonStatesAreDistinctAndDisabledActionsStayBlocked" methodname="NativeButtonStatesAreDistinctAndDisabledActionsStayBlocked" classname="RailArena.Tests.MenuButtonTests" runstate="Runnable" seed="847205767" result="Passed" start-time="2026-10-29 15:27:40Z" end-time="2026-10-29 15:27:41Z" duration="1.128411" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1126" name="PickupHudTests" fullname="RailArena.Tests.PickupHudTests" classname="RailArena.Tests.PickupHudTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 15:27:41Z" end-time="2026-10-29 15:27:42Z" duration="0.853320" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1127" name="PickupNoticeUsesActualGainWithMutedAudioAndKeepsDangerReadable" fullname="RailArena.Tests.PickupHudTests.PickupNoticeUsesActualGainWithMutedAudioAndKeepsDangerReadable" methodname="PickupNoticeUsesActualGainWithMutedAudioAndKeepsDangerReadable" classname="RailArena.Tests.PickupHudTests" runstate="Runnable" seed="1292281094" result="Passed" start-time="2026-10-29 15:27:41Z" end-time="2026-10-29 15:27:42Z" duration="0.851911" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1131" name="QuickStartHudTests" fullname="RailArena.Tests.QuickStartHudTests" classname="RailArena.Tests.QuickStartHudTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 15:27:42Z" end-time="2026-10-29 15:27:43Z" duration="1.081381" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1132" name="HelpPreservesSetupAndLaunchesSoloWithoutForcingATutorial" fullname="RailArena.Tests.QuickStartHudTests.HelpPreservesSetupAndLaunchesSoloWithoutForcingATutorial" methodname="HelpPreservesSetupAndLaunchesSoloWithoutForcingATutorial" classname="RailArena.Tests.QuickStartHudTests" runstate="Runnable" seed="1391451287" result="Passed" start-time="2026-10-29 15:27:42Z" end-time="2026-10-29 15:27:43Z" duration="1.080016" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1147" name="ReticleHudTests" fullname="RailArena.Tests.ReticleHudTests" classname="RailArena.Tests.ReticleHudTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 15:27:43Z" end-time="2026-10-29 15:27:44Z" duration="0.899780" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1148" name="SettingsPreviewAndLiveReticleShareSavedAppearance" fullname="RailArena.Tests.ReticleHudTests.SettingsPreviewAndLiveReticleShareSavedAppearance" methodname="SettingsPreviewAndLiveReticleShareSavedAppearance" classname="RailArena.Tests.ReticleHudTests" runstate="Runnable" seed="2123330997" result="Passed" start-time="2026-10-29 15:27:43Z" end-time="2026-10-29 15:27:44Z" duration="0.898448" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

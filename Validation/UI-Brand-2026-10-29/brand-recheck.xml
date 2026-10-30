@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Failed(Child)" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 15:39:23Z" end-time="2026-10-29 15:39:32Z" duration="8.924651">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="153" result="Failed" site="Child" start-time="2026-10-29 15:39:23Z" end-time="2026-10-29 15:39:32Z" duration="8.924651" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1212" name="RailArena.Tests.dll" fullname="F:/Rail Arena/Builds/UI-Brand-2026-10-29/Project/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="153" result="Failed" site="Child" start-time="2026-10-29 15:39:23Z" end-time="2026-10-29 15:39:32Z" duration="8.911198" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="69736" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1213" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="153" result="Failed" site="Child" start-time="2026-10-29 15:39:23Z" end-time="2026-10-29 15:39:32Z" duration="8.909221" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1214" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="153" result="Failed" site="Child" start-time="2026-10-29 15:39:23Z" end-time="2026-10-29 15:39:32Z" duration="8.906315" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1026" name="BrandUiTests" fullname="RailArena.Tests.BrandUiTests" classname="RailArena.Tests.BrandUiTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-10-29 15:39:23Z" end-time="2026-10-29 15:39:29Z" duration="5.828169" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1027" name="BrandedFlowsKeepSetupFocusBackNavigationAndReadableHud" fullname="RailArena.Tests.BrandUiTests.BrandedFlowsKeepSetupFocusBackNavigationAndReadableHud" methodname="BrandedFlowsKeepSetupFocusBackNavigationAndReadableHud" classname="RailArena.Tests.BrandUiTests" runstate="Runnable" seed="406745401" result="Failed" start-time="2026-10-29 15:39:23Z" end-time="2026-10-29 15:39:29Z" duration="5.804235" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  HUD-recovery clipped text: HealthValue / 025
+  Expected: 3
+  But was:  -1
+]]></message>
+                <stack-trace><![CDATA[at RailArena.Tests.BrandUiTests+<Review>d__6.MoveNext () [0x00259] in F:\Rail Arena\Builds\UI-Brand-2026-10-29\Project\Assets\RailArena\Tests\Editor\BrandUiTests.cs:109
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ee3fe9477490\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1048" name="CombatHudTests" fullname="RailArena.Tests.CombatHudTests" classname="RailArena.Tests.CombatHudTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 15:39:29Z" end-time="2026-10-29 15:39:30Z" duration="0.756834" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1049" name="LiveHudTracksCombatAndProductionKeyboardMapping" fullname="RailArena.Tests.CombatHudTests.LiveHudTracksCombatAndProductionKeyboardMapping" methodname="LiveHudTracksCombatAndProductionKeyboardMapping" classname="RailArena.Tests.CombatHudTests" runstate="Runnable" seed="341619756" result="Passed" start-time="2026-10-29 15:39:29Z" end-time="2026-10-29 15:39:30Z" duration="0.755909" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1099" name="MenuButtonTests" fullname="RailArena.Tests.MenuButtonTests" classname="RailArena.Tests.MenuButtonTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 15:39:30Z" end-time="2026-10-29 15:39:31Z" duration="1.184571" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1100" name="NativeButtonStatesAreDistinctAndDisabledActionsStayBlocked" fullname="RailArena.Tests.MenuButtonTests.NativeButtonStatesAreDistinctAndDisabledActionsStayBlocked" methodname="NativeButtonStatesAreDistinctAndDisabledActionsStayBlocked" classname="RailArena.Tests.MenuButtonTests" runstate="Runnable" seed="1034010889" result="Passed" start-time="2026-10-29 15:39:30Z" end-time="2026-10-29 15:39:31Z" duration="1.183626" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1131" name="QuickStartHudTests" fullname="RailArena.Tests.QuickStartHudTests" classname="RailArena.Tests.QuickStartHudTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 15:39:31Z" end-time="2026-10-29 15:39:32Z" duration="1.097358" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1132" name="HelpPreservesSetupAndLaunchesSoloWithoutForcingATutorial" fullname="RailArena.Tests.QuickStartHudTests.HelpPreservesSetupAndLaunchesSoloWithoutForcingATutorial" methodname="HelpPreservesSetupAndLaunchesSoloWithoutForcingATutorial" classname="RailArena.Tests.QuickStartHudTests" runstate="Runnable" seed="2058117535" result="Passed" start-time="2026-10-29 15:39:31Z" end-time="2026-10-29 15:39:32Z" duration="1.096221" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

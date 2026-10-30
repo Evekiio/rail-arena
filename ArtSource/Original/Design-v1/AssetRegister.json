@@ -1,0 +1,4084 @@
+{
+  "version": 1,
+  "design": "docs/DESIGN.md",
+  "approvedDesignDate": "2026-10-23",
+  "runtimeDesignMigration": "pending; never infer from design approval",
+  "approvalGate": "Explicit creator approval per family; missing required views fail gate",
+  "assets": [
+    {
+      "id": "CHAR-Player",
+      "family": "characters",
+      "purpose": "Player cosmetic body",
+      "dimensions": {
+        "heightMetres": 1.8,
+        "note": "Target; same gameplay capsule for every costume"
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "head studies",
+        "palms",
+        "soles",
+        "costume detail"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper",
+        "skin",
+        "hair",
+        "cloth"
+      ],
+      "states": [
+        "idle",
+        "locomotion",
+        "hit",
+        "death",
+        "fade"
+      ],
+      "collisionRole": "Equal shared gameplay capsule/hurtbox specification; costume has no extra collision",
+      "references": [
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Player-Turnaround.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Player-Head.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Player-Details.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Player-Axial.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Player-Turnaround.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Player-Head.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Player-Details.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Player-Axial.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Original concept approved; expanded hidden surfaces and final geometry need review. Preserve fixed anatomical asymmetry from MODELING-GUIDE.md.",
+      "remainingRequirements": [
+        "hidden-surface approval",
+        "resolve cross-view geometry inconsistencies"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ARMS-Player",
+      "family": "first-person",
+      "purpose": "Player glove/cuff appearance",
+      "dimensions": {
+        "forearmHandLengthMetres": 0.45,
+        "note": "Fit shared rig and calibrated contact targets"
+      },
+      "requiredViews": [
+        "palm",
+        "back",
+        "inner cuff",
+        "outer cuff",
+        "grip contact"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper",
+        "skin",
+        "padded glove"
+      ],
+      "states": [
+        "idle",
+        "movement",
+        "fire",
+        "zoom"
+      ],
+      "collisionRole": "presentation only; shared rig",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/FirstPerson-Arms.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/FirstPerson-Arms.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "",
+      "remainingRequirements": [
+        "approved-rifle-specific support and trigger contacts"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "CHAR-Bot01",
+      "family": "characters",
+      "purpose": "Bot01 cosmetic body",
+      "dimensions": {
+        "heightMetres": 1.8,
+        "note": "Target; same gameplay capsule for every costume"
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "head studies",
+        "palms",
+        "soles",
+        "costume detail"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper",
+        "skin",
+        "hair",
+        "cloth"
+      ],
+      "states": [
+        "idle",
+        "locomotion",
+        "hit",
+        "death",
+        "fade"
+      ],
+      "collisionRole": "Equal shared gameplay capsule/hurtbox specification; costume has no extra collision",
+      "references": [
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Turnaround.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Head.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Details.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Axial.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Turnaround.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Head.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Details.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot01-Axial.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Original concept approved; expanded hidden surfaces and final geometry need review. Preserve fixed anatomical asymmetry from MODELING-GUIDE.md.",
+      "remainingRequirements": [
+        "hidden-surface approval",
+        "resolve cross-view geometry inconsistencies"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ARMS-Bot01",
+      "family": "first-person",
+      "purpose": "Bot01 glove/cuff appearance",
+      "dimensions": {
+        "forearmHandLengthMetres": 0.45,
+        "note": "Fit shared rig and calibrated contact targets"
+      },
+      "requiredViews": [
+        "palm",
+        "back",
+        "inner cuff",
+        "outer cuff",
+        "grip contact"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper",
+        "skin",
+        "padded glove"
+      ],
+      "states": [
+        "idle",
+        "movement",
+        "fire",
+        "zoom"
+      ],
+      "collisionRole": "presentation only; shared rig",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/FirstPerson-Arms.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/FirstPerson-Arms.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "",
+      "remainingRequirements": [
+        "approved-rifle-specific support and trigger contacts"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "CHAR-Bot02",
+      "family": "characters",
+      "purpose": "Bot02 cosmetic body",
+      "dimensions": {
+        "heightMetres": 1.8,
+        "note": "Target; same gameplay capsule for every costume"
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "head studies",
+        "palms",
+        "soles",
+        "costume detail"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper",
+        "skin",
+        "hair",
+        "cloth"
+      ],
+      "states": [
+        "idle",
+        "locomotion",
+        "hit",
+        "death",
+        "fade"
+      ],
+      "collisionRole": "Equal shared gameplay capsule/hurtbox specification; costume has no extra collision",
+      "references": [
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Turnaround.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Head.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Details.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Axial.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Turnaround.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Head.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Details.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot02-Axial.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Original concept approved; expanded hidden surfaces and final geometry need review. Preserve fixed anatomical asymmetry from MODELING-GUIDE.md.",
+      "remainingRequirements": [
+        "hidden-surface approval",
+        "resolve cross-view geometry inconsistencies"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ARMS-Bot02",
+      "family": "first-person",
+      "purpose": "Bot02 glove/cuff appearance",
+      "dimensions": {
+        "forearmHandLengthMetres": 0.45,
+        "note": "Fit shared rig and calibrated contact targets"
+      },
+      "requiredViews": [
+        "palm",
+        "back",
+        "inner cuff",
+        "outer cuff",
+        "grip contact"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper",
+        "skin",
+        "padded glove"
+      ],
+      "states": [
+        "idle",
+        "movement",
+        "fire",
+        "zoom"
+      ],
+      "collisionRole": "presentation only; shared rig",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/FirstPerson-Arms.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/FirstPerson-Arms.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "",
+      "remainingRequirements": [
+        "approved-rifle-specific support and trigger contacts"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "CHAR-Bot03",
+      "family": "characters",
+      "purpose": "Bot03 cosmetic body",
+      "dimensions": {
+        "heightMetres": 1.8,
+        "note": "Target; same gameplay capsule for every costume"
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "head studies",
+        "palms",
+        "soles",
+        "costume detail"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper",
+        "skin",
+        "hair",
+        "cloth"
+      ],
+      "states": [
+        "idle",
+        "locomotion",
+        "hit",
+        "death",
+        "fade"
+      ],
+      "collisionRole": "Equal shared gameplay capsule/hurtbox specification; costume has no extra collision",
+      "references": [
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Turnaround.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Head.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Details.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Axial.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Turnaround.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Head.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Details.png",
+        "ArtSource/Original/StylizedContenders/References-v1/Final/Bot03-Axial.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Original concept approved; expanded hidden surfaces and final geometry need review. Preserve fixed anatomical asymmetry from MODELING-GUIDE.md.",
+      "remainingRequirements": [
+        "hidden-surface approval",
+        "resolve cross-view geometry inconsistencies"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ARMS-Bot03",
+      "family": "first-person",
+      "purpose": "Bot03 glove/cuff appearance",
+      "dimensions": {
+        "forearmHandLengthMetres": 0.45,
+        "note": "Fit shared rig and calibrated contact targets"
+      },
+      "requiredViews": [
+        "palm",
+        "back",
+        "inner cuff",
+        "outer cuff",
+        "grip contact"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper",
+        "skin",
+        "padded glove"
+      ],
+      "states": [
+        "idle",
+        "movement",
+        "fire",
+        "zoom"
+      ],
+      "collisionRole": "presentation only; shared rig",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/FirstPerson-Arms.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/FirstPerson-Arms.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "",
+      "remainingRequirements": [
+        "approved-rifle-specific support and trigger contacts"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "WEAPON-RIFLE",
+      "family": "weapon",
+      "purpose": "Approved enclosed precision carbine",
+      "dimensions": {
+        "lengthMetres": 1.0,
+        "widthMetres": 0.1,
+        "heightMetres": 0.33,
+        "note": "Approved envelope; integrated production asset"
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "grip contact",
+        "muzzle marker",
+        "moving parts"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper"
+      ],
+      "states": [
+        "idle",
+        "fire",
+        "36-tick recovery",
+        "zoom"
+      ],
+      "collisionRole": "presentation only",
+      "references": [
+        "ArtSource/Original/PrecisionCarbine-References-v3/README.md",
+        "ArtSource/Original/PrecisionCarbine-References-v3/index.html",
+        "ArtSource/Original/PrecisionCarbine-References-v3/RailRifle-Six-View.png",
+        "ArtSource/Original/PrecisionCarbine-References-v3/Assembly-Dimensions.csv",
+        "ArtSource/Original/PrecisionCarbine-Production-v1/README.md"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/PrecisionCarbine-References-v3/README.md",
+        "ArtSource/Original/PrecisionCarbine-References-v3/index.html",
+        "ArtSource/Original/PrecisionCarbine-References-v3/RailRifle-Six-View.png",
+        "ArtSource/Original/PrecisionCarbine-References-v3/Assembly-Dimensions.csv"
+      ],
+      "approvalStatus": "design-approved-integrated-human-acceptance-pending",
+      "approvalEvidence": "Explicit creator approval and production authorization in chat, October 23, 2026",
+      "notes": "Creator approved October 23, 2026. Production asset, atlas, LODs and fitted shared weapon installed. See ArtSource/Original/PrecisionCarbine-Production-v1/README.md; human acceptance and performance qualification remain open.",
+      "remainingRequirements": [
+        "human acceptance of installed visual/finger contact/animation",
+        "external duel acceptance and measured performance qualification"
+      ],
+      "coverageStatus": "Integrated production asset; acceptance gates remain",
+      "detailedModelingAllowed": true
+    },
+    {
+      "id": "MAP-FOUNDRY",
+      "family": "arena",
+      "purpose": "One shared review blockout",
+      "dimensions": {
+        "footprintMetres": [
+          56,
+          40
+        ],
+        "deckHeightsMetres": [
+          0,
+          2,
+          4
+        ]
+      },
+      "requiredViews": [
+        "top",
+        "lower plan",
+        "upper plan",
+        "north",
+        "south",
+        "east",
+        "west",
+        "section",
+        "player-height"
+      ],
+      "materials": [
+        "semantic greybox colors"
+      ],
+      "states": [
+        "static"
+      ],
+      "collisionRole": "Master gameplay geometry proposal; no runtime integration",
+      "references": [
+        "ArtSource/Original/Foundry-Arena-v2/Master-Plan.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Lower-Deck.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Wing-Deck.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Upper-Deck.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Section-EW-N8.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Section-NS-X0.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Map.json",
+        "ArtSource/Original/Foundry-Arena-v2/Environment-Kit.json"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Foundry-Arena-v2/Master-Plan.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Lower-Deck.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Wing-Deck.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Upper-Deck.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Section-EW-N8.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Section-NS-X0.svg",
+        "ArtSource/Original/Foundry-Arena-v2/Map.json",
+        "ArtSource/Original/Foundry-Arena-v2/Environment-Kit.json"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Foundry v2 is current: duel-first, opaque shot-blocking gates, revised spawns/landings. V1 Blender master is historical. Actual-controller and creator layout approval remain open.",
+      "remainingRequirements": [
+        "creator layout review",
+        "actual-controller traversal and visibility tests"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ARCH-FLOOR",
+      "family": "architecture",
+      "purpose": "floor module",
+      "dimensions": {
+        "boundingBoxMetres": [
+          4,
+          4,
+          0.4
+        ],
+        "note": "Ramp uses 16m run / 4m rise; reconcile snap grid before detail lock"
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "snap joints"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper"
+      ],
+      "states": [
+        "static"
+      ],
+      "collisionRole": "walkable/cover only where master specifies; trim cosmetic",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Architecture-Resolved.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Architecture-Resolved.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.",
+      "remainingRequirements": [
+        "cross-sheet back/underside consistency review",
+        "master-aligned joint verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ARCH-WALL",
+      "family": "architecture",
+      "purpose": "wall module",
+      "dimensions": {
+        "boundingBoxMetres": [
+          4,
+          0.4,
+          4
+        ],
+        "note": "Ramp uses 16m run / 4m rise; reconcile snap grid before detail lock"
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "snap joints"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper"
+      ],
+      "states": [
+        "static"
+      ],
+      "collisionRole": "walkable/cover only where master specifies; trim cosmetic",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Architecture-Resolved.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Architecture-Resolved.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.",
+      "remainingRequirements": [
+        "cross-sheet back/underside consistency review",
+        "master-aligned joint verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ARCH-LOW-COVER",
+      "family": "architecture",
+      "purpose": "low cover module",
+      "dimensions": {
+        "boundingBoxMetres": [
+          2,
+          0.4,
+          1.2
+        ],
+        "note": "Ramp uses 16m run / 4m rise; reconcile snap grid before detail lock"
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "snap joints"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper"
+      ],
+      "states": [
+        "static"
+      ],
+      "collisionRole": "walkable/cover only where master specifies; trim cosmetic",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Architecture-Resolved.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Architecture-Resolved.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.",
+      "remainingRequirements": [
+        "cross-sheet back/underside consistency review",
+        "master-aligned joint verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ARCH-PYLON",
+      "family": "architecture",
+      "purpose": "pylon module",
+      "dimensions": {
+        "boundingBoxMetres": [
+          2,
+          2,
+          4
+        ],
+        "note": "Ramp uses 16m run / 4m rise; reconcile snap grid before detail lock"
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "snap joints"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper"
+      ],
+      "states": [
+        "static"
+      ],
+      "collisionRole": "walkable/cover only where master specifies; trim cosmetic",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Architecture-Resolved.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Architecture-Resolved.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.",
+      "remainingRequirements": [
+        "cross-sheet back/underside consistency review",
+        "master-aligned joint verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ARCH-RAMP",
+      "family": "architecture",
+      "purpose": "ramp module",
+      "dimensions": {
+        "boundingBoxMetres": [
+          16,
+          4,
+          4
+        ],
+        "note": "Ramp uses 16m run / 4m rise; reconcile snap grid before detail lock"
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "snap joints"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper"
+      ],
+      "states": [
+        "static"
+      ],
+      "collisionRole": "walkable/cover only where master specifies; trim cosmetic",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Architecture-Resolved.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Architecture-Resolved.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.",
+      "remainingRequirements": [
+        "cross-sheet back/underside consistency review",
+        "master-aligned joint verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ARCH-BRIDGE-BEAM",
+      "family": "architecture",
+      "purpose": "bridge beam module",
+      "dimensions": {
+        "boundingBoxMetres": [
+          4,
+          0.4,
+          0.8
+        ],
+        "note": "Ramp uses 16m run / 4m rise; reconcile snap grid before detail lock"
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "snap joints"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper"
+      ],
+      "states": [
+        "static"
+      ],
+      "collisionRole": "walkable/cover only where master specifies; trim cosmetic",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Architecture-Resolved.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Architecture-Resolved.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.",
+      "remainingRequirements": [
+        "cross-sheet back/underside consistency review",
+        "master-aligned joint verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ARCH-EDGE-CAP",
+      "family": "architecture",
+      "purpose": "edge cap module",
+      "dimensions": {
+        "boundingBoxMetres": [
+          4,
+          0.4,
+          0.8
+        ],
+        "note": "Ramp uses 16m run / 4m rise; reconcile snap grid before detail lock"
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "snap joints"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper"
+      ],
+      "states": [
+        "static"
+      ],
+      "collisionRole": "walkable/cover only where master specifies; trim cosmetic",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Architecture-Resolved.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Architecture-Resolved.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.",
+      "remainingRequirements": [
+        "cross-sheet back/underside consistency review",
+        "master-aligned joint verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ARCH-LANDING",
+      "family": "architecture",
+      "purpose": "landing module",
+      "dimensions": {
+        "boundingBoxMetres": [
+          4,
+          4,
+          0.6
+        ],
+        "note": "Ramp uses 16m run / 4m rise; reconcile snap grid before detail lock"
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "snap joints"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper"
+      ],
+      "states": [
+        "static"
+      ],
+      "collisionRole": "walkable/cover only where master specifies; trim cosmetic",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Architecture-Resolved.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Architecture-Resolved.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Foundry v2 needs 16m assembly: 6.5m rise, 3m flat turnout, 6.5m rise. Existing illustrated 7/2/7 ramp is historical and must be revised before approval.",
+      "remainingRequirements": [
+        "cross-sheet back/underside consistency review",
+        "master-aligned joint verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "PROP-CRATE",
+      "family": "props",
+      "purpose": "crate",
+      "dimensions": {
+        "boundingBoxMetres": [
+          2,
+          1,
+          1.2
+        ]
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper"
+      ],
+      "states": [
+        "static"
+      ],
+      "collisionRole": "hard cover",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Props-Materials.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Props-Materials.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "SKIN material swatch is mislabelled teal paint; use approved character skin references.",
+      "remainingRequirements": [
+        "cross-sheet back/underside consistency review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "PROP-CABINET",
+      "family": "props",
+      "purpose": "cabinet",
+      "dimensions": {
+        "boundingBoxMetres": [
+          1.4,
+          0.8,
+          1.7
+        ]
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper"
+      ],
+      "states": [
+        "static"
+      ],
+      "collisionRole": "hard cover",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Props-Materials.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Props-Materials.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "SKIN material swatch is mislabelled teal paint; use approved character skin references.",
+      "remainingRequirements": [
+        "cross-sheet back/underside consistency review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "PROP-VENT",
+      "family": "props",
+      "purpose": "vent",
+      "dimensions": {
+        "boundingBoxMetres": [
+          1,
+          1,
+          2.4
+        ]
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper"
+      ],
+      "states": [
+        "static"
+      ],
+      "collisionRole": "cosmetic unless placed as explicit master cover",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Props-Materials.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Props-Materials.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "SKIN material swatch is mislabelled teal paint; use approved character skin references.",
+      "remainingRequirements": [
+        "cross-sheet back/underside consistency review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "PROP-CONDUIT",
+      "family": "props",
+      "purpose": "conduit",
+      "dimensions": {
+        "boundingBoxMetres": [
+          1.2,
+          0.25,
+          1.6
+        ]
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper"
+      ],
+      "states": [
+        "static"
+      ],
+      "collisionRole": "cosmetic",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Props-Materials.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Props-Materials.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "SKIN material swatch is mislabelled teal paint; use approved character skin references.",
+      "remainingRequirements": [
+        "cross-sheet back/underside consistency review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "PROP-FLOODLIGHT",
+      "family": "props",
+      "purpose": "floodlight",
+      "dimensions": {
+        "boundingBoxMetres": [
+          1,
+          0.2,
+          0.4
+        ]
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper"
+      ],
+      "states": [
+        "static"
+      ],
+      "collisionRole": "cosmetic",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Props-Materials.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Props-Materials.png",
+        "ArtSource/Original/Design-v1/Concepts/Hidden-Construction-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "SKIN material swatch is mislabelled teal paint; use approved character skin references.",
+      "remainingRequirements": [
+        "cross-sheet back/underside consistency review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "TRAV-HEALTH-PEDESTAL",
+      "family": "traversal",
+      "purpose": "Low nonblocking health mount",
+      "dimensions": {
+        "boundingBoxMetres": [
+          0.8,
+          0.8,
+          0.25
+        ],
+        "clearApertureMetres": null
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "parts breakdown"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper",
+        "amber health"
+      ],
+      "states": [
+        "available",
+        "collected",
+        "returning"
+      ],
+      "collisionRole": "Separate trigger/clearance from cosmetic mesh; pad top flush",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Traversal-Health-States.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Traversal-Health-States.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Two gate identifiers share one mesh. No extra gameplay portal pairs.",
+      "remainingRequirements": [
+        "consistent hidden/underside views",
+        "clearance and mounting verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "TRAV-HEALTH-OBJECT",
+      "family": "traversal",
+      "purpose": "Amber plus-symbol collectible",
+      "dimensions": {
+        "boundingBoxMetres": [
+          0.35,
+          0.35,
+          0.5
+        ],
+        "clearApertureMetres": null
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "parts breakdown"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper",
+        "amber health"
+      ],
+      "states": [
+        "available",
+        "collected",
+        "returning"
+      ],
+      "collisionRole": "Separate trigger/clearance from cosmetic mesh; pad top flush",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Traversal-Health-States.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Traversal-Health-States.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Two gate identifiers share one mesh. No extra gameplay portal pairs.",
+      "remainingRequirements": [
+        "consistent hidden/underside views",
+        "clearance and mounting verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "TRAV-PAD",
+      "family": "traversal",
+      "purpose": "Recessed launch pad",
+      "dimensions": {
+        "boundingBoxMetres": [
+          2,
+          2,
+          0.35
+        ],
+        "clearApertureMetres": null
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "parts breakdown"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper",
+        "amber health"
+      ],
+      "states": [
+        "idle",
+        "contact",
+        "launch"
+      ],
+      "collisionRole": "Separate trigger/clearance from cosmetic mesh; pad top flush",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Traversal-Health-States.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Traversal-Health-States.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Two gate identifiers share one mesh. No extra gameplay portal pairs.",
+      "remainingRequirements": [
+        "consistent hidden/underside views",
+        "clearance and mounting verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "TRAV-PORTAL",
+      "family": "traversal",
+      "purpose": "Shared portal geometry, two instances A/B",
+      "dimensions": {
+        "boundingBoxMetres": [
+          2.4,
+          0.8,
+          2.8
+        ],
+        "clearApertureMetres": [
+          1.4,
+          2.2
+        ]
+      },
+      "requiredViews": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "three-quarter",
+        "parts breakdown"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper",
+        "amber health"
+      ],
+      "states": [
+        "idle",
+        "departure",
+        "arrival",
+        "blocked"
+      ],
+      "collisionRole": "Separate trigger/clearance from cosmetic mesh; pad top flush",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Traversal-Health-States.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Traversal-Health-States.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Two gate identifiers share one mesh. No extra gameplay portal pairs.",
+      "remainingRequirements": [
+        "consistent hidden/underside views",
+        "clearance and mounting verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "WORLD-ISLAND",
+      "family": "world",
+      "purpose": "Distant floating landform",
+      "dimensions": {
+        "scale": "background; not traversable",
+        "note": "Sky cubemap requires shared-scene rendering, not cropped concept panels"
+      },
+      "requiredViews": [
+        "hero",
+        "north",
+        "east",
+        "south",
+        "west",
+        "zenith",
+        "nadir"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper",
+        "clouds",
+        "rock"
+      ],
+      "states": [
+        "static daylight"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/ArenaReferences-v1/08-World-Sky.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/ArenaReferences-v1/08-World-Sky.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "",
+      "remainingRequirements": [
+        "shared-world geometry and seamless directional lighting verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "WORLD-CITADEL",
+      "family": "world",
+      "purpose": "Distant industrial silhouette",
+      "dimensions": {
+        "scale": "background; not traversable",
+        "note": "Sky cubemap requires shared-scene rendering, not cropped concept panels"
+      },
+      "requiredViews": [
+        "hero",
+        "north",
+        "east",
+        "south",
+        "west",
+        "zenith",
+        "nadir"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper",
+        "clouds",
+        "rock"
+      ],
+      "states": [
+        "static daylight"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/ArenaReferences-v1/08-World-Sky.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/ArenaReferences-v1/08-World-Sky.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "",
+      "remainingRequirements": [
+        "shared-world geometry and seamless directional lighting verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "WORLD-SKY",
+      "family": "world",
+      "purpose": "Sky and cloud atmosphere",
+      "dimensions": {
+        "scale": "background; not traversable",
+        "note": "Sky cubemap requires shared-scene rendering, not cropped concept panels"
+      },
+      "requiredViews": [
+        "hero",
+        "north",
+        "east",
+        "south",
+        "west",
+        "zenith",
+        "nadir"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper",
+        "clouds",
+        "rock"
+      ],
+      "states": [
+        "static daylight"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/ArenaReferences-v1/08-World-Sky.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/ArenaReferences-v1/08-World-Sky.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "",
+      "remainingRequirements": [
+        "shared-world geometry and seamless directional lighting verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "WORLD-LIGHTING",
+      "family": "world",
+      "purpose": "Shared sunlight and exposure reference",
+      "dimensions": {
+        "scale": "background; not traversable",
+        "note": "Sky cubemap requires shared-scene rendering, not cropped concept panels"
+      },
+      "requiredViews": [
+        "hero",
+        "north",
+        "east",
+        "south",
+        "west",
+        "zenith",
+        "nadir"
+      ],
+      "materials": [
+        "ivory ceramic",
+        "graphite",
+        "teal",
+        "cyan emissive",
+        "copper",
+        "clouds",
+        "rock"
+      ],
+      "states": [
+        "static daylight"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/ArenaReferences-v1/08-World-Sky.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/ArenaReferences-v1/08-World-Sky.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "",
+      "remainingRequirements": [
+        "shared-world geometry and seamless directional lighting verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "VFX-DISCHARGE",
+      "family": "effects",
+      "purpose": "discharge",
+      "dimensions": {
+        "scale": "Readability at actual player height; no fullscreen obstruction"
+      },
+      "requiredViews": [
+        "timed storyboard",
+        "layer breakdown",
+        "blood-off or reduced-flash variant"
+      ],
+      "materials": [
+        "transparent particles",
+        "emissive core",
+        "decal where appropriate"
+      ],
+      "states": [
+        "start",
+        "peak",
+        "halo fade"
+      ],
+      "collisionRole": "none",
+      "references": [],
+      "intendedReferences": [],
+      "approvalStatus": "blocked-missing-reference",
+      "approvalEvidence": null,
+      "notes": "Combat/blood artwork remains unavailable after prior filtering; no missing sheet may pass approval.",
+      "remainingRequirements": [
+        "layer breakdown and exact timing",
+        "blood-off/reduced-flash variants"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "VFX-RECOVERY",
+      "family": "effects",
+      "purpose": "recovery",
+      "dimensions": {
+        "scale": "Readability at actual player height; no fullscreen obstruction"
+      },
+      "requiredViews": [
+        "timed storyboard",
+        "layer breakdown",
+        "blood-off or reduced-flash variant"
+      ],
+      "materials": [
+        "transparent particles",
+        "emissive core",
+        "decal where appropriate"
+      ],
+      "states": [
+        "fire",
+        "cooldown",
+        "ready"
+      ],
+      "collisionRole": "none",
+      "references": [],
+      "intendedReferences": [],
+      "approvalStatus": "blocked-missing-reference",
+      "approvalEvidence": null,
+      "notes": "Combat/blood artwork remains unavailable after prior filtering; no missing sheet may pass approval.",
+      "remainingRequirements": [
+        "layer breakdown and exact timing",
+        "blood-off/reduced-flash variants"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "VFX-IMPACT",
+      "family": "effects",
+      "purpose": "impact",
+      "dimensions": {
+        "scale": "Readability at actual player height; no fullscreen obstruction"
+      },
+      "requiredViews": [
+        "timed storyboard",
+        "layer breakdown",
+        "blood-off or reduced-flash variant"
+      ],
+      "materials": [
+        "transparent particles",
+        "emissive core",
+        "decal where appropriate"
+      ],
+      "states": [
+        "spark",
+        "debris",
+        "small mark"
+      ],
+      "collisionRole": "none",
+      "references": [],
+      "intendedReferences": [],
+      "approvalStatus": "blocked-missing-reference",
+      "approvalEvidence": null,
+      "notes": "Combat/blood artwork remains unavailable after prior filtering; no missing sheet may pass approval.",
+      "remainingRequirements": [
+        "layer breakdown and exact timing",
+        "blood-off/reduced-flash variants"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "VFX-HIT-BLOOD",
+      "family": "effects",
+      "purpose": "hit blood",
+      "dimensions": {
+        "scale": "Readability at actual player height; no fullscreen obstruction"
+      },
+      "requiredViews": [
+        "timed storyboard",
+        "layer breakdown",
+        "blood-off or reduced-flash variant"
+      ],
+      "materials": [
+        "transparent particles",
+        "emissive core",
+        "decal where appropriate"
+      ],
+      "states": [
+        "small burst",
+        "droplets",
+        "fade"
+      ],
+      "collisionRole": "none",
+      "references": [],
+      "intendedReferences": [],
+      "approvalStatus": "blocked-missing-reference",
+      "approvalEvidence": null,
+      "notes": "Combat/blood artwork remains unavailable after prior filtering; no missing sheet may pass approval.",
+      "remainingRequirements": [
+        "layer breakdown and exact timing",
+        "blood-off/reduced-flash variants"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "VFX-HIT-NO-BLOOD",
+      "family": "effects",
+      "purpose": "hit no blood",
+      "dimensions": {
+        "scale": "Readability at actual player height; no fullscreen obstruction"
+      },
+      "requiredViews": [
+        "timed storyboard",
+        "layer breakdown",
+        "blood-off or reduced-flash variant"
+      ],
+      "materials": [
+        "transparent particles",
+        "emissive core",
+        "decal where appropriate"
+      ],
+      "states": [
+        "spark",
+        "marker",
+        "fade"
+      ],
+      "collisionRole": "none",
+      "references": [],
+      "intendedReferences": [],
+      "approvalStatus": "blocked-missing-reference",
+      "approvalEvidence": null,
+      "notes": "Combat/blood artwork remains unavailable after prior filtering; no missing sheet may pass approval.",
+      "remainingRequirements": [
+        "layer breakdown and exact timing",
+        "blood-off/reduced-flash variants"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "VFX-ELIMINATION",
+      "family": "effects",
+      "purpose": "elimination",
+      "dimensions": {
+        "scale": "Readability at actual player height; no fullscreen obstruction"
+      },
+      "requiredViews": [
+        "timed storyboard",
+        "layer breakdown",
+        "blood-off or reduced-flash variant"
+      ],
+      "materials": [
+        "transparent particles",
+        "emissive core",
+        "decal where appropriate"
+      ],
+      "states": [
+        "fall",
+        "fade",
+        "gone"
+      ],
+      "collisionRole": "none",
+      "references": [],
+      "intendedReferences": [],
+      "approvalStatus": "blocked-missing-reference",
+      "approvalEvidence": null,
+      "notes": "Combat/blood artwork remains unavailable after prior filtering; no missing sheet may pass approval.",
+      "remainingRequirements": [
+        "layer breakdown and exact timing",
+        "blood-off/reduced-flash variants"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "VFX-REGEN",
+      "family": "effects",
+      "purpose": "regen",
+      "dimensions": {
+        "scale": "Readability at actual player height; no fullscreen obstruction"
+      },
+      "requiredViews": [
+        "timed storyboard",
+        "layer breakdown",
+        "blood-off or reduced-flash variant"
+      ],
+      "materials": [
+        "transparent particles",
+        "emissive core",
+        "decal where appropriate"
+      ],
+      "states": [
+        "delay",
+        "active",
+        "cap"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Support-Effects-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Support-Effects-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Style sheet does not establish final timing; align events to authority and visibility settings.",
+      "remainingRequirements": [
+        "layer breakdown and exact timing",
+        "blood-off/reduced-flash variants"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "VFX-PICKUP",
+      "family": "effects",
+      "purpose": "pickup",
+      "dimensions": {
+        "scale": "Readability at actual player height; no fullscreen obstruction"
+      },
+      "requiredViews": [
+        "timed storyboard",
+        "layer breakdown",
+        "blood-off or reduced-flash variant"
+      ],
+      "materials": [
+        "transparent particles",
+        "emissive core",
+        "decal where appropriate"
+      ],
+      "states": [
+        "available",
+        "collect",
+        "return"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Support-Effects-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Support-Effects-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Style sheet does not establish final timing; align events to authority and visibility settings.",
+      "remainingRequirements": [
+        "layer breakdown and exact timing",
+        "blood-off/reduced-flash variants"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "VFX-PAD",
+      "family": "effects",
+      "purpose": "pad",
+      "dimensions": {
+        "scale": "Readability at actual player height; no fullscreen obstruction"
+      },
+      "requiredViews": [
+        "timed storyboard",
+        "layer breakdown",
+        "blood-off or reduced-flash variant"
+      ],
+      "materials": [
+        "transparent particles",
+        "emissive core",
+        "decal where appropriate"
+      ],
+      "states": [
+        "idle",
+        "contact",
+        "impulse"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Support-Effects-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Support-Effects-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Style sheet does not establish final timing; align events to authority and visibility settings.",
+      "remainingRequirements": [
+        "layer breakdown and exact timing",
+        "blood-off/reduced-flash variants"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "VFX-PORTAL",
+      "family": "effects",
+      "purpose": "portal",
+      "dimensions": {
+        "scale": "Readability at actual player height; no fullscreen obstruction"
+      },
+      "requiredViews": [
+        "timed storyboard",
+        "layer breakdown",
+        "blood-off or reduced-flash variant"
+      ],
+      "materials": [
+        "transparent particles",
+        "emissive core",
+        "decal where appropriate"
+      ],
+      "states": [
+        "idle",
+        "depart",
+        "arrive",
+        "blocked"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Support-Effects-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Support-Effects-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Style sheet does not establish final timing; align events to authority and visibility settings.",
+      "remainingRequirements": [
+        "layer breakdown and exact timing",
+        "blood-off/reduced-flash variants"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "VFX-RESPAWN",
+      "family": "effects",
+      "purpose": "respawn",
+      "dimensions": {
+        "scale": "Readability at actual player height; no fullscreen obstruction"
+      },
+      "requiredViews": [
+        "timed storyboard",
+        "layer breakdown",
+        "blood-off or reduced-flash variant"
+      ],
+      "materials": [
+        "transparent particles",
+        "emissive core",
+        "decal where appropriate"
+      ],
+      "states": [
+        "absent",
+        "fade-in",
+        "ready"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Support-Effects-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Support-Effects-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Style sheet does not establish final timing; align events to authority and visibility settings.",
+      "remainingRequirements": [
+        "layer breakdown and exact timing",
+        "blood-off/reduced-flash variants"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "VFX-AMBIENT",
+      "family": "effects",
+      "purpose": "ambient",
+      "dimensions": {
+        "scale": "Readability at actual player height; no fullscreen obstruction"
+      },
+      "requiredViews": [
+        "timed storyboard",
+        "layer breakdown",
+        "blood-off or reduced-flash variant"
+      ],
+      "materials": [
+        "transparent particles",
+        "emissive core",
+        "decal where appropriate"
+      ],
+      "states": [
+        "vent",
+        "dissipate"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Support-Effects-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Support-Effects-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Style sheet does not establish final timing; align events to authority and visibility settings.",
+      "remainingRequirements": [
+        "layer breakdown and exact timing",
+        "blood-off/reduced-flash variants"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "UI-MAIN",
+      "family": "interface",
+      "purpose": "main",
+      "dimensions": {
+        "referencePixels": [
+          1920,
+          1080
+        ],
+        "hudScaleRange": [
+          0.8,
+          1.4
+        ]
+      },
+      "requiredViews": [
+        "full screen",
+        "keyboard focus",
+        "disabled",
+        "empty",
+        "error where applicable"
+      ],
+      "materials": [
+        "graphite panels",
+        "ivory text",
+        "cyan focus",
+        "non-color status labels"
+      ],
+      "states": [
+        "normal",
+        "focused",
+        "disabled",
+        "empty",
+        "error"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/UI-Navigation.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/UI-Navigation.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Generated mockups require exact branding/portrait and value corrections against DESIGN.md; artwork is not runtime UI.",
+      "remainingRequirements": [
+        "final brand and portrait fidelity",
+        "screen-specific empty/error/focus review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "UI-CHARACTER",
+      "family": "interface",
+      "purpose": "character",
+      "dimensions": {
+        "referencePixels": [
+          1920,
+          1080
+        ],
+        "hudScaleRange": [
+          0.8,
+          1.4
+        ]
+      },
+      "requiredViews": [
+        "full screen",
+        "keyboard focus",
+        "disabled",
+        "empty",
+        "error where applicable"
+      ],
+      "materials": [
+        "graphite panels",
+        "ivory text",
+        "cyan focus",
+        "non-color status labels"
+      ],
+      "states": [
+        "normal",
+        "focused",
+        "disabled",
+        "empty",
+        "error"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/UI-Navigation.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/UI-Navigation.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Generated mockups require exact branding/portrait and value corrections against DESIGN.md; artwork is not runtime UI.",
+      "remainingRequirements": [
+        "final brand and portrait fidelity",
+        "screen-specific empty/error/focus review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "UI-PRACTICE",
+      "family": "interface",
+      "purpose": "practice",
+      "dimensions": {
+        "referencePixels": [
+          1920,
+          1080
+        ],
+        "hudScaleRange": [
+          0.8,
+          1.4
+        ]
+      },
+      "requiredViews": [
+        "full screen",
+        "keyboard focus",
+        "disabled",
+        "empty",
+        "error where applicable"
+      ],
+      "materials": [
+        "graphite panels",
+        "ivory text",
+        "cyan focus",
+        "non-color status labels"
+      ],
+      "states": [
+        "normal",
+        "focused",
+        "disabled",
+        "empty",
+        "error"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/UI-Navigation.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/UI-Navigation.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Generated mockups require exact branding/portrait and value corrections against DESIGN.md; artwork is not runtime UI.",
+      "remainingRequirements": [
+        "final brand and portrait fidelity",
+        "screen-specific empty/error/focus review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "UI-DUEL-HOST",
+      "family": "interface",
+      "purpose": "duel host",
+      "dimensions": {
+        "referencePixels": [
+          1920,
+          1080
+        ],
+        "hudScaleRange": [
+          0.8,
+          1.4
+        ]
+      },
+      "requiredViews": [
+        "full screen",
+        "keyboard focus",
+        "disabled",
+        "empty",
+        "error where applicable"
+      ],
+      "materials": [
+        "graphite panels",
+        "ivory text",
+        "cyan focus",
+        "non-color status labels"
+      ],
+      "states": [
+        "normal",
+        "focused",
+        "disabled",
+        "empty",
+        "error"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/UI-Navigation.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/UI-Navigation.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Generated mockups require exact branding/portrait and value corrections against DESIGN.md; artwork is not runtime UI.",
+      "remainingRequirements": [
+        "final brand and portrait fidelity",
+        "screen-specific empty/error/focus review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "UI-DUEL-JOIN",
+      "family": "interface",
+      "purpose": "duel join",
+      "dimensions": {
+        "referencePixels": [
+          1920,
+          1080
+        ],
+        "hudScaleRange": [
+          0.8,
+          1.4
+        ]
+      },
+      "requiredViews": [
+        "full screen",
+        "keyboard focus",
+        "disabled",
+        "empty",
+        "error where applicable"
+      ],
+      "materials": [
+        "graphite panels",
+        "ivory text",
+        "cyan focus",
+        "non-color status labels"
+      ],
+      "states": [
+        "normal",
+        "focused",
+        "disabled",
+        "empty",
+        "error"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/UI-Navigation.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/UI-Navigation.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Generated mockups require exact branding/portrait and value corrections against DESIGN.md; artwork is not runtime UI.",
+      "remainingRequirements": [
+        "final brand and portrait fidelity",
+        "screen-specific empty/error/focus review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "UI-DUEL-READY",
+      "family": "interface",
+      "purpose": "duel ready",
+      "dimensions": {
+        "referencePixels": [
+          1920,
+          1080
+        ],
+        "hudScaleRange": [
+          0.8,
+          1.4
+        ]
+      },
+      "requiredViews": [
+        "full screen",
+        "keyboard focus",
+        "disabled",
+        "empty",
+        "error where applicable"
+      ],
+      "materials": [
+        "graphite panels",
+        "ivory text",
+        "cyan focus",
+        "non-color status labels"
+      ],
+      "states": [
+        "normal",
+        "focused",
+        "disabled",
+        "empty",
+        "error"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/UI-Navigation.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/UI-Navigation.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Generated mockups require exact branding/portrait and value corrections against DESIGN.md; artwork is not runtime UI.",
+      "remainingRequirements": [
+        "final brand and portrait fidelity",
+        "screen-specific empty/error/focus review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "UI-HUD",
+      "family": "interface",
+      "purpose": "hud",
+      "dimensions": {
+        "referencePixels": [
+          1920,
+          1080
+        ],
+        "hudScaleRange": [
+          0.8,
+          1.4
+        ]
+      },
+      "requiredViews": [
+        "full screen",
+        "keyboard focus",
+        "disabled",
+        "empty",
+        "error where applicable"
+      ],
+      "materials": [
+        "graphite panels",
+        "ivory text",
+        "cyan focus",
+        "non-color status labels"
+      ],
+      "states": [
+        "normal",
+        "focused",
+        "disabled",
+        "empty",
+        "error"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/UI-HUD-Settings-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/UI-HUD-Settings-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Generated mockups require exact branding/portrait and value corrections against DESIGN.md; artwork is not runtime UI.",
+      "remainingRequirements": [
+        "final brand and portrait fidelity",
+        "screen-specific empty/error/focus review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "UI-PAUSE",
+      "family": "interface",
+      "purpose": "pause",
+      "dimensions": {
+        "referencePixels": [
+          1920,
+          1080
+        ],
+        "hudScaleRange": [
+          0.8,
+          1.4
+        ]
+      },
+      "requiredViews": [
+        "full screen",
+        "keyboard focus",
+        "disabled",
+        "empty",
+        "error where applicable"
+      ],
+      "materials": [
+        "graphite panels",
+        "ivory text",
+        "cyan focus",
+        "non-color status labels"
+      ],
+      "states": [
+        "normal",
+        "focused",
+        "disabled",
+        "empty",
+        "error"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/UI-HUD-Settings-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/UI-HUD-Settings-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Generated mockups require exact branding/portrait and value corrections against DESIGN.md; artwork is not runtime UI.",
+      "remainingRequirements": [
+        "final brand and portrait fidelity",
+        "screen-specific empty/error/focus review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "UI-SETTINGS",
+      "family": "interface",
+      "purpose": "settings",
+      "dimensions": {
+        "referencePixels": [
+          1920,
+          1080
+        ],
+        "hudScaleRange": [
+          0.8,
+          1.4
+        ]
+      },
+      "requiredViews": [
+        "full screen",
+        "keyboard focus",
+        "disabled",
+        "empty",
+        "error where applicable"
+      ],
+      "materials": [
+        "graphite panels",
+        "ivory text",
+        "cyan focus",
+        "non-color status labels"
+      ],
+      "states": [
+        "normal",
+        "focused",
+        "disabled",
+        "empty",
+        "error"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/UI-Settings-Scoreboard.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/UI-Settings-Scoreboard.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Generated mockups require exact branding/portrait and value corrections against DESIGN.md; artwork is not runtime UI.",
+      "remainingRequirements": [
+        "final brand and portrait fidelity",
+        "screen-specific empty/error/focus review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "UI-SCOREBOARD",
+      "family": "interface",
+      "purpose": "scoreboard",
+      "dimensions": {
+        "referencePixels": [
+          1920,
+          1080
+        ],
+        "hudScaleRange": [
+          0.8,
+          1.4
+        ]
+      },
+      "requiredViews": [
+        "full screen",
+        "keyboard focus",
+        "disabled",
+        "empty",
+        "error where applicable"
+      ],
+      "materials": [
+        "graphite panels",
+        "ivory text",
+        "cyan focus",
+        "non-color status labels"
+      ],
+      "states": [
+        "normal",
+        "focused",
+        "disabled",
+        "empty",
+        "error"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/UI-Settings-Scoreboard.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/UI-Settings-Scoreboard.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Generated mockups require exact branding/portrait and value corrections against DESIGN.md; artwork is not runtime UI.",
+      "remainingRequirements": [
+        "final brand and portrait fidelity",
+        "screen-specific empty/error/focus review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "UI-RESULTS",
+      "family": "interface",
+      "purpose": "results",
+      "dimensions": {
+        "referencePixels": [
+          1920,
+          1080
+        ],
+        "hudScaleRange": [
+          0.8,
+          1.4
+        ]
+      },
+      "requiredViews": [
+        "full screen",
+        "keyboard focus",
+        "disabled",
+        "empty",
+        "error where applicable"
+      ],
+      "materials": [
+        "graphite panels",
+        "ivory text",
+        "cyan focus",
+        "non-color status labels"
+      ],
+      "states": [
+        "normal",
+        "focused",
+        "disabled",
+        "empty",
+        "error"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/UI-HUD-Settings-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/UI-HUD-Settings-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Generated mockups require exact branding/portrait and value corrections against DESIGN.md; artwork is not runtime UI.",
+      "remainingRequirements": [
+        "final brand and portrait fidelity",
+        "screen-specific empty/error/focus review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "UI-ERRORS",
+      "family": "interface",
+      "purpose": "errors",
+      "dimensions": {
+        "referencePixels": [
+          1920,
+          1080
+        ],
+        "hudScaleRange": [
+          0.8,
+          1.4
+        ]
+      },
+      "requiredViews": [
+        "full screen",
+        "keyboard focus",
+        "disabled",
+        "empty",
+        "error where applicable"
+      ],
+      "materials": [
+        "graphite panels",
+        "ivory text",
+        "cyan focus",
+        "non-color status labels"
+      ],
+      "states": [
+        "normal",
+        "focused",
+        "disabled",
+        "empty",
+        "error"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/UI-HUD-Settings-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/UI-HUD-Settings-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Generated mockups require exact branding/portrait and value corrections against DESIGN.md; artwork is not runtime UI.",
+      "remainingRequirements": [
+        "final brand and portrait fidelity",
+        "screen-specific empty/error/focus review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "UI-QUICKSTART",
+      "family": "interface",
+      "purpose": "quickstart",
+      "dimensions": {
+        "referencePixels": [
+          1920,
+          1080
+        ],
+        "hudScaleRange": [
+          0.8,
+          1.4
+        ]
+      },
+      "requiredViews": [
+        "full screen",
+        "keyboard focus",
+        "disabled",
+        "empty",
+        "error where applicable"
+      ],
+      "materials": [
+        "graphite panels",
+        "ivory text",
+        "cyan focus",
+        "non-color status labels"
+      ],
+      "states": [
+        "normal",
+        "focused",
+        "disabled",
+        "empty",
+        "error"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/UI-HUD-Settings-v2.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/UI-HUD-Settings-v2.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Generated mockups require exact branding/portrait and value corrections against DESIGN.md; artwork is not runtime UI.",
+      "remainingRequirements": [
+        "final brand and portrait fidelity",
+        "screen-specific empty/error/focus review"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ANIM-IDLE",
+      "family": "animation",
+      "purpose": "idle",
+      "dimensions": {
+        "rig": "shared humanoid; first-person contact rig"
+      },
+      "requiredViews": [
+        "key poses",
+        "side",
+        "front",
+        "contact or timing notes"
+      ],
+      "materials": [
+        "shared character materials"
+      ],
+      "states": [
+        "enter",
+        "key poses",
+        "exit"
+      ],
+      "collisionRole": "animation never changes authoritative damage/movement",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Overview pose sheet is not full coverage. Rifle hold/fire/recovery and first-person clips need approved rifle geometry and additional contact poses.",
+      "remainingRequirements": [
+        "complete clip-specific key poses",
+        "contact/rig timing verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ANIM-WALK",
+      "family": "animation",
+      "purpose": "walk",
+      "dimensions": {
+        "rig": "shared humanoid; first-person contact rig"
+      },
+      "requiredViews": [
+        "key poses",
+        "side",
+        "front",
+        "contact or timing notes"
+      ],
+      "materials": [
+        "shared character materials"
+      ],
+      "states": [
+        "enter",
+        "key poses",
+        "exit"
+      ],
+      "collisionRole": "animation never changes authoritative damage/movement",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Overview pose sheet is not full coverage. Rifle hold/fire/recovery and first-person clips need approved rifle geometry and additional contact poses.",
+      "remainingRequirements": [
+        "complete clip-specific key poses",
+        "contact/rig timing verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ANIM-RUN",
+      "family": "animation",
+      "purpose": "run",
+      "dimensions": {
+        "rig": "shared humanoid; first-person contact rig"
+      },
+      "requiredViews": [
+        "key poses",
+        "side",
+        "front",
+        "contact or timing notes"
+      ],
+      "materials": [
+        "shared character materials"
+      ],
+      "states": [
+        "enter",
+        "key poses",
+        "exit"
+      ],
+      "collisionRole": "animation never changes authoritative damage/movement",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Overview pose sheet is not full coverage. Rifle hold/fire/recovery and first-person clips need approved rifle geometry and additional contact poses.",
+      "remainingRequirements": [
+        "complete clip-specific key poses",
+        "contact/rig timing verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ANIM-STRAFE",
+      "family": "animation",
+      "purpose": "strafe",
+      "dimensions": {
+        "rig": "shared humanoid; first-person contact rig"
+      },
+      "requiredViews": [
+        "key poses",
+        "side",
+        "front",
+        "contact or timing notes"
+      ],
+      "materials": [
+        "shared character materials"
+      ],
+      "states": [
+        "enter",
+        "key poses",
+        "exit"
+      ],
+      "collisionRole": "animation never changes authoritative damage/movement",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Overview pose sheet is not full coverage. Rifle hold/fire/recovery and first-person clips need approved rifle geometry and additional contact poses.",
+      "remainingRequirements": [
+        "complete clip-specific key poses",
+        "contact/rig timing verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ANIM-JUMP",
+      "family": "animation",
+      "purpose": "jump",
+      "dimensions": {
+        "rig": "shared humanoid; first-person contact rig"
+      },
+      "requiredViews": [
+        "key poses",
+        "side",
+        "front",
+        "contact or timing notes"
+      ],
+      "materials": [
+        "shared character materials"
+      ],
+      "states": [
+        "enter",
+        "key poses",
+        "exit"
+      ],
+      "collisionRole": "animation never changes authoritative damage/movement",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Overview pose sheet is not full coverage. Rifle hold/fire/recovery and first-person clips need approved rifle geometry and additional contact poses.",
+      "remainingRequirements": [
+        "complete clip-specific key poses",
+        "contact/rig timing verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ANIM-LAND",
+      "family": "animation",
+      "purpose": "land",
+      "dimensions": {
+        "rig": "shared humanoid; first-person contact rig"
+      },
+      "requiredViews": [
+        "key poses",
+        "side",
+        "front",
+        "contact or timing notes"
+      ],
+      "materials": [
+        "shared character materials"
+      ],
+      "states": [
+        "enter",
+        "key poses",
+        "exit"
+      ],
+      "collisionRole": "animation never changes authoritative damage/movement",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Overview pose sheet is not full coverage. Rifle hold/fire/recovery and first-person clips need approved rifle geometry and additional contact poses.",
+      "remainingRequirements": [
+        "complete clip-specific key poses",
+        "contact/rig timing verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ANIM-HOLD",
+      "family": "animation",
+      "purpose": "hold",
+      "dimensions": {
+        "rig": "shared humanoid; first-person contact rig"
+      },
+      "requiredViews": [
+        "key poses",
+        "side",
+        "front",
+        "contact or timing notes"
+      ],
+      "materials": [
+        "shared character materials"
+      ],
+      "states": [
+        "enter",
+        "key poses",
+        "exit"
+      ],
+      "collisionRole": "animation never changes authoritative damage/movement",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Overview pose sheet is not full coverage. Rifle hold/fire/recovery and first-person clips need approved rifle geometry and additional contact poses.",
+      "remainingRequirements": [
+        "complete clip-specific key poses",
+        "contact/rig timing verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ANIM-FIRE",
+      "family": "animation",
+      "purpose": "fire",
+      "dimensions": {
+        "rig": "shared humanoid; first-person contact rig"
+      },
+      "requiredViews": [
+        "key poses",
+        "side",
+        "front",
+        "contact or timing notes"
+      ],
+      "materials": [
+        "shared character materials"
+      ],
+      "states": [
+        "enter",
+        "key poses",
+        "exit"
+      ],
+      "collisionRole": "animation never changes authoritative damage/movement",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Overview pose sheet is not full coverage. Rifle hold/fire/recovery and first-person clips need approved rifle geometry and additional contact poses.",
+      "remainingRequirements": [
+        "complete clip-specific key poses",
+        "contact/rig timing verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ANIM-RECOVERY",
+      "family": "animation",
+      "purpose": "recovery",
+      "dimensions": {
+        "rig": "shared humanoid; first-person contact rig"
+      },
+      "requiredViews": [
+        "key poses",
+        "side",
+        "front",
+        "contact or timing notes"
+      ],
+      "materials": [
+        "shared character materials"
+      ],
+      "states": [
+        "enter",
+        "key poses",
+        "exit"
+      ],
+      "collisionRole": "animation never changes authoritative damage/movement",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Overview pose sheet is not full coverage. Rifle hold/fire/recovery and first-person clips need approved rifle geometry and additional contact poses.",
+      "remainingRequirements": [
+        "complete clip-specific key poses",
+        "contact/rig timing verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ANIM-HIT",
+      "family": "animation",
+      "purpose": "hit",
+      "dimensions": {
+        "rig": "shared humanoid; first-person contact rig"
+      },
+      "requiredViews": [
+        "key poses",
+        "side",
+        "front",
+        "contact or timing notes"
+      ],
+      "materials": [
+        "shared character materials"
+      ],
+      "states": [
+        "enter",
+        "key poses",
+        "exit"
+      ],
+      "collisionRole": "animation never changes authoritative damage/movement",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Overview pose sheet is not full coverage. Rifle hold/fire/recovery and first-person clips need approved rifle geometry and additional contact poses.",
+      "remainingRequirements": [
+        "complete clip-specific key poses",
+        "contact/rig timing verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ANIM-DEATH",
+      "family": "animation",
+      "purpose": "death",
+      "dimensions": {
+        "rig": "shared humanoid; first-person contact rig"
+      },
+      "requiredViews": [
+        "key poses",
+        "side",
+        "front",
+        "contact or timing notes"
+      ],
+      "materials": [
+        "shared character materials"
+      ],
+      "states": [
+        "enter",
+        "key poses",
+        "exit"
+      ],
+      "collisionRole": "animation never changes authoritative damage/movement",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Overview pose sheet is not full coverage. Rifle hold/fire/recovery and first-person clips need approved rifle geometry and additional contact poses.",
+      "remainingRequirements": [
+        "complete clip-specific key poses",
+        "contact/rig timing verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ANIM-RESPAWN",
+      "family": "animation",
+      "purpose": "respawn",
+      "dimensions": {
+        "rig": "shared humanoid; first-person contact rig"
+      },
+      "requiredViews": [
+        "key poses",
+        "side",
+        "front",
+        "contact or timing notes"
+      ],
+      "materials": [
+        "shared character materials"
+      ],
+      "states": [
+        "enter",
+        "key poses",
+        "exit"
+      ],
+      "collisionRole": "animation never changes authoritative damage/movement",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Overview pose sheet is not full coverage. Rifle hold/fire/recovery and first-person clips need approved rifle geometry and additional contact poses.",
+      "remainingRequirements": [
+        "complete clip-specific key poses",
+        "contact/rig timing verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ANIM-FP-IDLE",
+      "family": "animation",
+      "purpose": "fp-idle",
+      "dimensions": {
+        "rig": "shared humanoid; first-person contact rig"
+      },
+      "requiredViews": [
+        "key poses",
+        "side",
+        "front",
+        "contact or timing notes"
+      ],
+      "materials": [
+        "shared character materials"
+      ],
+      "states": [
+        "enter",
+        "key poses",
+        "exit"
+      ],
+      "collisionRole": "animation never changes authoritative damage/movement",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Overview pose sheet is not full coverage. Rifle hold/fire/recovery and first-person clips need approved rifle geometry and additional contact poses.",
+      "remainingRequirements": [
+        "complete clip-specific key poses",
+        "contact/rig timing verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ANIM-FP-MOVE",
+      "family": "animation",
+      "purpose": "fp-move",
+      "dimensions": {
+        "rig": "shared humanoid; first-person contact rig"
+      },
+      "requiredViews": [
+        "key poses",
+        "side",
+        "front",
+        "contact or timing notes"
+      ],
+      "materials": [
+        "shared character materials"
+      ],
+      "states": [
+        "enter",
+        "key poses",
+        "exit"
+      ],
+      "collisionRole": "animation never changes authoritative damage/movement",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Overview pose sheet is not full coverage. Rifle hold/fire/recovery and first-person clips need approved rifle geometry and additional contact poses.",
+      "remainingRequirements": [
+        "complete clip-specific key poses",
+        "contact/rig timing verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ANIM-FP-FIRE",
+      "family": "animation",
+      "purpose": "fp-fire",
+      "dimensions": {
+        "rig": "shared humanoid; first-person contact rig"
+      },
+      "requiredViews": [
+        "key poses",
+        "side",
+        "front",
+        "contact or timing notes"
+      ],
+      "materials": [
+        "shared character materials"
+      ],
+      "states": [
+        "enter",
+        "key poses",
+        "exit"
+      ],
+      "collisionRole": "animation never changes authoritative damage/movement",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Overview pose sheet is not full coverage. Rifle hold/fire/recovery and first-person clips need approved rifle geometry and additional contact poses.",
+      "remainingRequirements": [
+        "complete clip-specific key poses",
+        "contact/rig timing verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "ANIM-FP-ZOOM",
+      "family": "animation",
+      "purpose": "fp-zoom",
+      "dimensions": {
+        "rig": "shared humanoid; first-person contact rig"
+      },
+      "requiredViews": [
+        "key poses",
+        "side",
+        "front",
+        "contact or timing notes"
+      ],
+      "materials": [
+        "shared character materials"
+      ],
+      "states": [
+        "enter",
+        "key poses",
+        "exit"
+      ],
+      "collisionRole": "animation never changes authoritative damage/movement",
+      "references": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "intendedReferences": [
+        "ArtSource/Original/Design-v1/Concepts/Animation-Poses.png"
+      ],
+      "approvalStatus": "awaiting-creator-review",
+      "approvalEvidence": null,
+      "notes": "Overview pose sheet is not full coverage. Rifle hold/fire/recovery and first-person clips need approved rifle geometry and additional contact poses.",
+      "remainingRequirements": [
+        "complete clip-specific key poses",
+        "contact/rig timing verification"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-RIFLE-SHOT",
+      "family": "audio",
+      "purpose": "rifle-shot",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-RIFLE-READY",
+      "family": "audio",
+      "purpose": "rifle-ready",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-IMPACT-METAL",
+      "family": "audio",
+      "purpose": "impact-metal",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-HIT-CONFIRM",
+      "family": "audio",
+      "purpose": "hit-confirm",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-ELIMINATION",
+      "family": "audio",
+      "purpose": "elimination",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-FOOTSTEP",
+      "family": "audio",
+      "purpose": "footstep",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-JUMP",
+      "family": "audio",
+      "purpose": "jump",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-LAND",
+      "family": "audio",
+      "purpose": "land",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-PAD",
+      "family": "audio",
+      "purpose": "pad",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-PORTAL-DEPART",
+      "family": "audio",
+      "purpose": "portal-depart",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-PORTAL-ARRIVE",
+      "family": "audio",
+      "purpose": "portal-arrive",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-PORTAL-BLOCKED",
+      "family": "audio",
+      "purpose": "portal-blocked",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-HEALTH",
+      "family": "audio",
+      "purpose": "health",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-REGEN",
+      "family": "audio",
+      "purpose": "regen",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-RESPAWN",
+      "family": "audio",
+      "purpose": "respawn",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-COUNTDOWN",
+      "family": "audio",
+      "purpose": "countdown",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-MATCH-END",
+      "family": "audio",
+      "purpose": "match-end",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-UI-FOCUS",
+      "family": "audio",
+      "purpose": "ui-focus",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-UI-CONFIRM",
+      "family": "audio",
+      "purpose": "ui-confirm",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-UI-ERROR",
+      "family": "audio",
+      "purpose": "ui-error",
+      "dimensions": {
+        "durationSeconds": "event-specific short cue"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "end"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-AMBIENCE",
+      "family": "audio",
+      "purpose": "ambience",
+      "dimensions": {
+        "durationSeconds": "loop"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: effects"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "loop boundary"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    },
+    {
+      "id": "AUDIO-MENU-MUSIC",
+      "family": "audio",
+      "purpose": "menu-music",
+      "dimensions": {
+        "durationSeconds": "loop"
+      },
+      "requiredViews": [
+        "event/mix brief; no model sheet required"
+      ],
+      "materials": [
+        "audio bus: music"
+      ],
+      "states": [
+        "trigger",
+        "tail",
+        "loop boundary"
+      ],
+      "collisionRole": "none",
+      "references": [
+        "docs/DESIGN.md"
+      ],
+      "intendedReferences": [
+        "docs/DESIGN.md"
+      ],
+      "approvalStatus": "brief-approved-audio-production-pending",
+      "approvalEvidence": null,
+      "notes": "No new audio produced by concept package. Separate sound-on approval required.",
+      "remainingRequirements": [
+        "sound production",
+        "sound-on approval"
+      ],
+      "coverageStatus": "partial; see remainingRequirements",
+      "detailedModelingAllowed": false
+    }
+  ]
+}

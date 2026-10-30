@@ -1,5 +1,7 @@
 using System;
 using System.Linq;
+using System.IO;
+using System.Text;
 using System.Reflection;
 using NUnit.Framework;
 using UnityEngine;
@@ -13,6 +15,8 @@ namespace RailArena.Tests
         [TestCase(RailCue.Hit)]
         [TestCase(RailCue.Elimination)]
         [TestCase(RailCue.Hurt)]
+        [TestCase(RailCue.Pickup)]
+        [TestCase(RailCue.Launch)]
         public void SynthesizedCuesHaveFiniteBoundedSamplesAndFadedEndpoints(RailCue cue)
         {
             var clip = RailAudio.Create(cue);
@@ -27,8 +31,21 @@ namespace RailArena.Tests
                 Assert.That(Mathf.Abs(samples[^1]), Is.LessThan(.001f));
                 double Energy(int start, int count) => samples.Skip(start).Take(count).Average(s => (double)s * s);
                 Assert.That(Energy(samples.Length - 1000, 1000), Is.LessThan(Energy(0, 1000) * .1));
+                if(cue==RailCue.Pickup || cue==RailCue.Launch)WritePreview(cue,samples);
             }
             finally { Object.DestroyImmediate(clip); }
+        }
+
+        private static void WritePreview(RailCue cue,float[] samples)
+        {
+            string folder=Path.GetFullPath(Path.Combine(Application.dataPath,"../../Validation/TraversalAudio"));Directory.CreateDirectory(folder);
+            using(var writer=new BinaryWriter(File.Create(Path.Combine(folder,cue+".wav"))))
+            {
+                writer.Write(Encoding.ASCII.GetBytes("RIFF"));writer.Write(36+samples.Length*2);writer.Write(Encoding.ASCII.GetBytes("WAVEfmt "));
+                writer.Write(16);writer.Write((short)1);writer.Write((short)1);writer.Write(RailAudio.SampleRate);writer.Write(RailAudio.SampleRate*2);writer.Write((short)2);writer.Write((short)16);
+                writer.Write(Encoding.ASCII.GetBytes("data"));writer.Write(samples.Length*2);
+                foreach(float sample in samples)writer.Write((short)Mathf.RoundToInt(sample*32767));
+            }
         }
 
         [Test]

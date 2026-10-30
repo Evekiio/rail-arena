@@ -58,9 +58,9 @@ namespace RailArena.Tests
             Round = round, Tick = tick, Phase = MatchPhase.Playing,
             Actors = new[]
             {
-                new ActorSnapshot { Health = 100, Life = remoteLife, Position = Origin, Grounded = true,
+                new ActorSnapshot { Magazine = RifleMagazine.Full, Health = 100, Life = remoteLife, Position = Origin, Grounded = true,
                     RespawnTick = remoteLife > 1 ? tick - 1 : 0 },
-                new ActorSnapshot { Health = 100, Life = localLife, Position = Origin + Vector3.right * 10, Grounded = true,
+                new ActorSnapshot { Magazine = RifleMagazine.Full, Health = 100, Life = localLife, Position = Origin + Vector3.right * 10, Grounded = true,
                     RespawnTick = localLife > 1 ? tick - 1 : 0 }
             }
         };
@@ -71,6 +71,59 @@ namespace RailArena.Tests
             if (session != null) foreach (var actor in session.Actors) if (actor != null) Object.DestroyImmediate(actor.gameObject);
             if (root != null) Object.DestroyImmediate(root);
             if (tuning != null) Object.DestroyImmediate(tuning);
+        }
+
+        [Test]
+        public void PortalEpochSnapsOpponentAndResetsLocalViewCorrection()
+        {
+            var view = Field<ReconciliationView>("reconciliationView");
+            view.Correct(session.Human.transform.position + Vector3.right, session.Human.transform.position);
+            var state = State(1, 201, 1, 1);
+            state.Actors[0].TeleportSerial = 1; state.Actors[0].Position += Vector3.right * 60;
+            state.Actors[1].TeleportSerial = 1; state.Actors[1].PortalReadyTick = 230; state.Actors[1].LastTeleportTick = 200;
+            state.Actors[1].Position += Vector3.right * 60;
+            Apply(state);
+            Assert.That(session.Actors[0].transform.position, Is.EqualTo(state.Actors[0].Position));
+            Assert.That(session.Human.PortalReadyTick, Is.EqualTo(230));
+            Assert.That(session.Human.TeleportSerial, Is.EqualTo(1));
+            Assert.That(view.Offset, Is.EqualTo(Vector3.zero));
+            Assert.That(Field<List<DuelSnapshot>>("interpolation").Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void MagazineReplayRestoresReloadAndConsumesPendingShotExactlyOnce()
+        {
+            var state = State(1, 201, 1, 1);
+            state.Actors[1].Magazine = new RifleMagazine { Rounds = 3, CadenceRemainder = 4, LastShotInterval = 15 };
+            Field<List<DuelInput>>("prediction").Add(new DuelInput { Command = new MovementCommand { Sequence = 1, Reload = true, Fire = true } });
+            Apply(state);
+            Assert.That(session.Human.Magazine.Rounds, Is.EqualTo(3));
+            Assert.That(session.Human.Magazine.ReloadEndTick, Is.EqualTo(322));
+            state = State(1, 322, 1, 1); state.Actors[1].LastInput = 1;
+            state.Actors[1].Magazine = new RifleMagazine { Rounds = 30, CadenceRemainder = 4, LastShotInterval = 15 };
+            Field<List<DuelInput>>("prediction").Add(new DuelInput { Command = new MovementCommand { Sequence = 2, Fire = true } });
+            Apply(state);
+            Assert.That(session.Human.Magazine.Rounds, Is.EqualTo(29));
+            Assert.That(session.Human.Magazine.CadenceRemainder, Is.EqualTo(1));
+            Assert.That(session.Human.NextShotTick, Is.EqualTo(338));
+        }
+
+        [Test]
+        public void SlideSnapshotRestoresTimersBeforeReplayingPendingCrouch()
+        {
+            var state = State(1, 201, 1, 1);
+            state.Actors[1].Crouched = true;
+            state.Actors[1].Velocity = Vector3.forward * 10;
+            state.Actors[1].Slide = new SlideState { RemainingTicks = 20, CooldownTicks = 68, CrouchHeld = true };
+            session.Human.Slide = default;
+            Field<List<DuelInput>>("prediction").Add(new DuelInput { Command = new MovementCommand
+                { Sequence = 1, Move = Vector2.up, Crouch = true, Sprint = true } });
+            Apply(state);
+            Assert.That(session.Human.Slide.RemainingTicks, Is.EqualTo(19));
+            Assert.That(session.Human.Slide.CooldownTicks, Is.EqualTo(67));
+            Assert.That(session.Human.Slide.CrouchHeld, Is.True);
+            Assert.That(session.Human.Velocity.z, Is.EqualTo(9.75f).Within(.001f));
+            Assert.That(session.Human.IsCrouched, Is.True);
         }
 
         [Test]
@@ -138,8 +191,8 @@ namespace RailArena.Tests
             var actor = session.Actors[0];
             var update = typeof(ContenderPresentation).GetMethod("Update", PrivateInstance);
             update.Invoke(actor.Presentation, null);
-            var actuator = actor.Presentation.Railgun.Actuators[0];
-            Vector3 ready = actuator.localPosition;
+            var trigger = actor.Presentation.Railgun.Triggers[0];
+            Quaternion ready = trigger.localRotation;
             var state = State(1, 203, 1, 1);
             state.Actors[0].NextShotTick = 293;
             state.Actors[0].PadReadyTick = 303;
@@ -147,7 +200,7 @@ namespace RailArena.Tests
             Assert.That(actor.NextShotTick, Is.EqualTo(293));
             Assert.That(actor.PadReadyTick, Is.EqualTo(303));
             update.Invoke(actor.Presentation, null);
-            Assert.That(Vector3.Distance(ready, actuator.localPosition), Is.GreaterThan(.02f));
+            Assert.That(Quaternion.Angle(ready, trigger.localRotation), Is.GreaterThan(7f));
         }
 
         [Test]
@@ -249,6 +302,90 @@ namespace RailArena.Tests
             Apply(state);
             Assert.That(session.Feedback.ConfirmedHits, Is.Zero);
             Assert.That(session.Feedback.HitStrength, Is.Zero);
+        }
+
+        [Test]
+        public void PickupArtFollowsAuthorityAndIgnoresStaleSnapshots()
+        {
+            var pickup=session.World.Pickups[0];
+            var art=Object.Instantiate(Resources.Load<GameObject>("Environment/HealthBeacon"),pickup.transform,false);
+            pickup.Presentation=art.GetComponent<HealthPickupVisual>();
+            pickup.Visuals=new[]{pickup.Presentation.Marker};
+            var state=State(1,400,1,1);state.PickupTicks[0]=600;Apply(state);
+            Assert.That(pickup.Presentation.Marker.enabled,Is.False);
+            Assert.That(pickup.Presentation.Status.sharedMaterial,Is.SameAs(pickup.Presentation.DepletedMaterial));
+            state=State(1,600,1,1);state.PickupTicks[0]=600;Apply(state);
+            Assert.That(pickup.Presentation.Marker.enabled,Is.True);
+            state=State(1,599,1,1);state.PickupTicks[0]=800;Apply(state);
+            Assert.That(pickup.Presentation.Marker.enabled,Is.True);
+            Assert.That(pickup.AvailableTick,Is.EqualTo(600));
+        }
+
+        [Test]
+        public void RecentFeedDistinguishesVoidDeathsAndClearsOnNewRound()
+        {
+            var state=State(1,203,1,1);state.Actors[0].Health=0;state.Actors[0].Score=-1;
+            state.Actors[0].Statistics=new CombatStatistics(0,1,0,0,0,1);Apply(state);
+            Assert.That(session.RecentCombat.Entries.Count,Is.EqualTo(1));
+            Assert.That(session.Feed,Does.Contain("fell into the void"));
+            Apply(state);Assert.That(session.RecentCombat.Entries.Count,Is.EqualTo(1));
+            state=State(1,326,2,1);state.Actors[0].Score=-1;state.Actors[0].Statistics=new CombatStatistics(0,1,0,0,0,1);Apply(state);
+            state=State(1,329,2,1);state.Actors[0].Health=0;state.Actors[0].Score=-1;
+            state.Actors[0].Statistics=new CombatStatistics(0,2,0,0,0,1);Apply(state);
+            Assert.That(session.RecentCombat.Entries.Count,Is.EqualTo(2));Assert.That(session.Feed,Does.Contain("  >  "));
+            Apply(State(2,180,1,1));Assert.That(session.RecentCombat.Entries,Is.Empty);Assert.That(session.Feed,Is.Empty);
+        }
+
+        [Test]
+        public void LocalPickupSoundFollowsHealthGainWithoutReplayingOldLives()
+        {
+            var state=State(1,203,1,1);state.Actors[1].Health=50;Apply(state);
+            Assert.That(session.Feedback.PickupCues,Is.Zero);
+            state=State(1,206,1,1);state.Actors[1].Health=75;Apply(state);
+            Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));Assert.That(session.Feedback.LastPickupAmount,Is.EqualTo(25));
+            Apply(state);Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
+            Apply(State(1,205,1,1));Assert.That(session.Human.Health,Is.EqualTo(75));Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
+            state=State(1,209,1,1);state.Actors[0].Health=50;state.Actors[1].Health=75;Apply(state);
+            state=State(1,212,1,1);state.Actors[1].Health=75;Apply(state);
+            Assert.That(session.Feedback.PickupCues,Is.EqualTo(1),"Opponent recovery must not confirm a local pickup");
+            Apply(State(1,326,1,2));Assert.That(session.Feedback.PickupCues,Is.Zero);
+            Apply(State(2,200,1,1));Assert.That(session.Feedback.PickupCues,Is.Zero);
+        }
+
+        [TestCase(50,75,25)]
+        [TestCase(98,100,2)]
+        public void AuthorityPickupSoundConfirmsOnlyTheLocalCollector(int startingHealth,int finalHealth,int restored)
+        {
+            foreach(var actor in session.Actors) {actor.Bot=false;actor.Controller.enabled=true;}
+            foreach(var pickup in session.World.Pickups)pickup.AvailableTick=int.MaxValue;
+            var local=session.Human;local.Health=startingHealth;
+            var first=session.World.Pickups[0];first.transform.position=local.transform.position+Vector3.up;first.AvailableTick=0;
+            typeof(ArenaSession).GetMethod("AdvanceAuthority",PrivateInstance).Invoke(session,null);
+            Assert.That(local.Health,Is.EqualTo(finalHealth));Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
+            Assert.That(session.Feedback.LastPickupAmount,Is.EqualTo(restored));
+            typeof(ArenaSession).GetMethod("AdvanceAuthority",PrivateInstance).Invoke(session,null);
+            Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
+            var opponent=session.Actors[0];opponent.Place(Origin-Vector3.right*20);opponent.Health=50;
+            var second=session.World.Pickups[1];second.transform.position=opponent.transform.position+Vector3.up;second.AvailableTick=0;
+            typeof(ArenaSession).GetMethod("AdvanceAuthority",PrivateInstance).Invoke(session,null);
+            Assert.That(opponent.Health,Is.EqualTo(75));Assert.That(session.Feedback.PickupCues,Is.EqualTo(1));
+        }
+
+        [Test]
+        public void PredictedPadSoundIsNotDuplicatedBySnapshotReplay()
+        {
+            var local=session.Human;local.Bot=false;
+            var padObject=new GameObject("Cue test pad");padObject.transform.SetParent(root.transform);padObject.transform.position=local.transform.position;
+            var pad=padObject.AddComponent<JumpPad>();pad.Destination=local.transform.position+Vector3.forward*10;session.World.Pads=new[]{pad};
+            var move=typeof(ArenaSession).GetMethod("MoveActor",PrivateInstance);
+            move.Invoke(session,new object[]{local,201,false,true});
+            Assert.That(session.Feedback.LaunchCues,Is.EqualTo(1));Assert.That(local.Velocity.y,Is.GreaterThan(0));
+            Field<List<DuelInput>>("prediction").Add(new DuelInput {Command=new MovementCommand {Sequence=1}});
+            Apply(State(1,203,1,1));Assert.That(local.PadReadyTick,Is.EqualTo(294));
+            Assert.That(session.Feedback.LaunchCues,Is.EqualTo(1));
+            Apply(State(1,203,1,1));Assert.That(session.Feedback.LaunchCues,Is.EqualTo(1));
+            move.Invoke(session,new object[]{local,205,false,true});Assert.That(session.Feedback.LaunchCues,Is.EqualTo(1));
+            Assert.That(session.PadLaunches,Is.Zero,"Presentation must not add authority launch statistics");
         }
 
         [TestCase(0, 2)]

@@ -146,6 +146,9 @@ namespace RailArena.Editor
             bloom.dirtIntensity.Override(0);
             profile.Add<Vignette>().intensity.Override(.18f);
             Save(profile, "Foundry grading.asset");
+            foreach (var component in profile.components)
+                AssetDatabase.AddObjectToAsset(component, profile);
+            EditorUtility.SetDirty(profile);
             volume.sharedProfile = profile;
             Stars();
             var session = new GameObject("Game authority").AddComponent<ArenaSession>();
@@ -166,6 +169,10 @@ namespace RailArena.Editor
             EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(Folder + "/Foundry.unity", true) };
             AssetDatabase.SaveAssets();
             FoundryArtBuilder.Apply();
+            FoundryLightingBuilder.Apply();
+            FoundryBackdropBuilder.Apply();
+            VoidEdgeArtBuilder.Apply();
+            HealthPickupArtBuilder.Apply();
             Debug.Log($"Foundry scene created: {world.Pads.Length} launch pads, {world.Pickups.Length} health pickups, {world.Spawns.Length} spawns, {world.Nodes.Length} route nodes.");
         }
 

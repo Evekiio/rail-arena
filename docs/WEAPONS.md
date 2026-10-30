@@ -4,13 +4,15 @@ The original Rail Arena weapon replaces the first- and third-person blockout mes
 
 ## Sources and generation
 
-- `ArtSource/Original/Railgun/Railgun.blend`: editable Blender master, grouped by surface.
+- `ArtSource/Original/Railgun/Railgun.blend`: editable Blender master with individually named parts and editable receiver lettering. Export copies are grouped by surface.
 - `tools/build_railgun.py`: deterministic geometry, normal preparation, static mesh grouping, LOD export and studio preview setup for Blender 5.2.
 - `ArtSource/Original/Railgun/preparation.json`: actual export counts and provenance.
 - `RailArena/Assets/RailArena/Art/Railgun`: two FBX LODs and Unity URP materials.
 - `RailArena/Assets/Resources/Weapons/Railgun.prefab`: runtime weapon with muzzle, LOD group, actuator and energy-surface references.
 
-LOD0 contains 34,488 triangles; LOD1 contains 10,342. Each level has six static surface meshes plus one actuator. Static detail is grouped by material to limit draw calls. Dimensions are approximately 0.24 x 0.44 x 1.20 metres. The first-person copy forces LOD0; remote copies use distance LOD selection. The prefab has no weapon colliders or damage logic.
+LOD0 contains 45,632 triangles; LOD1 contains 13,683. Each level has six static surface meshes plus one actuator. Static detail is grouped by material to limit draw calls. Audited dimensions are approximately 0.25 x 0.45 x 1.20 metres. The first-person copy forces LOD0; remote copies use distance LOD selection. The prefab has no weapon colliders or damage logic.
+
+The refined RA-01 has tapered rail profiles, faceted ceramic insulators, an octagonal muzzle housing, a skeletal stock, an open sight hood, underside cooling shoes, charge lamps and receiver identification. The existing pistol grip, support cushion, actuator and calibrated grip/muzzle transforms are preserved. Gunmetal, titanium and ceramic surfaces have revised color and roughness. The studio, side and rear PNGs beside the master are Blender review renders, not game screenshots.
 
 From the repository root, regenerate with the installed Blender 5.2 executable, for example:
 
@@ -18,6 +20,15 @@ From the repository root, regenerate with the installed Blender 5.2 executable, 
 & 'C:\Program Files\Blender Foundation\Blender 5.2\blender.exe' --background --factory-startup --python tools/build_railgun.py -- (Get-Location).Path
 unity command script eval --project-path .\RailArena --caller plugin --skill unity-cli -- --code 'RailArena.Editor.RailgunBuilder.Build();'
 ```
+
+For background import without opening the Editor, use:
+
+```powershell
+unity run .\RailArena --editor-version 6000.6.7f1 --timeout 300 -- -nographics -executeMethod RailArena.Editor.RailgunBuilder.Build
+& 'C:\Program Files\Blender Foundation\Blender 5.2\blender.exe' --background --factory-startup --threads 4 --python tools/validate_railgun.py -- (Get-Location).Path
+```
+
+The generator limits rendering to four CPU threads and 24 samples. The geometry audit checks source editability, seven export meshes per LOD, finite coordinates, nondegenerate triangles, reported triangle counts and metre scale. Reports are stored in `Validation/railgun-refinement-geometry.json` and `Validation/railgun-refinement-editmode.xml`. This refinement updates project assets; previously packaged standalone players require a rebuild to include it. Native first-person visual approval remains outstanding.
 
 The Editor builder imports the meshes, assigns materials, creates the weapon prefab and updates only the existing contender weapon attachment. It preserves the character controller and animation graph. A full contender regeneration also uses this weapon prefab, so build the gun before running the contender builder.
 
@@ -28,3 +39,9 @@ The Editor builder imports the meshes, assigns materials, creates the weapon pre
 No damage, firing interval, ammunition, movement or scoring rules change. The arm-only first-person rig now shares the weapon's grip markers and cosmetic recoil; see `FIRST-PERSON-ARMS.md`. Finger refinement and authored first-person actions remain unfinished. The studio PNG is a Blender model preview, not an in-game screenshot; the first-person Editor capture and controlled motion previews establish only their stated visual scope. Creative and sound-on approval remain outstanding.
 
 The rail now has pooled fading core/halo, muzzle and impact effects, authoritative hit/elimination confirmation and four original synthesized sound cues. See [combat feedback](COMBAT-FEEDBACK.md) for source, review exports, network semantics and validation limits.
+
+## Automatic-fire extension
+
+Current source replaces click-only recovery with 600 RPM hold-to-fire and presentation-only spring recoil. Damage, unlimited energy and 1.5x ADS are retained. Protocol 7 requires the same build on both peers. Earlier production-art evidence remains specific to its original build. See [AUTOMATIC-RIFLE.md](AUTOMATIC-RIFLE.md).
+
+The Precision Carbine surface material now has a procedural secondary micro-normal, masked to the twelve palette-3 metallic atlas tiles. The original base normal, metal/smoothness maps, geometry and energy material remain intact. `tools/build_carbine_microdetail.py` generates the maps from the authored atlas; `CarbineMicroDetailBuilder.Apply` imports and assigns them. Headless first-person presentation checks passed. Close-range visual quality and GPU cost still need native-player review.

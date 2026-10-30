@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 22:25:42Z" end-time="2026-10-29 22:25:42Z" duration="0.6042859">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="189" result="Passed" start-time="2026-10-29 22:25:42Z" end-time="2026-10-29 22:25:42Z" duration="0.604286" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1258" name="RailArena.Tests.dll" fullname="F:/Rail Arena/Builds/Automatic-Rifle-2026-10-29/Project/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="189" result="Passed" start-time="2026-10-29 22:25:42Z" end-time="2026-10-29 22:25:42Z" duration="0.584551" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="60788" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1259" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="189" result="Passed" start-time="2026-10-29 22:25:42Z" end-time="2026-10-29 22:25:42Z" duration="0.568813" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1260" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="189" result="Passed" start-time="2026-10-29 22:25:42Z" end-time="2026-10-29 22:25:42Z" duration="0.563675" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1084" name="FirstPersonArmsTests" fullname="RailArena.Tests.FirstPersonArmsTests" classname="RailArena.Tests.FirstPersonArmsTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-29 22:25:42Z" end-time="2026-10-29 22:25:42Z" duration="0.557995" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1086" name="BothWristsFollowSharedGripsThroughAimTravelLandingAndRecoil" fullname="RailArena.Tests.FirstPersonArmsTests.BothWristsFollowSharedGripsThroughAimTravelLandingAndRecoil" methodname="BothWristsFollowSharedGripsThroughAimTravelLandingAndRecoil" classname="RailArena.Tests.FirstPersonArmsTests" runstate="Runnable" seed="787279620" result="Passed" start-time="2026-10-29 22:25:42Z" end-time="2026-10-29 22:25:42Z" duration="0.462749" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1087" name="ThirdPersonPresentationUsesCanonicalWeaponGripMarkers" fullname="RailArena.Tests.FirstPersonArmsTests.ThirdPersonPresentationUsesCanonicalWeaponGripMarkers" methodname="ThirdPersonPresentationUsesCanonicalWeaponGripMarkers" classname="RailArena.Tests.FirstPersonArmsTests" runstate="Runnable" seed="1543011493" result="Passed" start-time="2026-10-29 22:25:42Z" end-time="2026-10-29 22:25:42Z" duration="0.048687" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1085" name="ViewModelRetainsOnlyArmWeightedGeometryAndHasNoGameplayComponents" fullname="RailArena.Tests.FirstPersonArmsTests.ViewModelRetainsOnlyArmWeightedGeometryAndHasNoGameplayComponents" methodname="ViewModelRetainsOnlyArmWeightedGeometryAndHasNoGameplayComponents" classname="RailArena.Tests.FirstPersonArmsTests" runstate="Runnable" seed="2099570296" result="Passed" start-time="2026-10-29 22:25:42Z" end-time="2026-10-29 22:25:42Z" duration="0.022763" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -9,7 +9,10 @@ namespace RailArena.Simulation
     {
         public const int TickRate = 60;
         public const int MaximumHealth = 100;
-        public const int ShotIntervalTicks = 90;
+        public const int MaximumContenders = 4;
+        public const int MaximumBots = MaximumContenders - 1;
+        public const int ShotIntervalTicks = 15; // Maximum quantized interval; RifleMagazine schedules exact 250 RPM.
+        public const int RoundsPerMinute = 250;
         public const int RespawnTicks = 120;
         public const int PickupRespawnTicks = 1200;
         public const int CountdownTicks = 180;

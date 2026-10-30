@@ -8,7 +8,8 @@ namespace RailArena.Editor
         private void OnPreprocessModel()
         {
             if (!assetPath.StartsWith("Assets/ThirdParty/Grab3D/") &&
-                !assetPath.StartsWith("Assets/ThirdParty/Quaternius/")) return;
+                !assetPath.StartsWith("Assets/ThirdParty/Quaternius/") &&
+                !assetPath.StartsWith("Assets/RailArena/Art/StylizedContenders/")) return;
             var importer = (ModelImporter)assetImporter;
             importer.animationType = ModelImporterAnimationType.Human;
             importer.avatarSetup = ModelImporterAvatarSetup.CreateFromThisModel;

@@ -1,0 +1,2104 @@
+{
+  "version": 1,
+  "status": "MEASURED DESIGN PROPOSAL \u2014 pending creator approval and controller validation",
+  "source": "Foundry-Arena-v2/Map.json",
+  "units": "metres",
+  "axes": {
+    "canonical": "x east, n north, h up; right handed",
+    "blender": "(x,n,h), Z up",
+    "unity": "(x,h,-n), Y up; rotation conversion required"
+  },
+  "baseFootprint": [
+    56,
+    40
+  ],
+  "decorativeFootprint": [
+    62,
+    40
+  ],
+  "tolerances": {
+    "structuralMetres": 0.001,
+    "decorativeEnvelopeMetres": 0.02
+  },
+  "objects": [
+    {
+      "id": "Outer-X-1",
+      "shape": "box",
+      "center": [
+        -25,
+        0,
+        -0.3
+      ],
+      "size": [
+        6,
+        40,
+        0.6
+      ],
+      "group": "structure",
+      "collision": true
+    },
+    {
+      "id": "Outer-N-1",
+      "shape": "box",
+      "center": [
+        0,
+        -17,
+        -0.3
+      ],
+      "size": [
+        44,
+        6,
+        0.6
+      ],
+      "group": "structure",
+      "collision": true
+    },
+    {
+      "id": "Upper-Spine-1",
+      "shape": "box",
+      "center": [
+        -8,
+        0,
+        3.7
+      ],
+      "size": [
+        4,
+        12,
+        0.6
+      ],
+      "group": "structure",
+      "collision": true
+    },
+    {
+      "id": "Wing-1_-1",
+      "shape": "box",
+      "center": [
+        -17,
+        -12,
+        1.7
+      ],
+      "size": [
+        10,
+        4,
+        0.6
+      ],
+      "group": "structure",
+      "collision": true
+    },
+    {
+      "id": "Upper-Landing-1_-1",
+      "shape": "box",
+      "center": [
+        -8,
+        -8,
+        3.7
+      ],
+      "size": [
+        4,
+        4,
+        0.6
+      ],
+      "group": "structure",
+      "collision": true
+    },
+    {
+      "id": "Wing-1_1",
+      "shape": "box",
+      "center": [
+        -17,
+        12,
+        1.7
+      ],
+      "size": [
+        10,
+        4,
+        0.6
+      ],
+      "group": "structure",
+      "collision": true
+    },
+    {
+      "id": "Upper-Landing-1_1",
+      "shape": "box",
+      "center": [
+        -8,
+        8,
+        3.7
+      ],
+      "size": [
+        4,
+        4,
+        0.6
+      ],
+      "group": "structure",
+      "collision": true
+    },
+    {
+      "id": "Outer-X1",
+      "shape": "box",
+      "center": [
+        25,
+        0,
+        -0.3
+      ],
+      "size": [
+        6,
+        40,
+        0.6
+      ],
+      "group": "structure",
+      "collision": true
+    },
+    {
+      "id": "Outer-N1",
+      "shape": "box",
+      "center": [
+        0,
+        17,
+        -0.3
+      ],
+      "size": [
+        44,
+        6,
+        0.6
+      ],
+      "group": "structure",
+      "collision": true
+    },
+    {
+      "id": "Upper-Spine1",
+      "shape": "box",
+      "center": [
+        8,
+        0,
+        3.7
+      ],
+      "size": [
+        4,
+        12,
+        0.6
+      ],
+      "group": "structure",
+      "collision": true
+    },
+    {
+      "id": "Wing1_-1",
+      "shape": "box",
+      "center": [
+        17,
+        -12,
+        1.7
+      ],
+      "size": [
+        10,
+        4,
+        0.6
+      ],
+      "group": "structure",
+      "collision": true
+    },
+    {
+      "id": "Upper-Landing1_-1",
+      "shape": "box",
+      "center": [
+        8,
+        -8,
+        3.7
+      ],
+      "size": [
+        4,
+        4,
+        0.6
+      ],
+      "group": "structure",
+      "collision": true
+    },
+    {
+      "id": "Wing1_1",
+      "shape": "box",
+      "center": [
+        17,
+        12,
+        1.7
+      ],
+      "size": [
+        10,
+        4,
+        0.6
+      ],
+      "group": "structure",
+      "collision": true
+    },
+    {
+      "id": "Upper-Landing1_1",
+      "shape": "box",
+      "center": [
+        8,
+        8,
+        3.7
+      ],
+      "size": [
+        4,
+        4,
+        0.6
+      ],
+      "group": "structure",
+      "collision": true
+    },
+    {
+      "id": "Bridge",
+      "shape": "box",
+      "center": [
+        0,
+        0,
+        3.7
+      ],
+      "size": [
+        12,
+        6,
+        0.6
+      ],
+      "group": "structure",
+      "collision": true
+    },
+    {
+      "id": "Underpass",
+      "shape": "box",
+      "center": [
+        0,
+        0,
+        -0.3
+      ],
+      "size": [
+        8,
+        28,
+        0.6
+      ],
+      "group": "structure",
+      "collision": true
+    },
+    {
+      "id": "Wing-LowCover-1_-1",
+      "shape": "box",
+      "center": [
+        -21,
+        -11,
+        2.6
+      ],
+      "size": [
+        2,
+        1,
+        1.2
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "Wing-LowCover-1_1",
+      "shape": "box",
+      "center": [
+        -21,
+        11,
+        2.6
+      ],
+      "size": [
+        2,
+        1,
+        1.2
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "Wing-LowCover1_-1",
+      "shape": "box",
+      "center": [
+        21,
+        -11,
+        2.6
+      ],
+      "size": [
+        2,
+        1,
+        1.2
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "Wing-LowCover1_1",
+      "shape": "box",
+      "center": [
+        21,
+        11,
+        2.6
+      ],
+      "size": [
+        2,
+        1,
+        1.2
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "Underpass-Pier-1",
+      "shape": "box",
+      "center": [
+        -3.8,
+        0,
+        1.7
+      ],
+      "size": [
+        1.6,
+        4,
+        3.4
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "Bridge-Screen-1",
+      "shape": "box",
+      "center": [
+        -3.5,
+        -1.8,
+        5.3
+      ],
+      "size": [
+        1.5,
+        2.4,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "LongLane-Elbow-1_-1",
+      "shape": "box",
+      "center": [
+        -24,
+        3,
+        1.3
+      ],
+      "size": [
+        2,
+        2,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "CrossLane-Elbow-1_-1",
+      "shape": "box",
+      "center": [
+        -16,
+        -16.2,
+        1.3
+      ],
+      "size": [
+        2.4,
+        2.8,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "Corner-Screen-1_-1",
+      "shape": "box",
+      "center": [
+        -23,
+        -16,
+        1.3
+      ],
+      "size": [
+        2,
+        2,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "InnerSpawn-Lip-1_-1",
+      "shape": "box",
+      "center": [
+        -9,
+        -14.8,
+        1.3
+      ],
+      "size": [
+        3.2,
+        1.6,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "LongLane-Elbow-1_1",
+      "shape": "box",
+      "center": [
+        -26,
+        -3,
+        1.3
+      ],
+      "size": [
+        2,
+        2,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "CrossLane-Elbow-1_1",
+      "shape": "box",
+      "center": [
+        16,
+        -16.2,
+        1.3
+      ],
+      "size": [
+        2.4,
+        2.8,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "Corner-Screen-1_1",
+      "shape": "box",
+      "center": [
+        -23,
+        16,
+        1.3
+      ],
+      "size": [
+        2,
+        2,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "InnerSpawn-Lip-1_1",
+      "shape": "box",
+      "center": [
+        9,
+        -14.8,
+        1.3
+      ],
+      "size": [
+        3.2,
+        1.6,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "InnerSpawn-Screen-1",
+      "shape": "box",
+      "center": [
+        -7,
+        -16.2,
+        1.3
+      ],
+      "size": [
+        1.2,
+        2.8,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "InnerSpawn-ScreenMirror-1",
+      "shape": "box",
+      "center": [
+        7,
+        -16.2,
+        1.3
+      ],
+      "size": [
+        1.2,
+        2.8,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "Portal-Baffle-1",
+      "shape": "box",
+      "center": [
+        -4.8,
+        -15.5,
+        1.3
+      ],
+      "size": [
+        1,
+        2,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "Underpass-Pier1",
+      "shape": "box",
+      "center": [
+        3.8,
+        0,
+        1.7
+      ],
+      "size": [
+        1.6,
+        4,
+        3.4
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "Bridge-Screen1",
+      "shape": "box",
+      "center": [
+        3.5,
+        1.8,
+        5.3
+      ],
+      "size": [
+        1.5,
+        2.4,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "LongLane-Elbow1_-1",
+      "shape": "box",
+      "center": [
+        24,
+        -3,
+        1.3
+      ],
+      "size": [
+        2,
+        2,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "CrossLane-Elbow1_-1",
+      "shape": "box",
+      "center": [
+        -16,
+        16.2,
+        1.3
+      ],
+      "size": [
+        2.4,
+        2.8,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "Corner-Screen1_-1",
+      "shape": "box",
+      "center": [
+        23,
+        -16,
+        1.3
+      ],
+      "size": [
+        2,
+        2,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "InnerSpawn-Lip1_-1",
+      "shape": "box",
+      "center": [
+        -9,
+        14.8,
+        1.3
+      ],
+      "size": [
+        3.2,
+        1.6,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "LongLane-Elbow1_1",
+      "shape": "box",
+      "center": [
+        26,
+        3,
+        1.3
+      ],
+      "size": [
+        2,
+        2,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "CrossLane-Elbow1_1",
+      "shape": "box",
+      "center": [
+        16,
+        16.2,
+        1.3
+      ],
+      "size": [
+        2.4,
+        2.8,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "Corner-Screen1_1",
+      "shape": "box",
+      "center": [
+        23,
+        16,
+        1.3
+      ],
+      "size": [
+        2,
+        2,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "InnerSpawn-Lip1_1",
+      "shape": "box",
+      "center": [
+        9,
+        14.8,
+        1.3
+      ],
+      "size": [
+        3.2,
+        1.6,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "InnerSpawn-Screen1",
+      "shape": "box",
+      "center": [
+        7,
+        16.2,
+        1.3
+      ],
+      "size": [
+        1.2,
+        2.8,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "InnerSpawn-ScreenMirror1",
+      "shape": "box",
+      "center": [
+        -7,
+        16.2,
+        1.3
+      ],
+      "size": [
+        1.2,
+        2.8,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "Portal-Baffle1",
+      "shape": "box",
+      "center": [
+        4.8,
+        15.5,
+        1.3
+      ],
+      "size": [
+        1,
+        2,
+        2.6
+      ],
+      "group": "cover",
+      "collision": true
+    },
+    {
+      "id": "R1",
+      "shape": "ramp",
+      "profile": [
+        [
+          -26,
+          -8,
+          0
+        ],
+        [
+          -19.5,
+          -8,
+          2
+        ],
+        [
+          -16.5,
+          -8,
+          2
+        ],
+        [
+          -10,
+          -8,
+          4
+        ]
+      ],
+      "width": 4,
+      "thickness": 0.4,
+      "group": "ramps",
+      "collision": true
+    },
+    {
+      "id": "R2",
+      "shape": "ramp",
+      "profile": [
+        [
+          -26,
+          8,
+          0
+        ],
+        [
+          -19.5,
+          8,
+          2
+        ],
+        [
+          -16.5,
+          8,
+          2
+        ],
+        [
+          -10,
+          8,
+          4
+        ]
+      ],
+      "width": 4,
+      "thickness": 0.4,
+      "group": "ramps",
+      "collision": true
+    },
+    {
+      "id": "R3",
+      "shape": "ramp",
+      "profile": [
+        [
+          26,
+          -8,
+          0
+        ],
+        [
+          19.5,
+          -8,
+          2
+        ],
+        [
+          16.5,
+          -8,
+          2
+        ],
+        [
+          10,
+          -8,
+          4
+        ]
+      ],
+      "width": 4,
+      "thickness": 0.4,
+      "group": "ramps",
+      "collision": true
+    },
+    {
+      "id": "R4",
+      "shape": "ramp",
+      "profile": [
+        [
+          26,
+          8,
+          0
+        ],
+        [
+          19.5,
+          8,
+          2
+        ],
+        [
+          16.5,
+          8,
+          2
+        ],
+        [
+          10,
+          8,
+          4
+        ]
+      ],
+      "width": 4,
+      "thickness": 0.4,
+      "group": "ramps",
+      "collision": true
+    },
+    {
+      "id": "SUMMIT-DECK",
+      "shape": "cylinder",
+      "center": [
+        0,
+        0,
+        21.7
+      ],
+      "radius": 7,
+      "depth": 0.6,
+      "segments": 96,
+      "group": "summit",
+      "collision": true
+    },
+    {
+      "id": "SUMMIT-CENTRAL-COVER",
+      "shape": "box",
+      "center": [
+        0,
+        0,
+        22.55
+      ],
+      "size": [
+        2,
+        2,
+        1.1
+      ],
+      "group": "summit",
+      "collision": true
+    },
+    {
+      "id": "SUMMIT-COLUMN-1",
+      "shape": "cylinder",
+      "center": [
+        6.4,
+        0.0,
+        24.5
+      ],
+      "radius": 0.28,
+      "depth": 5,
+      "segments": 24,
+      "group": "summit",
+      "collision": true
+    },
+    {
+      "id": "SUMMIT-COLUMN-2",
+      "shape": "cylinder",
+      "center": [
+        0.0,
+        6.4,
+        24.5
+      ],
+      "radius": 0.28,
+      "depth": 5,
+      "segments": 24,
+      "group": "summit",
+      "collision": true
+    },
+    {
+      "id": "SUMMIT-COLUMN-3",
+      "shape": "cylinder",
+      "center": [
+        -6.4,
+        0.0,
+        24.5
+      ],
+      "radius": 0.28,
+      "depth": 5,
+      "segments": 24,
+      "group": "summit",
+      "collision": true
+    },
+    {
+      "id": "SUMMIT-COLUMN-4",
+      "shape": "cylinder",
+      "center": [
+        -0.0,
+        -6.4,
+        24.5
+      ],
+      "radius": 0.28,
+      "depth": 5,
+      "segments": 24,
+      "group": "summit",
+      "collision": true
+    },
+    {
+      "id": "PA-HOUSING-ENVELOPE",
+      "shape": "box",
+      "center": [
+        0,
+        -18,
+        1.3
+      ],
+      "size": [
+        2.4,
+        0.8,
+        2.8
+      ],
+      "group": "portal_envelopes",
+      "collision": false
+    },
+    {
+      "id": "PA-APERTURE",
+      "shape": "box",
+      "center": [
+        0,
+        -18,
+        1.1
+      ],
+      "size": [
+        1.4,
+        0.06,
+        2.2
+      ],
+      "group": "portal_fields",
+      "collision": false
+    },
+    {
+      "id": "PB-HOUSING-ENVELOPE",
+      "shape": "box",
+      "center": [
+        0,
+        18,
+        1.3
+      ],
+      "size": [
+        2.4,
+        0.8,
+        2.8
+      ],
+      "group": "portal_envelopes",
+      "collision": false
+    },
+    {
+      "id": "PB-APERTURE",
+      "shape": "box",
+      "center": [
+        0,
+        18,
+        1.1
+      ],
+      "size": [
+        1.4,
+        0.06,
+        2.2
+      ],
+      "group": "portal_fields",
+      "collision": false
+    },
+    {
+      "id": "H1-MOUNT",
+      "shape": "box",
+      "center": [
+        -14,
+        12,
+        2.125
+      ],
+      "size": [
+        0.8,
+        0.8,
+        0.25
+      ],
+      "group": "devices",
+      "collision": false
+    },
+    {
+      "id": "H2-MOUNT",
+      "shape": "box",
+      "center": [
+        0,
+        0,
+        4.125
+      ],
+      "size": [
+        0.8,
+        0.8,
+        0.25
+      ],
+      "group": "devices",
+      "collision": false
+    },
+    {
+      "id": "H3-MOUNT",
+      "shape": "box",
+      "center": [
+        14,
+        -12,
+        2.125
+      ],
+      "size": [
+        0.8,
+        0.8,
+        0.25
+      ],
+      "group": "devices",
+      "collision": false
+    },
+    {
+      "id": "JP1-PAD",
+      "shape": "box",
+      "center": [
+        -25,
+        -12,
+        0.06
+      ],
+      "size": [
+        2.4,
+        2.4,
+        0.12
+      ],
+      "group": "devices",
+      "collision": false
+    },
+    {
+      "id": "JP1-LANDING",
+      "shape": "box",
+      "center": [
+        -3,
+        -3,
+        22.015
+      ],
+      "size": [
+        3,
+        3,
+        0.03
+      ],
+      "group": "landing_reservations",
+      "collision": false
+    },
+    {
+      "id": "JP2-PAD",
+      "shape": "box",
+      "center": [
+        -25,
+        12,
+        0.06
+      ],
+      "size": [
+        2.4,
+        2.4,
+        0.12
+      ],
+      "group": "devices",
+      "collision": false
+    },
+    {
+      "id": "JP2-LANDING",
+      "shape": "box",
+      "center": [
+        -3,
+        3,
+        22.015
+      ],
+      "size": [
+        3,
+        3,
+        0.03
+      ],
+      "group": "landing_reservations",
+      "collision": false
+    },
+    {
+      "id": "JP3-PAD",
+      "shape": "box",
+      "center": [
+        25,
+        -12,
+        0.06
+      ],
+      "size": [
+        2.4,
+        2.4,
+        0.12
+      ],
+      "group": "devices",
+      "collision": false
+    },
+    {
+      "id": "JP3-LANDING",
+      "shape": "box",
+      "center": [
+        3,
+        -3,
+        22.015
+      ],
+      "size": [
+        3,
+        3,
+        0.03
+      ],
+      "group": "landing_reservations",
+      "collision": false
+    },
+    {
+      "id": "JP4-PAD",
+      "shape": "box",
+      "center": [
+        25,
+        12,
+        0.06
+      ],
+      "size": [
+        2.4,
+        2.4,
+        0.12
+      ],
+      "group": "devices",
+      "collision": false
+    },
+    {
+      "id": "JP4-LANDING",
+      "shape": "box",
+      "center": [
+        3,
+        3,
+        22.015
+      ],
+      "size": [
+        3,
+        3,
+        0.03
+      ],
+      "group": "landing_reservations",
+      "collision": false
+    },
+    {
+      "id": "GARDEN-1-OUTRIGGER",
+      "shape": "box",
+      "center": [
+        -29.5,
+        -16,
+        -0.35
+      ],
+      "size": [
+        3,
+        4,
+        0.7
+      ],
+      "group": "garden_structure",
+      "collision": false
+    },
+    {
+      "id": "GARDEN-1-SOIL",
+      "shape": "box",
+      "center": [
+        -29.5,
+        -16,
+        0.08
+      ],
+      "size": [
+        2.6,
+        3.6,
+        0.16
+      ],
+      "group": "planting_reservations",
+      "collision": false
+    },
+    {
+      "id": "GARDEN-1-CANOPY-ENVELOPE",
+      "shape": "cylinder",
+      "center": [
+        -29.5,
+        -16,
+        3.7
+      ],
+      "radius": 1.7,
+      "depth": 3.6,
+      "segments": 24,
+      "group": "foliage_envelopes",
+      "collision": false
+    },
+    {
+      "id": "WATERFALL-1",
+      "shape": "box",
+      "center": [
+        -31.05,
+        -16,
+        -10
+      ],
+      "size": [
+        0.12,
+        2,
+        20
+      ],
+      "group": "waterfall_envelopes",
+      "collision": false
+    },
+    {
+      "id": "IVY-1",
+      "shape": "box",
+      "center": [
+        -29.5,
+        -13.95,
+        -2
+      ],
+      "size": [
+        2.6,
+        0.15,
+        4
+      ],
+      "group": "foliage_envelopes",
+      "collision": false
+    },
+    {
+      "id": "GARDEN-2-OUTRIGGER",
+      "shape": "box",
+      "center": [
+        -29.5,
+        16,
+        -0.35
+      ],
+      "size": [
+        3,
+        4,
+        0.7
+      ],
+      "group": "garden_structure",
+      "collision": false
+    },
+    {
+      "id": "GARDEN-2-SOIL",
+      "shape": "box",
+      "center": [
+        -29.5,
+        16,
+        0.08
+      ],
+      "size": [
+        2.6,
+        3.6,
+        0.16
+      ],
+      "group": "planting_reservations",
+      "collision": false
+    },
+    {
+      "id": "GARDEN-2-CANOPY-ENVELOPE",
+      "shape": "cylinder",
+      "center": [
+        -29.5,
+        16,
+        3.7
+      ],
+      "radius": 1.7,
+      "depth": 3.6,
+      "segments": 24,
+      "group": "foliage_envelopes",
+      "collision": false
+    },
+    {
+      "id": "WATERFALL-2",
+      "shape": "box",
+      "center": [
+        -31.05,
+        16,
+        -10
+      ],
+      "size": [
+        0.12,
+        2,
+        20
+      ],
+      "group": "waterfall_envelopes",
+      "collision": false
+    },
+    {
+      "id": "IVY-2",
+      "shape": "box",
+      "center": [
+        -29.5,
+        18.05,
+        -2
+      ],
+      "size": [
+        2.6,
+        0.15,
+        4
+      ],
+      "group": "foliage_envelopes",
+      "collision": false
+    },
+    {
+      "id": "GARDEN-3-OUTRIGGER",
+      "shape": "box",
+      "center": [
+        29.5,
+        -16,
+        -0.35
+      ],
+      "size": [
+        3,
+        4,
+        0.7
+      ],
+      "group": "garden_structure",
+      "collision": false
+    },
+    {
+      "id": "GARDEN-3-SOIL",
+      "shape": "box",
+      "center": [
+        29.5,
+        -16,
+        0.08
+      ],
+      "size": [
+        2.6,
+        3.6,
+        0.16
+      ],
+      "group": "planting_reservations",
+      "collision": false
+    },
+    {
+      "id": "GARDEN-3-CANOPY-ENVELOPE",
+      "shape": "cylinder",
+      "center": [
+        29.5,
+        -16,
+        3.7
+      ],
+      "radius": 1.7,
+      "depth": 3.6,
+      "segments": 24,
+      "group": "foliage_envelopes",
+      "collision": false
+    },
+    {
+      "id": "WATERFALL-3",
+      "shape": "box",
+      "center": [
+        31.05,
+        -16,
+        -10
+      ],
+      "size": [
+        0.12,
+        2,
+        20
+      ],
+      "group": "waterfall_envelopes",
+      "collision": false
+    },
+    {
+      "id": "IVY-3",
+      "shape": "box",
+      "center": [
+        29.5,
+        -13.95,
+        -2
+      ],
+      "size": [
+        2.6,
+        0.15,
+        4
+      ],
+      "group": "foliage_envelopes",
+      "collision": false
+    },
+    {
+      "id": "GARDEN-4-OUTRIGGER",
+      "shape": "box",
+      "center": [
+        29.5,
+        16,
+        -0.35
+      ],
+      "size": [
+        3,
+        4,
+        0.7
+      ],
+      "group": "garden_structure",
+      "collision": false
+    },
+    {
+      "id": "GARDEN-4-SOIL",
+      "shape": "box",
+      "center": [
+        29.5,
+        16,
+        0.08
+      ],
+      "size": [
+        2.6,
+        3.6,
+        0.16
+      ],
+      "group": "planting_reservations",
+      "collision": false
+    },
+    {
+      "id": "GARDEN-4-CANOPY-ENVELOPE",
+      "shape": "cylinder",
+      "center": [
+        29.5,
+        16,
+        3.7
+      ],
+      "radius": 1.7,
+      "depth": 3.6,
+      "segments": 24,
+      "group": "foliage_envelopes",
+      "collision": false
+    },
+    {
+      "id": "WATERFALL-4",
+      "shape": "box",
+      "center": [
+        31.05,
+        16,
+        -10
+      ],
+      "size": [
+        0.12,
+        2,
+        20
+      ],
+      "group": "waterfall_envelopes",
+      "collision": false
+    },
+    {
+      "id": "IVY-4",
+      "shape": "box",
+      "center": [
+        29.5,
+        18.05,
+        -2
+      ],
+      "size": [
+        2.6,
+        0.15,
+        4
+      ],
+      "group": "foliage_envelopes",
+      "collision": false
+    }
+  ],
+  "ramps": [
+    {
+      "id": "R1",
+      "width": 4,
+      "profile": [
+        [
+          -26,
+          -8,
+          0
+        ],
+        [
+          -19.5,
+          -8,
+          2
+        ],
+        [
+          -16.5,
+          -8,
+          2
+        ],
+        [
+          -10,
+          -8,
+          4
+        ]
+      ],
+      "thickness": 0.4,
+      "wingJoin": "3m flat turnout touches wing edge at north/south10m"
+    },
+    {
+      "id": "R2",
+      "width": 4,
+      "profile": [
+        [
+          -26,
+          8,
+          0
+        ],
+        [
+          -19.5,
+          8,
+          2
+        ],
+        [
+          -16.5,
+          8,
+          2
+        ],
+        [
+          -10,
+          8,
+          4
+        ]
+      ],
+      "thickness": 0.4,
+      "wingJoin": "3m flat turnout touches wing edge at north/south10m"
+    },
+    {
+      "id": "R3",
+      "width": 4,
+      "profile": [
+        [
+          26,
+          -8,
+          0
+        ],
+        [
+          19.5,
+          -8,
+          2
+        ],
+        [
+          16.5,
+          -8,
+          2
+        ],
+        [
+          10,
+          -8,
+          4
+        ]
+      ],
+      "thickness": 0.4,
+      "wingJoin": "3m flat turnout touches wing edge at north/south10m"
+    },
+    {
+      "id": "R4",
+      "width": 4,
+      "profile": [
+        [
+          26,
+          8,
+          0
+        ],
+        [
+          19.5,
+          8,
+          2
+        ],
+        [
+          16.5,
+          8,
+          2
+        ],
+        [
+          10,
+          8,
+          4
+        ]
+      ],
+      "thickness": 0.4,
+      "wingJoin": "3m flat turnout touches wing edge at north/south10m"
+    }
+  ],
+  "spawns": [
+    {
+      "id": "S1",
+      "position": [
+        -25.5,
+        -17.5,
+        0
+      ],
+      "eyeHeight": 1.58,
+      "initialFacingDegrees": 55.53918372862823,
+      "requiredClearRadius": 0.65,
+      "selection": "occluded first, then farthest enemy"
+    },
+    {
+      "id": "S2",
+      "position": [
+        25.5,
+        17.5,
+        0
+      ],
+      "eyeHeight": 1.58,
+      "initialFacingDegrees": -124.46081627137178,
+      "requiredClearRadius": 0.65,
+      "selection": "occluded first, then farthest enemy"
+    },
+    {
+      "id": "S3",
+      "position": [
+        -25.5,
+        17.5,
+        0
+      ],
+      "eyeHeight": 1.58,
+      "initialFacingDegrees": 124.46081627137178,
+      "requiredClearRadius": 0.65,
+      "selection": "occluded first, then farthest enemy"
+    },
+    {
+      "id": "S4",
+      "position": [
+        25.5,
+        -17.5,
+        0
+      ],
+      "eyeHeight": 1.58,
+      "initialFacingDegrees": -55.53918372862823,
+      "requiredClearRadius": 0.65,
+      "selection": "occluded first, then farthest enemy"
+    },
+    {
+      "id": "S5",
+      "position": [
+        -9,
+        -17,
+        0
+      ],
+      "eyeHeight": 1.58,
+      "initialFacingDegrees": 27.89727103094763,
+      "requiredClearRadius": 0.65,
+      "selection": "occluded first, then farthest enemy"
+    },
+    {
+      "id": "S6",
+      "position": [
+        9,
+        17,
+        0
+      ],
+      "eyeHeight": 1.58,
+      "initialFacingDegrees": -152.10272896905238,
+      "requiredClearRadius": 0.65,
+      "selection": "occluded first, then farthest enemy"
+    },
+    {
+      "id": "S7",
+      "position": [
+        9,
+        -17,
+        0
+      ],
+      "eyeHeight": 1.58,
+      "initialFacingDegrees": -27.89727103094763,
+      "requiredClearRadius": 0.65,
+      "selection": "occluded first, then farthest enemy"
+    },
+    {
+      "id": "S8",
+      "position": [
+        -9,
+        17,
+        0
+      ],
+      "eyeHeight": 1.58,
+      "initialFacingDegrees": 152.10272896905238,
+      "requiredClearRadius": 0.65,
+      "selection": "occluded first, then farthest enemy"
+    }
+  ],
+  "health": [
+    {
+      "id": "H1",
+      "position": [
+        -14,
+        12,
+        2
+      ]
+    },
+    {
+      "id": "H2",
+      "position": [
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "id": "H3",
+      "position": [
+        14,
+        -12,
+        2
+      ]
+    }
+  ],
+  "portals": [
+    {
+      "id": "PA",
+      "center": [
+        0,
+        -18,
+        1.3
+      ],
+      "frontNormal": [
+        0,
+        1,
+        0
+      ],
+      "exit": [
+        0,
+        -15.8,
+        0
+      ],
+      "aperture": [
+        1.4,
+        2.2
+      ],
+      "apertureBottom": 0,
+      "apertureCenter": [
+        0,
+        -18,
+        1.1
+      ],
+      "housing": [
+        2.4,
+        0.8,
+        2.8
+      ],
+      "frontEntryOnly": true,
+      "appearance": "opaque cyan field; no destination camera",
+      "shots": "absorbed on front field and solid housing; never continue through",
+      "linkedTo": "PB"
+    },
+    {
+      "id": "PB",
+      "center": [
+        0,
+        18,
+        1.3
+      ],
+      "frontNormal": [
+        0,
+        -1,
+        0
+      ],
+      "exit": [
+        0,
+        15.8,
+        0
+      ],
+      "aperture": [
+        1.4,
+        2.2
+      ],
+      "apertureBottom": 0,
+      "apertureCenter": [
+        0,
+        18,
+        1.1
+      ],
+      "housing": [
+        2.4,
+        0.8,
+        2.8
+      ],
+      "frontEntryOnly": true,
+      "appearance": "opaque cyan field; no destination camera",
+      "shots": "absorbed on front field and solid housing; never continue through",
+      "linkedTo": "PA"
+    }
+  ],
+  "safeDrops": [
+    {
+      "id": "DROP1",
+      "edge": [
+        -19.5,
+        -14,
+        2
+      ],
+      "landing": [
+        -19.5,
+        -15.5,
+        0
+      ],
+      "clearLandingSize": [
+        3,
+        3
+      ],
+      "type": "walk-off; no launch impulse"
+    },
+    {
+      "id": "DROP2",
+      "edge": [
+        -19.5,
+        14,
+        2
+      ],
+      "landing": [
+        -19.5,
+        15.5,
+        0
+      ],
+      "clearLandingSize": [
+        3,
+        3
+      ],
+      "type": "walk-off; no launch impulse"
+    },
+    {
+      "id": "DROP3",
+      "edge": [
+        19.5,
+        -14,
+        2
+      ],
+      "landing": [
+        19.5,
+        -15.5,
+        0
+      ],
+      "clearLandingSize": [
+        3,
+        3
+      ],
+      "type": "walk-off; no launch impulse"
+    },
+    {
+      "id": "DROP4",
+      "edge": [
+        19.5,
+        14,
+        2
+      ],
+      "landing": [
+        19.5,
+        15.5,
+        0
+      ],
+      "clearLandingSize": [
+        3,
+        3
+      ],
+      "type": "walk-off; no launch impulse"
+    }
+  ],
+  "summit": {
+    "top": 22,
+    "radius": 7,
+    "underside": 21.4,
+    "columnTop": 27,
+    "exit": "four open perimeter sectors; controlled drops require controller acceptance; no new fall damage"
+  },
+  "jumpPads": [
+    {
+      "id": "JP1",
+      "start": [
+        -25,
+        -12,
+        0
+      ],
+      "destination": [
+        -3,
+        -3,
+        22
+      ],
+      "flightSeconds": 2,
+      "gravity": 25,
+      "velocity": [
+        11.0,
+        4.5,
+        36.0
+      ],
+      "landingSize": [
+        3,
+        3
+      ],
+      "status": "proposed; actual-controller verification required"
+    },
+    {
+      "id": "JP2",
+      "start": [
+        -25,
+        12,
+        0
+      ],
+      "destination": [
+        -3,
+        3,
+        22
+      ],
+      "flightSeconds": 2,
+      "gravity": 25,
+      "velocity": [
+        11.0,
+        -4.5,
+        36.0
+      ],
+      "landingSize": [
+        3,
+        3
+      ],
+      "status": "proposed; actual-controller verification required"
+    },
+    {
+      "id": "JP3",
+      "start": [
+        25,
+        -12,
+        0
+      ],
+      "destination": [
+        3,
+        -3,
+        22
+      ],
+      "flightSeconds": 2,
+      "gravity": 25,
+      "velocity": [
+        -11.0,
+        4.5,
+        36.0
+      ],
+      "landingSize": [
+        3,
+        3
+      ],
+      "status": "proposed; actual-controller verification required"
+    },
+    {
+      "id": "JP4",
+      "start": [
+        25,
+        12,
+        0
+      ],
+      "destination": [
+        3,
+        3,
+        22
+      ],
+      "flightSeconds": 2,
+      "gravity": 25,
+      "velocity": [
+        -11.0,
+        -4.5,
+        36.0
+      ],
+      "landingSize": [
+        3,
+        3
+      ],
+      "status": "proposed; actual-controller verification required"
+    }
+  ],
+  "plantings": [
+    {
+      "id": "GARDEN-1",
+      "bounds": [
+        -30.8,
+        -17.8,
+        -28.2,
+        -14.2
+      ],
+      "soilHeight": 0.16,
+      "maximumCanopyHeight": 5.5,
+      "trunkCenter": [
+        -29.5,
+        -16,
+        0.16
+      ],
+      "note": "decorative outboard garden; not walkable, no competitive hiding volume"
+    },
+    {
+      "id": "GARDEN-2",
+      "bounds": [
+        -30.8,
+        14.2,
+        -28.2,
+        17.8
+      ],
+      "soilHeight": 0.16,
+      "maximumCanopyHeight": 5.5,
+      "trunkCenter": [
+        -29.5,
+        16,
+        0.16
+      ],
+      "note": "decorative outboard garden; not walkable, no competitive hiding volume"
+    },
+    {
+      "id": "GARDEN-3",
+      "bounds": [
+        28.2,
+        -17.8,
+        30.8,
+        -14.2
+      ],
+      "soilHeight": 0.16,
+      "maximumCanopyHeight": 5.5,
+      "trunkCenter": [
+        29.5,
+        -16,
+        0.16
+      ],
+      "note": "decorative outboard garden; not walkable, no competitive hiding volume"
+    },
+    {
+      "id": "GARDEN-4",
+      "bounds": [
+        28.2,
+        14.2,
+        30.8,
+        17.8
+      ],
+      "soilHeight": 0.16,
+      "maximumCanopyHeight": 5.5,
+      "trunkCenter": [
+        29.5,
+        16,
+        0.16
+      ],
+      "note": "decorative outboard garden; not walkable, no competitive hiding volume"
+    }
+  ],
+  "cloudPlaneHeight": -24,
+  "materials": {
+    "structure": "weathered ivory stone",
+    "cover": "pale stone / bronze trims",
+    "summit": "ivory stone with teal inlay",
+    "foliage": "emerald foliage; placement envelopes shown, leaf geometry not locked"
+  },
+  "changesFromFoundryV2": [
+    "four existing pad starts now target summit instead of wings; wings retain ramp access",
+    "one central summit deck and four column supports",
+    "four decorative outboard garden/waterfall assemblies",
+    "retain current live portal view and weapon/movement behavior; old opaque-only concept wording superseded"
+  ],
+  "limits": [
+    "AI concepts are mood references, not orthographic measurements",
+    "leaf clusters, vines, arch ornament and stone damage are not geometrically locked",
+    "this package defines measured construction and reserved volumes, not production-ready art or validated gameplay"
+  ]
+}

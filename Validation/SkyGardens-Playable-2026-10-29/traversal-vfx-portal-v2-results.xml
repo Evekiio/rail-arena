@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Failed(Child)" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 02:51:06Z" end-time="2026-10-30 02:51:09Z" duration="2.6354039">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="196" result="Failed" site="Child" start-time="2026-10-30 02:51:06Z" end-time="2026-10-30 02:51:09Z" duration="2.635404" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1269" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="196" result="Failed" site="Child" start-time="2026-10-30 02:51:06Z" end-time="2026-10-30 02:51:09Z" duration="2.620491" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="16344" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1270" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="196" result="Failed" site="Child" start-time="2026-10-30 02:51:06Z" end-time="2026-10-30 02:51:09Z" duration="2.615541" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1271" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="196" result="Failed" site="Child" start-time="2026-10-30 02:51:06Z" end-time="2026-10-30 02:51:09Z" duration="2.609435" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1258" name="TraversalVfxCandidateTests" fullname="RailArena.Tests.TraversalVfxCandidateTests" classname="RailArena.Tests.TraversalVfxCandidateTests" runstate="Runnable" testcasecount="3" result="Failed" site="Child" start-time="2026-10-30 02:51:06Z" end-time="2026-10-30 02:51:09Z" duration="2.592433" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1259" name="BurstGraphCompilesAndSimulatesOnTheGpu" fullname="RailArena.Tests.TraversalVfxCandidateTests.BurstGraphCompilesAndSimulatesOnTheGpu" methodname="BurstGraphCompilesAndSimulatesOnTheGpu" classname="RailArena.Tests.TraversalVfxCandidateTests" runstate="Runnable" seed="1555880285" result="Passed" start-time="2026-10-30 02:51:06Z" end-time="2026-10-30 02:51:07Z" duration="0.996012" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[TRAVERSAL_VFX_SIMULATION count=128 culled=False frames=12
+]]></output>
+            </test-case>
+            <test-case id="1260" name="LargeBurstSimulatesThousandsOfParticles" fullname="RailArena.Tests.TraversalVfxCandidateTests.LargeBurstSimulatesThousandsOfParticles" methodname="LargeBurstSimulatesThousandsOfParticles" classname="RailArena.Tests.TraversalVfxCandidateTests" runstate="Runnable" seed="782284528" result="Passed" start-time="2026-10-30 02:51:07Z" end-time="2026-10-30 02:51:08Z" duration="0.241798" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[TRAVERSAL_VFX_SIMULATION count=2048 culled=False frames=12
+]]></output>
+            </test-case>
+            <test-case id="1261" name="RealPortalActivationTriggersCandidateAndHonorsReducedFlash" fullname="RailArena.Tests.TraversalVfxCandidateTests.RealPortalActivationTriggersCandidateAndHonorsReducedFlash" methodname="RealPortalActivationTriggersCandidateAndHonorsReducedFlash" classname="RailArena.Tests.TraversalVfxCandidateTests" runstate="Runnable" seed="1948759846" result="Failed" label="Error" start-time="2026-10-30 02:51:08Z" end-time="2026-10-30 02:51:09Z" duration="1.330339" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                <stack-trace><![CDATA[  at RailArena.Tests.TraversalVfxCandidateTests+<RealPortalActivationTriggersCandidateAndHonorsReducedFlash>d__2.MoveNext () [0x00218] in F:\Rail Arena\RailArena\Assets\RailArena\Tests\Editor\TraversalVfxCandidateTests.cs:43 
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ee3fe9477490\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52 ]]></stack-trace>
+              </failure>
+              <output><![CDATA[Can't add script behaviour 'TraversalVfxPrototype' because it is an editor script. To attach a script it needs to be outside the 'Editor' folder.
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

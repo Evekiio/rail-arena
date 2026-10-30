@@ -1,0 +1,82 @@
+{
+  "mechanics.json": {
+    "passed": true,
+    "errors": 0
+  },
+  "offline.json": {
+    "passed": true,
+    "exceptions": 0,
+    "statisticsPassed": true
+  },
+  "Duel-Clean/host.json": {
+    "passed": true,
+    "errors": 0,
+    "statisticsPassed": true,
+    "shots": 55,
+    "deaths": 9,
+    "pads": 12,
+    "maximumActiveCorrection": 0.0,
+    "maximumPhaseChangeCorrection": 0.0,
+    "outboundClamps": 0,
+    "rejectedTimes": 0
+  },
+  "Duel-Clean/client.json": {
+    "passed": true,
+    "errors": 0,
+    "statisticsPassed": true,
+    "shots": 0,
+    "deaths": 0,
+    "pads": 0,
+    "maximumActiveCorrection": 0.43316495418548584,
+    "maximumPhaseChangeCorrection": 0.04487663507461548,
+    "outboundClamps": 144,
+    "rejectedTimes": 0
+  },
+  "Duel-Impaired/host.json": {
+    "passed": true,
+    "errors": 0,
+    "statisticsPassed": true,
+    "shots": 89,
+    "deaths": 12,
+    "pads": 14,
+    "maximumActiveCorrection": 0.0,
+    "maximumPhaseChangeCorrection": 0.0,
+    "outboundClamps": 0,
+    "rejectedTimes": 0
+  },
+  "Duel-Impaired/client.json": {
+    "passed": true,
+    "errors": 0,
+    "statisticsPassed": true,
+    "shots": 0,
+    "deaths": 0,
+    "pads": 0,
+    "maximumActiveCorrection": 1.2632726430892944,
+    "maximumPhaseChangeCorrection": 0.1334272176027298,
+    "outboundClamps": 210,
+    "rejectedTimes": 0
+  },
+  "impairment": {
+    "received": 5508,
+    "forwarded": 5206,
+    "dropped": 302,
+    "foreign": 0,
+    "reordered": 222,
+    "queueOverflow": 0,
+    "maximumQueued": 6,
+    "to_host": 3793,
+    "to_client": 1413,
+    "dropped_to_host": 210,
+    "dropped_to_client": 92,
+    "running": false,
+    "configuredOneWayMs": 25.0,
+    "configuredJitterMs": 10.0,
+    "configuredLoss": 0.05,
+    "seed": 7191,
+    "elapsedSeconds": 70.48660289996769,
+    "meanAppliedMs": 29.768297983669967,
+    "minimumAppliedMs": 15.15089999884367,
+    "maximumAppliedMs": 48.92700002528727,
+    "pending": 0
+  }
+}

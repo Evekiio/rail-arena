@@ -1,3 +1,7 @@
+# Historical implementation objective
+
+The approved [design lock v1](DESIGN.md) supersedes conflicting rules below, including firing, damage, match length, roster cap, regeneration and portals. This original objective is retained as milestone history; it does not describe the new target or prove current-build compliance. See [migration and validation gates](DESIGN-IMPLEMENTATION.md).
+
 Build the first complete, working, testable version of Rail Arena in F:\Rail Arena, using Unity 6.6 (6000.6.7f1), URP, and Windows keyboard/mouse controls. Pin this exact Editor version.
 Creative direction
 Understand Quake III Arena and Unreal Tournament as the primary inspirations. Research their arena combat, movement, map flow, verticality, weapon feedback, pickups, bot matches, and match presentation using authoritative sources before implementing the relevant systems.

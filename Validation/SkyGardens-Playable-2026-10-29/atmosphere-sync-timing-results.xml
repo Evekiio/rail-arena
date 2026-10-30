@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 06:13:38Z" end-time="2026-10-30 06:13:41Z" duration="2.3318852">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="244" result="Passed" start-time="2026-10-30 06:13:38Z" end-time="2026-10-30 06:13:41Z" duration="2.331885" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1356" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="244" result="Passed" start-time="2026-10-30 06:13:38Z" end-time="2026-10-30 06:13:41Z" duration="2.317700" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="2820" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1357" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="244" result="Passed" start-time="2026-10-30 06:13:38Z" end-time="2026-10-30 06:13:41Z" duration="2.314302" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1358" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="244" result="Passed" start-time="2026-10-30 06:13:38Z" end-time="2026-10-30 06:13:41Z" duration="2.307116" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1015" name="AtmosphereTimingProbeTests" fullname="RailArena.Tests.AtmosphereTimingProbeTests" classname="RailArena.Tests.AtmosphereTimingProbeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 06:13:38Z" end-time="2026-10-30 06:13:41Z" duration="2.278761" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1016" name="CompareSynchronizedOffscreenRenderTimes" fullname="RailArena.Tests.AtmosphereTimingProbeTests.CompareSynchronizedOffscreenRenderTimes" methodname="CompareSynchronizedOffscreenRenderTimes" classname="RailArena.Tests.AtmosphereTimingProbeTests" runstate="Runnable" seed="695215837" result="Passed" start-time="2026-10-30 06:13:38Z" end-time="2026-10-30 06:13:41Z" duration="2.255420" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[ATMOSPHERE_SYNC_WALL NVIDIA GeForce RTX 2080 Direct3D12 960x540 off median_ms=6.948
+ATMOSPHERE_SYNC_WALL NVIDIA GeForce RTX 2080 Direct3D12 960x540 on median_ms=6.774
+ATMOSPHERE_SYNC_WALL NVIDIA GeForce RTX 2080 Direct3D12 960x540 off median_ms=6.687
+ATMOSPHERE_SYNC_WALL NVIDIA GeForce RTX 2080 Direct3D12 960x540 on median_ms=6.993
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

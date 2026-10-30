@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="58" result="Failed(Child)" total="58" passed="57" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:43Z" duration="16.649733">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="151" result="Failed" site="Child" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:43Z" duration="16.649733" total="58" passed="57" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1209" name="RailArena.Tests.dll" fullname="F:/Rail Arena/Builds/ADS-2026-10-29/Project/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="151" result="Failed" site="Child" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:43Z" duration="16.635144" total="58" passed="57" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="53556" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1210" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="151" result="Failed" site="Child" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:43Z" duration="16.632023" total="58" passed="57" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1211" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="151" result="Failed" site="Child" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:43Z" duration="16.628872" total="58" passed="57" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1050" name="CombatStatisticsTests" fullname="RailArena.Tests.CombatStatisticsTests" classname="RailArena.Tests.CombatStatisticsTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:27Z" duration="0.068125" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1051" name="AccuracyKillsAndVoidPenaltiesAreDifferentMeasures" fullname="RailArena.Tests.CombatStatisticsTests.AccuracyKillsAndVoidPenaltiesAreDifferentMeasures" methodname="AccuracyKillsAndVoidPenaltiesAreDifferentMeasures" classname="RailArena.Tests.CombatStatisticsTests" runstate="Runnable" seed="1333399485" result="Passed" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:27Z" duration="0.026561" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1053" name="FullAuthoritySnapshotsReplaceTotalsWithoutDuplicateOrLostPacketDrift" fullname="RailArena.Tests.CombatStatisticsTests.FullAuthoritySnapshotsReplaceTotalsWithoutDuplicateOrLostPacketDrift" methodname="FullAuthoritySnapshotsReplaceTotalsWithoutDuplicateOrLostPacketDrift" classname="RailArena.Tests.CombatStatisticsTests" runstate="Runnable" seed="780062027" result="Passed" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:27Z" duration="0.000996" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1054" name="ProtocolRoundTripsStatisticsAndRejectsImpossibleCountersAndOldVersion" fullname="RailArena.Tests.CombatStatisticsTests.ProtocolRoundTripsStatisticsAndRejectsImpossibleCountersAndOldVersion" methodname="ProtocolRoundTripsStatisticsAndRejectsImpossibleCountersAndOldVersion" classname="RailArena.Tests.CombatStatisticsTests" runstate="Runnable" seed="1127408004" result="Passed" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:27Z" duration="0.013028" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1052" name="WinningShotIsCountedBeforeResultsAndRematchStartsEmpty" fullname="RailArena.Tests.CombatStatisticsTests.WinningShotIsCountedBeforeResultsAndRematchStartsEmpty" methodname="WinningShotIsCountedBeforeResultsAndRematchStartsEmpty" classname="RailArena.Tests.CombatStatisticsTests" runstate="Runnable" seed="1128427229" result="Passed" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:27Z" duration="0.003970" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1062" name="CompetitiveMovementTests" fullname="RailArena.Tests.CompetitiveMovementTests" classname="RailArena.Tests.CompetitiveMovementTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:27Z" duration="0.020419" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1066" name="AdsAlignsSightToCameraAndRemovesSwayWithoutChangingZoomContract" fullname="RailArena.Tests.CompetitiveMovementTests.AdsAlignsSightToCameraAndRemovesSwayWithoutChangingZoomContract" methodname="AdsAlignsSightToCameraAndRemovesSwayWithoutChangingZoomContract" classname="RailArena.Tests.CompetitiveMovementTests" runstate="Runnable" seed="1706534151" result="Passed" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:27Z" duration="0.003818" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1064" name="CeilingKeepsCrouchUntilClearAndPlacementResetsStance" fullname="RailArena.Tests.CompetitiveMovementTests.CeilingKeepsCrouchUntilClearAndPlacementResetsStance" methodname="CeilingKeepsCrouchUntilClearAndPlacementResetsStance" classname="RailArena.Tests.CompetitiveMovementTests" runstate="Runnable" seed="998309558" result="Passed" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:27Z" duration="0.011265" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1063" name="SpeedModesRespectPrecedenceWithoutChangingBaseMovementOrAirMomentum" fullname="RailArena.Tests.CompetitiveMovementTests.SpeedModesRespectPrecedenceWithoutChangingBaseMovementOrAirMomentum" methodname="SpeedModesRespectPrecedenceWithoutChangingBaseMovementOrAirMomentum" classname="RailArena.Tests.CompetitiveMovementTests" runstate="Runnable" seed="1026248268" result="Passed" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:27Z" duration="0.001373" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1065" name="WireRoundTripsAllMovementFlagsAndAuthoritativeCrouchAndRejectsUnknownFlags" fullname="RailArena.Tests.CompetitiveMovementTests.WireRoundTripsAllMovementFlagsAndAuthoritativeCrouchAndRejectsUnknownFlags" methodname="WireRoundTripsAllMovementFlagsAndAuthoritativeCrouchAndRejectsUnknownFlags" classname="RailArena.Tests.CompetitiveMovementTests" runstate="Runnable" seed="1908605211" result="Passed" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:27Z" duration="0.001080" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1067" name="CompetitivePresentationTests" fullname="RailArena.Tests.CompetitivePresentationTests" classname="RailArena.Tests.CompetitivePresentationTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:39Z" duration="12.287711" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1068" name="InstalledSightAlignsAndCrouchPreservesFeetBodyScaleAndLifecycle" fullname="RailArena.Tests.CompetitivePresentationTests.InstalledSightAlignsAndCrouchPreservesFeetBodyScaleAndLifecycle" methodname="InstalledSightAlignsAndCrouchPreservesFeetBodyScaleAndLifecycle" classname="RailArena.Tests.CompetitivePresentationTests" runstate="Runnable" seed="1956263421" result="Failed" start-time="2026-10-29 14:37:27Z" end-time="2026-10-29 14:37:39Z" duration="12.285253" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: not null
+  But was:  null
+]]></message>
+                <stack-trace><![CDATA[at RailArena.Tests.CompetitivePresentationTests+<InstalledSightAlignsAndCrouchPreservesFeetBodyScaleAndLifecycle>d__0.MoveNext () [0x002cd] in F:\Rail Arena\Builds\ADS-2026-10-29\Project\Assets\RailArena\Tests\Editor\CompetitivePresentationTests.cs:41
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ee3fe9477490\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1071" name="FirstPersonArmsTests" fullname="RailArena.Tests.FirstPersonArmsTests" classname="RailArena.Tests.FirstPersonArmsTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-29 14:37:39Z" end-time="2026-10-29 14:37:40Z" duration="0.983404" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1073" name="BothWristsFollowSharedGripsThroughAimTravelLandingAndRecoil" fullname="RailArena.Tests.FirstPersonArmsTests.BothWristsFollowSharedGripsThroughAimTravelLandingAndRecoil" methodname="BothWristsFollowSharedGripsThroughAimTravelLandingAndRecoil" classname="RailArena.Tests.FirstPersonArmsTests" runstate="Runnable" seed="1584894047" result="Passed" start-time="2026-10-29 14:37:39Z" end-time="2026-10-29 14:37:40Z" duration="0.917092" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1074" name="ThirdPersonPresentationUsesCanonicalWeaponGripMarkers" fullname="RailArena.Tests.FirstPersonArmsTests.ThirdPersonPresentationUsesCanonicalWeaponGripMarkers" methodname="ThirdPersonPresentationUsesCanonicalWeaponGripMarkers" classname="RailArena.Tests.FirstPersonArmsTests" runstate="Runnable" seed="2113959548" result="Passed" start-time="2026-10-29 14:37:40Z" end-time="2026-10-29 14:37:40Z" duration="0.041255" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1072" name="ViewModelRetainsOnlyArmWeightedGeometryAndHasNoGameplayComponents" fullname="RailArena.Tests.FirstPersonArmsTests.ViewModelRetainsOnlyArmWeightedGeometryAndHasNoGameplayComponents" methodname="ViewModelRetainsOnlyArmWeightedGeometryAndHasNoGameplayComponents" classname="RailArena.Tests.FirstPersonArmsTests" runstate="Runnable" seed="708854354" result="Passed" start-time="2026-10-29 14:37:40Z" end-time="2026-10-29 14:37:40Z" duration="0.018521" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1098" name="NetworkingTests" fullname="RailArena.Tests.NetworkingTests" classname="RailArena.Tests.NetworkingTests" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-10-29 14:37:40Z" end-time="2026-10-29 14:37:41Z" duration="0.621408" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1107" name="ConnectedPeerTimeoutDoesNotRequireAWorkingLeavePacket" fullname="RailArena.Tests.NetworkingTests.ConnectedPeerTimeoutDoesNotRequireAWorkingLeavePacket" methodname="ConnectedPeerTimeoutDoesNotRequireAWorkingLeavePacket" classname="RailArena.Tests.NetworkingTests" runstate="Runnable" seed="2026413692" result="Passed" start-time="2026-10-29 14:37:40Z" end-time="2026-10-29 14:37:40Z" duration="0.084567" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1108" name="ForgedHandshakeWrongSessionAndReorderedReadyCannotChangeHostState" fullname="RailArena.Tests.NetworkingTests.ForgedHandshakeWrongSessionAndReorderedReadyCannotChangeHostState" methodname="ForgedHandshakeWrongSessionAndReorderedReadyCannotChangeHostState" classname="RailArena.Tests.NetworkingTests" runstate="Runnable" seed="449958971" result="Passed" start-time="2026-10-29 14:37:40Z" end-time="2026-10-29 14:37:40Z" duration="0.230705" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1110" name="HeldJumpSurvivesPacketGapAtLandingAndExpiresWithMovementGrace" fullname="RailArena.Tests.NetworkingTests.HeldJumpSurvivesPacketGapAtLandingAndExpiresWithMovementGrace" methodname="HeldJumpSurvivesPacketGapAtLandingAndExpiresWithMovementGrace" classname="RailArena.Tests.NetworkingTests" runstate="Runnable" seed="282701312" result="Passed" start-time="2026-10-29 14:37:40Z" end-time="2026-10-29 14:37:40Z" duration="0.022458" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1106" name="IncompatibleBuildIsRejectedAndAbsentHostTimesOut" fullname="RailArena.Tests.NetworkingTests.IncompatibleBuildIsRejectedAndAbsentHostTimesOut" methodname="IncompatibleBuildIsRejectedAndAbsentHostTimesOut" classname="RailArena.Tests.NetworkingTests" runstate="Runnable" seed="1212108253" result="Passed" start-time="2026-10-29 14:37:40Z" end-time="2026-10-29 14:37:40Z" duration="0.024826" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1109" name="InputQueueDeduplicatesBoundsAndConsumesFreshMovementOncePerTick" fullname="RailArena.Tests.NetworkingTests.InputQueueDeduplicatesBoundsAndConsumesFreshMovementOncePerTick" methodname="InputQueueDeduplicatesBoundsAndConsumesFreshMovementOncePerTick" classname="RailArena.Tests.NetworkingTests" runstate="Runnable" seed="256672317" result="Passed" start-time="2026-10-29 14:37:40Z" end-time="2026-10-29 14:37:40Z" duration="0.007319" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1112" name="JitterBurstKeepsNewestMovementAndPreservesQuickFireAimTimestampAndJump" fullname="RailArena.Tests.NetworkingTests.JitterBurstKeepsNewestMovementAndPreservesQuickFireAimTimestampAndJump" methodname="JitterBurstKeepsNewestMovementAndPreservesQuickFireAimTimestampAndJump" classname="RailArena.Tests.NetworkingTests" runstate="Runnable" seed="1522353633" result="Passed" start-time="2026-10-29 14:37:40Z" end-time="2026-10-29 14:37:40Z" duration="0.007596" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1099" name="OutboundControlsNormalizeFloatingPointOvershootAndWrappedAimWithoutRelaxingDecode" fullname="RailArena.Tests.NetworkingTests.OutboundControlsNormalizeFloatingPointOvershootAndWrappedAimWithoutRelaxingDecode" methodname="OutboundControlsNormalizeFloatingPointOvershootAndWrappedAimWithoutRelaxingDecode" classname="RailArena.Tests.NetworkingTests" runstate="Runnable" seed="1611385149" result="Passed" start-time="2026-10-29 14:37:40Z" end-time="2026-10-29 14:37:40Z" duration="0.009040" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1102" name="ProtocolRejectsNonfiniteUnboundedAndUnorderedInputs" fullname="RailArena.Tests.NetworkingTests.ProtocolRejectsNonfiniteUnboundedAndUnorderedInputs" methodname="ProtocolRejectsNonfiniteUnboundedAndUnorderedInputs" classname="RailArena.Tests.NetworkingTests" runstate="Runnable" seed="370708226" result="Passed" start-time="2026-10-29 14:37:40Z" end-time="2026-10-29 14:37:40Z" duration="0.003942" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1103" name="ProtocolRoundTripsAuthoritativeSnapshotAndSurvivesGarbage" fullname="RailArena.Tests.NetworkingTests.ProtocolRoundTripsAuthoritativeSnapshotAndSurvivesGarbage" methodname="ProtocolRoundTripsAuthoritativeSnapshotAndSurvivesGarbage" classname="RailArena.Tests.NetworkingTests" runstate="Runnable" seed="863148258" result="Passed" start-time="2026-10-29 14:37:40Z" end-time="2026-10-29 14:37:41Z" duration="0.055725" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1101" name="ProtocolRoundTripsCommandsAndRejectsEveryTruncationAndTrailingBytes" fullname="RailArena.Tests.NetworkingTests.ProtocolRoundTripsCommandsAndRejectsEveryTruncationAndTrailingBytes" methodname="ProtocolRoundTripsCommandsAndRejectsEveryTruncationAndTrailingBytes" classname="RailArena.Tests.NetworkingTests" runstate="Runnable" seed="2117395368" result="Passed" start-time="2026-10-29 14:37:41Z" end-time="2026-10-29 14:37:41Z" duration="0.003668" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1105" name="RealUdpPeersHandshakeReadyExchangeInputsSnapshotsRematchAndDisconnect" fullname="RailArena.Tests.NetworkingTests.RealUdpPeersHandshakeReadyExchangeInputsSnapshotsRematchAndDisconnect" methodname="RealUdpPeersHandshakeReadyExchangeInputsSnapshotsRematchAndDisconnect" classname="RailArena.Tests.NetworkingTests" runstate="Runnable" seed="2068473380" result="Passed" start-time="2026-10-29 14:37:41Z" end-time="2026-10-29 14:37:41Z" duration="0.152767" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1104" name="RealUdpSocketsRejectOversizedTrafficAndCanRebindAfterDisposal" fullname="RailArena.Tests.NetworkingTests.RealUdpSocketsRejectOversizedTrafficAndCanRebindAfterDisposal" methodname="RealUdpSocketsRejectOversizedTrafficAndCanRebindAfterDisposal" classname="RailArena.Tests.NetworkingTests" runstate="Runnable" seed="952781453" result="Passed" start-time="2026-10-29 14:37:41Z" end-time="2026-10-29 14:37:41Z" duration="0.004143" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1111" name="ReleasedJumpIsNotHeldByAnAggregatedTapOrRedundantPacket" fullname="RailArena.Tests.NetworkingTests.ReleasedJumpIsNotHeldByAnAggregatedTapOrRedundantPacket" methodname="ReleasedJumpIsNotHeldByAnAggregatedTapOrRedundantPacket" classname="RailArena.Tests.NetworkingTests" runstate="Runnable" seed="291688548" result="Passed" start-time="2026-10-29 14:37:41Z" end-time="2026-10-29 14:37:41Z" duration="0.000542" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1100" name="ReplicaMatchPreservesAuthorityTimeScoresAndWinner" fullname="RailArena.Tests.NetworkingTests.ReplicaMatchPreservesAuthorityTimeScoresAndWinner" methodname="ReplicaMatchPreservesAuthorityTimeScoresAndWinner" classname="RailArena.Tests.NetworkingTests" runstate="Runnable" seed="788510136" result="Passed" start-time="2026-10-29 14:37:41Z" end-time="2026-10-29 14:37:41Z" duration="0.000920" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1128" name="QuickStartHudTests" fullname="RailArena.Tests.QuickStartHudTests" classname="RailArena.Tests.QuickStartHudTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 14:37:41Z" end-time="2026-10-29 14:37:42Z" duration="1.011422" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1129" name="HelpPreservesSetupAndLaunchesSoloWithoutForcingATutorial" fullname="RailArena.Tests.QuickStartHudTests.HelpPreservesSetupAndLaunchesSoloWithoutForcingATutorial" methodname="HelpPreservesSetupAndLaunchesSoloWithoutForcingATutorial" classname="RailArena.Tests.QuickStartHudTests" runstate="Runnable" seed="1561500216" result="Passed" start-time="2026-10-29 14:37:41Z" end-time="2026-10-29 14:37:42Z" duration="1.006052" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1144" name="ReticleHudTests" fullname="RailArena.Tests.ReticleHudTests" classname="RailArena.Tests.ReticleHudTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 14:37:42Z" end-time="2026-10-29 14:37:43Z" duration="0.917356" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1145" name="SettingsPreviewAndLiveReticleShareSavedAppearance" fullname="RailArena.Tests.ReticleHudTests.SettingsPreviewAndLiveReticleShareSavedAppearance" methodname="SettingsPreviewAndLiveReticleShareSavedAppearance" classname="RailArena.Tests.ReticleHudTests" runstate="Runnable" seed="1697169264" result="Passed" start-time="2026-10-29 14:37:42Z" end-time="2026-10-29 14:37:43Z" duration="0.915281" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1157" name="SimulationTests" fullname="RailArena.Tests.SimulationTests" classname="RailArena.Tests.SimulationTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.010055" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1159" name="CountdownBlocksScoringAndTiedLeadersPlayNextKillSuddenDeath" fullname="RailArena.Tests.SimulationTests.CountdownBlocksScoringAndTiedLeadersPlayNextKillSuddenDeath" methodname="CountdownBlocksScoringAndTiedLeadersPlayNextKillSuddenDeath" classname="RailArena.Tests.SimulationTests" runstate="Runnable" seed="925867299" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.000746" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1163" name="FiringIsAllowedOnlyAtCooldownBoundaryAndWhileAlive" fullname="RailArena.Tests.SimulationTests.FiringIsAllowedOnlyAtCooldownBoundaryAndWhileAlive" methodname="FiringIsAllowedOnlyAtCooldownBoundaryAndWhileAlive" classname="RailArena.Tests.SimulationTests" runstate="Runnable" seed="866406982" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.000615" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1164" name="JumpPreservesHorizontalMomentumWhileGroundFrictionSlows" fullname="RailArena.Tests.SimulationTests.JumpPreservesHorizontalMomentumWhileGroundFrictionSlows" methodname="JumpPreservesHorizontalMomentumWhileGroundFrictionSlows" classname="RailArena.Tests.SimulationTests" runstate="Runnable" seed="892280402" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.000741" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1161" name="LocationDamageCombinesAndNeverBecomesNegative" fullname="RailArena.Tests.SimulationTests.LocationDamageCombinesAndNeverBecomesNegative" methodname="LocationDamageCombinesAndNeverBecomesNegative" classname="RailArena.Tests.SimulationTests" runstate="Runnable" seed="103160041" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.000801" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1162" name="PickupsCapHealthAndCannotResurrect" fullname="RailArena.Tests.SimulationTests.PickupsCapHealthAndCannotResurrect" methodname="PickupsCapHealthAndCannotResurrect" classname="RailArena.Tests.SimulationTests" runstate="Runnable" seed="1349973715" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.000245" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1160" name="PracticeIsUntimedAndVoidDeathsSubtractOne" fullname="RailArena.Tests.SimulationTests.PracticeIsUntimedAndVoidDeathsSubtractOne" methodname="PracticeIsUntimedAndVoidDeathsSubtractOne" classname="RailArena.Tests.SimulationTests" runstate="Runnable" seed="1441312168" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.000705" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1158" name="SoloPracticeAllowsOneParticipantWithoutChangingTimedMatchMinimum" fullname="RailArena.Tests.SimulationTests.SoloPracticeAllowsOneParticipantWithoutChangingTimedMatchMinimum" methodname="SoloPracticeAllowsOneParticipantWithoutChangingTimedMatchMinimum" classname="RailArena.Tests.SimulationTests" runstate="Runnable" seed="1337381427" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.000898" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1165" name="StrafeAccelerationCanAddSpeedWithoutClampingMomentum" fullname="RailArena.Tests.SimulationTests.StrafeAccelerationCanAddSpeedWithoutClampingMomentum" methodname="StrafeAccelerationCanAddSpeedWithoutClampingMomentum" classname="RailArena.Tests.SimulationTests" runstate="Runnable" seed="171156508" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.000475" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1166" name="SnapshotLifecycleTests" fullname="RailArena.Tests.SnapshotLifecycleTests" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" testcasecount="22" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.653263" total="22" passed="22" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1176" name="ActiveMovementMismatchRemainsInBothRawAndActiveMeasurements" fullname="RailArena.Tests.SnapshotLifecycleTests.ActiveMovementMismatchRemainsInBothRawAndActiveMeasurements" methodname="ActiveMovementMismatchRemainsInBothRawAndActiveMeasurements" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="1101122029" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.153114" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1187" name="AuthorityPickupSoundConfirmsOnlyTheLocalCollector" fullname="RailArena.Tests.SnapshotLifecycleTests.AuthorityPickupSoundConfirmsOnlyTheLocalCollector" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.044263" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1185" name="AuthorityPickupSoundConfirmsOnlyTheLocalCollector(50,75,25)" fullname="RailArena.Tests.SnapshotLifecycleTests.AuthorityPickupSoundConfirmsOnlyTheLocalCollector(50,75,25)" methodname="AuthorityPickupSoundConfirmsOnlyTheLocalCollector" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="632330837" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.020311" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1186" name="AuthorityPickupSoundConfirmsOnlyTheLocalCollector(98,100,2)" fullname="RailArena.Tests.SnapshotLifecycleTests.AuthorityPickupSoundConfirmsOnlyTheLocalCollector(98,100,2)" methodname="AuthorityPickupSoundConfirmsOnlyTheLocalCollector" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="472009763" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.020403" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1178" name="CatchUpPhysicsAppliesAvailableAuthorityBeforePredicting" fullname="RailArena.Tests.SnapshotLifecycleTests.CatchUpPhysicsAppliesAvailableAuthorityBeforePredicting" methodname="CatchUpPhysicsAppliesAvailableAuthorityBeforePredicting" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="942081605" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.025445" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1173" name="CodecRejectsNonpositiveLifeNumbers" fullname="RailArena.Tests.SnapshotLifecycleTests.CodecRejectsNonpositiveLifeNumbers" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.041809" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1171" name="CodecRejectsNonpositiveLifeNumbers(0)" fullname="RailArena.Tests.SnapshotLifecycleTests.CodecRejectsNonpositiveLifeNumbers(0)" methodname="CodecRejectsNonpositiveLifeNumbers" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="850841727" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.019299" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1172" name="CodecRejectsNonpositiveLifeNumbers(-1)" fullname="RailArena.Tests.SnapshotLifecycleTests.CodecRejectsNonpositiveLifeNumbers(-1)" methodname="CodecRejectsNonpositiveLifeNumbers" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="1977805252" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.018968" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="ParameterizedMethod" id="1191" name="InterpolatedLaunchCounterDrivesAirAndLandingAnimation" fullname="RailArena.Tests.SnapshotLifecycleTests.InterpolatedLaunchCounterDrivesAirAndLandingAnimation" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.044795" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1189" name="InterpolatedLaunchCounterDrivesAirAndLandingAnimation(0,2)" fullname="RailArena.Tests.SnapshotLifecycleTests.InterpolatedLaunchCounterDrivesAirAndLandingAnimation(0,2)" methodname="InterpolatedLaunchCounterDrivesAirAndLandingAnimation" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="858899493" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.021162" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1190" name="InterpolatedLaunchCounterDrivesAirAndLandingAnimation(2,0)" fullname="RailArena.Tests.SnapshotLifecycleTests.InterpolatedLaunchCounterDrivesAirAndLandingAnimation(2,0)" methodname="InterpolatedLaunchCounterDrivesAirAndLandingAnimation" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="549936438" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.020219" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1169" name="LocalNewLifeDiscardsOldPredictionAndViewCorrection" fullname="RailArena.Tests.SnapshotLifecycleTests.LocalNewLifeDiscardsOldPredictionAndViewCorrection" methodname="LocalNewLifeDiscardsOldPredictionAndViewCorrection" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="623012285" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.022860" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1184" name="LocalPickupSoundFollowsHealthGainWithoutReplayingOldLives" fullname="RailArena.Tests.SnapshotLifecycleTests.LocalPickupSoundFollowsHealthGainWithoutReplayingOldLives" methodname="LocalPickupSoundFollowsHealthGainWithoutReplayingOldLives" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="416228335" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.028961" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1177" name="LocalPresentationUsesPredictionClockWithoutAdvancingAuthorityClock" fullname="RailArena.Tests.SnapshotLifecycleTests.LocalPresentationUsesPredictionClockWithoutAdvancingAuthorityClock" methodname="LocalPresentationUsesPredictionClockWithoutAdvancingAuthorityClock" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="1670231670" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.036987" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1167" name="MissedDeathSnapshotStillAdvancesLifeAndResetsPresentation" fullname="RailArena.Tests.SnapshotLifecycleTests.MissedDeathSnapshotStillAdvancesLifeAndResetsPresentation" methodname="MissedDeathSnapshotStillAdvancesLifeAndResetsPresentation" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="838388685" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.025162" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1181" name="NewLivesAndRoundsSuppressStaleConfirmationCounters" fullname="RailArena.Tests.SnapshotLifecycleTests.NewLivesAndRoundsSuppressStaleConfirmationCounters" methodname="NewLivesAndRoundsSuppressStaleConfirmationCounters" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="2104876627" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.025029" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1179" name="OpponentDamageConfirmsHitOnceAndDistinguishesElimination" fullname="RailArena.Tests.SnapshotLifecycleTests.OpponentDamageConfirmsHitOnceAndDistinguishesElimination" methodname="OpponentDamageConfirmsHitOnceAndDistinguishesElimination" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="2110194758" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.023971" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1180" name="OwnDamageDoesNotConfirmAnOutgoingHit" fullname="RailArena.Tests.SnapshotLifecycleTests.OwnDamageDoesNotConfirmAnOutgoingHit" methodname="OwnDamageDoesNotConfirmAnOutgoingHit" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="1828298118" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.022865" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1182" name="PickupArtFollowsAuthorityAndIgnoresStaleSnapshots" fullname="RailArena.Tests.SnapshotLifecycleTests.PickupArtFollowsAuthorityAndIgnoresStaleSnapshots" methodname="PickupArtFollowsAuthorityAndIgnoresStaleSnapshots" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="1900430449" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.025001" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1188" name="PredictedPadSoundIsNotDuplicatedBySnapshotReplay" fullname="RailArena.Tests.SnapshotLifecycleTests.PredictedPadSoundIsNotDuplicatedBySnapshotReplay" methodname="PredictedPadSoundIsNotDuplicatedBySnapshotReplay" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="97833679" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.019919" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1183" name="RecentFeedDistinguishesVoidDeathsAndClearsOnNewRound" fullname="RailArena.Tests.SnapshotLifecycleTests.RecentFeedDistinguishesVoidDeathsAndClearsOnNewRound" methodname="RecentFeedDistinguishesVoidDeathsAndClearsOnNewRound" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="370949125" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.021091" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1170" name="RematchRaisesViewWeaponEvenWhenLifeNumberReturnsToOne" fullname="RailArena.Tests.SnapshotLifecycleTests.RematchRaisesViewWeaponEvenWhenLifeNumberReturnsToOne" methodname="RematchRaisesViewWeaponEvenWhenLifeNumberReturnsToOne" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="1128370190" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.018393" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1174" name="RemoteCooldownAndPadTimingRefreshWithoutARespawn" fullname="RailArena.Tests.SnapshotLifecycleTests.RemoteCooldownAndPadTimingRefreshWithoutARespawn" methodname="RemoteCooldownAndPadTimingRefreshWithoutARespawn" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="1372075533" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.020823" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1168" name="RemoteRespawnSnapsToSpawnAndDiscardsPreviousLifeInterpolation" fullname="RailArena.Tests.SnapshotLifecycleTests.RemoteRespawnSnapsToSpawnAndDiscardsPreviousLifeInterpolation" methodname="RemoteRespawnSnapsToSpawnAndDiscardsPreviousLifeInterpolation" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="1452012417" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.020230" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1175" name="ResultsFreezeRetainsRawCorrectionButSeparatesItFromActivePlay" fullname="RailArena.Tests.SnapshotLifecycleTests.ResultsFreezeRetainsRawCorrectionButSeparatesItFromActivePlay" methodname="ResultsFreezeRetainsRawCorrectionButSeparatesItFromActivePlay" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="480769890" result="Passed" start-time="2026-10-29 14:37:43Z" end-time="2026-10-29 14:37:43Z" duration="0.018730" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

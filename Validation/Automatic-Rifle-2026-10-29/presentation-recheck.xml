@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="13" result="Failed(Child)" total="13" passed="11" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 17:22:04Z" end-time="2026-10-29 17:22:18Z" duration="14.0447195">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="166" result="Failed" site="Child" start-time="2026-10-29 17:22:04Z" end-time="2026-10-29 17:22:18Z" duration="14.044720" total="13" passed="11" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1228" name="RailArena.Tests.dll" fullname="F:/Rail Arena/Builds/Automatic-Rifle-2026-10-29/Project/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="166" result="Failed" site="Child" start-time="2026-10-29 17:22:04Z" end-time="2026-10-29 17:22:18Z" duration="14.027768" total="13" passed="11" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="13104" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1229" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="166" result="Failed" site="Child" start-time="2026-10-29 17:22:04Z" end-time="2026-10-29 17:22:18Z" duration="14.024819" total="13" passed="11" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1230" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="166" result="Failed" site="Child" start-time="2026-10-29 17:22:04Z" end-time="2026-10-29 17:22:18Z" duration="14.022008" total="13" passed="11" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1014" name="AutomaticRiflePresentationTests" fullname="RailArena.Tests.AutomaticRiflePresentationTests" classname="RailArena.Tests.AutomaticRiflePresentationTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 17:22:04Z" end-time="2026-10-29 17:22:06Z" duration="2.867592" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1015" name="RecoilMovesTheInstalledWeaponPreservesAimAndHonorsSteadyWeapon" fullname="RailArena.Tests.AutomaticRiflePresentationTests.RecoilMovesTheInstalledWeaponPreservesAimAndHonorsSteadyWeapon" methodname="RecoilMovesTheInstalledWeaponPreservesAimAndHonorsSteadyWeapon" classname="RailArena.Tests.AutomaticRiflePresentationTests" runstate="Runnable" seed="16338185" result="Passed" start-time="2026-10-29 17:22:04Z" end-time="2026-10-29 17:22:06Z" duration="2.846284" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1033" name="BrandUiTests" fullname="RailArena.Tests.BrandUiTests" classname="RailArena.Tests.BrandUiTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 17:22:06Z" end-time="2026-10-29 17:22:13Z" duration="6.691235" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1034" name="BrandedFlowsKeepSetupFocusBackNavigationAndReadableHud" fullname="RailArena.Tests.BrandUiTests.BrandedFlowsKeepSetupFocusBackNavigationAndReadableHud" methodname="BrandedFlowsKeepSetupFocusBackNavigationAndReadableHud" classname="RailArena.Tests.BrandUiTests" runstate="Runnable" seed="737217500" result="Passed" start-time="2026-10-29 17:22:06Z" end-time="2026-10-29 17:22:13Z" duration="6.689814" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1055" name="CombatHudTests" fullname="RailArena.Tests.CombatHudTests" classname="RailArena.Tests.CombatHudTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-10-29 17:22:13Z" end-time="2026-10-29 17:22:14Z" duration="0.492310" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1056" name="LiveHudTracksCombatAndProductionKeyboardMapping" fullname="RailArena.Tests.CombatHudTests.LiveHudTracksCombatAndProductionKeyboardMapping" methodname="LiveHudTracksCombatAndProductionKeyboardMapping" classname="RailArena.Tests.CombatHudTests" runstate="Runnable" seed="1792522484" result="Failed" start-time="2026-10-29 17:22:13Z" end-time="2026-10-29 17:22:14Z" duration="0.490464" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect
+TearDown : Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[RailArena.Simulation.ArenaMovement.Integrate (UnityEngine.Vector3 velocity, RailArena.Simulation.MovementCommand command, System.Boolean grounded, RailArena.Simulation.MovementTuning tuning, System.Single delta) (at Assets/RailArena/Simulation/ArenaMovement.cs:57)
+RailArena.ArenaActor.Move (RailArena.Simulation.MovementTuning tuning) (at Assets/RailArena/Runtime/ArenaActor.cs:51)
+RailArena.ArenaSession.MoveActor (RailArena.ArenaActor actor, System.Int32 tick, System.Boolean authoritative, System.Boolean present) (at Assets/RailArena/Runtime/ArenaSession.Network.cs:425)
+RailArena.ArenaSession.AdvanceAuthority () (at Assets/RailArena/Runtime/ArenaSession.cs:277)
+RailArena.ArenaSession.FixedUpdate () (at Assets/RailArena/Runtime/ArenaSession.cs:243)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[NullReferenceException: Object reference not set to an instance of an object
+RailArena.Simulation.ArenaMovement.Integrate (UnityEngine.Vector3 velocity, RailArena.Simulation.MovementCommand command, System.Boolean grounded, RailArena.Simulation.MovementTuning tuning, System.Single delta) (at Assets/RailArena/Simulation/ArenaMovement.cs:57)
+RailArena.ArenaActor.Move (RailArena.Simulation.MovementTuning tuning) (at Assets/RailArena/Runtime/ArenaActor.cs:51)
+RailArena.ArenaSession.MoveActor (RailArena.ArenaActor actor, System.Int32 tick, System.Boolean authoritative, System.Boolean present) (at Assets/RailArena/Runtime/ArenaSession.Network.cs:425)
+RailArena.ArenaSession.AdvanceAuthority () (at Assets/RailArena/Runtime/ArenaSession.cs:277)
+RailArena.ArenaSession.FixedUpdate () (at Assets/RailArena/Runtime/ArenaSession.cs:243)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+NullReferenceException: Object reference not set to an instance of an object
+RailArena.Simulation.ArenaMovement.Integrate (UnityEngine.Vector3 velocity, RailArena.Simulation.MovementCommand command, System.Boolean grounded, RailArena.Simulation.MovementTuning tuning, System.Single delta) (at Assets/RailArena/Simulation/ArenaMovement.cs:57)
+RailArena.ArenaActor.Move (RailArena.Simulation.MovementTuning tuning) (at Assets/RailArena/Runtime/ArenaActor.cs:51)
+RailArena.ArenaSession.MoveActor (RailArena.ArenaActor actor, System.Int32 tick, System.Boolean authoritative, System.Boolean present) (at Assets/RailArena/Runtime/ArenaSession.Network.cs:425)
+RailArena.ArenaSession.AdvanceAuthority () (at Assets/RailArena/Runtime/ArenaSession.cs:277)
+RailArena.ArenaSession.FixedUpdate () (at Assets/RailArena/Runtime/ArenaSession.cs:243)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1066" name="ComfortHudTests" fullname="RailArena.Tests.ComfortHudTests" classname="RailArena.Tests.ComfortHudTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-10-29 17:22:14Z" end-time="2026-10-29 17:22:14Z" duration="0.664703" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1067" name="ControlsPersistAndDisableViewMotionWithoutChangingAimOrCombat" fullname="RailArena.Tests.ComfortHudTests.ControlsPersistAndDisableViewMotionWithoutChangingAimOrCombat" methodname="ControlsPersistAndDisableViewMotionWithoutChangingAimOrCombat" classname="RailArena.Tests.ComfortHudTests" runstate="Runnable" seed="1823188914" result="Failed" start-time="2026-10-29 17:22:14Z" end-time="2026-10-29 17:22:14Z" duration="0.663703" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[RailArena.Simulation.ArenaMovement.Integrate (UnityEngine.Vector3 velocity, RailArena.Simulation.MovementCommand command, System.Boolean grounded, RailArena.Simulation.MovementTuning tuning, System.Single delta) (at Assets/RailArena/Simulation/ArenaMovement.cs:57)
+RailArena.ArenaActor.Move (RailArena.Simulation.MovementTuning tuning) (at Assets/RailArena/Runtime/ArenaActor.cs:51)
+RailArena.ArenaSession.MoveActor (RailArena.ArenaActor actor, System.Int32 tick, System.Boolean authoritative, System.Boolean present) (at Assets/RailArena/Runtime/ArenaSession.Network.cs:425)
+RailArena.ArenaSession.AdvanceAuthority () (at Assets/RailArena/Runtime/ArenaSession.cs:277)
+RailArena.ArenaSession.FixedUpdate () (at Assets/RailArena/Runtime/ArenaSession.cs:243)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[NullReferenceException: Object reference not set to an instance of an object
+RailArena.Simulation.ArenaMovement.Integrate (UnityEngine.Vector3 velocity, RailArena.Simulation.MovementCommand command, System.Boolean grounded, RailArena.Simulation.MovementTuning tuning, System.Single delta) (at Assets/RailArena/Simulation/ArenaMovement.cs:57)
+RailArena.ArenaActor.Move (RailArena.Simulation.MovementTuning tuning) (at Assets/RailArena/Runtime/ArenaActor.cs:51)
+RailArena.ArenaSession.MoveActor (RailArena.ArenaActor actor, System.Int32 tick, System.Boolean authoritative, System.Boolean present) (at Assets/RailArena/Runtime/ArenaSession.Network.cs:425)
+RailArena.ArenaSession.AdvanceAuthority () (at Assets/RailArena/Runtime/ArenaSession.cs:277)
+RailArena.ArenaSession.FixedUpdate () (at Assets/RailArena/Runtime/ArenaSession.cs:243)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+NullReferenceException: Object reference not set to an instance of an object
+RailArena.Simulation.ArenaMovement.Integrate (UnityEngine.Vector3 velocity, RailArena.Simulation.MovementCommand command, System.Boolean grounded, RailArena.Simulation.MovementTuning tuning, System.Single delta) (at Assets/RailArena/Simulation/ArenaMovement.cs:57)
+RailArena.ArenaActor.Move (RailArena.Simulation.MovementTuning tuning) (at Assets/RailArena/Runtime/ArenaActor.cs:51)
+RailArena.ArenaSession.MoveActor (RailArena.ArenaActor actor, System.Int32 tick, System.Boolean authoritative, System.Boolean present) (at Assets/RailArena/Runtime/ArenaSession.Network.cs:425)
+RailArena.ArenaSession.AdvanceAuthority () (at Assets/RailArena/Runtime/ArenaSession.cs:277)
+RailArena.ArenaSession.FixedUpdate () (at Assets/RailArena/Runtime/ArenaSession.cs:243)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+NullReferenceException: Object reference not set to an instance of an object
+RailArena.Simulation.ArenaMovement.Integrate (UnityEngine.Vector3 velocity, RailArena.Simulation.MovementCommand command, System.Boolean grounded, RailArena.Simulation.MovementTuning tuning, System.Single delta) (at Assets/RailArena/Simulation/ArenaMovement.cs:57)
+RailArena.ArenaActor.Move (RailArena.Simulation.MovementTuning tuning) (at Assets/RailArena/Runtime/ArenaActor.cs:51)
+RailArena.ArenaSession.MoveActor (RailArena.ArenaActor actor, System.Int32 tick, System.Boolean authoritative, System.Boolean present) (at Assets/RailArena/Runtime/ArenaSession.Network.cs:425)
+RailArena.ArenaSession.AdvanceAuthority () (at Assets/RailArena/Runtime/ArenaSession.cs:277)
+RailArena.ArenaSession.FixedUpdate () (at Assets/RailArena/Runtime/ArenaSession.cs:243)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+NullReferenceException: Object reference not set to an instance of an object
+RailArena.Simulation.ArenaMovement.Integrate (UnityEngine.Vector3 velocity, RailArena.Simulation.MovementCommand command, System.Boolean grounded, RailArena.Simulation.MovementTuning tuning, System.Single delta) (at Assets/RailArena/Simulation/ArenaMovement.cs:57)
+RailArena.ArenaActor.Move (RailArena.Simulation.MovementTuning tuning) (at Assets/RailArena/Runtime/ArenaActor.cs:51)
+RailArena.ArenaSession.MoveActor (RailArena.ArenaActor actor, System.Int32 tick, System.Boolean authoritative, System.Boolean present) (at Assets/RailArena/Runtime/ArenaSession.Network.cs:425)
+RailArena.ArenaSession.AdvanceAuthority () (at Assets/RailArena/Runtime/ArenaSession.cs:277)
+RailArena.ArenaSession.FixedUpdate () (at Assets/RailArena/Runtime/ArenaSession.cs:243)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1077" name="CompetitivePresentationTests" fullname="RailArena.Tests.CompetitivePresentationTests" classname="RailArena.Tests.CompetitivePresentationTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 17:22:14Z" end-time="2026-10-29 17:22:15Z" duration="1.138002" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1078" name="InstalledSightAlignsAndCrouchPreservesFeetBodyScaleAndLifecycle" fullname="RailArena.Tests.CompetitivePresentationTests.InstalledSightAlignsAndCrouchPreservesFeetBodyScaleAndLifecycle" methodname="InstalledSightAlignsAndCrouchPreservesFeetBodyScaleAndLifecycle" classname="RailArena.Tests.CompetitivePresentationTests" runstate="Runnable" seed="2045520978" result="Passed" start-time="2026-10-29 17:22:14Z" end-time="2026-10-29 17:22:15Z" duration="1.136958" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1081" name="FirstPersonArmsTests" fullname="RailArena.Tests.FirstPersonArmsTests" classname="RailArena.Tests.FirstPersonArmsTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-29 17:22:15Z" end-time="2026-10-29 17:22:16Z" duration="0.930398" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1083" name="BothWristsFollowSharedGripsThroughAimTravelLandingAndRecoil" fullname="RailArena.Tests.FirstPersonArmsTests.BothWristsFollowSharedGripsThroughAimTravelLandingAndRecoil" methodname="BothWristsFollowSharedGripsThroughAimTravelLandingAndRecoil" classname="RailArena.Tests.FirstPersonArmsTests" runstate="Runnable" seed="1034857384" result="Passed" start-time="2026-10-29 17:22:15Z" end-time="2026-10-29 17:22:16Z" duration="0.870579" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1084" name="ThirdPersonPresentationUsesCanonicalWeaponGripMarkers" fullname="RailArena.Tests.FirstPersonArmsTests.ThirdPersonPresentationUsesCanonicalWeaponGripMarkers" methodname="ThirdPersonPresentationUsesCanonicalWeaponGripMarkers" classname="RailArena.Tests.FirstPersonArmsTests" runstate="Runnable" seed="1842755537" result="Passed" start-time="2026-10-29 17:22:16Z" end-time="2026-10-29 17:22:16Z" duration="0.039131" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1082" name="ViewModelRetainsOnlyArmWeightedGeometryAndHasNoGameplayComponents" fullname="RailArena.Tests.FirstPersonArmsTests.ViewModelRetainsOnlyArmWeightedGeometryAndHasNoGameplayComponents" methodname="ViewModelRetainsOnlyArmWeightedGeometryAndHasNoGameplayComponents" classname="RailArena.Tests.FirstPersonArmsTests" runstate="Runnable" seed="1995534900" result="Passed" start-time="2026-10-29 17:22:16Z" end-time="2026-10-29 17:22:16Z" duration="0.019033" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1095" name="HandArticulationTests" fullname="RailArena.Tests.HandArticulationTests" classname="RailArena.Tests.HandArticulationTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-29 17:22:16Z" end-time="2026-10-29 17:22:16Z" duration="0.125598" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1098" name="EveryFingerJointHasNormalizedVisibleSkin" fullname="RailArena.Tests.HandArticulationTests.EveryFingerJointHasNormalizedVisibleSkin" classname="RailArena.Tests.HandArticulationTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-29 17:22:16Z" end-time="2026-10-29 17:22:16Z" duration="0.070795" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1096" name="EveryFingerJointHasNormalizedVisibleSkin(&quot;Characters/Contender&quot;)" fullname="RailArena.Tests.HandArticulationTests.EveryFingerJointHasNormalizedVisibleSkin(&quot;Characters/Contender&quot;)" methodname="EveryFingerJointHasNormalizedVisibleSkin" classname="RailArena.Tests.HandArticulationTests" runstate="Runnable" seed="1966095308" result="Passed" start-time="2026-10-29 17:22:16Z" end-time="2026-10-29 17:22:16Z" duration="0.054024" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1097" name="EveryFingerJointHasNormalizedVisibleSkin(&quot;Characters/ViewArms&quot;)" fullname="RailArena.Tests.HandArticulationTests.EveryFingerJointHasNormalizedVisibleSkin(&quot;Characters/ViewArms&quot;)" methodname="EveryFingerJointHasNormalizedVisibleSkin" classname="RailArena.Tests.HandArticulationTests" runstate="Runnable" seed="228526148" result="Passed" start-time="2026-10-29 17:22:16Z" end-time="2026-10-29 17:22:16Z" duration="0.015794" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="ParameterizedMethod" id="1101" name="RecoilDeformsFingersWithoutMovingWristsAndReturnsExactlyToGrip" fullname="RailArena.Tests.HandArticulationTests.RecoilDeformsFingersWithoutMovingWristsAndReturnsExactlyToGrip" classname="RailArena.Tests.HandArticulationTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-29 17:22:16Z" end-time="2026-10-29 17:22:16Z" duration="0.052244" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1099" name="RecoilDeformsFingersWithoutMovingWristsAndReturnsExactlyToGrip(&quot;Characters/Contender&quot;)" fullname="RailArena.Tests.HandArticulationTests.RecoilDeformsFingersWithoutMovingWristsAndReturnsExactlyToGrip(&quot;Characters/Contender&quot;)" methodname="RecoilDeformsFingersWithoutMovingWristsAndReturnsExactlyToGrip" classname="RailArena.Tests.HandArticulationTests" runstate="Runnable" seed="1893578734" result="Passed" start-time="2026-10-29 17:22:16Z" end-time="2026-10-29 17:22:16Z" duration="0.045966" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1100" name="RecoilDeformsFingersWithoutMovingWristsAndReturnsExactlyToGrip(&quot;Characters/ViewArms&quot;)" fullname="RailArena.Tests.HandArticulationTests.RecoilDeformsFingersWithoutMovingWristsAndReturnsExactlyToGrip(&quot;Characters/ViewArms&quot;)" methodname="RecoilDeformsFingersWithoutMovingWristsAndReturnsExactlyToGrip" classname="RailArena.Tests.HandArticulationTests" runstate="Runnable" seed="23001774" result="Passed" start-time="2026-10-29 17:22:16Z" end-time="2026-10-29 17:22:16Z" duration="0.004882" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1138" name="QuickStartHudTests" fullname="RailArena.Tests.QuickStartHudTests" classname="RailArena.Tests.QuickStartHudTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 17:22:16Z" end-time="2026-10-29 17:22:18Z" duration="1.099228" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1139" name="HelpPreservesSetupAndLaunchesSoloWithoutForcingATutorial" fullname="RailArena.Tests.QuickStartHudTests.HelpPreservesSetupAndLaunchesSoloWithoutForcingATutorial" methodname="HelpPreservesSetupAndLaunchesSoloWithoutForcingATutorial" classname="RailArena.Tests.QuickStartHudTests" runstate="Runnable" seed="1316061483" result="Passed" start-time="2026-10-29 17:22:16Z" end-time="2026-10-29 17:22:18Z" duration="1.095566" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

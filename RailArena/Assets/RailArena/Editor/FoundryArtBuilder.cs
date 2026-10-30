@@ -90,9 +90,24 @@ namespace RailArena.Editor
                 for (int n = 0; n < 3; n++)
                 {
                     Vector3 p = center + rotation * new Vector3(0, .008f, n * .3f - .4f);
-                    Box(energy, p + rotation * new Vector3(-.13f, 0, 0), rotation * Quaternion.Euler(0, -35, 0), new Vector3(.08f, .012f, .38f));
-                    Box(energy, p + rotation * new Vector3(.13f, 0, 0), rotation * Quaternion.Euler(0, 35, 0), new Vector3(.08f, .012f, .38f));
+                    Box(energy, p + rotation * new Vector3(-.13f, 0, 0), rotation * Quaternion.Euler(0, 35, 0), new Vector3(.08f, .012f, .38f));
+                    Box(energy, p + rotation * new Vector3(.13f, 0, 0), rotation * Quaternion.Euler(0, -35, 0), new Vector3(.08f, .012f, .38f));
                 }
+            }
+            var landing = Surface("Landing guide", new Color(.72f,.76f,.72f), .05f, .25f);
+            foreach(var destination in world.Pads.Select(pad=>pad.Destination).Distinct())
+            {
+                var surfaces=Physics.RaycastAll(destination+Vector3.up,Vector3.down,3,1<<0,QueryTriggerInteraction.Ignore)
+                    .Where(hit=>hit.collider.name=="Load bearing deck").OrderBy(hit=>hit.distance).ToArray();
+                if(surfaces.Length==0)
+                    throw new InvalidOperationException("A pad destination has no landing surface: "+destination);
+                var center=surfaces[0].point+Vector3.up*.012f;
+                foreach(float x in new[]{-1f,1f})
+                    foreach(float z in new[]{-1f,1f})
+                    {
+                        Box(landing,center+new Vector3(x*.7f,0,z*.51f),Quaternion.identity,new Vector3(.045f,.008f,.42f));
+                        Box(landing,center+new Vector3(x*.51f,0,z*.7f),Quaternion.identity,new Vector3(.42f,.008f,.045f));
+                    }
             }
             foreach (var pair in groups)
             {
@@ -180,7 +195,7 @@ namespace RailArena.Editor
             mesh.RecalculateNormals(); mesh.RecalculateTangents(); return mesh;
         }
 
-        private static Mesh BeveledCube()
+        internal static Mesh BeveledCube()
         {
             // Intersect an inset cube with corner cuts. Flat normals retain crisp machined faces.
             var vertices = new List<Vector3>(); var triangles = new List<int>(); var uv = new List<Vector2>();
@@ -306,7 +321,7 @@ namespace RailArena.Editor
             }
         }
 
-        private static string GameplaySignature(ArenaWorld world)
+        public static string GameplaySignature(ArenaWorld world)
         {
             var parts = new List<string>();
             string V(Vector3 v) => $"{v.x:R},{v.y:R},{v.z:R}";

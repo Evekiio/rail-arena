@@ -18,6 +18,7 @@ namespace RailArena
         public int Difficulty { get; private set; } = 1;
         public BotSettings BotSettings { get; private set; }
         public int BotCount { get; private set; } = 3;
+        public int SelectedOfflineCharacter { get; private set; }
         public TargetScenario Scenario { get; private set; }
         public bool Paused { get; private set; }
         public bool Running => Match != null;
@@ -29,7 +30,14 @@ namespace RailArena
         public int PadLaunches => padCount;
         public List<string> VoidTraces { get; } = new();
         public string Feed { get; private set; } = "";
-        public float Sensitivity = .12f;
+        public CombatFeed RecentCombat { get; } = new();
+        public AimPreferences Aim { get; } = new();
+        public ReticlePreferences Reticle { get; } = new();
+        public ComfortPreferences Comfort { get; } = new();
+        public FramePacingPreferences FramePacing { get; } = new();
+        public GraphicsPreferences Graphics { get; } = new();
+        public SoundPreferences Sound { get; } = new();
+        public float Sensitivity { get => Aim.Sensitivity; set => Aim.Sensitivity = value; }
         public Camera View { get; private set; }
         private ArenaHud hud;
         private float yaw;
@@ -43,24 +51,50 @@ namespace RailArena
         private RailgunPresentation weaponPresentation;
         private FirstPersonArms viewArms;
         private float recoil;
+        private readonly WeaponRecoil weaponRecoil = new();
         private readonly FirstPersonWeaponMotion weaponMotion = new();
         private int weaponMotionLife;
         private Vector2 lookMotion;
+        private readonly WeaponTrigger trigger = new();
+        private bool reloadRequested, slideRequested;
+        private double lastSprintPress = double.NegativeInfinity;
+        public string TraversalNotice { get; private set; } = "";
+        public double TraversalNoticeUntil { get; private set; }
+        private float reloadBlend;
+        private readonly AimDownSights sights = new();
+        public bool IsAiming { get; private set; }
+        public float AimBlend => sights.Weight;
+        private Vector3 sightLocal;
         private Networking.HitboxHistory hitHistory;
         public int RewoundShots { get; private set; }
         public int RejectedShotTimes { get; private set; }
 
         private void Awake()
         {
+            InitializePhysicsConfig();
             Time.fixedDeltaTime = 1f / CombatRules.TickRate;
             Application.runInBackground = true;
-            Application.targetFrameRate = 144;
-            Sensitivity = PlayerPrefs.GetFloat("sensitivity", .12f);
-            AudioListener.volume = PlayerPrefs.GetFloat("volume", .65f);
+            FramePacing.Load();
+            FramePacing.Apply();
+            Aim.Load();
+            Reticle.Load();
+            Comfort.Load();
+            SelectedOfflineCharacter = OfflineRoster.NormalizeCharacter(PlayerPrefs.GetInt("offlineCharacter",0));
+            Sound.Load();
+            Sound.ApplyMaster();
             View = Camera.main;
-            View.fieldOfView = 100;
-            View.GetUniversalAdditionalCameraData().renderPostProcessing = true;
+            View.usePhysicalProperties = true;
+            View.sensorSize = new Vector2(36, 24);
+            View.gateFit = Camera.GateFitMode.Vertical;
+            SetViewFov(Aim.FieldOfView);
+            var cameraData = View.GetUniversalAdditionalCameraData();
+            cameraData.renderPostProcessing = true;
+            Graphics.Load();
+            Graphics.Apply(View);
             Feedback = gameObject.AddComponent<RailFeedback>();
+            Feedback.Preferences = Comfort;
+            Feedback.Sound = Sound;
+            Feedback.ApplySound();
             hud = gameObject.AddComponent<ArenaHud>();
             hud.Session = this;
             CreateWeapon();
@@ -72,6 +106,13 @@ namespace RailArena
             StartSessionCore(practice, bots, difficulty, scenario);
         }
 
+        public void SelectOfflineCharacter(int character)
+        {
+            SelectedOfflineCharacter = OfflineRoster.NormalizeCharacter(character);
+            PlayerPrefs.SetInt("offlineCharacter",SelectedOfflineCharacter);
+            PlayerPrefs.Save();
+        }
+
         private void StartSessionCore(bool practice, int bots, int difficulty, TargetScenario scenario)
         {
             var botTuning = Resources.Load<BotTuning>("BotTuning");
@@ -81,9 +122,9 @@ namespace RailArena
             foreach (var actor in Actors) Destroy(actor.gameObject);
             Actors.Clear();
             Practice = practice;
-            BotCount = Mathf.Clamp(bots, practice ? 0 : 1, 7);
+            BotCount = Mathf.Clamp(bots, practice ? 0 : 1, CombatRules.MaximumBots);
             Difficulty = Mathf.Clamp(difficulty, 0, 2);
-            Scenario = scenario;
+            Scenario = practice ? scenario : TargetScenario.Combat;
             var ids = new List<int>();
             for (int i = 0; i <= BotCount; i++)
             {
@@ -93,19 +134,25 @@ namespace RailArena
                 actor.Place(World.Spawns[i % World.Spawns.Length].position);
             }
             Match = new MatchState(ids, practice);
-            if (viewArms != null) viewArms.Surface.sharedMaterial = Human.Presentation.BodyRenderers[0].sharedMaterial;
+            if (viewArms != null) ContenderPresentation.ApplyPalette(viewArms.Surface, Human.Presentation.BodyRenderers[0].sharedMaterial);
             hitHistory = new Networking.HitboxHistory(Actors);
             hitHistory.Capture(0);
             RewoundShots = RejectedShotTimes = 0;
             foreach (var pickup in World.Pickups) { pickup.AvailableTick = 0; pickup.SetAvailable(true); }
             Feed = "";
+            RecentCombat.Clear();
             Feedback?.ResetFeedback();
+            ResetTraversalPresentation();
             shotCount = deathCount = pickupCount = padCount = 0;
             VoidDeaths = 0;
             VoidTraces.Clear();
             yaw = 90;
             pitch = 0;
-            recoil = 0;
+            ResetRecoil();
+            ResetTrigger();
+            reloadBlend = 0;
+            TraversalNoticeUntil = 0;
+            ResetSights();
             weaponMotion.Reset(true);
             weaponMotionLife = Human.Life;
             SetPaused(false);
@@ -114,6 +161,10 @@ namespace RailArena
         public void SetPaused(bool pause)
         {
             Paused = pause;
+            ResetTrigger();
+            reloadBlend = 0;
+            TraversalNoticeUntil = 0;
+            ResetSights();
             bool playing = Running && !pause && !OnlineWaiting && Match.Phase != MatchPhase.Results;
             if (pause && IsOnline && Human != null) Human.Command = new MovementCommand { Yaw = yaw, Pitch = pitch };
             Cursor.lockState = playing ? CursorLockMode.Locked : CursorLockMode.None;
@@ -132,60 +183,105 @@ namespace RailArena
             Actors.Clear();
             weapon.gameObject.SetActive(false);
             SetPaused(false);
-            View.transform.SetPositionAndRotation(new Vector3(39, 28, -43), Quaternion.Euler(25, -40, 0));
+            View.transform.SetPositionAndRotation(World.MenuEye, Quaternion.Euler(World.MenuLook));
+            if (World.MenuFieldOfView > 0) SetViewFov(World.MenuFieldOfView);
         }
 
         private void Update()
         {
             lookMotion = Vector2.zero;
             UpdateNetwork();
-            if (Keyboard.current?.escapeKey.wasPressedThisFrame == true && Running) SetPaused(!Paused);
-            if (!Running || OnlineWaiting || Paused || AutomatedHuman || Match.Phase == MatchPhase.Results) return;
+            if (Keyboard.current?.gKey.wasPressedThisFrame == true) TogglePhysicsConfig();
+            if (PhysicsConfigOpen) { if (Keyboard.current?.escapeKey.wasPressedThisFrame == true) ClosePhysicsConfig(); ResetTrigger(); return; }
+            if (Keyboard.current?.escapeKey.wasPressedThisFrame == true && !hud.TryHandleBack() && Running) SetPaused(!Paused);
+            if (!Running || OnlineWaiting || Paused || AutomatedHuman || Match.Phase == MatchPhase.Results)
+            { ResetTrigger(); ResetSights(); return; }
             var mouse = Mouse.current;
+            IsAiming = Human.Alive && mouse?.rightButton.isPressed == true;
+            bool zoom = IsAiming;
             if (mouse != null)
             {
-                var delta = mouse.delta.ReadValue();
-                lookMotion = delta * Sensitivity;
-                yaw += delta.x * Sensitivity;
-                pitch = Mathf.Clamp(pitch - delta.y * Sensitivity, -89, 89);
+                var delta = Aim.LookDelta(mouse.delta.ReadValue(), zoom);
+                lookMotion = delta;
+                yaw += delta.x;
+                pitch = Mathf.Clamp(pitch - delta.y, -89, 89);
             }
             if (Human.Alive)
             {
                 var keyboard = Keyboard.current;
                 float x = (keyboard?.dKey.isPressed == true ? 1 : 0) - (keyboard?.aKey.isPressed == true ? 1 : 0);
                 float y = (keyboard?.wKey.isPressed == true ? 1 : 0) - (keyboard?.sKey.isPressed == true ? 1 : 0);
+                trigger.Sample(mouse?.leftButton.isPressed == true, mouse?.leftButton.wasPressedThisFrame == true, Match.IsActive);
+                reloadRequested |= Match.IsActive && keyboard?.rKey.wasPressedThisFrame == true;
+                if (keyboard?.leftShiftKey.wasPressedThisFrame == true)
+                {
+                    double now = Time.unscaledTimeAsDouble;
+                    slideRequested |= Match.IsActive && now - lastSprintPress <= .35;
+                    lastSprintPress = now;
+                }
                 Human.Command = new MovementCommand { Move = new Vector2(x, y), Yaw = yaw, Pitch = pitch,
-                    Jump = keyboard?.spaceKey.isPressed == true, Fire = mouse?.leftButton.isPressed == true };
+                    Jump = keyboard?.spaceKey.isPressed == true, Fire = false,
+                    Sprint = keyboard?.leftShiftKey.isPressed == true,
+                    Walk = keyboard?.leftAltKey.isPressed == true,
+                    Crouch = keyboard?.leftCtrlKey.isPressed == true };
             }
-            else Human.Command = new MovementCommand { Yaw = yaw, Pitch = pitch };
+            else { ResetTrigger(); Human.Command = new MovementCommand { Yaw = yaw, Pitch = pitch }; }
         }
 
         private void LateUpdate()
         {
             if (!Running) return;
             InterpolateOpponent();
+            if (!Human.Alive) ResetSights();
+            sights.Step(IsAiming && Human.Alive && !Human.Magazine.Reloading && !Paused && !OnlineWaiting && Match.Phase != MatchPhase.Results, Time.unscaledDeltaTime);
+            SetViewFov(Mathf.Lerp(Aim.FieldOfView, Aim.ViewFov(true), sights.Weight));
             Vector3 eye = IsOnline && LocalPlayerId == 1 ? reconciliationView.Position(Human.Eye) : Human.Eye;
             View.transform.SetPositionAndRotation(eye, Quaternion.Euler(pitch, yaw, 0));
             reconciliationView.Decay(Time.unscaledDeltaTime);
-            recoil = Mathf.MoveTowards(recoil, 0, Time.unscaledDeltaTime * 5);
-            weaponPresentation.SetCharge((Human.NextShotTick - LocalSimulationTick) / (float)CombatRules.ShotIntervalTicks);
-            if (!Human.Alive || Paused) weaponMotion.Reset(false);
+            if (!Human.Alive || Paused || !Comfort.WeaponMotion) ResetRecoil();
+            else weaponRecoil.Step(Time.unscaledDeltaTime);
+            recoil = weaponRecoil.Kick;
+            weaponPresentation.SetCharge((Human.NextShotTick - LocalSimulationTick) / (float)Mathf.Max(1, Human.Magazine.LastShotInterval));
+            if (!Human.Alive || Paused || !Comfort.WeaponMotion) weaponMotion.Reset(false);
             else
             {
                 if (weaponMotionLife != Human.Life) weaponMotion.Reset(true);
                 weaponMotionLife = Human.Life;
-                weaponMotion.Step(Time.unscaledDeltaTime, Human.Velocity, Human.Grounded && Human.AirborneTicks == 0, lookMotion, recoil);
+                weaponMotion.Step(Time.unscaledDeltaTime, Human.Velocity, Human.Grounded && Human.AirborneTicks == 0, lookMotion, 0);
             }
-            weapon.localPosition = FirstPersonWeaponMotion.RestPosition + weaponMotion.Offset - Vector3.forward * (recoil * RailgunPresentation.ViewRecoilTravel);
-            weapon.localRotation = weaponMotion.Rotation;
-            viewArms.SetRecoil(Human.Alive && !Paused ? recoil : 0);
+            float reloadTarget = Human.Alive && !Paused && Comfort.WeaponMotion && Human.Magazine.Reloading ? 1 : 0;
+            reloadBlend = !Human.Alive || Paused || !Comfort.WeaponMotion ? 0 :
+                Mathf.MoveTowards(reloadBlend, reloadTarget, Time.unscaledDeltaTime * 8);
+            float visibleRecoil = Comfort.WeaponMotion ? recoil : 0;
+            weapon.localPosition = sights.Position(sightLocal, weaponMotion.Offset, visibleRecoil)
+                + (Comfort.WeaponMotion ? weaponRecoil.Offset * (1 - sights.Weight * .8f) : Vector3.zero)
+                + new Vector3(0, -.08f, -.04f) * reloadBlend;
+            weapon.localRotation = sights.Rotation(weaponMotion.Rotation) * (Comfort.WeaponMotion ?
+                Quaternion.Slerp(weaponRecoil.Rotation, Quaternion.identity, sights.Weight * .8f) : Quaternion.identity) * Quaternion.Euler(12 * reloadBlend, 0, -10 * reloadBlend);
+            viewArms.SetRecoil(Human.Alive && !Paused ? visibleRecoil : 0);
             weapon.gameObject.SetActive(Human.Alive && !Paused);
         }
 
         private void FixedUpdate()
         {
+            if (Running && Human != null && !AutomatedHuman)
+            {
+                var command = Human.Command;
+                command.Fire = trigger.Consume();
+                command.Reload = reloadRequested; reloadRequested = false;
+                command.Slide = slideRequested; slideRequested = false;
+                Human.Command = command;
+
+            }
             if (IsOnline) { OnlineFixedUpdate(); return; }
             AdvanceAuthority();
+        }
+
+        private void ResetSights()
+        {
+            IsAiming = false;
+            sights.Reset();
+            if (View != null) SetViewFov(Aim.FieldOfView);
         }
 
         private void AdvanceAuthority()
@@ -209,6 +305,9 @@ namespace RailArena
                 }
                 if (!Match.IsActive) continue;
                 if (actor.Bot || (AutomatedHuman && (!IsOnline || actor == Human))) actor.Command = actor.Brain.Think(this, actor);
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+                if (AutomatedHuman && actor == Human) actor.Command = ValidationMovement(actor.Command, tick);
+#endif
                 MoveActor(actor, tick, true);
                 if (actor.transform.position.y < -20)
                 {
@@ -223,31 +322,37 @@ namespace RailArena
                     if (tick >= pickup.AvailableTick && actor.Health < 100 &&
                         (actor.transform.position + Vector3.up - pickup.transform.position).sqrMagnitude < 3)
                     {
+                        int previousHealth=actor.Health;
                         actor.Health = CombatRules.RestoreHealth(actor.Health);
                         pickup.AvailableTick = tick + CombatRules.PickupRespawnTicks;
                         pickup.SetAvailable(false);
                         pickupCount++;
+                        if(actor==Human)Feedback.PickedUp(actor.Health-previousHealth);
                     }
                 }
             }
             hitHistory.Capture(tick);
             foreach (var actor in Actors)
-                if (Match.IsActive && actor.Command.Fire && CombatRules.CanFire(tick, actor.NextShotTick, actor.Alive)) Shoot(actor);
+                if (Match.IsActive && actor.Alive && AdvanceWeapon(actor, tick)) Shoot(actor);
             foreach (var pickup in World.Pickups) if (tick >= pickup.AvailableTick) pickup.SetAvailable(true);
         }
 
         private void Shoot(ArenaActor actor)
         {
-            actor.NextShotTick = Match.Tick + CombatRules.ShotIntervalTicks;
             actor.Presentation.Fired();
             shotCount++;
             Vector3 origin = actor.Eye;
             int viewedTick = IsOnline && actor.Id != LocalPlayerId ? actor.ViewedTick : Match.Tick;
-            var hit = hitHistory.Trace(Match.Tick, viewedTick, actor,
-                IsOnline && actor.Id != LocalPlayerId ? actor.ShotCommand : (MovementCommand?)null);
+            MovementCommand? shotCommand = IsOnline && actor.Id != LocalPlayerId ? actor.ShotCommand : (MovementCommand?)null;
+            var command = shotCommand ?? actor.Command;
+            Vector3 direction = Quaternion.Euler(command.Pitch, command.Yaw, 0) * Vector3.forward;
+            float halfAngle = SprintFireSpread.ShotHalfAngle(actor.Grounded, actor.IsCrouched, command, actor.Velocity);
+            if (halfAngle > 0) direction = SprintFireSpread.Direction(direction, UnityEngine.Random.insideUnitCircle, halfAngle);
+            var hit = hitHistory.Trace(Match.Tick, viewedTick, actor, shotCommand, direction);
             if (!hit.ValidTime) RejectedShotTimes++;
             else if (viewedTick < Match.Tick) RewoundShots++;
             Vector3 end = hit.End;
+            Match.RecordShot(actor.Id,hit.Actor == null ? (HitRegion?)null : hit.Region);
             if (hit.Actor != null)
             {
                 var victim = hit.Actor;
@@ -268,11 +373,26 @@ namespace RailArena
             if (Match.Phase == MatchPhase.Results) { SetPaused(false); hud.RefreshMenu(); }
         }
 
+        private void SetViewFov(float verticalFov)
+        {
+            View.focalLength = Camera.FieldOfViewToFocalLength(verticalFov, View.sensorSize.y);
+        }
+
+        private void ResetTrigger() { trigger.Reset(); reloadRequested = false; slideRequested = false; lastSprintPress = double.NegativeInfinity; }
+
+        private static bool AdvanceWeapon(ArenaActor actor, int tick)
+        {
+            actor.Magazine.Advance(tick, actor.Command.Reload);
+            return actor.Command.Fire && actor.Magazine.TryFire(tick, ref actor.NextShotTick);
+        }
+
+        private void ResetRecoil() { recoil = 0; weaponRecoil.Reset(); }
+
         private void ShowShot(ArenaActor actor, Vector3 origin, Vector3 end)
         {
             var muzzle = actor == Human ? weaponPresentation.Muzzle.position : actor.Presentation.Muzzle.position;
             Feedback.Shot(muzzle, end, origin, actor == Human, (end - origin).sqrMagnitude < 179.9f * 179.9f);
-            if (actor == Human) recoil = 1;
+            if (actor == Human) weaponRecoil.Fire();
         }
 
         private void Kill(ArenaActor victim, ArenaActor killer, string reason)
@@ -280,8 +400,15 @@ namespace RailArena
             victim.Health = 0;
             victim.RespawnTick = Match.Tick + CombatRules.RespawnTicks;
             victim.SetAlive(false);
-            Feed = killer == victim ? $"{victim.DisplayName} fell into the void" : $"{killer.DisplayName}  >  {victim.DisplayName}   {reason}";
+            if (victim == Human) ResetRecoil();
+            PublishFeed(killer == victim ? $"{victim.DisplayName} fell into the void" : $"{killer.DisplayName}  >  {victim.DisplayName}   {reason}");
             deathCount++;
+        }
+
+        private void PublishFeed(string text)
+        {
+            Feed=text;
+            RecentCombat.Add(text,Time.realtimeSinceStartupAsDouble);
         }
 
         private void Respawn(ArenaActor actor)
@@ -300,6 +427,8 @@ namespace RailArena
             actor.SetAlive(true);
             actor.Place(best.position);
             actor.NextShotTick = Match.Tick;
+            actor.Magazine = RifleMagazine.Full;
+            if (actor == Human) ResetRecoil();
             actor.Command = default;
             actor.Brain = new BotBrain(7291 + actor.Id * 917 + Match.Tick);
         }
@@ -310,7 +439,8 @@ namespace RailArena
             root.layer = 9;
             var actor = root.AddComponent<ArenaActor>();
             actor.Id = id;
-            actor.DisplayName = id == LocalPlayerId ? "YOU" : IsOnline ? (id == 0 ? "HOST" : "CHALLENGER") : new[] { "", "ION", "CINDER", "VECTOR", "HEX", "EMBER", "NOVA", "FLUX" }[id];
+            actor.CharacterId = IsOnline ? id : OfflineRoster.CharacterForActor(SelectedOfflineCharacter,id);
+            actor.DisplayName = id == LocalPlayerId ? "YOU" : IsOnline ? (id == 0 ? "HOST" : "CHALLENGER") : OfflineRoster.BotName(actor.CharacterId);
             actor.Bot = !IsOnline && id != 0;
             actor.Brain = new BotBrain(7291 + id * 917);
             actor.Controller = root.AddComponent<CharacterController>();
@@ -319,7 +449,8 @@ namespace RailArena
             actor.Controller.center = Vector3.up * .9f;
             actor.Controller.stepOffset = .3f;
             actor.Controller.slopeLimit = 50;
-            var prefab = Resources.Load<GameObject>("Characters/Contender");
+            string characterPath = OfflineRoster.PrefabPath(actor.CharacterId);
+            var prefab = Resources.Load<GameObject>(characterPath);
             if (prefab == null) throw new System.InvalidOperationException("The animated contender prefab is missing.");
             actor.Model = Instantiate(prefab, root.transform, false).transform;
             foreach (var part in actor.Model.GetComponentsInChildren<Transform>(true)) part.gameObject.layer = id == LocalPlayerId ? 10 : 8;
@@ -336,6 +467,8 @@ namespace RailArena
             if (prefab == null) throw new System.InvalidOperationException("The railgun presentation prefab is missing.");
             weapon = Instantiate(prefab, View.transform, false).transform;
             weaponPresentation = weapon.GetComponent<RailgunPresentation>();
+            if (weaponPresentation.Aim == null) throw new System.InvalidOperationException("The rifle sight anchor is missing.");
+            sightLocal = weapon.InverseTransformPoint(weaponPresentation.Aim.position);
             weapon.GetComponent<LODGroup>().ForceLOD(0);
             viewArms = FirstPersonArms.CreateOnWeapon(weaponPresentation);
             foreach (var part in weapon.GetComponentsInChildren<Transform>(true)) part.gameObject.layer = 11;
@@ -345,3 +478,9 @@ namespace RailArena
         public string Telemetry() => $"ticks={Match?.Tick} shots={shotCount} deaths={deathCount} pickups={pickupCount} pads={padCount}";
     }
 }
+
+
+
+
+
+

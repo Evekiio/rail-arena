@@ -1,0 +1,16 @@
+{
+    "fingerprint": "73bdbf324709c6e8add622f14e49132ed51d6a167abda2cea18bca4d04a6c54f",
+    "clock": "Accelerated integer ticks through normal authority; not real-time or native input acceptance",
+    "elapsedSeconds": 0.11385703086853027,
+    "errors": 0,
+    "failure": "System.InvalidOperationException: Countdown blocks fire and damage through tick 179: shots=13, health=100, phase=Countdown\r\n  at RailArena.MechanicsValidation.Expect (System.String name, System.Boolean passed, System.String observed) [0x00050] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\MechanicsValidation.cs:115 \r\n  at RailArena.MechanicsValidation+<Run>d__20.MoveNext () [0x000a0] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\MechanicsValidation.cs:155 \r\n  at RailArena.MechanicsValidation+<Start>d__13.MoveNext () [0x0006c] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\MechanicsValidation.cs:64 ",
+    "checks": [
+        {
+            "name": "Countdown blocks fire and damage through tick 179",
+            "tick": 179,
+            "passed": false,
+            "observed": "shots=13, health=100, phase=Countdown"
+        }
+    ],
+    "passed": false
+}

@@ -4,7 +4,8 @@ param(
     [int]$Port = 17777,
     [int]$Duration = 45,
     [switch]$FullMatch,
-    [int]$ClientPort = 0
+    [int]$ClientPort = 0,
+    [switch]$MovementModes
 )
 $ErrorActionPreference = 'Stop'
 $railBuildPath = (Resolve-Path -LiteralPath $Build).Path
@@ -24,11 +25,13 @@ try {
             '--validation-owner-pid', $PID, '--validation-timeout', ($Duration + 60),
             '-logFile', ('"' + $railOutput + '.log"'), '-screen-width', '1280', '-screen-height', '720', '-screen-fullscreen', '0')
         if ($FullMatch) { $railArguments += '--validation-full-match' }
+        if ($MovementModes) { $railArguments += '--validation-movement-modes' }
         $railProcesses += Start-Process -FilePath $railBuildPath -ArgumentList $railArguments -WindowStyle Hidden -PassThru
         if ($railRole -eq 'host') { Start-Sleep -Milliseconds 1000 }
     }
     foreach ($railProcess in $railProcesses) {
         if (-not $railProcess.WaitForExit(($Duration + 60) * 1000)) { throw 'Duel validation process timed out.' }
+        if ($railProcess.ExitCode -ne 0) { throw "Duel player exited with code $($railProcess.ExitCode). Inspect its report/log." }
     }
     foreach ($railRole in @('host', 'client')) {
         $railOutput = Join-Path $railOutputDirectory ($railRole + '.json')

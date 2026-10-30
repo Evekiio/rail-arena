@@ -33,11 +33,12 @@ namespace RailArena.Tests
             Assert.That(Vector3.Angle(contender.Hands.Joints[6].position - contender.Animator.GetBoneTransform(HumanBodyBones.LeftHand).position,
                 contender.Weapon.right), Is.LessThan(1));
             Assert.That(Vector3.Angle(contender.Hands.Joints[21].position - contender.Animator.GetBoneTransform(HumanBodyBones.RightHand).position,
-                -contender.Weapon.right), Is.LessThan(1));
+                contender.Weapon.TransformDirection(new Vector3(0, -1, .15f).normalized)), Is.LessThan(1));
             while (!session.Match.IsActive) session.Match.Advance();
             foreach (var pickup in session.World.Pickups) pickup.AvailableTick = int.MaxValue;
             session.Human.Health = 25;
-            session.Human.NextShotTick = session.LocalSimulationTick + 45;
+            session.enabled = false;
+            session.Human.NextShotTick = session.LocalSimulationTick + Simulation.CombatRules.ShotIntervalTicks / 2;
             yield return Frames(2);
             Assert.That(Label("HealthValue").text, Is.EqualTo("025"));
             var health = root.transform.Find("HealthPanel/HealthFillTrack/HealthFill").GetComponent<RectTransform>();
@@ -45,6 +46,7 @@ namespace RailArena.Tests
             Assert.That(health.anchorMax.x, Is.EqualTo(.25f).Within(.001));
             Assert.That(rail.anchorMax.x, Is.InRange(.45f, .65f));
             Assert.That(Label("RailValue").text, Does.StartWith("CYCLE"));
+            session.enabled = true;
             Assert.That(root.GetComponentsInChildren<UnityEngine.UI.Graphic>(true).All(g => !g.raycastTarget), Is.True);
             session.Feedback.ConfirmHit(false); session.Feedback.Damaged();
             yield return Frames(2);

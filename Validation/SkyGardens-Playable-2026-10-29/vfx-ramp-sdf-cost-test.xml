@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 04:59:21Z" end-time="2026-10-30 04:59:23Z" duration="2.0566571">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="237" result="Passed" start-time="2026-10-30 04:59:21Z" end-time="2026-10-30 04:59:23Z" duration="2.056657" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1343" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="237" result="Passed" start-time="2026-10-30 04:59:21Z" end-time="2026-10-30 04:59:23Z" duration="2.031994" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="6448" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1344" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="237" result="Passed" start-time="2026-10-30 04:59:21Z" end-time="2026-10-30 04:59:23Z" duration="2.023911" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1345" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="237" result="Passed" start-time="2026-10-30 04:59:21Z" end-time="2026-10-30 04:59:23Z" duration="2.016152" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1332" name="TraversalVfxRampSdfTests" fullname="RailArena.Tests.TraversalVfxRampSdfTests" classname="RailArena.Tests.TraversalVfxRampSdfTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 04:59:21Z" end-time="2026-10-30 04:59:23Z" duration="1.980910" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1333" name="BakeActualRampAndReadSignedDistances" fullname="RailArena.Tests.TraversalVfxRampSdfTests.BakeActualRampAndReadSignedDistances" methodname="BakeActualRampAndReadSignedDistances" classname="RailArena.Tests.TraversalVfxRampSdfTests" runstate="Runnable" seed="1534091398" result="Passed" start-time="2026-10-30 04:59:21Z" end-time="2026-10-30 04:59:23Z" duration="1.954983" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[TRAVERSAL_RAMP_SDF_COST submitMs=49 readbackWallMs=73 format=R16_SFloat bytesPerVoxel=2
+TRAVERSAL_RAMP_SDF size=(16.80, 5.25, 4.99) texture=64x20x19 voxels=24320 layers=19 min=-0.01522827 max=0.2498779
+TRAVERSAL_RAMP_SDF_SAMPLES center=-0.004089355 corner=0.03204346
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

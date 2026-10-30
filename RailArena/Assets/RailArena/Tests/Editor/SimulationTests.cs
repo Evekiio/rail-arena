@@ -74,7 +74,7 @@ namespace RailArena.Tests
             Assert.That(CombatRules.CanFire(89, 90, true), Is.False);
             Assert.That(CombatRules.CanFire(90, 90, true), Is.True);
             Assert.That(CombatRules.CanFire(91, 90, false), Is.False);
-            Assert.That(CombatRules.ShotIntervalTicks / (float)CombatRules.TickRate, Is.EqualTo(1.5f));
+            Assert.That(CombatRules.ShotIntervalTicks / (float)CombatRules.TickRate, Is.EqualTo(.25f));
         }
 
         [Test]

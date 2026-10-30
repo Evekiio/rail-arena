@@ -9,6 +9,8 @@ namespace RailArena.Networking
         public const int MaximumPending = 128;
         private readonly SortedDictionary<int, DuelInput> pending = new();
         private MovementCommand previous;
+        private int previousViewedTick;
+        public const int FireGraceTicks = 3;
         private int lastCommandTick = int.MinValue;
         private int lastConsumeTick = -1;
         public int LastConsumed { get; private set; }
@@ -33,30 +35,38 @@ namespace RailArena.Networking
             Shot = null;
             if (pending.Count > 0)
             {
-                bool jump = false;
+                bool jump = false, reload = false, slide = false;
                 foreach (var entry in pending)
                 {
                     input = entry.Value;
                     jump |= input.Command.Jump;
+                    reload |= input.Command.Reload;
+                    slide |= input.Command.Slide;
                     if (input.Command.Fire) Shot = input;
                 }
                 // Never turn a burst into extra simulation steps or a permanent input delay.
                 pending.Clear();
                 // Hold only the newest physical state, not a tap aggregated from an older command.
                 previous = input.Command;
+                previous.Reload = false; previous.Slide = false;
+                previousViewedTick = input.ViewedTick;
                 input.Command.Fire = Shot.HasValue;
                 input.Command.Jump = jump;
+                input.Command.Reload = reload; input.Command.Slide = slide;
                 LastConsumed = input.Command.Sequence;
                 lastCommandTick = authorityTick;
                 return true;
             }
-            // Space is a held bunny-hop control. Preserve it with motion during brief loss.
-            // Fire remains a one-time received intent with its original viewed-tick evidence.
+            // Held automatic fire tolerates only a brief gap; never invent a newer aim timestamp.
+            // A received release immediately wins over any older redundant held command.
             input.Command = previous;
-            input.Command.Fire = false;
+            input.ViewedTick = previousViewedTick;
+            input.Command.Fire &= (long)authorityTick - lastCommandTick <= FireGraceTicks;
+            if (input.Command.Fire) Shot = input;
             if ((long)authorityTick - lastCommandTick > 9)
-            { input.Command.Move = default; input.Command.Jump = false; }
+            { input.Command.Move = default; input.Command.Jump = false; input.Command.Sprint = input.Command.Walk = false; }
             return true;
         }
     }
 }
+

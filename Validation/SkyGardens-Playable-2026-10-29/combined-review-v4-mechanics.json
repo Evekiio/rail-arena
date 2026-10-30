@@ -1,0 +1,106 @@
+{
+    "fingerprint": "3cd460c9c544c29ad21729944cb411651f97508c9fceb3e4bb2eebd074a677fc",
+    "clock": "Accelerated integer ticks through normal authority; not real-time or native input acceptance",
+    "elapsedSeconds": 0.1965121030807495,
+    "errors": 0,
+    "failure": "System.IndexOutOfRangeException: Index was outside the bounds of the array.\r\n  at RailArena.MechanicsValidation+<Run>d__20.MoveNext () [0x0083c] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\MechanicsValidation.cs:217 \r\n  at RailArena.MechanicsValidation+<Start>d__13.MoveNext () [0x0006c] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\MechanicsValidation.cs:64 ",
+    "checks": [
+        {
+            "name": "Countdown blocks fire and damage through tick 179",
+            "tick": 179,
+            "passed": true,
+            "observed": "shots=0, health=100, phase=Countdown"
+        },
+        {
+            "name": "Tick 180 activates combat and lethal headshot scores once",
+            "tick": 180,
+            "passed": true,
+            "observed": "health=0, shots=1, score=1"
+        },
+        {
+            "name": "Authority confirms lethal hit with elimination feedback",
+            "tick": 180,
+            "passed": true,
+            "observed": "hits=1, lethal=True"
+        },
+        {
+            "name": "Dead actor cannot fire or respawn before 120 ticks",
+            "tick": 299,
+            "passed": true,
+            "observed": "alive=False, life=1, shots=1"
+        },
+        {
+            "name": "Respawn at exact 120-tick boundary restores 100 health and new life",
+            "tick": 300,
+            "passed": true,
+            "observed": "health=100, life=2, nextShot=300"
+        },
+        {
+            "name": "First body shot deals 50",
+            "tick": 301,
+            "passed": true,
+            "observed": "health=50"
+        },
+        {
+            "name": "Nonlethal damage confirms a hit without elimination",
+            "tick": 301,
+            "passed": true,
+            "observed": "hits=2, lethal=False"
+        },
+        {
+            "name": "Shot intent cannot discharge before the scheduled boundary",
+            "tick": 314,
+            "passed": true,
+            "observed": "shots=2, health=50"
+        },
+        {
+            "name": "Second body shot fires on its scheduled boundary and kills",
+            "tick": 315,
+            "passed": true,
+            "observed": "health=0, shots=3, interval=14"
+        },
+        {
+            "name": "Held automatic fire produces four shots across sixty ticks from this cadence phase",
+            "tick": 375,
+            "passed": true,
+            "observed": "shots=4"
+        },
+        {
+            "name": "Released trigger stops automatic fire",
+            "tick": 387,
+            "passed": true,
+            "observed": "shots=7"
+        },
+        {
+            "name": "First limb shot deals 34",
+            "tick": 508,
+            "passed": true,
+            "observed": "health=66"
+        },
+        {
+            "name": "Second limb shot leaves 32 health",
+            "tick": 523,
+            "passed": true,
+            "observed": "health=32"
+        },
+        {
+            "name": "Third limb shot kills without negative health",
+            "tick": 538,
+            "passed": true,
+            "observed": "health=0"
+        },
+        {
+            "name": "Mixed body and limb damage leaves 16 health",
+            "tick": 674,
+            "passed": true,
+            "observed": "health=16"
+        },
+        {
+            "name": "Mixed hit sequence kills and records one kill",
+            "tick": 689,
+            "passed": true,
+            "observed": "health=0, score=4"
+        }
+    ],
+    "passed": false
+}

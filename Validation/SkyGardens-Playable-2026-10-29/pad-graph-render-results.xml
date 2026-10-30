@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Failed(Child)" total="2" passed="1" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 06:36:14Z" end-time="2026-10-30 06:36:16Z" duration="2.0623124">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="246" result="Failed" site="Child" start-time="2026-10-30 06:36:14Z" end-time="2026-10-30 06:36:16Z" duration="2.062312" total="2" passed="1" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1359" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="246" result="Failed" site="Child" start-time="2026-10-30 06:36:14Z" end-time="2026-10-30 06:36:16Z" duration="2.042833" total="2" passed="1" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="59488" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1360" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="246" result="Failed" site="Child" start-time="2026-10-30 06:36:14Z" end-time="2026-10-30 06:36:16Z" duration="2.036856" total="2" passed="1" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1361" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="246" result="Failed" site="Child" start-time="2026-10-30 06:36:14Z" end-time="2026-10-30 06:36:16Z" duration="2.032474" total="2" passed="1" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1148" name="PadEnergyNodeTests" fullname="RailArena.Tests.PadEnergyNodeTests" classname="RailArena.Tests.PadEnergyNodeTests" runstate="Runnable" testcasecount="2" result="Failed" site="Child" start-time="2026-10-30 06:36:14Z" end-time="2026-10-30 06:36:16Z" duration="1.967051" total="2" passed="1" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1150" name="ReflectedPadFunctionMatchesExistingEnergyFormula" fullname="RailArena.Tests.PadEnergyNodeTests.ReflectedPadFunctionMatchesExistingEnergyFormula" methodname="ReflectedPadFunctionMatchesExistingEnergyFormula" classname="RailArena.Tests.PadEnergyNodeTests" runstate="Runnable" seed="1263319506" result="Passed" start-time="2026-10-30 06:36:14Z" end-time="2026-10-30 06:36:14Z" duration="0.042022" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1149" name="ShaderGraphPrototypeRendersSpatialEnergyVariation" fullname="RailArena.Tests.PadEnergyNodeTests.ShaderGraphPrototypeRendersSpatialEnergyVariation" methodname="ShaderGraphPrototypeRendersSpatialEnergyVariation" classname="RailArena.Tests.PadEnergyNodeTests" runstate="Runnable" seed="1851701718" result="Failed" start-time="2026-10-30 06:36:14Z" end-time="2026-10-30 06:36:16Z" duration="1.900227" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  The graph did not render a spatially varying pad pattern.
+  Expected: greater than 0.0199999996f
+  But was:  0.0f
+]]></message>
+                <stack-trace><![CDATA[at RailArena.Tests.PadEnergyNodeTests.ShaderGraphPrototypeRendersSpatialEnergyVariation () [0x0011c] in F:\Rail Arena\RailArena\Assets\RailArena\Tests\Editor\PadEnergyNodeTests.cs:31
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[PAD_GRAPH_GREEN_RANGE 0 0
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

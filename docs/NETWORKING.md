@@ -93,3 +93,19 @@ Correction diagnostics (`Validation/Duel-Correction-Diagnostics/`) identified an
 The presentation-only `ReconciliationView` preserves camera continuity while its offset decays exponentially, checks static-world obstruction and resets on life/round changes or corrections beyond four metres. Host and offline camera paths are unchanged. All 32 tests passed (`Validation/view-reconciliation-editmode.json`), including continuity, frame-partition independence, reset and wall checks. A separate 60-second impaired smoke test passed for fingerprint `9682ead9...` (`Validation/Duel-View-Reconciliation/`): 40 authoritative shots, 19 validated remote rewinds, one expired timestamp and zero errors. Its raw correction maximum was 1.1975 m. Visual feel remains unapproved; this candidate has not repeated the full ten-minute impaired test. Earlier and latest artifacts remain distinguished by their fingerprints.
 
 For a local development smoke test, run `tools/Test-Duel.ps1`; it uses UDP 17777 by default and launches two hidden players. Manual LAN/internet steps, scoped Windows Firewall examples and router forwarding guidance are in `HOSTING.md`. Actual remote-network verification remains unperformed.
+
+## October 29 movement protocol amendment
+
+Protocol version 5 adds bounded sprint/walk/crouch intent flags and authoritative crouch state. Both peers must use the updated build. See [ADS and movement](ADS-AND-MOVEMENT.md); prior build-specific reports above remain historical.
+
+## Branded ready-room actions / October 29
+
+The menu disables readiness while listening/connecting, then shows Ready Up or Cancel Ready from the actual local-ready state. Results use Ready for Rematch / Cancel Rematch. This exposes the existing connected-state guard; it does not change the wire protocol or match-start rules.
+
+Sprint-slide builds use protocol 6. Slide timers and input history are restored before prediction replay; both peers need the same build. See [SLIDE.md](SLIDE.md).
+
+Automatic-rifle builds use protocol 7, with a bounded three-tick held-fire grace period and server-enforced twelve-tick cadence. See [AUTOMATIC-RIFLE.md](AUTOMATIC-RIFLE.md). Older slide-only builds remain protocol 6.
+
+Current magazine build: 250 RPM, 30 rounds, R reload (2 seconds), unlimited reserve, protocol 8. See [magazine controls and state](MAGAZINES.md). Local player: `F:\Rail Arena\Builds\Magazines-250RPM-2026-10-29\RailArena.exe`. Earlier fire-rate/build qualification remains specific to those preceding players.
+
+The Twin Platforms player uses protocol 9: portal traversal serial/cooldown state, teleport discontinuity handling and bounded variable pickup counts. See [TWIN-PLATFORMS.md](TWIN-PLATFORMS.md). Earlier magazine-only builds remain protocol 8.

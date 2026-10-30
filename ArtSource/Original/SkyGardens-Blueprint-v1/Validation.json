@@ -1,0 +1,22 @@
+{
+  "uniqueMeshIDs": 91,
+  "sheets": 14,
+  "padTrajectories": 4,
+  "nominalPadFlightSeconds": 2,
+  "nominalApexMetres": 25.92,
+  "landingReservationsFitSummitWithCapsuleRadius": 0.4,
+  "blender": {
+    "meshes": 91,
+    "maximumRoundtripBoundsErrorMetres": 1.5258789076710855e-06,
+    "sourceSha256": "7fadbd3e26f42fd459c456890590697a31235a52f23eb0bcacf4ceabba121500",
+    "blender": "5.2.2 LTS",
+    "status": "PASS; construction geometry only, not gameplay or detailed art acceptance"
+  },
+  "unity": {
+    "status": "PASS: direct construction mesh import and bounds, not gameplay validation",
+    "objects": 91,
+    "triangles": 2196,
+    "toleranceMetres": 0.001
+  },
+  "limits": "No actual-controller test, artwork approval or full ornamental geometry lock in this package"
+}

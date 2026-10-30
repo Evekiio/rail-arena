@@ -17,11 +17,14 @@ namespace RailArena
         private ArenaActor actor;
         private ArenaSession session;
         private float recoil;
+        private readonly WeaponRecoil recoilSpring = new();
         private bool grounded;
         private float bodyYaw;
         private float corpseVelocity;
         private float corpseGround;
         private Transform[] surfaceBones;
+        private CrouchPose crouchPose;
+        private Quaternion headAimOffset;
         private static readonly float[] SurfaceMargins = { .17f, .2f, .07f, .07f, .035f, .035f };
 #if UNITY_EDITOR
         [System.NonSerialized] public bool ReviewPlayback;
@@ -40,16 +43,38 @@ namespace RailArena
             bodyYaw = owner.Command.Yaw;
             Animator.applyRootMotion = false;
             Animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+            crouchPose = new CrouchPose(Animator);
             var surfaceIds = new[] { HumanBodyBones.Hips, HumanBodyBones.Head, HumanBodyBones.LeftFoot,
                 HumanBodyBones.RightFoot, HumanBodyBones.LeftHand, HumanBodyBones.RightHand };
             surfaceBones = System.Array.ConvertAll(surfaceIds, bone => Animator.GetBoneTransform(bone));
-            foreach (var renderer in BodyRenderers)
-                renderer.sharedMaterial = Skins[owner.Id % Skins.Length];
+            var skin = (SkinnedMeshRenderer)BodyRenderers[0];
+            int headIndex = System.Array.IndexOf(skin.bones, Animator.GetBoneTransform(HumanBodyBones.Head));
+            var restHead = skin.transform.localToWorldMatrix * skin.sharedMesh.bindposes[headIndex].inverse;
+            var localForward = restHead.inverse.MultiplyVector(transform.forward).normalized;
+            var localUp = restHead.inverse.MultiplyVector(transform.up).normalized;
+            headAimOffset = Quaternion.Inverse(Quaternion.LookRotation(localForward, localUp));
+            ApplySkin(owner.CharacterId);
             foreach (var hitbox in GetComponentsInChildren<Hitbox>(true))
             {
                 hitbox.Actor = owner;
                 hitbox.gameObject.layer = owner.Id == authority.LocalPlayerId ? 10 : 8;
             }
+        }
+
+        public void ApplySkin(int index)
+        {
+            foreach (var renderer in BodyRenderers) ApplyPalette(renderer, Skins[index % Skins.Length]);
+        }
+
+        public static void ApplyPalette(Renderer renderer, Material palette)
+        {
+            renderer.sharedMaterial = palette;
+            // Bind each atlas per renderer rather than relying on shared SRP material texture state.
+            var properties = new MaterialPropertyBlock();
+            renderer.GetPropertyBlock(properties);
+            properties.SetTexture("_BaseMap", palette.GetTexture("_BaseMap"));
+            properties.SetColor("_BaseColor", palette.GetColor("_BaseColor"));
+            renderer.SetPropertyBlock(properties);
         }
 
         private void Update()
@@ -61,8 +86,9 @@ namespace RailArena
             bool worldPaused = session.Paused && !session.IsOnline;
             Animator.speed = worldPaused ? 0 : 1;
             if (worldPaused) return;
+            crouchPose.Restore();
             int chargeTick = actor == session.Human ? session.LocalSimulationTick : session.Match.Tick;
-            Railgun.SetCharge((actor.NextShotTick - chargeTick) / (float)Simulation.CombatRules.ShotIntervalTicks);
+            Railgun.SetCharge((actor.NextShotTick - chargeTick) / (float)Mathf.Max(1, actor.Magazine.LastShotInterval));
             float speed = new Vector2(actor.Velocity.x, actor.Velocity.z).magnitude;
             Vector3 aimForward = Quaternion.Euler(0, actor.Command.Yaw, 0) * Vector3.forward;
             bool backwards = speed > .5f && Vector3.Dot(actor.Velocity, aimForward) < -speed * .2f;
@@ -73,7 +99,8 @@ namespace RailArena
             Animator.SetBool(Dead, !actor.Alive);
             if (onGround && !grounded && actor.Alive) Animator.SetTrigger("Land");
             grounded = onGround;
-            recoil = Mathf.MoveTowards(recoil, 0, Time.deltaTime * 7);
+            recoilSpring.Step(Time.deltaTime);
+            recoil = recoilSpring.Kick;
             if (!actor.Alive) return;
             // Turn the legs toward travel while keeping the torso and weapon aimed at the opponent.
             float aimYaw = actor.Command.Yaw;
@@ -90,16 +117,32 @@ namespace RailArena
             if (actor == null || !actor.Alive) return;
             Quaternion aim = Quaternion.Euler(Mathf.Clamp(actor.Command.Pitch, -65, 65), actor.Command.Yaw, 0);
             Vector3 forward = aim * Vector3.forward;
-            Vector3 right = aim * Vector3.right;
-            Weapon.SetPositionAndRotation(actor.transform.position + Vector3.up * 1.31f + forward * .42f + right * .13f - forward * recoil * .045f, aim);
             Animator.SetLookAtWeight(.85f, .45f, .9f, 0, .55f);
             Animator.SetLookAtPosition(actor.Eye + forward * 15);
-            Hand(AvatarIKGoal.RightHand, RightGrip);
-            Hand(AvatarIKGoal.LeftHand, LeftGrip);
         }
 
         private void LateUpdate()
         {
+            if (actor != null && actor.Alive)
+            {
+                Quaternion aim = Quaternion.Euler(Mathf.Clamp(actor.Command.Pitch, -65, 65), actor.Command.Yaw, 0);
+                ArmContactPose.AlignBody(Animator);
+                ApplyStance();
+                var chest = Animator.GetBoneTransform(HumanBodyBones.Chest);
+                var head = Animator.GetBoneTransform(HumanBodyBones.Head);
+                var leftArm = Animator.GetBoneTransform(HumanBodyBones.LeftUpperArm);
+                var rightArm = Animator.GetBoneTransform(HumanBodyBones.RightUpperArm);
+                var chestAxis = Vector3.ProjectOnPlane(rightArm.position - leftArm.position, Vector3.up);
+                var facing = Quaternion.FromToRotation(chestAxis, Quaternion.Euler(0, actor.Command.Yaw, 0) * Vector3.right);
+                chest.rotation = Quaternion.AngleAxis(35, Vector3.up) * facing * chest.rotation;
+                head.rotation = aim * headAimOffset;
+                var shoulder = Animator.GetBoneTransform(HumanBodyBones.RightUpperArm);
+                var contact = shoulder.position + aim * new Vector3(.015f, .02f, -.04f);
+                aim *= Quaternion.Euler(-2.5f * recoil, 0, 0);
+                Weapon.SetPositionAndRotation(contact - aim * Railgun.Shoulder.localPosition - aim * Vector3.forward * recoil * .025f, aim);
+                ArmContactPose.Apply(Animator, true, LeftGrip);
+                ArmContactPose.Apply(Animator, false, RightGrip);
+            }
             if (actor != null) Hands.SetRecoil(actor.Alive ? recoil : 0);
             if (actor == null || actor.Alive) return;
             bool paused = session.Paused && !session.IsOnline;
@@ -119,19 +162,18 @@ namespace RailArena
             }
         }
 
-        private void Hand(AvatarIKGoal hand, Transform grip)
+        public void Fired() { recoilSpring.Fire(); }
+        public void ApplyStance()
         {
-            Animator.SetIKPositionWeight(hand, 1);
-            Animator.SetIKRotationWeight(hand, 1);
-            Animator.SetIKPosition(hand, grip.position);
-            Animator.SetIKRotation(hand, grip.rotation);
+            if (crouchPose == null) return;
+            crouchPose.Restore();
+            if (actor.Alive && actor.IsCrouched) crouchPose.Apply();
         }
-
-        public void Fired() { recoil = 1; }
         public void Hit() { if (actor != null && actor.Alive) Animator.SetTrigger("Hit"); }
 
         public void SetAlive(bool alive)
         {
+            crouchPose?.Restore();
             Weapon.gameObject.SetActive(alive);
             foreach (var box in GetComponentsInChildren<Hitbox>(true)) box.GetComponent<Collider>().enabled = alive;
             if (alive)
@@ -141,6 +183,7 @@ namespace RailArena
                 Animator.Update(0);
                 Animator.SetBool(Dead, false);
                 recoil = 0;
+                recoilSpring.Reset();
             }
             else
             {

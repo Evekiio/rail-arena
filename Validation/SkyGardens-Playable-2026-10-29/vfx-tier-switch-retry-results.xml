@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Failed(Child)" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 07:42:37Z" end-time="2026-10-30 07:42:40Z" duration="3.3318938">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="255" result="Failed" site="Child" start-time="2026-10-30 07:42:37Z" end-time="2026-10-30 07:42:40Z" duration="3.331894" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1374" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="255" result="Failed" site="Child" start-time="2026-10-30 07:42:37Z" end-time="2026-10-30 07:42:40Z" duration="3.312292" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="50420" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1375" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="255" result="Failed" site="Child" start-time="2026-10-30 07:42:37Z" end-time="2026-10-30 07:42:40Z" duration="3.283318" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1376" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="255" result="Failed" site="Child" start-time="2026-10-30 07:42:37Z" end-time="2026-10-30 07:42:40Z" duration="3.273456" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1283" name="TraversalVfxArenaCameraTests" fullname="RailArena.Tests.TraversalVfxArenaCameraTests" classname="RailArena.Tests.TraversalVfxArenaCameraTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-10-30 07:42:37Z" end-time="2026-10-30 07:42:39Z" duration="2.419536" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1284" name="ArenaMainCameraRetainsDepthRequestWhenPortalViewRenders" fullname="RailArena.Tests.TraversalVfxArenaCameraTests.ArenaMainCameraRetainsDepthRequestWhenPortalViewRenders" methodname="ArenaMainCameraRetainsDepthRequestWhenPortalViewRenders" classname="RailArena.Tests.TraversalVfxArenaCameraTests" runstate="Runnable" seed="335943671" result="Failed" start-time="2026-10-30 07:42:37Z" end-time="2026-10-30 07:42:39Z" duration="2.393898" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: greater than or equal to 2000
+  But was:  0
+]]></message>
+                <stack-trace><![CDATA[at RailArena.Tests.TraversalVfxArenaCameraTests+<ArenaMainCameraRetainsDepthRequestWhenPortalViewRenders>d__0.MoveNext () [0x00439] in F:\Rail Arena\RailArena\Assets\RailArena\Tests\Editor\TraversalVfxArenaCameraTests.cs:48
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ee3fe9477490\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[TRAVERSAL_ARENA_DEPTH main=None portal=None particles=0 portalRendered=True
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1349" name="TraversalVfxPipelineSwitchTests" fullname="RailArena.Tests.TraversalVfxPipelineSwitchTests" classname="RailArena.Tests.TraversalVfxPipelineSwitchTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-10-30 07:42:39Z" end-time="2026-10-30 07:42:40Z" duration="0.820559" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1350" name="CandidateStillEmitsAfterGraphicsTierChanges" fullname="RailArena.Tests.TraversalVfxPipelineSwitchTests.CandidateStillEmitsAfterGraphicsTierChanges" methodname="CandidateStillEmitsAfterGraphicsTierChanges" classname="RailArena.Tests.TraversalVfxPipelineSwitchTests" runstate="Runnable" seed="56920509" result="Failed" start-time="2026-10-30 07:42:39Z" end-time="2026-10-30 07:42:40Z" duration="0.819697" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  High
+  Expected: greater than or equal to 2000
+  But was:  0
+]]></message>
+                <stack-trace><![CDATA[at RailArena.Tests.TraversalVfxPipelineSwitchTests+<CandidateStillEmitsAfterGraphicsTierChanges>d__0.MoveNext () [0x0044d] in F:\Rail Arena\RailArena\Assets\RailArena\Tests\Editor\TraversalVfxPipelineSwitchTests.cs:53
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ee3fe9477490\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[VFX_AFTER_TIER_SWITCH High particles=0
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

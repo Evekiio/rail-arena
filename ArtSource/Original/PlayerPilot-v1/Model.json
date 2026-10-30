@@ -1,0 +1,154 @@
+{
+  "sourceAuthority": "Approved-Concept.png; Final player sheets expand construction for review",
+  "references": [
+    {
+      "file": "ArtSource/Original/StylizedContenders/References-v1/Final/Approved-Concept.png",
+      "sha256": "d22f6121ed9c98b39bdb66f8023c841b14f19e049bf93d5a47204735fa1ee92d"
+    },
+    {
+      "file": "ArtSource/Original/StylizedContenders/References-v1/Final/Player-Axial.png",
+      "sha256": "7e8f13271aaa3cd1b0d543b88a522ef0c7429b7693c948baf84aa2062501a12a"
+    },
+    {
+      "file": "ArtSource/Original/StylizedContenders/References-v1/Final/Player-Details.png",
+      "sha256": "2dddd9fa103285196ab5e4964780dc8801bd1fc5601d09784ee075f65bc9af83"
+    },
+    {
+      "file": "ArtSource/Original/StylizedContenders/References-v1/Final/Player-Head.png",
+      "sha256": "8f61e078868ec485d5c8dda634202fcb325a2a83d620b6d6b9f24a09f9bd2dd3"
+    },
+    {
+      "file": "ArtSource/Original/StylizedContenders/References-v1/Final/Player-Turnaround.png",
+      "sha256": "e16dd75d616580512165b02487175d44bb7289d77625a8feb00e55f2fbf32255"
+    }
+  ],
+  "methods": [
+    "reference-first proportions",
+    "single editable master",
+    "named contact anchors in Unity",
+    "six-side and underside inspection",
+    "connected facial volume",
+    "separate material responses",
+    "normalized four-influence skin",
+    "shared-rig deformation and contact sampling"
+  ],
+  "decisions": [
+    "Retain existing metre-scale skeleton and its gameplay-compatible proportions.",
+    "Concept drawings are appearance guides, not pixel-calibrated projections.",
+    "Boot outer cyan ankle inset is on anatomical right only; sole inserts are separate.",
+    "Rig and reference extensions remain subject to creator review."
+  ],
+  "editableParts": 288,
+  "bones": 62,
+  "lods": [
+    {
+      "level": 0,
+      "triangles": 16342,
+      "vertices": 8767,
+      "materials": [
+        "PlayerPilot runtime surface"
+      ]
+    },
+    {
+      "level": 1,
+      "triangles": 9306,
+      "vertices": 5247,
+      "materials": [
+        "PlayerPilot runtime surface"
+      ]
+    },
+    {
+      "level": 2,
+      "triangles": 4314,
+      "vertices": 2786,
+      "materials": [
+        "PlayerPilot runtime surface"
+      ]
+    }
+  ],
+  "linearMaterials": {
+    "armor": [
+      0.68,
+      0.61,
+      0.47
+    ],
+    "armorShade": [
+      0.4,
+      0.36,
+      0.29
+    ],
+    "cloth": [
+      0.018,
+      0.022,
+      0.026
+    ],
+    "scarf": [
+      0.019,
+      0.079,
+      0.095
+    ],
+    "skin": [
+      0.46,
+      0.245,
+      0.126
+    ],
+    "skinShade": [
+      0.24,
+      0.099,
+      0.047
+    ],
+    "hair": [
+      0.018,
+      0.012,
+      0.01
+    ],
+    "hairLight": [
+      0.032,
+      0.021,
+      0.017
+    ],
+    "accent": [
+      0.012,
+      0.55,
+      0.72
+    ],
+    "metal": [
+      0.27,
+      0.28,
+      0.26
+    ],
+    "rubber": [
+      0.008,
+      0.011,
+      0.013
+    ],
+    "eye": [
+      0.76,
+      0.72,
+      0.63
+    ],
+    "iris": [
+      0.075,
+      0.042,
+      0.015
+    ],
+    "lip": [
+      0.29,
+      0.125,
+      0.064
+    ],
+    "stitch": [
+      0.42,
+      0.37,
+      0.28
+    ],
+    "white": [
+      0.95,
+      0.95,
+      0.95
+    ]
+  },
+  "currentPlayableAssetsReplaced": false,
+  "faceRevision": 2,
+  "shoulderBinding": "Rigid pauldrons follow clavicles; upper arms articulate beneath them"
+}

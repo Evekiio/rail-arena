@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 04:02:34Z" end-time="2026-10-30 04:02:36Z" duration="1.5107032">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="208" result="Passed" start-time="2026-10-30 04:02:34Z" end-time="2026-10-30 04:02:36Z" duration="1.510703" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1289" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="208" result="Passed" start-time="2026-10-30 04:02:34Z" end-time="2026-10-30 04:02:36Z" duration="1.480390" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="72976" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1290" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="208" result="Passed" start-time="2026-10-30 04:02:34Z" end-time="2026-10-30 04:02:36Z" duration="1.472545" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1291" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="208" result="Passed" start-time="2026-10-30 04:02:34Z" end-time="2026-10-30 04:02:36Z" duration="1.466816" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1278" name="TraversalVfxDirectionalPerspectiveTests" fullname="RailArena.Tests.TraversalVfxDirectionalPerspectiveTests" classname="RailArena.Tests.TraversalVfxDirectionalPerspectiveTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 04:02:34Z" end-time="2026-10-30 04:02:36Z" duration="1.456300" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1279" name="CaptureMatchedBurstsAboveVisibleFloor" fullname="RailArena.Tests.TraversalVfxDirectionalPerspectiveTests.CaptureMatchedBurstsAboveVisibleFloor" methodname="CaptureMatchedBurstsAboveVisibleFloor" classname="RailArena.Tests.TraversalVfxDirectionalPerspectiveTests" runstate="Runnable" seed="1499150027" result="Passed" start-time="2026-10-30 04:02:34Z" end-time="2026-10-30 04:02:36Z" duration="1.428236" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[TRAVERSAL_DEPTH_CROSSING free frame=25 particles=2048 F:\Rail Arena\Validation\SkyGardens-Playable-2026-10-29\TraversalVfxDirectionalPerspective\free-25-20261030-040235-637.png
+TRAVERSAL_DEPTH_CROSSING_BELOW free 2
+TRAVERSAL_DEPTH_CROSSING free frame=35 particles=2048 F:\Rail Arena\Validation\SkyGardens-Playable-2026-10-29\TraversalVfxDirectionalPerspective\free-35-20261030-040235-713.png
+TRAVERSAL_DEPTH_CROSSING free frame=45 particles=2048 F:\Rail Arena\Validation\SkyGardens-Playable-2026-10-29\TraversalVfxDirectionalPerspective\free-45-20261030-040235-773.png
+TRAVERSAL_DEPTH_CROSSING depth frame=25 particles=2048 F:\Rail Arena\Validation\SkyGardens-Playable-2026-10-29\TraversalVfxDirectionalPerspective\depth-25-20261030-040235-927.png
+TRAVERSAL_DEPTH_CROSSING_BELOW depth 0
+TRAVERSAL_DEPTH_CROSSING depth frame=35 particles=2048 F:\Rail Arena\Validation\SkyGardens-Playable-2026-10-29\TraversalVfxDirectionalPerspective\depth-35-20261030-040235-991.png
+TRAVERSAL_DEPTH_CROSSING depth frame=45 particles=2048 F:\Rail Arena\Validation\SkyGardens-Playable-2026-10-29\TraversalVfxDirectionalPerspective\depth-45-20261030-040236-059.png
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

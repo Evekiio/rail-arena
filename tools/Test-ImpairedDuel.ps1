@@ -7,7 +7,8 @@ param(
     [double]$JitterMs = 10,
     [double]$Loss = .05,
     [int]$Seed = 7191,
-    [switch]$FullMatch
+    [switch]$FullMatch,
+    [switch]$MovementModes
 )
 $ErrorActionPreference = 'Stop'
 $railOutputDirectory = [IO.Path]::GetFullPath($OutputDirectory)
@@ -35,7 +36,7 @@ try {
         if (-not $railReady) { Start-Sleep -Milliseconds 50 }
     } while (-not $railReady -and [DateTime]::UtcNow -lt $railReadyDeadline)
     if (-not $railReady) { throw 'The impairment relay did not become ready.' }
-    & (Join-Path $PSScriptRoot 'Test-Duel.ps1') -Build $Build -OutputDirectory $railOutputDirectory -Port $Port -ClientPort $railRelayPort -Duration $Duration -FullMatch:$FullMatch
+    & (Join-Path $PSScriptRoot 'Test-Duel.ps1') -Build $Build -OutputDirectory $railOutputDirectory -Port $Port -ClientPort $railRelayPort -Duration $Duration -FullMatch:$FullMatch -MovementModes:$MovementModes
 } finally {
     [IO.File]::WriteAllText($railStopPath, 'stop')
     if (-not $railRelay.WaitForExit(5000)) { $railRelay.Kill(); throw 'The impairment relay did not stop gracefully.' }

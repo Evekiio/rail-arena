@@ -1,0 +1,26 @@
+{
+    "graphicsApi": "Direct3D12",
+    "gpu": "NVIDIA GeForce RTX 2080",
+    "padCount": 4,
+    "portalCount": 2,
+    "tiers": [
+        {
+            "tier": "High",
+            "shader": "Unlit/PadEnergy",
+            "supported": true,
+            "burstDifference": 1.3165104166666666
+        },
+        {
+            "tier": "Balanced",
+            "shader": "Unlit/PadEnergy",
+            "supported": true,
+            "burstDifference": 1.3286805555555556
+        },
+        {
+            "tier": "Performance",
+            "shader": "Unlit/PadEnergy",
+            "supported": true,
+            "burstDifference": 1.519670138888889
+        }
+    ]
+}

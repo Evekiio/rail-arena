@@ -28,7 +28,7 @@ namespace RailArena.Networking
         {
             public int Tick = -1;
             public Pose[] Poses;
-            public int[] Lives;
+            public int[] Lives, Teleports;
             public bool[] Alive;
         }
         private sealed class Shape
@@ -80,7 +80,7 @@ namespace RailArena.Networking
                 }
                 shapes = built.ToArray();
                 for (int i = 0; i < frames.Length; i++)
-                    frames[i] = new Frame { Poses = new Pose[shapes.Length], Lives = new int[actors.Length], Alive = new bool[actors.Length] };
+                    frames[i] = new Frame { Poses = new Pose[shapes.Length], Lives = new int[actors.Length], Teleports = new int[actors.Length], Alive = new bool[actors.Length] };
             }
             catch { Dispose(); throw; }
         }
@@ -92,7 +92,7 @@ namespace RailArena.Networking
             var frame = frames[tick % frames.Length];
             frame.Tick = latestTick = tick;
             for (int i = 0; i < actors.Length; i++)
-            { frame.Alive[i] = actors[i].Alive; frame.Lives[i] = actors[i].Life; }
+            { frame.Alive[i] = actors[i].Alive; frame.Lives[i] = actors[i].Life; frame.Teleports[i] = actors[i].TeleportSerial; }
             for (int i = 0; i < shapes.Length; i++)
             {
                 var transform = shapes[i].Source.transform;
@@ -100,14 +100,14 @@ namespace RailArena.Networking
             }
         }
 
-        public HistoricalHit Trace(int authorityTick, int viewedTick, ArenaActor shooter, MovementCommand? shot = null)
+        public HistoricalHit Trace(int authorityTick, int viewedTick, ArenaActor shooter, MovementCommand? shot = null, Vector3? shotDirection = null)
         {
             if (disposed) throw new ObjectDisposedException(nameof(HitboxHistory));
-            Vector3 direction = shot.HasValue ? Quaternion.Euler(shot.Value.Pitch, shot.Value.Yaw, 0) * Vector3.forward : shooter.AimDirection;
+            Vector3 direction = shotDirection ?? (shot.HasValue ? Quaternion.Euler(shot.Value.Pitch, shot.Value.Yaw, 0) * Vector3.forward : shooter.AimDirection);
             var ray = new Ray(shooter.Eye, direction);
             float nearest = 180;
             Vector3 end = ray.GetPoint(nearest);
-            if (Physics.Raycast(ray, out var wall, nearest, 1 << 0, QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(ray, out var wall, nearest, 1 << 0, QueryTriggerInteraction.Collide))
             { nearest = wall.distance; end = wall.point; }
             if (authorityTick != latestTick || viewedTick < 0 || viewedTick > authorityTick ||
                 (long)authorityTick - viewedTick > CombatRules.MaximumRewindTicks)
@@ -125,7 +125,7 @@ namespace RailArena.Networking
                 {
                     var shape = shapes[i];
                     int index = shape.ActorIndex;
-                    if (index == shooterIndex || !actors[index].Alive || !frame.Alive[index] || frame.Lives[index] != actors[index].Life) continue;
+                    if (index == shooterIndex || !actors[index].Alive || !frame.Alive[index] || frame.Lives[index] != actors[index].Life || frame.Teleports[index] != actors[index].TeleportSerial) continue;
                     var pose = frame.Poses[i];
                     shape.Proxy.transform.SetPositionAndRotation(pose.Position, pose.Rotation);
                     shape.Proxy.transform.localScale = pose.Scale;
@@ -155,3 +155,4 @@ namespace RailArena.Networking
         }
     }
 }
+

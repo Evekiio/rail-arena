@@ -3,12 +3,14 @@ using UnityEngine;
 namespace RailArena
 {
     /// <summary>Cosmetic arm-only rig. It observes weapon grips and never owns gameplay or hurtboxes.</summary>
+    [DefaultExecutionOrder(50)]
     public sealed class FirstPersonArms : MonoBehaviour
     {
         public Animator Animator;
         public SkinnedMeshRenderer Surface;
         public HandArticulation Hands;
         private RailgunPresentation weapon;
+        public int LastPoseFrame { get; private set; } = -1;
 
         public static FirstPersonArms CreateOnWeapon(RailgunPresentation railgun)
         {
@@ -17,6 +19,7 @@ namespace RailArena
                 throw new System.InvalidOperationException("The view-arm prefab or railgun grip markers are missing.");
             var arms = Object.Instantiate(prefab, railgun.transform, false).GetComponent<FirstPersonArms>();
             arms.Initialize(railgun);
+            railgun.ConfigureFirstPerson();
             return arms;
         }
 
@@ -25,27 +28,19 @@ namespace RailArena
             weapon = railgun;
             Animator.applyRootMotion = false;
             Animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+            Animator.Rebind();
+            Animator.Update(0);
         }
 
         public void SetRecoil(float strength) => Hands.SetRecoil(strength);
 
-        private void OnAnimatorIK(int layer)
+        private void LateUpdate()
         {
             if (weapon == null) return;
-            Hand(AvatarIKGoal.LeftHand, weapon.LeftGrip);
-            Hand(AvatarIKGoal.RightHand, weapon.RightGrip);
-            Animator.SetIKHintPositionWeight(AvatarIKHint.LeftElbow, .85f);
-            Animator.SetIKHintPositionWeight(AvatarIKHint.RightElbow, .85f);
-            Animator.SetIKHintPosition(AvatarIKHint.LeftElbow, transform.TransformPoint(new Vector3(-.4f, 1.16f, .12f)));
-            Animator.SetIKHintPosition(AvatarIKHint.RightElbow, transform.TransformPoint(new Vector3(.38f, 1.18f, .1f)));
-        }
-
-        private void Hand(AvatarIKGoal hand, Transform grip)
-        {
-            Animator.SetIKPositionWeight(hand, 1);
-            Animator.SetIKRotationWeight(hand, 1);
-            Animator.SetIKPosition(hand, grip.position);
-            Animator.SetIKRotation(hand, grip.rotation);
+            ArmContactPose.AlignBody(Animator);
+            ArmContactPose.Apply(Animator, true, weapon.LeftGrip);
+            ArmContactPose.Apply(Animator, false, weapon.RightGrip);
+            LastPoseFrame = Time.frameCount;
         }
     }
 }

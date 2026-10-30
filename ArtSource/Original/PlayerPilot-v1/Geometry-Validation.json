@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "lods": [
+    {
+      "level": 0,
+      "triangles": 16342,
+      "vertices": 8767,
+      "bones": 54,
+      "fingerBones": 30,
+      "boundsMetres": [
+        1.0912144184112549,
+        0.33350032567977905,
+        1.8817446869798005
+      ],
+      "maximumWeightError": 2.9802322387695312e-08
+    },
+    {
+      "level": 1,
+      "triangles": 9304,
+      "vertices": 5247,
+      "bones": 54,
+      "fingerBones": 30,
+      "boundsMetres": [
+        1.0912144184112549,
+        0.33250032365322113,
+        1.8817159575410187
+      ],
+      "maximumWeightError": 2.9802322387695312e-08
+    },
+    {
+      "level": 2,
+      "triangles": 4286,
+      "vertices": 2786,
+      "bones": 54,
+      "fingerBones": 30,
+      "boundsMetres": [
+        1.0863476395606995,
+        0.33250032365322113,
+        1.8817159426398575
+      ],
+      "maximumWeightError": 2.9802322387695312e-08
+    }
+  ],
+  "authoringControls": [
+    {
+      "control": "CTRL-hand.L",
+      "targetErrorMetres": 2.9371640048836674e-06
+    },
+    {
+      "control": "CTRL-foot.L",
+      "targetErrorMetres": 2.112288871771816e-06
+    },
+    {
+      "control": "CTRL-hand.R",
+      "targetErrorMetres": 1.3307175280704648e-06
+    },
+    {
+      "control": "CTRL-foot.R",
+      "targetErrorMetres": 1.402372655830486e-06
+    }
+  ],
+  "scope": "Finite geometry, nondegenerate triangles, UV presence, skin normalization, scale, finger skeleton and LOD reduction. Artistic/deformation acceptance is separate."
+}

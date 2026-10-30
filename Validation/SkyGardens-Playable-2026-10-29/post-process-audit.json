@@ -1,0 +1,56 @@
+{
+    "pipeline": "PC_RPAsset",
+    "graphicsApi": "Direct3D12",
+    "antialiasing": "SubpixelMorphologicalAntiAliasing",
+    "toneMapping": "ACES",
+    "postProcessing": true,
+    "bloomActive": true,
+    "motionBlurActive": true,
+    "shaders": [
+        {
+            "name": "Bloom",
+            "found": true,
+            "supported": true
+        },
+        {
+            "name": "CameraMotionBlur",
+            "found": true,
+            "supported": true
+        },
+        {
+            "name": "LutBuilderHdr",
+            "found": true,
+            "supported": true
+        },
+        {
+            "name": "UberPost",
+            "found": true,
+            "supported": true
+        },
+        {
+            "name": "FinalPost",
+            "found": true,
+            "supported": true
+        },
+        {
+            "name": "SubpixelMorphologicalAntialiasing",
+            "found": true,
+            "supported": true
+        },
+        {
+            "name": "GaussianDepthOfField",
+            "found": true,
+            "supported": false
+        },
+        {
+            "name": "BokehDepthOfField",
+            "found": true,
+            "supported": false
+        },
+        {
+            "name": "PaniniProjection",
+            "found": true,
+            "supported": false
+        }
+    ]
+}

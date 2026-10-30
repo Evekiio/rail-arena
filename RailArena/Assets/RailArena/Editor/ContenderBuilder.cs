@@ -18,6 +18,7 @@ namespace RailArena.Editor
         [MenuItem("Rail Arena/Build animated contender")]
         public static void Build()
         {
+            if (StylizedContenderBuilder.ModelsReady) { StylizedContenderBuilder.Build(); return; }
             Directory.CreateDirectory(Root);
             Directory.CreateDirectory("Assets/Resources/Characters");
             AssetDatabase.Refresh();
@@ -284,16 +285,22 @@ namespace RailArena.Editor
         [MenuItem("Rail Arena/Update contender weapon")]
         public static void UpdateWeapon()
         {
-            const string path = "Assets/Resources/Characters/Contender.prefab";
-            var root = PrefabUtility.LoadPrefabContents(path);
-            try
+            foreach (string path in new[] { "Assets/Resources/Characters/Contender.prefab",
+                "Assets/Resources/Characters/Stylized/Bot01.prefab", "Assets/Resources/Characters/Stylized/Bot02.prefab",
+                "Assets/Resources/Characters/Stylized/Bot03.prefab" })
             {
-                var presentation = root.GetComponent<ContenderPresentation>();
-                if (presentation.Weapon != null) UnityEngine.Object.DestroyImmediate(presentation.Weapon.gameObject);
-                Weapon(root.transform, presentation);
-                PrefabUtility.SaveAsPrefabAsset(root, path);
+                if (!System.IO.File.Exists(path)) continue;
+                var root = PrefabUtility.LoadPrefabContents(path);
+                try
+                {
+                    var presentation = root.GetComponent<ContenderPresentation>();
+                    if (presentation.Weapon != null) UnityEngine.Object.DestroyImmediate(presentation.Weapon.gameObject);
+                    Weapon(root.transform, presentation);
+                    HandGripAuthoring.Apply(presentation.Hands);
+                    PrefabUtility.SaveAsPrefabAsset(root, path);
+                }
+                finally { PrefabUtility.UnloadPrefabContents(root); }
             }
-            finally { PrefabUtility.UnloadPrefabContents(root); }
         }
 
         private static void Save(UnityEngine.Object obj, string path)

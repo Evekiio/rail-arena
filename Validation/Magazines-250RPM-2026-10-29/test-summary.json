@@ -1,0 +1,14 @@
+{
+  "distinctCases": 8,
+  "latestNonpassing": {},
+  "results": {
+    "RailArena.Tests.AutomaticRifleTests.HeldInputUses250RpmScheduleAndReleaseStopsWithoutQueuedBurst": "Passed",
+    "RailArena.Tests.MagazineHudTests.ReloadKeyBlocksFireCompletesAndHudFitsAllReviewSizes": "Passed",
+    "RailArena.Tests.RifleMagazineTests.EmptyMagazineCannotFireAndOnlyReloadCompletionRefillsIt": "Passed",
+    "RailArena.Tests.RifleMagazineTests.FullReloadIsIgnoredAndRepeatedRequestsCannotRestartAReload": "Passed",
+    "RailArena.Tests.RifleMagazineTests.ReloadInputSurvivesOneBurstAndIsNeverRepeatedDuringPacketGaps": "Passed",
+    "RailArena.Tests.RifleMagazineTests.SustainedCadenceIsExactly250RpmWithoutFractionalDrift": "Passed",
+    "RailArena.Tests.RifleMagazineTests.WirePreservesAmmoReloadDeadlineAndCadencePhaseAndRejectsInvalidState": "Passed",
+    "RailArena.Tests.SnapshotLifecycleTests.MagazineReplayRestoresReloadAndConsumesPendingShotExactlyOnce": "Passed"
+  }
+}

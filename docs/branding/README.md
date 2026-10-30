@@ -37,3 +37,7 @@ These are working graphic palette values; the generated bevels and scene lightin
 - Keep real gameplay captures captioned separately from concept artwork. Current development/release status stays in the main README.
 
 The source images were generated with the built-in `image_gen` tool. The final PNGs retain their original native pixels and transparency.
+
+## In-game interface system
+
+The October 29 menu/HUD build applies this identity throughout the game with Barlow typography, licensed Lucide icons, native focus/back navigation and compact combat instrumentation. See the [interface specification and validation scope](INTERFACE.md). The original wordmark artwork remains unchanged.

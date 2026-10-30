@@ -1,0 +1,164 @@
+--- previous/Runtime/ArenaActor.cs
++++ slide/Runtime/ArenaActor.cs
+@@ -8,6 +8,8 @@
+         public const float StandingHeight = 1.8f, CrouchingHeight = 1.2f;
+         public const float StandingEyeHeight = 1.58f, CrouchingEyeHeight = .98f;
+         public bool IsCrouched { get; private set; }
++        public SlideState Slide;
++        public bool IsSliding => Slide.Active;
+         private readonly Collider[] standingOverlaps = new Collider[16];
+         public int Id;
+         public int CharacterId;
+@@ -40,10 +42,14 @@
+ 
+         public void Move(MovementTuning tuning)
+         {
+-            if (Command.Crouch || !IsCrouched || CanStand()) SetCrouched(Command.Crouch);
++            bool grounded = Grounded && AirborneTicks == 0;
++            bool sliding = SlideMovement.Step(ref Slide, Velocity, Command, grounded);
++            bool crouch = sliding || Command.Crouch;
++            if (crouch || !IsCrouched || CanStand()) SetCrouched(crouch);
+             var movement = Command;
+             movement.Crouch = IsCrouched;
+-            Velocity = ArenaMovement.Integrate(Velocity, movement, Grounded && AirborneTicks == 0, tuning, 1f / CombatRules.TickRate);
++            Velocity = sliding ? SlideMovement.Integrate(Velocity, movement, tuning, 1f / CombatRules.TickRate) :
++                ArenaMovement.Integrate(Velocity, movement, grounded, tuning, 1f / CombatRules.TickRate);
+             GroundedOverride = null;
+             if (AirborneTicks > 0) AirborneTicks--;
+             var flags = Controller.Move(Velocity / CombatRules.TickRate);
+@@ -56,6 +62,7 @@
+         {
+             Controller.enabled = false;
+             SetCrouched(false);
++            Slide = default;
+             GroundedOverride = null;
+             transform.position = position;
+             Velocity = Vector3.zero;
+@@ -87,6 +94,7 @@
+ 
+         public void SetAlive(bool alive)
+         {
++            if (!alive) Slide = default;
+             Controller.enabled = alive;
+             Presentation.SetAlive(alive);
+         }
+--- previous/Runtime/ArenaSession.Network.cs
++++ slide/Runtime/ArenaSession.Network.cs
+@@ -236,7 +236,7 @@
+                     Yaw = Mathf.Repeat(actor.Command.Yaw, 360), Pitch = actor.Command.Pitch, Health = actor.Health, Life = actor.Life,
+                     NextShotTick = actor.NextShotTick, RespawnTick = actor.RespawnTick, PadReadyTick = actor.PadReadyTick,
+                     AirborneTicks = actor.AirborneTicks, Score = Match.Scores[actor.Id],
+-                    LastInput = actor.Id == 1 ? remoteInputs.LastConsumed : 0, Grounded = actor.Grounded, Crouched = actor.IsCrouched,
++                    LastInput = actor.Id == 1 ? remoteInputs.LastConsumed : 0, Grounded = actor.Grounded, Crouched = actor.IsCrouched, Slide = actor.Slide,
+                     ShotSerial = actor.ShotSerial, HitSerial = actor.HitSerial, ShotEnd = actor.LastShotEnd,
+                     Statistics = Match.Statistics[actor.Id] };
+             for (int i = 0; i < 3; i++) state.PickupTicks[i] = World.Pickups[i].AvailableTick;
+@@ -384,6 +384,7 @@
+             actor.Controller.enabled = false;
+             actor.transform.position = state.Position;
+             actor.SetCrouched(state.Crouched);
++            actor.Slide = state.Slide;
+             actor.Controller.enabled = local && actor.Alive;
+             actor.Velocity = state.Velocity;
+             actor.GroundedOverride = state.Grounded;
+@@ -415,6 +416,7 @@
+             opponent.GroundedOverride = b.Grounded;
+             opponent.AirborneTicks = b.AirborneTicks;
+             opponent.SetCrouched(blend < 1 ? a.Crouched : b.Crouched);
++            opponent.Slide = blend < 1 ? a.Slide : b.Slide;
+             opponent.Command = new MovementCommand { Yaw = Mathf.LerpAngle(a.Yaw, b.Yaw, blend), Pitch = Mathf.Lerp(a.Pitch, b.Pitch, blend) };
+         }
+ 
+@@ -427,6 +429,7 @@
+                 if (tick < actor.PadReadyTick || Mathf.Abs(offset.y) >= 1 || new Vector2(offset.x, offset.z).magnitude >= 1.5f) continue;
+                 actor.Velocity = pad.Launch(actor.transform.position, Tuning.Gravity);
+                 actor.AirborneTicks = 2;
++                actor.Slide.RemainingTicks = 0;
+                 if (actor.Bot || AutomatedHuman) actor.Brain.Launched(World.NearestNode(pad.Destination));
+                 actor.PadReadyTick = tick + 90;
+                 if (authoritative) padCount++;
+--- previous/Runtime/ArenaHud.Combat.cs
++++ slide/Runtime/ArenaHud.Combat.cs
+@@ -102,11 +102,11 @@
+             combatRoot.SetActive(visible);
+             if (!visible) return;
+             var human = Session.Human; var match = Session.Match;
+-            string movement=human.IsCrouched?"CROUCH":human.Command.Walk?"WALK":human.Command.Sprint&&human.Command.Move.y>0?"SPRINT":"MOVE";
++            string movement=human.IsSliding?"SLIDE":human.IsCrouched?"CROUCH":human.Command.Walk?"WALK":human.Command.Sprint&&human.Command.Move.y>0?"SPRINT":"MOVE";
+             if(displayedMovement!=movement)
+             {
+                 displayedMovement=movement;movementLabel.text=movement;
+-                movementIcon.texture=Resources.Load<Texture2D>("UI/Brand/Icons/"+(movement=="CROUCH"?"crouch":movement=="SPRINT"?"sprint":"walk"));
++                movementIcon.texture=Resources.Load<Texture2D>("UI/Brand/Icons/"+((movement=="CROUCH"||movement=="SLIDE")?"crouch":movement=="SPRINT"?"sprint":"walk"));
+             }
+             int remaining = Mathf.Max(0, human.NextShotTick - Session.LocalSimulationTick);
+             float ready = 1 - Mathf.Clamp01(remaining / (float)CombatRules.ShotIntervalTicks);
+--- previous/Runtime/ArenaHud.QuickStart.cs
++++ slide/Runtime/ArenaHud.QuickStart.cs
+@@ -18,7 +18,7 @@
+                 "ONLINE MATCHES KEEP RUNNING WHILE MENUS ARE OPEN":"ONE RIFLE. FIND YOUR RHYTHM. KEEP MOVING.",22,
+                 new Vector2(.1f,.73f),new Vector2(.94f,.79f));
+             subtitle.color=Session.IsOnline?amber:Color.white;
+-            QuickCard("Controls","MOVE / AIM", "W A S D / Move   SPACE / Jump or hop\nSHIFT / Sprint   ALT / Walk   CTRL / Crouch\nLEFT MOUSE / One shot per click\nHOLD RIGHT MOUSE / 1.5x zoom (ADS)\nTAB / Standings   ESC / Pause or resume",.095f,.49f);
++            QuickCard("Controls","MOVE / AIM", "W A S D / Move   SPACE / Jump or hop\nSHIFT / Sprint   ALT / Walk   CTRL / Crouch\nSprint + CTRL / Slide; 0.6s, momentum only\nLEFT MOUSE / One shot per click\nHOLD RIGHT MOUSE / 1.5x zoom (ADS)\nTAB / Standings   ESC / Pause or resume",.095f,.49f);
+             int minutes=CombatRules.MatchTicks/(CombatRules.TickRate*60);
+             QuickCard("Modes","CHOOSE YOUR SESSION", "SOLO PRACTICE  /  Explore with zero bots\nTARGET DRILLS  /  Stationary or moving bots\nCOMBAT PRACTICE  /  Untimed opponents\n"+$"BOT MATCH  /  1-{CombatRules.MaximumBots} bots; combat AI\n"+
+                 $"MATCHES  /  {minutes} minutes; most points wins\nTIED LEADERS  /  Next kill wins",.53f,.94f);
+@@ -38,7 +38,7 @@
+         {
+             var card=Graphic(menu.transform,name+" card",new Vector2(minX,.45f),new Vector2(maxX,.69f),new Color(.035f,.065f,.09f));
+             Text(card.transform,name+" heading",title,22,new Vector2(.035f,.80f),new Vector2(.97f,.99f)).color=cyan;
+-            Text(card.transform,name+" body",body,24,new Vector2(.035f,.02f),new Vector2(.97f,.79f));
++            Text(card.transform,name+" body",body,22,new Vector2(.035f,.02f),new Vector2(.97f,.79f));
+         }
+     }
+ }
+--- previous/Runtime/Networking/DuelProtocol.cs
++++ slide/Runtime/Networking/DuelProtocol.cs
+@@ -30,6 +30,7 @@
+         public int LastInput;
+         public bool Grounded;
+         public bool Crouched;
++        public SlideState Slide;
+         public int ShotSerial;
+         public int HitSerial;
+         public Vector3 ShotEnd;
+@@ -65,7 +66,7 @@
+     {
+         public const int MaximumDatagram = 1200;
+         public const int MaximumInputBatch = 6;
+-        public const ushort Version = 5;
++        public const ushort Version = 6;
+         private const uint Magic = 0x52414C52;
+ 
+         public static MovementCommand CommandForWire(MovementCommand command)
+@@ -217,12 +218,16 @@
+             writer.Write((sbyte)state.Winner);
+             foreach (var actor in state.Actors)
+             {
++                Range(actor.Slide.RemainingTicks, 0, SlideMovement.DurationTicks);
++                Range(actor.Slide.CooldownTicks, 0, SlideMovement.DurationTicks + SlideMovement.CooldownTicks);
+                 WriteVector(writer, actor.Position);
+                 WriteVector(writer, actor.Velocity);
+                 writer.Write(actor.Yaw); writer.Write(actor.Pitch);
+                 writer.Write(actor.Health); writer.Write(actor.Life); writer.Write(actor.NextShotTick); writer.Write(actor.RespawnTick);
+                 writer.Write(actor.PadReadyTick); writer.Write(actor.AirborneTicks); writer.Write(actor.Score); writer.Write(actor.LastInput);
+-                writer.Write(actor.Grounded); writer.Write(actor.Crouched); writer.Write(actor.ShotSerial); writer.Write(actor.HitSerial); WriteVector(writer, actor.ShotEnd);
++                writer.Write(actor.Grounded); writer.Write(actor.Crouched);
++                writer.Write((byte)actor.Slide.RemainingTicks); writer.Write((byte)actor.Slide.CooldownTicks);
++                writer.Write(actor.Slide.CrouchHeld); writer.Write(actor.Slide.WasSprinting); writer.Write(actor.ShotSerial); writer.Write(actor.HitSerial); WriteVector(writer, actor.ShotEnd);
+                 writer.Write(actor.Statistics.Kills); writer.Write(actor.Statistics.Deaths);
+                 writer.Write(actor.Statistics.Shots); writer.Write(actor.Statistics.Hits);
+                 writer.Write(actor.Statistics.Headshots); writer.Write(actor.Statistics.VoidDeaths);
+@@ -246,7 +251,10 @@
+                     NextShotTick = Nonnegative(reader.ReadInt32()),
+                     RespawnTick = Nonnegative(reader.ReadInt32()), PadReadyTick = Nonnegative(reader.ReadInt32()),
+                     AirborneTicks = Range(reader.ReadInt32(), 0, 2), Score = reader.ReadInt32(), LastInput = Nonnegative(reader.ReadInt32()),
+-                    Grounded = ReadBool(reader), Crouched = ReadBool(reader), ShotSerial = Nonnegative(reader.ReadInt32()), HitSerial = Nonnegative(reader.ReadInt32()),
++                    Grounded = ReadBool(reader), Crouched = ReadBool(reader),
++                    Slide = new SlideState { RemainingTicks = Range(reader.ReadByte(), 0, SlideMovement.DurationTicks),
++                        CooldownTicks = Range(reader.ReadByte(), 0, SlideMovement.DurationTicks + SlideMovement.CooldownTicks),
++                        CrouchHeld = ReadBool(reader), WasSprinting = ReadBool(reader) }, ShotSerial = Nonnegative(reader.ReadInt32()), HitSerial = Nonnegative(reader.ReadInt32()),
+                     ShotEnd = ReadVector(reader, 10000),
+                     Statistics = new CombatStatistics(reader.ReadInt32(),reader.ReadInt32(),reader.ReadInt32(),
+                         reader.ReadInt32(),reader.ReadInt32(),reader.ReadInt32())

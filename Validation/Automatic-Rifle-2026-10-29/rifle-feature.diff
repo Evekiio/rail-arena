@@ -1,0 +1,772 @@
+--- slide/Assets/RailArena/Runtime/ArenaHud.Combat.cs
++++ automatic/Assets/RailArena/Runtime/ArenaHud.Combat.cs
+@@ -48,7 +48,7 @@
+ 
+             var rail=Card("RailPanel",new Vector2(.735f,.045f),new Vector2(.965f,.15f));
+             Icon(rail,"Rail icon","rail",new Vector2(.045f,.33f),new Vector2(.15f,.80f),cyan);
+-            Text(rail,"RailLabel","PRECISION CARBINE",15,new Vector2(.205f,.72f),new Vector2(.88f,.97f)).color=Muted;
++            Text(rail,"RailLabel","AUTO CARBINE / 600 RPM",15,new Vector2(.205f,.72f),new Vector2(.88f,.97f)).color=Muted;
+             Icon(rail,"Unlimited energy icon","unlimited",new Vector2(.90f,.72f),new Vector2(.97f,.96f),Muted);
+             railValue=Text(rail,"RailValue","READY",30,new Vector2(.205f,.27f),new Vector2(.96f,.78f));
+             railFill=Meter(rail,"RailFill",new Vector2(.045f,.10f),new Vector2(.96f,.17f));
+--- slide/Assets/RailArena/Runtime/ArenaHud.QuickStart.cs
++++ automatic/Assets/RailArena/Runtime/ArenaHud.QuickStart.cs
+@@ -7,7 +7,7 @@
+     public sealed partial class ArenaHud
+     {
+         private static string RecoverySeconds => ((float)CombatRules.ShotIntervalTicks/CombatRules.TickRate).ToString("0.0",CultureInfo.InvariantCulture);
+-        private static string WeaponSummary => $"ONE RIFLE. KEEP MOVING.\nUnlimited energy / {RecoverySeconds} second recovery\n"+
++        private static string WeaponSummary => $"ONE RIFLE. KEEP MOVING.\n600 RPM automatic / Unlimited energy\n"+
+             $"HEAD {CombatRules.Damage(HitRegion.Head)}   /   BODY {CombatRules.Damage(HitRegion.Body)}   /   LIMB {CombatRules.Damage(HitRegion.Limb)}";
+ 
+         private void QuickStart()
+@@ -18,11 +18,11 @@
+                 "ONLINE MATCHES KEEP RUNNING WHILE MENUS ARE OPEN":"ONE RIFLE. FIND YOUR RHYTHM. KEEP MOVING.",22,
+                 new Vector2(.1f,.73f),new Vector2(.94f,.79f));
+             subtitle.color=Session.IsOnline?amber:Color.white;
+-            QuickCard("Controls","MOVE / AIM", "W A S D / Move   SPACE / Jump or hop\nSHIFT / Sprint   ALT / Walk   CTRL / Crouch\nSprint + CTRL / Slide; 0.6s, momentum only\nLEFT MOUSE / One shot per click\nHOLD RIGHT MOUSE / 1.5x zoom (ADS)\nTAB / Standings   ESC / Pause or resume",.095f,.49f);
++            QuickCard("Controls","MOVE / AIM", "W A S D / Move   SPACE / Jump or hop\nSHIFT / Sprint   ALT / Walk   CTRL / Crouch\nSprint + CTRL / Slide; 0.6s, momentum only\nLEFT MOUSE / Hold for automatic fire\nHOLD RIGHT MOUSE / 1.5x zoom (ADS)\nTAB / Standings   ESC / Pause or resume",.095f,.49f);
+             int minutes=CombatRules.MatchTicks/(CombatRules.TickRate*60);
+             QuickCard("Modes","CHOOSE YOUR SESSION", "SOLO PRACTICE  /  Explore with zero bots\nTARGET DRILLS  /  Stationary or moving bots\nCOMBAT PRACTICE  /  Untimed opponents\n"+$"BOT MATCH  /  1-{CombatRules.MaximumBots} bots; combat AI\n"+
+                 $"MATCHES  /  {minutes} minutes; most points wins\nTIED LEADERS  /  Next kill wins",.53f,.94f);
+-            Text(menu.transform,"Combat basics",$"Click when the rail meter is READY. Recovery takes {RecoverySeconds}s; holding fire will not repeat.\n"+
++            Text(menu.transform,"Combat basics",$"Hold LEFT MOUSE for 600 RPM automatic fire. Release to stop; {RecoverySeconds}s between shots.\n"+
+                 $"Amber health restores +25, up to {CombatRules.MaximumHealth}. It returns after {CombatRules.PickupRespawnTicks/CombatRules.TickRate}s.\n"+
+                 $"Eliminate opponents for points. Void falls cost one point. Respawn takes {CombatRules.RespawnTicks/CombatRules.TickRate}s.",23,
+                 new Vector2(.1f,.29f),new Vector2(.94f,.42f));
+--- slide/Assets/RailArena/Runtime/ArenaSession.Network.cs
++++ automatic/Assets/RailArena/Runtime/ArenaSession.Network.cs
+@@ -318,7 +318,7 @@
+             if (newRound || localLifeChanged)
+             {
+                 ResetSights();
+-                recoil = 0;
++                ResetRecoil();
+                 weaponMotion.Reset(true);
+                 weaponMotionLife = Human.Life;
+             }
+--- slide/Assets/RailArena/Runtime/ArenaSession.cs
++++ automatic/Assets/RailArena/Runtime/ArenaSession.cs
+@@ -50,10 +50,11 @@
+         private RailgunPresentation weaponPresentation;
+         private FirstPersonArms viewArms;
+         private float recoil;
++        private readonly WeaponRecoil weaponRecoil = new();
+         private readonly FirstPersonWeaponMotion weaponMotion = new();
+         private int weaponMotionLife;
+         private Vector2 lookMotion;
+-        private readonly WeaponClickLatch clickLatch = new();
++        private readonly WeaponTrigger trigger = new();
+         private readonly AimDownSights sights = new();
+         public bool IsAiming { get; private set; }
+         public float AimBlend => sights.Weight;
+@@ -133,8 +134,8 @@
+             VoidTraces.Clear();
+             yaw = 90;
+             pitch = 0;
+-            recoil = 0;
+-            clickLatch.Reset();
++            ResetRecoil();
++            trigger.Reset();
+             ResetSights();
+             weaponMotion.Reset(true);
+             weaponMotionLife = Human.Life;
+@@ -144,7 +145,7 @@
+         public void SetPaused(bool pause)
+         {
+             Paused = pause;
+-            clickLatch.Reset();
++            trigger.Reset();
+             ResetSights();
+             bool playing = Running && !pause && !OnlineWaiting && Match.Phase != MatchPhase.Results;
+             if (pause && IsOnline && Human != null) Human.Command = new MovementCommand { Yaw = yaw, Pitch = pitch };
+@@ -173,7 +174,7 @@
+             UpdateNetwork();
+             if (Keyboard.current?.escapeKey.wasPressedThisFrame == true && !hud.TryHandleBack() && Running) SetPaused(!Paused);
+             if (!Running || OnlineWaiting || Paused || AutomatedHuman || Match.Phase == MatchPhase.Results)
+-            { clickLatch.Reset(); ResetSights(); return; }
++            { trigger.Reset(); ResetSights(); return; }
+             var mouse = Mouse.current;
+             IsAiming = Human.Alive && mouse?.rightButton.isPressed == true;
+             bool zoom = IsAiming;
+@@ -189,15 +190,14 @@
+                 var keyboard = Keyboard.current;
+                 float x = (keyboard?.dKey.isPressed == true ? 1 : 0) - (keyboard?.aKey.isPressed == true ? 1 : 0);
+                 float y = (keyboard?.wKey.isPressed == true ? 1 : 0) - (keyboard?.sKey.isPressed == true ? 1 : 0);
+-                clickLatch.Sample(mouse?.leftButton.wasPressedThisFrame == true, Match.IsActive &&
+-                    CombatRules.CanFire(LocalSimulationTick, Human.NextShotTick, true));
++                trigger.Sample(mouse?.leftButton.isPressed == true, mouse?.leftButton.wasPressedThisFrame == true, Match.IsActive);
+                 Human.Command = new MovementCommand { Move = new Vector2(x, y), Yaw = yaw, Pitch = pitch,
+                     Jump = keyboard?.spaceKey.isPressed == true, Fire = false,
+                     Sprint = keyboard?.leftShiftKey.isPressed == true,
+                     Walk = keyboard?.leftAltKey.isPressed == true,
+                     Crouch = keyboard?.leftCtrlKey.isPressed == true };
+             }
+-            else { clickLatch.Reset(); Human.Command = new MovementCommand { Yaw = yaw, Pitch = pitch }; }
++            else { trigger.Reset(); Human.Command = new MovementCommand { Yaw = yaw, Pitch = pitch }; }
+         }
+ 
+         private void LateUpdate()
+@@ -210,18 +210,22 @@
+             Vector3 eye = IsOnline && LocalPlayerId == 1 ? reconciliationView.Position(Human.Eye) : Human.Eye;
+             View.transform.SetPositionAndRotation(eye, Quaternion.Euler(pitch, yaw, 0));
+             reconciliationView.Decay(Time.unscaledDeltaTime);
+-            recoil = Mathf.MoveTowards(recoil, 0, Time.unscaledDeltaTime * 5);
++            if (!Human.Alive || Paused || !Comfort.WeaponMotion) ResetRecoil();
++            else weaponRecoil.Step(Time.unscaledDeltaTime);
++            recoil = weaponRecoil.Kick;
+             weaponPresentation.SetCharge((Human.NextShotTick - LocalSimulationTick) / (float)CombatRules.ShotIntervalTicks);
+             if (!Human.Alive || Paused || !Comfort.WeaponMotion) weaponMotion.Reset(false);
+             else
+             {
+                 if (weaponMotionLife != Human.Life) weaponMotion.Reset(true);
+                 weaponMotionLife = Human.Life;
+-                weaponMotion.Step(Time.unscaledDeltaTime, Human.Velocity, Human.Grounded && Human.AirborneTicks == 0, lookMotion, recoil);
++                weaponMotion.Step(Time.unscaledDeltaTime, Human.Velocity, Human.Grounded && Human.AirborneTicks == 0, lookMotion, 0);
+             }
+             float visibleRecoil = Comfort.WeaponMotion ? recoil : 0;
+-            weapon.localPosition = sights.Position(sightLocal, weaponMotion.Offset, visibleRecoil);
+-            weapon.localRotation = sights.Rotation(weaponMotion.Rotation);
++            weapon.localPosition = sights.Position(sightLocal, weaponMotion.Offset, visibleRecoil)
++                + (Comfort.WeaponMotion ? weaponRecoil.Offset * (1 - sights.Weight * .8f) : Vector3.zero);
++            weapon.localRotation = sights.Rotation(weaponMotion.Rotation) * (Comfort.WeaponMotion ?
++                Quaternion.Slerp(weaponRecoil.Rotation, Quaternion.identity, sights.Weight * .8f) : Quaternion.identity);
+             viewArms.SetRecoil(Human.Alive && !Paused ? visibleRecoil : 0);
+             weapon.gameObject.SetActive(Human.Alive && !Paused);
+         }
+@@ -231,7 +235,7 @@
+             if (Running && Human != null && !AutomatedHuman)
+             {
+                 var command = Human.Command;
+-                command.Fire = clickLatch.Consume();
++                command.Fire = trigger.Consume();
+                 Human.Command = command;
+ 
+             }
+@@ -332,11 +336,13 @@
+             if (Match.Phase == MatchPhase.Results) { SetPaused(false); hud.RefreshMenu(); }
+         }
+ 
++        private void ResetRecoil() { recoil = 0; weaponRecoil.Reset(); }
++
+         private void ShowShot(ArenaActor actor, Vector3 origin, Vector3 end)
+         {
+             var muzzle = actor == Human ? weaponPresentation.Muzzle.position : actor.Presentation.Muzzle.position;
+             Feedback.Shot(muzzle, end, origin, actor == Human, (end - origin).sqrMagnitude < 179.9f * 179.9f);
+-            if (actor == Human) recoil = 1;
++            if (actor == Human) weaponRecoil.Fire();
+         }
+ 
+         private void Kill(ArenaActor victim, ArenaActor killer, string reason)
+@@ -344,6 +350,7 @@
+             victim.Health = 0;
+             victim.RespawnTick = Match.Tick + CombatRules.RespawnTicks;
+             victim.SetAlive(false);
++            if (victim == Human) ResetRecoil();
+             PublishFeed(killer == victim ? $"{victim.DisplayName} fell into the void" : $"{killer.DisplayName}  >  {victim.DisplayName}   {reason}");
+             deathCount++;
+         }
+@@ -370,6 +377,7 @@
+             actor.SetAlive(true);
+             actor.Place(best.position);
+             actor.NextShotTick = Match.Tick;
++            if (actor == Human) ResetRecoil();
+             actor.Command = default;
+             actor.Brain = new BotBrain(7291 + actor.Id * 917 + Match.Tick);
+         }
+--- slide/Assets/RailArena/Runtime/ContenderPresentation.cs
++++ automatic/Assets/RailArena/Runtime/ContenderPresentation.cs
+@@ -17,6 +17,7 @@
+         private ArenaActor actor;
+         private ArenaSession session;
+         private float recoil;
++        private readonly WeaponRecoil recoilSpring = new();
+         private bool grounded;
+         private float bodyYaw;
+         private float corpseVelocity;
+@@ -98,7 +99,8 @@
+             Animator.SetBool(Dead, !actor.Alive);
+             if (onGround && !grounded && actor.Alive) Animator.SetTrigger("Land");
+             grounded = onGround;
+-            recoil = Mathf.MoveTowards(recoil, 0, Time.deltaTime * 7);
++            recoilSpring.Step(Time.deltaTime);
++            recoil = recoilSpring.Kick;
+             if (!actor.Alive) return;
+             // Turn the legs toward travel while keeping the torso and weapon aimed at the opponent.
+             float aimYaw = actor.Command.Yaw;
+@@ -136,6 +138,7 @@
+                 head.rotation = aim * headAimOffset;
+                 var shoulder = Animator.GetBoneTransform(HumanBodyBones.RightUpperArm);
+                 var contact = shoulder.position + aim * new Vector3(.015f, .02f, -.04f);
++                aim *= Quaternion.Euler(-2.5f * recoil, 0, 0);
+                 Weapon.SetPositionAndRotation(contact - aim * Railgun.Shoulder.localPosition - aim * Vector3.forward * recoil * .025f, aim);
+                 ArmContactPose.Apply(Animator, true, LeftGrip);
+                 ArmContactPose.Apply(Animator, false, RightGrip);
+@@ -159,7 +162,7 @@
+             }
+         }
+ 
+-        public void Fired() { recoil = 1; }
++        public void Fired() { recoilSpring.Fire(); }
+         public void ApplyStance()
+         {
+             if (crouchPose == null) return;
+@@ -180,6 +183,7 @@
+                 Animator.Update(0);
+                 Animator.SetBool(Dead, false);
+                 recoil = 0;
++                recoilSpring.Reset();
+             }
+             else
+             {
+--- slide/Assets/RailArena/Runtime/MechanicsValidation.cs
++++ automatic/Assets/RailArena/Runtime/MechanicsValidation.cs
+@@ -176,24 +176,31 @@
+             Expect("Nonlethal damage confirms a hit without elimination", session.Feedback.ConfirmedHits == 2 &&
+                 !session.Feedback.LastHitWasKill, $"hits={session.Feedback.ConfirmedHits}, lethal={session.Feedback.LastHitWasKill}");
+             Aim(HitRegion.Body);
+-            Advance(35);
+-            Expect("Shot intent cannot discharge during next 35 cooldown ticks", session.ShotsFired == count && Target.Health == 50,
++            Advance(CombatRules.ShotIntervalTicks - 1);
++            Expect("Shot intent cannot discharge during next five cooldown ticks", session.ShotsFired == count && Target.Health == 50,
+                 $"shots={session.ShotsFired}, health={Target.Health}");
+             Advance(1); Shooter.Command = default;
+-            Expect("Second body shot fires exactly 36 ticks later and kills", Target.Health == 0 && session.ShotsFired == count + 1 &&
+-                session.Match.Tick - first == 36, $"health={Target.Health}, shots={session.ShotsFired}, interval={session.Match.Tick - first}");
++            Expect("Second body shot fires exactly six ticks later and kills", Target.Health == 0 && session.ShotsFired == count + 1 &&
++                session.Match.Tick - first == CombatRules.ShotIntervalTicks, $"health={Target.Health}, shots={session.ShotsFired}, interval={session.Match.Tick - first}");
++            int beforeBurst = session.ShotsFired;
++            Shooter.Command = new MovementCommand { Fire = true, Yaw = 90 };
++            Advance(60);
++            Expect("Held automatic fire produces ten shots across sixty ticks", session.ShotsFired == beforeBurst + 10,
++                $"shots={session.ShotsFired - beforeBurst}");
++            Shooter.Command = default; beforeBurst = session.ShotsFired; Advance(12);
++            Expect("Released trigger stops automatic fire", session.ShotsFired == beforeBurst, "shots=" + session.ShotsFired);
+             Advance(120); PlaceForShots();
+             Fire(HitRegion.Limb);
+             Expect("First limb shot deals 34", Target.Health == 66, "health=" + Target.Health);
+-            Advance(35); Fire(HitRegion.Limb);
++            Advance(CombatRules.ShotIntervalTicks - 1); Fire(HitRegion.Limb);
+             Expect("Second limb shot leaves 32 health", Target.Health == 32, "health=" + Target.Health);
+-            Advance(35); Fire(HitRegion.Limb);
++            Advance(CombatRules.ShotIntervalTicks - 1); Fire(HitRegion.Limb);
+             Expect("Third limb shot kills without negative health", Target.Health == 0, "health=" + Target.Health);
+             Advance(120); PlaceForShots();
+             Fire(HitRegion.Body);
+-            Advance(35); Fire(HitRegion.Limb);
++            Advance(CombatRules.ShotIntervalTicks - 1); Fire(HitRegion.Limb);
+             Expect("Mixed body and limb damage leaves 16 health", Target.Health == 16, "health=" + Target.Health);
+-            Advance(35); Fire(HitRegion.Limb);
++            Advance(CombatRules.ShotIntervalTicks - 1); Fire(HitRegion.Limb);
+             Expect("Mixed hit sequence kills and records one kill", Target.Health == 0 && session.Match.Scores[0] == 4,
+                 $"health={Target.Health}, score={session.Match.Scores[0]}");
+             Advance(120);
+@@ -277,8 +284,8 @@
+             Vector3 before = Shooter.transform.position;
+             Shooter.Command = new MovementCommand { Move = Vector2.up, Yaw = 90, Fire = true };
+             Advance(30); Shooter.Command = default;
+-            Expect("Solo authority moves and fires without a target", Vector3.Distance(before, Shooter.transform.position) > 1 &&
+-                session.ShotsFired == 1 && Shooter.Health == 100,
++            Expect("Solo authority moves and fires five rounds in half a second", Vector3.Distance(before, Shooter.transform.position) > 1 &&
++                session.ShotsFired == 5 && Shooter.Health == 100,
+                 $"travel={Vector3.Distance(before, Shooter.transform.position)}, shots={session.ShotsFired}, health={Shooter.Health}");
+             Shooter.Place(new Vector3(0, .08f, -22));
+             Advance(36180);
+--- slide/Assets/RailArena/Runtime/Networking/DuelInputQueue.cs
++++ automatic/Assets/RailArena/Runtime/Networking/DuelInputQueue.cs
+@@ -9,6 +9,8 @@
+         public const int MaximumPending = 128;
+         private readonly SortedDictionary<int, DuelInput> pending = new();
+         private MovementCommand previous;
++        private int previousViewedTick;
++        public const int FireGraceTicks = 3;
+         private int lastCommandTick = int.MinValue;
+         private int lastConsumeTick = -1;
+         public int LastConsumed { get; private set; }
+@@ -44,16 +46,19 @@
+                 pending.Clear();
+                 // Hold only the newest physical state, not a tap aggregated from an older command.
+                 previous = input.Command;
++                previousViewedTick = input.ViewedTick;
+                 input.Command.Fire = Shot.HasValue;
+                 input.Command.Jump = jump;
+                 LastConsumed = input.Command.Sequence;
+                 lastCommandTick = authorityTick;
+                 return true;
+             }
+-            // Space is a held bunny-hop control. Preserve it with motion during brief loss.
+-            // Fire remains a one-time received intent with its original viewed-tick evidence.
++            // Held automatic fire tolerates only a brief gap; never invent a newer aim timestamp.
++            // A received release immediately wins over any older redundant held command.
+             input.Command = previous;
+-            input.Command.Fire = false;
++            input.ViewedTick = previousViewedTick;
++            input.Command.Fire &= (long)authorityTick - lastCommandTick <= FireGraceTicks;
++            if (input.Command.Fire) Shot = input;
+             if ((long)authorityTick - lastCommandTick > 9)
+             { input.Command.Move = default; input.Command.Jump = false; input.Command.Sprint = input.Command.Walk = false; }
+             return true;
+--- slide/Assets/RailArena/Runtime/Networking/DuelProtocol.cs
++++ automatic/Assets/RailArena/Runtime/Networking/DuelProtocol.cs
+@@ -66,7 +66,7 @@
+     {
+         public const int MaximumDatagram = 1200;
+         public const int MaximumInputBatch = 6;
+-        public const ushort Version = 6;
++        public const ushort Version = 7;
+         private const uint Magic = 0x52414C52;
+ 
+         public static MovementCommand CommandForWire(MovementCommand command)
+--- slide/Assets/RailArena/Runtime/WeaponClickLatch.cs
++++ automatic/Assets/RailArena/Runtime/WeaponClickLatch.cs
+@@ -1,11 +0,0 @@
+-namespace RailArena
+-{
+-    /// <summary>A valid click survives render frames until one simulation sample; blocked clicks never queue.</summary>
+-    public sealed class WeaponClickLatch
+-    {
+-        private bool pending;
+-        public void Sample(bool pressedThisFrame,bool canFire){if(pressedThisFrame&&canFire)pending=true;}
+-        public bool Consume(){bool shot=pending;pending=false;return shot;}
+-        public void Reset()=>pending=false;
+-    }
+-}
+--- slide/Assets/RailArena/Runtime/WeaponRecoil.cs
++++ automatic/Assets/RailArena/Runtime/WeaponRecoil.cs
+@@ -0,0 +1,42 @@
++using UnityEngine;
++
++namespace RailArena
++{
++    /// <summary>Analytic damped springs: presentation only, independent of camera and hit direction.</summary>
++    public sealed class WeaponRecoil
++    {
++        private float kick, kickVelocity, roll, rollVelocity;
++        private int shot;
++        public float Kick => Mathf.Clamp(kick, 0, 1.4f);
++        private float Roll => Mathf.Clamp(roll, -1, 1);
++        public Vector3 Offset => new(Roll * .004f, Kick * .008f, 0);
++        public Quaternion Rotation => Quaternion.Euler(-4.8f * Kick, Roll * .45f, Roll * 1.5f);
++
++        public void Fire()
++        {
++            kickVelocity = Mathf.Min(kickVelocity + 95, 140);
++            rollVelocity = Mathf.Clamp(rollVelocity + (++shot % 2 == 0 ? -55 : 55), -90, 90);
++        }
++
++        public void Reset() { kick = kickVelocity = roll = rollVelocity = 0; shot = 0; }
++
++        public void Step(float delta)
++        {
++            if (delta <= 0) return;
++            Spring(ref kick, ref kickVelocity, delta);
++            Spring(ref roll, ref rollVelocity, delta);
++        }
++
++        private static void Spring(ref float value, ref float velocity, float delta)
++        {
++            const float frequency = 42, damping = .65f;
++            float decay = frequency * damping;
++            float oscillation = frequency * Mathf.Sqrt(1 - damping * damping);
++            float envelope = Mathf.Exp(-decay * delta);
++            float cosine = Mathf.Cos(oscillation * delta), sine = Mathf.Sin(oscillation * delta);
++            float next = envelope * (value * cosine + (velocity + decay * value) / oscillation * sine);
++            velocity = envelope * (velocity * cosine - (decay * velocity + frequency * frequency * value) / oscillation * sine);
++            value = next;
++        }
++    }
++}
+--- slide/Assets/RailArena/Runtime/WeaponTrigger.cs
++++ automatic/Assets/RailArena/Runtime/WeaponTrigger.cs
+@@ -0,0 +1,16 @@
++namespace RailArena
++{
++    /// <summary>Held fire repeats on simulation ticks; a quick tap survives until one sample.</summary>
++    public sealed class WeaponTrigger
++    {
++        private bool held, pending;
++        public void Sample(bool isHeld, bool pressedThisFrame, bool allowed)
++        {
++            if (!allowed) { Reset(); return; }
++            held = isHeld;
++            pending |= pressedThisFrame;
++        }
++        public bool Consume() { bool fire = held || pending; pending = false; return fire; }
++        public void Reset() { held = pending = false; }
++    }
++}
+--- slide/Assets/RailArena/Simulation/CombatRules.cs
++++ automatic/Assets/RailArena/Simulation/CombatRules.cs
+@@ -11,7 +11,7 @@
+         public const int MaximumHealth = 100;
+         public const int MaximumContenders = 4;
+         public const int MaximumBots = MaximumContenders - 1;
+-        public const int ShotIntervalTicks = 36;
++        public const int ShotIntervalTicks = 6;
+         public const int RespawnTicks = 120;
+         public const int PickupRespawnTicks = 1200;
+         public const int CountdownTicks = 180;
+--- slide/Assets/RailArena/Tests/Editor/AutomaticRiflePresentationTests.cs
++++ automatic/Assets/RailArena/Tests/Editor/AutomaticRiflePresentationTests.cs
+@@ -0,0 +1,146 @@
++using UnityEditor.SceneManagement;
++using System.Collections;
++using System.IO;
++using System.Reflection;
++using NUnit.Framework;
++using UnityEngine;
++using UnityEngine.Rendering;
++using UnityEngine.InputSystem;
++using UnityEngine.InputSystem.LowLevel;
++using UnityEngine.SceneManagement;
++using UnityEngine.TestTools;
++using Object = UnityEngine.Object;
++
++namespace RailArena.Tests
++{
++    public sealed class AutomaticRiflePresentationTests
++    {
++        private const BindingFlags Private = BindingFlags.Instance | BindingFlags.NonPublic;
++        [UnityTest]
++        public IEnumerator RecoilMovesTheInstalledWeaponPreservesAimAndHonorsSteadyWeapon()
++        {
++            EditorSceneManager.OpenScene("Assets/RailArena/Generated/Foundry.unity");
++            yield return new EnterPlayMode();
++            if (Object.FindAnyObjectByType<ArenaSession>() == null)
++                yield return SceneManager.LoadSceneAsync("Foundry", LoadSceneMode.Additive);
++            var session = Object.FindAnyObjectByType<ArenaSession>();
++            bool oldMotion = session.Comfort.WeaponMotion;
++            try
++            {
++                session.StartSession(true, 0, 1, TargetScenario.Stationary);
++                session.enabled = false; session.Comfort.WeaponMotion = true;
++                var motion = (FirstPersonWeaponMotion)typeof(ArenaSession).GetField("weaponMotion", Private).GetValue(session);
++                var gun = (Transform)typeof(ArenaSession).GetField("weapon", Private).GetValue(session);
++                var late = typeof(ArenaSession).GetMethod("LateUpdate", Private);
++                var fire = typeof(ArenaSession).GetMethod("ShowShot", Private);
++                motion.Reset(false);
++                late.Invoke(session, null);
++                Quaternion aim = session.View.transform.rotation;
++                Vector3 rest = gun.localPosition;
++                foreach (bool ads in new[] { false, true })
++                {
++                    typeof(ArenaSession).GetProperty(nameof(ArenaSession.IsAiming)).SetValue(session, ads);
++                    var sights = (AimDownSights)typeof(ArenaSession).GetField("sights", Private).GetValue(session);
++                    sights.Step(ads, 1);
++                    typeof(ArenaSession).GetMethod("ResetRecoil", Private).Invoke(session, null);
++                    late.Invoke(session, null); rest = gun.localPosition;
++                    Capture(session.View, ads ? "ADS-rest" : "Hip-rest");
++                    yield return Frame(); yield return Frame();
++                    fire.Invoke(session, new object[] { session.Human, session.Human.Eye, session.Human.Eye + session.Human.AimDirection * 50 });
++                    float started = Time.realtimeSinceStartup, maxTravel = 0, maxAngle = 0;
++                    bool captured = false;
++                    do
++                    {
++                        yield return Frame(); late.Invoke(session, null);
++                        maxTravel = Mathf.Max(maxTravel, Vector3.Distance(rest, gun.localPosition));
++                        maxAngle = Mathf.Max(maxAngle, Quaternion.Angle(Quaternion.identity, gun.localRotation));
++                        Assert.That(Quaternion.Angle(aim, session.View.transform.rotation), Is.LessThan(.001f));
++                        if (!captured && maxTravel > .015f)
++                        { Capture(session.View, ads ? "ADS-kick" : "Hip-kick"); captured = true; }
++                    } while (Time.realtimeSinceStartup - started < .45f);
++                    Assert.That(captured, Is.True, "No visible impulse reached the installed rifle");
++                    Assert.That(maxTravel, Is.InRange(.015f, .09f));
++                    Assert.That(maxAngle, Is.InRange(.1f, ads ? 2 : 8));
++                    Assert.That(Vector3.Distance(rest, gun.localPosition), Is.LessThan(.001f));
++                    Capture(session.View, ads ? "ADS-recovered" : "Hip-recovered");
++                }
++                session.Comfort.WeaponMotion = false;
++                fire.Invoke(session, new object[] { session.Human, session.Human.Eye, session.Human.Eye + Vector3.forward * 50 });
++                late.Invoke(session, null);
++                Assert.That(Quaternion.Angle(gun.localRotation, Quaternion.identity), Is.LessThan(.001f));
++                Assert.That((float)typeof(ArenaSession).GetField("recoil", Private).GetValue(session), Is.Zero);
++                Assert.That(session.Human.Health, Is.EqualTo(100));
++                Assert.That(session.Match.Statistics[0].Shots, Is.Zero, "Controlled presentation must not invent simulation shots");
++            }
++            finally { session.Comfort.WeaponMotion = oldMotion; session.enabled = true; session.MainMenu(); }
++            yield return new ExitPlayMode();
++        }
++
++        [UnityTest]
++        public IEnumerator ProductionMouseMappingFiresWhileHeldAndStopsOnRelease()
++        {
++            EditorSceneManager.OpenScene("Assets/RailArena/Generated/Foundry.unity");
++            yield return new EnterPlayMode();
++            var session = Object.FindAnyObjectByType<ArenaSession>();
++            var originalMouse = Mouse.current;
++            var settings = InputSystem.settings;
++            var originalEditorInput = settings.editorInputBehaviorInPlayMode;
++            var originalBackground = settings.backgroundBehavior;
++            Mouse mouse = null;
++            try
++            {
++                settings.editorInputBehaviorInPlayMode = InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
++                settings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
++                mouse = InputSystem.AddDevice<Mouse>("Automatic rifle review mouse"); mouse.MakeCurrent();
++                session.StartSession(true, 0, 1, TargetScenario.Stationary);
++                while (!session.Match.IsActive) session.Match.Advance();
++                InputSystem.QueueStateEvent(mouse, new MouseState().WithButton(MouseButton.Left));
++                int start = session.Match.Tick, before = session.Human.ShotSerial;
++                float deadline = Time.realtimeSinceStartup + 5;
++                while (session.Match.Tick < start + 60)
++                { Assert.That(Time.realtimeSinceStartup, Is.LessThan(deadline)); yield return Frame(); }
++                Assert.That(session.Human.ShotSerial - before, Is.InRange(9, 11), "Held production mouse input must repeat at roughly ten shots per second");
++                InputSystem.QueueStateEvent(mouse, new MouseState());
++                yield return Frame(); yield return Frame();
++                before = session.Human.ShotSerial; start = session.Match.Tick; deadline = Time.realtimeSinceStartup + 5;
++                while (session.Match.Tick < start + 18)
++                { Assert.That(Time.realtimeSinceStartup, Is.LessThan(deadline)); yield return Frame(); }
++                Assert.That(session.Human.ShotSerial, Is.EqualTo(before));
++            }
++            finally
++            {
++                if (mouse != null && mouse.added) InputSystem.RemoveDevice(mouse);
++                if (originalMouse != null && originalMouse.added) originalMouse.MakeCurrent();
++                settings.editorInputBehaviorInPlayMode = originalEditorInput; settings.backgroundBehavior = originalBackground;
++                session.MainMenu();
++            }
++            yield return new ExitPlayMode();
++        }
++
++        [UnityTearDown] public IEnumerator Restore() { if (Application.isPlaying) yield return new ExitPlayMode(); }
++        private static IEnumerator Frame()
++        {
++            int frame = Time.frameCount; double deadline = UnityEditor.EditorApplication.timeSinceStartup + 5;
++            while (Time.frameCount == frame)
++            {
++                Assert.That(UnityEditor.EditorApplication.timeSinceStartup, Is.LessThan(deadline));
++                UnityEditor.EditorApplication.QueuePlayerLoopUpdate(); yield return null;
++            }
++        }
++
++        private static void Capture(Camera camera, string name)
++        {
++            var target = new RenderTexture(1280, 720, 24); var pixels = new Texture2D(1280, 720, TextureFormat.RGB24, false);
++            var previous = RenderTexture.active; var oldTarget = camera.targetTexture;
++            try
++            {
++                target.Create(); camera.targetTexture = target;
++                RenderPipeline.SubmitRenderRequest(camera, new RenderPipeline.StandardRequest { destination = target });
++                RenderTexture.active = target; pixels.ReadPixels(new Rect(0, 0, 1280, 720), 0, 0); pixels.Apply();
++                string folder = Path.GetFullPath(Path.Combine(Application.dataPath, "../../Validation/Automatic-Rifle-2026-10-29/Captures"));
++                Directory.CreateDirectory(folder); File.WriteAllBytes(Path.Combine(folder, name + ".png"), pixels.EncodeToPNG());
++            }
++            finally { camera.targetTexture = oldTarget; RenderTexture.active = previous; target.Release(); Object.DestroyImmediate(target); Object.DestroyImmediate(pixels); }
++        }
++    }
++}
+--- slide/Assets/RailArena/Tests/Editor/AutomaticRifleTests.cs
++++ automatic/Assets/RailArena/Tests/Editor/AutomaticRifleTests.cs
+@@ -0,0 +1,87 @@
++using NUnit.Framework;
++using RailArena.Networking;
++using RailArena.Simulation;
++using UnityEngine;
++
++namespace RailArena.Tests
++{
++    public sealed class AutomaticRifleTests
++    {
++        [Test]
++        public void HeldInputProduces600RpmAndReleaseStopsWithoutQueuedBurst()
++        {
++            var trigger = new WeaponTrigger(); trigger.Sample(true, true, true);
++            int nextShot = 0, shots = 0;
++            for (int tick = 0; tick < 60; tick++)
++                if (trigger.Consume() && CombatRules.CanFire(tick, nextShot, true))
++                { shots++; nextShot = tick + CombatRules.ShotIntervalTicks; }
++            Assert.That(shots, Is.EqualTo(10));
++            Assert.That(nextShot, Is.EqualTo(60));
++            trigger.Sample(false, false, true);
++            for (int tick = 60; tick < 120; tick++) Assert.That(trigger.Consume(), Is.False);
++            Assert.That(CombatRules.Damage(HitRegion.Body), Is.EqualTo(50));
++        }
++
++        [Test]
++        public void NetworkHeldFireKeepsOriginalAimDuringShortGapExpiresAndHonorsRelease()
++        {
++            var queue = new DuelInputQueue();
++            var held = new DuelInput { ViewedTick = 96, Command = new MovementCommand { Sequence = 1, Fire = true, Yaw = 30 } };
++            queue.Add(new[] { held }); queue.Consume(100, out _);
++            for (int tick = 101; tick <= 103; tick++)
++            {
++                queue.Consume(tick, out var command);
++                Assert.That(command.Command.Fire, Is.True);
++                Assert.That(queue.Shot.Value.ViewedTick, Is.EqualTo(96));
++                Assert.That(queue.Shot.Value.Command.Yaw, Is.EqualTo(30));
++            }
++            queue.Consume(104, out var expired);
++            Assert.That(expired.Command.Fire, Is.False); Assert.That(queue.Shot, Is.Null);
++            held.Command.Sequence = 2; held.ViewedTick = 104; queue.Add(new[] { held }); queue.Consume(105, out _);
++            var released = held; released.Command.Sequence = 3; released.Command.Fire = false;
++            queue.Add(new[] { released }); queue.Consume(106, out var release);
++            Assert.That(release.Command.Fire, Is.False);
++            queue.Add(new[] { held }); queue.Consume(107, out var redundant);
++            Assert.That(redundant.Command.Fire, Is.False);
++        }
++
++        [Test]
++        public void SpringKickIsFastBoundedAndSettlesExactlyAfterReset()
++        {
++            var spring = new WeaponRecoil(); spring.Fire(); float peak = 0;
++            for (int frame = 0; frame < 12; frame++) { spring.Step(1f / 240); peak = Mathf.Max(peak, spring.Kick); }
++            Assert.That(peak, Is.InRange(.8f, 1.4f));
++            Assert.That(Quaternion.Angle(spring.Rotation, Quaternion.identity), Is.GreaterThan(.1f));
++            spring.Step(1);
++            Assert.That(spring.Kick, Is.LessThan(.0001f));
++            Assert.That(Quaternion.Angle(spring.Rotation, Quaternion.identity), Is.LessThan(.001f));
++            spring.Fire(); spring.Reset(); spring.Step(1f / 60);
++            Assert.That(spring.Kick, Is.Zero); Assert.That(spring.Offset, Is.EqualTo(Vector3.zero));
++            Assert.That(spring.Rotation, Is.EqualTo(Quaternion.identity));
++        }
++
++        [Test]
++        public void SustainedFireStaysBoundedAndRecoveryIsIndependentOfRenderRate()
++        {
++            Quaternion Sample(int fps)
++            {
++                var spring = new WeaponRecoil();
++                for (int frame = 0; frame < fps * 10; frame++)
++                {
++                    if (frame % (fps / 10) == 0) spring.Fire();
++                    spring.Step(1f / fps);
++                    Assert.That(spring.Kick, Is.InRange(0, 1.4f));
++                    Assert.That(spring.Offset.magnitude, Is.LessThan(.013f));
++                    Assert.That(Quaternion.Angle(spring.Rotation, Quaternion.identity), Is.LessThan(8));
++                }
++                return spring.Rotation;
++            }
++            Assert.That(Quaternion.Angle(Sample(30), Sample(120)), Is.LessThan(.02f));
++            var stressed = new WeaponRecoil();
++            for (int i = 0; i < 1000; i++) stressed.Fire();
++            stressed.Step(.5f);
++            Assert.That(float.IsNaN(stressed.Kick), Is.False);
++            Assert.That(stressed.Kick, Is.InRange(0, 1.4f));
++        }
++    }
++}
+--- slide/Assets/RailArena/Tests/Editor/BrandUiTests.cs
++++ automatic/Assets/RailArena/Tests/Editor/BrandUiTests.cs
+@@ -57,7 +57,7 @@
+             session.MainMenu();yield return Frames(2);
+             session.StartSession(true,3,1,TargetScenario.Stationary);yield return Frames(3);
+             while(!session.Match.IsActive)session.Match.Advance();
+-            session.enabled=false;session.Human.Health=25;session.Human.NextShotTick=session.LocalSimulationTick+18;
++            session.enabled=false;session.Human.Health=25;session.Human.NextShotTick=session.LocalSimulationTick+Simulation.CombatRules.ShotIntervalTicks/2;
+             typeof(ArenaSession).GetMethod("LateUpdate",BindingFlags.Instance|BindingFlags.NonPublic).Invoke(session,null);
+             yield return Frames(2);yield return Review(session.View,"HUD-recovery");
+             Assert.That(GameObject.Find("Health icon").GetComponent<UnityEngine.UI.RawImage>().texture,Is.Not.Null);
+--- slide/Assets/RailArena/Tests/Editor/CarbineProductionTests.cs
++++ automatic/Assets/RailArena/Tests/Editor/CarbineProductionTests.cs
+@@ -39,14 +39,16 @@
+         }
+         static string Output=>Path.GetFullPath(Path.Combine(Application.dataPath,"../../ArtSource/Original/PrecisionCarbine-Production-v1"));
+         [Test]
+-        public void ClickIsConsumedOnceAndBlockedClicksNeverQueue()
++        public void HeldTriggerRepeatsQuickTapSurvivesAndBlockedInputClears()
+         {
+-            var input=new WeaponClickLatch();
+-            input.Sample(true,true);input.Sample(false,true);
+-            Assert.That(input.Consume(),Is.True);
+-            for(int tick=0;tick<100;tick++){input.Sample(false,true);Assert.That(input.Consume(),Is.False);}
+-            input.Sample(true,false);input.Sample(false,true);Assert.That(input.Consume(),Is.False);
+-            input.Sample(true,true);input.Reset();Assert.That(input.Consume(),Is.False);
++            var input = new WeaponTrigger();
++            input.Sample(true, true, true);
++            for (int tick = 0; tick < 60; tick++) Assert.That(input.Consume(), Is.True);
++            input.Sample(false, false, true); Assert.That(input.Consume(), Is.False);
++            input.Sample(false, true, true); Assert.That(input.Consume(), Is.True);
++            Assert.That(input.Consume(), Is.False);
++            input.Sample(true, true, false); Assert.That(input.Consume(), Is.False);
++            input.Sample(true, true, true); input.Reset(); Assert.That(input.Consume(), Is.False);
+         }
+         [Test]
+         public void InstalledWeaponHasThreeBoundedLodsSurfaceAtlasAndForwardMuzzle()
+--- slide/Assets/RailArena/Tests/Editor/CombatHudTests.cs
++++ automatic/Assets/RailArena/Tests/Editor/CombatHudTests.cs
+@@ -37,7 +37,8 @@
+             while (!session.Match.IsActive) session.Match.Advance();
+             foreach (var pickup in session.World.Pickups) pickup.AvailableTick = int.MaxValue;
+             session.Human.Health = 25;
+-            session.Human.NextShotTick = session.LocalSimulationTick + 18;
++            session.enabled = false;
++            session.Human.NextShotTick = session.LocalSimulationTick + Simulation.CombatRules.ShotIntervalTicks / 2;
+             yield return Frames(2);
+             Assert.That(Label("HealthValue").text, Is.EqualTo("025"));
+             var health = root.transform.Find("HealthPanel/HealthFillTrack/HealthFill").GetComponent<RectTransform>();
+@@ -45,6 +46,7 @@
+             Assert.That(health.anchorMax.x, Is.EqualTo(.25f).Within(.001));
+             Assert.That(rail.anchorMax.x, Is.InRange(.45f, .65f));
+             Assert.That(Label("RailValue").text, Does.StartWith("CYCLE"));
++            session.enabled = true;
+             Assert.That(root.GetComponentsInChildren<UnityEngine.UI.Graphic>(true).All(g => !g.raycastTarget), Is.True);
+             session.Feedback.ConfirmHit(false); session.Feedback.Damaged();
+             yield return Frames(2);
+--- slide/Assets/RailArena/Tests/Editor/ComfortHudTests.cs
++++ automatic/Assets/RailArena/Tests/Editor/ComfortHudTests.cs
+@@ -43,7 +43,7 @@
+                 var hands=weapon.GetComponentInChildren<FirstPersonArms>().Hands;
+                 var handRecoil=typeof(HandArticulation).GetField("recoil",Private);
+                 Quaternion aim=session.View.transform.rotation;
+-                session.Human.Velocity=new Vector3(10,0,0); recoil.SetValue(session,1f);
++                session.Human.Velocity=new Vector3(10,0,0); ((WeaponRecoil)typeof(ArenaSession).GetField("weaponRecoil",Private).GetValue(session)).Fire();
+                 yield return Frames(2);
+                 Assert.That(weapon.localPosition,Is.EqualTo(FirstPersonWeaponMotion.RestPosition));
+                 Assert.That(Quaternion.Angle(weapon.localRotation,Quaternion.identity),Is.LessThan(.001f));
+@@ -52,7 +52,7 @@
+                 Assert.That(session.Human.Health,Is.EqualTo(100)); Assert.That(session.Match.Statistics[0].Shots,Is.Zero);
+                 session.Feedback.ConfirmHit(false);
+                 foreach(var size in Sizes)yield return Capture(session.View,size,"Live");
+-                session.Comfort.WeaponMotion=true; recoil.SetValue(session,1f); yield return Frames(2);
++                session.Comfort.WeaponMotion=true; ((WeaponRecoil)typeof(ArenaSession).GetField("weaponRecoil",Private).GetValue(session)).Fire(); yield return Frames(2);
+                 Assert.That(Vector3.Distance(weapon.localPosition,FirstPersonWeaponMotion.RestPosition),Is.GreaterThan(.001f));
+                 Assert.That((float)handRecoil.GetValue(hands),Is.GreaterThan(0));
+                 Assert.That(Quaternion.Angle(aim,session.View.transform.rotation),Is.LessThan(.001f));
+--- slide/Assets/RailArena/Tests/Editor/NetworkingTests.cs
++++ automatic/Assets/RailArena/Tests/Editor/NetworkingTests.cs
+@@ -225,7 +225,9 @@
+             Assert.That(queue.PendingCount, Is.Zero);
+             queue.Consume(13, out var held);
+             Assert.That(held.Command.Move.sqrMagnitude, Is.GreaterThan(0));
+-            Assert.That(held.Command.Fire, Is.False);
++            Assert.That(held.Command.Fire, Is.True);
++            queue.Consume(14, out var expiredFire);
++            Assert.That(expiredFire.Command.Fire, Is.False);
+             Assert.That(held.Command.Jump, Is.True);
+             queue.Consume(22, out var stopped);
+             Assert.That(stopped.Command.Move, Is.EqualTo(Vector2.zero));
+--- slide/Assets/RailArena/Tests/Editor/QuickStartHudTests.cs
++++ automatic/Assets/RailArena/Tests/Editor/QuickStartHudTests.cs
+@@ -39,8 +39,8 @@
+             Assert.That(configuredBots,Is.EqualTo(2),"Preservation must be checked with a nonzero bot setup.");
+             Button("HOW TO PLAY").onClick.Invoke();yield return Frames(2);
+             Assert.That(Label("Modes body"),Does.Contain((CombatRules.MatchTicks/(CombatRules.TickRate*60))+" minutes"));
+-            Assert.That(Label("Controls body"),Does.Contain("One shot per click"));
+-            Assert.That(Label("Combat basics"),Does.Contain("holding fire will not repeat"));
++            Assert.That(Label("Controls body"),Does.Contain("Hold for automatic fire"));
++            Assert.That(Label("Combat basics"),Does.Contain("600 RPM"));
+             foreach(var size in Sizes)yield return Capture(session.View,size,"Help");
+             Button("BACK").onClick.Invoke();yield return Frames(2);
+             Assert.That((int)bots.GetValue(hud),Is.EqualTo(configuredBots));
+--- slide/Assets/RailArena/Tests/Editor/SimulationTests.cs
++++ automatic/Assets/RailArena/Tests/Editor/SimulationTests.cs
+@@ -74,7 +74,7 @@
+             Assert.That(CombatRules.CanFire(89, 90, true), Is.False);
+             Assert.That(CombatRules.CanFire(90, 90, true), Is.True);
+             Assert.That(CombatRules.CanFire(91, 90, false), Is.False);
+-            Assert.That(CombatRules.ShotIntervalTicks / (float)CombatRules.TickRate, Is.EqualTo(.6f));
++            Assert.That(CombatRules.ShotIntervalTicks / (float)CombatRules.TickRate, Is.EqualTo(.1f));
+         }
+ 
+         [Test]
+--- slide/Assets/RailArena/Tests/Editor/SlideMovementTests.cs
++++ automatic/Assets/RailArena/Tests/Editor/SlideMovementTests.cs
+@@ -136,7 +136,7 @@
+             byte[] bytes = DuelProtocol.Encode(new DuelPacket { Kind = DuelMessage.Snapshot, Snapshot = state });
+             Assert.That(DuelProtocol.TryDecode(bytes, out var decoded), Is.True);
+             Assert.That(decoded.Snapshot.Actors[0].Slide, Is.EqualTo(state.Actors[0].Slide));
+-            bytes[4] = 5;
++            bytes[4] = (byte)(DuelProtocol.Version - 1);
+             Assert.That(DuelProtocol.TryDecode(bytes, out _), Is.False);
+             state.Actors[0].Slide.RemainingTicks = 256;
+             Assert.Throws<System.ArgumentException>(() => DuelProtocol.Encode(new DuelPacket { Kind = DuelMessage.Snapshot, Snapshot = state }));
