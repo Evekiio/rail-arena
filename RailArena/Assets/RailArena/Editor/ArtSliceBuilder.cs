@@ -127,6 +127,7 @@ namespace RailArena.Editor
                 var result = BuildPipeline.BuildPlayer(new BuildPlayerOptions { scenes = EditorBuildSettings.scenes.Where(s => s.enabled).Select(s => s.path).ToArray(), locationPathName = output, target = BuildTarget.StandaloneWindows64, options = BuildOptions.Development });
                 if (result.summary.result != BuildResult.Succeeded) throw new InvalidOperationException("Art slice build failed");
                 File.WriteAllText(Path.Combine(folder,"BuildIdentity.txt"), File.ReadAllText("Assets/Resources/BuildIdentity.txt"));
+                File.WriteAllLines(Path.Combine(folder,"BuildInputs.txt"), BuildIdentityGenerator.InputPaths());
                 Debug.Log("ART_PASS_REVIEW_BUILD " + Path.GetFullPath(output));
             }
             finally
