@@ -18,7 +18,7 @@ namespace RailArena.Editor
         static T Load<T>(string path) where T : UnityEngine.Object => AssetDatabase.LoadAssetAtPath<T>(path) ?? throw new Exception("Missing review asset: " + path);
         public void OnProcessScene(Scene scene, BuildReport report)
         {
-            if (!active || scene.path != "Assets/RailArena/Generated/SkyGardens.unity") return;
+            if (!active || (scene.path != "Assets/RailArena/Generated/SkyGardens.unity" && scene.path != BasementRouteBuilder.ScenePath)) return;
             var item = new GameObject("Combined graphics review effects").AddComponent<ReviewEffects>();
             item.waterShader = Load<Shader>("Assets/Validation/SkyWaterCandidate/LightResponsiveWater.shader");
             item.water = Load<Material>("Assets/RailArena/Generated/SkyGardensArt/Material-water.mat");
@@ -30,7 +30,7 @@ namespace RailArena.Editor
         }
         public static void Build()
         {
-            const string output = "../Builds/SkyGardens-CombinedGraphicsReview-v12-2026-10-30/RailArena.exe";
+            const string output = "../Builds/SkyGardens-BasementRoutes-2026-10-30/RailArena.exe";
             if (Directory.Exists(Path.GetDirectoryName(output))) throw new IOException("Output already exists");
             var candidate = Load<UniversalRenderPipelineAsset>("Assets/Validation/AtmosphereCandidate/AtmospherePipeline.asset");
             var expected = Load<UniversalRenderPipelineAsset>("Assets/Settings/PC_RPAsset.asset");
@@ -47,6 +47,7 @@ namespace RailArena.Editor
         }
     }
 }
+
 
 
 
