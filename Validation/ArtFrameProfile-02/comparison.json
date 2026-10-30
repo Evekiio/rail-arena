@@ -1,0 +1,1205 @@
+{
+  "schema": "rail-arena-portal-profile-comparison/1",
+  "fingerprint": "f577ac97b6235a6b15e7b685c78c4e991e80dc6bd444328291263d13ac4a73ac",
+  "full": "Validation/ArtFrameProfile-02/full.json",
+  "cropped": "Validation/ArtFrameProfile-02/cropped.json",
+  "scope": "Hidden Windows player; 1080p High; one automated human and three bots; 100-degree vertical observer FOV; fixed 60 Hz simulation with uncapped wall-timed render throughput. Observer stages after ArenaSession and before automatic portal renders. Main rendering runs after LateUpdate at EndOfFrame with synchronous one-pixel readback. Phase wall times include scheduling/driver work; readback is not isolated GPU time. Profiler counters are inclusive, last-completed-frame values and are not additive. Unity delta is fixed by captureFramerate and is not a pacing measurement. No HUD/native input/audio/sustained visible-play acceptance.",
+  "views": [
+    {
+      "view": "combat",
+      "frames": 360,
+      "portalRenders": 1440,
+      "full": {
+        "meanWallMs": 16.57641722222222,
+        "p95WallMs": 22.4816,
+        "meanReadbackMs": 5.440256388888892,
+        "validGpuSamples": 0,
+        "gc0": 1,
+        "gc1": 1,
+        "gc2": 1,
+        "portalTargets": [
+          {
+            "id": 5,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6374405026435852,
+              "y": 0.4737710952758789,
+              "width": 0.013938546180725098,
+              "height": 0.03601062297821045
+            }
+          },
+          {
+            "id": 4,
+            "renders": 360,
+            "width": 960,
+            "height": 540,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 0,
+            "renders": 360,
+            "width": 960,
+            "height": 540,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 1,
+            "renders": 360,
+            "width": 960,
+            "height": 540,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 2,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.7003121376037598,
+              "y": 0.4158075153827667,
+              "width": 0.007847845554351807,
+              "height": 0.019307076930999756
+            }
+          },
+          {
+            "id": 3,
+            "renders": 360,
+            "width": 960,
+            "height": 540,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          }
+        ],
+        "portalCpu": {
+          "name": "RailArena.PortalView",
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 5481679.444444444,
+          "p95": 7963300.0
+        },
+        "drawCalls": {
+          "name": "Draw Calls Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 4117.863888888889,
+          "p95": 4348.0
+        },
+        "triangles": {
+          "name": "Triangles Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 1005820.9611111111,
+          "p95": 1038943.0
+        }
+      },
+      "cropped": {
+        "meanWallMs": 17.47502694444446,
+        "p95WallMs": 36.216,
+        "meanReadbackMs": 6.058176944444442,
+        "validGpuSamples": 0,
+        "gc0": 1,
+        "gc1": 1,
+        "gc2": 1,
+        "portalTargets": [
+          {
+            "id": 3,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.4825379550457001,
+              "y": 0.4277727007865906,
+              "width": 0.011850088834762573,
+              "height": 0.03414478898048401
+            }
+          },
+          {
+            "id": 0,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5944686532020569,
+              "y": 0.4343189001083374,
+              "width": 0.010345399379730225,
+              "height": 0.029376626014709473
+            }
+          },
+          {
+            "id": 2,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.7003121376037598,
+              "y": 0.4158075153827667,
+              "width": 0.007847845554351807,
+              "height": 0.019307076930999756
+            }
+          },
+          {
+            "id": 4,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5387325882911682,
+              "y": 0.3943718373775482,
+              "width": 0.00581204891204834,
+              "height": 0.017049580812454224
+            }
+          },
+          {
+            "id": 1,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.30758094787597656,
+              "y": 0.4023778736591339,
+              "width": 0.007924765348434448,
+              "height": 0.05367863178253174
+            }
+          },
+          {
+            "id": 5,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6374405026435852,
+              "y": 0.4737710952758789,
+              "width": 0.013938546180725098,
+              "height": 0.03601062297821045
+            }
+          }
+        ],
+        "portalCpu": {
+          "name": "RailArena.PortalView",
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 5060473.611111111,
+          "p95": 13994700.0
+        },
+        "drawCalls": {
+          "name": "Draw Calls Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 1396.6583333333333,
+          "p95": 1473.0
+        },
+        "triangles": {
+          "name": "Triangles Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 340544.40555555554,
+          "p95": 363321.0
+        }
+      },
+      "meanWallReductionPercent": -5.421012937690595,
+      "portalCpuReductionPercent": 7.683882970577849
+    },
+    {
+      "view": "summit",
+      "frames": 360,
+      "portalRenders": 1080,
+      "full": {
+        "meanWallMs": 16.290124166666665,
+        "p95WallMs": 34.1825,
+        "meanReadbackMs": 5.418248055555557,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "portalTargets": [
+          {
+            "id": 5,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6374405026435852,
+              "y": 0.4737710952758789,
+              "width": 0.013938546180725098,
+              "height": 0.03601062297821045
+            }
+          },
+          {
+            "id": 4,
+            "renders": 360,
+            "width": 960,
+            "height": 540,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 0,
+            "renders": 360,
+            "width": 960,
+            "height": 540,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 1,
+            "renders": 0,
+            "width": 960,
+            "height": 540,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 2,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.7003121376037598,
+              "y": 0.4158075153827667,
+              "width": 0.007847845554351807,
+              "height": 0.019307076930999756
+            }
+          },
+          {
+            "id": 3,
+            "renders": 360,
+            "width": 960,
+            "height": 540,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          }
+        ],
+        "portalCpu": {
+          "name": "RailArena.PortalView",
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 4743935.0,
+          "p95": 12702700.0
+        },
+        "drawCalls": {
+          "name": "Draw Calls Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 3767.447222222222,
+          "p95": 3945.0
+        },
+        "triangles": {
+          "name": "Triangles Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 917333.6666666666,
+          "p95": 941234.0
+        }
+      },
+      "cropped": {
+        "meanWallMs": 15.842731944444449,
+        "p95WallMs": 30.9229,
+        "meanReadbackMs": 5.816055833333334,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "portalTargets": [
+          {
+            "id": 3,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.47784167528152466,
+              "y": 0.22465461492538452,
+              "width": 0.010053813457489014,
+              "height": 0.03738179802894592
+            }
+          },
+          {
+            "id": 0,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5597334504127502,
+              "y": 0.3331621289253235,
+              "width": 0.010472297668457031,
+              "height": 0.027521520853042603
+            }
+          },
+          {
+            "id": 2,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.7003121376037598,
+              "y": 0.4158075153827667,
+              "width": 0.007847845554351807,
+              "height": 0.019307076930999756
+            }
+          },
+          {
+            "id": 4,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.4878225326538086,
+              "y": 0.4223422110080719,
+              "width": 0.0051901936531066895,
+              "height": 0.01693841814994812
+            }
+          },
+          {
+            "id": 1,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.30758094787597656,
+              "y": 0.4023778736591339,
+              "width": 0.007924765348434448,
+              "height": 0.05367863178253174
+            }
+          },
+          {
+            "id": 5,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6374405026435852,
+              "y": 0.4737710952758789,
+              "width": 0.013938546180725098,
+              "height": 0.03601062297821045
+            }
+          }
+        ],
+        "portalCpu": {
+          "name": "RailArena.PortalView",
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 3761058.0555555555,
+          "p95": 10215800.0
+        },
+        "drawCalls": {
+          "name": "Draw Calls Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 1250.4333333333334,
+          "p95": 1328.0
+        },
+        "triangles": {
+          "name": "Triangles Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 294732.89444444445,
+          "p95": 313312.0
+        }
+      },
+      "meanWallReductionPercent": 2.746401547617938,
+      "portalCpuReductionPercent": 20.718600580413614
+    },
+    {
+      "view": "basement",
+      "frames": 360,
+      "portalRenders": 1080,
+      "full": {
+        "meanWallMs": 15.42650055555556,
+        "p95WallMs": 20.5125,
+        "meanReadbackMs": 5.3501749999999975,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "portalTargets": [
+          {
+            "id": 5,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6374405026435852,
+              "y": 0.4737710952758789,
+              "width": 0.013938546180725098,
+              "height": 0.03601062297821045
+            }
+          },
+          {
+            "id": 4,
+            "renders": 360,
+            "width": 960,
+            "height": 540,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 0,
+            "renders": 0,
+            "width": 960,
+            "height": 540,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 1,
+            "renders": 360,
+            "width": 960,
+            "height": 540,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 2,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.7003121376037598,
+              "y": 0.4158075153827667,
+              "width": 0.007847845554351807,
+              "height": 0.019307076930999756
+            }
+          },
+          {
+            "id": 3,
+            "renders": 360,
+            "width": 960,
+            "height": 540,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          }
+        ],
+        "portalCpu": {
+          "name": "RailArena.PortalView",
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 4445052.222222222,
+          "p95": 7213800.0
+        },
+        "drawCalls": {
+          "name": "Draw Calls Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 3500.9,
+          "p95": 3571.0
+        },
+        "triangles": {
+          "name": "Triangles Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 915760.15,
+          "p95": 932648.0
+        }
+      },
+      "cropped": {
+        "meanWallMs": 17.251309166666676,
+        "p95WallMs": 39.4286,
+        "meanReadbackMs": 5.9958236111111125,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "portalTargets": [
+          {
+            "id": 3,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5057601928710938,
+              "y": 0.6831514835357666,
+              "width": 0.0065996646881103516,
+              "height": 0.021956026554107666
+            }
+          },
+          {
+            "id": 0,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5597334504127502,
+              "y": 0.3331621289253235,
+              "width": 0.010472297668457031,
+              "height": 0.027521520853042603
+            }
+          },
+          {
+            "id": 2,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.7003121376037598,
+              "y": 0.4158075153827667,
+              "width": 0.007847845554351807,
+              "height": 0.019307076930999756
+            }
+          },
+          {
+            "id": 4,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6866691708564758,
+              "y": 0.606410562992096,
+              "width": 0.011703550815582275,
+              "height": 0.020642340183258057
+            }
+          },
+          {
+            "id": 1,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.45181500911712646,
+              "y": 0.6798005700111389,
+              "width": 0.006829768419265747,
+              "height": 0.019159436225891113
+            }
+          },
+          {
+            "id": 5,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6374405026435852,
+              "y": 0.4737710952758789,
+              "width": 0.013938546180725098,
+              "height": 0.03601062297821045
+            }
+          }
+        ],
+        "portalCpu": {
+          "name": "RailArena.PortalView",
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 4429389.722222222,
+          "p95": 12339100.0
+        },
+        "drawCalls": {
+          "name": "Draw Calls Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 1263.9305555555557,
+          "p95": 1292.0
+        },
+        "triangles": {
+          "name": "Triangles Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 335006.18333333335,
+          "p95": 340542.0
+        }
+      },
+      "meanWallReductionPercent": -11.829050953840259,
+      "portalCpuReductionPercent": 0.3523580650346081
+    },
+    {
+      "view": "foliage-waterfall",
+      "frames": 360,
+      "portalRenders": 1080,
+      "full": {
+        "meanWallMs": 16.115472222222213,
+        "p95WallMs": 36.7132,
+        "meanReadbackMs": 5.290743888888888,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "portalTargets": [
+          {
+            "id": 5,
+            "renders": 360,
+            "width": 960,
+            "height": 540,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 4,
+            "renders": 0,
+            "width": 960,
+            "height": 540,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 0,
+            "renders": 0,
+            "width": 960,
+            "height": 540,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 1,
+            "renders": 360,
+            "width": 960,
+            "height": 540,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 2,
+            "renders": 360,
+            "width": 960,
+            "height": 540,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 3,
+            "renders": 0,
+            "width": 960,
+            "height": 540,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          }
+        ],
+        "portalCpu": {
+          "name": "RailArena.PortalView",
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 4611475.277777778,
+          "p95": 14220000.0
+        },
+        "drawCalls": {
+          "name": "Draw Calls Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 3617.2277777777776,
+          "p95": 3779.0
+        },
+        "triangles": {
+          "name": "Triangles Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 938994.2222222222,
+          "p95": 956006.0
+        }
+      },
+      "cropped": {
+        "meanWallMs": 15.258099722222225,
+        "p95WallMs": 22.892,
+        "meanReadbackMs": 5.746713055555562,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "portalTargets": [
+          {
+            "id": 3,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5057601928710938,
+              "y": 0.6831514835357666,
+              "width": 0.0065996646881103516,
+              "height": 0.021956026554107666
+            }
+          },
+          {
+            "id": 0,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5597334504127502,
+              "y": 0.3331621289253235,
+              "width": 0.010472297668457031,
+              "height": 0.027521520853042603
+            }
+          },
+          {
+            "id": 2,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.39859190583229065,
+              "y": 0.681701123714447,
+              "width": 0.0070157647132873535,
+              "height": 0.01725482940673828
+            }
+          },
+          {
+            "id": 4,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6866691708564758,
+              "y": 0.606410562992096,
+              "width": 0.011703550815582275,
+              "height": 0.020642340183258057
+            }
+          },
+          {
+            "id": 1,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.4418458938598633,
+              "y": 0.7685943245887756,
+              "width": 0.009205430746078491,
+              "height": 0.029768943786621094
+            }
+          },
+          {
+            "id": 5,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.3292207717895508,
+              "y": 0.7922036051750183,
+              "width": 0.018067896366119385,
+              "height": 0.04322648048400879
+            }
+          }
+        ],
+        "portalCpu": {
+          "name": "RailArena.PortalView",
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 3526922.222222222,
+          "p95": 6049300.0
+        },
+        "drawCalls": {
+          "name": "Draw Calls Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 1398.4027777777778,
+          "p95": 1460.0
+        },
+        "triangles": {
+          "name": "Triangles Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 356330.3,
+          "p95": 371224.0
+        }
+      },
+      "meanWallReductionPercent": 5.320182295482012,
+      "portalCpuReductionPercent": 23.518570310501385
+    },
+    {
+      "view": "portal",
+      "frames": 360,
+      "portalRenders": 720,
+      "full": {
+        "meanWallMs": 13.055242777777776,
+        "p95WallMs": 20.5337,
+        "meanReadbackMs": 4.943291111111114,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "portalTargets": [
+          {
+            "id": 5,
+            "renders": 0,
+            "width": 960,
+            "height": 540,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 4,
+            "renders": 360,
+            "width": 960,
+            "height": 540,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 0,
+            "renders": 360,
+            "width": 960,
+            "height": 540,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 1,
+            "renders": 0,
+            "width": 960,
+            "height": 540,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 2,
+            "renders": 0,
+            "width": 960,
+            "height": 540,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          },
+          {
+            "id": 3,
+            "renders": 0,
+            "width": 960,
+            "height": 540,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.0,
+              "y": 0.0,
+              "width": 1.0,
+              "height": 1.0
+            }
+          }
+        ],
+        "portalCpu": {
+          "name": "RailArena.PortalView",
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 2812820.0,
+          "p95": 4904600.0
+        },
+        "drawCalls": {
+          "name": "Draw Calls Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 1206.7333333333333,
+          "p95": 1274.0
+        },
+        "triangles": {
+          "name": "Triangles Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 311595.60277777776,
+          "p95": 337075.0
+        }
+      },
+      "cropped": {
+        "meanWallMs": 14.266179166666669,
+        "p95WallMs": 29.3617,
+        "meanReadbackMs": 5.566239444444447,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "portalTargets": [
+          {
+            "id": 3,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5057601928710938,
+              "y": 0.6831514835357666,
+              "width": 0.0065996646881103516,
+              "height": 0.021956026554107666
+            }
+          },
+          {
+            "id": 0,
+            "renders": 360,
+            "width": 128,
+            "height": 192,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.4410232901573181,
+              "y": 0.3520336151123047,
+              "width": 0.117953360080719,
+              "height": 0.3096652626991272
+            }
+          },
+          {
+            "id": 2,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.39859190583229065,
+              "y": 0.681701123714447,
+              "width": 0.0070157647132873535,
+              "height": 0.01725482940673828
+            }
+          },
+          {
+            "id": 4,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.08378592878580093,
+              "y": 0.3057577610015869,
+              "width": 0.035959579050540924,
+              "height": 0.061853766441345215
+            }
+          },
+          {
+            "id": 1,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.4418458938598633,
+              "y": 0.7685943245887756,
+              "width": 0.009205430746078491,
+              "height": 0.029768943786621094
+            }
+          },
+          {
+            "id": 5,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.3292207717895508,
+              "y": 0.7922036051750183,
+              "width": 0.018067896366119385,
+              "height": 0.04322648048400879
+            }
+          }
+        ],
+        "portalCpu": {
+          "name": "RailArena.PortalView",
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 2830558.0555555555,
+          "p95": 7661900.0
+        },
+        "drawCalls": {
+          "name": "Draw Calls Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 345.0777777777778,
+          "p95": 384.0
+        },
+        "triangles": {
+          "name": "Triangles Count",
+          "category": "Render",
+          "unit": "Count",
+          "mean": 92906.01944444445,
+          "p95": 117879.0
+        }
+      },
+      "meanWallReductionPercent": -9.275479663619212,
+      "portalCpuReductionPercent": -0.6306146698173087
+    }
+  ],
+  "nativeFramePacingAccepted": false
+}

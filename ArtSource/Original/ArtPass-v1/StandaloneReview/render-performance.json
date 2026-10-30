@@ -1,8 +1,9 @@
 {
-    "scope": "Hidden Windows player with forced 1080p offscreen camera rendering and a synchronized one-pixel GPU readback each frame, High tier, one automated human and three bots. Timings include readback overhead; overlay HUD, native swapchain, input/audio and sustained competitive play acceptance remain open. GPU -1 means unavailable.",
+    "scope": "Version 2: observer stages after ArenaSession and before portal views; forced 1080p main rendering at EndOfFrame with synchronized one-pixel readback. High tier, 100-degree vertical FOV, one automated human and three bots. Timings include readback overhead. Earlier probes staged after portal views and are not equivalent portal workloads. Overlay HUD, native swapchain/input/audio and sustained visible-play acceptance remain open. GPU -1 means unavailable.",
+    "measurementVersion": 2,
     "gpu": "NVIDIA GeForce RTX 2080",
     "api": "Direct3D12",
-    "fingerprint": "b8d55f74620c804a8f193e3a105528219fdbc7d1928302b2c12f3083f3e4ebbc",
+    "fingerprint": "f577ac97b6235a6b15e7b685c78c4e991e80dc6bd444328291263d13ac4a73ac",
     "width": 1920,
     "height": 1080,
     "exceptions": 0,
@@ -12,50 +13,55 @@
             "frames": 180,
             "validGpuSamples": 0,
             "nonBlackSamples": 32400,
-            "meanFrameMs": 13.99290657043457,
-            "p95FrameMs": 25.943899154663086,
+            "meanFrameMs": 18.427640914916992,
+            "p95FrameMs": 38.78189468383789,
             "medianGpuMs": -1.0,
-            "frameBudgetMet": false
+            "frameBudgetMet": false,
+            "portalRenders": 720
         },
         {
             "view": "summit",
             "frames": 180,
             "validGpuSamples": 0,
             "nonBlackSamples": 32400,
-            "meanFrameMs": 9.859448432922363,
-            "p95FrameMs": 13.61259937286377,
+            "meanFrameMs": 13.978960037231445,
+            "p95FrameMs": 16.15799903869629,
             "medianGpuMs": -1.0,
-            "frameBudgetMet": true
+            "frameBudgetMet": true,
+            "portalRenders": 540
         },
         {
             "view": "basement",
             "frames": 180,
             "validGpuSamples": 0,
             "nonBlackSamples": 32400,
-            "meanFrameMs": 10.49341869354248,
-            "p95FrameMs": 16.31629753112793,
+            "meanFrameMs": 14.182869911193848,
+            "p95FrameMs": 16.345996856689453,
             "medianGpuMs": -1.0,
-            "frameBudgetMet": true
+            "frameBudgetMet": true,
+            "portalRenders": 540
         },
         {
             "view": "foliage-waterfall",
             "frames": 180,
             "validGpuSamples": 0,
             "nonBlackSamples": 32400,
-            "meanFrameMs": 12.667326927185059,
-            "p95FrameMs": 20.385799407958984,
+            "meanFrameMs": 14.056476593017578,
+            "p95FrameMs": 16.234296798706055,
             "medianGpuMs": -1.0,
-            "frameBudgetMet": false
+            "frameBudgetMet": true,
+            "portalRenders": 540
         },
         {
             "view": "portal",
             "frames": 180,
             "validGpuSamples": 0,
             "nonBlackSamples": 32400,
-            "meanFrameMs": 10.290075302124023,
-            "p95FrameMs": 16.772300720214844,
+            "meanFrameMs": 12.406426429748535,
+            "p95FrameMs": 14.605300903320313,
             "medianGpuMs": -1.0,
-            "frameBudgetMet": false
+            "frameBudgetMet": true,
+            "portalRenders": 360
         }
     ],
     "passed": true,

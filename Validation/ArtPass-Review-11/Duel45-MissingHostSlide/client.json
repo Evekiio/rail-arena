@@ -1,0 +1,743 @@
+{
+    "role": "client",
+    "fingerprint": "f577ac97b6235a6b15e7b685c78c4e991e80dc6bd444328291263d13ac4a73ac",
+    "round": 1,
+    "tick": 2693,
+    "errors": 0,
+    "shots": 0,
+    "observedShots": 44,
+    "deaths": 0,
+    "pads": 0,
+    "snapshots": 897,
+    "acknowledged": 2690,
+    "pending": 2,
+    "correction": 0.6028987765312195,
+    "maximumActiveCorrection": 0.6028987765312195,
+    "maximumPhaseChangeCorrection": 0.06901293247938156,
+    "largestActiveCorrection": {
+        "tick": 956,
+        "acknowledged": 953,
+        "pending": 0,
+        "previousClientTick": 957,
+        "distance": 0.6028987765312195,
+        "predicted": {
+            "x": -23.42107582092285,
+            "y": 1.6104099750518799,
+            "z": -5.259227275848389
+        },
+        "authority": {
+            "x": -23.257627487182617,
+            "y": 2.184687376022339,
+            "z": -5.175698757171631
+        },
+        "replayed": {
+            "x": -23.257627487182617,
+            "y": 2.184687376022339,
+            "z": -5.175698757171631
+        },
+        "previousVelocity": {
+            "x": -9.795891761779785,
+            "y": -34.45664596557617,
+            "z": -5.019157886505127
+        },
+        "correctedVelocity": {
+            "x": -9.692997932434082,
+            "y": -34.03997802734375,
+            "z": -4.871466159820557
+        },
+        "previousGrounded": false,
+        "authorityGrounded": false,
+        "replayGrounded": false,
+        "previousPadReady": 878,
+        "authorityPadReady": 878,
+        "replayPadReady": 878,
+        "previousAirborne": 0,
+        "authorityAirborne": 0,
+        "previousPhase": 1,
+        "authorityPhase": 1,
+        "replayMovementTicks": 0,
+        "movementClockShift": -1
+    },
+    "largestPhaseChangeCorrection": {
+        "tick": 182,
+        "acknowledged": 179,
+        "pending": 0,
+        "previousClientTick": 182,
+        "distance": 0.06901293247938156,
+        "predicted": {
+            "x": 25.5,
+            "y": 0.07999999821186066,
+            "z": -17.5
+        },
+        "authority": {
+            "x": 25.451200485229492,
+            "y": 0.07999993860721588,
+            "z": -17.451200485229492
+        },
+        "replayed": {
+            "x": 25.451200485229492,
+            "y": 0.07999993860721588,
+            "z": -17.451200485229492
+        },
+        "previousVelocity": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "correctedVelocity": {
+            "x": -1.8154966831207275,
+            "y": -1.0,
+            "z": 1.8154966831207275
+        },
+        "previousGrounded": false,
+        "authorityGrounded": true,
+        "replayGrounded": true,
+        "previousPadReady": 0,
+        "authorityPadReady": 0,
+        "replayPadReady": 0,
+        "previousAirborne": 0,
+        "authorityAirborne": 0,
+        "previousPhase": 0,
+        "authorityPhase": 1,
+        "replayMovementTicks": 0,
+        "movementClockShift": 0
+    },
+    "correctionSamples": [
+        {
+            "tick": 794,
+            "acknowledged": 791,
+            "pending": 0,
+            "previousClientTick": 795,
+            "distance": 0.5857673287391663,
+            "predicted": {
+                "x": -23.72768211364746,
+                "y": 4.080888271331787,
+                "z": -12.828899383544922
+            },
+            "authority": {
+                "x": -23.90114974975586,
+                "y": 3.5301661491394043,
+                "z": -12.92757797241211
+            },
+            "replayed": {
+                "x": -23.90114974975586,
+                "y": 3.5301661491394043,
+                "z": -12.92757797241211
+            },
+            "previousVelocity": {
+                "x": 10.39629077911377,
+                "y": 33.0433235168457,
+                "z": 5.904046535491943
+            },
+            "correctedVelocity": {
+                "x": 10.501834869384766,
+                "y": 33.459991455078125,
+                "z": 5.822571277618408
+            },
+            "previousGrounded": false,
+            "authorityGrounded": false,
+            "replayGrounded": false,
+            "previousPadReady": 878,
+            "authorityPadReady": 878,
+            "replayPadReady": 878,
+            "previousAirborne": 0,
+            "authorityAirborne": 0,
+            "previousPhase": 1,
+            "authorityPhase": 1,
+            "replayMovementTicks": 0,
+            "movementClockShift": -1
+        },
+        {
+            "tick": 812,
+            "acknowledged": 808,
+            "pending": 1,
+            "previousClientTick": 812,
+            "distance": 0.4592975676059723,
+            "predicted": {
+                "x": -21.10317039489746,
+                "y": 12.380664825439453,
+                "z": -11.05117416381836
+            },
+            "authority": {
+                "x": -21.10316276550293,
+                "y": 12.380664825439453,
+                "z": -11.05103874206543
+            },
+            "replayed": {
+                "x": -20.96845054626465,
+                "y": 12.806386947631836,
+                "z": -10.943631172180176
+            },
+            "previousVelocity": {
+                "x": 8.215758323669434,
+                "y": 25.959997177124023,
+                "z": 6.435378551483154
+            },
+            "correctedVelocity": {
+                "x": 8.082732200622559,
+                "y": 25.543331146240234,
+                "z": 6.444427013397217
+            },
+            "previousGrounded": false,
+            "authorityGrounded": false,
+            "replayGrounded": false,
+            "previousPadReady": 878,
+            "authorityPadReady": 878,
+            "replayPadReady": 878,
+            "previousAirborne": 0,
+            "authorityAirborne": 0,
+            "previousPhase": 1,
+            "authorityPhase": 1,
+            "replayMovementTicks": 1,
+            "movementClockShift": 1
+        },
+        {
+            "tick": 818,
+            "acknowledged": 815,
+            "pending": 0,
+            "previousClientTick": 819,
+            "distance": 0.41670823097229004,
+            "predicted": {
+                "x": -20.20680046081543,
+                "y": 15.214887619018555,
+                "z": -10.301708221435547
+            },
+            "authority": {
+                "x": -20.328187942504883,
+                "y": 14.830831527709961,
+                "z": -10.408534049987793
+            },
+            "replayed": {
+                "x": -20.328187942504883,
+                "y": 14.830831527709961,
+                "z": -10.408534049987793
+            },
+            "previousVelocity": {
+                "x": 7.284019947052002,
+                "y": 23.0433349609375,
+                "z": 6.39724063873291
+            },
+            "correctedVelocity": {
+                "x": 7.417229652404785,
+                "y": 23.46000099182129,
+                "z": 6.40297794342041
+            },
+            "previousGrounded": false,
+            "authorityGrounded": false,
+            "replayGrounded": false,
+            "previousPadReady": 878,
+            "authorityPadReady": 878,
+            "replayPadReady": 878,
+            "previousAirborne": 0,
+            "authorityAirborne": 0,
+            "previousPhase": 1,
+            "authorityPhase": 1,
+            "replayMovementTicks": 0,
+            "movementClockShift": -1
+        },
+        {
+            "tick": 821,
+            "acknowledged": 817,
+            "pending": 0,
+            "previousClientTick": 820,
+            "distance": 0.40244123339653015,
+            "predicted": {
+                "x": -20.08758544921875,
+                "y": 15.591999053955078,
+                "z": -10.195721626281738
+            },
+            "authority": {
+                "x": -19.970600128173828,
+                "y": 15.962165832519531,
+                "z": -10.089655876159668
+            },
+            "replayed": {
+                "x": -19.970600128173828,
+                "y": 15.962165832519531,
+                "z": -10.089655876159668
+            },
+            "previousVelocity": {
+                "x": 7.151782035827637,
+                "y": 22.62666893005371,
+                "z": 6.377575874328613
+            },
+            "correctedVelocity": {
+                "x": 7.019146919250488,
+                "y": 22.210002899169922,
+                "z": 6.363947868347168
+            },
+            "previousGrounded": false,
+            "authorityGrounded": false,
+            "replayGrounded": false,
+            "previousPadReady": 878,
+            "authorityPadReady": 878,
+            "replayPadReady": 878,
+            "previousAirborne": 0,
+            "authorityAirborne": 0,
+            "previousPhase": 1,
+            "authorityPhase": 1,
+            "replayMovementTicks": 0,
+            "movementClockShift": 1
+        },
+        {
+            "tick": 827,
+            "acknowledged": 824,
+            "pending": 0,
+            "previousClientTick": 828,
+            "distance": 0.35278084874153137,
+            "predicted": {
+                "x": -19.213132858276367,
+                "y": 18.358888626098633,
+                "z": -9.357011795043945
+            },
+            "authority": {
+                "x": -19.314769744873047,
+                "y": 18.03733253479004,
+                "z": -9.460577964782715
+            },
+            "replayed": {
+                "x": -19.314769744873047,
+                "y": 18.03733253479004,
+                "z": -9.460577964782715
+            },
+            "previousVelocity": {
+                "x": 6.0990729331970215,
+                "y": 19.2933406829834,
+                "z": 6.208168983459473
+            },
+            "correctedVelocity": {
+                "x": 6.230332851409912,
+                "y": 19.710006713867188,
+                "z": 6.231496810913086
+            },
+            "previousGrounded": false,
+            "authorityGrounded": false,
+            "replayGrounded": false,
+            "previousPadReady": 878,
+            "authorityPadReady": 878,
+            "replayPadReady": 878,
+            "previousAirborne": 0,
+            "authorityAirborne": 0,
+            "previousPhase": 1,
+            "authorityPhase": 1,
+            "replayMovementTicks": 0,
+            "movementClockShift": -1
+        },
+        {
+            "tick": 917,
+            "acknowledged": 913,
+            "pending": 0,
+            "previousClientTick": 916,
+            "distance": 0.30777379870414734,
+            "predicted": {
+                "x": -18.298370361328125,
+                "y": 19.461341857910156,
+                "z": -3.713024616241455
+            },
+            "authority": {
+                "x": -18.38079071044922,
+                "y": 19.16484260559082,
+                "z": -3.708575487136841
+            },
+            "replayed": {
+                "x": -18.38079071044922,
+                "y": 19.16484260559082,
+                "z": -3.708575487136841
+            },
+            "previousVelocity": {
+                "x": -4.805665969848633,
+                "y": -17.373329162597656,
+                "z": 0.3804610073566437
+            },
+            "correctedVelocity": {
+                "x": -4.944795608520508,
+                "y": -17.789995193481445,
+                "z": 0.2662554979324341
+            },
+            "previousGrounded": false,
+            "authorityGrounded": false,
+            "replayGrounded": false,
+            "previousPadReady": 878,
+            "authorityPadReady": 878,
+            "replayPadReady": 878,
+            "previousAirborne": 0,
+            "authorityAirborne": 0,
+            "previousPhase": 1,
+            "authorityPhase": 1,
+            "replayMovementTicks": 0,
+            "movementClockShift": 1
+        },
+        {
+            "tick": 920,
+            "acknowledged": 917,
+            "pending": 0,
+            "previousClientTick": 921,
+            "distance": 0.33697059750556946,
+            "predicted": {
+                "x": -18.733247756958008,
+                "y": 17.909399032592773,
+                "z": -3.7103164196014404
+            },
+            "authority": {
+                "x": -18.641695022583008,
+                "y": 18.23367691040039,
+                "z": -3.7069802284240723
+            },
+            "replayed": {
+                "x": -18.641695022583008,
+                "y": 18.23367691040039,
+                "z": -3.7069802284240723
+            },
+            "previousVelocity": {
+                "x": -5.4909186363220215,
+                "y": -19.4566593170166,
+                "z": -0.20292718708515167
+            },
+            "correctedVelocity": {
+                "x": -5.354093551635742,
+                "y": -19.039993286132813,
+                "z": -0.08597730845212936
+            },
+            "previousGrounded": false,
+            "authorityGrounded": false,
+            "replayGrounded": false,
+            "previousPadReady": 878,
+            "authorityPadReady": 878,
+            "replayPadReady": 878,
+            "previousAirborne": 0,
+            "authorityAirborne": 0,
+            "previousPhase": 1,
+            "authorityPhase": 1,
+            "replayMovementTicks": 0,
+            "movementClockShift": -1
+        },
+        {
+            "tick": 923,
+            "acknowledged": 919,
+            "pending": 0,
+            "previousClientTick": 922,
+            "distance": 0.35160553455352783,
+            "predicted": {
+                "x": -18.826936721801758,
+                "y": 17.578176498413086,
+                "z": -3.7157750129699707
+            },
+            "authority": {
+                "x": -18.922931671142578,
+                "y": 17.240009307861328,
+                "z": -3.7231485843658447
+            },
+            "replayed": {
+                "x": -18.922931671142578,
+                "y": 17.240009307861328,
+                "z": -3.7231485843658447
+            },
+            "previousVelocity": {
+                "x": -5.624730587005615,
+                "y": -19.87332534790039,
+                "z": -0.3233690857887268
+            },
+            "correctedVelocity": {
+                "x": -5.759738922119141,
+                "y": -20.28999137878418,
+                "z": -0.44241851568222046
+            },
+            "previousGrounded": false,
+            "authorityGrounded": false,
+            "replayGrounded": false,
+            "previousPadReady": 878,
+            "authorityPadReady": 878,
+            "replayPadReady": 878,
+            "previousAirborne": 0,
+            "authorityAirborne": 0,
+            "previousPhase": 1,
+            "authorityPhase": 1,
+            "replayMovementTicks": 0,
+            "movementClockShift": 1
+        },
+        {
+            "tick": 926,
+            "acknowledged": 923,
+            "pending": 0,
+            "previousClientTick": 927,
+            "distance": 0.38099759817123413,
+            "predicted": {
+                "x": -19.32909393310547,
+                "y": 15.817899703979492,
+                "z": -3.7728452682495117
+            },
+            "authority": {
+                "x": -19.224180221557617,
+                "y": 16.1838436126709,
+                "z": -3.757439374923706
+            },
+            "replayed": {
+                "x": -19.224180221557617,
+                "y": 16.1838436126709,
+                "z": -3.757439374923706
+            },
+            "previousVelocity": {
+                "x": -6.290658950805664,
+                "y": -21.956655502319336,
+                "z": -0.9287357330322266
+            },
+            "correctedVelocity": {
+                "x": -6.156927585601807,
+                "y": -21.539989471435547,
+                "z": -0.8082535266876221
+            },
+            "previousGrounded": false,
+            "authorityGrounded": false,
+            "replayGrounded": false,
+            "previousPadReady": 878,
+            "authorityPadReady": 878,
+            "replayPadReady": 878,
+            "previousAirborne": 0,
+            "authorityAirborne": 0,
+            "previousPhase": 1,
+            "authorityPhase": 1,
+            "replayMovementTicks": 0,
+            "movementClockShift": -1
+        },
+        {
+            "tick": 929,
+            "acknowledged": 925,
+            "pending": 0,
+            "previousClientTick": 928,
+            "distance": 0.3957000970840454,
+            "predicted": {
+                "x": -19.435985565185547,
+                "y": 15.445011138916016,
+                "z": -3.790527820587158
+            },
+            "authority": {
+                "x": -19.545164108276367,
+                "y": 15.065177917480469,
+                "z": -3.8101577758789063
+            },
+            "replayed": {
+                "x": -19.545164108276367,
+                "y": 15.065177917480469,
+                "z": -3.8101577758789063
+            },
+            "previousVelocity": {
+                "x": -6.419656753540039,
+                "y": -22.373321533203125,
+                "z": -1.0543676614761353
+            },
+            "correctedVelocity": {
+                "x": -6.550670623779297,
+                "y": -22.789987564086914,
+                "z": -1.1777992248535156
+            },
+            "previousGrounded": false,
+            "authorityGrounded": false,
+            "replayGrounded": false,
+            "previousPadReady": 878,
+            "authorityPadReady": 878,
+            "replayPadReady": 878,
+            "previousAirborne": 0,
+            "authorityAirborne": 0,
+            "previousPhase": 1,
+            "authorityPhase": 1,
+            "replayMovementTicks": 0,
+            "movementClockShift": 1
+        },
+        {
+            "tick": 941,
+            "acknowledged": 938,
+            "pending": 0,
+            "previousClientTick": 942,
+            "distance": 0.49177297949790955,
+            "predicted": {
+                "x": -21.15573501586914,
+                "y": 9.495404243469238,
+                "z": -4.260082244873047
+            },
+            "authority": {
+                "x": -21.01949691772461,
+                "y": 9.96551513671875,
+                "z": -4.212378978729248
+            },
+            "replayed": {
+                "x": -21.01949691772461,
+                "y": 9.96551513671875,
+                "z": -4.212378978729248
+            },
+            "previousVelocity": {
+                "x": -8.168405532836914,
+                "y": -28.206645965576172,
+                "z": -2.867583990097046
+            },
+            "correctedVelocity": {
+                "x": -8.046404838562012,
+                "y": -27.789979934692383,
+                "z": -2.735236883163452
+            },
+            "previousGrounded": false,
+            "authorityGrounded": false,
+            "replayGrounded": false,
+            "previousPadReady": 878,
+            "authorityPadReady": 878,
+            "replayPadReady": 878,
+            "previousAirborne": 0,
+            "authorityAirborne": 0,
+            "previousPhase": 1,
+            "authorityPhase": 1,
+            "replayMovementTicks": 0,
+            "movementClockShift": -1
+        },
+        {
+            "tick": 953,
+            "acknowledged": 949,
+            "pending": 0,
+            "previousClientTick": 952,
+            "distance": 0.5732463598251343,
+            "predicted": {
+                "x": -22.62128448486328,
+                "y": 4.412352561950684,
+                "z": -4.865993022918701
+            },
+            "authority": {
+                "x": -22.777873992919922,
+                "y": 3.8658528327941895,
+                "z": -4.939675807952881
+            },
+            "replayed": {
+                "x": -22.777873992919922,
+                "y": 3.8658528327941895,
+                "z": -4.939675807952881
+            },
+            "previousVelocity": {
+                "x": -9.289129257202148,
+                "y": -32.37330627441406,
+                "z": -4.275619983673096
+            },
+            "correctedVelocity": {
+                "x": -9.395316123962402,
+                "y": -32.789974212646484,
+                "z": -4.420962333679199
+            },
+            "previousGrounded": false,
+            "authorityGrounded": false,
+            "replayGrounded": false,
+            "previousPadReady": 878,
+            "authorityPadReady": 878,
+            "replayPadReady": 878,
+            "previousAirborne": 0,
+            "authorityAirborne": 0,
+            "previousPhase": 1,
+            "authorityPhase": 1,
+            "replayMovementTicks": 0,
+            "movementClockShift": 1
+        },
+        {
+            "tick": 956,
+            "acknowledged": 953,
+            "pending": 0,
+            "previousClientTick": 957,
+            "distance": 0.6028987765312195,
+            "predicted": {
+                "x": -23.42107582092285,
+                "y": 1.6104099750518799,
+                "z": -5.259227275848389
+            },
+            "authority": {
+                "x": -23.257627487182617,
+                "y": 2.184687376022339,
+                "z": -5.175698757171631
+            },
+            "replayed": {
+                "x": -23.257627487182617,
+                "y": 2.184687376022339,
+                "z": -5.175698757171631
+            },
+            "previousVelocity": {
+                "x": -9.795891761779785,
+                "y": -34.45664596557617,
+                "z": -5.019157886505127
+            },
+            "correctedVelocity": {
+                "x": -9.692997932434082,
+                "y": -34.03997802734375,
+                "z": -4.871466159820557
+            },
+            "previousGrounded": false,
+            "authorityGrounded": false,
+            "replayGrounded": false,
+            "previousPadReady": 878,
+            "authorityPadReady": 878,
+            "replayPadReady": 878,
+            "previousAirborne": 0,
+            "authorityAirborne": 0,
+            "previousPhase": 1,
+            "authorityPhase": 1,
+            "replayMovementTicks": 0,
+            "movementClockShift": -1
+        }
+    ],
+    "outboundClamps": 188,
+    "rewoundShots": 0,
+    "rejectedTimes": 0,
+    "actorShots": [
+        21,
+        23
+    ],
+    "actorLives": [
+        7,
+        2
+    ],
+    "statisticsShots": [
+        21,
+        23
+    ],
+    "hits": [
+        4,
+        13
+    ],
+    "headshots": [
+        0,
+        2
+    ],
+    "kills": [
+        0,
+        6
+    ],
+    "statisticsDeaths": [
+        6,
+        1
+    ],
+    "voidDeaths": [
+        0,
+        1
+    ],
+    "statisticsPassed": true,
+    "fullMatch": false,
+    "resultsSeen": false,
+    "rematchStarted": false,
+    "completedTick": 0,
+    "completedWinner": -1,
+    "completedScores": [],
+    "completedShots": [],
+    "completedLives": [],
+    "elapsedSeconds": 45.00150680541992,
+    "connection": "CONNECTED // CHALLENGER\nYOU NOT READY  /  OPPONENT NOT READY",
+    "passed": false,
+    "movementModes": true,
+    "crouchSamples": [
+        2554,
+        2966
+    ],
+    "sprintSamples": [
+        0,
+        6301
+    ],
+    "walkSamples": [
+        0,
+        5376
+    ],
+    "slideSamples": [
+        0,
+        716
+    ]
+}

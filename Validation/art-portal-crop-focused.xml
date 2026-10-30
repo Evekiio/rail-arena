@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="7" result="Passed" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 22:37:50Z" end-time="2026-10-30 22:37:55Z" duration="4.5303981">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="284" result="Passed" start-time="2026-10-30 22:37:50Z" end-time="2026-10-30 22:37:55Z" duration="4.530398" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1422" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="284" result="Passed" start-time="2026-10-30 22:37:50Z" end-time="2026-10-30 22:37:55Z" duration="4.513046" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="36152" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1423" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="284" result="Passed" start-time="2026-10-30 22:37:50Z" end-time="2026-10-30 22:37:55Z" duration="4.503936" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1424" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="284" result="Passed" start-time="2026-10-30 22:37:50Z" end-time="2026-10-30 22:37:55Z" duration="4.485826" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1188" name="PortalCropRenderingReview" fullname="RailArena.Tests.PortalCropRenderingReview" classname="RailArena.Tests.PortalCropRenderingReview" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 22:37:51Z" end-time="2026-10-30 22:37:53Z" duration="2.891577" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1189" name="CroppedDestinationsPreservePhysicalLensAndScreenAlignment" fullname="RailArena.Tests.PortalCropRenderingReview.CroppedDestinationsPreservePhysicalLensAndScreenAlignment" methodname="CroppedDestinationsPreservePhysicalLensAndScreenAlignment" classname="RailArena.Tests.PortalCropRenderingReview" runstate="Runnable" seed="79302231" result="Passed" start-time="2026-10-30 22:37:51Z" end-time="2026-10-30 22:37:53Z" duration="2.871788" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1194" name="PortalViewportTests" fullname="RailArena.Tests.PortalViewportTests" classname="RailArena.Tests.PortalViewportTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-30 22:37:53Z" end-time="2026-10-30 22:37:53Z" duration="0.011593" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1198" name="BoundsContainProjectedApertureAtPhysicalLensSettings" fullname="RailArena.Tests.PortalViewportTests.BoundsContainProjectedApertureAtPhysicalLensSettings" classname="RailArena.Tests.PortalViewportTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-30 22:37:53Z" end-time="2026-10-30 22:37:53Z" duration="0.005290" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1195" name="BoundsContainProjectedApertureAtPhysicalLensSettings(70.0f,1.333333f)" fullname="RailArena.Tests.PortalViewportTests.BoundsContainProjectedApertureAtPhysicalLensSettings(70.0f,1.333333f)" methodname="BoundsContainProjectedApertureAtPhysicalLensSettings" classname="RailArena.Tests.PortalViewportTests" runstate="Runnable" seed="1575321058" result="Passed" start-time="2026-10-30 22:37:53Z" end-time="2026-10-30 22:37:53Z" duration="0.003867" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1196" name="BoundsContainProjectedApertureAtPhysicalLensSettings(100.0f,1.777778f)" fullname="RailArena.Tests.PortalViewportTests.BoundsContainProjectedApertureAtPhysicalLensSettings(100.0f,1.777778f)" methodname="BoundsContainProjectedApertureAtPhysicalLensSettings" classname="RailArena.Tests.PortalViewportTests" runstate="Runnable" seed="2120381137" result="Passed" start-time="2026-10-30 22:37:53Z" end-time="2026-10-30 22:37:53Z" duration="0.000193" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1197" name="BoundsContainProjectedApertureAtPhysicalLensSettings(110.0f,2.333333f)" fullname="RailArena.Tests.PortalViewportTests.BoundsContainProjectedApertureAtPhysicalLensSettings(110.0f,2.333333f)" methodname="BoundsContainProjectedApertureAtPhysicalLensSettings" classname="RailArena.Tests.PortalViewportTests" runstate="Runnable" seed="1882168957" result="Passed" start-time="2026-10-30 22:37:53Z" end-time="2026-10-30 22:37:53Z" duration="0.000158" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1199" name="NearPlaneCrossingUsesStableFullProjection" fullname="RailArena.Tests.PortalViewportTests.NearPlaneCrossingUsesStableFullProjection" methodname="NearPlaneCrossingUsesStableFullProjection" classname="RailArena.Tests.PortalViewportTests" runstate="Runnable" seed="828313018" result="Passed" start-time="2026-10-30 22:37:53Z" end-time="2026-10-30 22:37:53Z" duration="0.002609" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1200" name="TextureBucketsNeverUndersampleAndAvoidBoundaryChurn" fullname="RailArena.Tests.PortalViewportTests.TextureBucketsNeverUndersampleAndAvoidBoundaryChurn" methodname="TextureBucketsNeverUndersampleAndAvoidBoundaryChurn" classname="RailArena.Tests.PortalViewportTests" runstate="Runnable" seed="1084186659" result="Passed" start-time="2026-10-30 22:37:53Z" end-time="2026-10-30 22:37:53Z" duration="0.002029" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1192" name="PortalViewTests" fullname="RailArena.Tests.PortalViewTests" classname="RailArena.Tests.PortalViewTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 22:37:53Z" end-time="2026-10-30 22:37:55Z" duration="1.537637" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1193" name="DestinationViewsAreLiveAndPickupsAnimateWithoutMovingAuthority" fullname="RailArena.Tests.PortalViewTests.DestinationViewsAreLiveAndPickupsAnimateWithoutMovingAuthority" methodname="DestinationViewsAreLiveAndPickupsAnimateWithoutMovingAuthority" classname="RailArena.Tests.PortalViewTests" runstate="Runnable" seed="501429887" result="Passed" start-time="2026-10-30 22:37:53Z" end-time="2026-10-30 22:37:55Z" duration="1.534182" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
