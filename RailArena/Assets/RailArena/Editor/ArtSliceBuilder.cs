@@ -119,9 +119,10 @@ namespace RailArena.Editor
             string folder = Environment.GetEnvironmentVariable("RA_ART_BUILD_OUTPUT") ?? "../Builds/RailArena-v1Alpha-ArtPass-Review-01";
             string output = Path.Combine(folder, "RailArena.exe");
             if (Directory.Exists(Path.GetDirectoryName(output))) throw new IOException("Review output already exists; choose a new build identity");
-            var pipeline = QualitySettings.renderPipeline;
             byte[] priorIdentity = File.ReadAllBytes("Assets/Resources/BuildIdentity.txt");
             byte[] priorQuality = File.ReadAllBytes("ProjectSettings/QualitySettings.asset");
+            int priorQualityLevel = QualitySettings.GetQualityLevel();
+            string priorPipelinePath = SavedPipelinePath(priorQuality, priorQualityLevel);
             try
             {
                 building = true;
@@ -137,17 +138,29 @@ namespace RailArena.Editor
             }
             finally
             {
-                building = false; RestoreBuildInputs(pipeline, priorIdentity, priorQuality);
+                building = false; RestoreBuildInputs(priorPipelinePath, priorQualityLevel, priorIdentity, priorQuality);
             }
         }
 
-        public static void RestoreBuildInputs(UnityEngine.Rendering.RenderPipelineAsset pipeline, byte[] identity, byte[] quality)
+        static string SavedPipelinePath(byte[] quality, int level)
         {
-            QualitySettings.renderPipeline = pipeline;
-            // The pipeline setter does not reliably flush ProjectSettings before batch-mode exit.
-            File.WriteAllBytes("ProjectSettings/QualitySettings.asset", quality);
+            var entries = System.Text.RegularExpressions.Regex.Matches(System.Text.Encoding.UTF8.GetString(quality), @"customRenderPipeline:\s*\{[^}]*\}");
+            if (level < 0 || level >= entries.Count) throw new InvalidOperationException("Cannot resolve the saved quality-level pipeline");
+            var guid = System.Text.RegularExpressions.Regex.Match(entries[level].Value, @"guid:\s*([a-f0-9]{32})");
+            if (!guid.Success) return null;
+            string path = AssetDatabase.GUIDToAssetPath(guid.Groups[1].Value);
+            if (string.IsNullOrEmpty(path)) throw new InvalidOperationException("Saved render pipeline is missing");
+            return path;
+        }
+
+        public static void RestoreBuildInputs(string pipelinePath, int level, byte[] identity, byte[] quality)
+        {
+            // BuildPipeline can unload the previous asset; restore its persistent identity rather than a stale Object reference.
+            QualitySettings.SetQualityLevel(level, false);
+            QualitySettings.renderPipeline = string.IsNullOrEmpty(pipelinePath) ? null : AssetDatabase.LoadAssetAtPath<UnityEngine.Rendering.RenderPipelineAsset>(pipelinePath);
             File.WriteAllBytes("Assets/Resources/BuildIdentity.txt", identity);
             AssetDatabase.ImportAsset("Assets/Resources/BuildIdentity.txt", ImportAssetOptions.ForceSynchronousImport);
+            File.WriteAllBytes("ProjectSettings/QualitySettings.asset", quality);
         }
     }
 }
