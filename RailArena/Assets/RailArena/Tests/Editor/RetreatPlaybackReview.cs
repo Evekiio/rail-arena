@@ -12,7 +12,7 @@ namespace RailArena.Tests
 {
     public sealed class RetreatPlaybackReview
     {
-        sealed class FootSurface
+        internal sealed class FootSurface
         {
             readonly SkinnedMeshRenderer skin;
             readonly Vector3[] vertices;
@@ -46,7 +46,10 @@ namespace RailArena.Tests
             }
         }
         [UnityTest]
-        public IEnumerator CaptureInstalledRetreatForAllFourIdentities()
+        public IEnumerator CaptureInstalledRetreatForAllFourIdentities() => CaptureGaits(false);
+        [UnityTest]
+        public IEnumerator CaptureInstalledAdvanceForAllFourIdentities() => CaptureGaits(true);
+        IEnumerator CaptureGaits(bool forward)
         {
             EditorSceneManager.OpenScene("Assets/RailArena/Generated/SkyGardensBasement.unity");
             yield return new EnterPlayMode();yield return null;
@@ -78,12 +81,12 @@ namespace RailArena.Tests
             var fill=new GameObject("Owned family portrait fill").AddComponent<Light>();fill.type=LightType.Directional;fill.intensity=.5f;fill.shadows=LightShadows.None;fill.cullingMask=1<<30;
             fill.transform.rotation=Quaternion.Euler(25,200,0);
             var target=new RenderTexture(1920,1080,24);target.Create();var pixels=new Texture2D(1920,1080,TextureFormat.RGB24,false);
-            string folder=Path.GetFullPath("../Validation/RetreatPlayback");Directory.CreateDirectory(folder);
+            string folder=Path.GetFullPath("../Validation/"+(forward?"AdvancePlayback":"RetreatPlayback"));Directory.CreateDirectory(folder);
             var csv=new System.Text.StringBuilder("frame,clip,phase,characterId,leftAnkleY,rightAnkleY,rootX,rootY,rootZ,minimumSoleY,leftWristError,rightWristError\n");
             int previousRate=Time.captureFramerate;Time.captureFramerate=60;int outputFrame=0;
             try
             {
-                foreach(var gait in new[]{("RetreatWalk",-1.5f,.6f),("RetreatJog",-4f,20f/60),("RetreatRun",-9f,.3f)})
+                foreach(var gait in forward?new[]{("AdvanceWalk",1.5f,.6f),("AdvanceJog",4f,20f/60),("AdvanceRun",9f,.3f)}:new[]{("RetreatWalk",-1.5f,.6f),("RetreatJog",-4f,20f/60),("RetreatRun",-9f,.3f)})
                     for(int frame=0;frame<180;frame++,outputFrame++)
                     {
                         float phase=Mathf.Repeat(frame/(60*gait.Item3),1);

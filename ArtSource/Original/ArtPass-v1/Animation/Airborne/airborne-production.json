@@ -1,0 +1,45 @@
+{
+  "id": "ANIM-AIRBORNE-v1",
+  "master": "Contender-Airborne-v1.blend",
+  "masterSha256": "e9312ec780971359f9429298a4371c18b374d7723b20394397a5fc6ff914e147",
+  "sourceMaster": "ArtSource\\Original\\ArtPass-v1\\Characters\\Player-ArtPass-v1.blend",
+  "sourceMasterSha256": "6d31c2d0eee1627d197bcdeddb1ab156d1d72b13da17982134214cd92bca938e",
+  "axes": "Blender metres -> Unity (x,z,-y)",
+  "rig": "Unchanged shared contender rest skeleton",
+  "provenance": "Original authored IK target paths and baked bone poses; no reversed or accelerated source clips",
+  "clips": [
+    {
+      "name": "Takeoff",
+      "frames": 18,
+      "fps": 60,
+      "durationSeconds": 0.3,
+      "loop": false,
+      "maximumAnkleTargetErrorMetres": 5.033663697079355e-05,
+      "rootMotion": false,
+      "keyPoses": "ready, compress, release into tucked suspension"
+    },
+    {
+      "name": "AirborneHold",
+      "frames": 36,
+      "fps": 60,
+      "durationSeconds": 0.6,
+      "loop": true,
+      "maximumAnkleTargetErrorMetres": 6.656621278876778e-05,
+      "rootMotion": false,
+      "keyPoses": "asymmetric suspended legs, subtle breathing cycle"
+    },
+    {
+      "name": "LandingRecover",
+      "frames": 30,
+      "fps": 60,
+      "durationSeconds": 0.5,
+      "loop": false,
+      "maximumAnkleTargetErrorMetres": 6.528072401465237e-05,
+      "rootMotion": false,
+      "keyPoses": "planted contact, impact compression, recovery to standing"
+    }
+  ],
+  "contactAuthority": "Controller grounded state, no animation events or root motion drive gameplay",
+  "integration": "Installed through independent Art/ContenderMotion state graph and the Sky Gardens override; native clip speed 1, no root motion, legacy map controller retained.",
+  "approval": "Final integrated Sanders playtest pending"
+}

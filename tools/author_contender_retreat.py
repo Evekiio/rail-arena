@@ -8,9 +8,13 @@ import bpy
 from mathutils import Vector, Quaternion
 
 root=Path(sys.argv[sys.argv.index('--')+1]).resolve()
+forward='--forward' in sys.argv
+prefix='Advance' if forward else 'Retreat'
 source=root/'ArtSource/Original/ArtPass-v1/Characters/Player-ArtPass-v1.blend'
 source_hash=hashlib.sha256(source.read_bytes()).hexdigest()
-folder=root/'ArtSource/Original/ArtPass-v1/Animation';folder.mkdir(exist_ok=True)
+folder=root/'ArtSource/Original/ArtPass-v1/Animation'
+if forward:folder=folder/'Forward'
+folder.mkdir(parents=True,exist_ok=True)
 exports=root/'RailArena/Assets/RailArena/Art/ArtPass/Animation';exports.mkdir(exist_ok=True)
 bpy.ops.wm.open_mainfile(filepath=str(source),load_ui=False)
 bpy.context.preferences.filepaths.file_preview_type='NONE'
@@ -43,7 +47,7 @@ def reset_pose():
     for bone in rig.pose.bones:
         bone.location=(0,0,0);bone.rotation_mode='QUATERNION';bone.rotation_quaternion=Quaternion();bone.scale=(1,1,1)
 
-specs=[('RetreatWalk',36,.53,.075,.11),('RetreatJog',20,.74,.105,.17),('RetreatRun',18,.82,.13,.22)]
+specs=[(prefix+'Walk',36,.53,.075,.11),(prefix+'Jog',20,.74,.105,.17),(prefix+'Run',18,.82,.13,.22)]
 records=[];baked=[]
 for name,frames,stride,lift,lowering in specs:
     rig.animation_data.action=None;snapshots=[];maximum_error=0
@@ -51,13 +55,13 @@ for name,frames,stride,lift,lowering in specs:
         scene.frame_set(frame);reset_pose();phase=frame/frames
         hips=rig.pose.bones['Hips'];offset=Vector((0,0,-lowering+.012*math.cos(4*math.pi*phase)))
         hips.location=hips.bone.matrix_local.to_3x3().inverted()@offset
-        rotate_world('Spine',.06 if name=='RetreatWalk' else .11)
+        rotate_world('Spine',.06 if name.endswith('Walk') else .11)
         for side,shift in [('Left',0),('Right',.5)]:
             p=(phase+shift)%1
             if p<.5:travel=stride*(.5-2*p);height=0
             else:
                 t=(p-.5)*2;ease=t*t*(3-2*t);travel=stride*(-.5+ease);height=lift*math.sin(math.pi*t)
-            ankle=rig.data.bones[side+'Foot'].head_local+Vector((0,travel,height))
+            ankle=rig.data.bones[side+'Foot'].head_local+Vector((0,-travel if forward else travel,height))
             goals[side].location=rig.matrix_world@ankle
             rotate_world(side+'Arm',-.65);rotate_world(side+'ForeArm',-.75)
         bpy.context.view_layer.update()
@@ -81,9 +85,9 @@ for name,frames,snapshots in baked:
     scene.frame_start=0;scene.frame_end=frames
     bpy.ops.object.select_all(action='DESELECT');rig.select_set(True);bpy.context.view_layer.objects.active=rig
     bpy.ops.export_scene.fbx(filepath=str(exports/(name+'.fbx')),use_selection=True,object_types={'ARMATURE'},add_leaf_bones=False,use_armature_deform_only=True,bake_anim=True,bake_anim_use_all_actions=False,bake_anim_use_nla_strips=False,bake_anim_simplify_factor=0,axis_forward='-Z',axis_up='Y')
-rig.animation_data.action=bpy.data.actions['RetreatWalk'];scene.frame_start=0;scene.frame_end=36;scene.frame_set(0)
-scene['motion_authority']='Original authored in-place retreat; existing gameplay/controller and shared rest skeleton remain authoritative'
-master=folder/'Contender-Retreat-v1.blend';bpy.ops.wm.save_as_mainfile(filepath=str(master))
+rig.animation_data.action=bpy.data.actions[prefix+'Walk'];scene.frame_start=0;scene.frame_end=36;scene.frame_set(0)
+scene['motion_authority']='Original authored in-place '+prefix+'; existing gameplay/controller and shared rest skeleton remain authoritative'
+master=folder/('Contender-'+prefix+'-v1.blend');bpy.ops.wm.save_as_mainfile(filepath=str(master))
 assert hashlib.sha256(source.read_bytes()).hexdigest()==source_hash
-(folder/'retreat-production.json').write_text(json.dumps({'id':'ANIM-RETREAT-v1','master':master.name,'masterSha256':hashlib.sha256(master.read_bytes()).hexdigest(),'sourceMaster':str(source.relative_to(root)),'sourceMasterSha256':source_hash,'axes':'Blender metres -> Unity (x,z,-y)','rig':'Unchanged shared contender rest skeleton','provenance':'Original authored IK contact paths and baked bone motion, not reversed or retimed forward clips','clips':records,'integration':'Candidate exports; humanoid import and normal-speed contact review required before installation','approval':'Final integrated Sanders playtest pending'},indent=2)+'\n')
+(folder/('forward-production.json' if forward else 'retreat-production.json')).write_text(json.dumps({'id':'ANIM-'+prefix.upper()+'-v1','master':master.name,'masterSha256':hashlib.sha256(master.read_bytes()).hexdigest(),'sourceMaster':str(source.relative_to(root)),'sourceMasterSha256':source_hash,'axes':'Blender metres -> Unity (x,z,-y)','rig':'Unchanged shared contender rest skeleton','provenance':'Original authored IK contact paths and baked bone motion, not reversed or retimed clips','clips':records,'integration':'Candidate exports; humanoid import and normal-speed contact review required before installation','approval':'Final integrated Sanders playtest pending'},indent=2)+'\n')
 print('AUTHORED_RETREAT_EXPORTED',[(r['name'],r['maximumAnkleTargetErrorMetres']) for r in records])
