@@ -8,6 +8,8 @@ namespace RailArena
     public sealed class BotBrain
     {
         private readonly System.Random random;
+        public BasementBotTraversal Basement { get; } = new BasementBotTraversal();
+        private int nextBasementVisit;
         private ArenaActor target;
         private int visibleSince;
         private int decisionTick;
@@ -30,6 +32,7 @@ namespace RailArena
         public MovementCommand Think(ArenaSession session, ArenaActor self)
         {
             if (session.Scenario == TargetScenario.Stationary) return default;
+            if (Basement.TryThink(session, self, out var basementCommand)) return basementCommand;
             int tick = session.Match.Tick;
             var tuning = session.BotSettings;
             var world = session.World;
@@ -47,7 +50,18 @@ namespace RailArena
                         { nearest = distance; goal = world.NearestNode(pickup.transform.position); }
                     }
                 }
-                int current = world.NearestNode(self.transform.position);
+                if (Basement.Available && tick >= nextBasementVisit)
+                {
+                    nextBasementVisit = tick + 1800;
+                    JumpPad summit = null; float distance = float.MaxValue;
+                    foreach (var pad in world.Pads)
+                    {
+                        if (pad.Destination.y < 20) continue;
+                        float candidate = (pad.transform.position - self.transform.position).sqrMagnitude;
+                        if (candidate < distance) { distance = candidate; summit = pad; }
+                    }
+                    if (summit != null) { goal = world.NearestNode(summit.transform.position); next = -1; }
+                }                int current = world.NearestNode(self.transform.position);
                 // Keep a destination until reached; rerouting each frame oscillates at junctions.
                 if (next < 0 || next >= world.Nodes.Length || stuckTicks > 100)
                     next = current;
@@ -132,3 +146,4 @@ namespace RailArena
         }
     }
 }
+

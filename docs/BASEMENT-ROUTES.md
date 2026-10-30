@@ -6,6 +6,11 @@ Staging centers are 21 m from the summit center with a 3 m radius; basement cent
 
 Two opposite basement platforms bounce to the middle bridge. The other two have two-way portals to opposite walls beneath the center bridge. Portal clearance, opposing orientation and safe support are checked by the existing traversal code. The void limit remains -20 m; no fall damage was added. The new decks have no health or spawn advantage.
 
-This is a competitive layout candidate requiring Sanders' approval, human multiplayer timing/readability review and performance validation. Existing bots retain their original navigation graph; the new descent routes are currently for human traversal. Added decks use realtime/ambient lighting and are not included in the earlier light bake.
+This is a competitive layout candidate requiring Sanders' approval, human multiplayer timing/readability review and performance validation. Bots use ordinary navigation to reach a summit launch pad, then follow a dedicated run-up, jump, landing and return-device controller. They rotate through all four routes and resume ordinary navigation after returning. Added decks use realtime/ambient lighting and are not included in the earlier light bake.
 
 Validation: basement-route-offset-tests.xml passed all four routes with -0.5/0/+0.5 m lateral takeoffs, normal-speed miss controls, two return bounces and two portal exits. The local player passed all 39 standalone mechanics checks with zero logged errors (basement-route-player-mechanics.json). Local build: Builds/SkyGardens-BasementRoutes-2026-10-30/RailArena.exe. Native input, sound and visual acceptance remain open.
+
+Bot validation: basement-bot-multi-tests.xml passes a complete single-bot rotation, three bots each completing all four routes, and the existing descent/return-device controller checks. None of the tested bots required a death or respawn to recover. Tests use standard movement tuning and the moving scenario without combat damage; combat balance and custom Physics Lab tuning still need playtesting.
+
+
+The basement-bot local player passed all 39 mechanics checks and a 45-second hidden three-bot combat smoke test: 141 shots, 8 eliminations, 21 pad launches, zero exceptions and zero void deaths. These counts establish activity, not competitive balance, visual acceptance or a performance benchmark. Build: Builds/SkyGardens-BasementBots-2026-10-30/RailArena.exe.

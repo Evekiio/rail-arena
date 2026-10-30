@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 13:30:36Z" end-time="2026-10-30 13:30:44Z" duration="7.3259842">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="264" result="Passed" start-time="2026-10-30 13:30:36Z" end-time="2026-10-30 13:30:44Z" duration="7.325984" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1388" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="264" result="Passed" start-time="2026-10-30 13:30:36Z" end-time="2026-10-30 13:30:44Z" duration="7.307526" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="25940" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1389" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="264" result="Passed" start-time="2026-10-30 13:30:36Z" end-time="2026-10-30 13:30:44Z" duration="7.303452" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1390" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="264" result="Passed" start-time="2026-10-30 13:30:36Z" end-time="2026-10-30 13:30:44Z" duration="7.299119" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1029" name="BasementBotTests" fullname="RailArena.Tests.BasementBotTests" classname="RailArena.Tests.BasementBotTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-30 13:30:36Z" end-time="2026-10-30 13:30:43Z" duration="6.418084" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1030" name="BotCompletesAllFourBasementRoutesThroughAuthority" fullname="RailArena.Tests.BasementBotTests.BotCompletesAllFourBasementRoutesThroughAuthority" methodname="BotCompletesAllFourBasementRoutesThroughAuthority" classname="RailArena.Tests.BasementBotTests" runstate="Runnable" seed="212135631" result="Passed" start-time="2026-10-30 13:30:36Z" end-time="2026-10-30 13:30:39Z" duration="2.587111" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[BASEMENT_BOT_PROGRESS tick=0 position=(3.000, 22.080, 3.000) Idle route=0 trips=0 life=1
+BASEMENT_BOT trip=1 tick=570 position=(-2.380, 0.080, -0.174)
+BASEMENT_BOT trip=2 tick=1603 position=(-1.434, 4.080, -1.435)
+BASEMENT_BOT trip=3 tick=2606 position=(2.380, 0.080, 0.180)
+BASEMENT_BOT_PROGRESS tick=3000 position=(-4.848, 0.080, -14.306) Idle route=3 trips=3 life=1
+BASEMENT_BOT trip=4 tick=4451 position=(1.435, 4.080, 1.434)
+BASEMENT_BOT_COUNTS 1,1,1,1
+]]></output>
+            </test-case>
+            <test-case id="1031" name="ThreeBotsShareAllRoutesWithoutVoidRecovery" fullname="RailArena.Tests.BasementBotTests.ThreeBotsShareAllRoutesWithoutVoidRecovery" methodname="ThreeBotsShareAllRoutesWithoutVoidRecovery" classname="RailArena.Tests.BasementBotTests" runstate="Runnable" seed="1134904161" result="Passed" start-time="2026-10-30 13:30:39Z" end-time="2026-10-30 13:30:43Z" duration="3.808819" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[BASEMENT_MULTI_BOT id=1 routes=1,2,2,1 life=1 position=(-33.472, -9.920, 34.108) PortalCross route=3
+BASEMENT_MULTI_BOT id=2 routes=1,1,1,1 life=1 position=(-2.473, 0.080, 0.010) Idle route=1
+BASEMENT_MULTI_BOT id=3 routes=2,1,1,2 life=1 position=(-1.988, 4.080, 0.492) Idle route=0
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1032" name="BasementRouteTests" fullname="RailArena.Tests.BasementRouteTests" classname="RailArena.Tests.BasementRouteTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 13:30:43Z" end-time="2026-10-30 13:30:44Z" duration="0.844601" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1033" name="FourSprintRoutesReachStagingAndBasement" fullname="RailArena.Tests.BasementRouteTests.FourSprintRoutesReachStagingAndBasement" methodname="FourSprintRoutesReachStagingAndBasement" classname="RailArena.Tests.BasementRouteTests" runstate="Runnable" seed="304176925" result="Passed" start-time="2026-10-30 13:30:43Z" end-time="2026-10-30 13:30:44Z" duration="0.843752" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[BASEMENT_LANDING Basement route 4 lower=False tick=71 position=(-14.043, 14.080, 13.336)
+BASEMENT_LANDING Basement route 4 lower=False tick=71 position=(-13.690, 14.080, 13.690)
+BASEMENT_LANDING Basement route 4 lower=False tick=71 position=(-13.336, 14.080, 14.043)
+BASEMENT_LANDING Basement route 4 lower=True tick=105 position=(-30.391, -9.920, 29.684)
+BASEMENT_LANDING Basement route 4 lower=True tick=105 position=(-30.038, -9.920, 30.038)
+BASEMENT_LANDING Basement route 4 lower=True tick=105 position=(-29.684, -9.920, 30.391)
+BASEMENT_LANDING Basement route 2 lower=False tick=71 position=(14.043, 14.080, -13.336)
+BASEMENT_LANDING Basement route 2 lower=False tick=71 position=(13.690, 14.080, -13.690)
+BASEMENT_LANDING Basement route 2 lower=False tick=71 position=(13.336, 14.080, -14.043)
+BASEMENT_LANDING Basement route 2 lower=True tick=105 position=(30.391, -9.920, -29.684)
+BASEMENT_LANDING Basement route 2 lower=True tick=105 position=(30.038, -9.920, -30.038)
+BASEMENT_LANDING Basement route 2 lower=True tick=105 position=(29.684, -9.920, -30.391)
+BASEMENT_LANDING Basement route 1 lower=False tick=71 position=(13.336, 14.080, 14.043)
+BASEMENT_LANDING Basement route 1 lower=False tick=71 position=(13.690, 14.080, 13.690)
+BASEMENT_LANDING Basement route 1 lower=False tick=71 position=(14.043, 14.080, 13.336)
+BASEMENT_LANDING Basement route 1 lower=True tick=105 position=(29.684, -9.920, 30.391)
+BASEMENT_LANDING Basement route 1 lower=True tick=105 position=(30.038, -9.920, 30.038)
+BASEMENT_LANDING Basement route 1 lower=True tick=105 position=(30.391, -9.920, 29.684)
+BASEMENT_LANDING Basement route 3 lower=False tick=71 position=(-13.336, 14.080, -14.043)
+BASEMENT_LANDING Basement route 3 lower=False tick=71 position=(-13.690, 14.080, -13.690)
+BASEMENT_LANDING Basement route 3 lower=False tick=71 position=(-14.043, 14.080, -13.336)
+BASEMENT_LANDING Basement route 3 lower=True tick=105 position=(-29.684, -9.920, -30.391)
+BASEMENT_LANDING Basement route 3 lower=True tick=105 position=(-30.038, -9.920, -30.038)
+BASEMENT_LANDING Basement route 3 lower=True tick=105 position=(-30.391, -9.920, -29.684)
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
