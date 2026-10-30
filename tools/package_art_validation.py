@@ -1,15 +1,21 @@
 """Join final gameplay, rendered-frame and reproducibility evidence without overstating acceptance."""
 import hashlib
+import argparse
 import json
 from pathlib import Path
 import shutil
 import subprocess
 
 root=Path(__file__).resolve().parent.parent
-build=root/'Builds/RailArena-v1Alpha-ArtPass-Review-07'
-validated=root/'Builds/RailArena-v1Alpha-ArtPass-Review-06'
+parser=argparse.ArgumentParser()
+parser.add_argument('--review',default='07')
+parser.add_argument('--validated-review',default='06')
+args=parser.parse_args()
+assert args.review.isdigit() and args.validated_review.isdigit(),'Review identifiers must be numeric'
+build=root/f'Builds/RailArena-v1Alpha-ArtPass-Review-{args.review}'
+validated=root/f'Builds/RailArena-v1Alpha-ArtPass-Review-{args.validated_review}'
 clean=root/'Builds/ArtPass-CleanSource-01'
-evidence=root/'Validation/ArtPass-Review-06'
+evidence=root/f'Validation/ArtPass-Review-{args.validated_review}'
 identity=(build/'BuildIdentity.txt').read_text().strip()
 assert identity==(validated/'BuildIdentity.txt').read_text().strip()
 reports={name:json.loads((evidence/(name+'.json')).read_text()) for name in ('mechanics','bots','performance')}
@@ -29,7 +35,10 @@ for name in ('RailArena/ProjectSettings/QualitySettings.asset','RailArena/Assets
     original=subprocess.check_output(['git','-C',str(clean),'show','HEAD:'+name])
     assert original.replace(b'\r\n',b'\n')==(clean/name).read_bytes().replace(b'\r\n',b'\n'),name
 record={'schema':'rail-arena-integrated-art-validation/1','build':build.relative_to(root).as_posix(),'sourceCommit':source_commit,'fingerprint':identity,'validatedPlayer':'Review-06; final Review-07 changes only Editor settings restoration','runtimeByteComparisons':comparisons,'sourceQualityAndIdentityRestored':True,'mechanicsChecks':39,'mechanicsPassed':True,'botMatch':{'seconds':reports['bots']['elapsedSeconds'],'bots':3,'telemetry':reports['bots']['telemetry'],'exceptions':reports['bots']['exceptions'],'voids':reports['bots']['statisticsVoids']},'duel':{role:{field:reports[role][field] for field in ('passed','errors','slideSamples','statisticsPassed')} for role in ('host','client')},'performance':reports['performance'],'discardedEvidence':'Review-05 hidden swapchain timings are invalid for graphics performance: screenshots were black. They are excluded from final evidence.','acceptanceRemaining':['Native visible-window input, audio and sustained playtest by Sanders','Real-internet multiplayer acceptance','Broader authored animation replacement and complete inventory reference coverage; see production status']}
-output=root/'Validation/art-integrated-final.json';output.write_text(json.dumps(record,indent=2)+'\n')
+record['validatedPlayer']=f'Review-{args.validated_review}; shipped Review-{args.review} runtime files verified below'
+record['performanceTargetMet']=all(view['frameBudgetMet'] for view in reports['performance']['views'])
+record['performanceExceptions']=[{'view':view['view'],'meanFrameMs':view['meanFrameMs'],'p95FrameMs':view['p95FrameMs'],'targetMs':1000/60} for view in reports['performance']['views'] if not view['frameBudgetMet']]
+output=root/f'Validation/art-integrated-final-{args.review}.json';output.write_text(json.dumps(record,indent=2)+'\n')
 shipping=build/'ValidationEvidence';shipping.mkdir(exist_ok=True)
 for name in ('mechanics','bots','performance'):shutil.copy2(evidence/(name+'.json'),shipping/(name+'.json'))
 for role in ('host','client'):shutil.copy2(evidence/'Duel'/(role+'.json'),shipping/('duel-'+role+'.json'))

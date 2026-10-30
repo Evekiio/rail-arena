@@ -1,0 +1,167 @@
+{
+  "schema": "rail-arena-integrated-art-validation/1",
+  "build": "Builds/RailArena-v1Alpha-ArtPass-Review-08",
+  "sourceCommit": "33a4480980c0a252abb4c15282469bee5f6419d6",
+  "fingerprint": "84d08adda4d5b5d6351e1e2d7a6ff7aa462ecb3d50acf17f79505568a03ded0a",
+  "validatedPlayer": "Review-08; shipped Review-08 runtime files verified below",
+  "runtimeByteComparisons": [
+    {
+      "path": "RailArena.exe",
+      "sha256": "3726509af94bdacbfe23f85da13109a7e70fb7d61913506e98690bd3208b2fd7",
+      "byteIdenticalToValidatedBuild": true
+    },
+    {
+      "path": "UnityPlayer.dll",
+      "sha256": "c93b9eaa6b12782ea809a0a35d65e81bbdc24ad080c914a7ca017ea5534b8958",
+      "byteIdenticalToValidatedBuild": true
+    },
+    {
+      "path": "RailArena_Data/Managed/RailArena.Runtime.dll",
+      "sha256": "49af815c4d85168709e134f34bc2229c9ba83d52edb8600fadea42f337922e46",
+      "byteIdenticalToValidatedBuild": true
+    },
+    {
+      "path": "RailArena_Data/Managed/RailArena.Simulation.dll",
+      "sha256": "0304f52c070ad316e35224aa97e225d1b261dde696ffe9dcf21434887c992e34",
+      "byteIdenticalToValidatedBuild": true
+    },
+    {
+      "path": "RailArena_Data/resources.assets",
+      "sha256": "db436e6e97dc492c6fab7089e6333acf0e6fab8d9c5d76fc26f81d21ccc08b9d",
+      "byteIdenticalToValidatedBuild": true
+    },
+    {
+      "path": "RailArena_Data/resources.assets.resS",
+      "sha256": "2e7db165aaffc4f9dd42faeef4a1c07fa1360df9e9c77e829afab17b00e72758",
+      "byteIdenticalToValidatedBuild": true
+    },
+    {
+      "path": "RailArena_Data/sharedassets0.assets",
+      "sha256": "c22ef9da152d49fae73940be328d8ba215db5a3f6f0f2eb1121a8eeefc87f3c6",
+      "byteIdenticalToValidatedBuild": true
+    },
+    {
+      "path": "RailArena_Data/sharedassets0.assets.resS",
+      "sha256": "ccf493d5ec6dd7206308d1613b6a52090377bbb3706d7a1b7aff6ed2f8d4055a",
+      "byteIdenticalToValidatedBuild": true
+    },
+    {
+      "path": "RailArena_Data/level0",
+      "sha256": "7fe027912cdf3840c408a511f53d50b55b5de6b6d9e12153e3c2bebd049ed005",
+      "byteIdenticalToValidatedBuild": true
+    }
+  ],
+  "sourceQualityAndIdentityRestored": true,
+  "mechanicsChecks": 39,
+  "mechanicsPassed": true,
+  "botMatch": {
+    "seconds": 45.085147857666016,
+    "bots": 3,
+    "telemetry": "ticks=2712 shots=158 deaths=9 pickups=2 pads=20",
+    "exceptions": 0,
+    "voids": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "duel": {
+    "host": {
+      "passed": true,
+      "errors": 0,
+      "slideSamples": [
+        655,
+        1249
+      ],
+      "statisticsPassed": true
+    },
+    "client": {
+      "passed": true,
+      "errors": 0,
+      "slideSamples": [
+        875,
+        1067
+      ],
+      "statisticsPassed": true
+    }
+  },
+  "performance": {
+    "scope": "Hidden Windows player with forced 1080p offscreen camera rendering and a synchronized one-pixel GPU readback each frame, High tier, one automated human and three bots. Timings include readback overhead; overlay HUD, native swapchain, input/audio and sustained competitive play acceptance remain open. GPU -1 means unavailable.",
+    "gpu": "NVIDIA GeForce RTX 2080",
+    "api": "Direct3D12",
+    "fingerprint": "84d08adda4d5b5d6351e1e2d7a6ff7aa462ecb3d50acf17f79505568a03ded0a",
+    "width": 1920,
+    "height": 1080,
+    "exceptions": 0,
+    "views": [
+      {
+        "view": "combat",
+        "frames": 180,
+        "validGpuSamples": 0,
+        "nonBlackSamples": 32400,
+        "meanFrameMs": 9.763940811157227,
+        "p95FrameMs": 11.101799964904785,
+        "medianGpuMs": -1.0,
+        "frameBudgetMet": true
+      },
+      {
+        "view": "summit",
+        "frames": 180,
+        "validGpuSamples": 0,
+        "nonBlackSamples": 32400,
+        "meanFrameMs": 9.29043197631836,
+        "p95FrameMs": 11.762202262878418,
+        "medianGpuMs": -1.0,
+        "frameBudgetMet": true
+      },
+      {
+        "view": "basement",
+        "frames": 180,
+        "validGpuSamples": 0,
+        "nonBlackSamples": 32400,
+        "meanFrameMs": 9.434203147888184,
+        "p95FrameMs": 11.303096771240234,
+        "medianGpuMs": -1.0,
+        "frameBudgetMet": true
+      },
+      {
+        "view": "foliage-waterfall",
+        "frames": 180,
+        "validGpuSamples": 0,
+        "nonBlackSamples": 32400,
+        "meanFrameMs": 10.449155807495117,
+        "p95FrameMs": 17.92739486694336,
+        "medianGpuMs": -1.0,
+        "frameBudgetMet": false
+      },
+      {
+        "view": "portal",
+        "frames": 180,
+        "validGpuSamples": 0,
+        "nonBlackSamples": 32400,
+        "meanFrameMs": 10.41443157196045,
+        "p95FrameMs": 13.660898208618164,
+        "medianGpuMs": -1.0,
+        "frameBudgetMet": true
+      }
+    ],
+    "passed": true,
+    "allViewsWithinBudget": false
+  },
+  "discardedEvidence": "Review-05 hidden swapchain timings are invalid for graphics performance: screenshots were black. They are excluded from final evidence.",
+  "acceptanceRemaining": [
+    "Native visible-window input, audio and sustained playtest by Sanders",
+    "Real-internet multiplayer acceptance",
+    "Broader authored animation replacement and complete inventory reference coverage; see production status"
+  ],
+  "performanceTargetMet": false,
+  "performanceExceptions": [
+    {
+      "view": "foliage-waterfall",
+      "meanFrameMs": 10.449155807495117,
+      "p95FrameMs": 17.92739486694336,
+      "targetMs": 16.666666666666668
+    }
+  ]
+}

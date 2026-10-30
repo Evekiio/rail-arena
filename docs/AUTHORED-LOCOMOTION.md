@@ -1,6 +1,6 @@
 # Authored contender locomotion
 
-The Sky Gardens art profile now installs original backward walk, jog and run on all four contenders. Review-07 remains the current verified portable build and predates this batch. The next build must include this committed source before its handoff advances.
+The Sky Gardens art profile now installs original backward walk, jog and run on all four contenders. Review-08 is the verified portable build containing this batch; Review-07 is preserved.
 
 The existing controller used reversed forward clips. `ContenderMotionArtBuilder` creates a separate override with exactly three replacements; legacy maps retain their original controller. Simulation, root movement, hitboxes, weapon cadence and network messages are unchanged. `ContenderPresentation.ApplyCombatPose` exposes the existing pose solve for review capture without duplicating its formulas.
 

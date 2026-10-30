@@ -1,12 +1,17 @@
 """Verify every portable-package file against its shipped SHA-256 manifest."""
 import hashlib
+import argparse
 import json
 from pathlib import Path
 import zipfile
 
 root=Path(__file__).resolve().parent.parent
-package=root/'Builds/RailArena-v1Alpha-ArtPass-Review-07.zip'
-extraction=root/'Builds/ArtPass-Portable-Verify-07'
+parser=argparse.ArgumentParser()
+parser.add_argument('--review',default='07',help='Review milestone identifier; historical packages remain unchanged')
+args=parser.parse_args()
+assert args.review.isdigit(),'Review must be a numeric milestone'
+package=root/f'Builds/RailArena-v1Alpha-ArtPass-Review-{args.review}.zip'
+extraction=root/f'Builds/ArtPass-Portable-Verify-{args.review}'
 assert not extraction.exists(),'Choose a new verification directory; never overwrite a prior package'
 with zipfile.ZipFile(package) as archive:
     names=archive.namelist();prefix=package.stem+'/'
@@ -23,5 +28,5 @@ with zipfile.ZipFile(package) as archive:
         assert required in manifest,required
     archive.extractall(extraction)
 record={'package':package.relative_to(root).as_posix(),'sha256':hashlib.sha256(package.read_bytes()).hexdigest(),'bytes':package.stat().st_size,'verifiedFiles':len(manifest),'shippingBackupFoldersExcluded':True,'extractedTo':extraction.relative_to(root).as_posix(),'nativeInputAudioAcceptance':False}
-(root/'Validation/art-package-verification.json').write_text(json.dumps(record,indent=2)+'\n')
+(root/f'Validation/art-package-verification-{args.review}.json').write_text(json.dumps(record,indent=2)+'\n')
 print(json.dumps(record))
