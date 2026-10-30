@@ -9,7 +9,7 @@ using UnityEngine.Rendering;
 namespace RailArena
 {
     /// <summary>Opt-in normal player rendering probe; never writes saved user preferences.</summary>
-    [DefaultExecutionOrder(10000)]
+    [DefaultExecutionOrder(500)]
     public sealed class ArtPerformanceValidation : MonoBehaviour
     {
         [Serializable] sealed class Reading
@@ -19,10 +19,12 @@ namespace RailArena
             public float meanFrameMs, p95FrameMs;
             public double medianGpuMs = -1;
             public bool frameBudgetMet;
+            public int portalRenders;
         }
         [Serializable] sealed class Report
         {
-            public string scope = "Hidden Windows player with forced 1080p offscreen camera rendering and a synchronized one-pixel GPU readback each frame, High tier, one automated human and three bots. Timings include readback overhead; overlay HUD, native swapchain, input/audio and sustained competitive play acceptance remain open. GPU -1 means unavailable.";
+            public string scope = "Version 2: observer stages after ArenaSession and before portal views; forced 1080p main rendering at EndOfFrame with synchronized one-pixel readback. High tier, 100-degree vertical FOV, one automated human and three bots. Timings include readback overhead. Earlier probes staged after portal views and are not equivalent portal workloads. Overlay HUD, native swapchain/input/audio and sustained visible-play acceptance remain open. GPU -1 means unavailable.";
+            public int measurementVersion=2;
             public string gpu, api, fingerprint;
             public int width, height, exceptions;
             public Reading[] views;
@@ -47,6 +49,7 @@ namespace RailArena
         {
             if (!staged || view == null) return;
             view.transform.position = position; view.transform.LookAt(target);
+            view.focalLength=Camera.FieldOfViewToFocalLength(100,view.sensorSize.y);
         }
         IEnumerator Start()
         {
@@ -58,7 +61,7 @@ namespace RailArena
             Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
             QualitySettings.vSyncCount = 0; Application.targetFrameRate = -1;
             session = FindFirstObjectByType<ArenaSession>(); view = session.View;
-            session.Graphics.Tier = GraphicsTier.High; session.Graphics.Apply(view);
+            session.Aim.FieldOfView=100;session.Graphics.Tier = GraphicsTier.High;session.Graphics.Smaa=true;session.Graphics.MotionBlur=true; session.Graphics.Apply(view);
             session.AutomatedHuman = true; session.StartSession(true, 3, 1, TargetScenario.Combat);
             yield return new WaitForSecondsRealtime(5);
             view.cullingMask = (view.cullingMask | (1 << 8)) & ~(1 << 11);
@@ -67,6 +70,8 @@ namespace RailArena
             var synchronizationPixel = new Texture2D(1,1,TextureFormat.RGB24,false);
             var capturePixels = new Texture2D(1920,1080,TextureFormat.RGB24,false);
             var readings = new List<Reading>(); var timing = new FrameTiming[1];
+            var endOfFrame=new WaitForEndOfFrame();var request=new RenderPipeline.StandardRequest{destination=targetTexture};
+            var portalViews=FindObjectsByType<PortalView>(FindObjectsSortMode.None);
             var portal = session.World.Portals[0];
             var poses = new[] {
                 ("combat", new Vector3(25,3,-14), new Vector3(0,5,0)),
@@ -78,10 +83,12 @@ namespace RailArena
             {
                 position = pose.Item2; target = pose.Item3; staged = true;
                 var frames = new List<float>(); var gpu = new List<double>();
+                int initialPortalFrames=0;
                 for (int frame = 0; frame < 240; frame++)
                 {
-                    LateUpdate();
-                    RenderPipeline.SubmitRenderRequest(view, new RenderPipeline.StandardRequest { destination = targetTexture });
+                    if(frame==60)foreach(var portalView in portalViews)initialPortalFrames+=portalView.RenderedFrames;
+                    yield return endOfFrame;
+                    RenderPipeline.SubmitRenderRequest(view, request);
                     var previousTarget = RenderTexture.active;
                     RenderTexture.active = targetTexture;
                     synchronizationPixel.ReadPixels(new Rect(0,0,1,1),0,0,false);
@@ -95,6 +102,8 @@ namespace RailArena
                 var reading = new Reading { view = pose.Item1, frames = frames.Count, meanFrameMs = total / frames.Count,
                     p95FrameMs = frames[(int)(frames.Count * .95f)], validGpuSamples = gpu.Count,
                     medianGpuMs = gpu.Count == 0 ? -1 : gpu[gpu.Count / 2] };
+                foreach(var portalView in portalViews)reading.portalRenders+=portalView.RenderedFrames;
+                reading.portalRenders-=initialPortalFrames;
                 reading.frameBudgetMet = reading.p95FrameMs <= 16.67f; readings.Add(reading);
                 var previousCaptureTarget = RenderTexture.active;
                 RenderTexture.active = targetTexture;
