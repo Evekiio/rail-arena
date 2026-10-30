@@ -8,8 +8,10 @@ from mathutils import Vector
 
 root=Path(sys.argv[sys.argv.index('--')+1]).resolve()
 folder=root/'ArtSource/Original/ArtPass-v1/Animation'
-master=folder/'Contender-Retreat-v1.blend';digest=hashlib.sha256(master.read_bytes()).hexdigest()
-record=json.loads((folder/'retreat-production.json').read_text())
+forward='--forward' in sys.argv
+if forward:folder=folder/'Forward'
+master=folder/('Contender-Advance-v1.blend' if forward else 'Contender-Retreat-v1.blend');digest=hashlib.sha256(master.read_bytes()).hexdigest()
+record=json.loads((folder/('forward-production.json' if forward else 'retreat-production.json')).read_text())
 bpy.ops.wm.open_mainfile(filepath=str(master),load_ui=False)
 scene=bpy.context.scene;rig=next(o for o in scene.objects if o.type=='ARMATURE');rig.data.pose_position='POSE'
 scene.render.engine='BLENDER_WORKBENCH';scene.display.shading.light='STUDIO';scene.display.shading.color_type='TEXTURE';scene.display.shading.show_shadows=True;scene.display.shading.show_cavity=True
@@ -27,7 +29,7 @@ for spec in record['clips']:
             else:
                 import math
                 t=(p-.5)*2;travel=spec['strideMetres']*(-.5+t*t*(3-2*t));height=spec['swingAnkleLiftMetres']*math.sin(math.pi*t)
-            target=rig.data.bones[side+'Foot'].head_local+Vector((0,travel,height))
+            target=rig.data.bones[side+'Foot'].head_local+Vector((0,-travel if forward else travel,height))
             error=max(error,(rig.pose.bones[side+'Foot'].head-target).length)
         matrices={bone.name:bone.matrix.copy() for bone in rig.pose.bones}
         if frame==0:first=matrices

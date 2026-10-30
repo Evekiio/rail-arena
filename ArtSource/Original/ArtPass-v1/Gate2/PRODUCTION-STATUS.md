@@ -2,7 +2,7 @@
 
 Sanders approved the direction and authorized continuous production without intermediate approval holds. Final playtest is the artistic and user QA gate. Public release remains held for acceptance.
 
-**Working local milestone:** ArtPass Review-08 is built and packaged with runnable checks and original backward walk/jog/run. All 39 mechanics checks, the three-bot match and both slide-enabled loopback peers passed. Five views rendered successfully at 1080p, but foliage/waterfall P95 was 17.93 ms, above the 16.67 ms target. GPU timers and native acceptance remain unavailable/open. [Validation](../../../../Validation/art-integrated-final-08.json) and [build handoff](../../../../docs/ART-PASS-REVIEW.md) record the exact scope. Review-07 is preserved as historical evidence.
+**Working local milestone:** ArtPass Review-09 is built and packaged with runnable checks and nine original gait/airborne actions. All 39 mechanics checks, the three-bot match and both slide-enabled loopback peers passed. Five 1080p views rendered successfully; combat, summit and portal P95 exceed 16.67 ms in this run. GPU timers and native acceptance remain unavailable/open. [Validation](../../../../Validation/art-integrated-final-09.json) and [build handoff](../../../../docs/ART-PASS-REVIEW.md) record the exact scope. Historical packages remain preserved.
 
 ## Implemented
 
@@ -12,7 +12,7 @@ Six equal-scale canonical views cover all four characters, stone cover, canopy a
 
 ## Remaining production and acceptance
 
-Dedicated original backward walk, jog and run are installed in the Sky Gardens art profile source, replacing the three reversed clips. The nine-second armed playback covers all four identities at native clip rates, with measured sole clearance and numerical wrist alignment. See [authored locomotion](../../../../docs/AUTHORED-LOCOMOTION.md). Review-08 includes this animation batch. Accelerated legacy jump/landing transitions and the broader character/FPS action library still need authored replacements. Wrist reach tests do not certify palm/finger contact at every frame.
+Nine original body actions are installed in the Sky Gardens art-profile source: forward/backward walk, jog, run, takeoff, airborne hold and landing recovery. The forward gait fixes measured legacy boot penetration that also affected landing blends. Family reels cover all four identities; three actual-controller jump scenarios cover standing, forward and retreat motion. See [authored locomotion](../../../../docs/AUTHORED-LOCOMOTION.md) and the [current complete action matrix](../animation-production-matrix.csv). Review-09 contains the complete nine-action batch. Strafe, crouch/slide/traversal combinations, reactions/death and the broader FPS/action reference library remain production work. Wrist reach tests do not certify every palm/finger surface.
 
 Full reference evidence for every baseline entry, complete variant/construction layers, structural undersides, remaining nature families and complete device geometry refinement remain unfinished. Older maps and experimental sources are retained. No claim of 100% reference coverage or AAA completion is made.
 

@@ -1,0 +1,53 @@
+"""Join the baseline and production delta by path while retaining Unity identities and evidence limits."""
+import csv
+import hashlib
+import json
+from pathlib import Path
+import re
+
+root=Path(__file__).resolve().parent.parent
+art=root/'ArtSource/Original/ArtPass-v1'
+baseline=json.loads((art/'Gate1/asset-manifest.json').read_text())
+production=json.loads((art/'integrated-manifest.json').read_text())
+base={entry['path'].replace('\\','/'):entry for entry in baseline['assets']}
+delta={entry['path'].replace('\\','/'):entry for entry in production['entries']}
+assert len(base)==len(baseline['assets']) and len(delta)==len(production['entries'])
+records=[]
+for path in sorted(base.keys()|delta.keys()):
+    old=base.get(path);new=delta.get(path);identity=old['id'] if old else new['id']
+    if old is None and path.startswith('RailArena/Assets/'):
+        meta=root/(path+'.meta')
+        if meta.is_file():
+            guid=re.search(r'^guid: ([0-9a-f]{32})$',meta.read_text(),re.M)
+            if guid:identity='unity:'+guid.group(1)
+    file=root/path
+    record={'id':identity,'path':path,'baselineId':old['id'] if old else None,'productionId':new['id'] if new else None,'category':new['category'] if new else old['category'],'mapArea':new['mapArea'] if new else old['area'],'disposition':new['disposition'] if new else old['disposition'],'existsNow':file.is_file(),'baselineUsage':old.get('scope') if old else None,'productionUsage':new.get('runtimeUsage') if new else None,'runtimeEvidenceLimit':'Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.','canonicalMaster':new.get('sourceMaster') if new else None,'dimensionAuthority':new.get('dimensionAuthority') if new else old.get('dimensionsEvidence'),'dimensions':new.get('dimensionsMetresBlenderXYZ') if new else old.get('dimensions'),'dependencies':new.get('dependencies',[]) if new else old.get('dependencies',[]),'references':new.get('referenceSheets',[]) if new else old.get('references',[]),'screenshots':[new['currentScreenshot']] if new else old.get('screenshots',[]),'provenance':new['provenance'] if new else old['provenance'],'approval':'Direction approved; integrated native/artistic acceptance pending','evidenceState':'production-evidence-present' if new else 'baseline-only','referenceException':new.get('referenceException') if new else 'Current per-asset reference requirements remain to be completed or explicitly excepted; baseline candidates are not certified masters.'}
+    if new:
+        actual=hashlib.sha256(file.read_bytes()).hexdigest() if file.is_file() else None
+        assert actual==new['sha256'],path
+        record['productionSha256']=actual
+    records.append(record)
+assert len({entry['id'] for entry in records})==len(records),'Stable inventory IDs must remain unique'
+summary={'baselineEntries':len(base),'productionEntries':len(delta),'overlappingPaths':len(base.keys()&delta.keys()),'currentUniquePaths':len(records),'productionEvidencePaths':sum(entry['evidenceState']=='production-evidence-present' for entry in records),'baselineOnlyPaths':sum(entry['evidenceState']=='baseline-only' for entry in records),'missingPaths':sum(not entry['existsNow'] for entry in records),'finalApprovedEntries':0,'referenceCoverage':'Incomplete; evidence-present is not complete geometry/contact/reference certification.'}
+(art/'current-asset-manifest.json').write_text(json.dumps({'schema':'rail-arena-art-current/1','baseline':'Gate1/asset-manifest.json','productionDelta':'integrated-manifest.json','summary':summary,'assets':records},indent=2)+'\n')
+columns=list(records[0]);columns += [key for record in records for key in record if key not in columns]
+columns=list(dict.fromkeys(columns))
+with (art/'current-asset-register.csv').open('w',newline='',encoding='utf-8') as stream:
+    writer=csv.DictWriter(stream,columns);writer.writeheader();writer.writerows({key:json.dumps(value) if isinstance(value,(list,dict)) else value for key,value in record.items()} for record in records)
+text='# Current inventory coverage and production gaps\n\nThe Gate 1 snapshot is preserved. This path join keeps baseline IDs, uses Unity GUIDs for new imported assets, and links the current production evidence. Production evidence is not final asset/reference acceptance.\n\n'
+text+='\n'.join(f'- **{key}:** {value}' for key,value in summary.items())
+text+='''
+
+## Next production priorities
+
+1. Complete body stance/strafe, traversal, reaction/death and remaining first-person actions with contact and transition evidence. The current action matrix retains all 34 original action requirements.
+2. Finish Blender modular architecture, structural undersides and playable staging/basement deck construction while preserving the tested movement envelopes.
+3. Refine portal/pad silhouettes, active/depleted states, launch cues and destination readability; complete their measured assembly references.
+4. Finish bark/foliage/vines, waterfall lips/foam, cloudscape and distant ruins with variant, collision, LOD and material records.
+5. Complete per-family rig/socket/pivot/collision/construction-layer evidence, UI state/animation references, audio/provenance review and complete legacy/archive references.
+6. Resolve measured performance exceptions, then native sound/input, sustained match and artistic acceptance with Sanders. No public release until final acceptance.
+
+See integrated-review.html, animation-production-matrix.csv and docs/ART-PASS-REVIEW.md for actual in-game/reel/build evidence. No intermediate approval stop is required.
+'''
+(art/'CURRENT-GAPS.md').write_text(text)
+print('CURRENT_INVENTORY_JOINED',json.dumps(summary))

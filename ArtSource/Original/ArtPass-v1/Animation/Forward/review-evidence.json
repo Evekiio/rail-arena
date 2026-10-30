@@ -1,0 +1,26 @@
+{
+  "sourceMasterSha256": "8f11147fbb49819a260bbed44aefa808d873924ca42ce7fa934b7ca0b1e9ccfe",
+  "frames": 540,
+  "fps": 60,
+  "durationSeconds": 9,
+  "identities": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "samples": 2160,
+  "minimumSoleHeightMetres": 0.008434,
+  "maximumStanceSoleHeightMetres": 0.008492,
+  "maximumNumericalWristTargetErrorMetres": 1e-06,
+  "scope": "Installed clips at Gait=1, in-place, with live weapon/wrist/finger pose code. Captures wait for native skinning after the IK solve. Fixed capture time is not rendering performance or native-input acceptance. Wrist targets do not certify every palm/finger surface contact.",
+  "timeRanges": {
+    "0\u20133 seconds": "AdvanceWalk",
+    "3\u20136 seconds": "AdvanceJog",
+    "6\u20139 seconds": "AdvanceRun"
+  },
+  "remaining": [
+    "Full movement/stance combinations and native playtest",
+    "Broader full-action library"
+  ]
+}

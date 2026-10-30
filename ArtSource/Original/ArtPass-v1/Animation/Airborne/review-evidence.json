@@ -1,0 +1,83 @@
+{
+  "masterSha256": "e9312ec780971359f9429298a4371c18b374d7723b20394397a5fc6ff914e147",
+  "fps": 60,
+  "familyFrames": 540,
+  "controllerFrames": 360,
+  "poseSamples": 2160,
+  "clips": {
+    "Takeoff": {
+      "samples": 720,
+      "minimumSoleY": 0.008353,
+      "maximumSoleY": 0.086422,
+      "maximumNumericalWristTargetErrorMetres": 1e-06
+    },
+    "AirborneHold": {
+      "samples": 720,
+      "minimumSoleY": 0.07446,
+      "maximumSoleY": 0.098446,
+      "maximumNumericalWristTargetErrorMetres": 1e-06
+    },
+    "LandingRecover": {
+      "samples": 720,
+      "minimumSoleY": 0.008305,
+      "maximumSoleY": 0.008914,
+      "maximumNumericalWristTargetErrorMetres": 1e-06
+    }
+  },
+  "controllerScenarios": {
+    "standing": {
+      "frames": 120,
+      "states": [
+        "Air",
+        "Jump",
+        "Land",
+        "Locomotion"
+      ],
+      "rootYRangeMetres": [
+        0.08,
+        1.434167
+      ],
+      "minimumSoleY": 0.006979,
+      "airborneStateMinimumSoleY": 0.008305,
+      "authoredGaitMinimumSoleY": 0.006979
+    },
+    "forward": {
+      "frames": 120,
+      "states": [
+        "Air",
+        "Jump",
+        "Land",
+        "Locomotion"
+      ],
+      "rootYRangeMetres": [
+        0.08,
+        1.434167
+      ],
+      "minimumSoleY": 0.005372,
+      "airborneStateMinimumSoleY": 0.008305,
+      "authoredGaitMinimumSoleY": 0.005372
+    },
+    "retreat": {
+      "frames": 120,
+      "states": [
+        "Air",
+        "Jump",
+        "Land",
+        "Locomotion"
+      ],
+      "rootYRangeMetres": [
+        0.08,
+        1.434167
+      ],
+      "minimumSoleY": 0.005377,
+      "airborneStateMinimumSoleY": 0.008305,
+      "authoredGaitMinimumSoleY": 0.005377
+    }
+  },
+  "scope": "Original native-rate clips on four installed identities with live rifle/hand solve; controller-driven standing, forward and retreat jumps use ArenaActor.Move and the live presentation parameter update. Collision-deck reference staging, not a full competitive match or native-input/sound acceptance. Wrist targets do not certify all palm/finger surfaces.",
+  "remaining": [
+    "Crouch/slide and jump-pad/portal combinations",
+    "Native input/audio artistic playtest",
+    "Broader full-action library and inventory references"
+  ]
+}
