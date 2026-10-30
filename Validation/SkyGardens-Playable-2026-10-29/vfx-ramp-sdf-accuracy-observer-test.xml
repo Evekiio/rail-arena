@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 04:57:55Z" end-time="2026-10-30 04:58:05Z" duration="9.1974267">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="237" result="Passed" start-time="2026-10-30 04:57:55Z" end-time="2026-10-30 04:58:05Z" duration="9.197427" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1343" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="237" result="Passed" start-time="2026-10-30 04:57:56Z" end-time="2026-10-30 04:58:05Z" duration="9.146633" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="64464" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1344" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="237" result="Passed" start-time="2026-10-30 04:57:56Z" end-time="2026-10-30 04:58:05Z" duration="9.127535" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1345" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="237" result="Passed" start-time="2026-10-30 04:57:56Z" end-time="2026-10-30 04:58:05Z" duration="9.119942" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1326" name="TraversalVfxRampSdfAccuracyTests" fullname="RailArena.Tests.TraversalVfxRampSdfAccuracyTests" classname="RailArena.Tests.TraversalVfxRampSdfAccuracyTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-30 04:57:56Z" end-time="2026-10-30 04:58:05Z" duration="9.109283" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1329" name="SampleCenter" fullname="RailArena.Tests.TraversalVfxRampSdfAccuracyTests.SampleCenter" methodname="SampleCenter" classname="RailArena.Tests.TraversalVfxRampSdfAccuracyTests" runstate="Runnable" seed="696648961" result="Passed" start-time="2026-10-30 04:57:56Z" end-time="2026-10-30 04:57:59Z" duration="3.110295" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[TRAVERSAL_ARENA_RAMP R1 (-18.00, 2.00, 8.00)
+TRAVERSAL_ARENA_SDF_SLOPE free below=4 above=0 alive=2048
+TRAVERSAL_ARENA_SDF_SLOPE depth below=0 above=4 alive=2048
+TRAVERSAL_SDF_HEIGHT offset=0 heightError=-0.0078125
+]]></output>
+            </test-case>
+            <test-case id="1331" name="SampleEastEdge" fullname="RailArena.Tests.TraversalVfxRampSdfAccuracyTests.SampleEastEdge" methodname="SampleEastEdge" classname="RailArena.Tests.TraversalVfxRampSdfAccuracyTests" runstate="Runnable" seed="1093299108" result="Passed" start-time="2026-10-30 04:57:59Z" end-time="2026-10-30 04:58:00Z" duration="1.599376" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[TRAVERSAL_ARENA_RAMP R1 (-10.50, 3.85, 8.00)
+TRAVERSAL_ARENA_SDF_SLOPE free below=4 above=0 alive=2048
+TRAVERSAL_ARENA_SDF_SLOPE depth below=0 above=1 alive=2048
+TRAVERSAL_SDF_HEIGHT offset=7.5 heightError=-0.03125
+]]></output>
+            </test-case>
+            <test-case id="1330" name="SampleEastSlope" fullname="RailArena.Tests.TraversalVfxRampSdfAccuracyTests.SampleEastSlope" methodname="SampleEastSlope" classname="RailArena.Tests.TraversalVfxRampSdfAccuracyTests" runstate="Runnable" seed="1886086043" result="Passed" start-time="2026-10-30 04:58:00Z" end-time="2026-10-30 04:58:02Z" duration="1.737863" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[TRAVERSAL_ARENA_RAMP R1 (-13.00, 3.08, 8.00)
+TRAVERSAL_ARENA_SDF_SLOPE free below=4 above=0 alive=2048
+TRAVERSAL_ARENA_SDF_SLOPE depth below=0 above=4 alive=2048
+TRAVERSAL_SDF_HEIGHT offset=5 heightError=-0.0078125
+]]></output>
+            </test-case>
+            <test-case id="1327" name="SampleWestEdge" fullname="RailArena.Tests.TraversalVfxRampSdfAccuracyTests.SampleWestEdge" methodname="SampleWestEdge" classname="RailArena.Tests.TraversalVfxRampSdfAccuracyTests" runstate="Runnable" seed="1247861324" result="Passed" start-time="2026-10-30 04:58:02Z" end-time="2026-10-30 04:58:03Z" duration="1.351163" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[TRAVERSAL_ARENA_RAMP R1 (-25.50, 0.15, 8.00)
+TRAVERSAL_ARENA_SDF_SLOPE free below=4 above=0 alive=2048
+TRAVERSAL_ARENA_SDF_SLOPE depth below=0 above=4 alive=2048
+TRAVERSAL_SDF_HEIGHT offset=-7.5 heightError=-0.0390625
+]]></output>
+            </test-case>
+            <test-case id="1328" name="SampleWestSlope" fullname="RailArena.Tests.TraversalVfxRampSdfAccuracyTests.SampleWestSlope" methodname="SampleWestSlope" classname="RailArena.Tests.TraversalVfxRampSdfAccuracyTests" runstate="Runnable" seed="703666874" result="Passed" start-time="2026-10-30 04:58:03Z" end-time="2026-10-30 04:58:05Z" duration="1.288018" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[TRAVERSAL_ARENA_RAMP R1 (-23.00, 0.92, 8.00)
+TRAVERSAL_ARENA_SDF_SLOPE free below=4 above=0 alive=2048
+TRAVERSAL_ARENA_SDF_SLOPE depth below=0 above=1 alive=2048
+TRAVERSAL_SDF_HEIGHT offset=-5 heightError=-0.03125
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

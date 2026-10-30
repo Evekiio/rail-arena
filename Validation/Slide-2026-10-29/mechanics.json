@@ -1,0 +1,232 @@
+{
+    "fingerprint": "8791d91424078a916659455de5a2608a37520a77ff30609065cee7fe33d6feb7",
+    "clock": "Accelerated integer ticks through normal authority; not real-time or native input acceptance",
+    "elapsedSeconds": 3.3171515464782715,
+    "errors": 0,
+    "failure": "",
+    "checks": [
+        {
+            "name": "Countdown blocks fire and damage through tick 179",
+            "tick": 179,
+            "passed": true,
+            "observed": "shots=0, health=100, phase=Countdown"
+        },
+        {
+            "name": "Tick 180 activates combat and lethal headshot scores once",
+            "tick": 180,
+            "passed": true,
+            "observed": "health=0, shots=1, score=1"
+        },
+        {
+            "name": "Authority confirms lethal hit with elimination feedback",
+            "tick": 180,
+            "passed": true,
+            "observed": "hits=1, lethal=True"
+        },
+        {
+            "name": "Dead actor cannot fire or respawn before 120 ticks",
+            "tick": 299,
+            "passed": true,
+            "observed": "alive=False, life=1, shots=1"
+        },
+        {
+            "name": "Respawn at exact 120-tick boundary restores 100 health and new life",
+            "tick": 300,
+            "passed": true,
+            "observed": "health=100, life=2, nextShot=300"
+        },
+        {
+            "name": "First body shot deals 50",
+            "tick": 301,
+            "passed": true,
+            "observed": "health=50"
+        },
+        {
+            "name": "Nonlethal damage confirms a hit without elimination",
+            "tick": 301,
+            "passed": true,
+            "observed": "hits=2, lethal=False"
+        },
+        {
+            "name": "Shot intent cannot discharge during next 35 cooldown ticks",
+            "tick": 336,
+            "passed": true,
+            "observed": "shots=2, health=50"
+        },
+        {
+            "name": "Second body shot fires exactly 36 ticks later and kills",
+            "tick": 337,
+            "passed": true,
+            "observed": "health=0, shots=3, interval=36"
+        },
+        {
+            "name": "First limb shot deals 34",
+            "tick": 458,
+            "passed": true,
+            "observed": "health=66"
+        },
+        {
+            "name": "Second limb shot leaves 32 health",
+            "tick": 494,
+            "passed": true,
+            "observed": "health=32"
+        },
+        {
+            "name": "Third limb shot kills without negative health",
+            "tick": 530,
+            "passed": true,
+            "observed": "health=0"
+        },
+        {
+            "name": "Mixed body and limb damage leaves 16 health",
+            "tick": 687,
+            "passed": true,
+            "observed": "health=16"
+        },
+        {
+            "name": "Mixed hit sequence kills and records one kill",
+            "tick": 723,
+            "passed": true,
+            "observed": "health=0, score=4"
+        },
+        {
+            "name": "Full-health actors leave pickup available",
+            "tick": 844,
+            "passed": true,
+            "observed": "availableTick=0"
+        },
+        {
+            "name": "Contested pickup heals exactly one actor by 25",
+            "tick": 845,
+            "passed": true,
+            "observed": "healths=75/50, availableTick=2045"
+        },
+        {
+            "name": "Pickup remains absent for next 1199 ticks",
+            "tick": 2044,
+            "passed": true,
+            "observed": "healths=75/50, visible=False"
+        },
+        {
+            "name": "Pickup returns and can be recollected at exact 1200 ticks",
+            "tick": 2045,
+            "passed": true,
+            "observed": "healths=100/50, availableTick=3245"
+        },
+        {
+            "name": "Pickup caps 90 health at 100",
+            "tick": 2046,
+            "passed": true,
+            "observed": "health=100"
+        },
+        {
+            "name": "No passive health regeneration over 600 ticks",
+            "tick": 2646,
+            "passed": true,
+            "observed": "health=40"
+        },
+        {
+            "name": "Void death subtracts one point and disables actor",
+            "tick": 2647,
+            "passed": true,
+            "observed": "health=0, score=-1, voids=1"
+        },
+        {
+            "name": "Void victim remains dead until respawn boundary",
+            "tick": 2766,
+            "passed": true,
+            "observed": "life=5"
+        },
+        {
+            "name": "Void victim respawns at 120 ticks",
+            "tick": 2767,
+            "passed": true,
+            "observed": "life=6"
+        },
+        {
+            "name": "Timed match remains playing one tick before ten-minute boundary",
+            "tick": 36179,
+            "passed": true,
+            "observed": "phase=Playing, remaining=1"
+        },
+        {
+            "name": "Tied leaders enter sudden death at tick 36180",
+            "tick": 36180,
+            "passed": true,
+            "observed": "phase=SuddenDeath"
+        },
+        {
+            "name": "Next tied-leader kill resolves sudden death",
+            "tick": 36181,
+            "passed": true,
+            "observed": "phase=Results, winner=0, score=1"
+        },
+        {
+            "name": "Results stop authority clock and respawn",
+            "tick": 36181,
+            "passed": true,
+            "observed": "tick=36181, targetAlive=False"
+        },
+        {
+            "name": "Unique leader wins at normal time limit",
+            "tick": 36180,
+            "passed": true,
+            "observed": "phase=Results, winner=0"
+        },
+        {
+            "name": "Practice stays active beyond timed-match limit",
+            "tick": 36780,
+            "passed": true,
+            "observed": "phase=Playing, practice=True"
+        },
+        {
+            "name": "Practice still respawns at 120 ticks after time limit",
+            "tick": 36901,
+            "passed": true,
+            "observed": "health=100, life=2"
+        },
+        {
+            "name": "Solo practice creates only the human with no network",
+            "tick": 0,
+            "passed": true,
+            "observed": "actors=1, bots=0, online=False"
+        },
+        {
+            "name": "Solo authority moves and fires without a target",
+            "tick": 210,
+            "passed": true,
+            "observed": "travel=3.716403, shots=1, health=100"
+        },
+        {
+            "name": "Solo practice stays active beyond match limit",
+            "tick": 36390,
+            "passed": true,
+            "observed": "phase=Playing, actors=1"
+        },
+        {
+            "name": "Solo void death still scores minus one",
+            "tick": 36391,
+            "passed": true,
+            "observed": "health=0, score=-1"
+        },
+        {
+            "name": "Solo void respawn preserves exact 120-tick boundary",
+            "tick": 36511,
+            "passed": true,
+            "observed": "deadBeforeBoundary=True, health=100, life=2"
+        },
+        {
+            "name": "Solo can restart into configured bot practice",
+            "tick": 0,
+            "passed": true,
+            "observed": "actors=2, difficulty=2, scenario=Moving"
+        },
+        {
+            "name": "Timed bot match retains at least one bot",
+            "tick": 0,
+            "passed": true,
+            "observed": "actors=2, bots=1, practice=False"
+        }
+    ],
+    "passed": true
+}

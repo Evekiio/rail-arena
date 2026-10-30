@@ -1,0 +1,34 @@
+{
+    "fingerprint": "a595b1f51ec3c7db0f6aa87e8b563e3f6d9dc51beaf9e9b889a6e8a9a07cb475",
+    "clock": "Accelerated integer ticks through normal authority; not real-time or native input acceptance",
+    "elapsedSeconds": 0.18793118000030518,
+    "errors": 0,
+    "failure": "System.InvalidOperationException: Dead actor cannot fire or respawn before 120 ticks: alive=False, life=1, shots=10\r\n  at RailArena.MechanicsValidation.Expect (System.String name, System.Boolean passed, System.String observed) [0x00050] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\MechanicsValidation.cs:115 \r\n  at RailArena.MechanicsValidation+<Run>d__20.MoveNext () [0x00264] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\MechanicsValidation.cs:167 \r\n  at RailArena.MechanicsValidation+<Start>d__13.MoveNext () [0x0006c] in F:\\Rail Arena\\RailArena\\Assets\\RailArena\\Runtime\\MechanicsValidation.cs:64 ",
+    "checks": [
+        {
+            "name": "Countdown blocks fire and damage through tick 179",
+            "tick": 179,
+            "passed": true,
+            "observed": "shots=0, health=100, phase=Countdown"
+        },
+        {
+            "name": "Tick 180 activates combat and lethal headshot scores once",
+            "tick": 180,
+            "passed": true,
+            "observed": "health=0, shots=1, score=1"
+        },
+        {
+            "name": "Authority confirms lethal hit with elimination feedback",
+            "tick": 180,
+            "passed": true,
+            "observed": "hits=1, lethal=True"
+        },
+        {
+            "name": "Dead actor cannot fire or respawn before 120 ticks",
+            "tick": 299,
+            "passed": false,
+            "observed": "alive=False, life=1, shots=10"
+        }
+    ],
+    "passed": false
+}

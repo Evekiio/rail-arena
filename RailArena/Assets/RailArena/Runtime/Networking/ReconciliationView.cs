@@ -23,7 +23,7 @@ namespace RailArena.Networking
             if (offset.sqrMagnitude < .000001f) return eye;
             float distance = offset.magnitude;
             Vector3 direction = offset / distance;
-            if (Physics.Raycast(eye, direction, out var wall, distance, 1 << 0, QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(eye, direction, out var wall, distance, 1 << 0, QueryTriggerInteraction.Collide))
                 return eye + direction * Mathf.Max(0, wall.distance - .05f);
             return eye + offset;
         }

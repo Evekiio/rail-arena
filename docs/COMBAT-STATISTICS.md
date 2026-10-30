@@ -16,7 +16,7 @@ Standings sort by points. Equal scores share a rank; actor ID only stabilizes th
 
 ## Duel compatibility
 
-Protocol version 4 transmits complete counters in each actor snapshot. Clients replace their totals from the host, so lost snapshots do not permanently lose statistics. Both participants must use the same updated build. This changes compatibility with earlier builds; it does not add a weapon, service or client-authoritative damage path.
+Protocol version 4 introduced complete counters in each actor snapshot; movement protocol version 5 retains them. Clients replace their totals from the host, so lost snapshots do not permanently lose statistics. Both participants must use the same updated build. This changes compatibility with earlier builds; it does not add a weapon, service or client-authoritative damage path.
 
 ## Evidence and limits
 

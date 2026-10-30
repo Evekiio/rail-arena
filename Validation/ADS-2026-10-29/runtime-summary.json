@@ -1,0 +1,122 @@
+{
+  "mechanics.json": {
+    "fingerprint": "b3bea61fe442532f41735217d7e99a0bb85c0d611d61863d0b6d847f683cb3db",
+    "passed": true,
+    "errors": 0
+  },
+  "Duel-Movement-Clean/host.json": {
+    "fingerprint": "b3bea61fe442532f41735217d7e99a0bb85c0d611d61863d0b6d847f683cb3db",
+    "passed": true,
+    "errors": 0,
+    "statisticsPassed": true,
+    "movementModes": true,
+    "crouchSamples": [
+      1078,
+      1198
+    ],
+    "sprintSamples": [
+      1723,
+      1714
+    ],
+    "walkSamples": [
+      1523,
+      1600
+    ],
+    "maximumActiveCorrection": 0.0,
+    "maximumPhaseChangeCorrection": 0.0
+  },
+  "Duel-Movement-Clean/client.json": {
+    "fingerprint": "b3bea61fe442532f41735217d7e99a0bb85c0d611d61863d0b6d847f683cb3db",
+    "passed": true,
+    "errors": 0,
+    "statisticsPassed": true,
+    "movementModes": true,
+    "crouchSamples": [
+      1089,
+      1199
+    ],
+    "sprintSamples": [
+      0,
+      1719
+    ],
+    "walkSamples": [
+      0,
+      1711
+    ],
+    "maximumActiveCorrection": 0.6121814846992493,
+    "maximumPhaseChangeCorrection": 0.007479526102542877
+  },
+  "Duel-Movement-Impaired/host.json": {
+    "fingerprint": "b3bea61fe442532f41735217d7e99a0bb85c0d611d61863d0b6d847f683cb3db",
+    "passed": true,
+    "errors": 0,
+    "statisticsPassed": true,
+    "movementModes": true,
+    "crouchSamples": [
+      907,
+      1966
+    ],
+    "sprintSamples": [
+      1694,
+      2166
+    ],
+    "walkSamples": [
+      1056,
+      2150
+    ],
+    "maximumActiveCorrection": 0.0,
+    "maximumPhaseChangeCorrection": 0.0
+  },
+  "Duel-Movement-Impaired/client.json": {
+    "fingerprint": "b3bea61fe442532f41735217d7e99a0bb85c0d611d61863d0b6d847f683cb3db",
+    "passed": true,
+    "errors": 0,
+    "statisticsPassed": true,
+    "movementModes": true,
+    "crouchSamples": [
+      1002,
+      2125
+    ],
+    "sprintSamples": [
+      0,
+      2163
+    ],
+    "walkSamples": [
+      0,
+      2156
+    ],
+    "maximumActiveCorrection": 0.786371111869812,
+    "maximumPhaseChangeCorrection": 0.11219111829996109
+  },
+  "impairment": {
+    "received": 5522,
+    "forwarded": 5218,
+    "dropped": 304,
+    "foreign": 0,
+    "reordered": 202,
+    "queueOverflow": 0,
+    "maximumQueued": 6,
+    "to_host": 3795,
+    "to_client": 1423,
+    "dropped_to_host": 218,
+    "dropped_to_client": 86,
+    "running": false,
+    "configuredOneWayMs": 25.0,
+    "configuredJitterMs": 10.0,
+    "configuredLoss": 0.05,
+    "seed": 7191,
+    "elapsedSeconds": 70.50677750003524,
+    "meanAppliedMs": 29.821544883047377,
+    "minimumAppliedMs": 15.210600104182959,
+    "maximumAppliedMs": 48.714700038544834,
+    "pending": 0
+  },
+  "offline": {
+    "fingerprint": "b3bea61fe442532f41735217d7e99a0bb85c0d611d61863d0b6d847f683cb3db",
+    "passed": true,
+    "exceptions": 0,
+    "voidDeaths": 0,
+    "statisticsPassed": true,
+    "telemetry": "ticks=2710 shots=200 deaths=15 pickups=2 pads=22"
+  }
+}

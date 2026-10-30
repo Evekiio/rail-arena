@@ -8,9 +8,9 @@
 
 Rail Arena is a compact Windows FPS by **Sanders Riddle**, built as an **AI Solutions / AI Engineering portfolio project**. Land a precise shot, keep your momentum, and find a better angle. One weapon and a readable arena keep the focus on aim, movement and positioning.
 
-[Download pre-alpha](https://github.com/Evekiio/rail-arena/releases/tag/v0.1.0-pre-alpha.1) | [Build and play](docs/BUILD-AND-PLAY.md) | [Design](docs/DESIGN.md) | [Validation](docs/VALIDATION.md)
+[Download v1 alpha](https://github.com/Evekiio/rail-arena/releases/tag/v1.0.0-alpha.1) | [Build and play](docs/BUILD-AND-PLAY.md) | [Design](docs/DESIGN.md) | [Validation](docs/VALIDATION.md)
 
-> **Active pre-alpha development.** The public Windows ZIP is an older playable checkpoint. `main` contains newer improvements. Approved concepts describe the production target; they do not establish completed integration, competitive balance or release readiness.
+> **Active v1 alpha development.** Continue polishing this baseline until Sanders, the approving game developer and designer, explicitly approves progression. See [alpha status and validation limits](docs/ALPHA.md).
 
 ## Pick your practice
 
@@ -21,14 +21,18 @@ Rail Arena is a compact Windows FPS by **Sanders Riddle**, built as an **AI Solu
 | **Offline bot match** | Choose an appearance and face up to three distinct bots across three difficulty profiles. Compete, review your results and rematch. |
 | **Direct-IP duel** | Host or join a two-human ready-room match. Both peers need the same build; human and real-internet acceptance remain open. |
 
-The current rifle fires one instant-hit shot per click, with **0.6-second recovery**, unlimited energy and **1.5x hold-to-zoom**. Momentum movement, hold-to-hop, ramps, four jump pads and contested health pickups give every shot a positioning decision. There is no reload, sprint or stamina system.
+The current rifle supports **250 RPM automatic fire** (hold left mouse), with **0.24 seconds between instant-hit shots**, 30-round magazines and unlimited reserve ammo and **1.5x physical ADS**. Momentum movement, hold-to-hop, ramps, four jump pads and contested health pickups give every shot a positioning decision. Hold Shift to sprint forward, Alt to walk, and Ctrl to crouch. Double-tap Shift while moving forward at sprint speed to slide for 0.6 seconds. Movement spread is 1 degree, crouch movement spread is 0.5 degrees, and sprint spread is 2.843 degrees (cone half-angles); stationary shots remain precise. Press R for a two-second reload. There is no stamina system.
 
 Current source uses 100 health, 100/50/34 head/body/limb damage, two-second respawns and ten-minute matches with tied-leader sudden death. The approved next rules differ; see the migration boundary below.
 
-## Recent polish on main
+## Recent polish in current source
 
 | Area | What changed | Evidence and details |
 | --- | --- | --- |
+| **Twin Platforms** | Two floating decks, two-way blue/red portals and super jump pads over a 36 m void | [Traversal layout](docs/TWIN-PLATFORMS.md) |
+| **Automatic rifle and recoil** | Hold-to-fire at 250 RPM, 30-round magazines, R reload, bounded spring recoil and reduced ADS kick | [Rifle mechanics](docs/AUTOMATIC-RIFLE.md), [magazines](docs/MAGAZINES.md) |
+| **Sprint slide** | Grounded sprint-to-crouch entry, controlled deceleration/steering and synchronized prediction state | [Slide mechanics](docs/SLIDE.md) |
+| **Branded interface** | Redesigned launch menu, shared typography/focus states, clearer ready-room actions and compact icon-based HUD | [Interface system](docs/branding/INTERFACE.md) |
 | **Control and visibility** | Independent zoom sensitivity, vertical FOV, invert Y, saved reticle size/color, reduced flashes, optional steady weapon and saved VSync/FPS limits | [Aim settings](docs/AIM-SETTINGS.md), [reticle](docs/RETICLE-SETTINGS.md), [comfort](docs/VISUAL-COMFORT.md), [frame pacing](docs/FRAME-PACING.md) |
 | **Sound controls** | Saved master/effects levels, a rifle preview and local pickup/pad cues | [Audio mix](docs/AUDIO-MIX.md), [pickup/pad cues](docs/TRAVERSAL-AUDIO.md) |
 | **Combat feedback** | Live/final statistics, temporary eliminations, clear respawns and health-gain readouts | [Statistics](docs/COMBAT-STATISTICS.md), [recent events](docs/COMBAT-FEED.md), [pickup readout](docs/PICKUP-HUD.md) |
@@ -94,12 +98,15 @@ For current source, follow the [build guide](docs/BUILD-AND-PLAY.md). Keep the e
 | --- | --- |
 | WASD / mouse | Move / aim |
 | Left click | Fire once |
-| Hold right mouse | 1.5x zoom |
+| Hold right mouse | Physical ADS, 1.5x zoom |
+| Hold left Shift / Alt / Ctrl | Sprint forward / walk / crouch |
 | Space, held | Jump / keep hopping |
 | Tab, held | Standings |
 | Escape | Pause / settings |
 
 Choose **QUIT** to exit; **MAIN MENU** and **DISCONNECT** keep the application open. [Shutdown notes](docs/SHUTDOWN.md) explain lifecycle safeguards.
+
+In **Settings → Visual Comfort**, **Camera Blur** toggles the saved camera-only motion-blur preference for scenes that support it. It affects camera translation and rotation; it does not change movement or aiming. Scenes without the effect show the control as unavailable.
 
 ## What remains to prove
 
@@ -108,3 +115,14 @@ Physical keyboard/mouse feel, sound-on review, final art and animation acceptanc
 [Validation record](docs/VALIDATION.md) | [Acceptance matrix](docs/ACCEPTANCE.md) | [Networking](docs/NETWORKING.md) | [Weapon pipeline](docs/WEAPONS.md) | [Implementation](docs/IMPLEMENTATION.md)
 
 Original project code is [MIT licensed](LICENSE). See [third-party notices](THIRD-PARTY-NOTICES.md) for asset/dependency terms. Quake III Arena and Unreal Tournament inform the genre direction; their maps, characters, sounds, branding and code are not bundled.
+
+## Interface review build
+
+![Branded menu, controlled current-source render](docs/branding/interface-menu.png)
+
+![Branded HUD with physical ADS, controlled current-source render](docs/branding/interface-hud.png)
+
+These batch-mode review captures show implemented UI. Native motion, input and sound acceptance remain separate. The local build and validation scope are documented in the [interface system](docs/branding/INTERFACE.md); the public download remains an older checkpoint.
+
+The latest local traversal player uses the separate [Twin Platforms layout](docs/TWIN-PLATFORMS.md). The saved original Foundry and earlier players remain available. This variant is distinct from the older proposed Foundry-v2 design.
+

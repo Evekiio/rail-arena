@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 03:31:17Z" end-time="2026-10-30 03:31:18Z" duration="1.5295035">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="201" result="Passed" start-time="2026-10-30 03:31:17Z" end-time="2026-10-30 03:31:18Z" duration="1.529504" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1276" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="201" result="Passed" start-time="2026-10-30 03:31:17Z" end-time="2026-10-30 03:31:18Z" duration="1.509016" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="43996" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1277" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="201" result="Passed" start-time="2026-10-30 03:31:17Z" end-time="2026-10-30 03:31:18Z" duration="1.481719" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1278" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="201" result="Passed" start-time="2026-10-30 03:31:17Z" end-time="2026-10-30 03:31:18Z" duration="1.429661" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1263" name="TraversalVfxCollisionTests" fullname="RailArena.Tests.TraversalVfxCollisionTests" classname="RailArena.Tests.TraversalVfxCollisionTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-30 03:31:17Z" end-time="2026-10-30 03:31:18Z" duration="1.400993" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1264" name="ExposedNormalTiltsTheGpuCollisionBoundary" fullname="RailArena.Tests.TraversalVfxCollisionTests.ExposedNormalTiltsTheGpuCollisionBoundary" methodname="ExposedNormalTiltsTheGpuCollisionBoundary" classname="RailArena.Tests.TraversalVfxCollisionTests" runstate="Runnable" seed="1014200986" result="Passed" start-time="2026-10-30 03:31:17Z" end-time="2026-10-30 03:31:18Z" duration="1.380605" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[TRAVERSAL_VFX_SLOPED_FLOORS left=249 right=339
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

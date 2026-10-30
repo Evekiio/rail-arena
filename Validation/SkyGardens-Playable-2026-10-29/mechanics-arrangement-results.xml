@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 10:35:12Z" end-time="2026-10-30 10:35:14Z" duration="2.1534316">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="256" result="Passed" start-time="2026-10-30 10:35:12Z" end-time="2026-10-30 10:35:14Z" duration="2.153432" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1376" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="256" result="Passed" start-time="2026-10-30 10:35:12Z" end-time="2026-10-30 10:35:14Z" duration="2.135243" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="8392" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1377" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="256" result="Passed" start-time="2026-10-30 10:35:12Z" end-time="2026-10-30 10:35:14Z" duration="2.127997" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1378" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="256" result="Passed" start-time="2026-10-30 10:35:12Z" end-time="2026-10-30 10:35:14Z" duration="2.122770" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1125" name="MechanicsArrangementDiagnosticTests" fullname="RailArena.Tests.MechanicsArrangementDiagnosticTests" classname="RailArena.Tests.MechanicsArrangementDiagnosticTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 10:35:12Z" end-time="2026-10-30 10:35:14Z" duration="2.091613" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1126" name="InspectSkyShotArrangement" fullname="RailArena.Tests.MechanicsArrangementDiagnosticTests.InspectSkyShotArrangement" methodname="InspectSkyShotArrangement" classname="RailArena.Tests.MechanicsArrangementDiagnosticTests" runstate="Runnable" seed="68970317" result="Passed" start-time="2026-10-30 10:35:12Z" end-time="2026-10-30 10:35:14Z" duration="2.067485" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[ARRANGEMENT x=0 z=-22 eye=(0.00, 1.66, -22.00) head=(0.00, 1.65, -16.00) hit=Back collision desired=False
+ARRANGEMENT x=0 z=-12 eye=(0.00, 1.66, -12.00) head=(0.00, 1.65, -6.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=0 z=-4 eye=(0.00, 1.66, -4.00) head=(0.00, 1.65, 2.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=0 z=4 eye=(0.00, 1.66, 4.00) head=(0.00, 1.65, 10.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=0 z=12 eye=(0.00, 1.66, 12.00) head=(0.00, 1.65, 18.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=-12 z=-22 eye=(-12.00, 1.66, -22.00) head=(-12.00, 1.65, -16.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=-12 z=-12 eye=(-12.00, 1.66, -12.00) head=(-12.00, 1.65, -6.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=-12 z=-4 eye=(-12.00, 1.66, -4.00) head=(-12.00, 1.65, 2.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=-12 z=4 eye=(-12.00, 1.66, 4.00) head=(-12.00, 1.65, 10.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=-12 z=12 eye=(-12.00, 1.66, 12.00) head=(-12.00, 1.65, 18.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=12 z=-22 eye=(12.00, 1.66, -22.00) head=(12.00, 1.65, -16.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=12 z=-12 eye=(12.00, 1.66, -12.00) head=(12.00, 1.65, -6.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=12 z=-4 eye=(12.00, 1.66, -4.00) head=(12.00, 1.65, 2.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=12 z=4 eye=(12.00, 1.66, 4.00) head=(12.00, 1.65, 10.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=12 z=12 eye=(12.00, 1.66, 12.00) head=(12.00, 1.65, 18.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=-20 z=-22 eye=(-20.00, 1.66, -22.00) head=(-20.00, 1.65, -16.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=-20 z=-12 eye=(-20.00, 1.66, -12.00) head=(-20.00, 1.65, -6.00) hit=R2 desired=False
+ARRANGEMENT x=-20 z=-4 eye=(-20.00, 1.66, -4.00) head=(-20.00, 1.65, 2.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=-20 z=4 eye=(-20.00, 1.66, 4.00) head=(-20.00, 1.65, 10.00) hit=R1 desired=False
+ARRANGEMENT x=-20 z=12 eye=(-20.00, 1.66, 12.00) head=(-20.00, 1.65, 18.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=20 z=-22 eye=(20.00, 1.66, -22.00) head=(20.00, 1.65, -16.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=20 z=-12 eye=(20.00, 1.66, -12.00) head=(20.00, 1.65, -6.00) hit=R4 desired=False
+ARRANGEMENT x=20 z=-4 eye=(20.00, 1.66, -4.00) head=(20.00, 1.65, 2.00) hit=Head hurtbox desired=True
+ARRANGEMENT x=20 z=4 eye=(20.00, 1.66, 4.00) head=(20.00, 1.65, 10.00) hit=R3 desired=False
+ARRANGEMENT x=20 z=12 eye=(20.00, 1.66, 12.00) head=(20.00, 1.65, 18.00) hit=Head hurtbox desired=True
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

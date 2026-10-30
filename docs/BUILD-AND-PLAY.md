@@ -64,3 +64,31 @@ python tools/package_playtest.py --build Builds/Windows --output Builds/Packages
 ```
 
 Replace the placeholder before running. The packager refuses to overwrite an existing ZIP and verifies archive entries. Packaging does not establish gameplay acceptance or authorize publication. See [hosting](HOSTING.md) for direct-IP setup and [evaluation](EVALUATION.md) for review scenarios; older checkpoint records remain historical evidence.
+
+## October 29 ADS and movement playtest
+
+The local physical ADS/sprint/walk/crouch player is `Builds/Competitive-ADS-2026-10-29/RailArena.exe`. Keep all adjacent files together. Hold right mouse for ADS, left Shift to sprint forward, left Alt to walk and left Ctrl to crouch. See [behavior, compatibility and validation](ADS-AND-MOVEMENT.md). This separate local build does not update the public download.
+
+## Branded menu and HUD review build
+
+Launch `Builds/Branded-UI-2026-10-29/RailArena.exe` for the new menu/HUD pass. Existing ADS and baseline builds remain separate. The [interface specification](branding/INTERFACE.md) records controls, assets, accessibility/validation scope and known acceptance limits. This local player does not update the public download.
+
+## Sprint-slide local review
+
+The new Windows review player is `F:\Rail Arena\Builds\Sprint-Slide-2026-10-29\RailArena.exe`. Run it with all adjacent files intact. Hold Shift while moving forward, then press Ctrl to slide. Hold Ctrl to remain crouched. The new protocol 6 requires this same build on both duel peers. Earlier baseline, ADS and branded UI build folders remain separate. See [SLIDE.md](SLIDE.md) for mechanics and validation.
+
+## Automatic-rifle local review
+
+Run `F:\Rail Arena\Builds\Assault-Rifle-2026-10-29\RailArena.exe` with all adjacent files intact. Hold left mouse for 600 RPM automatic fire; release to stop. ADS remains on right mouse, with reduced visual recoil. This protocol 7 build must be used on both duel peers. Prior sprint-slide and branded UI builds remain separate. See [AUTOMATIC-RIFLE.md](AUTOMATIC-RIFLE.md) for mechanics and evidence.
+
+The slower 300 RPM player is `F:\Rail Arena\Builds\Assault-Rifle-300RPM-2026-10-29\RailArena.exe`. This changes the shared interval to 0.2 seconds and retains the recoil animation. No tests/player checks were run for this rate-only adjustment.
+
+Current magazine build: 250 RPM, 30 rounds, R reload (2 seconds), unlimited reserve, protocol 8. See [magazine controls and state](MAGAZINES.md). Local player: `F:\Rail Arena\Builds\Magazines-250RPM-2026-10-29\RailArena.exe`. Earlier fire-rate/build qualification remains specific to those preceding players.
+
+## Twin Platforms local review
+
+Run `F:\Rail Arena\Builds\TwinPlatforms-2026-10-29\RailArena.exe` with all adjacent files intact. Both colored gates work in both directions; walk onto a gold pad to jump the gap. Use the same protocol-9 build on both duel peers. See [TWIN-PLATFORMS.md](TWIN-PLATFORMS.md). Earlier builds remain separate.
+
+## Sky Gardens / Physics Lab playtest
+
+Run `Builds/SkyGardens-PhysicsLab-2026-10-29/RailArena.exe`. The approved Foundry v2 map includes four summit pads and live portals. Press **G** for the offline movement/physics lab; use **SAVE PNG + JSON** to share exact settings. See [Physics Lab](PHYSICS-LAB.md) and [Sky Gardens](SKY-GARDENS-PLAYABLE.md).

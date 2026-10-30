@@ -20,7 +20,7 @@ An accessible momentum-driven arena FPS: one precision rifle, readable opponents
 | Regeneration | After 480 ticks without damage, restore 1 health per 30 ticks until 50; never lower health above 50 |
 | Health pickups | Three sites; +25 up to 100; 1200-tick return |
 | Zoom | Hold right mouse for 1.5Ãƒâ€” magnification; separate sensitivity; movement and accuracy unchanged |
-| Movement | Accessible acceleration/air control, momentum preservation, hold-to-hop; no sprint/stamina |
+| Movement | Accessible acceleration/air control, momentum preservation, hold-to-hop; sprint, walk and crouch added by the October 29 amendment; no stamina |
 | Void | Death and minus one score |
 | Spawn selection | Prefer occluded candidates, then larger nearest-opponent distance; no invulnerability |
 | Statistics | Per-player kills, deaths, hits, shots and headshots; accuracy = hits/shots, zero when no shots |
@@ -65,3 +65,7 @@ Rebindable keyboard/mouse; base/zoom sensitivity, invert Y, FOV; master/music/ef
 6. Integration: shared offline/online rules, versioned commands/snapshots/build identity, compatibility rejection and regression validation.
 
 1080p/144 fps is a target, not a benchmark result. Record CPU/GPU/RAM/build/settings and frame-time distributions during real four-contender rendering. Hidden checks cannot establish visual quality, physical-input feel, audible quality, remote-internet reliability or final acceptance. Visible windows require permission; jobs need bounded timeouts and owned-process cleanup.
+
+## October 29 movement and aiming amendment
+
+The creator authorized physical ADS with a simple illuminated reticle, retained 1.5x magnification and existing accuracy/base movement, plus sprint, slow walking and crouch. This supersedes the earlier no-sprint restriction. See [implementation and local review](ADS-AND-MOVEMENT.md) for bindings, tuning, network compatibility and validation limits. These additions do not authorize unrelated damage, regeneration or match-rule migration.

@@ -1,0 +1,66 @@
+SKY GARDENS / DETAIL BLUEPRINT v2
+
+STATUS: MEASURED ASSET CANDIDATES FOR REVIEW. NOT A PLAYABLE MAP.
+V1 and all existing gameplay maps/builds are preserved.
+
+WHAT IS NEW
+62 measured sheets: 6 overall orthographic views, 5 layers, 3 sections and
+48 detail views (6 per family). SVG vector originals and PNG previews match.
+Eight asset families: StoneKit, Arch, SummitCanopy, PortalKit, Tree, Garden,
+Ivy and Waterfall. See AssetRegister.json for exact component IDs and bounds.
+The geometry is derived from Scene.json with deterministic seed 73029.
+
+GEOMETRY CONTRACT
+Metres throughout. Blender/canonical: X east, Y north, Z up.
+Unity coordinates: (canonical X, canonical Z, -canonical Y).
+All original collision objects retain their exact V1 specification.
+New art is non-colliding. Cover caps rise 10 mm above their original proxies;
+other insets stay within the proxy. These details require intersection review
+when integrated with gameplay. Portal jambs/header/back are modeled art;
+their gameplay collision is still a separate future integration task.
+Four pad trajectories, summit platform placement and all base routes are unchanged.
+
+DETAIL DECISIONS
+Summit canopy: inner radius 6.1 m, outer 6.7 m; h=27.00 to 27.36 m.
+Each quadrant has a 14-degree central break and two measured arc fragments.
+Columns retain their original positions and heights, with 0.92 m capitals.
+Underpass arches: 6 m clear span, 2 m spring height, 3.2 m inner crown,
+3.38 m outer crown, 0.24 m extrusion depth; two arch skins on existing piers.
+Trees have tapered segmented trunks and branches plus closed, cambered leaf blades.
+Leaf blade thickness is 4 mm. Tree, shrubs, grass and ivy use seeded placements.
+Waterfall rest surfaces descend 20 m: 64 vertical by 8 horizontal quads,
+with three narrow foam ribbons, a bronze lip and defined static ripples.
+Water and foam use double-sided review materials in the Unity importer.
+
+FILES / REPRODUCE
+Scene.json: canonical geometry specification including all explicit detail vertices.
+MeshData.json: triangulated, local-origin meshes for direct Unity reproduction.
+SkyGardens-Construction.blend: named, grouped editable detailed master.
+SkyGardens-Construction.fbx / .glb: portable exports. GLB is round-trip verified.
+Detailed-Overview/Garden/Summit.png are actual Blender review renders of this mesh
+revision under neutral lighting, not in-game screenshots or AI-generated concepts.
+Reproduce manifest: python tools/build_sky_detail_manifest.py
+Reproduce sheets: python tools/build_sky_detail_sheets.py
+Reproduce models: background Blender executes tools/build_sky_detail_construction.py
+All scripts live at the repository root under tools/. Run headlessly.
+
+UNITY
+Copy the CONTENTS of UnityReadyAssets into a Unity project's Assets folder,
+keeping all GUID .meta files. Open Assets/Validation/SkyGardensDetailV2Final/
+SkyGardensConstruction.unity. This construction scene has review materials and
+original collision proxies. It intentionally has no ArenaSession/player setup.
+Alternatively place UnityDetailBuilder.cs in an Editor folder and run its Build
+method headlessly with --sky-blueprint-root pointing at this package.
+Its output folder must not already exist. Build settings are not modified.
+The direct mesh-data route was verified; native FBX import has not been qualified.
+
+VALIDATION / LIMITS
+Blender-Validation.json and Unity-Validation.json document geometry bounds checks.
+Preservation.json verifies V1 collision objects and the saved V1 package.
+These checks do not establish production readiness, exact AI-image reproduction,
+controller traversal, multiplayer behavior, combat balance, sightline acceptance,
+LOD/performance qualification, UV/texturing quality or motion/audio comfort.
+Review palette is stored in Blender materials and UnityDetailBuilder.cs; PBR
+renderers may differ visually. Detailed UV atlases, stone wear, lighting/cloud
+integration, foliage wind and waterfall/foam animation remain production work.
+Summit dimensions and all new decorative forms remain pending creator approval.

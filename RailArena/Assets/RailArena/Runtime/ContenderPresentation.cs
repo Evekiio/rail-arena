@@ -17,11 +17,13 @@ namespace RailArena
         private ArenaActor actor;
         private ArenaSession session;
         private float recoil;
+        private readonly WeaponRecoil recoilSpring = new();
         private bool grounded;
         private float bodyYaw;
         private float corpseVelocity;
         private float corpseGround;
         private Transform[] surfaceBones;
+        private CrouchPose crouchPose;
         private Quaternion headAimOffset;
         private static readonly float[] SurfaceMargins = { .17f, .2f, .07f, .07f, .035f, .035f };
 #if UNITY_EDITOR
@@ -41,6 +43,7 @@ namespace RailArena
             bodyYaw = owner.Command.Yaw;
             Animator.applyRootMotion = false;
             Animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+            crouchPose = new CrouchPose(Animator);
             var surfaceIds = new[] { HumanBodyBones.Hips, HumanBodyBones.Head, HumanBodyBones.LeftFoot,
                 HumanBodyBones.RightFoot, HumanBodyBones.LeftHand, HumanBodyBones.RightHand };
             surfaceBones = System.Array.ConvertAll(surfaceIds, bone => Animator.GetBoneTransform(bone));
@@ -83,8 +86,9 @@ namespace RailArena
             bool worldPaused = session.Paused && !session.IsOnline;
             Animator.speed = worldPaused ? 0 : 1;
             if (worldPaused) return;
+            crouchPose.Restore();
             int chargeTick = actor == session.Human ? session.LocalSimulationTick : session.Match.Tick;
-            Railgun.SetCharge((actor.NextShotTick - chargeTick) / (float)Simulation.CombatRules.ShotIntervalTicks);
+            Railgun.SetCharge((actor.NextShotTick - chargeTick) / (float)Mathf.Max(1, actor.Magazine.LastShotInterval));
             float speed = new Vector2(actor.Velocity.x, actor.Velocity.z).magnitude;
             Vector3 aimForward = Quaternion.Euler(0, actor.Command.Yaw, 0) * Vector3.forward;
             bool backwards = speed > .5f && Vector3.Dot(actor.Velocity, aimForward) < -speed * .2f;
@@ -95,7 +99,8 @@ namespace RailArena
             Animator.SetBool(Dead, !actor.Alive);
             if (onGround && !grounded && actor.Alive) Animator.SetTrigger("Land");
             grounded = onGround;
-            recoil = Mathf.MoveTowards(recoil, 0, Time.deltaTime * 7);
+            recoilSpring.Step(Time.deltaTime);
+            recoil = recoilSpring.Kick;
             if (!actor.Alive) return;
             // Turn the legs toward travel while keeping the torso and weapon aimed at the opponent.
             float aimYaw = actor.Command.Yaw;
@@ -122,6 +127,7 @@ namespace RailArena
             {
                 Quaternion aim = Quaternion.Euler(Mathf.Clamp(actor.Command.Pitch, -65, 65), actor.Command.Yaw, 0);
                 ArmContactPose.AlignBody(Animator);
+                ApplyStance();
                 var chest = Animator.GetBoneTransform(HumanBodyBones.Chest);
                 var head = Animator.GetBoneTransform(HumanBodyBones.Head);
                 var leftArm = Animator.GetBoneTransform(HumanBodyBones.LeftUpperArm);
@@ -132,6 +138,7 @@ namespace RailArena
                 head.rotation = aim * headAimOffset;
                 var shoulder = Animator.GetBoneTransform(HumanBodyBones.RightUpperArm);
                 var contact = shoulder.position + aim * new Vector3(.015f, .02f, -.04f);
+                aim *= Quaternion.Euler(-2.5f * recoil, 0, 0);
                 Weapon.SetPositionAndRotation(contact - aim * Railgun.Shoulder.localPosition - aim * Vector3.forward * recoil * .025f, aim);
                 ArmContactPose.Apply(Animator, true, LeftGrip);
                 ArmContactPose.Apply(Animator, false, RightGrip);
@@ -155,11 +162,18 @@ namespace RailArena
             }
         }
 
-        public void Fired() { recoil = 1; }
+        public void Fired() { recoilSpring.Fire(); }
+        public void ApplyStance()
+        {
+            if (crouchPose == null) return;
+            crouchPose.Restore();
+            if (actor.Alive && actor.IsCrouched) crouchPose.Apply();
+        }
         public void Hit() { if (actor != null && actor.Alive) Animator.SetTrigger("Hit"); }
 
         public void SetAlive(bool alive)
         {
+            crouchPose?.Restore();
             Weapon.gameObject.SetActive(alive);
             foreach (var box in GetComponentsInChildren<Hitbox>(true)) box.GetComponent<Collider>().enabled = alive;
             if (alive)
@@ -169,6 +183,7 @@ namespace RailArena
                 Animator.Update(0);
                 Animator.SetBool(Dead, false);
                 recoil = 0;
+                recoilSpring.Reset();
             }
             else
             {

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 03:10:13Z" end-time="2026-10-30 03:10:19Z" duration="5.9899903">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="197" result="Passed" start-time="2026-10-30 03:10:13Z" end-time="2026-10-30 03:10:19Z" duration="5.989990" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1271" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="197" result="Passed" start-time="2026-10-30 03:10:13Z" end-time="2026-10-30 03:10:19Z" duration="5.973945" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="57044" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1272" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="197" result="Passed" start-time="2026-10-30 03:10:13Z" end-time="2026-10-30 03:10:19Z" duration="5.948482" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1273" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="197" result="Passed" start-time="2026-10-30 03:10:13Z" end-time="2026-10-30 03:10:19Z" duration="5.942940" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1262" name="TraversalVfxTimingTests" fullname="RailArena.Tests.TraversalVfxTimingTests" classname="RailArena.Tests.TraversalVfxTimingTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 03:10:13Z" end-time="2026-10-30 03:10:19Z" duration="5.935446" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1263" name="CompareGpuTimingAvailability" fullname="RailArena.Tests.TraversalVfxTimingTests.CompareGpuTimingAvailability" methodname="CompareGpuTimingAvailability" classname="RailArena.Tests.TraversalVfxTimingTests" runstate="Runnable" seed="988474462" result="Passed" start-time="2026-10-30 03:10:13Z" end-time="2026-10-30 03:10:18Z" duration="5.910537" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[TRAVERSAL_VFX_TIMING mode=existing valid=0 maxParticles=0 medianMs=unavailable
+TRAVERSAL_VFX_TIMING mode=candidate valid=0 maxParticles=4096 medianMs=unavailable
+TRAVERSAL_VFX_TIMING mode=existing valid=0 maxParticles=0 medianMs=unavailable
+TRAVERSAL_VFX_TIMING mode=candidate valid=0 maxParticles=4096 medianMs=unavailable
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

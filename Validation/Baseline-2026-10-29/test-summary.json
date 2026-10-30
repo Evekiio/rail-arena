@@ -1,0 +1,41 @@
+{
+  "suite": {
+    "id": "2",
+    "testcasecount": "146",
+    "result": "Failed(Child)",
+    "total": "146",
+    "passed": "145",
+    "failed": "1",
+    "inconclusive": "0",
+    "skipped": "0",
+    "asserts": "0",
+    "engine-version": "3.5.0.0",
+    "clr-version": "4.0.30319.42000",
+    "start-time": "2026-10-29 12:48:42Z",
+    "end-time": "2026-10-29 12:49:16Z",
+    "duration": "33.655897"
+  },
+  "failures": [
+    {
+      "name": "RailArena.Tests.PlayerPilotTests.PlayerPilotSupportsAnimationAndCarbineWristTargets",
+      "message": "System.Reflection.TargetInvocationException : Exception has been thrown by the target of an invocation.\n  ----> System.IO.DirectoryNotFoundException : Could not find a part of the path \"F:\\Rail Arena\\Builds\\Baseline-2026-10-29\\ArtSource\\Original\\PlayerPilot-v1\\Unity-Validation.json\"."
+    }
+  ],
+  "targetedRecheck": {
+    "id": "2",
+    "testcasecount": "1",
+    "result": "Passed",
+    "total": "1",
+    "passed": "1",
+    "failed": "0",
+    "inconclusive": "0",
+    "skipped": "0",
+    "asserts": "0",
+    "engine-version": "3.5.0.0",
+    "clr-version": "4.0.30319.42000",
+    "start-time": "2026-10-29 12:50:07Z",
+    "end-time": "2026-10-29 12:50:15Z",
+    "duration": "8.1517672"
+  },
+  "interpretation": "145/146 passed in full run; sole directory-precondition failure passed unchanged after supplying its external output directory. No single all-green full-suite run is claimed."
+}

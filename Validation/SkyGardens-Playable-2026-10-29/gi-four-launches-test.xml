@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 22:59:59Z" end-time="2026-10-29 23:00:01Z" duration="1.8199569">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="191" result="Passed" start-time="2026-10-29 22:59:59Z" end-time="2026-10-29 23:00:01Z" duration="1.819957" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1261" name="RailArena.Tests.dll" fullname="F:/Rail Arena/Builds/Automatic-Rifle-2026-10-29/Project/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="191" result="Passed" start-time="2026-10-29 22:59:59Z" end-time="2026-10-29 23:00:01Z" duration="1.802715" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="40912" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1262" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="191" result="Passed" start-time="2026-10-29 22:59:59Z" end-time="2026-10-29 23:00:01Z" duration="1.786056" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1263" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="191" result="Passed" start-time="2026-10-29 22:59:59Z" end-time="2026-10-29 23:00:01Z" duration="1.780468" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1196" name="SkyGiCandidatePlayTests" fullname="RailArena.Tests.SkyGiCandidatePlayTests" classname="RailArena.Tests.SkyGiCandidatePlayTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-29 22:59:59Z" end-time="2026-10-29 23:00:01Z" duration="1.772230" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1197" name="CharacterProbeLightingRemainsFiniteDuringSummitLaunch" fullname="RailArena.Tests.SkyGiCandidatePlayTests.CharacterProbeLightingRemainsFiniteDuringSummitLaunch" methodname="CharacterProbeLightingRemainsFiniteDuringSummitLaunch" classname="RailArena.Tests.SkyGiCandidatePlayTests" runstate="Runnable" seed="2122111339" result="Passed" start-time="2026-10-29 22:59:59Z" end-time="2026-10-29 23:00:01Z" duration="1.752362" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[SKY_GI_LAUNCH_PROBES pad=JP1 // SUMMIT LAUNCH samples=134 maxHeight=25.644 minRgbSum=1.0690 maxStep=0.0103
+SKY_GI_LAUNCH_PROBES pad=JP2 // SUMMIT LAUNCH samples=134 maxHeight=25.644 minRgbSum=1.0385 maxStep=0.0155
+SKY_GI_LAUNCH_PROBES pad=JP3 // SUMMIT LAUNCH samples=134 maxHeight=25.644 minRgbSum=1.0682 maxStep=0.0168
+SKY_GI_LAUNCH_PROBES pad=JP4 // SUMMIT LAUNCH samples=134 maxHeight=25.644 minRgbSum=1.0859 maxStep=0.0150
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

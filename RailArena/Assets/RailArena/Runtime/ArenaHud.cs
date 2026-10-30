@@ -14,11 +14,13 @@ namespace RailArena
         private int difficulty = 1;
         private TargetScenario scenario;
         private Font font;
-        private readonly Color cyan = new(.25f, .95f, 1);
+        private readonly Color cyan = new Color(.282f, .855f, .910f).linear;
 
         private void Start()
         {
-            font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            font = Resources.Load<Font>("UI/Brand/Fonts/Barlow-Regular") ?? Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            displayFont = Resources.Load<Font>("UI/Brand/Fonts/BarlowCondensed-SemiBold") ?? font;
+            mediumFont = Resources.Load<Font>("UI/Brand/Fonts/Barlow-Medium") ?? font;
             canvas = new GameObject("Arena interface", typeof(Canvas), typeof(UnityEngine.UI.CanvasScaler), typeof(UnityEngine.UI.GraphicRaycaster)).transform;
             canvas.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
             var scaler = canvas.GetComponent<UnityEngine.UI.CanvasScaler>();
@@ -33,6 +35,10 @@ namespace RailArena
         public void RefreshMenu()
         {
             if (canvas == null) return;
+            var selected = EventSystem.current?.currentSelectedGameObject;
+            retainedFocus = selected == null ? null : FocusKey(selected.name);
+            backAction = null;
+            readyButton = null;
             if (menu != null)
             {
                 menu.SetActive(false);
@@ -49,6 +55,8 @@ namespace RailArena
             menu.transform.SetParent(canvas, false);
             Rect(menu, Vector2.zero, Vector2.one);
             menu.GetComponent<UnityEngine.UI.Image>().color = new Color(.015f, .025f, .045f, .94f);
+            if (!Session.Running) { MainMenuLayout(); return; }
+            BrandChrome();
             string title = results ? "MATCH COMPLETE" : Session.Running ? "PAUSED" : "RAIL ARENA";
             Text(menu.transform, "Title", title, 72, new Vector2(.09f, .8f), new Vector2(.8f, .92f)).color = cyan;
             Text(menu.transform, "Subtitle", results ? $"WINNER: {Session.Actors[Session.Match.Winner].DisplayName}" :
@@ -95,13 +103,11 @@ namespace RailArena
                 new Vector2(.53f,.13f),new Vector2(.94f,Session.IsOnline ? .64f : .34f));
             if (!Session.IsOnline) Text(menu.transform,"Weapon help",WeaponSummary,22,
                 new Vector2(.095f,.16f),new Vector2(.46f,.29f));
-            Text(menu.transform, "Version", "IN DEVELOPMENT  //  OFFLINE / DIRECT-IP PLAYTEST", 18,
-                new Vector2(.095f, .035f), new Vector2(.9f, .085f)).color = new Color(.55f, .63f, .7f);
         }
 
         private void Settings()
         {
-            foreach (Transform child in menu.transform) { child.gameObject.SetActive(false); Destroy(child.gameObject); }
+            BeginPage(RefreshMenu);
             Text(menu.transform, "Title", "SETTINGS", 64, new Vector2(.1f, .78f), new Vector2(.8f, .9f));
             float reticleY = .815f;
             Button("RETICLE SETTINGS", ReticleSettings, ref reticleY, minX: .45f, maxX: .67f);
@@ -144,11 +150,11 @@ namespace RailArena
             var root = new GameObject(title, typeof(RectTransform), typeof(UnityEngine.UI.Image), typeof(UnityEngine.UI.Slider));
             root.transform.SetParent(menu.transform, false);
             Rect(root, new Vector2(minX, y), new Vector2(maxX, y + .025f));
-            root.GetComponent<UnityEngine.UI.Image>().color = new Color(.14f, .2f, .24f);
+            root.GetComponent<UnityEngine.UI.Image>().color = new Color(.11f,.17f,.21f).linear;
             var fill = new GameObject("Fill", typeof(RectTransform), typeof(UnityEngine.UI.Image));
             fill.transform.SetParent(root.transform, false);
             Rect(fill, Vector2.zero, Vector2.one);
-            fill.GetComponent<UnityEngine.UI.Image>().color = new Color(.12f, .5f, .57f);
+            fill.GetComponent<UnityEngine.UI.Image>().color = cyan;
             fill.GetComponent<UnityEngine.UI.Image>().raycastTarget = false;
             var handleArea = new GameObject("Handle area", typeof(RectTransform));
             handleArea.transform.SetParent(root.transform, false);
@@ -159,11 +165,14 @@ namespace RailArena
             handle.transform.SetParent(handleArea.transform, false);
             var handleRect = handle.GetComponent<RectTransform>();
             handleRect.sizeDelta = new Vector2(22, 35);
-            handle.GetComponent<UnityEngine.UI.Image>().color = cyan;
+            handle.GetComponent<UnityEngine.UI.Image>().color = Color.white;
             var slider = root.GetComponent<UnityEngine.UI.Slider>();
             slider.handleRect = handleRect;
             slider.fillRect = fill.GetComponent<RectTransform>();
             slider.targetGraphic = handle.GetComponent<UnityEngine.UI.Image>();
+            var sliderColors=slider.colors;
+            sliderColors.normalColor=Ivory;sliderColors.highlightedColor=cyan;sliderColors.selectedColor=cyan;
+            sliderColors.pressedColor=new Color(.16f,.50f,.57f);slider.colors=sliderColors;
             slider.minValue = min;
             slider.maxValue = max;
             slider.wholeNumbers = wholeNumbers;
@@ -175,7 +184,20 @@ namespace RailArena
         {
             if (combatRoot == null) return;
             if (connectionStatus != null) connectionStatus.text = Session.ConnectionStatus;
+            RefreshReadyAction();
             UpdateCombatHud();
+            if (menu != null && EventSystem.current != null && EventSystem.current.currentSelectedGameObject == null)
+            {
+                UnityEngine.UI.Selectable first = null, preferred = null;
+                foreach (var selectable in menu.GetComponentsInChildren<UnityEngine.UI.Selectable>())
+                {
+                    if (!selectable.IsInteractable()) continue;
+                    if (first == null) first = selectable;
+                    if (retainedFocus != null && FocusKey(selectable.name) == retainedFocus) preferred = selectable;
+                }
+                if (preferred != null || first != null) EventSystem.current.SetSelectedGameObject((preferred ?? first).gameObject);
+                retainedFocus = null;
+            }
             if (Session.Running && Session.Match.Phase == MatchPhase.Results && menu == null) RefreshMenu();
         }
 
@@ -185,11 +207,15 @@ namespace RailArena
             root.transform.SetParent(menu.transform, false);
             Rect(root, new Vector2(minX, y), new Vector2(maxX, y + .055f));
             root.GetComponent<UnityEngine.UI.Image>().color = new Color(.055f, .1f, .15f);
+            Graphic(root.transform,"Focus Rail",Vector2.zero,new Vector2(.008f,1),cyan);
             var button = root.GetComponent<MenuButton>();
             button.interactable = interactable;
             button.onClick.AddListener(action);
-            var caption=Text(root.transform, "Label", title, 24, new Vector2(.035f, 0), Vector2.one);
+            button.onClick.AddListener(InterfaceClick);
+            var caption=Text(root.transform, "Label", title, 23, new Vector2(.13f, 0), new Vector2(.96f,1));
             caption.alignment = TextAnchor.MiddleLeft;
+            caption.font = mediumFont;
+            Icon(root.transform,"Action icon",ActionIcon(title),new Vector2(.035f,.25f),new Vector2(.095f,.75f),Muted);
             button.ConfigureCaption(caption);
             y -= .073f;
             return button;
@@ -197,15 +223,17 @@ namespace RailArena
 
         private UnityEngine.UI.Text Text(Transform parent, string name, string value, int size, Vector2 min, Vector2 max)
         {
+            if (name == "Title" && parent == menu?.transform && max.y>.87f) { min.y=.765f;max.y=.873f;size=Mathf.Min(size,60); }
             var root = new GameObject(name, typeof(RectTransform), typeof(UnityEngine.UI.Text));
             root.transform.SetParent(parent, false);
             Rect(root, min, max);
             var text = root.GetComponent<UnityEngine.UI.Text>();
-            text.font = font;
+            text.font = size >= 32 || name == "Title" ? displayFont : font;
             text.fontSize = size;
-            text.color = new Color(.91f, .94f, .96f);
+            text.color = Ivory;
             text.text = value;
             text.raycastTarget = false;
+            text.supportRichText = false;
             return text;
         }
 

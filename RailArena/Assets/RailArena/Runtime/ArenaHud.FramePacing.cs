@@ -6,7 +6,7 @@ namespace RailArena
     {
         private void FramePacingSettings()
         {
-            foreach (Transform child in menu.transform) { child.gameObject.SetActive(false); Destroy(child.gameObject); }
+            BeginPage(Settings);
             Text(menu.transform, "Title", "FRAME PACING", 64, new Vector2(.1f,.78f), new Vector2(.94f,.9f));
             Text(menu.transform, "Frame help", "Choose a frame limit or synchronize with your display. Changes save immediately.", 22,
                 new Vector2(.1f,.69f), new Vector2(.94f,.76f));
@@ -34,8 +34,25 @@ namespace RailArena
             }, ref y);
             Text(menu.transform, "Limit description", "60 / 120 / 144 / 240 FPS or unlimited.\nYour selected limit is retained with VSync on.\nA limit is a target, not a measured result.", 23, new Vector2(.53f,.29f), new Vector2(.94f,.44f));
             Refresh();
-            Text(menu.transform, "Pacing scope", "Gameplay simulation stays at 60 ticks per second. Default: VSync off, 144 FPS limit.", 20,
-                new Vector2(.1f,.18f), new Vector2(.94f,.24f));
+            float aaY = .18f;
+            UnityEngine.UI.Button aa = null;
+            void RefreshAntialiasing() => aa.GetComponentInChildren<UnityEngine.UI.Text>().text = "ANTIALIASING // " + (Session.Graphics.Smaa ? "SMAA HIGH" : "OFF");
+            aa = Button("ANTIALIASING", () =>
+            {
+                Session.Graphics.Smaa = !Session.Graphics.Smaa; Session.Graphics.Save(); Session.Graphics.Apply(Session.View); RefreshAntialiasing();
+            }, ref aaY, minX: .55f, maxX: .91f);
+            RefreshAntialiasing();
+            float tierY = .1f;
+            UnityEngine.UI.Button tier = null;
+            void RefreshTier() => tier.GetComponentInChildren<UnityEngine.UI.Text>().text = "GRAPHICS // " + Session.Graphics.Tier.ToString().ToUpperInvariant();
+            tier = Button("GRAPHICS", () =>
+            {
+                Session.Graphics.Tier = GraphicsTierProfiles.Next(Session.Graphics.Tier);
+                Session.Graphics.Save(); Session.Graphics.Apply(Session.View); RefreshTier();
+            }, ref tierY, minX: .55f, maxX: .91f);
+            RefreshTier();
+            Text(menu.transform, "Pacing scope", "Simulation: 60 ticks/s. SMAA affects the main view.", 20,
+                new Vector2(.1f,.18f), new Vector2(.49f,.24f));
             y = .1f; Button("BACK TO SETTINGS", Settings, ref y);
         }
     }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using RailArena.Simulation;
 
 namespace RailArena
 {
@@ -19,6 +20,97 @@ namespace RailArena
         }
 
         private ReticleView combatReticle;
+        private GameObject illuminatedSight;
+        private RectTransform sprintSpreadRoot, sprintBoundaryRoot;
+        private readonly UnityEngine.UI.Image[] sprintBoundaryMarks = new UnityEngine.UI.Image[48];
+        private float sprintSpreadBlend, lastSpreadAngle;
+        private const float SprintSpreadTransitionSeconds = .16f;
+        private readonly UnityEngine.UI.Image[] sprintSpreadMarks = new UnityEngine.UI.Image[48];
+
+        private void CreateSprintSpread(Transform parent)
+        {
+            var root = new GameObject("Sprint spread", typeof(RectTransform));
+            root.transform.SetParent(parent, false);
+            Rect(root, Vector2.one * .5f, Vector2.one * .5f);
+            sprintSpreadRoot = root.GetComponent<RectTransform>();
+            for (int i = 0; i < sprintSpreadMarks.Length; i++)
+            {
+                var segment = Graphic(root.transform, "Spread segment " + i, Vector2.one * .5f, Vector2.one * .5f, Color.white);
+                float angle = i * Mathf.PI * 2 / sprintSpreadMarks.Length;
+                var rect = segment.rectTransform;
+                rect.anchorMin = rect.anchorMax = Vector2.one * .5f;
+                rect.pivot = Vector2.one * .5f;
+                rect.anchoredPosition = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * .5f;
+                rect.localRotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg + 90);
+                sprintSpreadMarks[i] = segment;
+            }
+            root.SetActive(false);
+            var boundary = new GameObject("Sprint spread boundary", typeof(RectTransform));
+            boundary.transform.SetParent(parent, false);
+            Rect(boundary, Vector2.one * .5f, Vector2.one * .5f);
+            sprintBoundaryRoot = boundary.GetComponent<RectTransform>();
+            for (int i = 0; i < sprintBoundaryMarks.Length; i++)
+            {
+                var segment = Graphic(boundary.transform, "Boundary segment " + i, Vector2.one * .5f, Vector2.one * .5f, Color.white);
+                float angle = i * Mathf.PI * 2 / sprintBoundaryMarks.Length;
+                var rect = segment.rectTransform;
+                rect.anchorMin = rect.anchorMax = Vector2.one * .5f;
+                rect.pivot = Vector2.one * .5f;
+                rect.localRotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg + 90);
+                sprintBoundaryMarks[i] = segment;
+            }
+            boundary.SetActive(false);
+        }
+
+        private void UpdateSprintSpread(float halfAngle, float deltaTime)
+        {
+            bool visible = halfAngle > 0;
+            if (visible) lastSpreadAngle = halfAngle;
+            sprintBoundaryRoot.gameObject.SetActive(visible);
+            if (visible)
+            {
+                float boundaryRadius = SprintFireSpread.ScreenRadius(Session.View.pixelHeight, Session.View.fieldOfView, canvas.GetComponent<Canvas>().scaleFactor, halfAngle);
+                sprintBoundaryRoot.sizeDelta = Vector2.one * (boundaryRadius * 2);
+                var boundaryColor = Session.Reticle.Color; boundaryColor.a = .8f;
+                for (int i = 0; i < sprintBoundaryMarks.Length; i++)
+                {
+                    float angle = i * Mathf.PI * 2 / sprintBoundaryMarks.Length;
+                    var mark = sprintBoundaryMarks[i];
+                    mark.rectTransform.anchoredPosition = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * boundaryRadius;
+                    mark.rectTransform.sizeDelta = new Vector2(Mathf.Max(2, boundaryRadius * .13f), 1.5f);
+                    mark.color = boundaryColor;
+                }
+            }
+            sprintSpreadBlend = Mathf.MoveTowards(sprintSpreadBlend, visible ? 1f : 0f, Mathf.Max(0, deltaTime) / SprintSpreadTransitionSeconds);
+            sprintSpreadRoot.gameObject.SetActive(sprintSpreadBlend > 0);
+            if (sprintSpreadBlend <= 0) return;
+            var scale = canvas.GetComponent<Canvas>().scaleFactor;
+            float fullRadius = SprintFireSpread.ScreenRadius(Session.View.pixelHeight, Session.View.fieldOfView, scale, visible ? halfAngle : lastSpreadAngle);
+            float normalRadius = Mathf.Min(Session.Reticle.Size * .5f, fullRadius * .65f);
+            float blend = Mathf.SmoothStep(0, 1, sprintSpreadBlend);
+            float radius = Mathf.Lerp(normalRadius, fullRadius, blend);
+            sprintSpreadRoot.sizeDelta = Vector2.one * (radius * 2);
+            var color = Session.Reticle.Color; color.a = .8f * blend;
+            for (int i = 0; i < sprintSpreadMarks.Length; i++)
+            {
+                float angle = i * Mathf.PI * 2 / sprintSpreadMarks.Length;
+                var mark = sprintSpreadMarks[i];
+                mark.rectTransform.anchoredPosition = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
+                mark.rectTransform.sizeDelta = new Vector2(Mathf.Max(2, radius * .13f), 1.5f);
+                mark.color = color;
+            }
+        }
+        private void CreateIlluminatedSight(Transform parent)
+        {
+            illuminatedSight = new GameObject("IlluminatedSight", typeof(RectTransform));
+            illuminatedSight.transform.SetParent(parent, false);
+            Rect(illuminatedSight, Vector2.one * .5f, Vector2.one * .5f);
+            illuminatedSight.GetComponent<RectTransform>().sizeDelta = new Vector2(8, 8);
+            Graphic(illuminatedSight.transform, "Sight halo", Vector2.zero, Vector2.one, new Color(0, 1, .85f, .16f));
+            Graphic(illuminatedSight.transform, "Sight outline", Vector2.one * .2f, Vector2.one * .8f, new Color(0, 0, 0, .9f));
+            Graphic(illuminatedSight.transform, "Sight light", Vector2.one * .32f, Vector2.one * .68f, new Color(.35f, 1, .8f));
+            illuminatedSight.SetActive(false);
+        }
 
         private ReticleView CreateReticle(Transform parent, string name)
         {
@@ -45,7 +137,7 @@ namespace RailArena
 
         private void ReticleSettings()
         {
-            foreach (Transform child in menu.transform) { child.gameObject.SetActive(false); Destroy(child.gameObject); }
+            BeginPage(Settings);
             Text(menu.transform,"Title","RETICLE",64,new Vector2(.1f,.78f),new Vector2(.8f,.9f));
             Text(menu.transform,"Reticle help","Choose a clear aim point. Changes apply immediately.\nSize uses the HUD's 1080p reference scale.",22,
                 new Vector2(.1f,.67f),new Vector2(.91f,.76f));
@@ -78,3 +170,8 @@ namespace RailArena
         }
     }
 }
+
+
+
+
+

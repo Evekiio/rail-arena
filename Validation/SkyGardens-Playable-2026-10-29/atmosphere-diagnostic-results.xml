@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 05:55:44Z" end-time="2026-10-30 05:55:44Z" duration="0.4758359">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="241" result="Failed" site="Child" start-time="2026-10-30 05:55:44Z" end-time="2026-10-30 05:55:44Z" duration="0.475836" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1351" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="241" result="Failed" site="Child" start-time="2026-10-30 05:55:44Z" end-time="2026-10-30 05:55:44Z" duration="0.459071" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="69436" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1352" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="241" result="Failed" site="Child" start-time="2026-10-30 05:55:44Z" end-time="2026-10-30 05:55:44Z" duration="0.455106" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1353" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="241" result="Failed" site="Child" start-time="2026-10-30 05:55:44Z" end-time="2026-10-30 05:55:44Z" duration="0.441058" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1012" name="AtmosphereCandidateTests" fullname="RailArena.Tests.AtmosphereCandidateTests" classname="RailArena.Tests.AtmosphereCandidateTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-10-30 05:55:44Z" end-time="2026-10-30 05:55:44Z" duration="0.426676" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1013" name="CandidateProducesFiniteDepthDependentOutput" fullname="RailArena.Tests.AtmosphereCandidateTests.CandidateProducesFiniteDepthDependentOutput" methodname="CandidateProducesFiniteDepthDependentOutput" classname="RailArena.Tests.AtmosphereCandidateTests" runstate="Runnable" seed="1716199172" result="Failed" start-time="2026-10-30 05:55:44Z" end-time="2026-10-30 05:55:44Z" duration="0.405610" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Shader Hidden/RailArena/Validation/AtmosphereCandidate: 
+  Expected: False
+  But was:  True
+]]></message>
+                <stack-trace><![CDATA[at RailArena.Tests.AtmosphereCandidateTests.CandidateProducesFiniteDepthDependentOutput () [0x0019d] in F:\Rail Arena\RailArena\Assets\RailArena\Tests\Editor\AtmosphereCandidateTests.cs:48
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Trying to invoke 'SubmitRenderRequest' when no SRP is set. A scriptable render pipeline is needed for this function call
+Trying to invoke 'SubmitRenderRequest' when no SRP is set. A scriptable render pipeline is needed for this function call
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

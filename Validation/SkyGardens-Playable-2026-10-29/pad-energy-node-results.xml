@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 06:27:35Z" end-time="2026-10-30 06:27:35Z" duration="0.1331566">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="245" result="Failed" site="Child" start-time="2026-10-30 06:27:35Z" end-time="2026-10-30 06:27:35Z" duration="0.133157" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1358" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="245" result="Failed" site="Child" start-time="2026-10-30 06:27:35Z" end-time="2026-10-30 06:27:35Z" duration="0.117117" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="9160" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1359" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="245" result="Failed" site="Child" start-time="2026-10-30 06:27:35Z" end-time="2026-10-30 06:27:35Z" duration="0.112293" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1360" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="245" result="Failed" site="Child" start-time="2026-10-30 06:27:35Z" end-time="2026-10-30 06:27:35Z" duration="0.107144" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1148" name="PadEnergyNodeTests" fullname="RailArena.Tests.PadEnergyNodeTests" classname="RailArena.Tests.PadEnergyNodeTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-10-30 06:27:35Z" end-time="2026-10-30 06:27:35Z" duration="0.082041" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1149" name="ReflectedPadFunctionMatchesExistingEnergyFormula" fullname="RailArena.Tests.PadEnergyNodeTests.ReflectedPadFunctionMatchesExistingEnergyFormula" methodname="ReflectedPadFunctionMatchesExistingEnergyFormula" classname="RailArena.Tests.PadEnergyNodeTests" runstate="Runnable" seed="233556579" result="Failed" start-time="2026-10-30 06:27:35Z" end-time="2026-10-30 06:27:35Z" duration="0.061020" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 0.525424719f +/- 0.00300000003f
+  But was:  0.13003011f
+]]></message>
+                <stack-trace><![CDATA[at RailArena.Tests.PadEnergyNodeTests.ReflectedPadFunctionMatchesExistingEnergyFormula () [0x002bf] in F:\Rail Arena\RailArena\Assets\RailArena\Tests\Editor\PadEnergyNodeTests.cs:38
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

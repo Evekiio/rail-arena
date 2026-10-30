@@ -225,7 +225,9 @@ namespace RailArena.Tests
             Assert.That(queue.PendingCount, Is.Zero);
             queue.Consume(13, out var held);
             Assert.That(held.Command.Move.sqrMagnitude, Is.GreaterThan(0));
-            Assert.That(held.Command.Fire, Is.False);
+            Assert.That(held.Command.Fire, Is.True);
+            queue.Consume(14, out var expiredFire);
+            Assert.That(expiredFire.Command.Fire, Is.False);
             Assert.That(held.Command.Jump, Is.True);
             queue.Consume(22, out var stopped);
             Assert.That(stopped.Command.Move, Is.EqualTo(Vector2.zero));

@@ -43,7 +43,7 @@ namespace RailArena.Tests
                 var hands=weapon.GetComponentInChildren<FirstPersonArms>().Hands;
                 var handRecoil=typeof(HandArticulation).GetField("recoil",Private);
                 Quaternion aim=session.View.transform.rotation;
-                session.Human.Velocity=new Vector3(10,0,0); recoil.SetValue(session,1f);
+                session.Human.Velocity=new Vector3(10,0,0); ((WeaponRecoil)typeof(ArenaSession).GetField("weaponRecoil",Private).GetValue(session)).Fire();
                 yield return Frames(2);
                 Assert.That(weapon.localPosition,Is.EqualTo(FirstPersonWeaponMotion.RestPosition));
                 Assert.That(Quaternion.Angle(weapon.localRotation,Quaternion.identity),Is.LessThan(.001f));
@@ -52,7 +52,7 @@ namespace RailArena.Tests
                 Assert.That(session.Human.Health,Is.EqualTo(100)); Assert.That(session.Match.Statistics[0].Shots,Is.Zero);
                 session.Feedback.ConfirmHit(false);
                 foreach(var size in Sizes)yield return Capture(session.View,size,"Live");
-                session.Comfort.WeaponMotion=true; recoil.SetValue(session,1f); yield return Frames(2);
+                session.Comfort.WeaponMotion=true; ((WeaponRecoil)typeof(ArenaSession).GetField("weaponRecoil",Private).GetValue(session)).Fire(); yield return Frames(2);
                 Assert.That(Vector3.Distance(weapon.localPosition,FirstPersonWeaponMotion.RestPosition),Is.GreaterThan(.001f));
                 Assert.That((float)handRecoil.GetValue(hands),Is.GreaterThan(0));
                 Assert.That(Quaternion.Angle(aim,session.View.transform.rotation),Is.LessThan(.001f));

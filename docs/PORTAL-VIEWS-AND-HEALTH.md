@@ -1,0 +1,9 @@
+# Portal destination views and floating health
+
+Twin Platforms portals render the opposite platform from the viewer camera translated across the paired gates. This matches the existing opposed, upright portal traversal mapping and preserves the player look direction. Oblique clipping removes the space behind the exit plane. Blue/red energy arcs and a subtle field border remain around the live image.
+
+Each visible, front-facing portal uses one non-recursive render, capped at 960 pixels wide at the player aspect ratio. Portal faces are temporarily suppressed only during that render. Destination cameras omit first-person weapons and UI, include the local body, disable extra shadows/postprocessing, and own/release their render textures and cameras. Hidden/back-facing portals skip work. The view is visual only: bullets remain blocked by the portal face and the exit safety checks are unchanged. Recursive portals are deliberately not rendered.
+
+Health pickups now display an emissive mint core, medical cross and dark rotating cage, with a steady local glow and additive energy halo. The art floats 14 cm and rotates 38 degrees per second independently of the unchanged pickup authority position. Collection hides the entire floating object and light; availability restores them. Offline pause stops pickup motion; Reduced Flash lowers its light intensity. Existing health amount, radius, respawn timing and network state are unchanged.
+
+Run `Builds/PortalViews-2026-10-29/RailArena.exe` with its data/runtime files beside it. Test portal views from several angles and while moving, approach each exit, collect damaged-player health, check respawn, pause and Reduced Flash. Extra camera renders have a GPU cost; automated captures do not establish performance on other PCs or physical-input/motion acceptance.

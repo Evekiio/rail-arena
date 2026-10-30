@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 18:49:13Z" end-time="2026-10-29 18:49:17Z" duration="3.54996">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="179" result="Passed" start-time="2026-10-29 18:49:13Z" end-time="2026-10-29 18:49:17Z" duration="3.549960" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1244" name="RailArena.Tests.dll" fullname="F:/Rail Arena/Builds/Automatic-Rifle-2026-10-29/Project/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="179" result="Passed" start-time="2026-10-29 18:49:13Z" end-time="2026-10-29 18:49:17Z" duration="3.533381" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="16744" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1245" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="179" result="Passed" start-time="2026-10-29 18:49:13Z" end-time="2026-10-29 18:49:17Z" duration="3.526193" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1246" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="179" result="Passed" start-time="2026-10-29 18:49:13Z" end-time="2026-10-29 18:49:17Z" duration="3.518909" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1162" name="RewindTests" fullname="RailArena.Tests.RewindTests" classname="RailArena.Tests.RewindTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-29 18:49:13Z" end-time="2026-10-29 18:49:13Z" duration="0.071455" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1163" name="PreviousPortalEpochCannotHitTheEntryPositionGhost" fullname="RailArena.Tests.RewindTests.PreviousPortalEpochCannotHitTheEntryPositionGhost" methodname="PreviousPortalEpochCannotHitTheEntryPositionGhost" classname="RailArena.Tests.RewindTests" runstate="Runnable" seed="213827458" result="Passed" start-time="2026-10-29 18:49:13Z" end-time="2026-10-29 18:49:13Z" duration="0.044298" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1194" name="SnapshotLifecycleTests" fullname="RailArena.Tests.SnapshotLifecycleTests" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" testcasecount="25" result="Passed" start-time="2026-10-29 18:49:13Z" end-time="2026-10-29 18:49:13Z" duration="0.252678" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1195" name="PortalEpochSnapsOpponentAndResetsLocalViewCorrection" fullname="RailArena.Tests.SnapshotLifecycleTests.PortalEpochSnapsOpponentAndResetsLocalViewCorrection" methodname="PortalEpochSnapsOpponentAndResetsLocalViewCorrection" classname="RailArena.Tests.SnapshotLifecycleTests" runstate="Runnable" seed="1989211621" result="Passed" start-time="2026-10-29 18:49:13Z" end-time="2026-10-29 18:49:13Z" duration="0.243565" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1238" name="TwinPlatformsTests" fullname="RailArena.Tests.TwinPlatformsTests" classname="RailArena.Tests.TwinPlatformsTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-29 18:49:13Z" end-time="2026-10-29 18:49:17Z" duration="3.171835" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1241" name="BotsUseBothTraversalTypesWithoutFallingIntoTheGap" fullname="RailArena.Tests.TwinPlatformsTests.BotsUseBothTraversalTypesWithoutFallingIntoTheGap" methodname="BotsUseBothTraversalTypesWithoutFallingIntoTheGap" classname="RailArena.Tests.TwinPlatformsTests" runstate="Runnable" seed="1106266517" result="Passed" start-time="2026-10-29 18:49:13Z" end-time="2026-10-29 18:49:15Z" duration="1.536512" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1239" name="PortalWirePreservesDiscontinuityAndTwoPickups" fullname="RailArena.Tests.TwinPlatformsTests.PortalWirePreservesDiscontinuityAndTwoPickups" methodname="PortalWirePreservesDiscontinuityAndTwoPickups" classname="RailArena.Tests.TwinPlatformsTests" runstate="Runnable" seed="1610027132" result="Passed" start-time="2026-10-29 18:49:15Z" end-time="2026-10-29 18:49:15Z" duration="0.006222" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1240" name="RealControllersCrossBothRoutesAndBlockedExitsStaySafe" fullname="RailArena.Tests.TwinPlatformsTests.RealControllersCrossBothRoutesAndBlockedExitsStaySafe" methodname="RealControllersCrossBothRoutesAndBlockedExitsStaySafe" classname="RailArena.Tests.TwinPlatformsTests" runstate="Runnable" seed="1123144862" result="Passed" start-time="2026-10-29 18:49:15Z" end-time="2026-10-29 18:49:17Z" duration="1.624804" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

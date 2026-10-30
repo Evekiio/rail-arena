@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Passed" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 11:55:22Z" end-time="2026-10-30 11:55:24Z" duration="2.2361497">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="260" result="Passed" start-time="2026-10-30 11:55:22Z" end-time="2026-10-30 11:55:24Z" duration="2.236150" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1382" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="260" result="Passed" start-time="2026-10-30 11:55:22Z" end-time="2026-10-30 11:55:24Z" duration="2.202227" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="59880" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1383" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="260" result="Passed" start-time="2026-10-30 11:55:22Z" end-time="2026-10-30 11:55:24Z" duration="2.196367" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1384" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="260" result="Passed" start-time="2026-10-30 11:55:22Z" end-time="2026-10-30 11:55:24Z" duration="2.189545" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1263" name="SprintFireSpreadTests" fullname="RailArena.Tests.SprintFireSpreadTests" classname="RailArena.Tests.SprintFireSpreadTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-30 11:55:22Z" end-time="2026-10-30 11:55:22Z" duration="0.062687" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1266" name="DirectionStaysInsideConeAndPreservesCenter" fullname="RailArena.Tests.SprintFireSpreadTests.DirectionStaysInsideConeAndPreservesCenter" methodname="DirectionStaysInsideConeAndPreservesCenter" classname="RailArena.Tests.SprintFireSpreadTests" runstate="Runnable" seed="2008364097" result="Passed" start-time="2026-10-30 11:55:22Z" end-time="2026-10-30 11:55:22Z" duration="0.021266" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1264" name="ReticleProjectionMatchesConeAtDifferentFieldsOfViewAndScales" fullname="RailArena.Tests.SprintFireSpreadTests.ReticleProjectionMatchesConeAtDifferentFieldsOfViewAndScales" methodname="ReticleProjectionMatchesConeAtDifferentFieldsOfViewAndScales" classname="RailArena.Tests.SprintFireSpreadTests" runstate="Runnable" seed="451938889" result="Passed" start-time="2026-10-30 11:55:22Z" end-time="2026-10-30 11:55:22Z" duration="0.007829" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1265" name="SlideInputSurvivesWireAndIsNotRepeatedOnMissingPackets" fullname="RailArena.Tests.SprintFireSpreadTests.SlideInputSurvivesWireAndIsNotRepeatedOnMissingPackets" methodname="SlideInputSurvivesWireAndIsNotRepeatedOnMissingPackets" classname="RailArena.Tests.SprintFireSpreadTests" runstate="Runnable" seed="422226665" result="Passed" start-time="2026-10-30 11:55:22Z" end-time="2026-10-30 11:55:22Z" duration="0.008340" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1267" name="SprintReticleHudTests" fullname="RailArena.Tests.SprintReticleHudTests" classname="RailArena.Tests.SprintReticleHudTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 11:55:22Z" end-time="2026-10-30 11:55:24Z" duration="2.082564" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1268" name="SprintCircleTracksShotConeAndHidesWhenSpreadStops" fullname="RailArena.Tests.SprintReticleHudTests.SprintCircleTracksShotConeAndHidesWhenSpreadStops" methodname="SprintCircleTracksShotConeAndHidesWhenSpreadStops" classname="RailArena.Tests.SprintReticleHudTests" runstate="Runnable" seed="1828369019" result="Passed" start-time="2026-10-30 11:55:22Z" end-time="2026-10-30 11:55:24Z" duration="2.080488" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

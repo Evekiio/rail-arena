@@ -22,8 +22,8 @@ namespace RailArena
 
         private StandingsPanel CreateStandings(Transform parent,string name,string title,Vector2 min,Vector2 max)
         {
-            var panel = new StandingsPanel { Root = Graphic(parent,name,min,max,new Color(.015f,.025f,.045f,.95f)).gameObject };
-            Graphic(panel.Root.transform,"Accent",new Vector2(0,.985f),Vector2.one,cyan);
+            var panel = new StandingsPanel { Root = Graphic(parent,name,min,max,new Color(.08f,.12f,.16f,.97f).linear).gameObject };
+            Graphic(panel.Root.transform,"Accent",new Vector2(0,.996f),Vector2.one,cyan);
             Text(panel.Root.transform,"Title",title,25,new Vector2(.025f,.86f),new Vector2(.98f,.98f)).color=cyan;
             string[] labels={"#","CONTENDER","PTS","K / D","ACC","HITS / SHOTS","HS"};
             float[] starts={.025f,.09f,.36f,.45f,.57f,.70f,.91f};
@@ -61,7 +61,7 @@ namespace RailArena
                 if(i==0 || entry.Value!=ranked[i-1].Value)rank=i+1;
                 var actor=Session.Actors.First(candidate=>candidate.Id==entry.Key);
                 var stats=Session.Match.Statistics[entry.Key];
-                row.Root.GetComponent<UnityEngine.UI.Image>().color=entry.Key==Session.LocalPlayerId?new Color(.08f,.25f,.29f,.8f):new Color(.055f,.09f,.13f,.7f);
+                row.Root.GetComponent<UnityEngine.UI.Image>().color=(entry.Key==Session.LocalPlayerId?new Color(.08f,.30f,.34f,.92f):new Color(.11f,.17f,.21f,.8f)).linear;
                 row.Rank.text=rank.ToString(); row.Name.text=actor.DisplayName;
                 row.Name.color=entry.Key==Session.Match.Winner?amber:entry.Key==Session.LocalPlayerId?cyan:Color.white;
                 row.Points.text=entry.Value.ToString(); row.Kd.text=$"{stats.Kills} / {stats.Deaths}";

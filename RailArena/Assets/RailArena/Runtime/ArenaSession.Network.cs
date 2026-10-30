@@ -14,6 +14,7 @@ namespace RailArena
         public bool IsOnline => link != null;
         public bool OnlineWaiting => IsOnline && (link.State != DuelLinkState.Connected || link.Round == 0);
         public bool LocalReady => link != null && link.LocalReady;
+        public bool CanReady => link != null && link.State == DuelLinkState.Connected;
         public string ConnectionError { get; private set; } = "";
         public void ClearConnectionError() => ConnectionError = "";
         public string ConnectionStatus => link == null ? ConnectionError :
@@ -66,6 +67,7 @@ namespace RailArena
 
         private void OpenDuel(bool host, string address, int port)
         {
+            ClosePhysicsConfig(); ResetPhysicsConfig();
             MainMenu();
             ConnectionError = "";
             if (port < 1 || port > 65535) { ConnectionError = "Use a UDP port from 1 to 65535."; hud.RefreshMenu(); return; }
@@ -135,7 +137,7 @@ namespace RailArena
         }
 
         private void OnApplicationQuit() => ReleaseSessionResources();
-        private void OnDestroy() => ReleaseSessionResources();
+        private void OnDestroy() { Graphics.RestoreTier(); ReleaseSessionResources(); if (ownedTuning != null) Destroy(ownedTuning); }
 
         private void UpdateNetwork()
         {
@@ -188,6 +190,9 @@ namespace RailArena
         private void PredictClient()
         {
             if (AutomatedHuman) Human.Command = Human.Brain.Think(this, Human);
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            if (AutomatedHuman) Human.Command = ValidationMovement(Human.Command, clientTick);
+#endif
             if (Paused) Human.Command = new MovementCommand { Yaw = yaw, Pitch = pitch };
             clientTick++;
             if (prediction.Count < DuelInputQueue.MaximumPending)
@@ -206,12 +211,11 @@ namespace RailArena
                 if (Human.Alive && Match.IsActive)
                 {
                     MoveActor(Human, clientTick, false);
-                    if (command.Fire && CombatRules.CanFire(clientTick, Human.NextShotTick, true))
+                    if (AdvanceWeapon(Human, clientTick))
                     {
-                        Human.NextShotTick = clientTick + CombatRules.ShotIntervalTicks;
                         Human.Presentation.Fired();
                         var ray = new Ray(Human.Eye, Human.AimDirection);
-                        var end = Physics.Raycast(ray, out var wall, 180, 1 << 0, QueryTriggerInteraction.Ignore) ? wall.point : ray.GetPoint(180);
+                        var end = Physics.Raycast(ray, out var wall, 180, 1 << 0, QueryTriggerInteraction.Collide) ? wall.point : ray.GetPoint(180);
                         ShowShot(Human, Human.Eye, end);
                     }
                 }
@@ -230,19 +234,22 @@ namespace RailArena
             foreach (var actor in Actors)
                 state.Actors[actor.Id] = new ActorSnapshot { Position = actor.transform.position, Velocity = actor.Velocity,
                     Yaw = Mathf.Repeat(actor.Command.Yaw, 360), Pitch = actor.Command.Pitch, Health = actor.Health, Life = actor.Life,
-                    NextShotTick = actor.NextShotTick, RespawnTick = actor.RespawnTick, PadReadyTick = actor.PadReadyTick,
+                    NextShotTick = actor.NextShotTick, Magazine = actor.Magazine, RespawnTick = actor.RespawnTick, PadReadyTick = actor.PadReadyTick, PortalReadyTick = actor.PortalReadyTick, LastTeleportTick = actor.LastTeleportTick, TeleportSerial = actor.TeleportSerial,
                     AirborneTicks = actor.AirborneTicks, Score = Match.Scores[actor.Id],
-                    LastInput = actor.Id == 1 ? remoteInputs.LastConsumed : 0, Grounded = actor.Grounded,
+                    LastInput = actor.Id == 1 ? remoteInputs.LastConsumed : 0, Grounded = actor.Grounded, Crouched = actor.IsCrouched, Slide = actor.Slide,
                     ShotSerial = actor.ShotSerial, HitSerial = actor.HitSerial, ShotEnd = actor.LastShotEnd,
                     Statistics = Match.Statistics[actor.Id] };
-            for (int i = 0; i < 3; i++) state.PickupTicks[i] = World.Pickups[i].AvailableTick;
+            state.PickupTicks = new int[World.Pickups.Length];
+            for (int i = 0; i < World.Pickups.Length; i++) state.PickupTicks[i] = World.Pickups[i].AvailableTick;
             return state;
         }
 
         private void ApplySnapshot(DuelSnapshot state)
         {
             if (receivedSnapshot != null && state.Round == receivedSnapshot.Round && state.Tick < receivedSnapshot.Tick) return;
+            if (state.PickupTicks.Length != World.Pickups.Length) return;
             bool newRound = state.Round != clientRound;
+            bool localTraversalChanged = Human.TeleportSerial != state.Actors[LocalPlayerId].TeleportSerial;
             bool localLifeChanged = Human.Life != state.Actors[LocalPlayerId].Life;
             if (newRound || localLifeChanged) Feedback.ResetFeedback();
             var previousPhase = Match.Phase;
@@ -255,7 +262,8 @@ namespace RailArena
             }
             // Never replay a previous life's controls or blend an opponent through its respawn teleport.
             if (localLifeChanged) prediction.Clear();
-            if (Actors[1 - LocalPlayerId].Life != state.Actors[1 - LocalPlayerId].Life) interpolation.Clear();
+            if (Actors[1 - LocalPlayerId].Life != state.Actors[1 - LocalPlayerId].Life ||
+                Actors[1 - LocalPlayerId].TeleportSerial != state.Actors[1 - LocalPlayerId].TeleportSerial) interpolation.Clear();
             receivedSnapshot = state;
             SnapshotsReceived++;
             snapshotTime = Time.realtimeSinceStartupAsDouble;
@@ -273,13 +281,14 @@ namespace RailArena
                 previousPadReady = Human.PadReadyTick, authorityPadReady = state.Actors[LocalPlayerId].PadReadyTick,
                 previousAirborne = Human.AirborneTicks, authorityAirborne = state.Actors[LocalPlayerId].AirborneTicks };
 #endif
-            bool continuousLife = !localLifeChanged && Human.Alive && state.Actors[LocalPlayerId].Health > 0;
+            bool continuousLife = !localLifeChanged && !localTraversalChanged && Human.Alive && state.Actors[LocalPlayerId].Health > 0;
             foreach (var actor in Actors)
             {
                 var authoritative = state.Actors[actor.Id];
                 bool wasAlive = actor.Alive;
                 int previousHealth = actor.Health;
                 bool lifeChanged = actor.Life != authoritative.Life;
+                PresentAuthorityTraversal(actor.Id, authoritative.TeleportSerial, authoritative.PadReadyTick, authoritative.Position, state.Tick, newRound || lifeChanged);
                 if (actor == Human || newRound || interpolation.Count == 0)
                     RestoreActor(actor, authoritative, actor == Human, newRound);
                 else
@@ -313,7 +322,8 @@ namespace RailArena
             }
             if (newRound || localLifeChanged)
             {
-                recoil = 0;
+                ResetSights();
+                ResetRecoil();
                 weaponMotion.Reset(true);
                 weaponMotionLife = Human.Life;
             }
@@ -328,8 +338,7 @@ namespace RailArena
                 Human.Command = input.Command;
                 if (Human.Alive && Match.IsActive)
                 { MoveActor(Human, clientTick, false, false); replayMovementTicks++; }
-                if (Human.Alive && Match.IsActive && input.Command.Fire && CombatRules.CanFire(clientTick, Human.NextShotTick, true))
-                    Human.NextShotTick = clientTick + CombatRules.ShotIntervalTicks;
+                if (Human.Alive && Match.IsActive) AdvanceWeapon(Human, clientTick);
             }
             Human.Command = liveCommand;
             if (!newRound && continuousLife)
@@ -364,7 +373,7 @@ namespace RailArena
             if (interpolation.Count == 0) displayedTick = state.Tick;
             if (interpolation.Count == 0 || state.Tick > interpolation[interpolation.Count - 1].Tick) interpolation.Add(state);
             while (interpolation.Count > 32) interpolation.RemoveAt(0);
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < World.Pickups.Length; i++)
             { World.Pickups[i].AvailableTick = state.PickupTicks[i]; World.Pickups[i].SetAvailable(state.Tick >= state.PickupTicks[i]); }
             if (newRound || wasResults != (Match.Phase == MatchPhase.Results)) SetPaused(false);
         }
@@ -378,13 +387,19 @@ namespace RailArena
             if (wasAlive != actor.Alive || lifeChanged || resetPresentation) actor.SetAlive(actor.Alive);
             actor.Controller.enabled = false;
             actor.transform.position = state.Position;
+            actor.SetCrouched(state.Crouched);
+            actor.Slide = state.Slide;
             actor.Controller.enabled = local && actor.Alive;
             actor.Velocity = state.Velocity;
             actor.GroundedOverride = state.Grounded;
             actor.AirborneTicks = state.AirborneTicks;
             actor.NextShotTick = state.NextShotTick;
+            actor.Magazine = state.Magazine;
             actor.RespawnTick = state.RespawnTick;
             actor.PadReadyTick = state.PadReadyTick;
+            actor.PortalReadyTick = state.PortalReadyTick;
+            actor.LastTeleportTick = state.LastTeleportTick;
+            actor.TeleportSerial = state.TeleportSerial;
         }
 
         private void InterpolateOpponent()
@@ -408,22 +423,47 @@ namespace RailArena
             opponent.Velocity = Vector3.Lerp(a.Velocity, b.Velocity, blend);
             opponent.GroundedOverride = b.Grounded;
             opponent.AirborneTicks = b.AirborneTicks;
+            opponent.SetCrouched(blend < 1 ? a.Crouched : b.Crouched);
+            opponent.Slide = blend < 1 ? a.Slide : b.Slide;
+            opponent.Magazine = blend < 1 ? a.Magazine : b.Magazine;
+            opponent.TeleportSerial = blend < 1 ? a.TeleportSerial : b.TeleportSerial;
             opponent.Command = new MovementCommand { Yaw = Mathf.LerpAngle(a.Yaw, b.Yaw, blend), Pitch = Mathf.Lerp(a.Pitch, b.Pitch, blend) };
         }
 
         private void MoveActor(ArenaActor actor, int tick, bool authoritative, bool present = true)
         {
+            Vector3 before = actor.transform.position;
             actor.Move(Tuning);
+            foreach (var portal in World.Portals)
+            {
+                PortalResult result = portal.TryTraverse(actor, before, tick, Actors);
+                if (result == PortalResult.None) continue;
+                if (actor.Bot || AutomatedHuman)
+                    actor.Brain?.Launched(World.NearestNode(result == PortalResult.Teleported ? actor.transform.position :
+                        portal.transform.position + portal.transform.forward * 10));
+                if (present && result == PortalResult.Teleported) PresentPortal(actor.Id, actor.TeleportSerial, portal.Exit);
+                if (present && actor == Human)
+                {
+                    TraversalNotice = result == PortalResult.Teleported ? portal.DestinationName : tick < actor.PortalReadyTick ? "PORTAL NOT READY" : "PORTAL EXIT BLOCKED";
+                    TraversalNoticeUntil = Time.realtimeSinceStartupAsDouble + 1.2;
+                    reconciliationView.Reset();
+                    if (result == PortalResult.Teleported && View != null)
+                        View.transform.SetPositionAndRotation(actor.Eye, Quaternion.Euler(pitch, yaw, 0));
+                }
+                return;
+            }
             foreach (var pad in World.Pads)
             {
                 Vector3 offset = actor.transform.position - pad.transform.position;
                 if (tick < actor.PadReadyTick || Mathf.Abs(offset.y) >= 1 || new Vector2(offset.x, offset.z).magnitude >= 1.5f) continue;
-                actor.Velocity = pad.Launch(actor.transform.position, Tuning.Gravity);
+                actor.Velocity = pad.Launch(actor.transform.position, Tuning.Gravity, Tuning.PadFlightMultiplier);
                 actor.AirborneTicks = 2;
+                actor.Slide.RemainingTicks = 0;
                 if (actor.Bot || AutomatedHuman) actor.Brain.Launched(World.NearestNode(pad.Destination));
                 actor.PadReadyTick = tick + 90;
                 if (authoritative) padCount++;
-                if(present && actor==Human)Feedback.Launched();
+                if (present) PresentPad(actor.Id, actor.PadReadyTick, pad);
+                if(present && actor==Human)Feedback.Launched(pad.Presentation == null);
             }
         }
 

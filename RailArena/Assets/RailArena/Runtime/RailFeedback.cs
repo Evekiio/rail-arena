@@ -166,10 +166,10 @@ namespace RailArena
             localAudio.PlayOneShot(clips[(int)RailCue.Pickup], .35f);
         }
 
-        public void Launched()
+        public void Launched(bool playSound = true)
         {
             LaunchCues++;
-            localAudio.PlayOneShot(clips[(int)RailCue.Launch], .4f);
+            if (playSound) localAudio.PlayOneShot(clips[(int)RailCue.Launch], .4f);
         }
 
         public void ResetFeedback()

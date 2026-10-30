@@ -20,6 +20,7 @@ namespace RailArena
         private float aimYawError;
         private float aimPitchError;
         private bool landing;
+        private bool carefulReturn;
         public int NodesReached { get; private set; }
 
         public BotBrain(int seed) { random = new System.Random(seed); }
@@ -75,7 +76,7 @@ namespace RailArena
                     return new MovementCommand { Yaw = yaw, Pitch = pitch };
                 landing = false;
             }
-            if (!landing && flat.magnitude < 1.4f && Mathf.Abs(offset.y) < 2)
+            if (!landing && flat.magnitude < world.RouteArrivalRadius && Mathf.Abs(offset.y) < 2)
             {
                 NodesReached++;
                 int current = next;
@@ -86,7 +87,15 @@ namespace RailArena
             else stuckTicks = 0;
             lastPosition = self.transform.position;
 
-            Vector3 travel = flat.normalized;
+            if (System.Array.IndexOf(world.CarefulDropNodes, next) >= 0) carefulReturn = true;
+            if (carefulReturn && self.Grounded && self.transform.position.y < 10) carefulReturn = false;
+            Vector3 travel = flat.normalized * (carefulReturn ? .15f : 1);
+            if (world.CarefulNavigation && self.Grounded && !carefulReturn)
+            {
+                Vector3 momentum = new Vector3(self.Velocity.x, 0, self.Velocity.z);
+                Vector3 probe = self.transform.position + momentum.normalized * Mathf.Max(.9f, momentum.magnitude * .16f);
+                if (!Physics.Raycast(probe + Vector3.up * .7f, Vector3.down, 1.4f, 1 << 0, QueryTriggerInteraction.Ignore)) travel *= .15f;
+            }
             bool fire = false;
             if (target != null && session.Scenario == TargetScenario.Combat)
             {
@@ -112,14 +121,14 @@ namespace RailArena
             }
             Vector3 local = Quaternion.Euler(0, -yaw, 0) * travel;
             return new MovementCommand { Move = new Vector2(local.x, local.z), Yaw = yaw, Pitch = pitch,
-                Jump = stuckTicks > 30, Fire = fire };
+                Jump = stuckTicks > 30, Fire = fire, Reload = self.Magazine.Rounds == 0 };
         }
 
         private static bool Visible(ArenaActor self, ArenaActor other)
         {
             Vector3 direction = other.Eye - self.Eye;
             return !Physics.Raycast(self.Eye, direction.normalized, direction.magnitude, 1 << 0,
-                QueryTriggerInteraction.Ignore);
+                QueryTriggerInteraction.Collide);
         }
     }
 }

@@ -1,0 +1,718 @@
+{
+    "scene": "SkyGardens",
+    "materials": [
+        {
+            "path": "Assets/RailArena/Art/HealthBeacon/Amber.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 6,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Art/HealthBeacon/Graphite.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 6,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Art/HealthBeacon/Ivory.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 3,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Energy.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 0,
+            "weaponRenderers": 18,
+            "albedo": true,
+            "normal": true,
+            "detailNormal": false,
+            "metallicSmoothness": true,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Surface.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 0,
+            "weaponRenderers": 39,
+            "albedo": true,
+            "normal": true,
+            "detailNormal": false,
+            "metallicSmoothness": true,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/SkyGardensArt/Material-bark.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 8,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/SkyGardensArt/Material-bronze.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 64,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/SkyGardensArt/Material-cover.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 30,
+            "weaponRenderers": 0,
+            "albedo": true,
+            "normal": true,
+            "detailNormal": true,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/SkyGardensArt/Material-foam.mat",
+            "shader": "RailArena/SkyWater",
+            "sceneRenderers": 12,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/SkyGardensArt/Material-foliage.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 12,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/SkyGardensArt/Material-garden_structure.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 4,
+            "weaponRenderers": 0,
+            "albedo": true,
+            "normal": true,
+            "detailNormal": true,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/SkyGardensArt/Material-grass.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 4,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/SkyGardensArt/Material-ivory_trim.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 100,
+            "weaponRenderers": 0,
+            "albedo": true,
+            "normal": true,
+            "detailNormal": true,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/SkyGardensArt/Material-ramps.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 4,
+            "weaponRenderers": 0,
+            "albedo": true,
+            "normal": true,
+            "detailNormal": true,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/SkyGardensArt/Material-structure.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 24,
+            "weaponRenderers": 0,
+            "albedo": true,
+            "normal": true,
+            "detailNormal": true,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/SkyGardensArt/Material-summit.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 6,
+            "weaponRenderers": 0,
+            "albedo": true,
+            "normal": true,
+            "detailNormal": true,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/SkyGardensArt/Material-teal.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 8,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/SkyGardensArt/Material-water.mat",
+            "shader": "RailArena/SkyWater",
+            "sceneRenderers": 4,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/Starlight.mat",
+            "shader": "Universal Render Pipeline/Unlit",
+            "sceneRenderers": 1,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/TwinPlatformsArt/Health cage.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 24,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/TwinPlatformsArt/Health glow.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 15,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/TwinPlatformsArt/Health halo.mat",
+            "shader": "RailArena/RailPulse",
+            "sceneRenderers": 3,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/TwinPlatformsArt/Structure.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 12,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/RailArena/Generated/TwinPlatformsArt/Super pad.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 4,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Assets/Resources/UI/Brand/Fonts/BarlowCondensed-SemiBold.ttf",
+            "shader": "GUI/Text Shader",
+            "sceneRenderers": 4,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        },
+        {
+            "path": "Packages/com.unity.render-pipelines.universal/Runtime/Materials/Lit.mat",
+            "shader": "Universal Render Pipeline/Lit",
+            "sceneRenderers": 2,
+            "weaponRenderers": 0,
+            "albedo": false,
+            "normal": false,
+            "detailNormal": false,
+            "metallicSmoothness": false,
+            "occlusion": false,
+            "height": false
+        }
+    ],
+    "weaponMeshes": [
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_01_shell_Energy",
+            "vertices": 192,
+            "uv": 192,
+            "tangents": 192
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_01_shell_Energy",
+            "vertices": 204,
+            "uv": 204,
+            "tangents": 204
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_01_shell_Energy",
+            "vertices": 100,
+            "uv": 100,
+            "tangents": 100
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_01_shell_Surface",
+            "vertices": 1348,
+            "uv": 1348,
+            "tangents": 1348
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_01_shell_Surface",
+            "vertices": 1342,
+            "uv": 1342,
+            "tangents": 1342
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_01_shell_Surface",
+            "vertices": 750,
+            "uv": 750,
+            "tangents": 750
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_02_shell_Surface",
+            "vertices": 138,
+            "uv": 138,
+            "tangents": 138
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_02_shell_Surface",
+            "vertices": 138,
+            "uv": 138,
+            "tangents": 138
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_02_shell_Surface",
+            "vertices": 64,
+            "uv": 64,
+            "tangents": 64
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_03_shell_Surface",
+            "vertices": 96,
+            "uv": 96,
+            "tangents": 96
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_03_shell_Surface",
+            "vertices": 94,
+            "uv": 94,
+            "tangents": 94
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_03_shell_Surface",
+            "vertices": 48,
+            "uv": 48,
+            "tangents": 48
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_04_shell_Energy",
+            "vertices": 192,
+            "uv": 192,
+            "tangents": 192
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_04_shell_Energy",
+            "vertices": 200,
+            "uv": 200,
+            "tangents": 200
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_04_shell_Energy",
+            "vertices": 104,
+            "uv": 104,
+            "tangents": 104
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_04_shell_Surface",
+            "vertices": 1632,
+            "uv": 1632,
+            "tangents": 1632
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_04_shell_Surface",
+            "vertices": 1646,
+            "uv": 1646,
+            "tangents": 1646
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_04_shell_Surface",
+            "vertices": 906,
+            "uv": 906,
+            "tangents": 906
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_05_shell_Energy",
+            "vertices": 192,
+            "uv": 192,
+            "tangents": 192
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_05_shell_Energy",
+            "vertices": 200,
+            "uv": 200,
+            "tangents": 200
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_05_shell_Energy",
+            "vertices": 100,
+            "uv": 100,
+            "tangents": 100
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_05_shell_Surface",
+            "vertices": 1162,
+            "uv": 1162,
+            "tangents": 1162
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_05_shell_Surface",
+            "vertices": 1134,
+            "uv": 1134,
+            "tangents": 1134
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_05_shell_Surface",
+            "vertices": 1175,
+            "uv": 1175,
+            "tangents": 1175
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_06_shell_Energy",
+            "vertices": 376,
+            "uv": 376,
+            "tangents": 376
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_06_shell_Energy",
+            "vertices": 364,
+            "uv": 364,
+            "tangents": 364
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_06_shell_Energy",
+            "vertices": 274,
+            "uv": 274,
+            "tangents": 274
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_06_shell_Surface",
+            "vertices": 714,
+            "uv": 714,
+            "tangents": 714
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_06_shell_Surface",
+            "vertices": 698,
+            "uv": 698,
+            "tangents": 698
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_06_shell_Surface",
+            "vertices": 395,
+            "uv": 395,
+            "tangents": 395
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_07_shell_Energy",
+            "vertices": 368,
+            "uv": 368,
+            "tangents": 368
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_07_shell_Energy",
+            "vertices": 368,
+            "uv": 368,
+            "tangents": 368
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_07_shell_Energy",
+            "vertices": 218,
+            "uv": 218,
+            "tangents": 218
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_07_shell_Surface",
+            "vertices": 1312,
+            "uv": 1312,
+            "tangents": 1312
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_07_shell_Surface",
+            "vertices": 1252,
+            "uv": 1252,
+            "tangents": 1252
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_07_shell_Surface",
+            "vertices": 638,
+            "uv": 638,
+            "tangents": 638
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_08_shell_Surface",
+            "vertices": 2688,
+            "uv": 2688,
+            "tangents": 2688
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_08_shell_Surface",
+            "vertices": 2692,
+            "uv": 2692,
+            "tangents": 2692
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_08_shell_Surface",
+            "vertices": 1400,
+            "uv": 1400,
+            "tangents": 1400
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_09_shell_Surface",
+            "vertices": 354,
+            "uv": 354,
+            "tangents": 354
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_09_shell_Surface",
+            "vertices": 350,
+            "uv": 350,
+            "tangents": 350
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_09_shell_Surface",
+            "vertices": 176,
+            "uv": 176,
+            "tangents": 176
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_10_shell_Surface",
+            "vertices": 240,
+            "uv": 240,
+            "tangents": 240
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_10_shell_Surface",
+            "vertices": 232,
+            "uv": 232,
+            "tangents": 232
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_10_shell_Surface",
+            "vertices": 109,
+            "uv": 109,
+            "tangents": 109
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_10_trigger_Surface",
+            "vertices": 110,
+            "uv": 110,
+            "tangents": 110
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_10_trigger_Surface",
+            "vertices": 106,
+            "uv": 106,
+            "tangents": 106
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_10_trigger_Surface",
+            "vertices": 54,
+            "uv": 54,
+            "tangents": 54
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_11_shell_Energy",
+            "vertices": 192,
+            "uv": 192,
+            "tangents": 192
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_11_shell_Energy",
+            "vertices": 200,
+            "uv": 200,
+            "tangents": 200
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_11_shell_Energy",
+            "vertices": 100,
+            "uv": 100,
+            "tangents": 100
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_11_shell_Surface",
+            "vertices": 396,
+            "uv": 396,
+            "tangents": 396
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_11_shell_Surface",
+            "vertices": 400,
+            "uv": 400,
+            "tangents": 400
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_11_shell_Surface",
+            "vertices": 211,
+            "uv": 211,
+            "tangents": 211
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD0.fbx",
+            "name": "RF_12_shell_Surface",
+            "vertices": 254,
+            "uv": 254,
+            "tangents": 254
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD1.fbx",
+            "name": "RF_12_shell_Surface",
+            "vertices": 258,
+            "uv": 258,
+            "tangents": 258
+        },
+        {
+            "path": "Assets/RailArena/Art/PrecisionCarbine/Carbine_LOD2.fbx",
+            "name": "RF_12_shell_Surface",
+            "vertices": 122,
+            "uv": 122,
+            "tangents": 122
+        }
+    ]
+}

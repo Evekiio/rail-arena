@@ -11,3 +11,11 @@ Offline play remains paused while reading the page. The online variant warns tha
 [UI review gallery](../Validation/QuickStart/index.html) covers the menu, main-menu help and paused-session help at 720p/1080p. The captures draw actual uGUI meshes and materials against a neutral background, with controlled menu selections. They are layout reviews, not standalone gameplay screenshots or human-input acceptance.
 
 The full pinned Unity suite checks optional entry, setup preservation, selected-character solo launch, contextual resume, offline clock pause, visible text and button bounds. Windows build and hidden-client mechanics/offline/loopback regressions verify ordinary play. Human onboarding comprehension, physical-input feel, external-peer reliability and measured 1080p/144fps performance remain open. The public pre-alpha ZIP is unchanged by this source update.
+
+## Aiming and movement controls / October 29
+
+Hold right mouse for physical ADS with 1.5x zoom and an illuminated aim point. Hold left Shift to sprint forward, left Alt to walk slowly, and left Ctrl to crouch. Release Ctrl to stand when overhead clearance permits. ADS leaves movement and accuracy unchanged. See [ADS and movement](ADS-AND-MOVEMENT.md).
+
+Current source supports hold-left-mouse automatic fire at 300 RPM, with 0.2 seconds between shots. This replaces the original click-only instruction. See [AUTOMATIC-RIFLE.md](AUTOMATIC-RIFLE.md).
+
+Current magazine build: 250 RPM, 30 rounds, R reload (2 seconds), unlimited reserve, protocol 8. See [magazine controls and state](MAGAZINES.md). Local player: `F:\Rail Arena\Builds\Magazines-250RPM-2026-10-29\RailArena.exe`. Earlier fire-rate/build qualification remains specific to those preceding players.

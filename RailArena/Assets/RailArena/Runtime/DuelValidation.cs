@@ -46,6 +46,8 @@ namespace RailArena
             public float elapsedSeconds;
             public string connection;
             public bool passed;
+            public bool movementModes;
+            public int[] crouchSamples, sprintSamples, walkSamples, slideSamples;
         }
         private int errors;
         private void OnEnable() => Application.logMessageReceived += Log;
@@ -73,6 +75,8 @@ namespace RailArena
             bool fullMatch = Array.IndexOf(args, "--validation-full-match") >= 0;
             var session = FindFirstObjectByType<ArenaSession>();
             session.AutomatedHuman = true;
+            session.ValidationMovementModes = Array.IndexOf(args, "--validation-movement-modes") >= 0;
+            var slideSamples = new int[2]; var crouchSamples = new int[2]; var sprintSamples = new int[2]; var walkSamples = new int[2];
             if (role == "host") session.HostDuel(port); else session.JoinDuel("127.0.0.1", port);
             float started = Time.realtimeSinceStartup;
             bool readied = false;
@@ -85,6 +89,13 @@ namespace RailArena
             float nextProgress = started + 30;
             while (Time.realtimeSinceStartup - started < duration)
             {
+                foreach (var actor in session.Actors)
+                {
+                    if (actor.Alive && actor.IsSliding) slideSamples[actor.Id]++;
+                    if (actor.Alive && actor.IsCrouched) crouchSamples[actor.Id]++;
+                    if (actor.Alive && actor.Command.Sprint) sprintSamples[actor.Id]++;
+                    if (actor.Alive && actor.Command.Walk) walkSamples[actor.Id]++;
+                }
                 if (Time.realtimeSinceStartup >= nextProgress)
                 {
                     nextProgress += 30;
@@ -117,6 +128,8 @@ namespace RailArena
                 snapshots = session.SnapshotsReceived, acknowledged = session.LastAcknowledgedInput,
                 pending = session.PendingInputs, correction = session.MaximumCorrection, outboundClamps = session.OutboundClamps, connection = session.ConnectionStatus };
             report.rewoundShots = session.RewoundShots;
+            report.movementModes = session.ValidationMovementModes;
+            report.slideSamples = slideSamples; report.crouchSamples = crouchSamples; report.sprintSamples = sprintSamples; report.walkSamples = walkSamples;
             report.rejectedTimes = session.RejectedShotTimes;
             report.correctionSamples = session.CorrectionSamples.ToArray();
             report.maximumActiveCorrection = session.MaximumActiveCorrection;
@@ -152,6 +165,10 @@ namespace RailArena
                 report.actorShots.Length == 2 && report.actorShots[0] > 0 && report.actorShots[1] > 0 &&
                 Array.Exists(fullMatch ? completedLives ?? Array.Empty<int>() : report.actorLives, life => life > 1) &&
                 (role == "host" ? report.shots > 1 && report.rewoundShots > 0 : report.snapshots > 30 && report.acknowledged > 300);
+            if (report.movementModes)
+                report.passed &= Array.TrueForAll(slideSamples, count => count > 0) && Array.TrueForAll(crouchSamples, count => count > 0) &&
+                    (role == "host" ? Array.TrueForAll(sprintSamples, count => count > 0) && Array.TrueForAll(walkSamples, count => count > 0) :
+                        sprintSamples[1] > 0 && walkSamples[1] > 0);
             Directory.CreateDirectory(Path.GetDirectoryName(output));
             File.WriteAllText(output, JsonUtility.ToJson(report, true));
             Debug.Log("DUEL_VALIDATION " + JsonUtility.ToJson(report));

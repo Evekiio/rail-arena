@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 07:12:35Z" end-time="2026-10-30 07:12:38Z" duration="2.6952777">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="251" result="Passed" start-time="2026-10-30 07:12:35Z" end-time="2026-10-30 07:12:38Z" duration="2.695278" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1367" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="251" result="Passed" start-time="2026-10-30 07:12:35Z" end-time="2026-10-30 07:12:38Z" duration="2.681593" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="69696" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1368" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="251" result="Passed" start-time="2026-10-30 07:12:35Z" end-time="2026-10-30 07:12:38Z" duration="2.678193" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1369" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="251" result="Passed" start-time="2026-10-30 07:12:35Z" end-time="2026-10-30 07:12:38Z" duration="2.674833" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1043" name="CarbineFirstPersonCandidateTests" fullname="RailArena.Tests.CarbineFirstPersonCandidateTests" classname="RailArena.Tests.CarbineFirstPersonCandidateTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-30 07:12:35Z" end-time="2026-10-30 07:12:38Z" duration="2.607373" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1044" name="CompareCandidateOnActualThirdPersonLods" fullname="RailArena.Tests.CarbineFirstPersonCandidateTests.CompareCandidateOnActualThirdPersonLods" methodname="CompareCandidateOnActualThirdPersonLods" classname="RailArena.Tests.CarbineFirstPersonCandidateTests" runstate="Runnable" seed="856488896" result="Passed" start-time="2026-10-30 07:12:35Z" end-time="2026-10-30 07:12:38Z" duration="2.583202" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[CARBINE_THIRD_PERSON_COMPARISON F:\Rail Arena\Validation\SkyGardens-Playable-2026-10-29\CarbineThirdPersonComparison-20261030-071237-803
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

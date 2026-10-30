@@ -13,3 +13,5 @@ This follows [Unity desktop VSync behavior](https://docs.unity3d.com/6000.0/Docu
 The scoped HUD fixture exercises cycling every limit, runtime application, persistence, disabled-button state, returning from the settings page, invalid-value recovery and text fit at both sizes. It restores test preferences and runtime pacing values. A pinned Unity 6000.6.7f1 Windows development build checks compilation and player packaging.
 
 No unrelated full suite, broad combat soak, physical display-sync/tearing assessment or four-contender FPS qualification is claimed. The downloadable public pre-alpha remains unchanged.
+
+The Frame Pacing page also offers **Antialiasing: SMAA High / Off** for the main camera. The selection persists independently of the frame cap and VSync. Portal cameras keep their separate rendering configuration. SMAA is the default; performance and visual quality require native-player measurement.

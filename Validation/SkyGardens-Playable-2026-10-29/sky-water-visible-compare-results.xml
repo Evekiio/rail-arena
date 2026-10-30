@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 07:23:45Z" end-time="2026-10-30 07:23:47Z" duration="2.2688978">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="253" result="Passed" start-time="2026-10-30 07:23:45Z" end-time="2026-10-30 07:23:47Z" duration="2.268898" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1370" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="253" result="Passed" start-time="2026-10-30 07:23:45Z" end-time="2026-10-30 07:23:47Z" duration="2.253363" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="38140" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1371" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="253" result="Passed" start-time="2026-10-30 07:23:45Z" end-time="2026-10-30 07:23:47Z" duration="2.229218" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1372" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="253" result="Passed" start-time="2026-10-30 07:23:45Z" end-time="2026-10-30 07:23:47Z" duration="2.220530" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1219" name="SkyWaterCandidateTests" fullname="RailArena.Tests.SkyWaterCandidateTests" classname="RailArena.Tests.SkyWaterCandidateTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-30 07:23:45Z" end-time="2026-10-30 07:23:47Z" duration="2.204495" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1221" name="CompareWaterInArena" fullname="RailArena.Tests.SkyWaterCandidateTests.CompareWaterInArena" methodname="CompareWaterInArena" classname="RailArena.Tests.SkyWaterCandidateTests" runstate="Runnable" seed="1172005266" result="Passed" start-time="2026-10-30 07:23:45Z" end-time="2026-10-30 07:23:47Z" duration="2.183812" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[SKY_WATER_COMPARISON surfaces=16 output=F:\Rail Arena\Validation\SkyGardens-Playable-2026-10-29\SkyWaterComparison-20261030-072346-867
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -39,8 +39,8 @@ namespace RailArena.Tests
             Assert.That(configuredBots,Is.EqualTo(2),"Preservation must be checked with a nonzero bot setup.");
             Button("HOW TO PLAY").onClick.Invoke();yield return Frames(2);
             Assert.That(Label("Modes body"),Does.Contain((CombatRules.MatchTicks/(CombatRules.TickRate*60))+" minutes"));
-            Assert.That(Label("Controls body"),Does.Contain("One shot per click"));
-            Assert.That(Label("Combat basics"),Does.Contain("holding fire will not repeat"));
+            Assert.That(Label("Controls body"),Does.Contain("R / Reload"));
+            Assert.That(Label("Combat basics"),Does.Contain("250 RPM"));
             foreach(var size in Sizes)yield return Capture(session.View,size,"Help");
             Button("BACK").onClick.Invoke();yield return Frames(2);
             Assert.That((int)bots.GetValue(hud),Is.EqualTo(configuredBots));

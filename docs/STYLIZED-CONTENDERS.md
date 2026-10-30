@@ -1,5 +1,7 @@
 # Approved low-poly contender direction
 
+The separate [player character pilot](PLAYER-PILOT.md) develops the selected player references into an isolated editable model and carbine-fit review. It does not replace the installed meshes described below.
+
 The creator approved the sheet preserved at `ArtSource/Original/StylizedContenders/Approved-Concept.png` as the design target. The player uses ivory armor, a dark suit, a teal collar and cyan insets. Bot 01 uses terracotta armor and tied-back hair; Bot 02 uses slate/teal armor, pale swept hair and reinforced collar plates; Bot 03 uses plum armor, copper details, sculpted locs and asymmetric armor tabs. These are appearance variants, not gameplay classes.
 
 ## Sources

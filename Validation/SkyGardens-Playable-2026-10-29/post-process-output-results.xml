@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 06:12:30Z" end-time="2026-10-30 06:12:41Z" duration="10.3355058">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="243" result="Passed" start-time="2026-10-30 06:12:30Z" end-time="2026-10-30 06:12:41Z" duration="10.335506" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1354" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="243" result="Passed" start-time="2026-10-30 06:12:30Z" end-time="2026-10-30 06:12:41Z" duration="10.317688" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="18632" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1355" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="243" result="Passed" start-time="2026-10-30 06:12:30Z" end-time="2026-10-30 06:12:41Z" duration="10.310939" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1356" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="243" result="Passed" start-time="2026-10-30 06:12:30Z" end-time="2026-10-30 06:12:41Z" duration="10.302963" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1153" name="PostProcessOutputTests" fullname="RailArena.Tests.PostProcessOutputTests" classname="RailArena.Tests.PostProcessOutputTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 06:12:30Z" end-time="2026-10-30 06:12:41Z" duration="10.268978" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1154" name="SkyGardensPostProcessingAndBloomChangeRenderedPixels" fullname="RailArena.Tests.PostProcessOutputTests.SkyGardensPostProcessingAndBloomChangeRenderedPixels" methodname="SkyGardensPostProcessingAndBloomChangeRenderedPixels" classname="RailArena.Tests.PostProcessOutputTests" runstate="Runnable" seed="1429168572" result="Passed" start-time="2026-10-30 06:12:30Z" end-time="2026-10-30 06:12:41Z" duration="10.243978" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[POST_PROCESS_PIXEL_DIFFERENCE 0.33707577140174 BLOOM_PIXEL_DIFFERENCE 0.0621120288140244
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

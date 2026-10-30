@@ -21,3 +21,5 @@ Controlled [1080p](../Validation/AimSettings/Settings-1920x1080.png) and [720p](
 The Windows x64 development build succeeds with a verified source compatibility identity. The built executable passes [mechanics checks](../Validation/AimSettings/Standalone/mechanics.json) and [45 seconds of three-bot offline combat](../Validation/AimSettings/Standalone/offline.json). [Build receipt](../Validation/AimSettings/build.json). The existing public client ZIP is unchanged.
 
 These checks do not establish physical-input feel, visual acceptance on every aspect ratio or the game's 1080p/144fps target. Broader rebinding, music/ambience implementation, resolution/display-mode persistence and accessibility settings remain future work. [Frame pacing](FRAME-PACING.md) and [audio mix](AUDIO-MIX.md) document subsequent scoped work.
+
+The primary camera uses a 36 x 24 mm physical sensor with vertical gate fit. Its focal length is derived from the configured vertical FOV, including the existing 1.5x ADS projection. Headless projection checks cover 4:3, 16:9 and 21:9 aspect ratios; native-player framing and motion still require review.

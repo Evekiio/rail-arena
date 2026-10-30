@@ -94,8 +94,11 @@ namespace RailArena
 
         private void PlaceForShots()
         {
-            Shooter.Place(new Vector3(0, .08f, -22));
-            Target.Place(new Vector3(0, .08f, -16));
+            // Sky Gardens has a wall across the original Foundry firing lane.
+            bool skyGardens = session.gameObject.scene.name == "SkyGardens";
+            float shooterZ = skyGardens ? -12f : -22f;
+            Shooter.Place(new Vector3(0, .08f, shooterZ));
+            Target.Place(new Vector3(0, .08f, shooterZ + 6f));
             Shooter.Command = Target.Command = default;
             Physics.SyncTransforms();
         }
@@ -143,6 +146,12 @@ namespace RailArena
             if (session.ShotsFired != shots + 1) throw new InvalidOperationException("Arranged shot was not fired.");
         }
 
+        private static bool PickupVisible(HealthPickup pickup)
+        {
+            if (pickup.Presentation != null) return pickup.Presentation.Available;
+            if (pickup.Visuals.Length == 0) throw new InvalidOperationException("Pickup has no visual representation to validate.");
+            return pickup.Visuals[0].enabled;
+        }
         private IEnumerator Run()
         {
             Setup(false);
@@ -171,29 +180,37 @@ namespace RailArena
             PlaceForShots();
             Fire(HitRegion.Body);
             int first = session.Match.Tick;
+            int firstInterval = Shooter.Magazine.LastShotInterval;
             int count = session.ShotsFired;
             Expect("First body shot deals 50", Target.Health == 50, "health=" + Target.Health);
             Expect("Nonlethal damage confirms a hit without elimination", session.Feedback.ConfirmedHits == 2 &&
                 !session.Feedback.LastHitWasKill, $"hits={session.Feedback.ConfirmedHits}, lethal={session.Feedback.LastHitWasKill}");
             Aim(HitRegion.Body);
-            Advance(35);
-            Expect("Shot intent cannot discharge during next 35 cooldown ticks", session.ShotsFired == count && Target.Health == 50,
+            Advance(firstInterval - 1);
+            Expect("Shot intent cannot discharge before the scheduled boundary", session.ShotsFired == count && Target.Health == 50,
                 $"shots={session.ShotsFired}, health={Target.Health}");
             Advance(1); Shooter.Command = default;
-            Expect("Second body shot fires exactly 36 ticks later and kills", Target.Health == 0 && session.ShotsFired == count + 1 &&
-                session.Match.Tick - first == 36, $"health={Target.Health}, shots={session.ShotsFired}, interval={session.Match.Tick - first}");
+            Expect("Second body shot fires on its scheduled boundary and kills", Target.Health == 0 && session.ShotsFired == count + 1 &&
+                session.Match.Tick - first == firstInterval, $"health={Target.Health}, shots={session.ShotsFired}, interval={session.Match.Tick - first}");
+            int beforeBurst = session.ShotsFired;
+            Shooter.Command = new MovementCommand { Fire = true, Yaw = 90 };
+            Advance(60);
+            Expect("Held automatic fire produces four shots across sixty ticks from this cadence phase", session.ShotsFired == beforeBurst + 4,
+                $"shots={session.ShotsFired - beforeBurst}");
+            Shooter.Command = default; beforeBurst = session.ShotsFired; Advance(12);
+            Expect("Released trigger stops automatic fire", session.ShotsFired == beforeBurst, "shots=" + session.ShotsFired);
             Advance(120); PlaceForShots();
             Fire(HitRegion.Limb);
             Expect("First limb shot deals 34", Target.Health == 66, "health=" + Target.Health);
-            Advance(35); Fire(HitRegion.Limb);
+            Advance(CombatRules.ShotIntervalTicks - 1); Fire(HitRegion.Limb);
             Expect("Second limb shot leaves 32 health", Target.Health == 32, "health=" + Target.Health);
-            Advance(35); Fire(HitRegion.Limb);
+            Advance(CombatRules.ShotIntervalTicks - 1); Fire(HitRegion.Limb);
             Expect("Third limb shot kills without negative health", Target.Health == 0, "health=" + Target.Health);
             Advance(120); PlaceForShots();
             Fire(HitRegion.Body);
-            Advance(35); Fire(HitRegion.Limb);
+            Advance(CombatRules.ShotIntervalTicks - 1); Fire(HitRegion.Limb);
             Expect("Mixed body and limb damage leaves 16 health", Target.Health == 16, "health=" + Target.Health);
-            Advance(35); Fire(HitRegion.Limb);
+            Advance(CombatRules.ShotIntervalTicks - 1); Fire(HitRegion.Limb);
             Expect("Mixed hit sequence kills and records one kill", Target.Health == 0 && session.Match.Scores[0] == 4,
                 $"health={Target.Health}, score={session.Match.Scores[0]}");
             Advance(120);
@@ -203,17 +220,17 @@ namespace RailArena
             Shooter.Place(location); Target.Place(location);
             Shooter.Health = Target.Health = 100;
             Advance(1);
-            Expect("Full-health actors leave pickup available", pickup.AvailableTick == 0 && pickup.Visuals[0].enabled,
+            Expect("Full-health actors leave pickup available", pickup.AvailableTick == 0 && PickupVisible(pickup),
                 "availableTick=" + pickup.AvailableTick);
             Shooter.Health = Target.Health = 50;
             Advance(1);
             int collected = session.Match.Tick;
             Expect("Contested pickup heals exactly one actor by 25", Shooter.Health == 75 && Target.Health == 50 &&
-                pickup.AvailableTick == collected + 1200 && !pickup.Visuals[0].enabled,
+                pickup.AvailableTick == collected + 1200 && !PickupVisible(pickup),
                 $"healths={Shooter.Health}/{Target.Health}, availableTick={pickup.AvailableTick}");
             Advance(1199);
-            Expect("Pickup remains absent for next 1199 ticks", Shooter.Health == 75 && Target.Health == 50 && !pickup.Visuals[0].enabled,
-                $"healths={Shooter.Health}/{Target.Health}, visible={pickup.Visuals[0].enabled}");
+            Expect("Pickup remains absent for next 1199 ticks", Shooter.Health == 75 && Target.Health == 50 && !PickupVisible(pickup),
+                $"healths={Shooter.Health}/{Target.Health}, visible={PickupVisible(pickup)}");
             Advance(1);
             Expect("Pickup returns and can be recollected at exact 1200 ticks", Shooter.Health == 100 && Target.Health == 50 &&
                 pickup.AvailableTick == collected + 2400, $"healths={Shooter.Health}/{Target.Health}, availableTick={pickup.AvailableTick}");
@@ -277,10 +294,10 @@ namespace RailArena
             Vector3 before = Shooter.transform.position;
             Shooter.Command = new MovementCommand { Move = Vector2.up, Yaw = 90, Fire = true };
             Advance(30); Shooter.Command = default;
-            Expect("Solo authority moves and fires without a target", Vector3.Distance(before, Shooter.transform.position) > 1 &&
-                session.ShotsFired == 1 && Shooter.Health == 100,
+            Expect("Solo authority moves and fires three rounds in half a second", Vector3.Distance(before, Shooter.transform.position) > 1 &&
+                session.ShotsFired == 3 && Shooter.Health == 100,
                 $"travel={Vector3.Distance(before, Shooter.transform.position)}, shots={session.ShotsFired}, health={Shooter.Health}");
-            Shooter.Place(new Vector3(0, .08f, -22));
+            Shooter.Place(new Vector3(0, .08f, session.gameObject.scene.name == "SkyGardens" ? -12f : -22f));
             Advance(36180);
             Expect("Solo practice stays active beyond match limit", session.Match.Phase == MatchPhase.Playing && session.Actors.Count == 1,
                 $"phase={session.Match.Phase}, actors={session.Actors.Count}");
@@ -308,3 +325,6 @@ namespace RailArena
     }
 }
 #endif
+
+
+

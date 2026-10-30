@@ -5,14 +5,22 @@ namespace RailArena
 {
     public sealed class ArenaActor : MonoBehaviour
     {
+        public const float StandingHeight = 1.8f, CrouchingHeight = 1.2f;
+        public const float StandingEyeHeight = 1.58f, CrouchingEyeHeight = .98f;
+        public bool IsCrouched { get; private set; }
+        public SlideState Slide;
+        public bool IsSliding => Slide.Active;
+        private readonly Collider[] standingOverlaps = new Collider[16];
         public int Id;
         public int CharacterId;
         public string DisplayName;
         public bool Bot;
         public int Health = 100;
         public int NextShotTick;
+        public RifleMagazine Magazine = RifleMagazine.Full;
         public int RespawnTick;
         public int PadReadyTick;
+        public int PortalReadyTick, LastTeleportTick, TeleportSerial;
         public int AirborneTicks;
         public Vector3 Velocity;
         public Vector3 LastGroundedPosition;
@@ -31,12 +39,21 @@ namespace RailArena
         public MovementCommand ShotCommand;
         public Vector3 LastShotEnd;
         public bool Alive => Health > 0;
-        public Vector3 Eye => transform.position + Vector3.up * 1.58f;
+        public Vector3 Eye => transform.position + Vector3.up * (IsCrouched ? CrouchingEyeHeight : StandingEyeHeight);
         public Vector3 AimDirection => Quaternion.Euler(Command.Pitch, Command.Yaw, 0) * Vector3.forward;
 
         public void Move(MovementTuning tuning)
         {
-            Velocity = ArenaMovement.Integrate(Velocity, Command, Grounded && AirborneTicks == 0, tuning, 1f / CombatRules.TickRate);
+            Controller.stepOffset = Mathf.Min(tuning.StepOffset, Controller.height - .01f);
+            Controller.slopeLimit = tuning.SlopeLimit; Controller.skinWidth = tuning.SkinWidth;
+            bool grounded = Grounded && AirborneTicks == 0;
+            bool sliding = SlideMovement.Step(ref Slide, Velocity, Command, grounded, tuning);
+            bool crouch = sliding || Command.Crouch;
+            if (crouch || !IsCrouched || CanStand()) SetCrouched(crouch);
+            var movement = Command;
+            movement.Crouch = IsCrouched;
+            Velocity = sliding ? SlideMovement.Integrate(Velocity, movement, tuning, 1f / CombatRules.TickRate) :
+                ArenaMovement.Integrate(Velocity, movement, grounded, tuning, 1f / CombatRules.TickRate);
             GroundedOverride = null;
             if (AirborneTicks > 0) AirborneTicks--;
             var flags = Controller.Move(Velocity / CombatRules.TickRate);
@@ -48,14 +65,51 @@ namespace RailArena
         public void Place(Vector3 position)
         {
             Controller.enabled = false;
+            SetCrouched(false);
+            Slide = default;
+            PortalReadyTick = LastTeleportTick = 0;
             GroundedOverride = null;
             transform.position = position;
             Velocity = Vector3.zero;
             Controller.enabled = true;
         }
 
+        public void Warp(Vector3 feet, Vector3 velocity, bool grounded)
+        {
+            bool enabled = Controller.enabled; Controller.enabled = false;
+            transform.position = feet; Velocity = velocity;
+            Controller.enabled = enabled; GroundedOverride = grounded;
+            AirborneTicks = 0;
+            if (grounded) LastGroundedPosition = feet;
+            Physics.SyncTransforms();
+        }
+
+        public bool CanStand()
+        {
+            float radius = Controller.radius - .02f;
+            Vector3 bottom = transform.position + Vector3.up * (Controller.radius + .02f);
+            Vector3 top = transform.position + Vector3.up * (StandingHeight - Controller.radius);
+            int count = Physics.OverlapCapsuleNonAlloc(bottom, top, radius, standingOverlaps,
+                (1 << 0) | (1 << 9), QueryTriggerInteraction.Ignore);
+            if (count == standingOverlaps.Length) return false;
+            for (int i = 0; i < count; i++)
+                if (standingOverlaps[i] != Controller && !standingOverlaps[i].transform.IsChildOf(transform)) return false;
+            return true;
+        }
+
+        // Authority snapshots bypass local clearance checks; input-driven attempts use CanStand.
+        public void SetCrouched(bool crouched)
+        {
+            bool changed = IsCrouched != crouched;
+            IsCrouched = crouched;
+            Controller.height = crouched ? CrouchingHeight : StandingHeight;
+            Controller.center = Vector3.up * (Controller.height * .5f);
+            if (changed && Presentation != null) Presentation.ApplyStance();
+        }
+
         public void SetAlive(bool alive)
         {
+            if (!alive) { Slide = default; Magazine.ReloadEndTick = 0; }
             Controller.enabled = alive;
             Presentation.SetAlive(alive);
         }

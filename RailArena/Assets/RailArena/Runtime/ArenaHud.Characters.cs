@@ -6,7 +6,7 @@ namespace RailArena
     {
         private void CharacterPicker()
         {
-            foreach(Transform child in menu.transform) {child.gameObject.SetActive(false);Destroy(child.gameObject);}
+            BeginPage(RefreshMenu);
             Text(menu.transform,"Title","CHOOSE YOUR CONTENDER",64,new Vector2(.1f,.78f),new Vector2(.94f,.9f));
             Text(menu.transform,"Character scope",Session.Running?"NEXT SESSION APPEARANCE / Your current contender stays unchanged.":"OFFLINE APPEARANCE / The other contenders fill your selected bot slots.",22,
                 new Vector2(.1f,.70f),new Vector2(.94f,.76f));
@@ -31,7 +31,7 @@ namespace RailArena
                 card.transform.SetParent(menu.transform,false);
                 float x=.095f+i*.2075f;Rect(card,new Vector2(x,.23f),new Vector2(x+.1925f,.68f));
                 cards[i]=card.GetComponent<UnityEngine.UI.Image>();
-                var button=card.GetComponent<UnityEngine.UI.Button>();button.targetGraphic=cards[i];
+                var button=card.GetComponent<UnityEngine.UI.Button>();button.targetGraphic=cards[i];button.onClick.AddListener(InterfaceClick);
                 button.onClick.AddListener(()=>{Session.SelectOfflineCharacter(character);Refresh();UnityEngine.EventSystems.EventSystem.current?.SetSelectedGameObject(cards[character].gameObject);});
                 var frame=new GameObject("Portrait frame "+i,typeof(RectTransform));frame.transform.SetParent(card.transform,false);
                 Rect(frame,new Vector2(.025f,.18f),new Vector2(.975f,.985f));

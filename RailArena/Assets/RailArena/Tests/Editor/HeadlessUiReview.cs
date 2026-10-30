@@ -8,7 +8,7 @@ namespace RailArena.Tests
 {
     internal static class HeadlessUiReview
     {
-        internal static void Draw(Canvas canvas, Camera camera, RenderTexture target)
+        internal static void Draw(Canvas canvas, Camera camera, RenderTexture target, bool clear = true)
         {
             var size = new Vector2Int(target.width,target.height);
             // Screen-space UI is omitted by URP's isolated camera requests in batch mode.
@@ -20,7 +20,7 @@ namespace RailArena.Tests
                 {
                     commands.SetRenderTarget(target);
                     commands.SetViewport(new Rect(0,0,size.x,size.y));
-                    commands.ClearRenderTarget(true,true,new Color(.02f,.035f,.05f));
+                    if (clear) commands.ClearRenderTarget(true,true,new Color(.02f,.035f,.05f));
                     commands.SetViewProjectionMatrices(Matrix4x4.identity,GL.GetGPUProjectionMatrix(Matrix4x4.Ortho(0,size.x,0,size.y,-1,1),false));
                     foreach (var graphic in canvas.GetComponentsInChildren<UnityEngine.UI.Graphic>())
                     {

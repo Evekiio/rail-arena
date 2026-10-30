@@ -1,0 +1,31 @@
+{
+  "status": "PASS: final geometry consistency and collision preservation only",
+  "sheets": 62,
+  "objects": 255,
+  "assetFamilies": 8,
+  "blender": {
+    "meshes": 255,
+    "maximumRoundtripBoundsErrorMetres": 1.7279849267026748e-06,
+    "sourceSha256": "f9f2b760713b7bbefa5453e1054e92bca86c5df0a29b588ce66563d096a998f7",
+    "blender": "5.2.2 LTS",
+    "status": "PASS; construction geometry only, not gameplay or detailed art acceptance"
+  },
+  "unity": {
+    "status": "PASS: direct construction mesh import and bounds, not gameplay validation",
+    "objects": 255,
+    "triangles": 64644,
+    "toleranceMetres": 0.001
+  },
+  "preservation": {
+    "originalCollisionObjectsPreserved": 56,
+    "previousPackageFilesVerified": 228,
+    "sourceVersion": 1,
+    "newVersion": 2
+  },
+  "pending": [
+    "creator review",
+    "UVs/textures/LODs",
+    "wind and flowing water",
+    "playable integration and traversal qualification"
+  ]
+}

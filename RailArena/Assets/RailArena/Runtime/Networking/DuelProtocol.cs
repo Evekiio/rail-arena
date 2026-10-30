@@ -23,12 +23,16 @@ namespace RailArena.Networking
         public int Health;
         public int Life;
         public int NextShotTick;
+        public RifleMagazine Magazine;
         public int RespawnTick;
         public int PadReadyTick;
+        public int PortalReadyTick, LastTeleportTick, TeleportSerial;
         public int AirborneTicks;
         public int Score;
         public int LastInput;
         public bool Grounded;
+        public bool Crouched;
+        public SlideState Slide;
         public int ShotSerial;
         public int HitSerial;
         public Vector3 ShotEnd;
@@ -64,7 +68,7 @@ namespace RailArena.Networking
     {
         public const int MaximumDatagram = 1200;
         public const int MaximumInputBatch = 6;
-        public const ushort Version = 4;
+        public const ushort Version = 10;
         private const uint Magic = 0x52414C52;
 
         public static MovementCommand CommandForWire(MovementCommand command)
@@ -187,7 +191,8 @@ namespace RailArena.Networking
             writer.Write(command.Move.y);
             writer.Write(command.Yaw);
             writer.Write(command.Pitch);
-            writer.Write((byte)((command.Jump ? 1 : 0) | (command.Fire ? 2 : 0)));
+            writer.Write((byte)((command.Jump ? 1 : 0) | (command.Fire ? 2 : 0) |
+                (command.Sprint ? 4 : 0) | (command.Walk ? 8 : 0) | (command.Crouch ? 16 : 0) | (command.Reload ? 32 : 0) | (command.Slide ? 64 : 0)));
         }
 
         private static DuelInput ReadInput(BinaryReader reader)
@@ -198,32 +203,45 @@ namespace RailArena.Networking
             float yaw = Finite(reader.ReadSingle(), -360, 360);
             float pitch = Finite(reader.ReadSingle(), -89, 89);
             byte flags = reader.ReadByte();
-            if (flags > 3) throw new ArgumentException("Invalid input flags.");
+            if (flags > 127) throw new ArgumentException("Invalid input flags.");
             return new DuelInput { ViewedTick = tick, Command = new MovementCommand
             { Sequence = sequence, Move = Vector2.ClampMagnitude(move, 1), Yaw = yaw, Pitch = pitch,
-                Jump = (flags & 1) != 0, Fire = (flags & 2) != 0 } };
+                Jump = (flags & 1) != 0, Fire = (flags & 2) != 0,
+                Sprint = (flags & 4) != 0, Walk = (flags & 8) != 0, Crouch = (flags & 16) != 0, Reload = (flags & 32) != 0, Slide = (flags & 64) != 0 } };
         }
 
         private static void WriteSnapshot(BinaryWriter writer, DuelSnapshot state)
         {
-            if (state == null || state.Actors == null || state.Actors.Length != 2 || state.PickupTicks == null || state.PickupTicks.Length != 3)
-                throw new ArgumentException("A duel snapshot requires two actors and three pickups.");
+            if (state == null || state.Actors == null || state.Actors.Length != 2 || state.PickupTicks == null || state.PickupTicks.Length > 8)
+                throw new ArgumentException("A duel snapshot requires two actors and at most eight pickups.");
             writer.Write(state.Round);
             writer.Write(state.Tick);
             writer.Write((byte)state.Phase);
             writer.Write((sbyte)state.Winner);
             foreach (var actor in state.Actors)
             {
+                Range(actor.Slide.RemainingTicks, 0, SlideMovement.DurationTicks);
+                Range(actor.Slide.CooldownTicks, 0, SlideMovement.DurationTicks + SlideMovement.CooldownTicks);
+                Range(actor.Magazine.Rounds, 0, RifleMagazine.Capacity);
+                Range(actor.Magazine.CadenceRemainder, 0, 4);
+                Range(actor.Magazine.LastShotInterval, 0, CombatRules.ShotIntervalTicks);
+                Nonnegative(actor.Magazine.ReloadEndTick);
                 WriteVector(writer, actor.Position);
                 WriteVector(writer, actor.Velocity);
                 writer.Write(actor.Yaw); writer.Write(actor.Pitch);
-                writer.Write(actor.Health); writer.Write(actor.Life); writer.Write(actor.NextShotTick); writer.Write(actor.RespawnTick);
-                writer.Write(actor.PadReadyTick); writer.Write(actor.AirborneTicks); writer.Write(actor.Score); writer.Write(actor.LastInput);
-                writer.Write(actor.Grounded); writer.Write(actor.ShotSerial); writer.Write(actor.HitSerial); WriteVector(writer, actor.ShotEnd);
+                writer.Write(actor.Health); writer.Write(actor.Life); writer.Write(actor.NextShotTick);
+                writer.Write((byte)actor.Magazine.Rounds); writer.Write(actor.Magazine.ReloadEndTick);
+                writer.Write((byte)actor.Magazine.CadenceRemainder); writer.Write((byte)actor.Magazine.LastShotInterval);
+                writer.Write(actor.RespawnTick);
+                writer.Write(actor.PadReadyTick); writer.Write(actor.PortalReadyTick); writer.Write(actor.LastTeleportTick); writer.Write(actor.TeleportSerial); writer.Write(actor.AirborneTicks); writer.Write(actor.Score); writer.Write(actor.LastInput);
+                writer.Write(actor.Grounded); writer.Write(actor.Crouched);
+                writer.Write((byte)actor.Slide.RemainingTicks); writer.Write((byte)actor.Slide.CooldownTicks);
+                writer.Write(actor.Slide.CrouchHeld); writer.Write(actor.Slide.WasSprinting); writer.Write(actor.ShotSerial); writer.Write(actor.HitSerial); WriteVector(writer, actor.ShotEnd);
                 writer.Write(actor.Statistics.Kills); writer.Write(actor.Statistics.Deaths);
                 writer.Write(actor.Statistics.Shots); writer.Write(actor.Statistics.Hits);
                 writer.Write(actor.Statistics.Headshots); writer.Write(actor.Statistics.VoidDeaths);
             }
+            writer.Write((byte)state.PickupTicks.Length);
             foreach (int tick in state.PickupTicks) writer.Write(tick);
         }
 
@@ -241,15 +259,23 @@ namespace RailArena.Networking
                     Yaw = Finite(reader.ReadSingle(), -360, 360), Pitch = Finite(reader.ReadSingle(), -89, 89),
                     Health = Range(reader.ReadInt32(), 0, 100), Life = Range(reader.ReadInt32(), 1, int.MaxValue),
                     NextShotTick = Nonnegative(reader.ReadInt32()),
+                    Magazine = new RifleMagazine { Rounds = Range(reader.ReadByte(), 0, RifleMagazine.Capacity),
+                        ReloadEndTick = Nonnegative(reader.ReadInt32()), CadenceRemainder = Range(reader.ReadByte(), 0, 4),
+                        LastShotInterval = Range(reader.ReadByte(), 0, CombatRules.ShotIntervalTicks) },
                     RespawnTick = Nonnegative(reader.ReadInt32()), PadReadyTick = Nonnegative(reader.ReadInt32()),
+                    PortalReadyTick = Nonnegative(reader.ReadInt32()), LastTeleportTick = Nonnegative(reader.ReadInt32()), TeleportSerial = Nonnegative(reader.ReadInt32()),
                     AirborneTicks = Range(reader.ReadInt32(), 0, 2), Score = reader.ReadInt32(), LastInput = Nonnegative(reader.ReadInt32()),
-                    Grounded = ReadBool(reader), ShotSerial = Nonnegative(reader.ReadInt32()), HitSerial = Nonnegative(reader.ReadInt32()),
+                    Grounded = ReadBool(reader), Crouched = ReadBool(reader),
+                    Slide = new SlideState { RemainingTicks = Range(reader.ReadByte(), 0, SlideMovement.DurationTicks),
+                        CooldownTicks = Range(reader.ReadByte(), 0, SlideMovement.DurationTicks + SlideMovement.CooldownTicks),
+                        CrouchHeld = ReadBool(reader), WasSprinting = ReadBool(reader) }, ShotSerial = Nonnegative(reader.ReadInt32()), HitSerial = Nonnegative(reader.ReadInt32()),
                     ShotEnd = ReadVector(reader, 10000),
                     Statistics = new CombatStatistics(reader.ReadInt32(),reader.ReadInt32(),reader.ReadInt32(),
                         reader.ReadInt32(),reader.ReadInt32(),reader.ReadInt32())
                 };
             }
-            for (int i = 0; i < 3; i++) state.PickupTicks[i] = Nonnegative(reader.ReadInt32());
+            state.PickupTicks = new int[Range(reader.ReadByte(), 0, 8)];
+            for (int i = 0; i < state.PickupTicks.Length; i++) state.PickupTicks[i] = Nonnegative(reader.ReadInt32());
             return state;
         }
 
@@ -262,3 +288,4 @@ namespace RailArena.Networking
         private static bool ReadBool(BinaryReader reader) => reader.ReadByte() switch { 0 => false, 1 => true, _ => throw new ArgumentException("Invalid boolean.") };
     }
 }
+

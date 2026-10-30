@@ -21,3 +21,9 @@ The pinned Unity suite passes **99/99 tests**, including daylight persistence th
 The built player passes [mechanics validation](../Validation/FoundryLighting/Standalone/mechanics.json) and [45 seconds of three-bot offline combat](../Validation/FoundryLighting/Standalone/offline.json). Those hidden, no-graphics checks verify operation of the built client, not its rendering performance.
 
 The review gallery contains controlled Unity renders; screen-space HUD is not part of those captures. These checks do not certify physical-input feel, visual acceptance across displays or the 1080p/144fps performance target.
+
+## Volume persistence repair
+
+The shared Foundry grading profile now persists its ACES, bloom and vignette components as Unity sub-assets. Previously the serialized component references were null, so these effects could disappear after reopening the project. The scene builder now persists components when recreating the profile. A headless reopen and serialization check passed; visual appearance and performance still need a player review.
+
+The headless PC rendering configuration check selects the PC quality level and verifies the URP asset, Linear color space, HDR, depth/opaque textures, 2048 main-light shadows, four cascades and soft-shadow support. This is a configuration check, not a rendered shadow-quality or performance measurement.

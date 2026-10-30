@@ -8,8 +8,9 @@ namespace RailArena
         private GameObject connectionErrorPanel;
         private string hostAddress = "127.0.0.1";
         private string hostPort = "7777";
+        private UnityEngine.UI.Button readyButton;
 
-        private void NetworkPanel(string title)
+        private void NetworkPanel(string title,System.Action back=null)
         {
             if (menu != null) { menu.SetActive(false); Destroy(menu); }
             connectionErrorPanel = null;
@@ -17,14 +18,17 @@ namespace RailArena
             menu.transform.SetParent(canvas, false);
             Rect(menu, Vector2.zero, Vector2.one);
             menu.GetComponent<UnityEngine.UI.Image>().color = new Color(.015f, .025f, .045f, .96f);
+            backAction = back;
+            readyButton = null;
+            BrandChrome();
             Text(menu.transform, "Title", title, 64, new Vector2(.095f, .8f), new Vector2(.94f, .92f)).color = cyan;
         }
 
         private void OnlineMenu()
         {
             connectionStatus = null;
-            NetworkPanel("ONLINE DUEL");
-            Text(menu.transform, "Help", "Two humans. Use the same build on both PCs.\n\nHOST: choose a UDP port from 1 to 65535.\nJOIN: enter the host's IPv4 address and port.\n127.0.0.1 connects to this computer only.\n\nLAN: use the host's local IPv4 address.\nInternet: forward that UDP port to the host.\nAllow RailArena through the host's firewall.", 24,
+            NetworkPanel("ONLINE DUEL",() => { ClearFormError(); RefreshMenu(); });
+            Text(menu.transform, "Help", "HOST A MATCH\nChoose a port, then share your IPv4 address.\n\nJOIN A MATCH\nEnter the host's address and matching port.\n\nBoth players need the same build.\nFor internet play, the host must allow\nand forward this UDP port.\n127.0.0.1 connects to this PC only.", 22,
                 new Vector2(.53f, .39f), new Vector2(.94f, .74f));
             Input("HOST IPv4 ADDRESS", hostAddress, .66f, value => { hostAddress = value; ClearFormError(); }, 45);
             Input("UDP PORT", hostPort, .5f, value => { hostPort = value; ClearFormError(); }, 5);
@@ -36,7 +40,8 @@ namespace RailArena
             {
                 var panel=Graphic(menu.transform,"Connection error panel",new Vector2(.53f,.14f),new Vector2(.94f,.36f),new Color(.16f,.09f,.045f));
                 connectionErrorPanel=panel.gameObject;
-                Text(panel.transform,"Error heading","CONNECTION NEEDS ATTENTION",20,new Vector2(.04f,.75f),new Vector2(.96f,.95f)).color=amber;
+                Icon(panel.transform,"Error icon","alert",new Vector2(.035f,.75f),new Vector2(.095f,.95f),amber);
+                Text(panel.transform,"Error heading","CONNECTION NEEDS ATTENTION",20,new Vector2(.12f,.75f),new Vector2(.96f,.95f)).color=amber;
                 Text(panel.transform,"Connection error",Session.ConnectionError,24,new Vector2(.04f,.08f),new Vector2(.96f,.72f)).color=Color.white;
             }
         }
@@ -58,7 +63,8 @@ namespace RailArena
             connectionStatus = Text(menu.transform, "Connection status", Session.ConnectionStatus, results?21:30,
                 new Vector2(.095f, results ? .54f:.48f), new Vector2(results ? .46f:.94f, .66f));
             float y = .35f;
-            Button(results ? "READY / CANCEL REMATCH" : "READY / CANCEL READY", Session.ToggleReady, ref y);
+            readyButton=Button("READY UP",Session.ToggleReady,ref y);
+            RefreshReadyAction();
             Button("DISCONNECT", Session.MainMenu, ref y);
             Button("QUIT", Session.QuitGame, ref y);
             if(results)
@@ -82,10 +88,23 @@ namespace RailArena
             text.alignment = TextAnchor.MiddleLeft;
             var field = root.GetComponent<UnityEngine.UI.InputField>();
             field.targetGraphic=root.GetComponent<UnityEngine.UI.Image>();
+            field.targetGraphic.color=Color.white;
+            var colors=field.colors;colors.normalColor=new Color(.11f,.17f,.21f).linear;colors.selectedColor=new Color(.08f,.32f,.36f).linear;
+            colors.highlightedColor=new Color(.12f,.26f,.30f).linear;field.colors=colors;
+            field.caretColor=cyan;field.selectionColor=new Color(cyan.r,cyan.g,cyan.b,.3f);
             field.textComponent = text;
             field.text = value;
             field.characterLimit = limit;
             field.onValueChanged.AddListener(changed);
+        }
+
+        private void RefreshReadyAction()
+        {
+            if(readyButton==null)return;
+            readyButton.interactable=Session.CanReady;
+            bool results=Session.Match?.Phase==Simulation.MatchPhase.Results;
+            readyButton.GetComponentInChildren<UnityEngine.UI.Text>().text=!Session.CanReady?"WAITING FOR OPPONENT":
+                Session.LocalReady?(results?"CANCEL REMATCH":"CANCEL READY"):(results?"READY FOR REMATCH":"READY UP");
         }
     }
 }

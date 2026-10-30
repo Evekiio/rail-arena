@@ -40,7 +40,7 @@ namespace RailArena.Tests
                 session.MainMenu();yield return Frames(2);
                 Object.FindObjectsByType<UnityEngine.UI.Button>(FindObjectsSortMode.None).Single(b=>b.GetComponentInChildren<UnityEngine.UI.Text>().text.StartsWith("CHARACTER //")).onClick.Invoke();
                 yield return Frames(2);
-                Assert.That(Object.FindObjectsByType<UnityEngine.UI.RawImage>(FindObjectsSortMode.None).Length,Is.EqualTo(4));
+                Assert.That(Object.FindObjectsByType<UnityEngine.UI.RawImage>(FindObjectsSortMode.None).Count(image=>image.name.StartsWith("Portrait ")),Is.EqualTo(4));
                 for(int i=0;i<4;i++)
                 {
                     GameObject.Find("Character card "+i).GetComponent<UnityEngine.UI.Button>().onClick.Invoke();

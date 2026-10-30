@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 04:37:17Z" end-time="2026-10-30 04:37:19Z" duration="1.8934332">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="224" result="Passed" start-time="2026-10-30 04:37:17Z" end-time="2026-10-30 04:37:19Z" duration="1.893433" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1321" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="224" result="Passed" start-time="2026-10-30 04:37:17Z" end-time="2026-10-30 04:37:19Z" duration="1.875407" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="29248" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1322" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="224" result="Passed" start-time="2026-10-30 04:37:17Z" end-time="2026-10-30 04:37:19Z" duration="1.869902" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1323" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="224" result="Passed" start-time="2026-10-30 04:37:17Z" end-time="2026-10-30 04:37:19Z" duration="1.863850" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1262" name="TraversalVfxArenaCoverageTests" fullname="RailArena.Tests.TraversalVfxArenaCoverageTests" classname="RailArena.Tests.TraversalVfxArenaCoverageTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 04:37:17Z" end-time="2026-10-30 04:37:19Z" duration="1.849772" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1263" name="AuditColliderCompatibilityInSkyGardens" fullname="RailArena.Tests.TraversalVfxArenaCoverageTests.AuditColliderCompatibilityInSkyGardens" methodname="AuditColliderCompatibilityInSkyGardens" classname="RailArena.Tests.TraversalVfxArenaCoverageTests" runstate="Runnable" seed="2043634977" result="Passed" start-time="2026-10-30 04:37:17Z" end-time="2026-10-30 04:37:19Z" duration="1.828494" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[TRAVERSAL_COLLIDER_COVERAGE box_supported=4 examples=Left jamb collision,Right jamb collision,Header collision,Back collision
+TRAVERSAL_COLLIDER_COVERAGE box_unsupported=4 examples=Left jamb collision,Right jamb collision,Header collision,Back collision
+TRAVERSAL_COLLIDER_COVERAGE disabled_or_trigger=2 examples=Live destination field,Live destination field
+TRAVERSAL_COLLIDER_COVERAGE mesh_supported=47 examples=Outer-X-1,Outer-N-1,Upper-Spine-1,Wing-1_-1,Upper-Landing-1_-1,Wing-1_1,Upper-Landing-1_1,Outer-X1,Outer-N1,Upper-Spine1,Wing1_-1,Upper-Landing1_-1,Wing1_1,Upper-Landing1_1,Bridge
+TRAVERSAL_COLLIDER_COVERAGE mesh_unsupported=9 examples=R1,R2,R3,R4,SUMMIT-DECK,SUMMIT-COLUMN-1,SUMMIT-COLUMN-2,SUMMIT-COLUMN-3,SUMMIT-COLUMN-4
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

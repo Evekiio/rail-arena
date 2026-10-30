@@ -58,9 +58,9 @@ namespace RailArena.Tests
             Round = round, Tick = tick, Phase = MatchPhase.Playing,
             Actors = new[]
             {
-                new ActorSnapshot { Health = 100, Life = remoteLife, Position = Origin, Grounded = true,
+                new ActorSnapshot { Magazine = RifleMagazine.Full, Health = 100, Life = remoteLife, Position = Origin, Grounded = true,
                     RespawnTick = remoteLife > 1 ? tick - 1 : 0 },
-                new ActorSnapshot { Health = 100, Life = localLife, Position = Origin + Vector3.right * 10, Grounded = true,
+                new ActorSnapshot { Magazine = RifleMagazine.Full, Health = 100, Life = localLife, Position = Origin + Vector3.right * 10, Grounded = true,
                     RespawnTick = localLife > 1 ? tick - 1 : 0 }
             }
         };
@@ -71,6 +71,59 @@ namespace RailArena.Tests
             if (session != null) foreach (var actor in session.Actors) if (actor != null) Object.DestroyImmediate(actor.gameObject);
             if (root != null) Object.DestroyImmediate(root);
             if (tuning != null) Object.DestroyImmediate(tuning);
+        }
+
+        [Test]
+        public void PortalEpochSnapsOpponentAndResetsLocalViewCorrection()
+        {
+            var view = Field<ReconciliationView>("reconciliationView");
+            view.Correct(session.Human.transform.position + Vector3.right, session.Human.transform.position);
+            var state = State(1, 201, 1, 1);
+            state.Actors[0].TeleportSerial = 1; state.Actors[0].Position += Vector3.right * 60;
+            state.Actors[1].TeleportSerial = 1; state.Actors[1].PortalReadyTick = 230; state.Actors[1].LastTeleportTick = 200;
+            state.Actors[1].Position += Vector3.right * 60;
+            Apply(state);
+            Assert.That(session.Actors[0].transform.position, Is.EqualTo(state.Actors[0].Position));
+            Assert.That(session.Human.PortalReadyTick, Is.EqualTo(230));
+            Assert.That(session.Human.TeleportSerial, Is.EqualTo(1));
+            Assert.That(view.Offset, Is.EqualTo(Vector3.zero));
+            Assert.That(Field<List<DuelSnapshot>>("interpolation").Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void MagazineReplayRestoresReloadAndConsumesPendingShotExactlyOnce()
+        {
+            var state = State(1, 201, 1, 1);
+            state.Actors[1].Magazine = new RifleMagazine { Rounds = 3, CadenceRemainder = 4, LastShotInterval = 15 };
+            Field<List<DuelInput>>("prediction").Add(new DuelInput { Command = new MovementCommand { Sequence = 1, Reload = true, Fire = true } });
+            Apply(state);
+            Assert.That(session.Human.Magazine.Rounds, Is.EqualTo(3));
+            Assert.That(session.Human.Magazine.ReloadEndTick, Is.EqualTo(322));
+            state = State(1, 322, 1, 1); state.Actors[1].LastInput = 1;
+            state.Actors[1].Magazine = new RifleMagazine { Rounds = 30, CadenceRemainder = 4, LastShotInterval = 15 };
+            Field<List<DuelInput>>("prediction").Add(new DuelInput { Command = new MovementCommand { Sequence = 2, Fire = true } });
+            Apply(state);
+            Assert.That(session.Human.Magazine.Rounds, Is.EqualTo(29));
+            Assert.That(session.Human.Magazine.CadenceRemainder, Is.EqualTo(1));
+            Assert.That(session.Human.NextShotTick, Is.EqualTo(338));
+        }
+
+        [Test]
+        public void SlideSnapshotRestoresTimersBeforeReplayingPendingCrouch()
+        {
+            var state = State(1, 201, 1, 1);
+            state.Actors[1].Crouched = true;
+            state.Actors[1].Velocity = Vector3.forward * 10;
+            state.Actors[1].Slide = new SlideState { RemainingTicks = 20, CooldownTicks = 68, CrouchHeld = true };
+            session.Human.Slide = default;
+            Field<List<DuelInput>>("prediction").Add(new DuelInput { Command = new MovementCommand
+                { Sequence = 1, Move = Vector2.up, Crouch = true, Sprint = true } });
+            Apply(state);
+            Assert.That(session.Human.Slide.RemainingTicks, Is.EqualTo(19));
+            Assert.That(session.Human.Slide.CooldownTicks, Is.EqualTo(67));
+            Assert.That(session.Human.Slide.CrouchHeld, Is.True);
+            Assert.That(session.Human.Velocity.z, Is.EqualTo(9.75f).Within(.001f));
+            Assert.That(session.Human.IsCrouched, Is.True);
         }
 
         [Test]

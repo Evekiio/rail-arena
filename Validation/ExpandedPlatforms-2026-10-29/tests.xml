@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Failed(Child)" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 19:33:10Z" end-time="2026-10-29 19:33:26Z" duration="16.6082941">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="184" result="Failed" site="Child" start-time="2026-10-29 19:33:10Z" end-time="2026-10-29 19:33:26Z" duration="16.608294" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1252" name="RailArena.Tests.dll" fullname="F:/Rail Arena/Builds/Automatic-Rifle-2026-10-29/Project/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="184" result="Failed" site="Child" start-time="2026-10-29 19:33:10Z" end-time="2026-10-29 19:33:26Z" duration="16.585344" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="53092" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1253" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="184" result="Failed" site="Child" start-time="2026-10-29 19:33:10Z" end-time="2026-10-29 19:33:26Z" duration="16.577470" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1254" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="184" result="Failed" site="Child" start-time="2026-10-29 19:33:10Z" end-time="2026-10-29 19:33:26Z" duration="16.569976" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1082" name="ExpandedPlatformsTests" fullname="RailArena.Tests.ExpandedPlatformsTests" classname="RailArena.Tests.ExpandedPlatformsTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-10-29 19:33:10Z" end-time="2026-10-29 19:33:17Z" duration="7.273132" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1083" name="AddedRoutesHaveClearanceAndUsableCover" fullname="RailArena.Tests.ExpandedPlatformsTests.AddedRoutesHaveClearanceAndUsableCover" methodname="AddedRoutesHaveClearanceAndUsableCover" classname="RailArena.Tests.ExpandedPlatformsTests" runstate="Runnable" seed="1973339336" result="Failed" start-time="2026-10-29 19:33:10Z" end-time="2026-10-29 19:33:17Z" duration="7.244048" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Blocked new link 30->2
+  Expected: False
+  But was:  True
+]]></message>
+                <stack-trace><![CDATA[at RailArena.Tests.ExpandedPlatformsTests+<AddedRoutesHaveClearanceAndUsableCover>d__0.MoveNext () [0x0024d] in F:\Rail Arena\Builds\Automatic-Rifle-2026-10-29\Project\Assets\RailArena\Tests\Editor\ExpandedPlatformsTests.cs:32
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ee3fe9477490\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1143" name="PortalViewTests" fullname="RailArena.Tests.PortalViewTests" classname="RailArena.Tests.PortalViewTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-29 19:33:17Z" end-time="2026-10-29 19:33:24Z" duration="6.836094" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1144" name="DestinationViewsAreLiveAndPickupsAnimateWithoutMovingAuthority" fullname="RailArena.Tests.PortalViewTests.DestinationViewsAreLiveAndPickupsAnimateWithoutMovingAuthority" methodname="DestinationViewsAreLiveAndPickupsAnimateWithoutMovingAuthority" classname="RailArena.Tests.PortalViewTests" runstate="Runnable" seed="1089976231" result="Passed" start-time="2026-10-29 19:33:17Z" end-time="2026-10-29 19:33:24Z" duration="6.835220" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1245" name="TwinPlatformsTests" fullname="RailArena.Tests.TwinPlatformsTests" classname="RailArena.Tests.TwinPlatformsTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-29 19:33:24Z" end-time="2026-10-29 19:33:26Z" duration="2.437896" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1248" name="BotsUseBothTraversalTypesWithoutFallingIntoTheGap" fullname="RailArena.Tests.TwinPlatformsTests.BotsUseBothTraversalTypesWithoutFallingIntoTheGap" methodname="BotsUseBothTraversalTypesWithoutFallingIntoTheGap" classname="RailArena.Tests.TwinPlatformsTests" runstate="Runnable" seed="1791557701" result="Passed" start-time="2026-10-29 19:33:24Z" end-time="2026-10-29 19:33:25Z" duration="1.294591" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1247" name="RealControllersCrossBothRoutesAndBlockedExitsStaySafe" fullname="RailArena.Tests.TwinPlatformsTests.RealControllersCrossBothRoutesAndBlockedExitsStaySafe" methodname="RealControllersCrossBothRoutesAndBlockedExitsStaySafe" classname="RailArena.Tests.TwinPlatformsTests" runstate="Runnable" seed="1460512131" result="Passed" start-time="2026-10-29 19:33:25Z" end-time="2026-10-29 19:33:26Z" duration="1.142031" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

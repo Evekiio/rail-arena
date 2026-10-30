@@ -6,6 +6,10 @@ Version 2, 2026-10-23. Rail Arena by Sanders Riddle.
 
 This document supersedes the earlier environment-pack layout, including its exposed spawns, overlapping health/landing locations and optional portals. [Gameplay authority](DESIGN.md) remains the source for combat rules. [Measured plans and placement data](../ArtSource/Original/Foundry-Arena-v2/README.md) accompany this specification.
 
+### Modeling review, 2026-10-23
+
+The creator subsequently requested modeling from these references. The new [Foundry model review package](../ArtSource/Original/Foundry-Models-v1/index.html) contains editable environment candidates and matching-camera renders beside the source references. This authorizes modeling for review; exact layout approval, runtime replacement and competitive validation remain separate. The released gameplay arena is unchanged.
+
 ## 1. Arena identity and competitive purpose
 
 Foundry is a suspended industrial precision-sport arena above a bright cloud sea. Readable ivory structures sit on graphite frames, with teal recesses, restrained cyan traversal energy and small copper fittings. Distant industrial islands establish scale. No moving machinery, destructible cover, doors, elevators, environmental damage or random hazards alter a fight. Intentional void gaps are the only environment hazard.

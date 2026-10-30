@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-30 04:23:04Z" end-time="2026-10-30 04:23:07Z" duration="3.1063789">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="218" result="Passed" start-time="2026-10-30 04:23:04Z" end-time="2026-10-30 04:23:07Z" duration="3.106379" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1309" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="218" result="Passed" start-time="2026-10-30 04:23:04Z" end-time="2026-10-30 04:23:07Z" duration="3.088103" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="28820" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1310" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="218" result="Passed" start-time="2026-10-30 04:23:04Z" end-time="2026-10-30 04:23:07Z" duration="3.071367" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1311" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="218" result="Passed" start-time="2026-10-30 04:23:04Z" end-time="2026-10-30 04:23:07Z" duration="3.049694" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1294" name="TraversalVfxHybridCameraTurnTests" fullname="RailArena.Tests.TraversalVfxHybridCameraTurnTests" classname="RailArena.Tests.TraversalVfxHybridCameraTurnTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-30 04:23:04Z" end-time="2026-10-30 04:23:07Z" duration="3.035914" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1295" name="HybridFallbackSurvivesCameraTurn" fullname="RailArena.Tests.TraversalVfxHybridCameraTurnTests.HybridFallbackSurvivesCameraTurn" methodname="HybridFallbackSurvivesCameraTurn" classname="RailArena.Tests.TraversalVfxHybridCameraTurnTests" runstate="Runnable" seed="2026197474" result="Passed" start-time="2026-10-30 04:23:04Z" end-time="2026-10-30 04:23:07Z" duration="3.009157" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[TRAVERSAL_ARENA_FLOOR Outer-N-1 (0.00, 0.00, 16.50)
+TRAVERSAL_HYBRID_CAMERA_TURN free below=4 above=0 alive=2048
+TRAVERSAL_HYBRID_CAMERA_TURN depth below=0 above=4 alive=2048
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

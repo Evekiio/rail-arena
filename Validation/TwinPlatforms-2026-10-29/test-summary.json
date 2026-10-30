@@ -1,0 +1,31 @@
+{
+  "distinctCases": 25,
+  "latestNonpassing": {},
+  "results": {
+    "RailArena.Tests.NetworkingTests.ConnectedPeerTimeoutDoesNotRequireAWorkingLeavePacket": "Passed",
+    "RailArena.Tests.NetworkingTests.ForgedHandshakeWrongSessionAndReorderedReadyCannotChangeHostState": "Passed",
+    "RailArena.Tests.NetworkingTests.HeldJumpSurvivesPacketGapAtLandingAndExpiresWithMovementGrace": "Passed",
+    "RailArena.Tests.NetworkingTests.IncompatibleBuildIsRejectedAndAbsentHostTimesOut": "Passed",
+    "RailArena.Tests.NetworkingTests.InputQueueDeduplicatesBoundsAndConsumesFreshMovementOncePerTick": "Passed",
+    "RailArena.Tests.NetworkingTests.JitterBurstKeepsNewestMovementAndPreservesQuickFireAimTimestampAndJump": "Passed",
+    "RailArena.Tests.NetworkingTests.OutboundControlsNormalizeFloatingPointOvershootAndWrappedAimWithoutRelaxingDecode": "Passed",
+    "RailArena.Tests.NetworkingTests.ProtocolRejectsNonfiniteUnboundedAndUnorderedInputs": "Passed",
+    "RailArena.Tests.NetworkingTests.ProtocolRoundTripsAuthoritativeSnapshotAndSurvivesGarbage": "Passed",
+    "RailArena.Tests.NetworkingTests.ProtocolRoundTripsCommandsAndRejectsEveryTruncationAndTrailingBytes": "Passed",
+    "RailArena.Tests.NetworkingTests.RealUdpPeersHandshakeReadyExchangeInputsSnapshotsRematchAndDisconnect": "Passed",
+    "RailArena.Tests.NetworkingTests.RealUdpSocketsRejectOversizedTrafficAndCanRebindAfterDisposal": "Passed",
+    "RailArena.Tests.NetworkingTests.ReleasedJumpIsNotHeldByAnAggregatedTapOrRedundantPacket": "Passed",
+    "RailArena.Tests.NetworkingTests.ReplicaMatchPreservesAuthorityTimeScoresAndWinner": "Passed",
+    "RailArena.Tests.RewindTests.EarlierPoseCanBeHitAfterTargetMovesWithoutMovingLiveActors": "Passed",
+    "RailArena.Tests.RewindTests.ExactlyTwelveTicksAreAllowedButFutureExpiredAndUncapturedTimesAreRejected": "Passed",
+    "RailArena.Tests.RewindTests.PreviousLifeCannotDamageRespawnedTargetAndNewShooterUsesCurrentOrigin": "Passed",
+    "RailArena.Tests.RewindTests.PreviousPortalEpochCannotHitTheEntryPositionGhost": "Passed",
+    "RailArena.Tests.RewindTests.RotatedScaledCapsuleUsesItsRecordedGeometryAndRegion": "Passed",
+    "RailArena.Tests.RewindTests.StaticWorldBlocksRewoundTargets": "Passed",
+    "RailArena.Tests.SnapshotLifecycleTests.PortalEpochSnapsOpponentAndResetsLocalViewCorrection": "Passed",
+    "RailArena.Tests.TwinPlatformsTests.PortalWirePreservesDiscontinuityAndTwoPickups": "Passed",
+    "RailArena.Tests.TwinPlatformsTests.RealControllersCrossBothRoutesAndBlockedExitsStaySafe": "Passed",
+    "RailArena.Tests.TwinPlatformsTests.BotsUseBothTraversalTypesWithoutFallingIntoTheGap": "Passed",
+    "RailArena.Tests.TwinPlatformsTests.NewLayoutMenuHelpAndHudFitReferenceScreens": "Passed"
+  }
+}

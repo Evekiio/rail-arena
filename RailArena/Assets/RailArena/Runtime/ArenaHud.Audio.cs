@@ -6,7 +6,7 @@ namespace RailArena
     {
         private void AudioSettings()
         {
-            foreach (Transform child in menu.transform) { child.gameObject.SetActive(false); Destroy(child.gameObject); }
+            BeginPage(Settings);
             Text(menu.transform, "Title", "AUDIO MIX", 64, new Vector2(.1f,.78f), new Vector2(.94f,.9f));
             Text(menu.transform, "Audio help", "Changes apply and save immediately. Test the rifle without starting a match.", 22,
                 new Vector2(.1f,.69f), new Vector2(.94f,.76f));
@@ -23,7 +23,7 @@ namespace RailArena
             }
             void Apply()
             {
-                sound.Save(); sound.ApplyMaster(); Session.Feedback.ApplySound(); Refresh();
+                sound.Save(); sound.ApplyMaster(); Session.Feedback.ApplySound(); ApplyInterfaceSound(); Refresh();
             }
             string Percent(float value) => Mathf.RoundToInt(value * 100) + "%";
             Slider("Master volume", sound.Master, 0, 1, .55f, Percent, value => { sound.Master=value; Apply(); });

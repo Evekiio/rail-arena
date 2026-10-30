@@ -39,14 +39,16 @@ namespace RailArena.Tests
         }
         static string Output=>Path.GetFullPath(Path.Combine(Application.dataPath,"../../ArtSource/Original/PrecisionCarbine-Production-v1"));
         [Test]
-        public void ClickIsConsumedOnceAndBlockedClicksNeverQueue()
+        public void HeldTriggerRepeatsQuickTapSurvivesAndBlockedInputClears()
         {
-            var input=new WeaponClickLatch();
-            input.Sample(true,true);input.Sample(false,true);
-            Assert.That(input.Consume(),Is.True);
-            for(int tick=0;tick<100;tick++){input.Sample(false,true);Assert.That(input.Consume(),Is.False);}
-            input.Sample(true,false);input.Sample(false,true);Assert.That(input.Consume(),Is.False);
-            input.Sample(true,true);input.Reset();Assert.That(input.Consume(),Is.False);
+            var input = new WeaponTrigger();
+            input.Sample(true, true, true);
+            for (int tick = 0; tick < 60; tick++) Assert.That(input.Consume(), Is.True);
+            input.Sample(false, false, true); Assert.That(input.Consume(), Is.False);
+            input.Sample(false, true, true); Assert.That(input.Consume(), Is.True);
+            Assert.That(input.Consume(), Is.False);
+            input.Sample(true, true, false); Assert.That(input.Consume(), Is.False);
+            input.Sample(true, true, true); input.Reset(); Assert.That(input.Consume(), Is.False);
         }
         [Test]
         public void InstalledWeaponHasThreeBoundedLodsSurfaceAtlasAndForwardMuzzle()

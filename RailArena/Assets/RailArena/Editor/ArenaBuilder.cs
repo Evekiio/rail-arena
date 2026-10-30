@@ -146,6 +146,9 @@ namespace RailArena.Editor
             bloom.dirtIntensity.Override(0);
             profile.Add<Vignette>().intensity.Override(.18f);
             Save(profile, "Foundry grading.asset");
+            foreach (var component in profile.components)
+                AssetDatabase.AddObjectToAsset(component, profile);
+            EditorUtility.SetDirty(profile);
             volume.sharedProfile = profile;
             Stars();
             var session = new GameObject("Game authority").AddComponent<ArenaSession>();

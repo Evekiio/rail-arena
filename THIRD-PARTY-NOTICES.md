@@ -33,3 +33,9 @@ Quake III Arena and Unreal Tournament are named only to identify design inspirat
 ## User-supplied weapon shape references
 
 Reference-only photographs under the rifle/carbine reference packages retain their original watermarks and source records. They are supplied design inputs, not original Rail Arena artwork or game textures; the project's software license does not grant rights to third-party photographic content, marks or branding. These photographs are not shipped in the playable client. Original carbine meshes, textures and rendered construction studies are authored separately.
+
+## Interface typography and icons / October 29, 2026
+
+Barlow Regular, Barlow Medium and Barlow Condensed SemiBold are by The Barlow Project Authors and distributed under the SIL Open Font License 1.1. The original copyright and full notices are preserved under `RailArena/Assets/ThirdParty/Barlow/`. The logo remains the original Rail Arena raster artwork; these fonts supply interface typography. Font source URLs and SHA-256 values are recorded in `ArtSource/Original/UI-Brand-v1/Fonts.json`.
+
+The UI icon set is exported from Lucide 1.8.0 under its ISC license. The complete upstream license, including applicable Feather-derived icon notices, is retained at `RailArena/Assets/ThirdParty/Lucide/LICENSE.txt`. Library icon names, export parameters and editable SVG exports are retained in `ArtSource/Original/UI-Brand-v1/`. No proprietary game logos, interface artwork or fonts are bundled.

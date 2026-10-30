@@ -9,6 +9,11 @@ namespace RailArena.Simulation
         public float Pitch;
         public bool Jump;
         public bool Fire;
+        public bool Reload;
+        public bool Sprint;
+        public bool Walk;
+        public bool Crouch;
+        public bool Slide;
         public int Sequence;
     }
 
@@ -21,6 +26,12 @@ namespace RailArena.Simulation
             var input = Vector2.ClampMagnitude(command.Move, 1);
             var wish = Quaternion.Euler(0, command.Yaw, 0) * new Vector3(input.x, 0, input.y);
             var horizontal = new Vector3(velocity.x, 0, velocity.z);
+            float speedScale = command.Crouch ? tuning.CrouchSpeedMultiplier : command.Walk ? tuning.WalkSpeedMultiplier :
+                command.Sprint && input.y > 0 ? tuning.SprintSpeedMultiplier : 1;
+            // Deliberate grounded slow movement must also shed inherited hop/pad momentum.
+            // Airborne momentum and the unmodified movement path remain unchanged.
+            if (grounded && (command.Crouch || command.Walk))
+                horizontal = Vector3.ClampMagnitude(horizontal, tuning.GroundSpeed * speedScale);
             bool jumping = grounded && command.Jump;
             if (grounded && !jumping)
             {
@@ -34,7 +45,7 @@ namespace RailArena.Simulation
 
             if (wish.sqrMagnitude > 0)
             {
-                float wishSpeed = tuning.GroundSpeed * input.magnitude;
+                float wishSpeed = tuning.GroundSpeed * speedScale * input.magnitude;
                 Vector3 direction = wish.normalized;
                 float remaining = wishSpeed - Vector3.Dot(horizontal, direction);
                 if (remaining > 0)
@@ -50,3 +61,4 @@ namespace RailArena.Simulation
         }
     }
 }
+

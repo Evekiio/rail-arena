@@ -5,6 +5,14 @@ namespace RailArena
 {
     public sealed class ArenaWorld : MonoBehaviour
     {
+        public bool CarefulNavigation;
+        public float RouteArrivalRadius = 1.4f;
+        public int[] CarefulDropNodes = System.Array.Empty<int>();
+        public string LayoutName = "FOUNDRY";
+        public float MenuFieldOfView;
+        public Vector3 MenuEye = new(39, 28, -43);
+        public Vector3 MenuLook = new(25, -40, 0);
+        public PortalGate[] Portals = System.Array.Empty<PortalGate>();
         public Transform[] Spawns;
         public Transform[] Nodes;
         public Vector2Int[] Links;
