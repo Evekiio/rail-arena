@@ -58,8 +58,8 @@ Links().feed(html)
 report = {'passed': True, 'measuredViews': 6, 'sourceAndExportHashesVerified': True, 'comparisonCamera': 'Identical staged camera, presentation removed/reapplied; no simulated gameplay acceptance', 'browserRendering': 'Not established; offline link checks and direct image inspection only', 'gate2Complete': False}
 (folder / 'review-verification.json').write_text(json.dumps(report, indent=2) + '\n')
 asset_paths = []
-for directory in ['RailArena/Assets/RailArena/Art/ArtSlice', 'RailArena/Assets/Resources/Art']:
-    asset_paths.extend(p for p in (root / directory).rglob('*') if p.is_file() and p.suffix != '.meta')
+for directory in ['RailArena/Assets/RailArena/Art/ArtSlice', 'RailArena/Assets/Resources/Art', 'RailArena/Assets/RailArena/Art/ArtPass', 'ArtSource/Original/ArtPass-v1/Characters', 'ArtSource/Original/ArtPass-v1/Gate2/RifleActions']:
+    asset_paths.extend(p for p in (root / directory).rglob('*') if p.is_file() and p.suffix not in ('.meta', '.blend1'))
 for relative in ['RailArena/Assets/Resources/Effects/CelSurface.shader', 'RailArena/Assets/RailArena/Runtime/CelArtProfile.cs', 'RailArena/Assets/RailArena/Runtime/ArtSlicePresentation.cs', 'RailArena/Assets/RailArena/Editor/ArtSliceBuilder.cs', 'ArtSource/Original/ArtPass-v1/Gate2/StoneCover/StoneCover-v1.blend']:
     asset_paths.append(root / relative)
 entries = []

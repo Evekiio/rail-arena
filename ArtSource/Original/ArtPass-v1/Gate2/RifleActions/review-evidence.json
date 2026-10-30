@@ -1,0 +1,33 @@
+{
+  "schema": "rail-arena-action-review/1",
+  "id": "FPS-RIFLE-RELOAD-v1",
+  "source": "Carbine-Reload-v1.blend",
+  "sourceSha256": "798d8d796738295920d6d71adf019169f4404902b02b9ff880969364766c0277",
+  "actionChannels": [
+    "Magazine carrier offset/rotation",
+    "Left wrist contact position/rotation"
+  ],
+  "sampleCount": 121,
+  "sourceFps": 60,
+  "durationSeconds": 2,
+  "simulationTimingEvidence": "PlaybackTiming.csv",
+  "playbackFrames": 180,
+  "playbackDurationSeconds": 3,
+  "playbackFps": 60,
+  "performanceEvidence": false,
+  "normalSpeedEvidence": "Reload-Playback.mp4",
+  "mp4Sha256": "72ffba28899ec73d04afc8f1ad729efed17a8951bc3a26046a597f486d24e161",
+  "validation": [
+    "Seven wrist targets within 25 mm reach tolerance",
+    "Simulation-quarter-progress follows reload tick",
+    "Interruption restores seated magazine and support grip",
+    "Visual action does not write rounds or completion ticks",
+    "LOD part hierarchy retained"
+  ],
+  "limits": [
+    "Editor hidden capture with offscreen uGUI composition; native player/input/audio acceptance pending",
+    "Wrist reach check does not certify palm/finger surface contact at every interpolated frame",
+    "Broader FPS and character action library remains in production"
+  ],
+  "approval": "Final integrated user playtest/QA gate"
+}

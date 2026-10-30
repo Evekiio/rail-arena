@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: SkyGardensCel
   m_EditorClassIdentifier: RailArena.Runtime::RailArena.CelArtProfile
   SurfaceShader: {fileID: 4800000, guid: c8e363f59ef23e14d8688a0bc76aa7d6, type: 3}
+  WaterShader: {fileID: 4800000, guid: 59f264c27bf9ea043ac8917442b42b2f, type: 3}
+  CloudSkybox: {fileID: 2100000, guid: 00e4cde6cac6c584b9ef70bd5e67399d, type: 2}
+  StoneSources:
+  - {fileID: 2100000, guid: d2998b853b903fc43812034564a6e1ed, type: 2}
+  - {fileID: 2100000, guid: a9fb7423fc3ff464fbc5226d48daef78, type: 2}
+  - {fileID: 2100000, guid: 6399ffe7d9907214d8fa35f21b65ba72, type: 2}
+  - {fileID: 2100000, guid: ef61b3c1e49374a49974c150c5bbc3b4, type: 2}
+  - {fileID: 2100000, guid: a9ac5cbc68f392d4caed0734e32de03c, type: 2}
+  - {fileID: 2100000, guid: 4ac0ad68fd0ad464da611d21013c16fd, type: 2}
+  StoneBase: {fileID: 2800000, guid: 9bacb6de1d183c34486f423ad604fde6, type: 3}
+  StoneNormal: {fileID: 2800000, guid: 62bf31ad9af2df548ba697617d39035a, type: 3}
+  StoneCavity: {fileID: 2800000, guid: 3d3f581e955206344bf570edcbc5a309, type: 3}
   LowerBand: 0.25
   UpperBand: 0.65
   Softness: 0.03

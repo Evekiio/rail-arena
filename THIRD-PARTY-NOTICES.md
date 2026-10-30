@@ -1,5 +1,7 @@
 # Third-party notices
 
+The v1 alpha integrated art pass adds original painted contender atlases, eye/brow and crest refinements, calibrated arm/LOD meshes, a Blender-authored rifle magazine/wrist action, ivory stone paint, faceted canopies and medical-core construction. Original code and new artwork remain under the repository MIT license. Existing rig and motion provenance below continues to apply. Promoted rifle, waterfall and atmosphere experiments are existing Rail Arena work, with their original sources retained; no new paid or external asset dependency was acquired.
+
 The new stylized player and three bots use original procedurally modeled visible geometry and palette textures under MIT. Their skeleton is retained from the CC0 Grab3D source described below, including its disclosed AI-assisted provenance; the shared Quaternius motion clips remain CC0 dependencies. The new first-person arms are extracted from that original stylized geometry. The approved concept sheet is AI-generated design-reference artwork. See `docs/STYLIZED-CONTENDERS.md`.
 
 The historical first-person arm mesh is an arm-only CC0 derivative of the Grab3D contender, retaining its disclosed AI-assisted origin. It reuses the original textures and Quaternius CC0 idle motion. The extraction/attachment code is original MIT work; the historical base is not represented as an original Rail Arena sculpture. See `docs/FIRST-PERSON-ARMS.md`.

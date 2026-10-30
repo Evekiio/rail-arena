@@ -1,0 +1,30 @@
+{
+  "id": "SG-STONE-PAINT-v1",
+  "provenance": "Original code-authored cel stone texture painting",
+  "sizePixels": [
+    1024,
+    1024
+  ],
+  "layout": "Two horizontal tiles, four staggered courses; same normalized course frequency as baseline",
+  "units": "UV-space painting; world metres per tile remain determined by unchanged source mesh UVs",
+  "maps": {
+    "baseColor": "sRGB",
+    "normal": "tangent-space linear",
+    "cavity": "linear green channel"
+  },
+  "geometry": "No displacement or collider changes",
+  "runtimeRoles": [
+    "structure",
+    "cover",
+    "garden_structure",
+    "ivory_trim",
+    "ramps",
+    "summit"
+  ],
+  "sha256": {
+    "Stone-Painted": "6ce67dd5bedd2b2a2818b47d6c7f8ed1c54ab0105227b7a88eecf0c0e891ae78",
+    "Stone-Normal": "21cfbd8cbe54f353b03dbe08caf32041526680a8215a4cabd10799f71b6a6d92",
+    "Stone-Cavity": "3ff829b3da62b8ec05caa5d28ac58920e65a1b397aff1d7c936550737efa7f43"
+  },
+  "approval": "Final integrated user playtest pending"
+}

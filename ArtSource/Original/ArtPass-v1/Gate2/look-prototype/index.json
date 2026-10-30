@@ -1,5 +1,5 @@
 {
-    "scope": "Cel material prototype in serialized Sky Gardens basement scene, PC pipeline. Not a completed Gate 2 slice. Conditional review-build rifle/water/atmosphere overrides are not applied. HUD is composed from actual uGUI geometry; not native input or player-build parity acceptance.",
+    "scope": "Integrated art in serialized Sky Gardens basement scene using the production atmosphere pipeline, authored characters, rifle reload, stone, foliage, medical core and water. HUD is composed from actual uGUI geometry; native input, sound and final player acceptance remain open.",
     "views": [
         {
             "id": "menu",
@@ -137,6 +137,36 @@
             }
         },
         {
+            "id": "health-depleted",
+            "path": "ArtSource/Original/ArtPass-v1/Gate2/look-prototype/health-depleted.png",
+            "note": "Depleted pickup keeps its pedestal and status while the medical core disappears",
+            "position": {
+                "x": -12.0,
+                "y": 3.9200000762939453,
+                "z": -15.0
+            },
+            "euler": {
+                "x": 15.501363754272461,
+                "y": 326.3099365234375,
+                "z": 0.0
+            }
+        },
+        {
+            "id": "garden-canopy",
+            "path": "ArtSource/Original/ArtPass-v1/Gate2/look-prototype/garden-canopy.png",
+            "note": "Opaque layered foliage inside the original leaf envelope; original tree collision retained",
+            "position": {
+                "x": 25.5,
+                "y": 3.299999952316284,
+                "z": -11.0
+            },
+            "euler": {
+                "x": 0.8947361707687378,
+                "y": 141.34019470214844,
+                "z": 0.0
+            }
+        },
+        {
             "id": "stone-after",
             "path": "ArtSource/Original/ArtPass-v1/Gate2/look-prototype/stone-after.png",
             "note": "Original Blender cover in its unchanged collision footprint; cel material prototype",
@@ -182,6 +212,21 @@
             }
         },
         {
+            "id": "player-face",
+            "path": "ArtSource/Original/ArtPass-v1/Gate2/look-prototype/player-face.png",
+            "note": "Current refined face, paint and selective silhouette contour; final human motion/likeness review pending",
+            "position": {
+                "x": 1.243385910987854,
+                "y": 1.6538822650909424,
+                "z": 11.61777114868164
+            },
+            "euler": {
+                "x": 2.7157394886016846,
+                "y": 288.4349365234375,
+                "z": 0.0
+            }
+        },
+        {
             "id": "bot01",
             "path": "ArtSource/Original/ArtPass-v1/Gate2/look-prototype/bot01.png",
             "note": "Staged current imported character and weapon in the existing arena; not a natural gameplay pose",
@@ -194,6 +239,21 @@
                 "x": 7.3368425369262695,
                 "y": 214.50852966308594,
                 "z": 4.3041077901762037e-7
+            }
+        },
+        {
+            "id": "bot01-face",
+            "path": "ArtSource/Original/ArtPass-v1/Gate2/look-prototype/bot01-face.png",
+            "note": "Current refined face, paint and selective silhouette contour; final human motion/likeness review pending",
+            "position": {
+                "x": 0.4286358654499054,
+                "y": 1.5501329898834229,
+                "z": 13.337374687194824
+            },
+            "euler": {
+                "x": 2.7157394886016846,
+                "y": 198.43495178222656,
+                "z": -2.6710425871101506e-8
             }
         },
         {
@@ -212,6 +272,21 @@
             }
         },
         {
+            "id": "bot02-face",
+            "path": "ArtSource/Original/ArtPass-v1/Gate2/look-prototype/bot02-face.png",
+            "note": "Current refined face, paint and selective silhouette contour; final human motion/likeness review pending",
+            "position": {
+                "x": 0.4378765821456909,
+                "y": 1.543242335319519,
+                "z": 13.363768577575684
+            },
+            "euler": {
+                "x": 2.7157394886016846,
+                "y": 198.43495178222656,
+                "z": -2.6710425871101506e-8
+            }
+        },
+        {
             "id": "bot03",
             "path": "ArtSource/Original/ArtPass-v1/Gate2/look-prototype/bot03.png",
             "note": "Staged current imported character and weapon in the existing arena; not a natural gameplay pose",
@@ -224,6 +299,21 @@
                 "x": 7.3368425369262695,
                 "y": 214.50852966308594,
                 "z": 4.3041077901762037e-7
+            }
+        },
+        {
+            "id": "bot03-face",
+            "path": "ArtSource/Original/ArtPass-v1/Gate2/look-prototype/bot03-face.png",
+            "note": "Current refined face, paint and selective silhouette contour; final human motion/likeness review pending",
+            "position": {
+                "x": 0.47143450379371643,
+                "y": 1.522118091583252,
+                "z": 13.3532133102417
+            },
+            "euler": {
+                "x": 2.7157394886016846,
+                "y": 198.43495178222656,
+                "z": -2.6710425871101506e-8
             }
         }
     ]

@@ -13,7 +13,8 @@ namespace RailArena
             int mode = tick / 180 % 4;
             command.Sprint = mode == 1;
             command.Walk = mode == 2;
-            command.Crouch = mode == 3 || (mode == 1 && tick % 180 >= 120 && tick % 180 < 156);
+            command.Crouch = mode == 3;
+            command.Slide = mode == 1 && tick % 180 >= 120 && tick % 180 < 156;
             if (mode == 1) command.Jump = false;
             return command;
         }

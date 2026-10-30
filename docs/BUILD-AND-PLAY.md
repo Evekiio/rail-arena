@@ -27,6 +27,17 @@ The Unity project is the `RailArena` subfolder. Its version pin is in `ProjectSe
 
 ## Headless development build
 
+For the integrated Sky Gardens art version, use the production art builder. It prepares the versioned art assets, installs the presentation into the built basement scene, uses the production atmosphere pipeline and includes the opt-in mechanics, bots, duel and art-performance runners:
+
+```powershell
+$env:RA_ART_BUILD_OUTPUT = (Join-Path $PWD 'Builds/RailArena-ArtReview-New')
+unity run .\RailArena --editor-path 'D:\Unity Editor\6000.6.7f1\Editor\Unity.exe' --timeout 1800 --no-tail --format json -- -job-worker-count 4 -executeMethod RailArena.Editor.ArtSliceBuilder.Build
+```
+
+Choose a new output directory each time. The builder refuses to overwrite an existing folder and restores temporary render-pipeline settings and source identity after building. The package records its actual pipeline configuration and exact input list. A clean source checkout may reuse derived shader-cache artifacts from the same Unity version. Final public release remains held for Sanders' playtest acceptance.
+
+The following baseline builder retains the earlier presentation for comparison; it does not install the integrated art pass.
+
 With the Unity CLI installed and the pinned Editor licensed, run:
 
 ```powershell
@@ -50,10 +61,10 @@ Choose tests relevant to the change and record their results. Avoid routinely ad
 Verify source identity after building:
 
 ```powershell
-python tools/verify_build_identity.py --project RailArena
+python tools/verify_build_identity.py --project RailArena --inputs Validation/build-identity-inputs.txt
 ```
 
-This checks the recorded source identity, not human gameplay quality. Reports in [Validation](../Validation) and the [validation record](VALIDATION.md) identify the conditions tested. Native input, sound, real-internet duels and measured four-contender performance remain separate gates.
+Unity writes the exact dependency manifest during identity generation. Active scene dependencies under `Assets/Validation` must be included; inactive pilots are excluded. For an art review build whose source identity is restored after building, use the package's `BuildInputs.txt` with `--inputs` and `BuildIdentity.txt` with `--identity`, against its clean source checkout. This checks source compatibility, not human gameplay quality. Reports in [Validation](../Validation) identify the conditions tested. Native input, sound, real-internet duels and measured four-contender performance remain separate gates.
 
 ## Portable packaging
 

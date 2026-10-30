@@ -101,7 +101,7 @@ namespace RailArena.Editor
             return controller;
         }
 
-        private static Mesh ExtractArms(Mesh source, HashSet<int> bones)
+        public static Mesh ExtractArms(Mesh source, HashSet<int> bones)
         {
             var sourceWeights = source.boneWeights;
             bool Arm(int index)

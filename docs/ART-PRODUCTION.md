@@ -2,6 +2,8 @@
 
 Current milestone: **Gate 1 approved by Sanders; Gate 2 playable visual slice in production.** The overall goal remains the complete approved art-production plan. This package is the evidence and production basis for the first approval gate, not a completed graphical overhaul or permission to skip Gates 2 and 3.
 
+**Execution update, 2026-10-30:** Sanders directed: “Resume all work and don't get stuck or waiting my approval. I want the final working version and I'll play test as the beta tester / play tester / user QA gate.” Intermediate art gates now serve as production review milestones without approval stops. Continue through the full integrated local build; Sanders' final playtest remains acceptance. Public publication remains held until final approval. This direction supersedes the earlier stop-at-Gate-2 workflow in the original planning package.
+
 - [Gate 1 review gallery](../ArtSource/Original/ArtPass-v1/Gate1/index.html)
 - [Art bible](../ArtSource/Original/ArtPass-v1/Gate1/ART-BIBLE.md)
 - [Asset register](../ArtSource/Original/ArtPass-v1/Gate1/asset-register.csv)
@@ -11,6 +13,10 @@ Current milestone: **Gate 1 approved by Sanders; Gate 2 playable visual slice in
 - [Production schedule](../ArtSource/Original/ArtPass-v1/Gate1/production-schedule.csv)
 - [Gate 2 current production and comparison gallery](../ArtSource/Original/ArtPass-v1/Gate2/index.html)
 - [Gate 2 remaining work](../ArtSource/Original/ArtPass-v1/Gate2/PRODUCTION-STATUS.md)
+- [Authored rifle action and normal-speed playback](../ArtSource/Original/ArtPass-v1/Gate2/RifleActions/index.html)
+- [Integrated gameplay, UI and measured-reference gallery](../ArtSource/Original/ArtPass-v1/integrated-review.html)
+- [Integrated production asset delta](../ArtSource/Original/ArtPass-v1/integrated-manifest.json)
+- [Current working build and validation handoff](ART-PASS-REVIEW.md)
 
 The target is crisp anime cel shading for Sky Gardens including the summit and basement routes, with a measured 1080p/60 FPS target on the RTX 2080 with one human and three bots. Older maps are inventoried and preserved. Source ownership and visual approval must remain distinct from runtime inclusion and technical import validity.
 
