@@ -25,6 +25,8 @@ with zipfile.ZipFile(archive_path) as archive:
 inherited = ['CombatReactions', 'DirectionalMotion-Reference', 'Underbridge-Reference', 'BridgeStone', 'SummitStone', 'GroundedCrouch']
 if int(args.review) >= 20:
     inherited.append('SlideMotion')
+if int(args.review) >= 22:
+    inherited.append('ArenaStone')
 for name in inherited:
     source = previous/'ValidationEvidence'/name
     assert source.is_dir() and not (destination/name).exists(), name
@@ -32,8 +34,19 @@ for name in inherited:
         if path.is_file():
             assert hashlib.sha256(path.read_bytes()).hexdigest() == manifest[path.relative_to(previous).as_posix()], path
     shutil.copytree(source, destination/name)
-family = 'ArenaStone' if int(args.review) >= 20 else 'SlideMotion'
-if family == 'ArenaStone':
+family = 'GardenNature' if int(args.review) >= 22 else 'ArenaStone' if int(args.review) >= 20 else 'SlideMotion'
+if family == 'GardenNature':
+    current = destination/family
+    assert not current.exists(), 'Never overwrite a staged reference batch'
+    current.mkdir()
+    nature = root/'ArtSource/Original/ArtPass-v1/Nature/GardenNature'
+    files = [(nature/name, name) for name in ['Garden-Nature-v2.blend','Garden-Painted-Palette.png','Garden-Wind.mp4','Garden-Wind.csv','production.json','nature-source.json','measured-views.json','site-views.json','native-review-evidence.json','README.md']]
+    files += [(path, path.name) for path in sorted(nature.glob('*-Measured-Sheet.png'))]
+    files += [(path, path.name) for path in sorted(nature.glob('*-comparison.png'))]
+    files += [(nature/'UnityReview/installed-review.json', 'installed-review.json')]
+    files += [(root/'Validation'/name, name) for name in ['garden-nature-vines.xml','garden-nature-import.json','garden-nature-source-package.json','garden-nature-native-axes.json']]
+    files += [(root/'docs/GARDEN-NATURE.md', 'GARDEN-NATURE.md')]
+elif family == 'ArenaStone':
     source_root = root/'ArtSource/Original/ArtPass-v1/Environment/ArenaStone'
     current = destination/family
     assert not current.exists(), 'Never overwrite a staged reference batch'

@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fde0eaac462e9d47a3b90ca3a07354d, type: 3}
+  m_Name: GardenNature
+  m_EditorClassIdentifier: RailArena.Runtime::RailArena.GardenNatureSet
+  parts:
+  - sourceName: GRASS-1
+    module: GrassA
+    prefab: {fileID: 4647621076165236272, guid: 6b9a5fff50b92414e81ee01520042f12, type: 3}
+    center: {x: -29.47733, y: 0.22, z: 16.022419}
+    size: {x: 2.1496186, y: 0.2973976, z: 3.0115201}
+    wind: 1
+  - sourceName: GRASS-2
+    module: GrassB
+    prefab: {fileID: 7968410455963215320, guid: 5bed5779de0b3fc4d81ce45bca68a52d, type: 3}
+    center: {x: -29.499537, y: 0.22, z: -15.986641}
+    size: {x: 2.1872797, y: 0.29751068, z: 3.0255451}
+    wind: 1
+  - sourceName: GRASS-3
+    module: GrassA
+    prefab: {fileID: 4647621076165236272, guid: 6b9a5fff50b92414e81ee01520042f12, type: 3}
+    center: {x: 29.505854, y: 0.22, z: 15.957449}
+    size: {x: 2.134357, y: 0.29928482, z: 2.9725118}
+    wind: 1
+  - sourceName: GRASS-4
+    module: GrassB
+    prefab: {fileID: 7968410455963215320, guid: 5bed5779de0b3fc4d81ce45bca68a52d, type: 3}
+    center: {x: 29.491302, y: 0.22, z: -15.999215}
+    size: {x: 2.1574655, y: 0.29951665, z: 3.0464869}
+    wind: 1
+  - sourceName: IVY-1-LEAVES
+    module: VineLeafA
+    prefab: {fileID: 8071218549949050301, guid: 468c02fba38817f4e9f6345dda1fcdd1, type: 3}
+    center: {x: -29.502098, y: -1.8463497, z: 14}
+    size: {x: 2.545189, y: 3.7873006, z: 0.16865921}
+    wind: 1
+  - sourceName: IVY-1-STEMS
+    module: VineStem
+    prefab: {fileID: 4967654137892486386, guid: 8f5423a1f24a28a4d846461d04f089a1, type: 3}
+    center: {x: -29.502098, y: -1.8463497, z: 14}
+    size: {x: 2.545189, y: 3.7873006, z: 0.16865921}
+    wind: 1
+  - sourceName: IVY-2-LEAVES
+    module: VineLeafB
+    prefab: {fileID: 375270572377395554, guid: c1abc54107143db4d84308daaa2a3350, type: 3}
+    center: {x: -29.502098, y: -1.8463497, z: -18}
+    size: {x: 2.545189, y: 3.7873006, z: 0.16865921}
+    wind: 1
+  - sourceName: IVY-2-STEMS
+    module: VineStem
+    prefab: {fileID: 4967654137892486386, guid: 8f5423a1f24a28a4d846461d04f089a1, type: 3}
+    center: {x: -29.502098, y: -1.8463497, z: -18}
+    size: {x: 2.545189, y: 3.7873006, z: 0.16865921}
+    wind: 1
+  - sourceName: IVY-3-LEAVES
+    module: VineLeafA
+    prefab: {fileID: 8071218549949050301, guid: 468c02fba38817f4e9f6345dda1fcdd1, type: 3}
+    center: {x: 29.497902, y: -1.8463497, z: 14}
+    size: {x: 2.545189, y: 3.7873006, z: 0.16865921}
+    wind: 1
+  - sourceName: IVY-3-STEMS
+    module: VineStem
+    prefab: {fileID: 4967654137892486386, guid: 8f5423a1f24a28a4d846461d04f089a1, type: 3}
+    center: {x: 29.497902, y: -1.8463497, z: 14}
+    size: {x: 2.545189, y: 3.7873006, z: 0.16865921}
+    wind: 1
+  - sourceName: IVY-4-LEAVES
+    module: VineLeafB
+    prefab: {fileID: 375270572377395554, guid: c1abc54107143db4d84308daaa2a3350, type: 3}
+    center: {x: 29.497902, y: -1.8463497, z: -18}
+    size: {x: 2.545189, y: 3.7873006, z: 0.16865921}
+    wind: 1
+  - sourceName: IVY-4-STEMS
+    module: VineStem
+    prefab: {fileID: 4967654137892486386, guid: 8f5423a1f24a28a4d846461d04f089a1, type: 3}
+    center: {x: 29.497902, y: -1.8463497, z: -18}
+    size: {x: 2.545189, y: 3.7873006, z: 0.16865921}
+    wind: 1
+  - sourceName: SHRUB-1
+    module: ShrubA
+    prefab: {fileID: 7330278619264560469, guid: 0a7784917d8cd1944a8aa86f410640c2, type: 3}
+    center: {x: -29.495247, y: 0.54002416, z: 15.990358}
+    size: {x: 2.3465147, y: 0.48592854, z: 2.820795}
+    wind: 1
+  - sourceName: SHRUB-2
+    module: ShrubB
+    prefab: {fileID: 37032642604001572, guid: 8b218151a8b998144b31bb267b0900fe, type: 3}
+    center: {x: -29.513712, y: 0.5527491, z: -15.999586}
+    size: {x: 2.3148594, y: 0.49297947, z: 2.7853537}
+    wind: 1
+  - sourceName: SHRUB-3
+    module: ShrubA
+    prefab: {fileID: 7330278619264560469, guid: 0a7784917d8cd1944a8aa86f410640c2, type: 3}
+    center: {x: 29.483212, y: 0.546139, z: 16.0249}
+    size: {x: 2.3505764, y: 0.47956294, z: 2.782483}
+    wind: 1
+  - sourceName: SHRUB-4
+    module: ShrubB
+    prefab: {fileID: 37032642604001572, guid: 8b218151a8b998144b31bb267b0900fe, type: 3}
+    center: {x: 29.485088, y: 0.5419775, z: -15.993916}
+    size: {x: 2.357739, y: 0.49565583, z: 2.840972}
+    wind: 1
+  - sourceName: TREE-1-BARK
+    module: Trunk
+    prefab: {fileID: 3013542121380350757, guid: 86c70e1dd20567e449b142f622d05963, type: 3}
+    center: {x: -29.595491, y: 2.33, z: 16}
+    size: {x: 1.833017, y: 4.34, z: 2.21143}
+    wind: 0
+  - sourceName: TREE-1-LEAVES
+    module: CrownA
+    prefab: {fileID: 3146098156177134178, guid: 7b8c90e475c1953459a24dc4072fbf57, type: 3}
+    center: {x: -29.516985, y: 4.0555925, z: 15.977238}
+    size: {x: 2.9127932, y: 1.5473504, z: 3.3178272}
+    wind: 1
+  - sourceName: TREE-2-BARK
+    module: Trunk
+    prefab: {fileID: 3013542121380350757, guid: 86c70e1dd20567e449b142f622d05963, type: 3}
+    center: {x: -29.595491, y: 2.33, z: -16}
+    size: {x: 1.833017, y: 4.34, z: 2.21143}
+    wind: 0
+  - sourceName: TREE-2-LEAVES
+    module: CrownB
+    prefab: {fileID: 8920384660021221824, guid: e715fc9807da8534595c5a37a3611631, type: 3}
+    center: {x: -29.602585, y: 4.056136, z: -16.040133}
+    size: {x: 2.9640403, y: 1.5528011, z: 3.2912073}
+    wind: 1
+  - sourceName: TREE-3-BARK
+    module: Trunk
+    prefab: {fileID: 3013542121380350757, guid: 86c70e1dd20567e449b142f622d05963, type: 3}
+    center: {x: 29.404509, y: 2.33, z: 16}
+    size: {x: 1.833017, y: 4.34, z: 2.21143}
+    wind: 0
+  - sourceName: TREE-3-LEAVES
+    module: CrownC
+    prefab: {fileID: 6947767858492171590, guid: c9b7de2312900aa429b919685fb7b2e6, type: 3}
+    center: {x: 29.441992, y: 4.0416603, z: 15.972238}
+    size: {x: 2.953134, y: 1.5932338, z: 3.328582}
+    wind: 1
+  - sourceName: TREE-4-BARK
+    module: Trunk
+    prefab: {fileID: 3013542121380350757, guid: 86c70e1dd20567e449b142f622d05963, type: 3}
+    center: {x: 29.404509, y: 2.33, z: -16}
+    size: {x: 1.833017, y: 4.34, z: 2.21143}
+    wind: 0
+  - sourceName: TREE-4-LEAVES
+    module: CrownA
+    prefab: {fileID: 3146098156177134178, guid: 7b8c90e475c1953459a24dc4072fbf57, type: 3}
+    center: {x: 29.38546, y: 4.0402265, z: -16.016562}
+    size: {x: 3.0363116, y: 1.6191893, z: 3.2737944}
+    wind: 1
