@@ -1,19 +1,22 @@
-# Rail Arena v1 alpha: integrated art build 19
+# Rail Arena v1 alpha: integrated art build 20
 
-Review-19 adds original third-person slide entry, feet-first gliding hold and compact recovery to all four contenders, retaining the five grounded crouch motions and all earlier graphical upgrades. The art controller now includes twenty-five original body clips. Full-body crouch enter/exit remain references. This is a verified local playtest milestone; the full art-production plan remains incomplete. Sanders retains final native input, sound and artistic acceptance. Public prerelease publication remains held.
+Review-20 adds seven original measured lower-arena stone and ramp families across nineteen placements, with stable paving colours across three detail levels. It retains the authored slide, crouch, characters, first-person arms, rifle/reload, lighting, waterfalls, UI and all earlier graphical upgrades. This is a verified local playtest milestone; the full art-production plan remains incomplete. Sanders retains final native input, sound and artistic acceptance. Public prerelease publication remains held.
 
 ## Play and inspect
 
-Launch `Builds/RailArena-v1Alpha-ArtPass-Review-19/RailArena.exe` with its folder intact, or extract `Builds/RailArena-v1Alpha-ArtPass-Review-19.zip`. `G` opens Physics Lab. Existing controls and graphics presets remain in Settings.
+Launch `Builds/RailArena-v1Alpha-ArtPass-Review-20/RailArena.exe` with its folder intact, or extract `Builds/RailArena-v1Alpha-ArtPass-Review-20.zip`. `G` opens Physics Lab. Existing controls and graphics presets remain in Settings.
 
-Portable ZIP: 164,235,744 bytes; all 425 shipped file hashes verified after extraction. SHA-256: `fc89a140a2b166c5fe8ea12b6a63b3e8b2e69234dd09feb2d11df2d42ffd88be`. The package includes measured slide sheets, native motion/comparison reels, scoped test evidence, six earlier reference families, licenses and `Run-Checks.ps1`. Its Duel mode uses the same 90-second workload as this review. Historical packages through Review-17 remain preserved; Review-18 was rejected and was not promoted to a verified portable package.
+Portable ZIP: 186,296,157 bytes; all 457 shipped file hashes verified after extraction. SHA-256: `2ad1755147226297b078621971f517c91eb32bcbc93ab37f8b5c96b74fc1bdbe`. The package includes seven measured arena sheets and native comparisons, prior motion/reference reels, seven earlier reference families, scoped shipping-player test evidence, licenses and `Run-Checks.ps1`. Its Duel mode uses the same 90-second workload as this review. Historical packages remain preserved; Review-18 was rejected and was not promoted to a verified portable package.
 
+- [Arena stone master, measured sheets and installed comparisons](../ArtSource/Original/ArtPass-v1/Environment/ArenaStone/index.html).
 - [Slide master, measured sheets and moving comparison](../ArtSource/Original/ArtPass-v1/Animation/Slide/index.html).
 - [Integrated gameplay, menu and reference gallery](../ArtSource/Original/ArtPass-v1/integrated-review.html).
 - [Current inventory](../ArtSource/Original/ArtPass-v1/current-asset-register.csv), [coverage gaps](../ArtSource/Original/ArtPass-v1/CURRENT-GAPS.md) and [complete action matrix](../ArtSource/Original/ArtPass-v1/animation-production-matrix.csv).
-- [Shipping validation](../Validation/art-integrated-final-19.json) and [archive verification](../Validation/art-package-verification-19.json).
+- [Shipping validation](../Validation/art-integrated-final-20.json) and [archive verification](../Validation/art-package-verification-20.json).
 
 ## Installed presentation and preservation
+
+Nineteen lower-deck/ramp renderings now use original jointed paving, weathered stone regions, teal/bronze edge bands, underside coffers and directional arrows. Seven metre-scaled Blender families provide twenty-one reducing LOD assets. The revised levels retain the same material regions and arrow wells; simplified levels remove hidden depth and subpixel joints. Native checks preserve all original colliders, navigation, return devices and renderer cleanup. [Canonical geometry, reproduction and evidence limits](ARENA-STONE-KIT.md).
 
 The slide uses original Blender ankle paths and baked bone actions on the unchanged shared rig. Entry and recovery connect to compact crouch; source frames follow remaining simulation ticks without moving the controller or stretching clip speed. Short configured slides use the hold directly. Same-tick stance updates prevent stale head/weapon poses, double lowering and delayed stand-up. Legacy maps keep their procedural treatment. Hitbox definitions/local attachments remain unchanged; world positions follow the new pose. [Slide contract and limits](AUTHORED-SLIDE.md).
 
@@ -23,13 +26,15 @@ Canonical source and prior evidence remain in [grounded crouch](AUTHORED-CROUCH.
 
 ## Validation
 
-All 39 standalone mechanics checks passed. The 45-second three-bot match recorded 155 shots, 8 deaths, 2 pickups and 22 pad launches, with zero exceptions and zero void deaths. Both 90-second loopback peers passed movement and statistics checks. Host slide observations were 1,508/1,826; client observations were 1,525/1,566. These are render-frame observations, not slide counts. Scripted duel void deaths are distinct from the zero-void offline match result. Real-internet and native-input acceptance remain open.
+All 39 standalone mechanics checks passed on this shipping build. The 45-second three-bot match recorded 150 shots, 9 deaths, 2 pickups and 21 pad launches, with zero exceptions and zero void deaths. Both 90-second loopback peers passed movement and statistics checks with zero errors. Host slide observations were 1,076/2,482; client observations were 1,506/1,946. These are render-frame observations, not slide counts. Scripted duel void deaths are distinct from the zero-void offline match result. Real-internet and native-input acceptance remain open.
+
+The arena family adds forty-two equal-scale orthographic views, seven dimensioned sheets and seven matching in-engine camera pairs. Focused native checks cover nineteen placements, fifty-seven LOD mesh instances, twenty-seven original-floor rays and 704 cross-LOD material-region comparisons. Near geometry retains identical triangle counts and per-material vertex positions across all seven families. Controlled views do not establish every possible LOD transition. Clean-checkout verification caught a source-JSON line-ending mismatch; the scoped LF checkout rule resolves it while keeping exact hash validation.
 
 The slide family adds 108 six-view source images and three measured sheets. Complete source checks cover all 216 bound mesh parts. Native candidate review covers 120 character samples; installed review covers 1,176 duration/yaw/pitch poses and twelve lifecycle scenarios. A six-second matching motion comparison adds 1,440 paired actual-controller trajectories with 0.1 mm tolerance, including 840 active-slide samples. Minimum active-slide skin clearance is 7.779 mm; maximum reviewed wrist error is 0.036 mm. Graph preparation is byte-stable, and the affected crouch regression passes. These controlled runway results do not establish all-terrain contacts or every palm/finger surface.
 
 Review-18's failed host slide coverage remains [recorded](../Validation/art-review-18-exception.json). Its opt-in driver forced Sprint while retaining backward/strafe bot input relative to aim. The corrected development-only driver faces the same world route and retries slide requests during the sprint phase, preserving actual forward-speed/grounding/cooldown requirements. Two focused driver regressions pass. No gameplay eligibility rule or pass criterion was weakened.
 
-Build source commit: `3d9ced300e5f0e8f013e494ef785a6aded5c19bf`. Independently reproduced source fingerprint: `5e1fab11050f82367ff493f6524ccc4c131e508d62254c5a16d490e831b64c71`. Quality settings and the source diagnostic identity are restored after building. Shipping-player evidence was executed on this artifact directly. Source-stage reference documents retain their original wording; `ValidationEvidence/REFERENCE-CONTEXT.txt` and `integrated-final.json` identify the actual shipping status.
+Build source commit: `838ab6735a5b7f06b6f9241fdd4f245ec757152d`. Independently reproduced source fingerprint: `dbd63cc372150edf89f133b7795f3c8f35a804d76611a8df86d1000c6f03a752`. Quality settings and the source diagnostic identity are restored after building. Shipping-player evidence was executed on this artifact directly. Source-stage reference documents retain their original wording; `ValidationEvidence/REFERENCE-CONTEXT.txt` and `integrated-final.json` identify the actual shipping status.
 
 ### Render workload
 
@@ -37,18 +42,18 @@ RTX 2080 / Direct3D12 / High / 1920x1080 / one automated human and three bots. E
 
 | View | Mean ms | P95 ms | 16.67 ms budget |
 |---|---:|---:|---|
-| combat | 15.51 | 19.50 | over budget |
-| summit | 13.92 | 16.78 | over budget |
-| basement | 13.86 | 16.59 | pass |
-| foliage-waterfall | 13.45 | 15.67 | pass |
-| portal | 11.87 | 13.72 | pass |
+| combat | 17.78 | 38.54 | over budget |
+| summit | 14.36 | 17.26 | over budget |
+| basement | 14.40 | 17.30 | over budget |
+| foliage-waterfall | 14.02 | 16.25 | pass |
+| portal | 12.30 | 14.60 | pass |
 
-Combat and summit P95 exceed the target. Performance acceptance remains open. Measurements are retained without repeats to select passing timings; differences across milestones are not a controlled A/B comparison and do not isolate slide or asset cost. Measurement version 2 stages the observer before portal rendering; older reports used different portal poses and are not equivalent workloads.
+Combat, summit and basement P95 exceed the target. Performance acceptance remains open. Measurements are retained without repeats to select passing timings; differences across milestones are not a controlled A/B comparison and do not isolate slide or asset cost. Measurement version 2 stages the observer before portal rendering; older reports used different portal poses and are not equivalent workloads.
 
 ## Continuing production and QA
 
-The joined inventory contains 3,343 unique file paths, including 1,120 production-evidence paths and zero missing paths. These are not counts of unique 3D models or complete reference certification. The original 34-action matrix remains intact; sixteen rows have integrated-review evidence, with final acceptance pending.
+The joined inventory contains 3,472 unique file paths, including 1,249 production-evidence paths and zero missing paths. These are not counts of unique 3D models or complete reference certification. The original 34-action matrix remains intact; sixteen rows have integrated-review evidence, with final acceptance pending.
 
-Remaining work includes standing/crouch cosmetic transitions, broader FPS/body actions and combat interruptions, complete terrain/traversal/remote-motion coverage, lower arena/ramp/structural production, device assembly and state refinement, nature variants, complete per-asset reference evidence, UI/audio acceptance and measured performance. The deferred ADS/portal corner case remains recorded for reproduction if it blocks acceptance. See [production status](../ArtSource/Original/ArtPass-v1/Gate2/PRODUCTION-STATUS.md).
+Remaining work includes standing/crouch cosmetic transitions, broader FPS/body actions and combat interruptions, complete terrain/traversal/remote-motion coverage, additional structural framing and cover production, device assembly and state refinement, nature variants, complete per-asset reference evidence, UI/audio acceptance and measured performance. The deferred ADS/portal corner case remains recorded for reproduction if it blocks acceptance. See [production status](../ArtSource/Original/ArtPass-v1/Gate2/PRODUCTION-STATUS.md).
 
 Playtest ADS, reloads, movement/slide readability, reticle bounds, basement routes/returns, menu/character states, Physics Lab, deaths, sound and sustained frame pacing. Continue production without intermediate approval holds; final artistic approval remains Sanders' decision.

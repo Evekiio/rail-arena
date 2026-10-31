@@ -165,7 +165,7 @@ for entry in entries:
         entry['dependencies'] += [relative(art/'Animation/Crouch/baked-contact-review.json'),relative(art/'Animation/Crouch/review-evidence.json'),'RailArena/Assets/RailArena/Editor/ContenderMotionArtBuilder.cs','RailArena/Assets/RailArena/Runtime/ContenderPresentation.cs','RailArena/Assets/RailArena/Runtime/ArenaActor.cs']
         entry['clips']=[clip['name'] for clip in json.loads(references.read_text())['clips']]
     if family=='arena-stone':
-        entry['runtimeUsage']='Source-integrated Sky Gardens art / Windows integration pending' if path.startswith('RailArena/') else 'Editable canonical master or measured/native reference evidence; not runtime content by itself'
+        entry['runtimeUsage']='Installed Sky Gardens art / verified local Windows Review 20; final native/artistic acceptance pending' if path.startswith('RailArena/') else 'Editable canonical master or measured/native reference evidence; not runtime content by itself'
         modules={item['family']:item['sizeUnityMetres'] for item in json.loads(references.read_text())['lods'] if item['lod']==0}
         entry['moduleDimensionsUnityMetresWHD']=modules
         variant=next((name for name in modules if Path(path).stem.startswith(name) or '/References/'+name+'/' in path or 'ArenaStone'+name in path),None)
