@@ -21,3 +21,12 @@
 
 # Canonical arena evidence is byte-hashed by the headless importer.
 ArtSource/Original/ArtPass-v1/Environment/ArenaStone/*.json text eol=lf
+
+# Noncompiled research source hashes use canonical LF text.
+ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/**/*.txt text eol=lf
+ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/**/*.patch text eol=lf
+ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/**/*.py text eol=lf
+ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/**/*.ps1 text eol=lf
+ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/**/*.json text eol=lf
+ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/**/*.md text eol=lf
+ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/**/*.html text eol=lf
