@@ -8,8 +8,10 @@ from PIL import Image, ImageDraw, ImageFont
 
 root = Path(__file__).resolve().parents[1]
 summit = '--summit' in sys.argv
-folder = root/('ArtSource/Original/ArtPass-v1/Environment/SummitStone' if summit else 'ArtSource/Original/ArtPass-v1/Environment/BridgeStone')
-title = 'SUMMIT' if summit else 'BRIDGE'
+arena = '--arena' in sys.argv
+assert not (summit and arena), 'Choose one canonical environment family'
+folder = root/('ArtSource/Original/ArtPass-v1/Environment/ArenaStone' if arena else 'ArtSource/Original/ArtPass-v1/Environment/SummitStone' if summit else 'ArtSource/Original/ArtPass-v1/Environment/BridgeStone')
+title = 'ARENA' if arena else 'SUMMIT' if summit else 'BRIDGE'
 spec = json.loads((folder/'production.json').read_text(encoding='utf-8'))
 views = json.loads((folder/'measured-views.json').read_text(encoding='utf-8'))
 assert hashlib.sha256((folder/spec['master']).read_bytes()).hexdigest() == spec['masterSha256']
@@ -41,8 +43,9 @@ for module in views['modules']:
     draw.text((36,2027),spec['id']+' / Blender source '+spec['masterSha256'][:24],font=small,fill='#efead7')
     draw.text((36,2060),'Geometry-derived views; concept images do not override dimensions. Collision remains in Unity.',font=small,fill='#b5d3ce')
     sheet.save(folder/(family+'-Measured-Sheet.png'))
-    cards.append('<article><h2>'+family+'</h2><img src="'+family+'-Measured-Sheet.png"><img src="References/'+family+'/perspective.png"></article>')
-source_name = 'summit-source.json' if summit else 'bridge-source.json'
+    detail = '<p>Construction detail / 5.5 m orthographic span / cropped canonical geometry</p><img src="References/'+family+'/detail.png"><p>Exploded construction layers / same cropped camera. Paving +0.9 m, coping +0.45 m, underside -0.65 m; display offsets only, not exported geometry.</p><img src="References/'+family+'/exploded-detail.png">' if arena else ''
+    cards.append('<article><h2>'+family+'</h2><img src="'+family+'-Measured-Sheet.png"><img src="References/'+family+'/perspective.png">'+detail+'</article>')
+source_name = 'arena-source.json' if arena else 'summit-source.json' if summit else 'bridge-source.json'
 page = '<!doctype html><meta charset="utf-8"><title>Rail Arena / '+title+' Stone</title><style>body{background:#101d22;color:#efead7;font:18px Arial;margin:3vw}img{max-width:100%}article{margin-top:48px}p{max-width:900px;line-height:1.6}</style><h1>Sky Gardens / '+title+' stone production</h1><p>Original measured Blender modules. Six orthographic views share a scale within each module sheet, with a standing-controller comparator. Three runtime LODs per module; shared painted ivory, teal and bronze materials. Final in-game visual and playtest acceptance remain pending.</p><p><a href="production.json">Production and construction manifest</a> / <a href="'+source_name+'">Installed source geometry</a> / <a href="measured-views.json">Camera scale</a></p>'+''.join(cards)
 (folder/'index.html').write_text(page,encoding='utf-8')
 print(title+'_MEASURED_SHEETS_READY',len(cards))
