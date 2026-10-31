@@ -41,6 +41,7 @@ namespace RailArena
             InstallBasementDecks();
             InstallBridgeStone();
             InstallSummitStone();
+            InstallArenaStone();
             InstallCanopies();
             InstallMedicalCores();
             wayfinding = gameObject.AddComponent<ArenaWayfindingArt>(); wayfinding.Initialize(session.World);
@@ -232,6 +233,36 @@ namespace RailArena
                 instance.name = source.name + " / Authored summit stone";
                 foreach (var item in instance.GetComponentsInChildren<Transform>(true)) item.gameObject.layer = source.gameObject.layer;
                 coverInstances.Add(instance); hiddenCover[source] = source.enabled; source.enabled = false;
+            }
+        }
+
+        void InstallArenaStone()
+        {
+            var set = Resources.Load<ArenaStoneSet>("Art/LowerArenaStone");
+            if (set == null || set.parts == null || set.parts.Length != 19)
+                throw new System.InvalidOperationException("Measured arena deck/ramp art is missing");
+            var renderers = session.World.GetComponentsInChildren<MeshRenderer>(true);
+            foreach (var part in set.parts)
+            {
+                MeshRenderer source = null;
+                foreach (var renderer in renderers)
+                    if (renderer.name == part.sourceName)
+                    {
+                        if (source != null) throw new System.InvalidOperationException("Ambiguous arena source: "+part.sourceName);
+                        source = renderer;
+                    }
+                if (source == null || part.prefab == null) throw new System.InvalidOperationException("Arena visual binding is incomplete: "+part.sourceName);
+                var collider = source.GetComponent<MeshCollider>();
+                if (collider == null || collider.sharedMesh == null) throw new System.InvalidOperationException("Arena collision authority is missing: "+part.sourceName);
+                var center = source.transform.TransformPoint(collider.sharedMesh.bounds.center);
+                var instance = Instantiate(part.prefab, center, part.rotation);
+                instance.name = source.name+" / Authored arena stone";
+                foreach (var item in instance.GetComponentsInChildren<Transform>(true)) item.gameObject.layer = source.gameObject.layer;
+                coverInstances.Add(instance);
+                foreach (var original in renderers)
+                    if (original == source || original.name.StartsWith(source.name+"-CAP", System.StringComparison.Ordinal)
+                        || original.name.StartsWith(source.name+"-INLAY", System.StringComparison.Ordinal))
+                    { hiddenCover[original] = original.enabled; original.enabled = false; }
             }
         }
 

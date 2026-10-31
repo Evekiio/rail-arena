@@ -28,6 +28,7 @@ sections = [('Gameplay / integrated captures', art/'Gate2/look-prototype'), ('Me
 if (art/'Environment/BasementDecks/UnityReview').exists():sections.insert(0,('Authored basement stone / matched cameras and LODs',art/'Environment/BasementDecks/UnityReview'))
 if (art/'Environment/BridgeStone/UnityReview').exists():sections.insert(0,('Authored bridge stone / matched cameras',art/'Environment/BridgeStone/UnityReview'))
 if (art/'Environment/SummitStone/UnityReview').exists():sections.insert(0,('Authored summit stone / matched cameras',art/'Environment/SummitStone/UnityReview'))
+if (art/'Environment/ArenaStone/UnityReview').exists():sections.insert(0,('Authored arena decks and ramps / matched cameras and LODs',art/'Environment/ArenaStone/UnityReview'))
 if (art/'StandaloneReview').exists():sections.insert(0,('Standalone Windows player / forced offscreen render; native swapchain and HUD excluded',art/'StandaloneReview'))
 comparisons=art/'Comparisons';comparisons.mkdir(exist_ok=True)
 before_views={v['id']:v for v in json.loads((art/'Gate1/baseline-views/index.json').read_text())['views']}
@@ -53,6 +54,7 @@ html += '<p><a href="Animation/Crouch/index.html">Grounded crouch source, instal
 html += '<p><a href="Animation/Slide/index.html">Feet-first slide master, measured poses and matching moving comparison</a></p>'
 html += '<p><a href="Environment/BridgeStone/index.html">Measured bridge, screen and pier construction</a></p>'
 html += '<p><a href="Environment/SummitStone/index.html">Measured summit deck, cover and column construction</a></p>'
+html += '<p><a href="Environment/ArenaStone/index.html">Measured arena decks, ramps and native camera comparisons</a></p>'
 for title, directory in sections:
     html += f'<h2>{title}</h2><section>'
     for p in sorted(directory.rglob('*.png')):
@@ -89,7 +91,9 @@ for entry in entries:
     else:
         rig=[]; dimensions=None; provenance='Original Rail Arena code-authored paint, Blender construction or promoted existing project graphics; existing source retained.'
         master=art/'Environment/SkyGardens-Stone-Art-v1.blend'; references=art/'Environment/Environment-Master.json'; sheet=None; screenshot=art/'Gate2/look-prototype/garden-bridge.png'
-        if '/SummitStone/' in path or 'SummitStone' in Path(path).name:
+        if '/ArenaStone/' in path or 'Art/ArenaStone' in path or 'LowerArenaStone.asset' in path:
+            family='arena-stone';category='environment';directory=art/'Environment/ArenaStone';master=directory/'Arena-Stone-v1.blend';references=directory/'production.json';sheet=directory/'Ramp-Measured-Sheet.png';screenshot=directory/'UnityReview/arena-overview-after.png';provenance='Original measured paving, coping, friezes, coffers and inset ramp arrows; nineteen source collision envelopes and routes preserved. Shared original painted stone/cel materials; canonical FBX orientation normalized by the asymmetric ramp check.'
+        elif '/SummitStone/' in path or 'SummitStone' in Path(path).name:
             family='summit-stone';category='environment';directory=art/'Environment/SummitStone';master=directory/'Summit-Stone-v1.blend';references=directory/'production.json';sheet=directory/'Summit-Measured-Sheet.png';screenshot=directory/'UnityReview/summit-overview-after.png';provenance='Original radial limestone, compass seal, coping, friezes, coffer rays, cover and column modules authored in Blender inside audited collision hulls; original shared painted stone image and cel materials.'
         elif '/BridgeStone/' in path or 'BridgeStone' in Path(path).name:
             family='bridge-stone';category='environment';directory=art/'Environment/BridgeStone';master=directory/'Bridge-Stone-v1.blend';references=directory/'production.json';sheet=directory/'Deck-Measured-Sheet.png';screenshot=directory/'UnityReview/bridge-overview-after.png';provenance='Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.'
@@ -160,6 +164,15 @@ for entry in entries:
         entry['referenceSheets']=[relative(art/'Animation/Crouch/References'/name/'measured-poses.png') for name in ('CrouchIdle','CrouchForward','CrouchBackward','CrouchLeft','CrouchRight','CrouchEnter','CrouchExit')]
         entry['dependencies'] += [relative(art/'Animation/Crouch/baked-contact-review.json'),relative(art/'Animation/Crouch/review-evidence.json'),'RailArena/Assets/RailArena/Editor/ContenderMotionArtBuilder.cs','RailArena/Assets/RailArena/Runtime/ContenderPresentation.cs','RailArena/Assets/RailArena/Runtime/ArenaActor.cs']
         entry['clips']=[clip['name'] for clip in json.loads(references.read_text())['clips']]
+    if family=='arena-stone':
+        entry['runtimeUsage']='Installed Sky Gardens art / verified local Windows Review 20; final native/artistic acceptance pending' if path.startswith('RailArena/') else 'Editable canonical master or measured/native reference evidence; not runtime content by itself'
+        modules={item['family']:item['sizeUnityMetres'] for item in json.loads(references.read_text())['lods'] if item['lod']==0}
+        entry['moduleDimensionsUnityMetresWHD']=modules
+        variant=next((name for name in modules if Path(path).stem.startswith(name) or '/References/'+name+'/' in path or 'ArenaStone'+name in path),None)
+        if variant:
+            size=modules[variant];entry['dimensionsMetresBlenderXYZ']=[size[0],size[2],size[1]]
+        entry['referenceSheets']=[relative(art/'Environment/ArenaStone'/(name+'-Measured-Sheet.png')) for name in ('OuterX','OuterN','Spine','Wing','Landing','Underpass','Ramp')]
+        entry['dependencies'] += [relative(art/'Environment/ArenaStone/arena-source.json'),relative(art/'Environment/ArenaStone/measured-views.json'),'RailArena/Assets/RailArena/Editor/ArenaStoneArtBuilder.cs','RailArena/Assets/RailArena/Runtime/ArenaStoneSet.cs','RailArena/Assets/RailArena/Runtime/ArtSlicePresentation.cs']
     if family=='summit-stone':
         entry['runtimeUsage']='Production review build' if path.startswith('RailArena/') else 'Editable source or reference evidence; not runtime content'
         entry['referenceSheets']=[relative(art/'Environment/SummitStone'/(name+'-Measured-Sheet.png')) for name in ('Summit','Cover','Column')]

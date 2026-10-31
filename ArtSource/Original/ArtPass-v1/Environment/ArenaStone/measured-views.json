@@ -1,0 +1,202 @@
+{
+  "units": "metres",
+  "axes": "Blender metres (x,y,z) -> Unity (x,z,-y); bounds-centre pivot; canonical ramp climbs +X",
+  "modules": [
+    {
+      "family": "OuterX",
+      "orthographicSpanMetres": 46.0,
+      "resolution": 768,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "sizeUnityMetres": [
+        6.0,
+        0.6000000238418579,
+        40.0
+      ],
+      "masterSha256": "5610080a36c54726d48e268c233692b352ae0108b811148bb09959fa3e6283b5",
+      "pivot": "original collider bounds centre",
+      "detailOrthographicSpanMetres": 5.5,
+      "explodedLayerOffsetsBlenderZMetres": {
+        "Paving": 0.9,
+        "Wayfinding": 0.9,
+        "Coping": 0.45,
+        "Underside": -0.65,
+        "Coffer": -0.65
+      }
+    },
+    {
+      "family": "OuterN",
+      "orthographicSpanMetres": 50.599999999999994,
+      "resolution": 768,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "sizeUnityMetres": [
+        44.0,
+        0.6000000238418579,
+        6.0
+      ],
+      "masterSha256": "5610080a36c54726d48e268c233692b352ae0108b811148bb09959fa3e6283b5",
+      "pivot": "original collider bounds centre",
+      "detailOrthographicSpanMetres": 5.5,
+      "explodedLayerOffsetsBlenderZMetres": {
+        "Paving": 0.9,
+        "Wayfinding": 0.9,
+        "Coping": 0.45,
+        "Underside": -0.65,
+        "Coffer": -0.65
+      }
+    },
+    {
+      "family": "Spine",
+      "orthographicSpanMetres": 13.799999999999999,
+      "resolution": 768,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "sizeUnityMetres": [
+        4.0,
+        0.5999999046325684,
+        12.0
+      ],
+      "masterSha256": "5610080a36c54726d48e268c233692b352ae0108b811148bb09959fa3e6283b5",
+      "pivot": "original collider bounds centre",
+      "detailOrthographicSpanMetres": 5.5,
+      "explodedLayerOffsetsBlenderZMetres": {
+        "Paving": 0.9,
+        "Wayfinding": 0.9,
+        "Coping": 0.45,
+        "Underside": -0.65,
+        "Coffer": -0.65
+      }
+    },
+    {
+      "family": "Wing",
+      "orthographicSpanMetres": 11.5,
+      "resolution": 768,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "sizeUnityMetres": [
+        10.0,
+        0.5999999046325684,
+        4.0
+      ],
+      "masterSha256": "5610080a36c54726d48e268c233692b352ae0108b811148bb09959fa3e6283b5",
+      "pivot": "original collider bounds centre",
+      "detailOrthographicSpanMetres": 5.5,
+      "explodedLayerOffsetsBlenderZMetres": {
+        "Paving": 0.9,
+        "Wayfinding": 0.9,
+        "Coping": 0.45,
+        "Underside": -0.65,
+        "Coffer": -0.65
+      }
+    },
+    {
+      "family": "Landing",
+      "orthographicSpanMetres": 4.6,
+      "resolution": 768,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "sizeUnityMetres": [
+        4.0,
+        0.5999999046325684,
+        4.0
+      ],
+      "masterSha256": "5610080a36c54726d48e268c233692b352ae0108b811148bb09959fa3e6283b5",
+      "pivot": "original collider bounds centre",
+      "detailOrthographicSpanMetres": 5.5,
+      "explodedLayerOffsetsBlenderZMetres": {
+        "Paving": 0.9,
+        "Wayfinding": 0.9,
+        "Coping": 0.45,
+        "Underside": -0.65,
+        "Coffer": -0.65
+      }
+    },
+    {
+      "family": "Underpass",
+      "orthographicSpanMetres": 32.199999999999996,
+      "resolution": 768,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "sizeUnityMetres": [
+        8.0,
+        0.6000000238418579,
+        28.0
+      ],
+      "masterSha256": "5610080a36c54726d48e268c233692b352ae0108b811148bb09959fa3e6283b5",
+      "pivot": "original collider bounds centre",
+      "detailOrthographicSpanMetres": 5.5,
+      "explodedLayerOffsetsBlenderZMetres": {
+        "Paving": 0.9,
+        "Wayfinding": 0.9,
+        "Coping": 0.45,
+        "Underside": -0.65,
+        "Coffer": -0.65
+      }
+    },
+    {
+      "family": "Ramp",
+      "orthographicSpanMetres": 18.4,
+      "resolution": 768,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "sizeUnityMetres": [
+        16.0,
+        4.400000095367432,
+        4.0
+      ],
+      "masterSha256": "5610080a36c54726d48e268c233692b352ae0108b811148bb09959fa3e6283b5",
+      "pivot": "original collider bounds centre",
+      "detailOrthographicSpanMetres": 5.5,
+      "explodedLayerOffsetsBlenderZMetres": {
+        "Paving": 0.9,
+        "Wayfinding": 0.9,
+        "Coping": 0.45,
+        "Underside": -0.65,
+        "Coffer": -0.65
+      }
+    }
+  ]
+}

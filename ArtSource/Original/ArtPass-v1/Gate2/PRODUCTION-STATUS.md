@@ -2,7 +2,7 @@
 
 Sanders approved the direction and authorized continuous production without intermediate approval holds. Final playtest is the artistic and user QA gate. Public release remains held for acceptance.
 
-**Working local milestone:** ArtPass Review-19 adds three authored third-person slide phases to all four characters, retaining Review-17 crouch and all earlier graphics/gameplay. All 39 mechanics checks, the three-bot match and both corrected 90-second loopback peers pass. All 425 portable file hashes verify. Combat/summit P95 exceed 16.67 ms; GPU/native acceptance remains open. Review-18 is preserved as a rejected host-slide coverage run. [Validation](../../../../Validation/art-integrated-final-19.json) and [build handoff](../../../../docs/ART-PASS-REVIEW.md) record identity, checksum and scope.
+**Working local milestone:** ArtPass Review-20 adds seven measured arena stone/ramp families across nineteen placements, retaining authored slide/crouch and all earlier graphics/gameplay. All 39 mechanics checks, the three-bot match and both 90-second loopback peers pass. All 457 portable file hashes verify. Combat/summit/basement P95 exceed 16.67 ms; GPU/native acceptance remains open. Historical candidates and rejected Review-18 coverage remain recorded. [Validation](../../../../Validation/art-integrated-final-20.json) and [build handoff](../../../../docs/ART-PASS-REVIEW.md) record identity, checksum and scope.
 
 ## Implemented
 
@@ -33,3 +33,7 @@ Packaged mechanics, bot-match, targeted multiplayer and 1080p performance eviden
 ## Reproduction
 
 Use Blender 5.2 background scripts under tools. Unity 6000.6.7f1: batchmode/nographics ArtSliceBuilder.Prepare, then ArtSliceBuilder.Build from a clean committed checkout. RA_ART_BUILD_OUTPUT selects a new output folder; existing folders are refused. ArtSliceLookCaptures and RifleReloadArtReview are graphics-enabled hidden EditMode tests; check the executed count. Offline galleries do not establish browser rendering.
+
+## Lower arena stone source milestone
+
+Seven original measured Blender families now cover nineteen lower-deck/ramp placements with three detail levels each. Focused native verification passes 27 original-floor rays, 704 material-region comparisons across LODs, all collider/navigation/device preservation and cleanup checks. Forty-two equal-scale orthographic views, seven measured sheets and matching installed comparisons are supplied. Revised LODs preserve the original near geometry and weathered colour positions. Review 20 now validates and packages this source milestone with the retained graphics, animation and traversal work. Wider nature/device, animation and full-reference production remain open.
