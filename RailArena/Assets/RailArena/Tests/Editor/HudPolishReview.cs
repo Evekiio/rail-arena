@@ -63,7 +63,8 @@ namespace RailArena.Tests
                 target.Create(); camera.targetTexture=target;
                 canvas.renderMode=RenderMode.ScreenSpaceCamera; canvas.worldCamera=camera; canvas.planeDistance=.2f;
                 yield return Frames(2); Canvas.ForceUpdateCanvases();
-                HeadlessUiReview.Draw(canvas,camera,target);
+                UnityEngine.Rendering.RenderPipeline.SubmitRenderRequest(camera,new UnityEngine.Rendering.RenderPipeline.StandardRequest {destination=target});
+                HeadlessUiReview.Draw(canvas,camera,target,clear:false);
                 foreach(var text in canvas.GetComponentsInChildren<UnityEngine.UI.Text>())
                     Assert.That(text.cachedTextGenerator.characterCountVisible,Is.EqualTo(text.text.Length),text.name);
                 RenderTexture.active=target; image.ReadPixels(new Rect(0,0,size.x,size.y),0,0); image.Apply();
