@@ -55,6 +55,7 @@ html += '<p><a href="Animation/Slide/index.html">Feet-first slide master, measur
 html += '<p><a href="Environment/BridgeStone/index.html">Measured bridge, screen and pier construction</a></p>'
 html += '<p><a href="Environment/SummitStone/index.html">Measured summit deck, cover and column construction</a></p>'
 html += '<p><a href="Environment/ArenaStone/index.html">Measured arena decks, ramps and native camera comparisons</a></p>'
+html += '<p><a href="Animation/Standing/index.html">Standing ready / measured poses and native playback; source integrated after Review22, shipping pending</a></p>'
 html += '<p><a href="Nature/GardenNature/index.html">Garden nature / canonical modules, measured sheets, native comparisons and wind reel; Windows Review 22 verified; final native/artistic acceptance pending</a></p>'
 html += '<p><a href="Experiments/RifleBatch/index.html">Archived rifle rendering experiment / not installed; no demonstrated frame-time improvement</a></p>'
 for title, directory in sections:
@@ -119,6 +120,8 @@ for entry in entries:
             family='contender-airborne';category='animation';directory=art/'Animation/Airborne';master=directory/'Contender-Airborne-v1.blend';references=directory/'airborne-production.json';sheet=directory/'References/Takeoff/measured-poses.png';screenshot=directory/'Airborne-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original authored takeoff, suspension and impact-recovery motion on the unchanged shared skeleton; simulation owns root translation.'
         elif '/Forward/' in path or 'Advance' in path:
             family='contender-advance';category='animation';directory=art/'Animation/Forward';master=directory/'Contender-Advance-v1.blend';references=directory/'forward-production.json';sheet=directory/'References/AdvanceWalk/measured-poses.png';screenshot=directory/'Advance-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original authored forward support/swing contact paths baked on the unchanged shared contender skeleton.'
+        elif '/Standing/' in path or 'StandingReady' in path:
+            family='contender-standing';category='animation';directory=art/'Animation/Standing';master=directory/'Contender-Standing-v1.blend';references=directory/'standing-production.json';sheet=directory/'References/StandingReady/measured-poses.png';screenshot=directory/'Standing-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original four-second planted standing-ready loop on the shared skeleton; native four-character candidate and installed review. Source integrated; Windows milestone pending.'
         elif '/Animation/' in path or 'ContenderRetreat' in path:
             family='contender-retreat';category='animation';directory=art/'Animation';master=directory/'Contender-Retreat-v1.blend';references=directory/'retreat-production.json';sheet=directory/'References/RetreatWalk/measured-poses.png';screenshot=directory/'Retreat-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original authored contact paths and baked bone animation on the unchanged shared contender skeleton; inherited CC0 rig provenance retained.'
         elif '/GardenNature/' in path or path.startswith('RailArena/Assets/Resources/Art/Garden'):
@@ -161,6 +164,9 @@ for entry in entries:
             slide_source=art/'Animation/Slide/slide-production.json'
             entry['clips'] += [clip['name'] for clip in json.loads(slide_source.read_text())['clips']]
             entry['dependencies'] += [relative(slide_source)]
+            standing_source=art/'Animation/Standing/standing-production.json'
+            entry['clips'] += [clip['name'] for clip in json.loads(standing_source.read_text())['clips']]
+            entry['dependencies'] += [relative(standing_source)]
             entry['provenance']='Independent Sky Gardens graph combines original forward, backward, lateral, airborne, reaction, grounded crouch and slide masters; legacy controller preserved.'
         if family=='contender-reactions':
             entry['dependencies'] += ['RailArena/Assets/RailArena/Runtime/ContenderPresentation.cs','RailArena/Assets/RailArena/Runtime/CorpseContactSurface.cs','RailArena/Assets/RailArena/Editor/ContenderMotionArtBuilder.cs']

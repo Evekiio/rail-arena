@@ -55,7 +55,7 @@ namespace RailArena.Tests
         }
         [UnityTest] public IEnumerator CaptureNativeCandidatesWithoutInstallingStance()=>Capture(false);
         [UnityTest] public IEnumerator CaptureInstalledGroundCrouch()=>Capture(true);
-        internal IEnumerator Capture(bool installed,string[] clipNames=null,string outputDirectory=null)
+        internal IEnumerator Capture(bool installed,string[] clipNames=null,string outputDirectory=null,bool standing=false)
         {
             priorQuality=File.ReadAllBytes("ProjectSettings/QualitySettings.asset");priorPipeline=QualitySettings.renderPipeline;
             QualitySettings.renderPipeline=AssetDatabase.LoadAssetAtPath<RenderPipelineAsset>("Assets/RailArena/Art/ArtPass/Atmosphere/SkyGardensPipeline.asset");
@@ -77,7 +77,7 @@ namespace RailArena.Tests
                 var animator=actor.Presentation.Animator;originals[actor.Id]=animator.runtimeAnimatorController;
                 if(!installed)actor.Presentation.SetMotionController(null);
                 animator.applyRootMotion=false;animator.enabled=!installed;animator.speed=installed?0:1;
-                if(installed){animator.Rebind();actor.SetCrouched(true);}
+                if(installed){animator.Rebind();actor.SetCrouched(!standing);}
                 actor.Presentation.Hands.enabled=false;surfaces[actor.Id]=new Surface(actor);
             }
             var camera=new GameObject("Owned crouch family camera").AddComponent<Camera>();camera.enabled=false;camera.cullingMask=1<<30;
@@ -107,14 +107,14 @@ namespace RailArena.Tests
                         graphs[actor.Id]=graph;playables[actor.Id]=playable;
                     }
                     int frames=Mathf.RoundToInt(clip.length*60);
-                    for(int frame=0;frame<(installed?120:frames+1);frame++,outputFrame++)
+                    for(int frame=0;frame<(installed&&!standing?120:frames+1);frame++,outputFrame++)
                     {
                         foreach(var actor in session.Actors)
                         {
                             if(installed)
                             {
                                 actor.Velocity=(name=="CrouchForward"?Vector3.forward:name=="CrouchBackward"?Vector3.back:name=="CrouchLeft"?Vector3.left:name=="CrouchRight"?Vector3.right:Vector3.zero)*3.6f;
-                                actor.Presentation.ApplyMotionState(0);actor.Presentation.Animator.Play("Crouch",0,Mathf.Repeat(frame/(float)frames,1));actor.Presentation.Animator.Update(0);
+                                actor.Presentation.ApplyMotionState(0);actor.Presentation.Animator.Play(standing?"Locomotion":"Crouch",0,Mathf.Repeat(frame/(float)frames,1));actor.Presentation.Animator.Update(0);
                                 Assert.That(Array.Exists(actor.Presentation.Animator.GetCurrentAnimatorClipInfo(0),item=>item.clip.name==name&&item.weight>.999f),Is.True);
                             }
                             else{playables[actor.Id].SetTime(frame/60d);graphs[actor.Id].Evaluate(0);}
@@ -123,11 +123,11 @@ namespace RailArena.Tests
                             float left=Vector3.Distance(animator.GetBoneTransform(HumanBodyBones.LeftHand).position,actor.Presentation.LeftGrip.position);
                             float right=Vector3.Distance(animator.GetBoneTransform(HumanBodyBones.RightHand).position,actor.Presentation.RightGrip.position);
                             if(heights.x<-.005f||heights.x>.035f)failures.Add(name+" frame "+frame+" character "+actor.CharacterId+" skin floor "+heights.x);
-                            if(!name.EndsWith("Enter",StringComparison.Ordinal)&&!name.EndsWith("Exit",StringComparison.Ordinal)&&heights.y>1.35f)failures.Add(name+" crouch height "+heights.y);
+                            if(name.StartsWith("Crouch",StringComparison.Ordinal)&&!name.EndsWith("Enter",StringComparison.Ordinal)&&!name.EndsWith("Exit",StringComparison.Ordinal)&&heights.y>1.35f)failures.Add(name+" crouch height "+heights.y);
                             if(Mathf.Max(left,right)>.025f)failures.Add(name+" grip error "+Mathf.Max(left,right));
                             var position=actor.transform.position;
                             Assert.That(position,Is.EqualTo(new Vector3((actor.Id-1.5f)*1.4f,actor.Controller.skinWidth,12)));
-                            Assert.That(actor.Controller.height,Is.EqualTo(installed?ArenaActor.CrouchingHeight:ArenaActor.StandingHeight));
+                            Assert.That(actor.Controller.height,Is.EqualTo(installed&&!standing?ArenaActor.CrouchingHeight:ArenaActor.StandingHeight));
                             csv.AppendFormat(CultureInfo.InvariantCulture,"{0},{1},{2},{3},{4:F6},{5:F6},{6:F6},{7:F6},{8:F6},{9:F3},{10:F3},{11:F3},{12:F3}\n",outputFrame,name,frame,actor.CharacterId,heights.x,heights.y,animator.GetBoneTransform(HumanBodyBones.Head).position.y,left,right,position.x,position.y,position.z,actor.Controller.height);
                         }
                         yield return null;

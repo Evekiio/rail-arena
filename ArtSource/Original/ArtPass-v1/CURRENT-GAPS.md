@@ -3,10 +3,10 @@
 The Gate 1 snapshot is preserved. This path join keeps baseline IDs, uses Unity GUIDs for new imported assets, and links the current production evidence. Production evidence is not final asset/reference acceptance.
 
 - **baselineEntries:** 2224
-- **productionEntries:** 1482
+- **productionEntries:** 1529
 - **overlappingPaths:** 1
-- **currentUniquePaths:** 3705
-- **productionEvidencePaths:** 1472
+- **currentUniquePaths:** 3752
+- **productionEvidencePaths:** 1519
 - **archivedResearchPaths:** 10
 - **baselineOnlyPaths:** 2223
 - **missingPaths:** 0

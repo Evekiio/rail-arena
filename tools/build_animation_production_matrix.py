@@ -4,9 +4,10 @@ from pathlib import Path
 
 root=Path(__file__).resolve().parent.parent
 art=root/'ArtSource/Original/ArtPass-v1'
-with (art/'Gate1/animation-matrix.csv').open(newline='') as stream:rows=list(csv.DictReader(stream))
+with (art/'Gate1/animation-matrix.csv').open(newline='',encoding='utf-8-sig') as stream:rows=list(csv.DictReader(stream))
 columns=list(rows[0])+['productionState','sourceMaster','measuredReferences','playback','validation','remainingEvidence']
 installed={
+    ('character','idle'):('Animation/Standing','Contender-Standing-v1.blend','Standing-Playback.mp4','StandingReady'),
     ('character','walk forward'):('Animation/Forward','Contender-Advance-v1.blend','Advance-Playback.mp4','AdvanceWalk'),
     ('character','walk backward'):('Animation','Contender-Retreat-v1.blend','Retreat-Playback.mp4','RetreatWalk'),
     ('character','strafe left'):('Animation/Strafe','Contender-Strafe-v1.blend','Strafe-Playback.mp4','StrafeLeftWalk'),
@@ -26,6 +27,8 @@ for row in rows:
         files=[f'{directory}/{master}',f'{directory}/References/{clip}/measured-poses.png',f'{directory}/{video}',f'{directory}/review-evidence.json']
         for file in files:assert (art/file).is_file(),file
         row.update(productionState='integrated-review',sourceMaster=files[0],measuredReferences=files[1],playback=files[2],validation=files[3],currentEvidence='Original authored IK/bone motion installed in optional Sky Gardens art profile; shared rig and simulation retained.',remainingEvidence='All movement/stance/traversal combinations, rear motion views, native sound/input and final artistic acceptance remain open.')
+    if row['group']=='character' and row['action']=='idle':
+        row.update(currentEvidence='Original four-second standing-ready loop integrated at zero velocity in the Sky Gardens graph; 964 candidate and 964 installed samples across four identities preserve planted feet, wrist contacts, actor roots and standing capsule. Shipping build pending; Review22 remains current.',remainingEvidence='Idle/movement/stance/combat interruption blends, moving-world contact and native artistic acceptance remain open.')
     if row['group']=='first-person' and row['action']=='magazine reload':
         row.update(productionState='integrated-review',sourceMaster='Gate2/RifleActions/Carbine-Reload-v1.blend',playback='Gate2/RifleActions/index.html',validation='Gate2/RifleActions/ReloadAction.json',currentEvidence='Original two-second reload, magazine/wrist contacts and interruption/reset review integrated; see action package.',remainingEvidence='Complete first-person action library and native contact/audio/artistic acceptance remain open.')
     if row['group']=='character' and row['action'] in ('crouch idle','crouch movement','crouch enter/exit'):
