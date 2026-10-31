@@ -75,7 +75,7 @@ class Links(HTMLParser):
                 assert (art/value).resolve().is_file(), value
 Links().feed(html)
 paths=[]
-for directory in [root/'RailArena/Assets/RailArena/Art/ArtPass',root/'RailArena/Assets/Resources/Art',root/'RailArena/Assets/Validation/StoneSubmissionResearch',root/'RailArena/Assets/Resources/UI/ArtPassPortraits',art/'Characters',art/'Nature',art/'Devices',art/'Environment',art/'Gate2/RifleActions',art/'Animation',art/'Experiments']:
+for directory in [root/'RailArena/Assets/RailArena/Art/ArtPass',root/'RailArena/Assets/Resources/Art',root/'RailArena/Assets/Resources/UI/ArtPassPortraits',art/'Characters',art/'Nature',art/'Devices',art/'Environment',art/'Gate2/RifleActions',art/'Animation',art/'Experiments']:
     paths += [p for p in directory.rglob('*') if p.is_file() and p.suffix not in ('.meta','.blend1','.blend2')]
 paths += [root/'RailArena/Assets/Resources/Effects'/name for name in ('CelSurface.shader','CelWater.shader','CelOutline.shader','SkyGardenClouds.shader','WorldGlyph.shader','ArtAtmosphere.shader','TraversalEnergy.shader')]
 entries=[{'id':'art-'+hashlib.sha256(p.relative_to(root).as_posix().encode()).hexdigest()[:16], 'path':p.relative_to(root).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'disposition':'refine','approval':'Art direction approved; final integrated playtest pending'} for p in sorted(set(paths))]
@@ -232,15 +232,14 @@ for entry in entries:
             'referenceSheets':[],'rigBones':[],'clips':[],'currentScreenshot':'Validation/ArtFrame-RifleBatch-Visual2/matching-comparison.png',
             'provenance':'Original Rail Arena rendering prototype and tests; source commit and checksums in experiment.json',
             'referenceException':'Code/research archive with no new model geometry; source identity and controlled evidence retained. Not production artwork or an approved performance fix.'})
-    if '/StoneSubmissionResearch/' in path or Path(path).name=='StoneSubmissionResearch.asset':
-        entry.update({'category':'supporting / unpromoted research','family':'stone-submission-research','disposition':'refine',
-            'approval':'Unpromoted performance candidate; default disabled','researchStatus':'unpromoted',
-            'runtimeUsage':'Packaged research resources only; applied exclusively with --profile-stone-palette in Editor/development builds. Default gameplay does not install them.',
-            'sourceMaster':None,'dimensionsMetresBlenderXYZ':None,'dimensionAuthority':'Derived unchanged source triangle positions, normals, tangents and UVs; 45 measured source meshes validated corner by corner',
-            'dependencies':['RailArena/Assets/Resources/Art/StoneSubmissionResearch.asset','Validation/stone-submission-prepared.json','Validation/StoneSubmissionNative-03/review.json','docs/STONE-SUBMISSION-RESEARCH.md'],
+    if '/Experiments/StoneSubmission/' in path:
+        entry.update({'category':'supporting / archived research','family':'archived-stone-submission','disposition':'archive-reference',
+            'approval':'Unpromoted experiment; retained as source/evidence only','runtimeUsage':'Not installed; exact source/exports retained in a noncompiled ZIP and historical candidate build',
+            'sourceMaster':None,'dimensionsMetresBlenderXYZ':None,'dimensionAuthority':'No new canonical geometry; derived source buffers verified corner by corner',
+            'dependencies':['ArtSource/Original/ArtPass-v1/Experiments/StoneSubmission/experiment.json','ArtSource/Original/ArtPass-v1/Experiments/StoneSubmission/candidate-source.zip','docs/STONE-SUBMISSION-RESEARCH.md','Validation/StoneSubmission-Profile-01/comparison.json','Validation/StoneSubmission-Profile-02/comparison.json'],
             'referenceSheets':[],'rigBones':[],'clips':[],'currentScreenshot':'Validation/StoneSubmissionNative-03/combat-after.png',
-            'provenance':'Original derived GPU exports from existing measured Rail Arena stone assets; no new external artwork',
-            'referenceException':'No new canonical geometry; native image/geometry/restore checks passed. Controlled performance benefit remains unproven.'})
+            'provenance':'Original Rail Arena derived GPU exports and rendering prototype; exact file hashes and historical build/source identities in experiment.json',
+            'referenceException':'Archived performance research. Native image/geometry checks pass; two ordered pairs did not establish a consistent frame-time improvement. Not accepted production artwork.'})
     if Path(path).suffix.lower()=='.png':
         with Image.open(root/path) as texture:entry['textureDimensionsPixelsWH']=list(texture.size)
 (art/'integrated-manifest.json').write_text(json.dumps({'schema':'rail-arena-art-delta/2','baseline':'Gate1/asset-manifest.json','entries':entries,'coverage':'Baseline inventory plus production delta; remaining reference and animation exceptions in Gate2/PRODUCTION-STATUS.md'},indent=2)+'\n')

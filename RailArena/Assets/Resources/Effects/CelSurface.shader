@@ -16,7 +16,6 @@ Shader "RailArena/CelSurface"
         _ShadowTint("Shadow palette", Color) = (.38,.47,.59,1)
         _MidTint("Midtone palette", Color) = (.72,.79,.84,1)
         _HighlightStrength("Enamel highlight", Range(0,.5)) = .08
-        [Toggle(_STONE_VERTEX_PAINT)] _StoneVertexPaint("Derived stone vertex palette", Float) = 0
         _Cutoff("Cutout threshold", Range(0,1)) = .5
         [HideInInspector] _Cull("Cull", Float) = 2
     }
@@ -43,10 +42,6 @@ Shader "RailArena/CelSurface"
             float4 tangentOS : TANGENT;
             float2 uv : TEXCOORD0;
             float2 staticLightmapUV : TEXCOORD1;
-            #if defined(_STONE_VERTEX_PAINT)
-            float4 tint : COLOR;
-            float2 stone : TEXCOORD3;
-            #endif
             UNITY_VERTEX_INPUT_INSTANCE_ID
         };
         struct Varyings
@@ -58,10 +53,6 @@ Shader "RailArena/CelSurface"
             float2 uv : TEXCOORD3;
             half fog : TEXCOORD4;
             DECLARE_LIGHTMAP_OR_SH(lightmapUV, vertexSH, 5);
-            #if defined(_STONE_VERTEX_PAINT)
-            float3 tint : TEXCOORD6;
-            float2 stone : TEXCOORD7;
-            #endif
             UNITY_VERTEX_INPUT_INSTANCE_ID
             UNITY_VERTEX_OUTPUT_STEREO
         };
@@ -80,10 +71,6 @@ Shader "RailArena/CelSurface"
             o.fog = ComputeFogFactor(p.positionCS.z);
             OUTPUT_LIGHTMAP_UV(i.staticLightmapUV, unity_LightmapST, o.lightmapUV);
             OUTPUT_SH(o.normalWS, o.vertexSH);
-            #if defined(_STONE_VERTEX_PAINT)
-            o.tint = i.tint.rgb;
-            o.stone = i.stone;
-            #endif
             return o;
         }
         void AlphaClip(float2 uv)
@@ -95,9 +82,6 @@ Shader "RailArena/CelSurface"
         half3 SurfaceNormal(Varyings i)
         {
             half3 n = normalize(i.normalWS);
-            #if defined(_STONE_VERTEX_PAINT)
-            if (i.stone.x < .5) return n;
-            #endif
             #if defined(_NORMALMAP)
             half3 t = normalize(i.tangentWS.xyz);
             half3 b = cross(n, t) * i.tangentWS.w;
@@ -129,19 +113,11 @@ Shader "RailArena/CelSurface"
             #pragma multi_compile _ SHADOWS_SHADOWMASK
             #pragma multi_compile_local_fragment _ _ALPHATEST_ON
             #pragma multi_compile_local _ _NORMALMAP
-            #pragma shader_feature_local _ _STONE_VERTEX_PAINT
             half4 Frag(Varyings i) : SV_Target
             {
                 UNITY_SETUP_INSTANCE_ID(i);
                 AlphaClip(i.uv);
-                #if defined(_STONE_VERTEX_PAINT)
-                float3 paint = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, i.uv).rgb;
-                half3 base = lerp(float3(1,1,1), paint, saturate(i.stone.x)) * (half3)i.tint;
-                half highlightStrength = i.stone.y;
-                #else
                 half3 base = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, i.uv).rgb * _BaseColor.rgb;
-                half highlightStrength = _HighlightStrength;
-                #endif
                 half3 n = SurfaceNormal(i);
                 half4 shadowMask = SAMPLE_SHADOWMASK(i.lightmapUV);
                 Light sun = GetMainLight(TransformWorldToShadowCoord(i.positionWS), i.positionWS, shadowMask);
@@ -149,11 +125,7 @@ Shader "RailArena/CelSurface"
                 half low = smoothstep(_BandLow - _BandSoftness, _BandLow + _BandSoftness, exposure);
                 half high = smoothstep(_BandHigh - _BandSoftness, _BandHigh + _BandSoftness, exposure);
                 half3 bands = lerp(lerp(_ShadowTint.rgb, _MidTint.rgb, low), half3(1,1,1), high);
-                #if defined(_STONE_VERTEX_PAINT)
-                half occlusion = lerp(1, SAMPLE_TEXTURE2D(_OcclusionMap, sampler_OcclusionMap, i.uv).g, _OcclusionStrength * saturate(i.stone.x));
-                #else
                 half occlusion = lerp(1, SAMPLE_TEXTURE2D(_OcclusionMap, sampler_OcclusionMap, i.uv).g, _OcclusionStrength);
-                #endif
                 half3 bakedGI = SAMPLE_GI(i.lightmapUV, i.vertexSH, n);
                 MixRealtimeAndBakedGI(sun, n, bakedGI);
                 half3 ambient = max(bakedGI, half3(.04,.04,.04));
@@ -161,7 +133,7 @@ Shader "RailArena/CelSurface"
                 half3 color = base * (bands * sun.color * .85 * screenAO.directAmbientOcclusion + ambient * .65 * screenAO.indirectAmbientOcclusion) * occlusion;
                 half3 view = GetWorldSpaceNormalizeViewDir(i.positionWS);
                 half sheen = smoothstep(.93, .97, saturate(dot(n, SafeNormalize(sun.direction + view))));
-                color += sheen * highlightStrength * sun.color * sun.shadowAttenuation;
+                color += sheen * _HighlightStrength * sun.color * sun.shadowAttenuation;
                 #if defined(_ADDITIONAL_LIGHTS)
                 InputData inputData = (InputData)0;
                 inputData.positionWS = i.positionWS;
@@ -237,7 +209,6 @@ Shader "RailArena/CelSurface"
             #pragma multi_compile_instancing
             #pragma multi_compile_local_fragment _ _ALPHATEST_ON
             #pragma multi_compile_local _ _NORMALMAP
-            #pragma shader_feature_local _ _STONE_VERTEX_PAINT
             #pragma multi_compile_fragment _ _GBUFFER_NORMALS_OCT
             half4 NormalFrag(Varyings i) : SV_Target
             {

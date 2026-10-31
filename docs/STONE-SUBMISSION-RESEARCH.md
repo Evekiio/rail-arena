@@ -1,6 +1,6 @@
 # Stone submission research
 
-The current shipping review remains Review 23. This candidate is disabled by default and enabled only in an Editor or development player with `--profile-stone-palette`. It is not yet a performance improvement claim.
+The current shipping review remains Review 23. This experiment is archived outside Unity compilation and Resources. Historical research Review 24 retains the opt-in `--profile-stone-palette` path; it is not the promoted playtest build. Exact source/exports and hashes are in `ArtSource/Original/ArtPass-v1/Experiments/StoneSubmission`.
 
 The derived export combines each measured stone mesh's existing material sections into one draw section. Vertex colours preserve linear material tint; a separate vertex channel selects the original paving textures and highlight strength. Source meshes, UVs, normals, tangent frames, topology, transforms, colliders and LOD membership remain authoritative. No source import is made readable. Read-only Editor snapshots produce the derived exports.
 
@@ -20,6 +20,6 @@ Forced offscreen submission and readback add overhead and serialize work; these 
 
 ## Measurement decision
 
-The single-executable off/on pair and reverse-order pair both completed without exceptions. Draws fell 34.6–44.1% with essentially unchanged submitted triangles. Frame times remained mixed, including combat regressions in both pairs; no general frame-time improvement is established. Frame timing was enabled in both development runs but returned zero valid GPU samples. Raw results: Validation/StoneSubmission-Profile-01 and -02. The candidate is not promoted; archive its code and derived exports outside Unity compilation/resources. The independently verified deck geometry correction remains.
+The single-executable off/on pair and reverse-order pair both completed without exceptions. Draws fell 34.6–44.1% with essentially unchanged submitted triangles. Frame times remained mixed, including combat regressions in both pairs; no general frame-time improvement is established. Frame timing was enabled in both development runs but returned zero valid GPU samples. Raw results: Validation/StoneSubmission-Profile-01 and -02. The candidate is not promoted; its code and derived exports are archived outside Unity compilation/resources. The independently verified deck geometry correction remains.
 
 The 3,850-entry structural audit at Validation/ArtReferenceLinks-01 found zero missing linked files. Its counts describe links and recorded fields only, not complete per-asset measured-reference or approval coverage.
