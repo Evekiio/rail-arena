@@ -22,6 +22,8 @@ namespace RailArena.Tests
             session.enabled=false;
             while(!session.Match.IsActive)session.Match.Advance();
             foreach(var site in session.World.Pickups)site.AvailableTick=int.MaxValue;
+            var towardCenter=-session.Human.transform.position; towardCenter.y=0;
+            session.View.transform.SetPositionAndRotation(session.Human.Eye,Quaternion.LookRotation(towardCenter.normalized));
             bool flash=session.Comfort.ReducedFlash;
             try
             {

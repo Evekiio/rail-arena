@@ -26,13 +26,15 @@ namespace RailArena
             healthState = Text(health, "HealthState", "VITALS STABLE", 15, new Vector2(.27f,.01f), new Vector2(.94f,.22f));
             // Lift the bar to leave a dedicated baseline for the state label.
             var bar = (RectTransform)track; bar.anchorMin = new Vector2(.06f,.24f); bar.anchorMax = new Vector2(.94f,.29f);
+            railValue.rectTransform.anchorMin=new Vector2(.205f,.065f);
+            railValue.rectTransform.anchorMax=new Vector2(.96f,.22f);
             weaponPrompt = Text(combatRoot.transform, "WeaponPrompt", "", 19, new Vector2(.39f,.34f), new Vector2(.61f,.38f));
             weaponPrompt.alignment = TextAnchor.MiddleCenter;
             hitCaption = Text(combatRoot.transform, "HitCaption", "", 15, new Vector2(.43f,.445f), new Vector2(.57f,.47f));
             hitCaption.alignment = TextAnchor.MiddleCenter;
             var weapon=combatRoot.transform.Find("RailPanel");
             for(int i=0;i<magazineSegments.Length;i++)
-                magazineSegments[i]=Graphic(weapon,"MagazineSegment"+i,new Vector2(.205f+i*.025f,.23f),new Vector2(.223f+i*.025f,.26f),cyan);
+                magazineSegments[i]=Graphic(weapon,"MagazineSegment"+i,new Vector2(.205f+i*.025f,.255f),new Vector2(.223f+i*.025f,.285f),cyan);
             // Nested edge strips form a soft falloff without a fullscreen flash or an aim obstruction.
             for (int edge=0; edge<4; edge++)
             for (int band=0; band<6; band++)
@@ -89,7 +91,8 @@ namespace RailArena
             stanceBlend=Mathf.MoveTowards(stanceBlend,0,dt*5);
             movementIcon.color=Color.Lerp(cyan,Color.white,Session.Comfort.ReducedFlash?0:stanceBlend);
             movementLabel.color=(displayedMovement=="SPRINT" || displayedMovement=="SLIDE" ? amber : Ivory);
-            if(lastNotice!=notice.text) {lastNotice=notice.text;noticeAge=0;}
+            if(string.IsNullOrEmpty(lastNotice)!=string.IsNullOrEmpty(notice.text)) noticeAge=0;
+            lastNotice=notice.text;
             noticeAge+=dt;
             notice.rectTransform.anchoredPosition=new Vector2(0,Session.Comfort.ReducedFlash?0:Mathf.Max(0,1-noticeAge*6)*8);
             notice.color=!alive?warning:Ivory;

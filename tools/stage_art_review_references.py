@@ -37,6 +37,8 @@ if int(args.review) >= 27:
     inherited.append('HandBinding')
 if int(args.review) >= 28:
     inherited.append('ReloadHands')
+if int(args.review) >= 29:
+    inherited.append('PortalRefresh')
 for name in inherited:
     source = previous/'ValidationEvidence'/name
     assert source.is_dir() and not (destination/name).exists(), name
@@ -44,8 +46,15 @@ for name in inherited:
         if path.is_file():
             assert hashlib.sha256(path.read_bytes()).hexdigest() == manifest[path.relative_to(previous).as_posix()], path
     shutil.copytree(source, destination/name)
-family = 'PortalRefresh' if int(args.review) >= 28 else 'ReloadHands' if int(args.review) >= 27 else 'HandBinding' if int(args.review) >= 26 else 'BasementDecks' if int(args.review) >= 25 else 'ReadyMotion' if int(args.review) >= 23 else 'GardenNature' if int(args.review) >= 22 else 'ArenaStone' if int(args.review) >= 20 else 'SlideMotion'
-if family == 'PortalRefresh':
+family = 'HUDPolish' if int(args.review) >= 29 else 'PortalRefresh' if int(args.review) >= 28 else 'ReloadHands' if int(args.review) >= 27 else 'HandBinding' if int(args.review) >= 26 else 'BasementDecks' if int(args.review) >= 25 else 'ReadyMotion' if int(args.review) >= 23 else 'GardenNature' if int(args.review) >= 22 else 'ArenaStone' if int(args.review) >= 20 else 'SlideMotion'
+if family == 'HUDPolish':
+    source = root/'ArtSource/Original/ArtPass-v1/UI/HudPolish-29'
+    current = destination/family
+    assert not current.exists()
+    current.mkdir()
+    files = [(path,path.relative_to(source).as_posix()) for path in sorted(source.rglob('*')) if path.is_file()]
+    files += [(root/'Validation/hud-polish-29-final.xml','hud-polish-29-final.xml'),(root/'docs/HUD-POLISH-REVIEW-29.md','HUD-POLISH-REVIEW-29.md')]
+elif family == 'PortalRefresh':
     source = root/'ArtSource/Original/ArtPass-v1/Performance/PortalRefresh'
     spec = json.loads((source/'review-evidence.json').read_text(encoding='utf-8'))
     for name,digest in spec['commonImplementationSha256'].items():
