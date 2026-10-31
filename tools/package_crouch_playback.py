@@ -58,6 +58,6 @@ record={'scope':'Five grounded motions sampled through the installed art control
     'nativeFootIK':'Required for blended diagonal crouch contacts. Isolated source clips passed with IK off; the first live blend review failed floor bounds. Native state foot IK resolves the tested 16 directions without moving actor roots.',
     'installedClips':names,'referenceOnlyClips':['CrouchEnter','CrouchExit'],'transitionPolicy':'Preserve the existing immediate crouch/stand response. Full-body enter/exit references are not installed; a cosmetic transition solution that preserves hitbox timing remains open.',
     'video':{'path':'Crouch-Playback.mp4','width':int(video['width']),'height':int(video['height']),'fps':60,'frames':600,'seconds':10,'audio':False},
-    'windowsBuild':'Review 16 remains the latest packaged build; next integration package pending','finalAcceptance':'Sanders native input/sound/artistic acceptance pending'}
+    'windowsBuild':'Review 17 verified Windows integration; see Validation/art-integrated-final-17.json','finalAcceptance':'Sanders native input/sound/artistic acceptance pending'}
 (folder/'review-evidence.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
 print('CROUCH_INSTALLED_REVIEW_PACKAGED',record['minimumInstalledSkinYMetres'],record['maximumWristErrorMetres'])

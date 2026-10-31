@@ -1,6 +1,6 @@
 # Original crouch motion and grounded integration
 
-Seven original Blender actions have measured references and valid humanoid imports. Five grounded motions are now integrated in the Sky Gardens art-controller source. Full-body enter/exit actions remain reference-only. Review 16 remains the packaged baseline until the new Windows integration pass. Movement, capsule dimensions, hitbox definitions and the network protocol are retained; hitbox world positions follow the new grounded poses in the authoritative stance setter.
+Seven original Blender actions have measured references and valid humanoid imports. Five grounded motions are now integrated in the Sky Gardens art-controller source. Full-body enter/exit actions remain reference-only. Review 17 integrates these five motions in the verified Windows package. All 39 mechanics checks, the three-bot smoke match and both 90-second loopback peers pass; combat/waterfall frame-time exceptions remain open. See ART-PASS-REVIEW.md for shipping identity and limits. Movement, capsule dimensions, hitbox definitions and the network protocol are retained; hitbox world positions follow the new grounded poses in the authoritative stance setter.
 
 | Action | Frames at 60 Hz | Duration | Loop |
 |---|---:|---:|---|

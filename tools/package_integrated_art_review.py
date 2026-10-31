@@ -145,7 +145,7 @@ for entry in entries:
         if family=='contender-reactions':
             entry['dependencies'] += ['RailArena/Assets/RailArena/Runtime/ContenderPresentation.cs','RailArena/Assets/RailArena/Runtime/CorpseContactSurface.cs','RailArena/Assets/RailArena/Editor/ContenderMotionArtBuilder.cs']
     if family=='contender-crouch':
-        entry['runtimeUsage']=('Candidate transition reference; not referenced by live controller' if Path(path).stem in ('CrouchEnter','CrouchExit') else 'Source-integrated grounded crouch; next Windows package pending') if path.startswith('RailArena/') else 'Editable source/native review; five grounded loops integrated, enter/exit reference-only'
+        entry['runtimeUsage']=('Candidate transition reference; not referenced by live controller' if Path(path).stem in ('CrouchEnter','CrouchExit') else 'Grounded crouch integrated in verified Windows Review 17') if path.startswith('RailArena/') else 'Editable source/native review; five grounded loops integrated, enter/exit reference-only'
         entry['referenceSheets']=[relative(art/'Animation/Crouch/References'/name/'measured-poses.png') for name in ('CrouchIdle','CrouchForward','CrouchBackward','CrouchLeft','CrouchRight','CrouchEnter','CrouchExit')]
         entry['dependencies'] += [relative(art/'Animation/Crouch/baked-contact-review.json'),relative(art/'Animation/Crouch/review-evidence.json'),'RailArena/Assets/RailArena/Editor/ContenderMotionArtBuilder.cs','RailArena/Assets/RailArena/Runtime/ContenderPresentation.cs','RailArena/Assets/RailArena/Runtime/ArenaActor.cs']
         entry['clips']=[clip['name'] for clip in json.loads(references.read_text())['clips']]
