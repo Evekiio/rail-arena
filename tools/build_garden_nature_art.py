@@ -53,60 +53,69 @@ def crown(name,center,size,index,subdiv):
  bm=bmesh.new();bmesh.ops.create_icosphere(bm,subdivisions=subdiv,radius=1)
  verts=[Vector((v.co.x*size[0],v.co.y*size[1],v.co.z*size[2]))+Vector(center) for v in bm.verts];bm.verts.ensure_lookup_table();lookup={v:i for i,v in enumerate(bm.verts)};faces=[tuple(lookup[v] for v in f.verts) for f in bm.faces];bm.free();return piece(name,verts,faces,index)
 def leaf(name,base,direction,length,width,index,solid=True,vertical=False):
- direction=Vector(direction).normalized();side=direction.cross(Vector((0,0,1)))
+ direction=Vector(direction).normalized();side=(Vector((1,0,0))-direction*direction.x) if vertical else direction.cross(Vector((0,0,1)))
  if side.length<.01:side=Vector((1,0,0))
  side.normalize();normal=side.cross(direction).normalized();base=Vector(base)
- verts=[base,base+direction*length*.48+side*width*.5,base+direction*length,base+direction*length*.48-side*width*.5,base+direction*length*.48+normal*width*.13]
- faces=[(0,1,4),(1,2,4),(2,3,4),(3,0,4)];uv=[(0,.5),(.48,0),(1,.5),(.48,1),(.48,.5)]
- if solid:
-  verts.append(base+direction*length*.48-normal*width*.045);uv.append((.48,.5));faces += [(1,0,5),(2,1,5),(3,2,5),(0,3,5)]
+ if vertical:
+  verts=[base,base+direction*length*.14+side*width*.32,base+direction*length*.38+side*width*.5,base+direction*length,base+direction*length*.38-side*width*.5,base+direction*length*.14-side*width*.32,base+direction*length*.38+normal*width*.13,base+direction*length*.38-normal*width*.045]
+  uv=[(0,.5),(.14,.18),(.38,0),(1,.5),(.38,1),(.14,.82),(.38,.5),(.38,.5)]
+  faces=[(i,(i+1)%6,6) for i in range(6)]+[((i+1)%6,i,7) for i in range(6)]
+ else:
+  verts=[base,base+direction*length*.48+side*width*.5,base+direction*length,base+direction*length*.48-side*width*.5,base+direction*length*.48+normal*width*.13]
+  faces=[(0,1,4),(1,2,4),(2,3,4),(3,0,4)];uv=[(0,.5),(.48,0),(1,.5),(.48,1),(.48,.5)]
+  if solid:
+   verts.append(base+direction*length*.48-normal*width*.045);uv.append((.48,.5));faces += [(1,0,5),(2,1,5),(3,2,5),(0,3,5)]
  return piece(name,verts,faces,index,uv)
 def build(family,level):
  rng=random.Random(7001+sum(map(ord,family)));solid=True
  if family=='Trunk':
   segments=[(0,0,-.5),(.025,-.01,-.26),(-.04,.02,0),(.015,0,.23),(.08,.025,.46)]
   tube('Tapered bent trunk',segments,[.08,.06,.045,.028,.008], [10,7,5][level],1)
-  for branch in range(10):
-   angle=branch*math.tau/10;tip=Vector((math.cos(angle)*(.43 if branch%2 else .35),math.sin(angle)*.43,.20+(branch%3)*.09))
+  for branch in range(8):
+   angle=branch*math.tau/8;tip=Vector((math.cos(angle)*(.43 if branch%2 else .35),math.sin(angle)*.43,.20+(branch%3)*.09))
    tube('Radial branch '+str(branch),[(0,0,-.04),(math.cos(angle)*.19,math.sin(angle)*.2,.16),tip],[.025,.017,.004],[7,5,3][level],1 if branch%3 else 2)
   if level==0:
-   for i in range(3):crown('Bark knot '+str(i),(.015,-.05,-.25+i*.2),(.045,.022,.045),2,1)
+   for i in range(3):crown('Bark knot '+str(i),(.015,-.05,-.25+i*.2),(.03,.009,.04),0,1)
  elif family.startswith('Crown'):
   variant='ABC'.index(family[-1]);clusters=[(-.29,-.14,-.03),(.03,-.25,.03),(.31,-.02,-.04),(-.17,.15,.13),(.17,.23,.16),(-.36,.18,-.10),(.35,.19,-.03),(-.02,-.01,.28)]
   for i,c in enumerate(clusters):
-   if level==2 and i in (1,5,6):continue
    c=Vector(c);c.x+=.06*math.sin(i+variant*1.7);c.z+=variant*.035*math.cos(i)
    crown('Layered leaf crown '+str(i),c,(.23+.025*(i%2),.23,.115+.015*variant),[4,5,6][(i+variant)%3],[2,1,1][level])
-   for j in range([6,4,2][level]):
-    angle=j*math.tau/[6,4,2][level]+i*.71;direction=Vector((math.cos(angle),math.sin(angle),.08));leaf('Folded crown sprig '+str(i)+'-'+str(j),c+direction*.13,direction,.16,.075,5 if j%3 else 6,solid)
+   for j in range([6,4,1][level]):
+    angle=j*math.tau/[6,4,1][level]+i*.71;direction=Vector((math.cos(angle),math.sin(angle),.08));leaf('Folded crown sprig '+str(i)+'-'+str(j),c+direction*.13,direction,.16,.075,5 if j%3 else 6,solid)
  elif family.startswith('Shrub'):
   variant=0 if family.endswith('A') else 1
-  for i,c in enumerate([(-.24,-.26,-.05),(.24,.25,0),(-.18,-.19,.14),(.17,.21,.16),(0,0,-.16)]):
-   if level==2 and i==4:continue
-   crown('Shrub volume '+str(i),c,(.23,.25,.2),4+i%3,[2,1,1][level])
-   for j in range([5,3,1][level]):
-    angle=j*2.4+i+variant*.8;leaf('Shrub tips '+str(i)+'-'+str(j),Vector(c)+Vector((0,0,.1)),(math.cos(angle),math.sin(angle),.7),.20,.10,5+j%2,solid)
+  for plant,center in enumerate([(-.24,-.25,-.30),(.24,.25,-.30)]):
+   crown('Rosette heart '+str(plant),Vector(center)+Vector((0,0,.06)),(.075,.075,.085),3,[2,1,1][level])
+   for ring in range(2):
+    count=([12,7] if level==0 else [8,5] if level==1 else [5,3])[ring]
+    for j in range(count):
+     angle=j*math.tau/count+plant*.7+variant*.35+ring*.27
+     direction=(math.cos(angle)*(1 if ring==0 else .48),math.sin(angle)*(1 if ring==0 else .48),.50 if ring==0 else 1)
+     base=Vector(center)+Vector((math.cos(angle)*.025,math.sin(angle)*.025,.025*ring))
+     leaf('Cupped rosette blade '+str(plant)+'-'+str(ring)+'-'+str(j),base,direction,.36 if ring==0 else .30,.18 if ring==0 else .14,4+(j+ring+variant)%3,True)
  elif family.startswith('Grass'):
   variant=0 if family.endswith('A') else 1
   for i in range([48,32,16][level]):
    x=rng.uniform(-.4,.4);y=rng.uniform(-.43,.43);angle=rng.random()*math.tau
-   leaf('Upright folded grass '+str(i),(x,y,-.3),(math.cos(angle)*.36,math.sin(angle)*.36,1),rng.uniform(.38,.7),rng.uniform(.035,.065),4+(i+variant)%3,solid)
+   leaf('Upright folded grass '+str(i),(x,y,-.3),(math.cos(angle)*.025,math.sin(angle)*.025,1),rng.uniform(.38,.7),rng.uniform(.008,.016),4+(i+variant)%3,solid)
  elif family=='VineStem':
   for strand in range(6):
    count=[18,10,7][level];points=[]
    for j in range(count):
-    t=j/(count-1);points.append((-.38+strand*.152+.027*math.sin(t*13.6+strand),-.12,.48-t*.96))
+    t=j/(count-1);length=[1,.84,.96,.77,.90,.88][strand];points.append((-.38+strand*.152+.027*math.sin(t*13.6+strand),-.12,.48-t*.96*length))
    tube('Hanging vine stem '+str(strand),points,[.004]*count,[6,4,3][level],0,8)
  elif family.startswith('VineLeaf'):
   variant=0 if family.endswith('A') else 1
   for strand in range(6):
-   count=[15,10,6][level]
-   for j in range(count):
-    t=j/max(1,count-1);x=-.38+strand*.152+.027*math.sin(t*13.6+strand);z=.46-t*.87
-    # The stem and leaves share a fixed unit frame; only leaf laminae vary.
-    angle=math.pi/2 if j%2 else -math.pi/2;direction=(math.cos(angle)*.15,math.sin(angle)*.10,-.65)
-    obj=leaf('Heart vine leaf '+str(strand)+'-'+str(j),(x,-.12,z),direction,.075,.095,4+(j+variant)%3,solid)
-    # Flatten the blade depth while retaining a small, opaque folded profile.
+   rows=list(range(15)) if level==0 else [0,1,3,4,6,7,9,10,12,14] if level==1 else [0,3,6,9,12,14]
+   segments=[18,10,7][level];length=[1,.84,.96,.77,.90,.88][strand]
+   def stem_point(t):return Vector((-.38+strand*.152+.027*math.sin(t*13.6+strand),-.12,.48-t*.96*length))
+   for j in rows:
+    t=.02+.90*j/14;segment=min(segments-2,int(t*(segments-1)));fraction=t*(segments-1)-segment
+    base=stem_point(segment/(segments-1)).lerp(stem_point((segment+1)/(segments-1)),fraction)
+    side=-1 if j%2 else 1;direction=(side*(.28+.16*math.sin(strand*1.7+j*.8+variant)),.10+.05*math.sin(j+strand),-.75)
+    obj=leaf('Cupped heart vine leaf '+str(strand)+'-'+str(j),base,direction,.075,.095,4+(j+strand+variant)%3,True,True)
     for vertex in obj.data.vertices:vertex.co.y=-.12+(vertex.co.y+.12)*2.2
  else:raise AssertionError(family)
 modules=['Trunk','CrownA','CrownB','CrownC','ShrubA','ShrubB','GrassA','GrassB','VineStem','VineLeafA','VineLeafB']

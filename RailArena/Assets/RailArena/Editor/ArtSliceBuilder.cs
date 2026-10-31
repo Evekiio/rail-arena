@@ -31,6 +31,7 @@ namespace RailArena.Editor
             ContenderMotionArtBuilder.Prepare();
             ContenderArtBuilder.Prepare();
             SkyNatureArtBuilder.Prepare();
+            GardenNatureArtBuilder.Prepare();
             HealthCoreArtBuilder.Prepare();
             RifleSurfaceArtBuilder.Prepare();
             SkyAtmosphereArtBuilder.Prepare();

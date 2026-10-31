@@ -10,8 +10,8 @@ bindings=[]
 for part in source['parts']:
     family=part['family'];site=int(part['sourceName'].split('-')[1])
     module='Crown'+'ABC'[(site-1)%3] if family=='Crown' else family+('A' if site%2 else 'B') if family in ('Grass','Shrub','VineLeaf') else family
-    bindings.append({'sourceName':part['sourceName'],'module':module,'center':part['frameCenter'],'size':part['frameSize'],'wind':part['wind'],'originalBoundsCenter':part['center'],'originalBoundsSize':part['size']})
-spec['bindings']=bindings;spec['bindingAuthority']='Read-only installed nature-source.json; paired ivy stems/leaves share their original union frame. Other modules map into their original individual bounds. No new collision or navigation.'
+    bindings.append({'sourceName':part['sourceName'],'module':module,'center':part['frameCenter'],'size':part['frameSize'],'wind':part['wind'] or family=='VineStem','originalBoundsCenter':part['center'],'originalBoundsSize':part['size']})
+spec['bindings']=bindings;spec['bindingAuthority']='Read-only installed nature-source.json; paired ivy stems/leaves share their original union frame. Other modules map into their original individual bounds. Paired vine wind shares the same centre, scale, phase and time step; stems join the leaves in decorative motion. No new collision or navigation.'
 (folder/'production.json').write_bytes((json.dumps(spec,indent=2)+'\n').encode('utf-8'))
 font_path=Path('C:/Windows/Fonts/segoeui.ttf');font=lambda size:ImageFont.truetype(str(font_path),size)
 views_order=['front','rear','left','right','top','bottom'];cards=[]
@@ -47,7 +47,7 @@ for module in spec['modules']:
     path=folder/(family+'-Measured-Sheet.png');sheet.save(path)
     cards.append(f'<h2>{family}</h2><a href="{path.name}"><img src="{path.name}"></a><p><a href="References/{family}/perspective.png">Unit-frame perspective</a> / <a href="References/{family}/detail.png">0.6 m detail crop</a></p>')
 page='<!doctype html><meta charset="utf-8"><title>Rail Arena measured garden nature</title><style>body{background:#102029;color:#eef0df;font:18px system-ui;max-width:1500px;margin:32px auto}a{color:#6ce0d0}img{max-width:100%;height:auto}</style><h1>Garden nature / source production</h1><p>Eleven original metre-scaled unit-frame modules and 33 reducing LOD exports. These are geometry-derived Blender references, not installed-game acceptance. Source frames bind all 24 existing noncolliding planting renderings; paired ivy uses its original combined frame. Canonical unit proportions are scaled to the measured installed dimensions listed on each sheet.</p><p><a href="production.json">Production manifest and installation bindings</a> / <a href="nature-source.json">Read-only installed authority</a> / <a href="measured-views.json">Measured view evidence</a> / <a href="Garden-Nature-v2.blend">Editable Blender master</a> / <a href="Garden-Painted-Palette.png">Original painted palette</a></p>'+''.join(cards)
-if (folder/'site-views.json').exists():
+if (folder/'site-views.json').exists() and json.loads((folder/'site-views.json').read_text(encoding='utf-8'))['masterSha256']==spec['masterSha256']:
     site_views=json.loads((folder/'site-views.json').read_text(encoding='utf-8'));assert site_views['masterSha256']==spec['masterSha256']
     page+='<h2>Audited installed-scale diagrams / not Unity captures</h2><p>Source geometry uses actual installation frame dimensions. Planter context and the 1.8 m comparator are diagrams.</p>'
     page+='<img src="InstalledScale/tree-close.png">'

@@ -15,6 +15,7 @@ namespace RailArena
         ArenaActor firstActor;
         int actorCount = -1;
         readonly Dictionary<Renderer, bool> hiddenCover = new();
+        readonly Dictionary<SkyGardenMotion, bool> hiddenNatureMotions = new();
         readonly List<GameObject> coverInstances = new();
         readonly List<RifleReloadPresentation> rifleActions = new();
         readonly List<ContenderArtPresentation> contenderArt = new();
@@ -42,7 +43,7 @@ namespace RailArena
             InstallBridgeStone();
             InstallSummitStone();
             InstallArenaStone();
-            InstallCanopies();
+            InstallGardenNature();
             InstallMedicalCores();
             wayfinding = gameObject.AddComponent<ArenaWayfindingArt>(); wayfinding.Initialize(session.World);
             foreach (var arms in session.View.GetComponentsInChildren<FirstPersonArms>(true))
@@ -159,17 +160,23 @@ namespace RailArena
             }
         }
 
-        void InstallCanopies()
+        void InstallGardenNature()
         {
-            var prefab = Resources.Load<GameObject>("Art/Canopy");
-            if (prefab == null) throw new System.InvalidOperationException("Measured garden canopy is missing");
-            foreach (var renderer in FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None))
+            var set=Resources.Load<GardenNatureSet>("Art/GardenNature");
+            if(set==null||set.parts==null||set.parts.Length!=24)throw new System.InvalidOperationException("Measured garden nature bindings are missing");
+            var names=new HashSet<string>(System.StringComparer.Ordinal);
+            foreach(var part in set.parts)if(!names.Add(part.sourceName))throw new System.InvalidOperationException("Duplicate nature binding: "+part.sourceName);
+            var sources=new Dictionary<string,MeshRenderer>(System.StringComparer.Ordinal);
+            foreach(var renderer in session.World.GetComponentsInChildren<MeshRenderer>(true))if(names.Contains(renderer.name))sources.Add(renderer.name,renderer);
+            foreach(var part in set.parts)
             {
-                if (!renderer.name.StartsWith("TREE-", System.StringComparison.Ordinal) || !renderer.name.EndsWith("-LEAVES", System.StringComparison.Ordinal)) continue;
-                var instance = Instantiate(prefab, renderer.bounds.center, Quaternion.identity);
-                instance.name = renderer.name + " / Layered canopy";
-                instance.transform.localScale = renderer.bounds.size;
-                coverInstances.Add(instance); hiddenCover[renderer] = renderer.enabled; renderer.enabled = false;
+                if(!sources.TryGetValue(part.sourceName,out var source))throw new System.InvalidOperationException("Original planting rendering is missing: "+part.sourceName);
+                var instance=Instantiate(part.prefab,part.center,Quaternion.identity);instance.name=part.sourceName+" / Authored garden nature";instance.transform.localScale=part.size;
+                foreach(var item in instance.GetComponentsInChildren<Transform>(true))item.gameObject.layer=source.gameObject.layer;
+                coverInstances.Add(instance);hiddenCover[source]=source.enabled;source.enabled=false;
+                var originalMotion=source.GetComponent<SkyGardenMotion>();
+                if(originalMotion!=null){hiddenNatureMotions.Add(originalMotion,originalMotion.enabled);originalMotion.enabled=false;}
+                if(part.wind)instance.AddComponent<SkyGardenMotion>();
             }
         }
 
@@ -301,6 +308,7 @@ namespace RailArena
             foreach (var character in contenderArt) if (character != null) Destroy(character);
             foreach (var entry in pickupMarkers) if (entry.Key != null) entry.Key.Marker = entry.Value;
             foreach (var entry in hiddenCover) if (entry.Key != null) entry.Key.enabled = entry.Value;
+            foreach (var entry in hiddenNatureMotions) if (entry.Key != null) entry.Key.enabled = entry.Value;
             foreach (var instance in coverInstances) if (instance != null) Destroy(instance);
             foreach (var renderer in surfaces)
             {
