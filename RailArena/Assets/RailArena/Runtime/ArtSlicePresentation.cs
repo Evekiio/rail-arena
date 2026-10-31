@@ -39,6 +39,7 @@ namespace RailArena
             if (Profile.CloudSkybox != null) RenderSettings.skybox = Profile.CloudSkybox;
             InstallStoneCover();
             InstallBasementDecks();
+            InstallBridgeStone();
             InstallCanopies();
             InstallMedicalCores();
             wayfinding = gameObject.AddComponent<ArenaWayfindingArt>(); wayfinding.Initialize(session.World);
@@ -189,6 +190,28 @@ namespace RailArena
                         hiddenCover[marker]=marker.enabled;marker.enabled=false;
                     }
                 }
+        }
+
+        void InstallBridgeStone()
+        {
+            var renderers = session.World.GetComponentsInChildren<MeshRenderer>(true);
+            foreach (var source in renderers)
+            {
+                string family = source.name == "Bridge" ? "Deck" :
+                    source.name == "Bridge-Screen1" || source.name == "Bridge-Screen-1" ? "Screen" :
+                    source.name == "Underpass-Pier1" || source.name == "Underpass-Pier-1" ? "Pier" : null;
+                if (family == null) continue;
+                var prefab = Resources.Load<GameObject>("Art/BridgeStone" + family);
+                if (prefab == null) throw new System.InvalidOperationException("Measured bridge stone art is missing");
+                var instance = Instantiate(prefab, source.bounds.center, Quaternion.identity);
+                instance.name = source.name + " / Authored bridge stone";
+                foreach (var item in instance.GetComponentsInChildren<Transform>(true)) item.gameObject.layer = source.gameObject.layer;
+                coverInstances.Add(instance);
+                foreach (var original in renderers)
+                    if (original == source || original.name.StartsWith(source.name + "-CAP", System.StringComparison.Ordinal)
+                        || original.name.StartsWith(source.name + "-INLAY", System.StringComparison.Ordinal))
+                    { hiddenCover[original] = original.enabled; original.enabled = false; }
+            }
         }
 
         void InstallMedicalCores()

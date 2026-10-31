@@ -1,0 +1,66 @@
+{
+  "units": "metres",
+  "axes": "Blender (x,y,z) -> Unity (x,z,-y); metres; per-module bounds-center origin",
+  "modules": [
+    {
+      "family": "Deck",
+      "orthographicSpanMetres": 13.799999999999999,
+      "resolution": 768,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "sizeUnityMetres": [
+        12.0,
+        0.6000000238418579,
+        6.0
+      ],
+      "masterSha256": "1669fd04bf83b7ca5199a6c30fa61520214ec3b37914f4d1ea6a48f64a1862b0",
+      "pivot": "source bounds center"
+    },
+    {
+      "family": "Screen",
+      "orthographicSpanMetres": 2.989999890327453,
+      "resolution": 768,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "sizeUnityMetres": [
+        1.5,
+        2.5999999046325684,
+        2.4000000953674316
+      ],
+      "masterSha256": "1669fd04bf83b7ca5199a6c30fa61520214ec3b37914f4d1ea6a48f64a1862b0",
+      "pivot": "source bounds center"
+    },
+    {
+      "family": "Pier",
+      "orthographicSpanMetres": 4.6,
+      "resolution": 768,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "sizeUnityMetres": [
+        1.600000023841858,
+        3.4000000953674316,
+        4.0
+      ],
+      "masterSha256": "1669fd04bf83b7ca5199a6c30fa61520214ec3b37914f4d1ea6a48f64a1862b0",
+      "pivot": "source bounds center"
+    }
+  ]
+}
