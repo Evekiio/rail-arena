@@ -33,6 +33,8 @@ if int(args.review) >= 25:
     inherited.append('ReadyMotion')
 if int(args.review) >= 26:
     inherited.append('BasementDecks')
+if int(args.review) >= 27:
+    inherited.append('HandBinding')
 for name in inherited:
     source = previous/'ValidationEvidence'/name
     assert source.is_dir() and not (destination/name).exists(), name
@@ -40,8 +42,19 @@ for name in inherited:
         if path.is_file():
             assert hashlib.sha256(path.read_bytes()).hexdigest() == manifest[path.relative_to(previous).as_posix()], path
     shutil.copytree(source, destination/name)
-family = 'HandBinding' if int(args.review) >= 26 else 'BasementDecks' if int(args.review) >= 25 else 'ReadyMotion' if int(args.review) >= 23 else 'GardenNature' if int(args.review) >= 22 else 'ArenaStone' if int(args.review) >= 20 else 'SlideMotion'
-if family == 'HandBinding':
+family = 'ReloadHands' if int(args.review) >= 27 else 'HandBinding' if int(args.review) >= 26 else 'BasementDecks' if int(args.review) >= 25 else 'ReadyMotion' if int(args.review) >= 23 else 'GardenNature' if int(args.review) >= 22 else 'ArenaStone' if int(args.review) >= 20 else 'SlideMotion'
+if family == 'ReloadHands':
+    source = root/'ArtSource/Original/ArtPass-v1/FirstPerson/ReloadHands-v1'
+    spec = json.loads((source/'ReloadHandAction.json').read_text(encoding='utf-8'))
+    assert hashlib.sha256((source/spec['master']).read_bytes()).hexdigest() == spec['masterSha256']
+    assert spec['masterSha256'] == json.loads((source/'review-evidence.json').read_text(encoding='utf-8'))['masterSha256']
+    current = destination/family
+    assert not current.exists(), 'Never overwrite staged references'
+    current.mkdir()
+    files = [(path, path.relative_to(source).as_posix()) for path in sorted(source.rglob('*')) if path.is_file() and path.suffix in ('.blend','.json','.png','.html','.gz','.mp4')]
+    files += [(root/'Validation'/name,name) for name in ['reload-hands-native.xml','reload-hands-saved-master.json','reload-hand-source-calibrated-06.xml','ReloadHandsPlayback-01/review.json','ReloadHandsPlayback-01/samples.csv']]
+    files += [(root/'docs/AUTHORED-RELOAD-HANDS.md','AUTHORED-RELOAD-HANDS.md'),(root/'RailArena/Assets/Resources/Art/RifleReloadHands.asset','Exports/RifleReloadHands.asset')]
+elif family == 'HandBinding':
     source = root/'ArtSource/Original/ArtPass-v1/FirstPerson/Assembly-v2'
     spec = json.loads((source/'production.json').read_text(encoding='utf-8'))
     assert hashlib.sha256((source/spec['master']).read_bytes()).hexdigest() == spec['masterSha256']

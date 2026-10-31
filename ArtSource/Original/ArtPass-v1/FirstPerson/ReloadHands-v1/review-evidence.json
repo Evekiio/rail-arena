@@ -1,0 +1,41 @@
+{
+  "masterSha256": "ccf37a7d24fbdd29efa62f2718a63881868001d23f8984d6f4c23625275b8412",
+  "framesPerStage": 121,
+  "appearances": 4,
+  "poseSamples": 605,
+  "jointSamples": 12100,
+  "thirdPersonPoseSamples": 28,
+  "maximumWristError": 2.9490749966498697e-06,
+  "maximumJointGap": 2.762467829597881e-06,
+  "maximumAuthoredTipError": 2.2458812054537702e-06,
+  "maximumThirdPersonWristError": 1.9660499219753547e-06,
+  "passed": true,
+  "scope": "Original held grip versus Blender-authored release/grasp/return, with the same existing wrist/magazine track, camera and frozen actor. 121 distinct runtime pose updates per stage. Silent cosmetic review; not native input/audio or complete skin collision acceptance.",
+  "clips": [
+    {
+      "path": "Reload-Before.mp4",
+      "sha256": "f4ec04e2fa850c6b14c02d3c4894d636c15dd09f47094105712aff66de44284e",
+      "width": 1280,
+      "height": 720,
+      "avg_frame_rate": "60/1",
+      "duration": "2.016667",
+      "nb_frames": "121"
+    },
+    {
+      "path": "Reload-After.mp4",
+      "sha256": "dfb6319d78a301de2de9538a1f54208e42d4cb3c38998c38827f020815a2a9e2",
+      "width": 1280,
+      "height": 720,
+      "avg_frame_rate": "60/1",
+      "duration": "2.016667",
+      "nb_frames": "121"
+    }
+  ],
+  "comparisonClip": "Reload-Before-After.mp4",
+  "comparisonClipSha256": "efc453bf69cbaf9998292dc1df21701b9f7fc0775e6389b02b7b6c92c796f508",
+  "nativeResult": "Validation/reload-hands-native.xml",
+  "savedMasterResult": "Validation/reload-hands-saved-master.json",
+  "samples": "Validation/ReloadHandsPlayback-01/samples.csv",
+  "timing": "121 inclusive boundary samples at 60 Hz cover the authoritative two-second action. Encoded clips include the final boundary frame (2.0167 s). Silent review, not frame-pacing measurement.",
+  "remaining": "Contact target measurement is fingertip sleeve-ring centre to RF-11 surface, not full skin collision certification. Fine glove/palm fit, tap contact, transition/interruption and native artistic acceptance require review. Existing two-second gameplay reload remains authoritative."
+}

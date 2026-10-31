@@ -50,6 +50,7 @@ html = '<!doctype html><meta charset="utf-8"><title>Rail Arena integrated art re
 html += '<p><a href="current-asset-register.csv">Joined current inventory</a> · <a href="current-asset-manifest.json">Machine-readable current manifest</a> · <a href="CURRENT-GAPS.md">Coverage and remaining production gaps</a> · <a href="Environment/BasementDecks/index.html">Measured basement stone kit and construction layers</a></p>'
 for folder in sorted((art/'FirstPerson').glob('Assembly-v*')):
     if (folder/'index.html').is_file():html += f'<p><a href="FirstPerson/{folder.name}/index.html">{folder.name} / calibrated held references'+(' / historical baseline' if folder.name=='Assembly-v1' else ' / corrected finger binding and native motion comparison')+'</a></p>'
+if (art/'FirstPerson/ReloadHands-v1/index.html').is_file():html += '<p><a href="FirstPerson/ReloadHands-v1/index.html">Authored reload hands / native release and magazine grasp / measured action sheets</a></p>'
 html += '<p><a href="Performance/UnderbridgeMounted/index.html">Corrected under-bridge destinations and measured wall mounting</a></p>'
 html += '<p><a href="Animation/Strafe/index.html">Authored lateral gaits, measured poses and installed playback</a></p>'
 html += '<p><a href="Animation/Reactions/index.html">Authored hit/death, matching legacy reference and lifecycle evidence</a></p>'
@@ -270,6 +271,17 @@ for entry in entries:
             entry['referenceException']='Corrected authored finger bindings; native controlled motion joint-centre check passes. Fine grip fit, complete first-person actions/contacts, replacement Avatar import and final native/artistic acceptance remain incomplete.'
             entry['clips']=[prefix+'Hand-before-after.mp4']
             entry['dependencies'] += [prefix+'motion-review.json','Validation/hand-seam-motion.xml','Validation/fps-hand-binding-contract.xml','docs/HAND-BIND-CALIBRATION.md']
+    if '/FirstPerson/ReloadHands-v1/' in path or path.endswith('/RifleReloadHands.asset'):
+        directory=art/'FirstPerson/ReloadHands-v1';prefix=directory.relative_to(root).as_posix()+'/'
+        action=json.loads((directory/'ReloadHandAction.json').read_text(encoding='utf-8'));measured=json.loads((directory/'measured-views.json').read_text(encoding='utf-8'));selected=next((pose for pose in measured['poses'] if '/'+pose['label']+'/' in path),measured['poses'][0])
+        entry.update({'category':'first-person presentation / animation','family':'reload-hand-contact','mapArea':'Sky Gardens / rifle presentation','disposition':'refine','sourceMaster':prefix+action['master'],
+            'runtimeUsage':'Sampled fifteen-joint release/grasp/return action in the Sky Gardens art presentation; existing two-second wrist/magazine and simulation timing retained. Compatible rig and legacy maps preserved.',
+            'dimensionsMetresBlenderXYZ':{'pose':selected['label'],**selected['bounds']},'dimensionAuthority':'Geometry-derived measured-views.json in Blender metres; original native-calibrated assembly and existing rifle master preserved.',
+            'dependencies':[prefix+name for name in ['ReloadHandAction.json','measured-views.json','review-evidence.json','Source/reload-rig.json.gz']]+['Validation/reload-hands-native.xml','Validation/reload-hands-saved-master.json','Validation/reload-hand-source-calibrated-06.xml','docs/AUTHORED-RELOAD-HANDS.md',action['originalWristMagazineAction'],'ArtSource/Original/ArtPass-v1/FirstPerson/Assembly-v2/production.json'],
+            'referenceSheets':[prefix+'References/'+pose['label']+'/measured-sheet.png' for pose in measured['poses']],
+            'rigBones':fps_families['Assembly-v2'][2][0]['bones'],'clips':[prefix+'Reload-After.mp4'],'currentScreenshot':prefix+'NativeReview/after-Player/frame-021.png',
+            'provenance':action['provenance'],'approval':'Source/native integration verified; fine contacts and final artistic acceptance pending',
+            'referenceException':action['limits']})
     if Path(path).suffix.lower()=='.png':
         with Image.open(root/path) as texture:entry['textureDimensionsPixelsWH']=list(texture.size)
 (art/'integrated-manifest.json').write_text(json.dumps({'schema':'rail-arena-art-delta/2','baseline':'Gate1/asset-manifest.json','entries':entries,'coverage':'Baseline inventory plus production delta; remaining reference and animation exceptions in Gate2/PRODUCTION-STATUS.md'},indent=2)+'\n')
