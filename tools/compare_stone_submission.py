@@ -40,6 +40,7 @@ result = {'scope': 'Single off/on ordered pair; same executable and seeded fixed
           'fingerprint': off['fingerprint'], 'executableSha256': runs['off']['executableSha256'],
           'inputSha256': {mode: hashlib.sha256((folder / f'{mode}.json').read_bytes()).hexdigest() for mode in reports},
           'rendererInstancesOn': on['stonePaletteRenderers'], 'sourceMaterialSlotsOn': on['stonePaletteSourceSlots'],
+          'runOrder': sorted(runs, key=lambda mode: runs[mode]['startedUtc']),
           'frameTimingFeatureEnabled': {mode: report['frameTimingFeatureEnabled'] for mode, report in reports.items()}, 'views': views}
 output = folder / 'comparison.json'
 assert not output.exists(), 'Preserve previous comparison evidence'

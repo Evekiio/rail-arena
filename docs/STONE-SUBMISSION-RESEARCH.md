@@ -17,3 +17,9 @@ The deck reference package now requires the current Blender master's SHA-256 in 
 Run `tools/Profile-StoneSubmission.ps1` against a single development executable. It profiles off then on once, using identical seeded simulation, camera paths, resolution, quality, cropped portals and executable hash. Inspect Render-category draw counters, SetPass and timing together. UI Toolkit has a separate zero-valued draw counter. Report GPU timing unavailable when no valid samples exist.
 
 Forced offscreen submission and readback add overhead and serialize work; these probes do not establish native input acceptance, live frame pacing or 60 FPS. Promote only after a useful measured benefit and visual preservation. Public release remains held for Sanders' final acceptance.
+
+## Measurement decision
+
+The single-executable off/on pair and reverse-order pair both completed without exceptions. Draws fell 34.6–44.1% with essentially unchanged submitted triangles. Frame times remained mixed, including combat regressions in both pairs; no general frame-time improvement is established. Frame timing was enabled in both development runs but returned zero valid GPU samples. Raw results: Validation/StoneSubmission-Profile-01 and -02. The candidate is not promoted; archive its code and derived exports outside Unity compilation/resources. The independently verified deck geometry correction remains.
+
+The 3,850-entry structural audit at Validation/ArtReferenceLinks-01 found zero missing linked files. Its counts describe links and recorded fields only, not complete per-asset measured-reference or approval coverage.

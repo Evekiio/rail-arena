@@ -1,11 +1,12 @@
-param([Parameter(Mandatory=$true)][string]$BuildDirectory,[Parameter(Mandatory=$true)][string]$OutputDirectory)
+param([Parameter(Mandatory=$true)][string]$BuildDirectory,[Parameter(Mandatory=$true)][string]$OutputDirectory,[ValidateSet('OffThenOn','OnThenOff')][string]$Order='OffThenOn')
 $ErrorActionPreference='Stop'
 $railPlayer=Join-Path (Resolve-Path -LiteralPath $BuildDirectory).Path 'RailArena.exe'
 $railFolder=[IO.Path]::GetFullPath($OutputDirectory)
 if(Test-Path -LiteralPath $railFolder){throw 'Preserve prior profile evidence; choose a new output folder'}
 [IO.Directory]::CreateDirectory($railFolder)|Out-Null
 $railHash=(Get-FileHash -LiteralPath $railPlayer -Algorithm SHA256).Hash.ToLowerInvariant()
-foreach($railMode in @('off','on')){
+$railModes=if($Order -eq 'OnThenOff'){@('on','off')}else{@('off','on')}
+foreach($railMode in $railModes){
     $railOutput=Join-Path $railFolder ($railMode+'.json')
     $railArguments=@('--profile-art-frame','--validation-output',('"'+$railOutput+'"'),'-screen-width','1920','-screen-height','1080','-screen-fullscreen','0','-noaudio','-logFile',('"'+$railOutput+'.log"'))
     if($railMode -eq 'on'){$railArguments+='--profile-stone-palette'}
