@@ -18,9 +18,9 @@ namespace RailArena
             var track = healthFill.transform.parent;
             healthTrail = Graphic(track, "RecentDamage", Vector2.zero, Vector2.one, amber);
             healthTrail.transform.SetAsFirstSibling();
-            healthState = Text(health, "HealthState", "VITALS STABLE", 12, new Vector2(.27f,.01f), new Vector2(.94f,.16f));
+            healthState = Text(health, "HealthState", "VITALS STABLE", 12, new Vector2(.27f,.01f), new Vector2(.94f,.22f));
             // Lift the bar to leave a dedicated baseline for the state label.
-            var bar = (RectTransform)track; bar.anchorMin = new Vector2(.06f,.18f); bar.anchorMax = new Vector2(.94f,.23f);
+            var bar = (RectTransform)track; bar.anchorMin = new Vector2(.06f,.24f); bar.anchorMax = new Vector2(.94f,.29f);
             weaponPrompt = Text(combatRoot.transform, "WeaponPrompt", "", 19, new Vector2(.39f,.34f), new Vector2(.61f,.38f));
             weaponPrompt.alignment = TextAnchor.MiddleCenter;
             hitCaption = Text(combatRoot.transform, "HitCaption", "", 15, new Vector2(.43f,.445f), new Vector2(.57f,.47f));

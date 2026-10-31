@@ -13,6 +13,7 @@ namespace RailArena.Tests
         [UnityTest]
         public IEnumerator CombatStatesRemainAccurateReadableAndNonInteractive()
         {
+            UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/RailArena/Generated/SkyGardensBasement.unity");
             yield return new EnterPlayMode();
             if(Object.FindAnyObjectByType<ArenaSession>()==null) yield return SceneManager.LoadSceneAsync("Foundry",LoadSceneMode.Additive);
             yield return Frames(2);
