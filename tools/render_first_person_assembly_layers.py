@@ -1,9 +1,10 @@
 """Isolate held arm and rifle construction layers at the measured right-side camera."""
+import argparse
 import hashlib,json,sys
 from pathlib import Path
 import bpy
 from mathutils import Vector
-root=Path(sys.argv[sys.argv.index('--')+1]).resolve();folder=root/'ArtSource/Original/ArtPass-v1/FirstPerson/Assembly-v1';spec=json.loads((folder/'production.json').read_text(encoding='utf-8'));measure=json.loads((folder/'measured-views.json').read_text(encoding='utf-8'));master=folder/spec['master'];digest=hashlib.sha256(master.read_bytes()).hexdigest();assert digest==spec['masterSha256']
+parser=argparse.ArgumentParser();parser.add_argument('root',type=Path);parser.add_argument('--family',default='Assembly-v1');args=parser.parse_args(sys.argv[sys.argv.index('--')+1:]);root=args.root.resolve();assert args.family.startswith('Assembly-v') and args.family[len('Assembly-v'):].isdigit();folder=root/'ArtSource/Original/ArtPass-v1/FirstPerson'/args.family;spec=json.loads((folder/'production.json').read_text(encoding='utf-8'));measure=json.loads((folder/'measured-views.json').read_text(encoding='utf-8'));master=folder/spec['master'];digest=hashlib.sha256(master.read_bytes()).hexdigest();assert digest==spec['masterSha256']
 bpy.ops.wm.open_mainfile(filepath=str(master),load_ui=False);scene=bpy.context.scene;scene.render.engine='BLENDER_WORKBENCH';scene.display.shading.light='STUDIO';scene.display.shading.color_type='TEXTURE';scene.display.shading.show_shadows=True;scene.display.shading.show_cavity=True;scene.view_settings.view_transform='Standard';scene.display.shading.background_type='WORLD'
 if scene.world is None:scene.world=bpy.data.worlds.new('Technical background')
 scene.world.color=(.045,.065,.075);scene.render.resolution_x=scene.render.resolution_y=1024;scene.render.resolution_percentage=100

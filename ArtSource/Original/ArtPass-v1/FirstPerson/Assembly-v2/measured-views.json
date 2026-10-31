@@ -1,0 +1,295 @@
+{
+  "masterSha256": "f56d17084da6e7584c8d001ab6afd1ef544f190ff5679839de5acba46757696f",
+  "sourceSha256": "77783f875b1d61cb054b382afaab8113bbe937141966f2c5e409f835aec4a7ac",
+  "units": "metres",
+  "axes": "Unity weapon-root (x,y,z) metres -> Blender (x,z,y) metres; attachment frames are conjugated by that reflection",
+  "centerBlenderXYZMetres": [
+    -0.10082140564918518,
+    0.09130913019180298,
+    -0.06878037750720978
+  ],
+  "orthographicSpanMetres": 1.0,
+  "views": [
+    {
+      "id": "Player_Hip",
+      "bounds": {
+        "minimumBlenderXYZMetres": [
+          -0.3205264210700989,
+          -0.31738168001174927,
+          -0.2804914712905884
+        ],
+        "maximumBlenderXYZMetres": [
+          0.12069087475538254,
+          0.4999999403953552,
+          0.15000000596046448
+        ],
+        "sizeBlenderXYZMetres": [
+          0.4412172958254814,
+          0.8173816204071045,
+          0.43049147725105286
+        ]
+      },
+      "orthographicSpanMetres": 1.0,
+      "resolution": 1024,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "nativeEye": "References/Player_Hip/native-eye-workbench.png",
+      "nativeUnityImage": "RuntimeSource/Player-Hip.png",
+      "maximumNativeVertexErrorMetres": 1.3073858402741967e-06,
+      "maximumNativeBoneHeadErrorMetres": 2.591956226050698e-07,
+      "scope": "Held assembled geometry and camera reference. Workbench shading is technical, not the final Unity cel shader. Shared equal-scale orthographic framing includes rifle and deformed hands."
+    },
+    {
+      "id": "Player_ADS",
+      "bounds": {
+        "minimumBlenderXYZMetres": [
+          -0.31898579001426697,
+          -0.3121010661125183,
+          -0.2834088206291199
+        ],
+        "maximumBlenderXYZMetres": [
+          0.12329225987195969,
+          0.4999999403953552,
+          0.15000000596046448
+        ],
+        "sizeBlenderXYZMetres": [
+          0.44227804988622665,
+          0.8121010065078735,
+          0.43340882658958435
+        ]
+      },
+      "orthographicSpanMetres": 1.0,
+      "resolution": 1024,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "nativeEye": "References/Player_ADS/native-eye-workbench.png",
+      "nativeUnityImage": "RuntimeSource/Player-ADS.png",
+      "maximumNativeVertexErrorMetres": 2.127750681110852e-06,
+      "maximumNativeBoneHeadErrorMetres": 2.47135881939858e-07,
+      "scope": "Held assembled geometry and camera reference. Workbench shading is technical, not the final Unity cel shader. Shared equal-scale orthographic framing includes rifle and deformed hands."
+    },
+    {
+      "id": "Bot01_Hip",
+      "bounds": {
+        "minimumBlenderXYZMetres": [
+          -0.31959694623947144,
+          -0.3103938102722168,
+          -0.282680481672287
+        ],
+        "maximumBlenderXYZMetres": [
+          0.1193404421210289,
+          0.4999999403953552,
+          0.15000000596046448
+        ],
+        "sizeBlenderXYZMetres": [
+          0.43893738836050034,
+          0.810393750667572,
+          0.43268048763275146
+        ]
+      },
+      "orthographicSpanMetres": 1.0,
+      "resolution": 1024,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "nativeEye": "References/Bot01_Hip/native-eye-workbench.png",
+      "nativeUnityImage": "RuntimeSource/Bot01-Hip.png",
+      "maximumNativeVertexErrorMetres": 1.6349950692525833e-06,
+      "maximumNativeBoneHeadErrorMetres": 2.630223796979167e-07,
+      "scope": "Held assembled geometry and camera reference. Workbench shading is technical, not the final Unity cel shader. Shared equal-scale orthographic framing includes rifle and deformed hands."
+    },
+    {
+      "id": "Bot01_ADS",
+      "bounds": {
+        "minimumBlenderXYZMetres": [
+          -0.3206011652946472,
+          -0.3085748851299286,
+          -0.28384438157081604
+        ],
+        "maximumBlenderXYZMetres": [
+          0.11847417801618576,
+          0.4999999403953552,
+          0.15000000596046448
+        ],
+        "sizeBlenderXYZMetres": [
+          0.439075343310833,
+          0.8085748255252838,
+          0.4338443875312805
+        ]
+      },
+      "orthographicSpanMetres": 1.0,
+      "resolution": 1024,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "nativeEye": "References/Bot01_ADS/native-eye-workbench.png",
+      "nativeUnityImage": "RuntimeSource/Bot01-ADS.png",
+      "maximumNativeVertexErrorMetres": 2.3658849133575054e-06,
+      "maximumNativeBoneHeadErrorMetres": 2.4027400458748785e-07,
+      "scope": "Held assembled geometry and camera reference. Workbench shading is technical, not the final Unity cel shader. Shared equal-scale orthographic framing includes rifle and deformed hands."
+    },
+    {
+      "id": "Bot02_Hip",
+      "bounds": {
+        "minimumBlenderXYZMetres": [
+          -0.32171034812927246,
+          -0.3070528209209442,
+          -0.2866266965866089
+        ],
+        "maximumBlenderXYZMetres": [
+          0.12158762663602829,
+          0.4999999403953552,
+          0.15000000596046448
+        ],
+        "sizeBlenderXYZMetres": [
+          0.44329797476530075,
+          0.8070527613162994,
+          0.43662670254707336
+        ]
+      },
+      "orthographicSpanMetres": 1.0,
+      "resolution": 1024,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "nativeEye": "References/Bot02_Hip/native-eye-workbench.png",
+      "nativeUnityImage": "RuntimeSource/Bot02-Hip.png",
+      "maximumNativeVertexErrorMetres": 1.4914755213049703e-06,
+      "maximumNativeBoneHeadErrorMetres": 3.650784492492676e-07,
+      "scope": "Held assembled geometry and camera reference. Workbench shading is technical, not the final Unity cel shader. Shared equal-scale orthographic framing includes rifle and deformed hands."
+    },
+    {
+      "id": "Bot02_ADS",
+      "bounds": {
+        "minimumBlenderXYZMetres": [
+          -0.3232167065143585,
+          -0.30577635765075684,
+          -0.28756076097488403
+        ],
+        "maximumBlenderXYZMetres": [
+          0.11989711225032806,
+          0.4999999403953552,
+          0.15000000596046448
+        ],
+        "sizeBlenderXYZMetres": [
+          0.4431138187646866,
+          0.8057762980461121,
+          0.4375607669353485
+        ]
+      },
+      "orthographicSpanMetres": 1.0,
+      "resolution": 1024,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "nativeEye": "References/Bot02_ADS/native-eye-workbench.png",
+      "nativeUnityImage": "RuntimeSource/Bot02-ADS.png",
+      "maximumNativeVertexErrorMetres": 2.50690257999338e-06,
+      "maximumNativeBoneHeadErrorMetres": 2.1074247420004877e-07,
+      "scope": "Held assembled geometry and camera reference. Workbench shading is technical, not the final Unity cel shader. Shared equal-scale orthographic framing includes rifle and deformed hands."
+    },
+    {
+      "id": "Bot03_Hip",
+      "bounds": {
+        "minimumBlenderXYZMetres": [
+          -0.32409459352493286,
+          -0.30564218759536743,
+          -0.28602319955825806
+        ],
+        "maximumBlenderXYZMetres": [
+          0.11324774473905563,
+          0.4999999403953552,
+          0.15000000596046448
+        ],
+        "sizeBlenderXYZMetres": [
+          0.4373423382639885,
+          0.8056421279907227,
+          0.43602320551872253
+        ]
+      },
+      "orthographicSpanMetres": 1.0,
+      "resolution": 1024,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "nativeEye": "References/Bot03_Hip/native-eye-workbench.png",
+      "nativeUnityImage": "RuntimeSource/Bot03-Hip.png",
+      "maximumNativeVertexErrorMetres": 1.416346602024565e-06,
+      "maximumNativeBoneHeadErrorMetres": 2.2691421774305723e-07,
+      "scope": "Held assembled geometry and camera reference. Workbench shading is technical, not the final Unity cel shader. Shared equal-scale orthographic framing includes rifle and deformed hands."
+    },
+    {
+      "id": "Bot03_ADS",
+      "bounds": {
+        "minimumBlenderXYZMetres": [
+          -0.32493507862091064,
+          -0.30621328949928284,
+          -0.28585338592529297
+        ],
+        "maximumBlenderXYZMetres": [
+          0.11131574213504791,
+          0.4999999403953552,
+          0.15000000596046448
+        ],
+        "sizeBlenderXYZMetres": [
+          0.43625082075595856,
+          0.8062132298946381,
+          0.43585339188575745
+        ]
+      },
+      "orthographicSpanMetres": 1.0,
+      "resolution": 1024,
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "nativeEye": "References/Bot03_ADS/native-eye-workbench.png",
+      "nativeUnityImage": "RuntimeSource/Bot03-ADS.png",
+      "maximumNativeVertexErrorMetres": 2.289639455493228e-06,
+      "maximumNativeBoneHeadErrorMetres": 2.123415470123291e-07,
+      "scope": "Held assembled geometry and camera reference. Workbench shading is technical, not the final Unity cel shader. Shared equal-scale orthographic framing includes rifle and deformed hands."
+    }
+  ],
+  "rigContract": "54 editable bones per held assembly with original four-weight skin groups. Hip and ADS are held pose references, not new motion clips. Pose reconstruction is verified against 31,012 native baked vertices and 432 bone heads."
+}

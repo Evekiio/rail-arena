@@ -1,0 +1,33 @@
+{
+  "scope": "Player appearance; same frozen actor/Animator state and camera; cosmetic equip, ADS, recoil articulation sweep and authored two-second reload. Before uses the previous legacy-bind calibration on an owned clone. After uses installed corrected skin. Not new action authoring, native input/audio or artistic acceptance.",
+  "nativeTest": "Validation/hand-seam-motion.xml",
+  "samples": "Validation/HandBindingMotion-01/contacts.csv",
+  "jointSamplesTotal": 7200,
+  "correctedJointSamples": 3600,
+  "beforeMaximumGapMetres": 0.050436485558748245,
+  "afterMaximumGapMetres": 2.7392209176468896e-06,
+  "maximumWristErrorMetres": 2.7392209176468896e-06,
+  "clips": [
+    {
+      "path": "Hand-before.mp4",
+      "sha256": "b20e1b653525121a6b396142f5017b1ef75ac9ef61e861a03ac6d52506ce90c7",
+      "width": 1280,
+      "height": 720,
+      "avg_frame_rate": "60/1",
+      "duration": "3.000000",
+      "nb_frames": "180"
+    },
+    {
+      "path": "Hand-after.mp4",
+      "sha256": "efecbc44efdde1480bbb4f5f02a4f5569d7483a134dfdeeddc194b4c5c6aa574",
+      "width": 1280,
+      "height": 720,
+      "avg_frame_rate": "60/1",
+      "duration": "3.000000",
+      "nb_frames": "180"
+    }
+  ],
+  "comparisonClip": "Hand-before-after.mp4",
+  "comparisonClipSha256": "6a6ea3a592892c7f399ff1cea182cd9d9cf7d9afc810afd47021d014d8c1c462",
+  "sound": "Silent controlled cosmetic review; not native audio/input acceptance"
+}

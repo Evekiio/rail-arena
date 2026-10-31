@@ -155,7 +155,7 @@ namespace RailArena.Tests
             Assert.That(characters.variants.Length, Is.EqualTo(4));
             var rootPosition = session.Human.transform.position; var velocity = session.Human.Velocity; int tick = session.Match.Tick, rounds = session.Human.Magazine.Rounds;
             float capsule = session.Human.Controller.height;
-            string folder = Path.GetFullPath("../ArtSource/Original/ArtPass-v1/FirstPerson/Assembly-v1/RuntimeSource");
+            string folder = Path.GetFullPath(Environment.GetEnvironmentVariable("RA_FPS_ASSEMBLY_EXPORT") ?? "../ArtSource/Original/ArtPass-v1/FirstPerson/Assembly-v1/RuntimeSource");
             Assert.That(Directory.Exists(folder), Is.False, "Preserve earlier source exports"); Directory.CreateDirectory(folder);
             var skins = new List<Skin>(); var poses = new List<Pose>(); Rigid[] rifle = null;
             var target = new RenderTexture(1280, 720, 24); target.Create(); var pixels = new Texture2D(1280, 720, TextureFormat.RGB24, false);

@@ -1,4 +1,5 @@
 """Reconstruct editable held FPS assemblies from hashed Unity geometry/skin calibration."""
+import argparse
 import gzip
 import hashlib
 import json
@@ -9,12 +10,15 @@ import xml.etree.ElementTree as ET
 import bpy
 from mathutils import Matrix, Vector
 
-root=Path(sys.argv[sys.argv.index('--')+1]).resolve()
-folder=root/'ArtSource/Original/ArtPass-v1/FirstPerson/Assembly-v1'
+parser=argparse.ArgumentParser();parser.add_argument('root',type=Path);parser.add_argument('--family',default='Assembly-v1')
+parser.add_argument('--native-result',default='Validation/fps-assembly-export-scale-correct.xml');parser.add_argument('--saved-master-result',default='Validation/fps-assembly-saved-master-pivots.json')
+args=parser.parse_args(sys.argv[sys.argv.index('--')+1:]);root=args.root.resolve()
+assert args.family.startswith('Assembly-v') and args.family[len('Assembly-v'):].isdigit()
+folder=root/'ArtSource/Original/ArtPass-v1/FirstPerson'/args.family
 source_dir=folder/'RuntimeSource';capture=json.loads((source_dir/'capture.json').read_text(encoding='utf-8'))
 source=source_dir/capture['source'];assert hashlib.sha256(source.read_bytes()).hexdigest()==capture['sourceSha256']
 payload=gzip.decompress(source.read_bytes());assert hashlib.sha256(payload).hexdigest()==capture['decompressedSha256'];data=json.loads(payload)
-result=ET.parse(root/'Validation/fps-assembly-export-scale-correct.xml').getroot();cases=[case for case in result.iter('test-case') if case.attrib.get('fullname','').endswith('FirstPersonAssemblyExport.ExportHeldAssemblyWithSkinProof')]
+result=ET.parse(root/args.native_result).getroot();cases=[case for case in result.iter('test-case') if case.attrib.get('fullname','').endswith('FirstPersonAssemblyExport.ExportHeldAssemblyWithSkinProof')]
 assert len(cases)==1 and cases[0].attrib['result']=='Passed' and capture['sourceSha256'] in ''.join(cases[0].itertext())
 bpy.ops.wm.read_factory_settings(use_empty=True);scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1
 # Weapon-root Unity: +X right / +Y up / +Z forward. Blender: +X right / +Y forward / +Z up.
@@ -94,12 +98,12 @@ for pose in data['poses']:
     report={'id':name,'identity':identity,'pose':pose['mode'],'vertices':len(errors),'bones':len(bone_errors),'maximumNativeVertexErrorMetres':maximum,'maximumNativeBoneHeadErrorMetres':max(bone_errors),'leftWristErrorMetres':pose['leftWristError'],'rightWristErrorMetres':pose['rightWristError'],'nativeVerticalFov':pose['verticalFov'],'nativeImage':'RuntimeSource/'+pose['nativeImage']}
     reports.append(report)
 for collection in collections:collection.hide_render=collection.name!='Player_Hip';collection.hide_viewport=collection.hide_render
-scene['version']='RA-FPS-ASSEMBLY-v1';scene['source_sha256']=capture['sourceSha256'];scene['axes']='Unity weapon-root (x,y,z) metres -> Blender (x,z,y) metres; attachment frames are conjugated by that reflection'
+scene['version']='RA-FPS-'+args.family;scene['source_sha256']=capture['sourceSha256'];scene['axes']='Unity weapon-root (x,y,z) metres -> Blender (x,z,y) metres; attachment frames are conjugated by that reflection'
 scene['scope']='Four appearance skins / held hip and ADS assemblies / editable linear-skin skeletons / exact rifle LOD0 and first-person sight opening. Not a new animation library or replacement gameplay asset.'
 scene.render.resolution_x=1280;scene.render.resolution_y=720;scene.render.resolution_percentage=100
-bpy.context.preferences.filepaths.file_preview_type='NONE';master=folder/'FirstPerson-Assembly-v1.blend';bpy.ops.wm.save_as_mainfile(filepath=str(master))
+bpy.context.preferences.filepaths.file_preview_type='NONE';master=folder/('FirstPerson-'+args.family+'.blend');bpy.ops.wm.save_as_mainfile(filepath=str(master))
 sources=[root/'ArtSource/Original/ArtPass-v1/Characters'/f'{name}-ArtPass-v1.blend' for name in skins]
 sources.append(root/'ArtSource/Original/PrecisionCarbine-Production-v1/Precision-Carbine.blend')
-record={'schema':'rail-arena-first-person-assembly-production/1','master':master.name,'masterSha256':digest(master),'source':'RuntimeSource/'+capture['source'],'sourceSha256':capture['sourceSha256'],'axes':scene['axes'],'scope':scene['scope'],'referencePoses':reports,'sourceMasters':[{'path':path.relative_to(root).as_posix(),'sha256':digest(path)} for path in sources],'provenance':'Original Rail Arena rifle and character refinements with existing CC0 foundation rig, original paint and calibrated runtime bindings. Exact held assemblies reconstructed as editable Blender rigs; preserve existing licenses and source masters. Unity native images remain shading authority.','approval':'Direction approved; full animation/reference coverage and final Sanders playtest acceptance pending'}
+record={'schema':'rail-arena-first-person-assembly-production/1','family':args.family,'nativeResult':args.native_result,'savedMasterResult':args.saved_master_result,'master':master.name,'masterSha256':digest(master),'source':'RuntimeSource/'+capture['source'],'sourceSha256':capture['sourceSha256'],'axes':scene['axes'],'scope':scene['scope'],'referencePoses':reports,'sourceMasters':[{'path':path.relative_to(root).as_posix(),'sha256':digest(path)} for path in sources],'provenance':'Original Rail Arena rifle and character refinements with existing CC0 foundation rig, original paint and calibrated runtime bindings. Exact held assemblies reconstructed as editable Blender rigs; preserve existing licenses and source masters. Unity native images remain shading authority.','approval':'Direction approved; full animation/reference coverage and final Sanders playtest acceptance pending'}
 (folder/'production.json').write_bytes((json.dumps(record,indent=2)+'\n').encode('utf-8'))
 print('FIRST_PERSON_ASSEMBLY_AUTHORED',len(reports),'poses',sum(item['vertices'] for item in reports),'verified vertices',max(item['maximumNativeVertexErrorMetres'] for item in reports),'metres max error')
