@@ -51,6 +51,7 @@ html += '<p><a href="current-asset-register.csv">Joined current inventory</a> ·
 for folder in sorted((art/'FirstPerson').glob('Assembly-v*')):
     if (folder/'index.html').is_file():html += f'<p><a href="FirstPerson/{folder.name}/index.html">{folder.name} / calibrated held references'+(' / historical baseline' if folder.name=='Assembly-v1' else ' / corrected finger binding and native motion comparison')+'</a></p>'
 if (art/'FirstPerson/ReloadHands-v1/index.html').is_file():html += '<p><a href="FirstPerson/ReloadHands-v1/index.html">Authored reload hands / native release and magazine grasp / measured action sheets</a></p>'
+if (art/'Performance/PortalRefresh/index.html').is_file():html += '<p><a href="Performance/PortalRefresh/index.html">Portal performance / controlled refresh comparisons and frozen destination image preservation</a></p>'
 html += '<p><a href="Performance/UnderbridgeMounted/index.html">Corrected under-bridge destinations and measured wall mounting</a></p>'
 html += '<p><a href="Animation/Strafe/index.html">Authored lateral gaits, measured poses and installed playback</a></p>'
 html += '<p><a href="Animation/Reactions/index.html">Authored hit/death, matching legacy reference and lifecycle evidence</a></p>'
