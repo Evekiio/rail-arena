@@ -134,7 +134,7 @@ for entry in entries:
         if family=='contender-reactions':
             entry['dependencies'] += ['RailArena/Assets/RailArena/Runtime/ContenderPresentation.cs','RailArena/Assets/RailArena/Runtime/CorpseContactSurface.cs','RailArena/Assets/RailArena/Editor/ContenderMotionArtBuilder.cs']
     if family=='bridge-stone':
-        entry['runtimeUsage']='Source-integrated candidate; next Windows review build pending' if path.startswith('RailArena/') else 'Editable source or reference evidence; not runtime content'
+        entry['runtimeUsage']='Production review build' if path.startswith('RailArena/') else 'Editable source or reference evidence; not runtime content'
         entry['referenceSheets']=[relative(art/'Environment/BridgeStone'/(name+'-Measured-Sheet.png')) for name in ('Deck','Screen','Pier')]
         entry['dependencies'] += [relative(art/'Environment/BridgeStone/bridge-source.json'),relative(art/'Environment/BridgeStone/measured-views.json'),'RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs']
     if family=='basement-stone-decks':
