@@ -12,6 +12,21 @@ namespace RailArena
         public RenderTexture Texture { get; private set; }
         public Camera DestinationCamera { get; private set; }
         public int RenderedFrames { get; private set; }
+        public int SkippedRefreshes { get; private set; }
+        public int RefreshInterval { get; private set; }=1;
+        bool adaptiveRefresh;
+        public bool AdaptiveRefresh
+        {
+            get=>adaptiveRefresh;
+            set{if(adaptiveRefresh==value)return;adaptiveRefresh=value;lastVisibleFrame=-100;}
+        }
+        int lastVisibleFrame=-100,refreshSlot=-1,lastWidth,lastHeight;
+        float lastRefreshTime,lastFov;
+        Matrix4x4 lastProjection;
+        int lastCullingMask;
+        Vector3 lastViewerPosition;
+        Quaternion lastViewerRotation;
+        Camera lastViewer;
         public bool CropToAperture { get; set; } = true;
         public Rect Viewport { get; private set; } = PortalViewport.Full;
         private ArenaSession session;
@@ -40,9 +55,19 @@ namespace RailArena
             if (Vector3.Dot(viewer.transform.position - transform.position, transform.forward) <= .04f) return false;
             GeometryUtility.CalculateFrustumPlanes(viewer, planes);
             if (!GeometryUtility.TestPlanesAABB(planes, surface.bounds)) return false;
+            var viewport=CropToAperture?PortalViewport.ForBounds(viewer,surface.bounds):PortalViewport.Full;
+            bool reentered=Time.frameCount>lastVisibleFrame+1;lastVisibleFrame=Time.frameCount;
+            RefreshInterval=AdaptiveRefresh?PortalRefreshPolicy.Interval(viewport,viewer.pixelWidth,viewer.pixelHeight,(viewer.transform.position-transform.position).sqrMagnitude,viewer.fieldOfView<session.Aim.FieldOfView-.1f):1;
+            if(refreshSlot<0)refreshSlot=System.Array.IndexOf(session.World.Portals,Gate);
+            bool reuse=RefreshInterval>1&&Texture!=null&&Texture.IsCreated()&&!reentered&&lastViewer==viewer&&lastWidth==viewer.pixelWidth&&lastHeight==viewer.pixelHeight
+                &&lastProjection==viewer.projectionMatrix&&lastCullingMask==viewer.cullingMask
+                &&Time.unscaledTime-lastRefreshTime<PortalRefreshPolicy.MaximumAge&&Mathf.Abs(viewer.fieldOfView-lastFov)<.1f
+                &&(viewer.transform.position-lastViewerPosition).sqrMagnitude<=.0625f&&Quaternion.Angle(viewer.transform.rotation,lastViewerRotation)<=.25f
+                &&PortalRefreshPolicy.FitsCachedProjection(Viewport,viewport,viewer.pixelWidth,viewer.pixelHeight);
+            if(reuse&&!PortalRefreshPolicy.Scheduled(Time.frameCount,Mathf.Max(0,refreshSlot),RefreshInterval)){SkippedRefreshes++;return false;}
             int width = Mathf.Clamp(Mathf.RoundToInt(viewer.pixelWidth * .65f), 320, 960);
             int height = Mathf.Max(180, Mathf.RoundToInt(width / viewer.aspect));
-            Viewport=CropToAperture?PortalViewport.ForBounds(viewer,surface.bounds):PortalViewport.Full;
+            Viewport=viewport;
             if(CropToAperture)
             {
                 width=PortalViewport.TextureDimension(width,Viewport.width,Texture!=null?Texture.width:0);
@@ -74,6 +99,9 @@ namespace RailArena
                 RenderPipeline.SubmitRenderRequest(DestinationCamera, new RenderPipeline.StandardRequest { destination = Texture });
                 surface.sharedMaterial.SetTexture("_PortalTex", Texture); surface.sharedMaterial.SetFloat("_HasView", 1);
                 surface.sharedMaterial.SetVector("_PortalViewport",new Vector4(Viewport.x,Viewport.y,Viewport.width,Viewport.height));
+                lastProjection=viewer.projectionMatrix;lastCullingMask=viewer.cullingMask;
+                lastViewer=viewer;lastWidth=viewer.pixelWidth;lastHeight=viewer.pixelHeight;lastFov=viewer.fieldOfView;
+                lastViewerPosition=viewer.transform.position;lastViewerRotation=viewer.transform.rotation;lastRefreshTime=Time.unscaledTime;
                 RenderedFrames++; return true;
             }
             finally

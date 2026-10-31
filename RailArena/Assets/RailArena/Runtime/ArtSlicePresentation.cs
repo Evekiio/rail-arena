@@ -18,6 +18,7 @@ namespace RailArena
         readonly Dictionary<SkyGardenMotion, bool> hiddenNatureMotions = new();
         readonly List<GameObject> coverInstances = new();
         readonly List<RifleReloadPresentation> rifleActions = new();
+        readonly Dictionary<PortalView,bool> previousPortalRefresh = new();
         readonly List<ContenderArtPresentation> contenderArt = new();
         ContenderArtSet characters;
         readonly Dictionary<HealthPickupVisual, Renderer> pickupMarkers = new();
@@ -43,6 +44,12 @@ namespace RailArena
             if (rifleSurface == null || Profile.WaterShader == null) throw new System.InvalidOperationException("Integrated rifle/water art is missing");
             originalSkybox = RenderSettings.skybox;
             if (Profile.CloudSkybox != null) RenderSettings.skybox = Profile.CloudSkybox;
+            foreach(var gate in session.World.Portals)
+            {
+                var view=gate.GetComponent<PortalView>();
+                if(view==null)continue;
+                previousPortalRefresh.Add(view,view.AdaptiveRefresh);view.AdaptiveRefresh=true;
+            }
             InstallStoneCover();
             InstallBasementDecks();
             InstallBridgeStone();
@@ -306,6 +313,7 @@ namespace RailArena
 
         void OnDestroy()
         {
+            foreach(var entry in previousPortalRefresh)if(entry.Key!=null)entry.Key.AdaptiveRefresh=entry.Value;
             if (session != null && session.EquipArt == equipArt) session.EquipArt = previousEquipArt;
             if (Profile != null && RenderSettings.skybox == Profile.CloudSkybox) RenderSettings.skybox = originalSkybox;
             if (wayfinding != null) Destroy(wayfinding);

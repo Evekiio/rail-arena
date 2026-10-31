@@ -1,0 +1,1230 @@
+{
+  "schema": "rail-arena-portal-refresh-comparison/1",
+  "fingerprint": "6567dab7bf432598240956e666932fc885f42639dfe310658e83cd9422025923",
+  "baseline": "Validation/PortalRefresh-Profile-01/off.json",
+  "adaptive": "Validation/PortalRefresh-Profile-01/on.json",
+  "views": [
+    {
+      "view": "combat",
+      "full": {
+        "meanWallMs": 17.434725555555545,
+        "p95WallMs": 31.2004,
+        "meanSubmitMs": 1.9110855555555564,
+        "meanReadbackMs": 6.317239722222221,
+        "portalRenders": 1440,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "portalTargets": [
+          {
+            "id": 3,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.48309898376464844,
+              "y": 0.4275737404823303,
+              "width": 0.011882126331329346,
+              "height": 0.03429365158081055
+            }
+          },
+          {
+            "id": 0,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5944686532020569,
+              "y": 0.4343189001083374,
+              "width": 0.010345399379730225,
+              "height": 0.029376626014709473
+            }
+          },
+          {
+            "id": 2,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.7003121376037598,
+              "y": 0.4158075153827667,
+              "width": 0.007847845554351807,
+              "height": 0.019307076930999756
+            }
+          },
+          {
+            "id": 1,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.30758094787597656,
+              "y": 0.4023778736591339,
+              "width": 0.007924765348434448,
+              "height": 0.05367863178253174
+            }
+          },
+          {
+            "id": 4,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5387325882911682,
+              "y": 0.3943718373775482,
+              "width": 0.00581204891204834,
+              "height": 0.017049580812454224
+            }
+          },
+          {
+            "id": 5,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6382676959037781,
+              "y": 0.47362518310546875,
+              "width": 0.014011263847351074,
+              "height": 0.03620404005050659
+            }
+          }
+        ],
+        "portalCpuNanoseconds": {
+          "mean": 4895947.5,
+          "p95": 11445000.0,
+          "maximum": 18824600.0
+        },
+        "draws": {
+          "mean": 1948.8111111111111,
+          "p95": 2025.0,
+          "maximum": 2047.0
+        }
+      },
+      "adaptive": {
+        "meanWallMs": 12.183106944444447,
+        "p95WallMs": 14.3864,
+        "meanSubmitMs": 1.6617141666666657,
+        "meanReadbackMs": 5.667264444444452,
+        "portalRenders": 540,
+        "validGpuSamples": 0,
+        "gc0": 1,
+        "gc1": 1,
+        "gc2": 1,
+        "portalTargets": [
+          {
+            "id": 4,
+            "renders": 90,
+            "width": 128,
+            "height": 128,
+            "skipped": 270,
+            "interval": 4,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5387325882911682,
+              "y": 0.3943718373775482,
+              "width": 0.00581204891204834,
+              "height": 0.017049580812454224
+            }
+          },
+          {
+            "id": 3,
+            "renders": 180,
+            "width": 128,
+            "height": 128,
+            "skipped": 180,
+            "interval": 2,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.48309898376464844,
+              "y": 0.4275737404823303,
+              "width": 0.011882126331329346,
+              "height": 0.03429365158081055
+            }
+          },
+          {
+            "id": 2,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.7003121376037598,
+              "y": 0.4158075153827667,
+              "width": 0.007847845554351807,
+              "height": 0.019307076930999756
+            }
+          },
+          {
+            "id": 0,
+            "renders": 90,
+            "width": 128,
+            "height": 128,
+            "skipped": 270,
+            "interval": 4,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5944686532020569,
+              "y": 0.4343189001083374,
+              "width": 0.010345399379730225,
+              "height": 0.029376626014709473
+            }
+          },
+          {
+            "id": 1,
+            "renders": 180,
+            "width": 128,
+            "height": 128,
+            "skipped": 180,
+            "interval": 2,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.30758094787597656,
+              "y": 0.4023778736591339,
+              "width": 0.007924765348434448,
+              "height": 0.05367863178253174
+            }
+          },
+          {
+            "id": 5,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6382676959037781,
+              "y": 0.47362518310546875,
+              "width": 0.014011263847351074,
+              "height": 0.03620404005050659
+            }
+          }
+        ],
+        "portalCpuNanoseconds": {
+          "mean": 1748272.2222222222,
+          "p95": 2750500.0,
+          "maximum": 4119900.0
+        },
+        "draws": {
+          "mean": 1728.9,
+          "p95": 1809.0,
+          "maximum": 1867.0
+        }
+      },
+      "meanWallReductionPercent": 30.121601824914755,
+      "portalCpuReductionPercent": 64.2914426222458,
+      "portalRenderReductionPercent": 62.5
+    },
+    {
+      "view": "summit",
+      "full": {
+        "meanWallMs": 15.608886111111113,
+        "p95WallMs": 24.2985,
+        "meanSubmitMs": 1.8815333333333348,
+        "meanReadbackMs": 5.967623611111114,
+        "portalRenders": 1080,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "portalTargets": [
+          {
+            "id": 3,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.4787335693836212,
+              "y": 0.22324708104133606,
+              "width": 0.010032594203948975,
+              "height": 0.03750166296958923
+            }
+          },
+          {
+            "id": 0,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5597334504127502,
+              "y": 0.3331621289253235,
+              "width": 0.010472297668457031,
+              "height": 0.027521520853042603
+            }
+          },
+          {
+            "id": 2,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.7003121376037598,
+              "y": 0.4158075153827667,
+              "width": 0.007847845554351807,
+              "height": 0.019307076930999756
+            }
+          },
+          {
+            "id": 1,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.30758094787597656,
+              "y": 0.4023778736591339,
+              "width": 0.007924765348434448,
+              "height": 0.05367863178253174
+            }
+          },
+          {
+            "id": 4,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.4878225326538086,
+              "y": 0.4223422110080719,
+              "width": 0.0051901936531066895,
+              "height": 0.01693841814994812
+            }
+          },
+          {
+            "id": 5,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6382676959037781,
+              "y": 0.47362518310546875,
+              "width": 0.014011263847351074,
+              "height": 0.03620404005050659
+            }
+          }
+        ],
+        "portalCpuNanoseconds": {
+          "mean": 3632113.888888889,
+          "p95": 6764200.0,
+          "maximum": 17217800.0
+        },
+        "draws": {
+          "mean": 1740.4694444444444,
+          "p95": 1818.0,
+          "maximum": 1822.0
+        }
+      },
+      "adaptive": {
+        "meanWallMs": 11.881881944444439,
+        "p95WallMs": 15.0542,
+        "meanSubmitMs": 1.7309213888888901,
+        "meanReadbackMs": 5.596093055555556,
+        "portalRenders": 362,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "portalTargets": [
+          {
+            "id": 4,
+            "renders": 91,
+            "width": 128,
+            "height": 128,
+            "skipped": 269,
+            "interval": 4,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.4878225326538086,
+              "y": 0.4223422110080719,
+              "width": 0.0051901936531066895,
+              "height": 0.01693841814994812
+            }
+          },
+          {
+            "id": 3,
+            "renders": 180,
+            "width": 128,
+            "height": 128,
+            "skipped": 180,
+            "interval": 2,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.4787335693836212,
+              "y": 0.22324708104133606,
+              "width": 0.010032594203948975,
+              "height": 0.03750166296958923
+            }
+          },
+          {
+            "id": 2,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.7003121376037598,
+              "y": 0.4158075153827667,
+              "width": 0.007847845554351807,
+              "height": 0.019307076930999756
+            }
+          },
+          {
+            "id": 0,
+            "renders": 91,
+            "width": 128,
+            "height": 128,
+            "skipped": 269,
+            "interval": 4,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5597334504127502,
+              "y": 0.3331621289253235,
+              "width": 0.010472297668457031,
+              "height": 0.027521520853042603
+            }
+          },
+          {
+            "id": 1,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 2,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.30758094787597656,
+              "y": 0.4023778736591339,
+              "width": 0.007924765348434448,
+              "height": 0.05367863178253174
+            }
+          },
+          {
+            "id": 5,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6382676959037781,
+              "y": 0.47362518310546875,
+              "width": 0.014011263847351074,
+              "height": 0.03620404005050659
+            }
+          }
+        ],
+        "portalCpuNanoseconds": {
+          "mean": 1162758.3333333333,
+          "p95": 2796200.0,
+          "maximum": 12604200.0
+        },
+        "draws": {
+          "mean": 1615.6638888888888,
+          "p95": 1755.0,
+          "maximum": 1780.0
+        }
+      },
+      "meanWallReductionPercent": 23.877451216801582,
+      "portalCpuReductionPercent": 67.9867325501449,
+      "portalRenderReductionPercent": 66.48148148148148
+    },
+    {
+      "view": "basement",
+      "full": {
+        "meanWallMs": 15.064273611111089,
+        "p95WallMs": 21.2759,
+        "meanSubmitMs": 1.8004049999999991,
+        "meanReadbackMs": 5.775665833333334,
+        "portalRenders": 1080,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "portalTargets": [
+          {
+            "id": 3,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5052844882011414,
+              "y": 0.6831963062286377,
+              "width": 0.006594479084014893,
+              "height": 0.02199375629425049
+            }
+          },
+          {
+            "id": 0,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5597334504127502,
+              "y": 0.3331621289253235,
+              "width": 0.010472297668457031,
+              "height": 0.027521520853042603
+            }
+          },
+          {
+            "id": 2,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.7003121376037598,
+              "y": 0.4158075153827667,
+              "width": 0.007847845554351807,
+              "height": 0.019307076930999756
+            }
+          },
+          {
+            "id": 1,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.45181500911712646,
+              "y": 0.6798005700111389,
+              "width": 0.006829768419265747,
+              "height": 0.019159436225891113
+            }
+          },
+          {
+            "id": 4,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6866691708564758,
+              "y": 0.606410562992096,
+              "width": 0.011703550815582275,
+              "height": 0.020642340183258057
+            }
+          },
+          {
+            "id": 5,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6382676959037781,
+              "y": 0.47362518310546875,
+              "width": 0.014011263847351074,
+              "height": 0.03620404005050659
+            }
+          }
+        ],
+        "portalCpuNanoseconds": {
+          "mean": 3500640.5555555555,
+          "p95": 5440700.0,
+          "maximum": 15382500.0
+        },
+        "draws": {
+          "mean": 1654.2888888888888,
+          "p95": 1688.0,
+          "maximum": 1697.0
+        }
+      },
+      "adaptive": {
+        "meanWallMs": 12.475091111111102,
+        "p95WallMs": 18.5213,
+        "meanSubmitMs": 1.878900555555558,
+        "meanReadbackMs": 5.721825277777774,
+        "portalRenders": 278,
+        "validGpuSamples": 0,
+        "gc0": 1,
+        "gc1": 1,
+        "gc2": 1,
+        "portalTargets": [
+          {
+            "id": 4,
+            "renders": 93,
+            "width": 128,
+            "height": 128,
+            "skipped": 267,
+            "interval": 4,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6866691708564758,
+              "y": 0.606410562992096,
+              "width": 0.011703550815582275,
+              "height": 0.020642340183258057
+            }
+          },
+          {
+            "id": 3,
+            "renders": 92,
+            "width": 128,
+            "height": 128,
+            "skipped": 268,
+            "interval": 4,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5052844882011414,
+              "y": 0.6831963062286377,
+              "width": 0.006594479084014893,
+              "height": 0.02199375629425049
+            }
+          },
+          {
+            "id": 2,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.7003121376037598,
+              "y": 0.4158075153827667,
+              "width": 0.007847845554351807,
+              "height": 0.019307076930999756
+            }
+          },
+          {
+            "id": 0,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 4,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5597334504127502,
+              "y": 0.3331621289253235,
+              "width": 0.010472297668457031,
+              "height": 0.027521520853042603
+            }
+          },
+          {
+            "id": 1,
+            "renders": 93,
+            "width": 128,
+            "height": 128,
+            "skipped": 267,
+            "interval": 4,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.45181500911712646,
+              "y": 0.6798005700111389,
+              "width": 0.006829768419265747,
+              "height": 0.019159436225891113
+            }
+          },
+          {
+            "id": 5,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6382676959037781,
+              "y": 0.47362518310546875,
+              "width": 0.014011263847351074,
+              "height": 0.03620404005050659
+            }
+          }
+        ],
+        "portalCpuNanoseconds": {
+          "mean": 1232579.7222222222,
+          "p95": 2987600.0,
+          "maximum": 11572500.0
+        },
+        "draws": {
+          "mean": 1491.4083333333333,
+          "p95": 1582.0,
+          "maximum": 1667.0
+        }
+      },
+      "meanWallReductionPercent": 17.18756952270345,
+      "portalCpuReductionPercent": 64.78988051869237,
+      "portalRenderReductionPercent": 74.25925925925925
+    },
+    {
+      "view": "foliage-waterfall",
+      "full": {
+        "meanWallMs": 16.442481666666655,
+        "p95WallMs": 36.5886,
+        "meanSubmitMs": 2.0627405555555565,
+        "meanReadbackMs": 5.925835000000001,
+        "portalRenders": 1080,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "portalTargets": [
+          {
+            "id": 3,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5052844882011414,
+              "y": 0.6831963062286377,
+              "width": 0.006594479084014893,
+              "height": 0.02199375629425049
+            }
+          },
+          {
+            "id": 0,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5597334504127502,
+              "y": 0.3331621289253235,
+              "width": 0.010472297668457031,
+              "height": 0.027521520853042603
+            }
+          },
+          {
+            "id": 2,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.39859190583229065,
+              "y": 0.681701123714447,
+              "width": 0.0070157647132873535,
+              "height": 0.01725482940673828
+            }
+          },
+          {
+            "id": 1,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.4418458938598633,
+              "y": 0.7685943245887756,
+              "width": 0.009205430746078491,
+              "height": 0.029768943786621094
+            }
+          },
+          {
+            "id": 4,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6866691708564758,
+              "y": 0.606410562992096,
+              "width": 0.011703550815582275,
+              "height": 0.020642340183258057
+            }
+          },
+          {
+            "id": 5,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.32994064688682556,
+              "y": 0.7924025058746338,
+              "width": 0.018059879541397095,
+              "height": 0.04333782196044922
+            }
+          }
+        ],
+        "portalCpuNanoseconds": {
+          "mean": 3984876.111111111,
+          "p95": 11799500.0,
+          "maximum": 17039400.0
+        },
+        "draws": {
+          "mean": 1813.5444444444445,
+          "p95": 1873.0,
+          "maximum": 1901.0
+        }
+      },
+      "adaptive": {
+        "meanWallMs": 12.391682777777778,
+        "p95WallMs": 16.3913,
+        "meanSubmitMs": 1.8045574999999998,
+        "meanReadbackMs": 5.652491944444446,
+        "portalRenders": 450,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "portalTargets": [
+          {
+            "id": 4,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 4,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.6866691708564758,
+              "y": 0.606410562992096,
+              "width": 0.011703550815582275,
+              "height": 0.020642340183258057
+            }
+          },
+          {
+            "id": 3,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 4,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5052844882011414,
+              "y": 0.6831963062286377,
+              "width": 0.006594479084014893,
+              "height": 0.02199375629425049
+            }
+          },
+          {
+            "id": 2,
+            "renders": 90,
+            "width": 128,
+            "height": 128,
+            "skipped": 270,
+            "interval": 4,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.39859190583229065,
+              "y": 0.681701123714447,
+              "width": 0.0070157647132873535,
+              "height": 0.01725482940673828
+            }
+          },
+          {
+            "id": 0,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 4,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5597334504127502,
+              "y": 0.3331621289253235,
+              "width": 0.010472297668457031,
+              "height": 0.027521520853042603
+            }
+          },
+          {
+            "id": 1,
+            "renders": 180,
+            "width": 128,
+            "height": 128,
+            "skipped": 180,
+            "interval": 2,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.4418458938598633,
+              "y": 0.7685943245887756,
+              "width": 0.009205430746078491,
+              "height": 0.029768943786621094
+            }
+          },
+          {
+            "id": 5,
+            "renders": 180,
+            "width": 128,
+            "height": 128,
+            "skipped": 180,
+            "interval": 2,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.32994064688682556,
+              "y": 0.7924025058746338,
+              "width": 0.018059879541397095,
+              "height": 0.04333782196044922
+            }
+          }
+        ],
+        "portalCpuNanoseconds": {
+          "mean": 1406450.8333333333,
+          "p95": 3694400.0,
+          "maximum": 9485800.0
+        },
+        "draws": {
+          "mean": 1631.1083333333333,
+          "p95": 1848.0,
+          "maximum": 1901.0
+        }
+      },
+      "meanWallReductionPercent": 24.636177013965842,
+      "portalCpuReductionPercent": 64.70528081383263,
+      "portalRenderReductionPercent": 58.33333333333333
+    },
+    {
+      "view": "portal",
+      "full": {
+        "meanWallMs": 12.445213888888889,
+        "p95WallMs": 14.5179,
+        "meanSubmitMs": 1.4849452777777767,
+        "meanReadbackMs": 5.193707222222221,
+        "portalRenders": 720,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "portalTargets": [
+          {
+            "id": 3,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5052844882011414,
+              "y": 0.6831963062286377,
+              "width": 0.006594479084014893,
+              "height": 0.02199375629425049
+            }
+          },
+          {
+            "id": 0,
+            "renders": 360,
+            "width": 128,
+            "height": 192,
+            "skipped": 0,
+            "interval": 1,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.4410232901573181,
+              "y": 0.3520336151123047,
+              "width": 0.117953360080719,
+              "height": 0.3096652626991272
+            }
+          },
+          {
+            "id": 2,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.39859190583229065,
+              "y": 0.681701123714447,
+              "width": 0.0070157647132873535,
+              "height": 0.01725482940673828
+            }
+          },
+          {
+            "id": 1,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.4418458938598633,
+              "y": 0.7685943245887756,
+              "width": 0.009205430746078491,
+              "height": 0.029768943786621094
+            }
+          },
+          {
+            "id": 4,
+            "renders": 360,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.08378592878580093,
+              "y": 0.3057577610015869,
+              "width": 0.035959579050540924,
+              "height": 0.061853766441345215
+            }
+          },
+          {
+            "id": 5,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 1,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.32994064688682556,
+              "y": 0.7924025058746338,
+              "width": 0.018059879541397095,
+              "height": 0.04333782196044922
+            }
+          }
+        ],
+        "portalCpuNanoseconds": {
+          "mean": 2394605.8333333335,
+          "p95": 3225100.0,
+          "maximum": 14937600.0
+        },
+        "draws": {
+          "mean": 527.0694444444445,
+          "p95": 566.0,
+          "maximum": 569.0
+        }
+      },
+      "adaptive": {
+        "meanWallMs": 11.999403055555549,
+        "p95WallMs": 14.7811,
+        "meanSubmitMs": 1.5015541666666659,
+        "meanReadbackMs": 5.195888611111115,
+        "portalRenders": 540,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "portalTargets": [
+          {
+            "id": 4,
+            "renders": 180,
+            "width": 128,
+            "height": 128,
+            "skipped": 180,
+            "interval": 2,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.08378592878580093,
+              "y": 0.3057577610015869,
+              "width": 0.035959579050540924,
+              "height": 0.061853766441345215
+            }
+          },
+          {
+            "id": 3,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 4,
+            "name": "Under bridge portal 1",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.5052844882011414,
+              "y": 0.6831963062286377,
+              "width": 0.006594479084014893,
+              "height": 0.02199375629425049
+            }
+          },
+          {
+            "id": 2,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 4,
+            "name": "Basement return portal",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.39859190583229065,
+              "y": 0.681701123714447,
+              "width": 0.0070157647132873535,
+              "height": 0.01725482940673828
+            }
+          },
+          {
+            "id": 0,
+            "renders": 360,
+            "width": 128,
+            "height": 192,
+            "skipped": 0,
+            "interval": 1,
+            "name": "PA // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.4410232901573181,
+              "y": 0.3520336151123047,
+              "width": 0.117953360080719,
+              "height": 0.3096652626991272
+            }
+          },
+          {
+            "id": 1,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 2,
+            "name": "PB // GARDEN PORTAL",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.4418458938598633,
+              "y": 0.7685943245887756,
+              "width": 0.009205430746078491,
+              "height": 0.029768943786621094
+            }
+          },
+          {
+            "id": 5,
+            "renders": 0,
+            "width": 128,
+            "height": 128,
+            "skipped": 0,
+            "interval": 2,
+            "name": "Under bridge portal 3",
+            "viewport": {
+              "serializedVersion": "2",
+              "x": 0.32994064688682556,
+              "y": 0.7924025058746338,
+              "width": 0.018059879541397095,
+              "height": 0.04333782196044922
+            }
+          }
+        ],
+        "portalCpuNanoseconds": {
+          "mean": 1968595.0,
+          "p95": 2998200.0,
+          "maximum": 11379800.0
+        },
+        "draws": {
+          "mean": 470.47222222222223,
+          "p95": 559.0,
+          "maximum": 569.0
+        }
+      },
+      "meanWallReductionPercent": 3.5821869942416984,
+      "portalCpuReductionPercent": 17.790436630663297,
+      "portalRenderReductionPercent": 25.0
+    }
+  ],
+  "scope": "Hidden Windows player; 1080p High; one automated human and three bots; 100-degree vertical observer FOV; fixed 60 Hz simulation with uncapped wall-timed render throughput. Observer stages after ArenaSession and before automatic portal renders. Main rendering runs after LateUpdate at EndOfFrame with synchronous one-pixel readback. Phase wall times include scheduling/driver work; readback is not isolated GPU time. Profiler counters are inclusive, last-completed-frame values and are not additive. Unity delta is fixed by captureFramerate and is not a pacing measurement. No HUD/native input/audio/sustained visible-play acceptance.",
+  "acceptance": "Controlled offscreen throughput evidence. Distant destination views intentionally reuse a bounded cache; nearby/scoped/moving views refresh immediately. Not native frame pacing, isolated GPU time or final artistic acceptance."
+}

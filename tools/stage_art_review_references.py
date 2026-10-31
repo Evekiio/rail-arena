@@ -35,6 +35,8 @@ if int(args.review) >= 26:
     inherited.append('BasementDecks')
 if int(args.review) >= 27:
     inherited.append('HandBinding')
+if int(args.review) >= 28:
+    inherited.append('ReloadHands')
 for name in inherited:
     source = previous/'ValidationEvidence'/name
     assert source.is_dir() and not (destination/name).exists(), name
@@ -42,8 +44,22 @@ for name in inherited:
         if path.is_file():
             assert hashlib.sha256(path.read_bytes()).hexdigest() == manifest[path.relative_to(previous).as_posix()], path
     shutil.copytree(source, destination/name)
-family = 'ReloadHands' if int(args.review) >= 27 else 'HandBinding' if int(args.review) >= 26 else 'BasementDecks' if int(args.review) >= 25 else 'ReadyMotion' if int(args.review) >= 23 else 'GardenNature' if int(args.review) >= 22 else 'ArenaStone' if int(args.review) >= 20 else 'SlideMotion'
-if family == 'ReloadHands':
+family = 'PortalRefresh' if int(args.review) >= 28 else 'ReloadHands' if int(args.review) >= 27 else 'HandBinding' if int(args.review) >= 26 else 'BasementDecks' if int(args.review) >= 25 else 'ReadyMotion' if int(args.review) >= 23 else 'GardenNature' if int(args.review) >= 22 else 'ArenaStone' if int(args.review) >= 20 else 'SlideMotion'
+if family == 'PortalRefresh':
+    source = root/'ArtSource/Original/ArtPass-v1/Performance/PortalRefresh'
+    spec = json.loads((source/'review-evidence.json').read_text(encoding='utf-8'))
+    for name,digest in spec['commonImplementationSha256'].items():
+        assert hashlib.sha256((root/name).read_bytes().replace(b'\r\n',b'\n')).hexdigest()==digest
+    current = destination/family
+    assert not current.exists(), 'Never overwrite staged references'
+    current.mkdir()
+    files = [(path,path.relative_to(source).as_posix()) for path in sorted(source.rglob('*')) if path.is_file()]
+    files += [(root/'Validation'/name,name) for name in ['portal-refresh-policy.xml','portal-refresh-native-04.xml','PortalRefreshNative-04/review.json']]
+    for pair in (1,2):
+        directory=root/f'Validation/PortalRefresh-Profile-{pair:02}'
+        files += [(path,f'Profile-{pair:02}/'+path.name) for path in sorted(directory.iterdir()) if path.is_file() and path.suffix in ('.json','.csv')]
+    files += [(root/'docs/PORTAL-REFRESH-PERFORMANCE.md','PORTAL-REFRESH-PERFORMANCE.md')]
+elif family == 'ReloadHands':
     source = root/'ArtSource/Original/ArtPass-v1/FirstPerson/ReloadHands-v1'
     spec = json.loads((source/'ReloadHandAction.json').read_text(encoding='utf-8'))
     assert hashlib.sha256((source/spec['master']).read_bytes()).hexdigest() == spec['masterSha256']
