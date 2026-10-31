@@ -42,8 +42,12 @@ The stone material experiment reduced draws 34.6–44.1% but produced mixed timi
 
 ## Remaining production and QA
 
-The current inventory contains 3,806 paths: 1,570 production-evidence paths, thirteen archived-research paths and 2,223 baseline-only paths. The structural audit found zero missing linked files. These are file/link counts, not unique model counts or complete reference certification. [Reference-link audit](../Validation/ArtReferenceLinks-02/audit.md), [current gaps](../ArtSource/Original/ArtPass-v1/CURRENT-GAPS.md).
+The current source inventory contains 3,909 paths: 1,673 production-evidence paths, thirteen archived-research paths and 2,223 baseline-only paths. These counts include the held assembly reference batch authored after Review 25; those source-only references are not added retroactively to its immutable ZIP. The structural audit found zero missing linked files. These are file/link counts, not unique model counts or complete reference certification. [Reference-link audit](../Validation/ArtReferenceLinks-07/audit.md), [current gaps](../ArtSource/Original/ArtPass-v1/CURRENT-GAPS.md).
 
 The original 34-action matrix remains intact; eighteen rows have source integration evidence. Full first-person action and assembled rig references, character combat/reload/respawn and temporal transitions, complete per-asset construction/variant evidence, remaining structural framing/cover and device assemblies, waterfall lips/foam/cloudscape, broader nature coverage, UI/audio acceptance and measured native performance remain unfinished. Distant paving joints and thin trim still need aliasing/readability review. The deferred ADS/portal corner case remains recorded for reproduction if it blocks acceptance.
 
 Playtest ADS, reload contacts, movement/slide readability, reticle bounds, basement routes/returns, menu/character states, Physics Lab, deaths, sound and sustained frame pacing. This build is ready for Sanders' feedback while production continues; it is not a claim that the full art pass or final artistic acceptance is complete.
+
+## Source references after Review 25
+
+The [calibrated first-person assembly](FIRST-PERSON-ASSEMBLY.md) adds an editable held-reference Blender master, four appearances, eight hip/ADS poses, 48 equal-scale orthographics and matched native/Blender eye views. Saved-master verification covers 31,012 posed arm vertices, 78,528 rigid part vertices, 432 bone heads, original weights/hierarchy, rifle topology/UVs and exact socket/camera frames. No runtime replacement or new motion clip is installed. The orthographics expose finger/grip defects for the next hand-art batch. This does not complete the full first-person action/import/reference requirements or change the verified Review 25 executable.

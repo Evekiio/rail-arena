@@ -1,5 +1,6 @@
 """Offline source/reference gallery; no browser or native acceptance claims."""
 import hashlib
+import gzip
 import json
 import csv
 from html.parser import HTMLParser
@@ -47,6 +48,7 @@ for name in ('garden-bridge','summit','basement','waterfall'):
 sections.insert(0,('Before and after / matching environment cameras',comparisons))
 html = '<!doctype html><meta charset="utf-8"><title>Rail Arena integrated art review</title><style>body{background:#102029;color:#eef0df;font:17px system-ui;margin:32px}a{color:#6ce0d0}img{max-width:100%;height:auto}figure{margin:24px 0}section{display:grid;grid-template-columns:repeat(auto-fit,minmax(480px,1fr));gap:20px}</style><h1>Rail Arena v1 alpha / integrated art review</h1><p>Direction approved. Production continues without intermediate approval holds. Final native input, sound and artistic acceptance: Sanders playtest. Public release held.</p><p><a href="Gate1/index.html">Full baseline inventory</a> · <a href="Gate2/RifleActions/index.html">Reload motion and contacts</a> · <a href="Gate2/PRODUCTION-STATUS.md">Production status and exceptions</a></p>'
 html += '<p><a href="current-asset-register.csv">Joined current inventory</a> · <a href="current-asset-manifest.json">Machine-readable current manifest</a> · <a href="CURRENT-GAPS.md">Coverage and remaining production gaps</a> · <a href="Environment/BasementDecks/index.html">Measured basement stone kit and construction layers</a></p>'
+if (art/'FirstPerson/Assembly-v1/index.html').is_file():html += '<p><a href="FirstPerson/Assembly-v1/index.html">Calibrated editable first-person assembly / four appearances / hip and ADS / measured six-view sheets</a></p>'
 html += '<p><a href="Performance/UnderbridgeMounted/index.html">Corrected under-bridge destinations and measured wall mounting</a></p>'
 html += '<p><a href="Animation/Strafe/index.html">Authored lateral gaits, measured poses and installed playback</a></p>'
 html += '<p><a href="Animation/Reactions/index.html">Authored hit/death, matching legacy reference and lifecycle evidence</a></p>'
@@ -75,10 +77,12 @@ class Links(HTMLParser):
                 assert (art/value).resolve().is_file(), value
 Links().feed(html)
 paths=[]
-for directory in [root/'RailArena/Assets/RailArena/Art/ArtPass',root/'RailArena/Assets/Resources/Art',root/'RailArena/Assets/Resources/UI/ArtPassPortraits',art/'Characters',art/'Nature',art/'Devices',art/'Environment',art/'Gate2/RifleActions',art/'Animation',art/'Experiments']:
+for directory in [root/'RailArena/Assets/RailArena/Art/ArtPass',root/'RailArena/Assets/Resources/Art',root/'RailArena/Assets/Resources/UI/ArtPassPortraits',art/'Characters',art/'FirstPerson',art/'Nature',art/'Devices',art/'Environment',art/'Gate2/RifleActions',art/'Animation',art/'Experiments']:
     paths += [p for p in directory.rglob('*') if p.is_file() and p.suffix not in ('.meta','.blend1','.blend2')]
 paths += [root/'RailArena/Assets/Resources/Effects'/name for name in ('CelSurface.shader','CelWater.shader','CelOutline.shader','SkyGardenClouds.shader','WorldGlyph.shader','ArtAtmosphere.shader','TraversalEnergy.shader')]
 entries=[{'id':'art-'+hashlib.sha256(p.relative_to(root).as_posix().encode()).hexdigest()[:16], 'path':p.relative_to(root).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'disposition':'refine','approval':'Art direction approved; final integrated playtest pending'} for p in sorted(set(paths))]
+fps_source=art/'FirstPerson/Assembly-v1/RuntimeSource/assembly-source.json.gz'
+fps_skins=json.loads(gzip.decompress(fps_source.read_bytes()))['skins'] if fps_source.is_file() else []
 for entry in entries:
     path = entry['path']; family = 'environment'; category = 'supporting'
     identity = next((n for n in ('Player','Bot01','Bot02','Bot03') if n in path), None)
@@ -240,6 +244,21 @@ for entry in entries:
             'referenceSheets':[],'rigBones':[],'clips':[],'currentScreenshot':'Validation/StoneSubmissionNative-03/combat-after.png',
             'provenance':'Original Rail Arena derived GPU exports and rendering prototype; exact file hashes and historical build/source identities in experiment.json',
             'referenceException':'Archived performance research. Native image/geometry checks pass; two ordered pairs did not establish a consistent frame-time improvement. Not accepted production artwork.'})
+    if '/FirstPerson/Assembly-v1/' in path:
+        directory=art/'FirstPerson/Assembly-v1';assembly=json.loads((directory/'production.json').read_text(encoding='utf-8'));measured=json.loads((directory/'measured-views.json').read_text(encoding='utf-8'))
+        selected=next((item for item in measured['views'] if item['id'] in path or item['id'].replace('_','-') in path),measured['views'][0])
+        entry.update({'category':'first-person presentation','family':'calibrated-fps-assembly','disposition':'refine',
+            'approval':'Measured held-reference batch verified; final first-person hand quality and motion/import acceptance pending',
+            'runtimeUsage':'Editable held assembly/reference only; not a replacement runtime rig or a new motion library. Existing installed forearms, rifle, grip solve and ADS remain authoritative.',
+            'sourceMaster':'ArtSource/Original/ArtPass-v1/FirstPerson/Assembly-v1/'+assembly['master'],
+            'dimensionsMetresBlenderXYZ':{'heldAssembly':selected['id'],**selected['bounds']},
+            'dimensionAuthority':'Geometry-derived measured-views.json and construction.json; original Unity weapon-root metres converted to Blender (x,z,y)',
+            'dependencies':['ArtSource/Original/ArtPass-v1/FirstPerson/Assembly-v1/'+name for name in ['production.json','measured-views.json','construction.json','RuntimeSource/capture.json','RuntimeSource/assembly-source.json.gz']]+['Validation/fps-assembly-export-scale-correct.xml','Validation/fps-assembly-saved-master-pivots.json','docs/FIRST-PERSON-ASSEMBLY.md']+[item['path'] for item in assembly['sourceMasters']],
+            'referenceSheets':['ArtSource/Original/ArtPass-v1/FirstPerson/Assembly-v1/References/'+item['id']+'/measured-sheet.png' for item in measured['views']],
+            'rigBones':next(skin['bones'] for skin in fps_skins if skin['identity']==selected['id'].split('_')[0]),
+            'clips':[],'currentScreenshot':'ArtSource/Original/ArtPass-v1/FirstPerson/Assembly-v1/'+selected['nativeUnityImage'],
+            'provenance':assembly['provenance'],
+            'referenceException':'Held hip/ADS geometry and eye frames only. Finger/grip intersections and detached-looking fingertip shapes are visible baseline defects. Full motion, animated hand contacts, compatible replacement-rig import and final artistic acceptance remain incomplete.'})
     if Path(path).suffix.lower()=='.png':
         with Image.open(root/path) as texture:entry['textureDimensionsPixelsWH']=list(texture.size)
 (art/'integrated-manifest.json').write_text(json.dumps({'schema':'rail-arena-art-delta/2','baseline':'Gate1/asset-manifest.json','entries':entries,'coverage':'Baseline inventory plus production delta; remaining reference and animation exceptions in Gate2/PRODUCTION-STATUS.md'},indent=2)+'\n')
