@@ -104,10 +104,10 @@ namespace RailArena.Editor
             File.WriteAllText(folder+"/deck-source.json",JsonUtility.ToJson(new AuditRecord{profiles=profiles.ToArray()},true));
             Debug.Log("BASEMENT_DECK_SOURCE_AUDITED two profiles / eight exact collision meshes; scene unchanged");
         }
-        public static DeckSource Measure(Transform deck,string name)
+        public static DeckSource Measure(Transform deck,string name,bool requireSharedVisualMesh=true)
         {
             var collider=deck.GetComponent<MeshCollider>();var filter=deck.GetComponent<MeshFilter>();
-            if(collider==null||filter==null||collider.sharedMesh!=filter.sharedMesh||Quaternion.Angle(deck.rotation,Quaternion.identity)>.001f)
+            if(collider==null||filter==null||collider.sharedMesh==null||(requireSharedVisualMesh&&collider.sharedMesh!=filter.sharedMesh)||Quaternion.Angle(deck.rotation,Quaternion.identity)>.001f)
                 throw new InvalidOperationException("Deck source must retain its original upright collision mesh");
             var mesh=collider.sharedMesh;var size=Vector3.Scale(mesh.bounds.size,deck.lossyScale);
             var top=new Vector3(mesh.bounds.center.x,mesh.bounds.max.y,mesh.bounds.center.z);
