@@ -9,3 +9,5 @@ Damage uses a restrained six-step edge falloff, leaving the aiming area clear. I
 No damage, movement, spread, reload cadence, weapon timing, multiplayer messages, portal logic or reticle bounds change. All added graphics ignore raycasts. Hidden-menu transitions reset the damage trail so stale combat feedback does not carry into another session.
 
 Validation uses offscreen captures of healthy, damaged, critical, healing, low-ammo, empty, reload, elimination, reduced-flash and death states at 1080p and 720p, plus the existing relevant HUD checks. These renders establish layout and state behaviour, not physical input or sound acceptance.
+
+The magazine now has thirty readable segments. Stance changes briefly brighten the icon, while notices and elimination-feed entries settle over roughly 170–200 ms without moving the reticle. Repeated numeric countdown updates do not restart the entrance motion. All three final focused HUD tests passed; the magazine test also covers 2560×1080. [State gallery](../ArtSource/Original/ArtPass-v1/UI/HudPolish-29/index.html).
