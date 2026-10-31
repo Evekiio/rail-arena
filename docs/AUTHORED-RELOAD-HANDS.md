@@ -27,3 +27,5 @@ Use Unity 6000.6.7f1 and Blender 5.2.2 sequentially and hidden. Preserve frozen 
 5. Graphics-enabled hidden EditMode: run `RailArena.Tests.ReloadHandArtReview` to a fresh evidence folder (the test refuses to overwrite frozen playback). Run `tools/package_reload_hands.py` with the Pillow/ffmpeg runtime to package measured sheets and native clips. It verifies the native XML master hash, saved-master proof and media dimensions.
 
 `Validation/reload-hands-native.xml`, `Validation/reload-hands-saved-master.json` and the action review-evidence.json identify the exact source and limits. Latest verified shipping state is recorded separately in ART-PASS-REVIEW.md. This action family does not complete the full art-production plan or establish final native sound/input/artistic acceptance.
+
+Windows Review 27 includes this action with all prior graphics. All 39 mechanics checks, a 45-second player/three-bot smoke match and both 90-second loopback peers pass. Its portable package verifies 877 files in the archive and fresh extraction. Performance exceptions and exact identity/checksum remain documented in ART-PASS-REVIEW.md; final artistic acceptance remains open.
