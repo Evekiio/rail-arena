@@ -30,6 +30,7 @@ namespace RailArena
         private CrouchPose crouchPose;
         private bool directionalMotion;
         private bool authoredCrouch;
+        private bool authoredSlide;
         private Quaternion headAimOffset;
         private static readonly float[] SurfaceMargins = { .17f, .2f, .07f, .07f, .035f, .035f };
 #if UNITY_EDITOR
@@ -42,6 +43,10 @@ namespace RailArena
         private static readonly int MotionX = UnityEngine.Animator.StringToHash("MotionX");
         private static readonly int MotionZ = UnityEngine.Animator.StringToHash("MotionZ");
         private static readonly int AuthoredCrouch = UnityEngine.Animator.StringToHash("AuthoredCrouch");
+        private static readonly int AuthoredSlide = UnityEngine.Animator.StringToHash("AuthoredSlide");
+
+        public bool NeedsSlideStanceSync => authoredSlide && actor != null &&
+            (actor.IsSliding || Animator.GetCurrentAnimatorStateInfo(0).IsTag("AuthoredSlide"));
 
         public void SetMotionController(RuntimeAnimatorController controller)
         {
@@ -51,6 +56,7 @@ namespace RailArena
             directionalMotion = System.Array.Exists(Animator.parameters, item => item.nameHash == MotionX) &&
                 System.Array.Exists(Animator.parameters, item => item.nameHash == MotionZ);
             authoredCrouch = System.Array.Exists(Animator.parameters, item => item.nameHash == AuthoredCrouch);
+            authoredSlide = System.Array.Exists(Animator.parameters, item => item.nameHash == AuthoredSlide);
             if (reactionSuppressed && Animator.layerCount > 1) Animator.SetLayerWeight(1, 0);
         }
 
@@ -140,6 +146,7 @@ namespace RailArena
             Animator.SetBool(Grounded, onGround);
             Animator.SetBool(Dead, !actor.Alive);
             if(authoredCrouch)Animator.SetBool(AuthoredCrouch,GroundCrouch());
+            if (authoredSlide) Animator.SetBool(AuthoredSlide, GroundSlide());
             if (onGround && !grounded && actor.Alive) Animator.SetTrigger("Land");
             grounded = onGround;
             if (!actor.Alive) return;
@@ -221,12 +228,32 @@ namespace RailArena
         {
             if (crouchPose == null) return;
             crouchPose.Restore();
+            if (authoredSlide && GroundSlide())
+            {
+                int duration = Mathf.Max(1, session.Tuning.SlideDurationTicks);
+                int elapsed = Mathf.Clamp(duration - actor.Slide.RemainingTicks - 1, 0, duration - 1);
+                bool transitionsFit = duration >= 16;
+                string clip = "SlideHold";
+                float phase = Mathf.Repeat(elapsed / 12f, 1);
+                if (transitionsFit && elapsed < 6) { clip = "SlideEnter"; phase = elapsed / 6f; }
+                else if (transitionsFit && elapsed >= duration - 9) { clip = "SlideRecover"; phase = (elapsed - duration + 9) / 9f; }
+                else if (transitionsFit) phase = Mathf.Repeat((elapsed - 6) / 12f, 1);
+                Animator.SetBool(AuthoredSlide, true);
+                Animator.SetBool(AuthoredCrouch, false);
+                Animator.SetBool(Grounded, true);
+                Animator.SetBool(Dead, false);
+                // Source frames follow simulation ticks, including prediction correction and pause.
+                Animator.Play(clip, 0, phase);
+                Animator.Update(0);
+                return;
+            }
             if(authoredCrouch&&actor.Alive)
             {
                 bool desired=GroundCrouch();var state=Animator.GetCurrentAnimatorStateInfo(0);
-                if(desired!=state.IsTag("AuthoredCrouch"))
+                if(desired!=state.IsTag("AuthoredCrouch") || state.IsTag("AuthoredSlide"))
                 {
                     Animator.SetBool(AuthoredCrouch,desired);
+                    if (authoredSlide) Animator.SetBool(AuthoredSlide, false);
                     Animator.SetBool(Grounded,actor.Grounded&&actor.AirborneTicks==0);
                     Animator.SetFloat(Vertical,actor.Velocity.y);Animator.SetBool(Dead,false);
                     string next=desired?"Crouch":actor.Grounded&&actor.AirborneTicks==0?"Locomotion":actor.Velocity.y>0?"Jump":"Air";
@@ -238,6 +265,7 @@ namespace RailArena
             if (actor.Alive && actor.IsCrouched) crouchPose.Apply();
         }
         bool GroundCrouch()=>actor.Alive&&actor.IsCrouched&&actor.Grounded&&actor.AirborneTicks==0&&!actor.IsSliding;
+        bool GroundSlide()=>actor.Alive&&actor.IsSliding&&actor.IsCrouched&&actor.Grounded&&actor.AirborneTicks==0;
         public void StanceChanged()
         {
             ApplyStance();

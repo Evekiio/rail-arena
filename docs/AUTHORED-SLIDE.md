@@ -1,0 +1,27 @@
+# Authored feet-first slide
+
+Three original Blender actions use the unchanged shared humanoid skeleton: `SlideEnter` (6 frames / 0.10 s), `SlideHold` (12 frames / 0.20 s loop) and `SlideRecover` (9 frames / 0.15 s). Entry and recovery connect to compact crouch, rather than delaying the authoritative crouch/stand capsule. The hold is a stable gliding posture: translation and steering come from the existing simulation, not a running leg cycle or root motion.
+
+The canonical master is `ArtSource/Original/ArtPass-v1/Animation/Slide/Contender-Slide-v1.blend`. Its source manifest records the source/master hashes, original ankle paths, cadence and axis conversion. Six equal-scale views and six sampled poses per action produce 108 geometry-derived images and three measured sheets, with a 2.2 m shared span and metre rulers. These unarmed source references do not certify rifle contacts by themselves.
+
+## Authority and timing
+
+Only the Sky Gardens art controller adds the three states and `AuthoredSlide` capability. Legacy controllers retain their previous procedural treatment. `SlideMovement`, movement tuning, command semantics, network messages, damage, spread, weapon timing and collision geometry are unchanged.
+
+`ContenderPresentation` selects source frames using the authoritative remaining slide ticks and configured duration. For the default 36 ticks, the first six use entry; the last nine use recovery; the interval between uses the gliding hold. Clips retain native 60 Hz cadence and state speed 1. Durations below 16 ticks use the hold directly, rather than retiming entry/recovery or extending movement. A one-tick slide has no observable `Slide.Active` phase after the existing simulation decrement and retains the immediate crouch response. No physics semantics are changed to display an animation.
+
+`ArenaActor.SetCrouched` synchronizes an active authored slide even when the crouch boolean stays true. Exiting into held crouch, standing, jumping or falling synchronizes the correct pose during the same stance update. Animation does not decrement remaining/cooldown ticks or move the actor. Hitbox collider definitions and local attachments stay unchanged; their world transforms follow the new body poses. Pose changes are therefore visible to authoritative hit queries.
+
+Prediction correction observes the corrected remaining ticks; pause holds that clock. A grounded warp can preserve the phase while moving the actor to the destination; an airborne state returns to the existing jump/fall fallback. Death overrides the living pose, and respawn restores the normal controller lifecycle. The first-person action library is separate and is not completed by this third-person batch.
+
+## Evidence and reproduction
+
+Use Blender background with `tools/author_contender_slide.py -- "F:/Rail Arena"`, then `tools/render_contender_motion_refs.py -- "F:/Rail Arena" --family Slide`. The shared renderer evaluates every rig-bound mesh part at every source frame. `--check-only` produces separate numeric evidence without claiming new images. The old crouch render entry point delegates to this shared implementation with its original default family.
+
+The source floor audit covers all 216 bound mesh parts, with at least 8.427 mm clearance and ankle target errors below 0.1 mm. All three exported clips import as valid humanoid motion at 60 Hz with 130 curves and locked root channels. The isolated native review covers 30 frames / 120 character samples with live rifle grips; it records at least 7.779 mm whole-skin clearance and wrist error at most 0.001 mm. Source and native measurements have different scopes.
+
+Run `ContenderMotionArtBuilder.Prepare` to reproduce integration. The focused `SlideIntegrationReview` checks remaining-tick phase selection, custom durations, aim angles, whole-skin floor bounds, live wrist reach, unchanged actor root/velocity/ticks/capsule and stance/warp/death/respawn/legacy behavior. `SlideMovementPlaybackReview` compares actual controller movement under identical scripted commands with legacy versus authored presentation and captures a matching motion comparison. `CrouchIntegrationReview` covers the affected crouch path. Read the current XML/CSV results before claiming these checks passed.
+
+`tools/package_slide_refs.py` creates the measured source gallery and isolated native reference. `tools/package_slide_playback.py` verifies and packages the installed motion reel, matching comparison and copied contact/lifecycle tables. The installed review passes 1,176 staged poses and twelve lifecycle scenarios. The moving review adds 1,440 paired controller comparisons, including 840 active-slide samples, with 0.1 mm trajectory tolerance. Minimum active-slide skin height is 7.779 mm; maximum reviewed wrist error is 0.036 mm. The affected crouch integration regression passes. These are controlled runway checks, not all-terrain certification.
+
+Windows integration, native input/sound, firing/reload/hit interruption combinations, all portal/pad trajectories, changing Physics Lab values during an active slide and Sanders' artistic acceptance remain distinct requirements. Wrist reach is not a certification of palm/finger surface contact. The original rig foundation and character licenses remain in the existing source provenance; the ankle paths and baked slide actions are original work with no new asset dependency. The overall art pass remains incomplete.
