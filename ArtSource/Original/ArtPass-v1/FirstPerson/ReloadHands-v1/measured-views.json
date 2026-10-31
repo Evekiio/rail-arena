@@ -1,0 +1,193 @@
+{
+  "masterSha256": "ccf37a7d24fbdd29efa62f2718a63881868001d23f8984d6f4c23625275b8412",
+  "axes": "Blender X right Y forward Z up; Unity (x,y,z) converted as (x,z,y). Metres.",
+  "orthographicSpanMetres": 1.0,
+  "centerBlenderXYZMetres": [
+    -0.14724121987819672,
+    0.09121209383010864,
+    -0.12511126697063446
+  ],
+  "poses": [
+    {
+      "frame": 0,
+      "label": "Support",
+      "bounds": {
+        "frame": 0,
+        "minimumBlenderXYZMetres": [
+          -0.3208208978176117,
+          -0.3175756633281708,
+          -0.2804122269153595
+        ],
+        "maximumBlenderXYZMetres": [
+          0.12035800516605377,
+          0.4999999403953552,
+          0.15000000596046448
+        ],
+        "sizeBlenderXYZMetres": [
+          0.44117890298366547,
+          0.817575603723526,
+          0.430412232875824
+        ]
+      },
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ]
+    },
+    {
+      "frame": 15,
+      "label": "Release",
+      "bounds": {
+        "frame": 15,
+        "minimumBlenderXYZMetres": [
+          -0.3306526839733124,
+          -0.3175738751888275,
+          -0.2804125249385834
+        ],
+        "maximumBlenderXYZMetres": [
+          0.13795310258865356,
+          0.49999991059303284,
+          0.14999999105930328
+        ],
+        "sizeBlenderXYZMetres": [
+          0.46860578656196594,
+          0.8175737857818604,
+          0.43041251599788666
+        ]
+      },
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ]
+    },
+    {
+      "frame": 21,
+      "label": "Grasp",
+      "bounds": {
+        "frame": 21,
+        "minimumBlenderXYZMetres": [
+          -0.340257465839386,
+          -0.3175738453865051,
+          -0.28041183948516846
+        ],
+        "maximumBlenderXYZMetres": [
+          0.12035980820655823,
+          0.49999991059303284,
+          0.14999999105930328
+        ],
+        "sizeBlenderXYZMetres": [
+          0.4606172740459442,
+          0.817573755979538,
+          0.43041183054447174
+        ]
+      },
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ]
+    },
+    {
+      "frame": 65,
+      "label": "Withdrawn",
+      "bounds": {
+        "frame": 65,
+        "minimumBlenderXYZMetres": [
+          -0.43843451142311096,
+          -0.31757569313049316,
+          -0.4002225399017334
+        ],
+        "maximumBlenderXYZMetres": [
+          0.12035791575908661,
+          0.49999991059303284,
+          0.14999999105930328
+        ],
+        "sizeBlenderXYZMetres": [
+          0.5587924271821976,
+          0.817575603723526,
+          0.5502225309610367
+        ]
+      },
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ]
+    },
+    {
+      "frame": 98,
+      "label": "Tap",
+      "bounds": {
+        "frame": 98,
+        "minimumBlenderXYZMetres": [
+          -0.3460879921913147,
+          -0.31757569313049316,
+          -0.2804122567176819
+        ],
+        "maximumBlenderXYZMetres": [
+          0.14395207166671753,
+          0.49999991059303284,
+          0.14999999105930328
+        ],
+        "sizeBlenderXYZMetres": [
+          0.4900400638580322,
+          0.817575603723526,
+          0.43041224777698517
+        ]
+      },
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ]
+    },
+    {
+      "frame": 120,
+      "label": "Return",
+      "bounds": {
+        "frame": 120,
+        "minimumBlenderXYZMetres": [
+          -0.3208365738391876,
+          -0.31757575273513794,
+          -0.28041303157806396
+        ],
+        "maximumBlenderXYZMetres": [
+          0.12035819888114929,
+          0.49999991059303284,
+          0.14999999105930328
+        ],
+        "sizeBlenderXYZMetres": [
+          0.4411947727203369,
+          0.8175756633281708,
+          0.43041302263736725
+        ]
+      },
+      "views": [
+        "front",
+        "rear",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ]
+    }
+  ],
+  "scope": "Reopened saved master versus independent native-frame FK and original four-weight skin. Finger deltas are Blender-authored; wrist/magazine retain original action. Not runtime import or complete surface collision certification."
+}

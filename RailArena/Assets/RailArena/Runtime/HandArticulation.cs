@@ -11,6 +11,8 @@ namespace RailArena
         public Transform[] Joints = Array.Empty<Transform>();
         public Quaternion[] GripRotations = Array.Empty<Quaternion>();
         private float recoil;
+        private RifleReloadHandArt reloadArt;
+        private float reloadProgress;
 
         public void Configure(Transform skeleton)
         {
@@ -30,6 +32,18 @@ namespace RailArena
 
         public void SetRecoil(float strength) => recoil = Mathf.Clamp01(strength);
 
+        public void SetReloadPose(RifleReloadHandArt art,float progress)
+        {
+            reloadArt=art;reloadProgress=Mathf.Clamp01(progress);
+        }
+
+        public void ClearReloadPose()
+        {
+            reloadArt=null;
+            // A disabled death pose owns the fingers until respawn.
+            if(isActiveAndEnabled)Pose(recoil);
+        }
+
         private void LateUpdate() => Pose(recoil);
 
         public void Pose(float strength)
@@ -40,7 +54,9 @@ namespace RailArena
                 int finger = i % 15 / 3, segment = i % 3;
                 float degrees = finger == 0 ? .5f : i >= 15 && finger == 1 ?
                     (segment == 0 ? 2 : segment == 1 ? 4 : 2) : 1;
-                Joints[i].localRotation = GripRotations[i] * Quaternion.AngleAxis(-degrees * strength, Vector3.right);
+                var grip=GripRotations[i];
+                if(i<15&&reloadArt!=null)grip*=reloadArt.Evaluate(reloadProgress,i);
+                Joints[i].localRotation = grip * Quaternion.AngleAxis(-degrees * strength, Vector3.right);
             }
         }
     }

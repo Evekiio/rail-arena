@@ -73,6 +73,7 @@ namespace RailArena
             CreateSprintSpread(combatRoot.transform);
             liveStandings=CreateStandings(combatRoot.transform,"ScoreboardPanel",Session.World.LayoutName + " / LIVE STANDINGS",new Vector2(.12f,.23f),new Vector2(.88f,.77f));
             scoreboardPanel=liveStandings.Root;
+            BuildCombatPolish();
             combatRoot.SetActive(false);
         }
 
@@ -102,7 +103,7 @@ namespace RailArena
         {
             bool visible = Session.Running && !Session.Paused && !Session.OnlineWaiting && Session.Match.Phase != MatchPhase.Results;
             combatRoot.SetActive(visible);
-            if (!visible) { sprintSpreadBlend = 0; sprintSpreadRoot.gameObject.SetActive(false); sprintBoundaryRoot.gameObject.SetActive(false); return; }
+            if (!visible) { ResetCombatPolish(); sprintSpreadBlend = 0; sprintSpreadRoot.gameObject.SetActive(false); sprintBoundaryRoot.gameObject.SetActive(false); return; }
             var human = Session.Human; var match = Session.Match;
             string movement=human.IsSliding?"SLIDE":human.IsCrouched?"CROUCH":human.Command.Walk?"WALK":human.Command.Sprint&&human.Command.Move.y>0?"SPRINT":"MOVE";
             if(displayedMovement!=movement)
@@ -170,6 +171,7 @@ namespace RailArena
                 row.text=entry.Text;
                 row.color=new Color(.91f,.94f,.96f,Mathf.Clamp01((float)((entry.ExpiresAt-now)/.5)));
             }
+            UpdateCombatPolish(human.Health, human.Alive, reloading, locked, human.Magazine.Rounds);
             scoreboardPanel.SetActive(showStandings);
             if (scoreboardPanel.activeSelf)
             {

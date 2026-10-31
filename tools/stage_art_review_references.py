@@ -27,6 +27,18 @@ if int(args.review) >= 20:
     inherited.append('SlideMotion')
 if int(args.review) >= 22:
     inherited.append('ArenaStone')
+if int(args.review) >= 23:
+    inherited.append('GardenNature')
+if int(args.review) >= 25:
+    inherited.append('ReadyMotion')
+if int(args.review) >= 26:
+    inherited.append('BasementDecks')
+if int(args.review) >= 27:
+    inherited.append('HandBinding')
+if int(args.review) >= 28:
+    inherited.append('ReloadHands')
+if int(args.review) >= 29:
+    inherited.append('PortalRefresh')
 for name in inherited:
     source = previous/'ValidationEvidence'/name
     assert source.is_dir() and not (destination/name).exists(), name
@@ -34,8 +46,78 @@ for name in inherited:
         if path.is_file():
             assert hashlib.sha256(path.read_bytes()).hexdigest() == manifest[path.relative_to(previous).as_posix()], path
     shutil.copytree(source, destination/name)
-family = 'GardenNature' if int(args.review) >= 22 else 'ArenaStone' if int(args.review) >= 20 else 'SlideMotion'
-if family == 'GardenNature':
+family = 'HUDPolish' if int(args.review) >= 29 else 'PortalRefresh' if int(args.review) >= 28 else 'ReloadHands' if int(args.review) >= 27 else 'HandBinding' if int(args.review) >= 26 else 'BasementDecks' if int(args.review) >= 25 else 'ReadyMotion' if int(args.review) >= 23 else 'GardenNature' if int(args.review) >= 22 else 'ArenaStone' if int(args.review) >= 20 else 'SlideMotion'
+if family == 'HUDPolish':
+    source = root/'ArtSource/Original/ArtPass-v1/UI/HudPolish-29'
+    current = destination/family
+    assert not current.exists()
+    current.mkdir()
+    files = [(path,path.relative_to(source).as_posix()) for path in sorted(source.rglob('*')) if path.is_file()]
+    files += [(root/'Validation/hud-polish-29-final.xml','hud-polish-29-final.xml'),(root/'docs/HUD-POLISH-REVIEW-29.md','HUD-POLISH-REVIEW-29.md')]
+elif family == 'PortalRefresh':
+    source = root/'ArtSource/Original/ArtPass-v1/Performance/PortalRefresh'
+    spec = json.loads((source/'review-evidence.json').read_text(encoding='utf-8'))
+    for name,digest in spec['commonImplementationSha256'].items():
+        assert hashlib.sha256((root/name).read_bytes().replace(b'\r\n',b'\n')).hexdigest()==digest
+    current = destination/family
+    assert not current.exists(), 'Never overwrite staged references'
+    current.mkdir()
+    files = [(path,path.relative_to(source).as_posix()) for path in sorted(source.rglob('*')) if path.is_file()]
+    files += [(root/'Validation'/name,name) for name in ['portal-refresh-policy.xml','portal-refresh-native-04.xml','PortalRefreshNative-04/review.json']]
+    for pair in (1,2):
+        directory=root/f'Validation/PortalRefresh-Profile-{pair:02}'
+        files += [(path,f'Profile-{pair:02}/'+path.name) for path in sorted(directory.iterdir()) if path.is_file() and path.suffix in ('.json','.csv')]
+    files += [(root/'docs/PORTAL-REFRESH-PERFORMANCE.md','PORTAL-REFRESH-PERFORMANCE.md')]
+elif family == 'ReloadHands':
+    source = root/'ArtSource/Original/ArtPass-v1/FirstPerson/ReloadHands-v1'
+    spec = json.loads((source/'ReloadHandAction.json').read_text(encoding='utf-8'))
+    assert hashlib.sha256((source/spec['master']).read_bytes()).hexdigest() == spec['masterSha256']
+    assert spec['masterSha256'] == json.loads((source/'review-evidence.json').read_text(encoding='utf-8'))['masterSha256']
+    current = destination/family
+    assert not current.exists(), 'Never overwrite staged references'
+    current.mkdir()
+    files = [(path, path.relative_to(source).as_posix()) for path in sorted(source.rglob('*')) if path.is_file() and path.suffix in ('.blend','.json','.png','.html','.gz','.mp4')]
+    files += [(root/'Validation'/name,name) for name in ['reload-hands-native.xml','reload-hands-saved-master.json','reload-hand-source-calibrated-06.xml','ReloadHandsPlayback-01/review.json','ReloadHandsPlayback-01/samples.csv']]
+    files += [(root/'docs/AUTHORED-RELOAD-HANDS.md','AUTHORED-RELOAD-HANDS.md'),(root/'RailArena/Assets/Resources/Art/RifleReloadHands.asset','Exports/RifleReloadHands.asset')]
+elif family == 'HandBinding':
+    source = root/'ArtSource/Original/ArtPass-v1/FirstPerson/Assembly-v2'
+    spec = json.loads((source/'production.json').read_text(encoding='utf-8'))
+    assert hashlib.sha256((source/spec['master']).read_bytes()).hexdigest() == spec['masterSha256']
+    assert hashlib.sha256((source/spec['source']).read_bytes()).hexdigest() == spec['sourceSha256']
+    proof = json.loads((root/spec['savedMasterResult']).read_text(encoding='utf-8'))
+    assert proof['masterSha256'] == spec['masterSha256'] and proof['passed']
+    current = destination/family
+    assert not current.exists(), 'Never overwrite a staged reference batch'
+    current.mkdir()
+    files = [(path, path.relative_to(source).as_posix()) for path in sorted(source.rglob('*')) if path.is_file() and path.suffix in ('.blend','.json','.png','.html','.gz','.mp4')]
+    files += [(root/'Validation'/name,name) for name in ['fps-hand-binding-contract.xml','fps-hand-binding-contract.txt','fps-hand-source-after.xml','fps-hand-saved-master.json','hand-seam-motion.xml','HandBindingMotion-01/review.json','HandBindingMotion-01/contacts.csv']]
+    files += [(root/'docs'/name,name) for name in ['FIRST-PERSON-ASSEMBLY.md','HAND-BIND-CALIBRATION.md']]
+elif family == 'BasementDecks':
+    source = root/'ArtSource/Original/ArtPass-v1/Environment/BasementDecks'
+    spec = json.loads((source/'production.json').read_text(encoding='utf-8'))
+    digest = hashlib.sha256((source/spec['master']).read_bytes()).hexdigest()
+    assert digest == spec['masterSha256'] == json.loads((source/'measured-construction.json').read_text(encoding='utf-8'))['masterSha256']
+    assert digest == json.loads((source/'review-evidence.json').read_text(encoding='utf-8'))['masterSha256']
+    current = destination/family
+    assert not current.exists(), 'Never overwrite a staged reference batch'
+    current.mkdir()
+    files = [(path, path.relative_to(source).as_posix()) for path in sorted(source.rglob('*')) if path.is_file() and path.suffix in ('.blend','.json','.png','.html')]
+    exports = root/'RailArena/Assets/RailArena/Art/ArtPass/Environment/BasementDecks'
+    files += [(exports/Path(lod['export']).name, 'Exports/'+Path(lod['export']).name) for lod in spec['lods']]
+    for lod in spec['lods']:
+        assert hashlib.sha256((root/lod['export']).read_bytes()).hexdigest() == lod['exportSha256']
+    files += [(root/'Validation/stone-deck-inset-native.xml', 'stone-deck-inset-native.xml'), (root/'docs/BASEMENT-STONE-KIT.md', 'BASEMENT-STONE-KIT.md')]
+elif family == 'ReadyMotion':
+    current = destination/family
+    assert not current.exists(), 'Never overwrite a staged reference batch'
+    current.mkdir()
+    files = []
+    for name in ('Standing','FirstPersonReady'):
+        source = root/'ArtSource/Original/ArtPass-v1/Animation'/name
+        files += [(path, name+'/'+path.relative_to(source).as_posix()) for path in sorted(source.rglob('*')) if path.is_file() and path.suffix in ('.blend','.json','.csv','.mp4','.png','.html')]
+    files += [(root/'Validation'/name,name) for name in ['standing-candidate.xml','standing-integrated.xml','standing-blends.xml','motion-standing-import.json','motion-standing-graph-repeatability.json','fps-ready-native.xml','fps-ready-active-native.xml','fps-ready-eye-native.xml']]
+    files += [(root/'docs'/name,name) for name in ['AUTHORED-STANDING.md','AUTHORED-FIRST-PERSON-READY.md']]
+elif family == 'GardenNature':
     current = destination/family
     assert not current.exists(), 'Never overwrite a staged reference batch'
     current.mkdir()
@@ -70,6 +152,7 @@ else:
 records = []
 for source, name in files:
     assert source.is_file(), source
+    (current/name).parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(source, current/name)
     records.append({'source': source.relative_to(root).as_posix(), 'packaged': (current/name).relative_to(build).as_posix(), 'sha256': hashlib.sha256(source.read_bytes()).hexdigest()})
 (destination/'reference-source-index.json').write_text(json.dumps({'inheritedVerifiedReview': args.previous_review,

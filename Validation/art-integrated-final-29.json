@@ -1,0 +1,167 @@
+{
+  "schema": "rail-arena-integrated-art-validation/1",
+  "build": "Builds/RailArena-v1Alpha-ArtPass-Review-29",
+  "sourceCommit": "5c0c67d77fbd5c939b12af691586082597e5cb0c",
+  "fingerprint": "d275ad94fe5a290536b50590865dc1db8b5fd92f9660f4ae64733b51a92117c1",
+  "validatedPlayer": "Review-29; shipped Review-29 runtime files verified below",
+  "runtimeByteComparisons": [
+    {
+      "path": "RailArena.exe",
+      "sha256": "3726509af94bdacbfe23f85da13109a7e70fb7d61913506e98690bd3208b2fd7",
+      "scope": "Validation executed on this shipping artifact directly"
+    },
+    {
+      "path": "UnityPlayer.dll",
+      "sha256": "c93b9eaa6b12782ea809a0a35d65e81bbdc24ad080c914a7ca017ea5534b8958",
+      "scope": "Validation executed on this shipping artifact directly"
+    },
+    {
+      "path": "RailArena_Data/Managed/RailArena.Runtime.dll",
+      "sha256": "ce1847d58ceef38251c2c09ef0146958f2df27075d29669028aa4c88323a4100",
+      "scope": "Validation executed on this shipping artifact directly"
+    },
+    {
+      "path": "RailArena_Data/Managed/RailArena.Simulation.dll",
+      "sha256": "0304f52c070ad316e35224aa97e225d1b261dde696ffe9dcf21434887c992e34",
+      "scope": "Validation executed on this shipping artifact directly"
+    },
+    {
+      "path": "RailArena_Data/resources.assets",
+      "sha256": "ffa6d1eb15bec71caa4031da8162a0f10d470a0071f090edd9b3d37c93e88fce",
+      "scope": "Validation executed on this shipping artifact directly"
+    },
+    {
+      "path": "RailArena_Data/resources.assets.resS",
+      "sha256": "088d7a4e25f654bdbbc3baad00ff9c9cc0a0de7c83dcbbd8228dceec810c6ab9",
+      "scope": "Validation executed on this shipping artifact directly"
+    },
+    {
+      "path": "RailArena_Data/sharedassets0.assets",
+      "sha256": "5d4a8038258bd79c27fc3e0b70e2414b78e1787ef47b514b481098499d73e520",
+      "scope": "Validation executed on this shipping artifact directly"
+    },
+    {
+      "path": "RailArena_Data/sharedassets0.assets.resS",
+      "sha256": "ccf493d5ec6dd7206308d1613b6a52090377bbb3706d7a1b7aff6ed2f8d4055a",
+      "scope": "Validation executed on this shipping artifact directly"
+    },
+    {
+      "path": "RailArena_Data/level0",
+      "sha256": "96dfc0dec049e084c85d40503b379db3f23b1b1cc32c5880ddb1cf8d9fa6d5dc",
+      "scope": "Validation executed on this shipping artifact directly"
+    }
+  ],
+  "sourceQualityAndIdentityRestored": true,
+  "mechanicsChecks": 39,
+  "mechanicsPassed": true,
+  "botMatch": {
+    "seconds": 45.105445861816406,
+    "bots": 3,
+    "telemetry": "ticks=2712 shots=166 deaths=7 pickups=3 pads=19",
+    "exceptions": 0,
+    "voids": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "duel": {
+    "host": {
+      "passed": true,
+      "errors": 0,
+      "slideSamples": [
+        1740,
+        2227
+      ],
+      "statisticsPassed": true
+    },
+    "client": {
+      "passed": true,
+      "errors": 0,
+      "slideSamples": [
+        2081,
+        1978
+      ],
+      "statisticsPassed": true
+    }
+  },
+  "performance": {
+    "scope": "Version 2: observer stages after ArenaSession and before portal views; forced 1080p main rendering at EndOfFrame with synchronized one-pixel readback. High tier, 100-degree vertical FOV, one automated human and three bots. Timings include readback overhead. Earlier probes staged after portal views and are not equivalent portal workloads. Overlay HUD, native swapchain/input/audio and sustained visible-play acceptance remain open. GPU -1 means unavailable.",
+    "measurementVersion": 2,
+    "gpu": "NVIDIA GeForce RTX 2080",
+    "api": "Direct3D12",
+    "fingerprint": "d275ad94fe5a290536b50590865dc1db8b5fd92f9660f4ae64733b51a92117c1",
+    "width": 1920,
+    "height": 1080,
+    "exceptions": 0,
+    "views": [
+      {
+        "view": "combat",
+        "frames": 180,
+        "validGpuSamples": 0,
+        "nonBlackSamples": 32400,
+        "meanFrameMs": 12.566207885742188,
+        "p95FrameMs": 16.322200775146484,
+        "medianGpuMs": -1.0,
+        "frameBudgetMet": true,
+        "portalRenders": 272
+      },
+      {
+        "view": "summit",
+        "frames": 180,
+        "validGpuSamples": 0,
+        "nonBlackSamples": 32400,
+        "meanFrameMs": 11.51887035369873,
+        "p95FrameMs": 13.803302764892578,
+        "medianGpuMs": -1.0,
+        "frameBudgetMet": true,
+        "portalRenders": 181
+      },
+      {
+        "view": "basement",
+        "frames": 180,
+        "validGpuSamples": 0,
+        "nonBlackSamples": 32400,
+        "meanFrameMs": 10.92557144165039,
+        "p95FrameMs": 12.82490062713623,
+        "medianGpuMs": -1.0,
+        "frameBudgetMet": true,
+        "portalRenders": 135
+      },
+      {
+        "view": "foliage-waterfall",
+        "frames": 180,
+        "validGpuSamples": 0,
+        "nonBlackSamples": 32400,
+        "meanFrameMs": 11.780681610107422,
+        "p95FrameMs": 15.01760196685791,
+        "medianGpuMs": -1.0,
+        "frameBudgetMet": true,
+        "portalRenders": 225
+      },
+      {
+        "view": "portal",
+        "frames": 180,
+        "validGpuSamples": 0,
+        "nonBlackSamples": 32400,
+        "meanFrameMs": 12.181069374084473,
+        "p95FrameMs": 14.176502227783203,
+        "medianGpuMs": -1.0,
+        "frameBudgetMet": true,
+        "portalRenders": 270
+      }
+    ],
+    "passed": true,
+    "allViewsWithinBudget": true
+  },
+  "discardedEvidence": "Review-05 hidden swapchain timings are invalid for graphics performance: screenshots were black. They are excluded from final evidence.",
+  "acceptanceRemaining": [
+    "Native visible-window input, audio and sustained playtest by Sanders",
+    "Real-internet multiplayer acceptance",
+    "Broader authored animation replacement and complete inventory reference coverage; see production status"
+  ],
+  "validationExecutedOnShippingArtifact": true,
+  "performanceTargetMet": true,
+  "performanceExceptions": []
+}

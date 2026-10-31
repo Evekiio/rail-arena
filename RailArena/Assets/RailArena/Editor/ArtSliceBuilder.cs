@@ -28,6 +28,8 @@ namespace RailArena.Editor
             EditorUtility.SetDirty(profile); AssetDatabase.SaveAssets();
             PrepareStoneCover();
             PrepareRifleReload();
+            ReloadHandArtBuilder.Prepare();
+            FirstPersonEquipArtBuilder.Prepare();
             ContenderMotionArtBuilder.Prepare();
             ContenderArtBuilder.Prepare();
             SkyNatureArtBuilder.Prepare();

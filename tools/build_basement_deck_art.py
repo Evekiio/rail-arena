@@ -62,7 +62,8 @@ for profile in audit['profiles']:
                 points=[left*inner,left*outer,right*outer,right*inner] if inner>0 else [Vector((0,0)),left*outer,right*outer]
                 mesh_part(label+'_'+str(i),points,top,bottom,slot,parts,collection,bevel)
         # The original hull remains authoritative. Every visual vertex stays at or below its top plane.
-        mesh_part('JointBed',polygon(1),-.008,-.115,4,parts,collection)
+        # Recess the grout backing behind the coping wall, avoiding coplanar material faces.
+        mesh_part('JointBed',polygon(.997),-.008,-.115,4,parts,collection)
         mesh_part('CenterStone',polygon(inner_marker),-.004,-.10,0,parts,collection,.005 if level<2 else 0)
         ring('CenterTeal',inner_marker,outer_marker,0,-.07,2)
         ring('InnerPaving',outer_marker+.02/radius,.604,0,-.10,0,level<2,.004 if level==0 else 0)

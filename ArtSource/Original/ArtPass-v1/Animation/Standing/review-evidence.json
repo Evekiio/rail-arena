@@ -1,0 +1,73 @@
+{
+  "masterSha256": "304af42e5dc4dd0f423f996eab42c86fe8121b2f5c0005eec170538c159b06f8",
+  "scope": "Native stationary four-character candidate and installed idle review. Simulation frozen for geometry/contact inspection; not native input, audio, moving-world transitions, performance or final artistic acceptance.",
+  "sourceIntegrated": true,
+  "shippingBuildPending": false,
+  "currentVerifiedWindowsReview": 23,
+  "checks": {
+    "candidate": {
+      "samples": 964,
+      "characters": 4,
+      "framesIncludingLoopEndpoint": 241,
+      "minimumSkinY": 0.008469,
+      "maximumSkinFloorY": 0.008505,
+      "maximumWristError": 1e-06,
+      "actorRootPositionsUnchanged": true,
+      "standingCapsuleHeightUnchanged": true
+    },
+    "installed": {
+      "samples": 964,
+      "characters": 4,
+      "framesIncludingLoopEndpoint": 241,
+      "minimumSkinY": 0.00847,
+      "maximumSkinFloorY": 0.00849,
+      "maximumWristError": 1e-06,
+      "actorRootPositionsUnchanged": true,
+      "standingCapsuleHeightUnchanged": true
+    }
+  },
+  "nativeTests": [
+    "Validation/standing-candidate.xml",
+    "Validation/standing-integrated.xml",
+    "Validation/standing-blends.xml"
+  ],
+  "regressions": [
+    "DirectionalBlendsPreserveAimStanceAndAuthority",
+    "GroundedCrouchPreservesImmediateStanceAndContacts"
+  ],
+  "movie": {
+    "path": "Standing-Playback.mp4",
+    "sha256": "d8a0158e40f39dd776047ae0f2bf4556a8501050fb30eca54cdda112a02bb3e1",
+    "frames": 240,
+    "seconds": 4,
+    "fps": 60,
+    "audio": false
+  },
+  "sourceFrameEndpointExcludedFromMovie": 240,
+  "csv": {
+    "Candidate-Playback.csv": "4873b30d914342acdbf64f23f10c7ebda2af67a8042aa2d5cc648c3a89672793",
+    "Installed-Playback.csv": "f886b150024a7351f7a0bfd4e66def6bbbd81ae5110270eb247e2e0580374ee1",
+    "BlendChecks.csv": "a58cc8c03a586e201aa7d11d92d175803c5cae8d6cb0a81c73550098342d7b69"
+  },
+  "blendReview": {
+    "samples": 5184,
+    "characters": 4,
+    "directions": 8,
+    "yawAngles": 2,
+    "speeds": 9,
+    "phases": 9,
+    "minimumSkinY": 0.008436,
+    "maximumSkinFloorY": 0.008502,
+    "maximumWristError": 3.5e-05,
+    "scope": "Stationary blend snapshots; actor root, velocity and capsule unchanged. Not moving-world or temporal start/stop validation."
+  },
+  "shippingFollowup": {
+    "review": 23,
+    "sourceCommit": "e11805d55c1cf2d235d665b584fe9fdf4e609df9",
+    "fingerprint": "d941a433bbc25bf5366c01c30b6258d9dbf4a2a0139479cc1ccfd7ecb5426458",
+    "evidence": "Validation/art-integrated-final-23.json",
+    "packageVerification": "Validation/art-package-verification-23.json",
+    "packageSha256": "89fa3bef752f185617c89f16558a3e5add7a90b5b4e8794458da22b86ab7d43a",
+    "scope": "This exact art master is included in the identified verified historical Windows source. Later runtime edits, native input/audio, performance and artistic acceptance are separate."
+  }
+}

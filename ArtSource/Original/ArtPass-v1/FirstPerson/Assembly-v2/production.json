@@ -1,0 +1,142 @@
+{
+  "schema": "rail-arena-first-person-assembly-production/1",
+  "family": "Assembly-v2",
+  "nativeResult": "Validation/fps-hand-source-after.xml",
+  "savedMasterResult": "Validation/fps-hand-saved-master.json",
+  "master": "FirstPerson-Assembly-v2.blend",
+  "masterSha256": "f56d17084da6e7584c8d001ab6afd1ef544f190ff5679839de5acba46757696f",
+  "source": "RuntimeSource/assembly-source.json.gz",
+  "sourceSha256": "77783f875b1d61cb054b382afaab8113bbe937141966f2c5e409f835aec4a7ac",
+  "axes": "Unity weapon-root (x,y,z) metres -> Blender (x,z,y) metres; attachment frames are conjugated by that reflection",
+  "scope": "Four appearance skins / held hip and ADS assemblies / editable linear-skin skeletons / exact rifle LOD0 and first-person sight opening. Not a new animation library or replacement gameplay asset.",
+  "referencePoses": [
+    {
+      "id": "Player_Hip",
+      "identity": "Player",
+      "pose": "Hip",
+      "vertices": 3872,
+      "bones": 54,
+      "maximumNativeVertexErrorMetres": 1.3073858402741967e-06,
+      "maximumNativeBoneHeadErrorMetres": 2.591956226050698e-07,
+      "leftWristErrorMetres": 1.922192041092785e-06,
+      "rightWristErrorMetres": 1.9073486328125e-06,
+      "nativeVerticalFov": 88.0,
+      "nativeImage": "RuntimeSource/Player-Hip.png"
+    },
+    {
+      "id": "Player_ADS",
+      "identity": "Player",
+      "pose": "ADS",
+      "vertices": 3872,
+      "bones": 54,
+      "maximumNativeVertexErrorMetres": 2.127750681110852e-06,
+      "maximumNativeBoneHeadErrorMetres": 2.47135881939858e-07,
+      "leftWristErrorMetres": 0.0,
+      "rightWristErrorMetres": 4.76837158203125e-07,
+      "nativeVerticalFov": 65.5462646484375,
+      "nativeImage": "RuntimeSource/Player-ADS.png"
+    },
+    {
+      "id": "Bot01_Hip",
+      "identity": "Bot01",
+      "pose": "Hip",
+      "vertices": 3881,
+      "bones": 54,
+      "maximumNativeVertexErrorMetres": 1.6349950692525833e-06,
+      "maximumNativeBoneHeadErrorMetres": 2.630223796979167e-07,
+      "leftWristErrorMetres": 2.384185791015625e-07,
+      "rightWristErrorMetres": 4.76837158203125e-07,
+      "nativeVerticalFov": 88.0,
+      "nativeImage": "RuntimeSource/Bot01-Hip.png"
+    },
+    {
+      "id": "Bot01_ADS",
+      "identity": "Bot01",
+      "pose": "ADS",
+      "vertices": 3881,
+      "bones": 54,
+      "maximumNativeVertexErrorMetres": 2.3658849133575054e-06,
+      "maximumNativeBoneHeadErrorMetres": 2.4027400458748785e-07,
+      "leftWristErrorMetres": 2.384185791015625e-07,
+      "rightWristErrorMetres": 8.344650268554688e-07,
+      "nativeVerticalFov": 65.5462646484375,
+      "nativeImage": "RuntimeSource/Bot01-ADS.png"
+    },
+    {
+      "id": "Bot02_Hip",
+      "identity": "Bot02",
+      "pose": "Hip",
+      "vertices": 3872,
+      "bones": 54,
+      "maximumNativeVertexErrorMetres": 1.4914755213049703e-06,
+      "maximumNativeBoneHeadErrorMetres": 3.650784492492676e-07,
+      "leftWristErrorMetres": 2.384185791015625e-07,
+      "rightWristErrorMetres": 1.9660499219753547e-06,
+      "nativeVerticalFov": 88.0,
+      "nativeImage": "RuntimeSource/Bot02-Hip.png"
+    },
+    {
+      "id": "Bot02_ADS",
+      "identity": "Bot02",
+      "pose": "ADS",
+      "vertices": 3872,
+      "bones": 54,
+      "maximumNativeVertexErrorMetres": 2.50690257999338e-06,
+      "maximumNativeBoneHeadErrorMetres": 2.1074247420004877e-07,
+      "leftWristErrorMetres": 1.922192041092785e-06,
+      "rightWristErrorMetres": 1.922192041092785e-06,
+      "nativeVerticalFov": 65.5462646484375,
+      "nativeImage": "RuntimeSource/Bot02-ADS.png"
+    },
+    {
+      "id": "Bot03_Hip",
+      "identity": "Bot03",
+      "pose": "Hip",
+      "vertices": 3881,
+      "bones": 54,
+      "maximumNativeVertexErrorMetres": 1.416346602024565e-06,
+      "maximumNativeBoneHeadErrorMetres": 2.2691421774305723e-07,
+      "leftWristErrorMetres": 2.384185791015625e-07,
+      "rightWristErrorMetres": 2.7906178274861304e-06,
+      "nativeVerticalFov": 88.0,
+      "nativeImage": "RuntimeSource/Bot03-Hip.png"
+    },
+    {
+      "id": "Bot03_ADS",
+      "identity": "Bot03",
+      "pose": "ADS",
+      "vertices": 3881,
+      "bones": 54,
+      "maximumNativeVertexErrorMetres": 2.289639455493228e-06,
+      "maximumNativeBoneHeadErrorMetres": 2.123415470123291e-07,
+      "leftWristErrorMetres": 1.1920928955078125e-07,
+      "rightWristErrorMetres": 4.76837158203125e-07,
+      "nativeVerticalFov": 65.5462646484375,
+      "nativeImage": "RuntimeSource/Bot03-ADS.png"
+    }
+  ],
+  "sourceMasters": [
+    {
+      "path": "ArtSource/Original/ArtPass-v1/Characters/Player-ArtPass-v1.blend",
+      "sha256": "6d31c2d0eee1627d197bcdeddb1ab156d1d72b13da17982134214cd92bca938e"
+    },
+    {
+      "path": "ArtSource/Original/ArtPass-v1/Characters/Bot01-ArtPass-v1.blend",
+      "sha256": "03c0cc33e6179de63c948245d9fce653a5520017b985e285f07fb922ed8136e1"
+    },
+    {
+      "path": "ArtSource/Original/ArtPass-v1/Characters/Bot02-ArtPass-v1.blend",
+      "sha256": "28d1556efcdc34170fb15fb6f906b8742b920c6d81308575e43d032f32b666f0"
+    },
+    {
+      "path": "ArtSource/Original/ArtPass-v1/Characters/Bot03-ArtPass-v1.blend",
+      "sha256": "27ab4f24c9c340d27710531e3153d462c9febd4b0c7ccb29ea982e2eca40e5af"
+    },
+    {
+      "path": "ArtSource/Original/PrecisionCarbine-Production-v1/Precision-Carbine.blend",
+      "sha256": "89ebd3820aee5a5ad0139124c67e1d78e265212648ba37c7d253fc2b5a177adb"
+    }
+  ],
+  "provenance": "Original Rail Arena rifle and character refinements with existing CC0 foundation rig, original paint and calibrated runtime bindings. Exact held assemblies reconstructed as editable Blender rigs; preserve existing licenses and source masters. Unity native images remain shading authority.",
+  "approval": "Direction approved; full animation/reference coverage and final Sanders playtest acceptance pending"
+}

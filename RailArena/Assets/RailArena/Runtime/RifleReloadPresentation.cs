@@ -14,6 +14,8 @@ namespace RailArena
         ArenaActor actor;
         RailgunPresentation weapon;
         RifleReloadArt art;
+        RifleReloadHandArt handArt;
+        HandArticulation hands;
         Transform carrier;
         Vector3 restGrip;
         Quaternion restGripRotation;
@@ -27,7 +29,11 @@ namespace RailArena
             art = Resources.Load<RifleReloadArt>("Art/RifleReload");
             if (art == null || art.samples.Length != RifleMagazine.ReloadTicks + 1)
                 throw new System.InvalidOperationException("Authored rifle reload samples are missing");
+            handArt=Resources.Load<RifleReloadHandArt>("Art/RifleReloadHands");
+            if(handArt==null||handArt.samples.Length!=RifleMagazine.ReloadTicks+1)throw new System.InvalidOperationException("Authored reload hand samples are missing");
             weapon = target; session = authority; actor = owner;
+            hands=owner!=null?owner.Presentation.Hands:weapon.GetComponentInChildren<FirstPersonArms>(true).Hands;
+            for(int i=0;i<15;i++)if(hands.Joints[i].name!=handArt.joints[i])throw new System.InvalidOperationException("Reload hand joint order differs from rig");
             restGrip = weapon.LeftGrip.localPosition; restGripRotation = weapon.LeftGrip.localRotation;
             carrier = new GameObject("Authored magazine carrier").transform;
             carrier.SetParent(weapon.transform, false); carrier.localPosition = art.magazinePivot;
@@ -63,6 +69,7 @@ namespace RailArena
                 item.part.SetPositionAndRotation(weapon.transform.TransformPoint(art.magazinePivot + pose.magazineOffset + pose.magazineRotation * (item.weaponPosition - art.magazinePivot)),
                     weapon.transform.rotation * pose.magazineRotation * item.weaponRotation);
             weapon.LeftGrip.SetLocalPositionAndRotation(pose.leftPosition, pose.leftRotation);
+            hands.SetReloadPose(handArt,Progress);
         }
 
         public void ResetPose()
@@ -72,6 +79,7 @@ namespace RailArena
             weapon.LeftGrip.SetLocalPositionAndRotation(restGrip, restGripRotation);
             foreach (var item in attachments)
                 if (item.part != null) item.part.SetLocalPositionAndRotation(item.position, item.rotation);
+            if(hands!=null)hands.ClearReloadPose();
             posed = false; Progress = 0;
         }
 

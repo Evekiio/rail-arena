@@ -1,0 +1,90 @@
+{
+    "scope": "Frozen map, all six portal directions. Original full-rate destination versus bounded distant cache; nearby/scoped/newly visible/changed-view refresh gates. Cached shader UV and viewport remain paired. Native input/audio and moving-scene temporal acceptance remain open.",
+    "cases": [
+        {
+            "portal": "PA // GARDEN PORTAL",
+            "referenceRenders": 1,
+            "adaptiveRenders": 4,
+            "skipped": 12,
+            "interval": 4,
+            "closeRenders": 8,
+            "scopedRenders": 8,
+            "width": 128,
+            "height": 128,
+            "nonBlackPixels": 15240,
+            "meanAbsoluteRgb": 0.0,
+            "changedPixels": 0
+        },
+        {
+            "portal": "PB // GARDEN PORTAL",
+            "referenceRenders": 1,
+            "adaptiveRenders": 4,
+            "skipped": 12,
+            "interval": 4,
+            "closeRenders": 8,
+            "scopedRenders": 8,
+            "width": 128,
+            "height": 128,
+            "nonBlackPixels": 16384,
+            "meanAbsoluteRgb": 0.0,
+            "changedPixels": 0
+        },
+        {
+            "portal": "Basement return portal",
+            "referenceRenders": 1,
+            "adaptiveRenders": 4,
+            "skipped": 12,
+            "interval": 4,
+            "closeRenders": 8,
+            "scopedRenders": 8,
+            "width": 128,
+            "height": 128,
+            "nonBlackPixels": 16384,
+            "meanAbsoluteRgb": 0.0,
+            "changedPixels": 0
+        },
+        {
+            "portal": "Under bridge portal 1",
+            "referenceRenders": 1,
+            "adaptiveRenders": 4,
+            "skipped": 12,
+            "interval": 4,
+            "closeRenders": 8,
+            "scopedRenders": 8,
+            "width": 128,
+            "height": 128,
+            "nonBlackPixels": 15411,
+            "meanAbsoluteRgb": 0.0,
+            "changedPixels": 0
+        },
+        {
+            "portal": "Basement return portal",
+            "referenceRenders": 1,
+            "adaptiveRenders": 4,
+            "skipped": 12,
+            "interval": 4,
+            "closeRenders": 8,
+            "scopedRenders": 8,
+            "width": 128,
+            "height": 128,
+            "nonBlackPixels": 15755,
+            "meanAbsoluteRgb": 0.0,
+            "changedPixels": 0
+        },
+        {
+            "portal": "Under bridge portal 3",
+            "referenceRenders": 1,
+            "adaptiveRenders": 4,
+            "skipped": 12,
+            "interval": 4,
+            "closeRenders": 8,
+            "scopedRenders": 8,
+            "width": 128,
+            "height": 128,
+            "nonBlackPixels": 16033,
+            "meanAbsoluteRgb": 0.0,
+            "changedPixels": 0
+        }
+    ],
+    "passed": true
+}

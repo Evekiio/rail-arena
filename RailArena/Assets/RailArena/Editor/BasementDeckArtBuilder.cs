@@ -70,8 +70,11 @@ namespace RailArena.Editor
                             var renderers=instance.GetComponentsInChildren<MeshRenderer>();if(renderers.Length!=1)throw new InvalidOperationException("Deck LOD must contain one joined visual mesh");
                             var renderer=renderers[0];renderer.sharedMaterials=renderer.sharedMaterials.Select(material=>materials[Array.IndexOf(names,material.name)]).ToArray();
                             var expected=new Bounds(Vector3.down*deck.thicknessMetres*.5f,new Vector3(deck.radiusMetres*2,deck.thicknessMetres,deck.radiusMetres*2));
-                            if((renderer.bounds.center-expected.center).sqrMagnitude>.00001f||(renderer.bounds.size-expected.size).sqrMagnitude>.00001f)
-                                throw new InvalidOperationException("Deck export metre scale/top pivot mismatch: "+renderer.bounds);
+                            // Bevels and open coping joints may recess the visual silhouette by up to 10 mm per edge.
+                            // The collision hull, top pivot and full vertical envelope remain authoritative.
+                            var clearance=expected.size-renderer.bounds.size;
+                            if((renderer.bounds.center-expected.center).sqrMagnitude>.00000001f||Mathf.Abs(clearance.y)>.0001f||clearance.x<-.0001f||clearance.z<-.0001f||clearance.x>.02f||clearance.z>.02f)
+                                throw new InvalidOperationException("Deck export metre scale/top pivot mismatch: "+path+" actual center="+renderer.bounds.center.ToString("F7")+" size="+renderer.bounds.size.ToString("F7")+" expected center="+expected.center.ToString("F7")+" size="+expected.size.ToString("F7"));
                             var mesh=renderer.GetComponent<MeshFilter>().sharedMesh;int triangles=mesh.triangles.Length/3;
                             if(triangles>=previousTriangles)throw new InvalidOperationException("Each deck LOD must reduce triangles");previousTriangles=triangles;
                             lods[level]=new LOD(new[]{.18f,.06f,.001f}[level],new Renderer[]{renderer});

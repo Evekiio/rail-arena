@@ -9,7 +9,7 @@ from mathutils import Vector
 root=Path(sys.argv[sys.argv.index('--')+1]).resolve()
 check_only='--check-only' in sys.argv
 family=sys.argv[sys.argv.index('--family')+1] if '--family' in sys.argv else 'Crouch'
-assert family in ('Crouch','Slide'),family
+assert family in ('Crouch','Slide','Standing'),family
 folder=root/'ArtSource/Original/ArtPass-v1/Animation'/family
 spec=json.loads((folder/(family.lower()+'-production.json')).read_text(encoding='utf-8'))
 master=folder/spec['master'];digest=hashlib.sha256(master.read_bytes()).hexdigest();assert digest==spec['masterSha256']
@@ -53,5 +53,5 @@ for clip in spec['clips']:
         'loop':clip['loop'],'loopSeamMatrixDifference':seam if clip['loop'] else None,'minimumWholeSkinHeightMetres':minimum,'maximumWholeSkinHeightMetres':maximum_height,
         'maximumWholeSkinWidthMetres':maximum_width,'boundMeshCount':len(bodies),'scope':'All canonical Blender meshes bound to this rig and baked target checks; not Unity retarget, grip, capsule clearance or installed stance certification'})
 assert hashlib.sha256(master.read_bytes()).hexdigest()==digest
-(folder/('baked-contact-check.json' if check_only else 'baked-contact-review.json')).write_text(json.dumps({'masterSha256':digest,'rendersUpdated':not check_only,'clips':evidence},indent=2)+'\n',encoding='utf-8')
+(folder/('baked-contact-check.json' if check_only else 'baked-contact-review.json')).write_bytes((json.dumps({'masterSha256':digest,'rendersUpdated':not check_only,'clips':evidence},indent=2)+'\n').encode('utf-8'))
 print(family.upper()+'_REFERENCE_CONTACTS_VERIFIED',[(entry['clip'],entry['minimumWholeSkinHeightMetres']) for entry in evidence])
