@@ -40,6 +40,7 @@ namespace RailArena
             InstallStoneCover();
             InstallBasementDecks();
             InstallBridgeStone();
+            InstallSummitStone();
             InstallCanopies();
             InstallMedicalCores();
             wayfinding = gameObject.AddComponent<ArenaWayfindingArt>(); wayfinding.Initialize(session.World);
@@ -211,6 +212,26 @@ namespace RailArena
                     if (original == source || original.name.StartsWith(source.name + "-CAP", System.StringComparison.Ordinal)
                         || original.name.StartsWith(source.name + "-INLAY", System.StringComparison.Ordinal))
                     { hiddenCover[original] = original.enabled; original.enabled = false; }
+            }
+        }
+
+        void InstallSummitStone()
+        {
+            foreach (var source in session.World.GetComponentsInChildren<MeshRenderer>(true))
+            {
+                string family = source.name == "SUMMIT-DECK" ? "Summit" : source.name == "SUMMIT-CENTRAL-COVER" ? "Cover" :
+                    source.name.StartsWith("SUMMIT-COLUMN-", System.StringComparison.Ordinal) ? "Column" : null;
+                if (family == null) continue;
+                var collider = source.GetComponent<MeshCollider>();
+                if (collider == null || collider.sharedMesh == null) throw new System.InvalidOperationException("Summit collision authority is missing");
+                var prefab = Resources.Load<GameObject>("Art/SummitStone" + family);
+                if (prefab == null) throw new System.InvalidOperationException("Measured summit art is missing");
+                var bounds = collider.sharedMesh.bounds;
+                var top = source.transform.TransformPoint(new Vector3(bounds.center.x, bounds.max.y, bounds.center.z));
+                var instance = Instantiate(prefab, top, Quaternion.identity);
+                instance.name = source.name + " / Authored summit stone";
+                foreach (var item in instance.GetComponentsInChildren<Transform>(true)) item.gameObject.layer = source.gameObject.layer;
+                coverInstances.Add(instance); hiddenCover[source] = source.enabled; source.enabled = false;
             }
         }
 

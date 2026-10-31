@@ -6,6 +6,8 @@ Sanders approved the direction and authorized continuous production without inte
 
 ## Implemented
 
+The next summit batch is source-integrated: original radial paving and compass seal, coping/frieze/underside rays, central cover and four banded columns. Three metre-scaled Blender modules have nine reducing LODs, eighteen orthographic views and controller-scale reference sheets. All six installed placements retain the original collision hulls and return-device destinations. Its next Windows review package is pending; Review-15 remains the packaged milestone. [Summit source contract](../../../../docs/SUMMIT-STONE-KIT.md).
+
 Four refined Blender character masters, original 2K painted atlases, twelve LODs, calibrated arms, selective contours and gameplay-derived portraits. Original two-second magazine/wrist reload follows unchanged simulation timing, with interruption/reset handling. Ivory painted stone, normal/cavity detail, modular covers, faceted tree canopies, floating medical cores, route labels and lower cloud banks are integrated. Revised rifle materials, light-responsive waterfall, baked-GI cel lighting and production Render Graph atmosphere are installed together. Existing gameplay, portal views and basement traversal remain authoritative. The distracting cyan particle cloud is not installed.
 
 Six equal-scale canonical views cover all four characters, stone cover, canopy and medical core. The baseline inventory is supplemented by a hashed production delta and offline gallery. Three integrated Editor tests passed, including reload timing/contact/reset and 180-frame playback. UI flows passed at 1920x1080, 1280x720 and 2560x1080.

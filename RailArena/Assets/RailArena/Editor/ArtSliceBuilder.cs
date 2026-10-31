@@ -37,6 +37,7 @@ namespace RailArena.Editor
             StoneSurfaceArtBuilder.Prepare();
             BasementDeckArtBuilder.Prepare();
             BridgeStoneArtBuilder.Prepare();
+            SummitStoneArtBuilder.Prepare();
             ArtAtmosphereBuilder.Prepare();
             var errors = ShaderUtil.GetShaderMessages(profile.SurfaceShader).Where(m => m.severity == UnityEditor.Rendering.ShaderCompilerMessageSeverity.Error).ToArray();
             if (errors.Length != 0) throw new InvalidOperationException(string.Join("\n", errors.Select(m => m.message)));
