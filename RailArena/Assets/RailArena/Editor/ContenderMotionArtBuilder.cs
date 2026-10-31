@@ -123,6 +123,9 @@ namespace RailArena.Editor
         public static void PrepareReactionCandidates()
             => ImportClips(new[] { "HitResponse", "DeathFall" }, "motion-reactions-import.json");
 
+        public static void PrepareCrouchCandidates()
+            => ImportClips(new[] { "CrouchIdle", "CrouchForward", "CrouchBackward", "CrouchLeft", "CrouchRight", "CrouchEnter", "CrouchExit" }, "motion-crouch-import.json");
+
         static void ImportClips(string[] names, string evidenceFile)
         {
             var source = (ModelImporter)AssetImporter.GetAtPath("Assets/RailArena/Art/StylizedContenders/Player_LOD0.fbx");
@@ -140,7 +143,8 @@ namespace RailArena.Editor
                 importer.SaveAndReimport();
                 var settings = importer.defaultClipAnimations;
                 if (settings.Length != 1) throw new InvalidOperationException("One authored take is required per motion export: " + name);
-                settings[0].name = name; settings[0].loopTime = name.StartsWith("Retreat", StringComparison.Ordinal) || name.StartsWith("Advance", StringComparison.Ordinal) || name.StartsWith("Strafe", StringComparison.Ordinal) || name == "AirborneHold"; settings[0].loopPose = settings[0].loopTime;
+                settings[0].name = name; settings[0].loopTime = name.StartsWith("Retreat", StringComparison.Ordinal) || name.StartsWith("Advance", StringComparison.Ordinal) || name.StartsWith("Strafe", StringComparison.Ordinal) || name == "AirborneHold" ||
+                    (name.StartsWith("Crouch", StringComparison.Ordinal) && name != "CrouchEnter" && name != "CrouchExit"); settings[0].loopPose = settings[0].loopTime;
                 settings[0].lockRootRotation = true; settings[0].lockRootPositionXZ = true; settings[0].lockRootHeightY = true;
                 settings[0].keepOriginalOrientation = true; settings[0].keepOriginalPositionXZ = true; settings[0].keepOriginalPositionY = true;
                 importer.clipAnimations = settings; importer.SaveAndReimport();

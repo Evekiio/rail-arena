@@ -49,6 +49,7 @@ html += '<p><a href="current-asset-register.csv">Joined current inventory</a> ·
 html += '<p><a href="Performance/UnderbridgeMounted/index.html">Corrected under-bridge destinations and measured wall mounting</a></p>'
 html += '<p><a href="Animation/Strafe/index.html">Authored lateral gaits, measured poses and installed playback</a></p>'
 html += '<p><a href="Animation/Reactions/index.html">Authored hit/death, matching legacy reference and lifecycle evidence</a></p>'
+html += '<p><a href="Animation/Crouch/index.html">Original crouch candidate references (not installed)</a></p>'
 html += '<p><a href="Environment/BridgeStone/index.html">Measured bridge, screen and pier construction</a></p>'
 html += '<p><a href="Environment/SummitStone/index.html">Measured summit deck, cover and column construction</a></p>'
 for title, directory in sections:
@@ -99,6 +100,8 @@ for entry in entries:
                 dimensions=[variant_spec['diameterMetres'],variant_spec['diameterMetres'],variant_spec['thicknessMetres']]
         elif any(name in path for name in ('ContenderMotion.controller','ContenderRetreat.overrideController')):
             family='contender-motion-controller';category='animation';directory=art/'Animation/Strafe';master=directory/'Contender-Strafe-v1.blend';references=directory/'strafe-production.json';sheet=directory/'References/StrafeLeftWalk/measured-poses.png';screenshot=directory/'Strafe-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Independent Sky Gardens state graph combines original forward, backward, lateral and airborne masters; legacy controller preserved.'
+        elif '/Crouch/' in path or Path(path).stem.startswith('Crouch'):
+            family='contender-crouch-candidate';category='animation';directory=art/'Animation/Crouch';master=directory/'Contender-Crouch-v1.blend';references=directory/'crouch-production.json';sheet=directory/'References/CrouchIdle/measured-poses.png';screenshot=directory/'Crouch-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original in-place crouch ankle paths, knee solves and baked bone poses on the unchanged shared skeleton; candidate import only, not live-controller installation.'
         elif '/Reactions/' in path or any(name in path for name in ('HitResponse','DeathFall')):
             family='contender-reactions';category='animation';directory=art/'Animation/Reactions';master=directory/'Contender-Reactions-v1.blend';references=directory/'reactions-production.json';sheet=directory/'References/DeathFall/measured-poses.png';screenshot=directory/'Reaction-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original hit and fall/settle bone poses, authored hand/foot contacts and geometry-derived floor clearance; unchanged compatible rig, no ragdoll or gameplay root motion.'
         elif '/Strafe/' in path or 'Strafe' in path:
@@ -137,6 +140,11 @@ for entry in entries:
             entry['dependencies'] += [relative(source) for source in sources]
         if family=='contender-reactions':
             entry['dependencies'] += ['RailArena/Assets/RailArena/Runtime/ContenderPresentation.cs','RailArena/Assets/RailArena/Runtime/CorpseContactSurface.cs','RailArena/Assets/RailArena/Editor/ContenderMotionArtBuilder.cs']
+    if family=='contender-crouch-candidate':
+        entry['runtimeUsage']='Candidate humanoid import; not referenced by live controller' if path.startswith('RailArena/') else 'Candidate editable source or reference; not installed gameplay evidence'
+        entry['referenceSheets']=[relative(art/'Animation/Crouch/References'/name/'measured-poses.png') for name in ('CrouchIdle','CrouchForward','CrouchBackward','CrouchLeft','CrouchRight','CrouchEnter','CrouchExit')]
+        entry['dependencies'] += [relative(art/'Animation/Crouch/baked-contact-review.json'),'RailArena/Assets/RailArena/Editor/ContenderMotionArtBuilder.cs']
+        entry['clips']=[clip['name'] for clip in json.loads(references.read_text())['clips']]
     if family=='summit-stone':
         entry['runtimeUsage']='Production review build' if path.startswith('RailArena/') else 'Editable source or reference evidence; not runtime content'
         entry['referenceSheets']=[relative(art/'Environment/SummitStone'/(name+'-Measured-Sheet.png')) for name in ('Summit','Cover','Column')]
