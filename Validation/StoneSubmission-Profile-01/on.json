@@ -1,0 +1,1812 @@
+{
+    "schema": "rail-arena-art-frame-profile/1",
+    "scope": "Hidden Windows player; 1080p High; one automated human and three bots; 100-degree vertical observer FOV; fixed 60 Hz simulation with uncapped wall-timed render throughput. Observer stages after ArenaSession and before automatic portal renders. Main rendering runs after LateUpdate at EndOfFrame with synchronous one-pixel readback. Phase wall times include scheduling/driver work; readback is not isolated GPU time. Profiler counters are inclusive, last-completed-frame values and are not additive. Unity delta is fixed by captureFramerate and is not a pacing measurement. No HUD/native input/audio/sustained visible-play acceptance.",
+    "fingerprint": "ac538985fcd76adfe5c1f609de1198b176f7c859ff2b57319785861ec4d9d90b",
+    "gpu": "NVIDIA GeForce RTX 2080",
+    "api": "Direct3D12",
+    "warmupFrames": 120,
+    "sampleFrames": 360,
+    "exceptions": 0,
+    "width": 1920,
+    "height": 1080,
+    "simulationHz": 60,
+    "randomSeed": 2147,
+    "gpuRecorderSupported": true,
+    "passed": true,
+    "apertureCropping": true,
+    "stonePaletteRenderers": 114,
+    "stonePaletteSourceSlots": 555,
+    "frameTimingFeatureEnabled": true,
+    "views": [
+        {
+            "view": "combat",
+            "frames": 360,
+            "portalRenders": 1440,
+            "gc0": 0,
+            "gc1": 0,
+            "gc2": 0,
+            "nonBlackSamples": 32400,
+            "validGpuSamples": 0,
+            "meanWallMs": 16.758416388888904,
+            "p95WallMs": 25.0272,
+            "meanSubmitMs": 1.876863333333334,
+            "p95SubmitMs": 2.8722,
+            "meanReadbackMs": 6.058425277777774,
+            "p95ReadbackMs": 7.4547,
+            "medianGpuMs": -1.0,
+            "counters": [
+                {
+                    "column": "counter0",
+                    "name": "Semaphore.WaitForSignal",
+                    "category": "Internal",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 23535524.722222224,
+                    "p95": 33897100.0,
+                    "maximum": 69451400.0
+                },
+                {
+                    "column": "counter1",
+                    "name": "WaitForTargetFPS",
+                    "category": "VSync",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter2",
+                    "name": "PlayerLoop",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 16745500.0,
+                    "p95": 24990900.0,
+                    "maximum": 52209100.0
+                },
+                {
+                    "column": "counter3",
+                    "name": "Main Thread",
+                    "category": "Internal",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 16753291.944444444,
+                    "p95": 25001500.0,
+                    "maximum": 52236900.0
+                },
+                {
+                    "column": "counter4",
+                    "name": "GC.Alloc",
+                    "category": "Memory",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 3831.9444444444443,
+                    "p95": 10700.0,
+                    "maximum": 20000.0
+                },
+                {
+                    "column": "counter5",
+                    "name": "GC.Collect",
+                    "category": "GC",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter6",
+                    "name": "Gfx.WaitForRenderThread",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter7",
+                    "name": "Gfx.WaitForPresentOnGfxThread",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter8",
+                    "name": "Gfx.PresentFrame",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter9",
+                    "name": "Physics.Simulate",
+                    "category": "Physics",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 316784.1666666667,
+                    "p95": 713700.0,
+                    "maximum": 1698100.0
+                },
+                {
+                    "column": "counter10",
+                    "name": "GC Used Memory",
+                    "category": "Memory",
+                    "unit": "Bytes",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 5915989.333333333,
+                    "p95": 6062080.0,
+                    "maximum": 6078464.0
+                },
+                {
+                    "column": "counter11",
+                    "name": "GC Allocated In Frame",
+                    "category": "Memory",
+                    "unit": "Bytes",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 1113.3722222222223,
+                    "p95": 1032.0,
+                    "maximum": 17330.0
+                },
+                {
+                    "column": "counter12",
+                    "name": "Batches Count",
+                    "category": "UI Toolkit",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter13",
+                    "name": "Draw Calls Count",
+                    "category": "UI Toolkit",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter14",
+                    "name": "Vertices Count",
+                    "category": "UI Toolkit",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter15",
+                    "name": "Draw Calls Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 1220.9611111111112,
+                    "p95": 1299.0,
+                    "maximum": 1319.0
+                },
+                {
+                    "column": "counter16",
+                    "name": "Triangles Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 754230.661111111,
+                    "p95": 777101.0,
+                    "maximum": 815908.0
+                },
+                {
+                    "column": "counter17",
+                    "name": "Vertices Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 1589312.411111111,
+                    "p95": 1638095.0,
+                    "maximum": 1717526.0
+                },
+                {
+                    "column": "counter18",
+                    "name": "SetPass Calls Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 187.8111111111111,
+                    "p95": 196.0,
+                    "maximum": 223.0
+                },
+                {
+                    "column": "counter19",
+                    "name": "RailArena.PortalView",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 4634907.222222222,
+                    "p95": 8621300.0,
+                    "maximum": 20205700.0
+                },
+                {
+                    "column": "counter20",
+                    "name": "FixedUpdate.ScriptRunBehaviourFixedUpdate",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 192765.27777777778,
+                    "p95": 501600.0,
+                    "maximum": 2856200.0
+                },
+                {
+                    "column": "counter21",
+                    "name": "Update.ScriptRunBehaviourUpdate",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 638732.7777777778,
+                    "p95": 1276900.0,
+                    "maximum": 3748600.0
+                },
+                {
+                    "column": "counter22",
+                    "name": "PreLateUpdate.ScriptRunBehaviourLateUpdate",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 4862533.333333333,
+                    "p95": 8974200.0,
+                    "maximum": 21514700.0
+                }
+            ],
+            "portalTargets": [
+                {
+                    "id": 4,
+                    "renders": 360,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Basement return portal",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.5387325882911682,
+                        "y": 0.3943718373775482,
+                        "width": 0.00581204891204834,
+                        "height": 0.017049580812454224
+                    }
+                },
+                {
+                    "id": 3,
+                    "renders": 360,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Under bridge portal 1",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.48309898376464844,
+                        "y": 0.4275737404823303,
+                        "width": 0.011882126331329346,
+                        "height": 0.03429365158081055
+                    }
+                },
+                {
+                    "id": 5,
+                    "renders": 0,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Under bridge portal 3",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.6382676959037781,
+                        "y": 0.47362518310546875,
+                        "width": 0.014011263847351074,
+                        "height": 0.03620404005050659
+                    }
+                },
+                {
+                    "id": 0,
+                    "renders": 360,
+                    "width": 128,
+                    "height": 128,
+                    "name": "PA // GARDEN PORTAL",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.5944686532020569,
+                        "y": 0.4343189001083374,
+                        "width": 0.010345399379730225,
+                        "height": 0.029376626014709473
+                    }
+                },
+                {
+                    "id": 1,
+                    "renders": 360,
+                    "width": 128,
+                    "height": 128,
+                    "name": "PB // GARDEN PORTAL",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.30758094787597656,
+                        "y": 0.4023778736591339,
+                        "width": 0.007924765348434448,
+                        "height": 0.05367863178253174
+                    }
+                },
+                {
+                    "id": 2,
+                    "renders": 0,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Basement return portal",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.7003121376037598,
+                        "y": 0.4158075153827667,
+                        "width": 0.007847845554351807,
+                        "height": 0.019307076930999756
+                    }
+                }
+            ]
+        },
+        {
+            "view": "summit",
+            "frames": 360,
+            "portalRenders": 1080,
+            "gc0": 0,
+            "gc1": 0,
+            "gc2": 0,
+            "nonBlackSamples": 32400,
+            "validGpuSamples": 0,
+            "meanWallMs": 14.155101944444441,
+            "p95WallMs": 16.3887,
+            "meanSubmitMs": 1.7048374999999993,
+            "p95SubmitMs": 2.089,
+            "meanReadbackMs": 5.738626388888888,
+            "p95ReadbackMs": 7.0565,
+            "medianGpuMs": -1.0,
+            "counters": [
+                {
+                    "column": "counter0",
+                    "name": "Semaphore.WaitForSignal",
+                    "category": "Internal",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 20506075.555555556,
+                    "p95": 23712300.0,
+                    "maximum": 54516800.0
+                },
+                {
+                    "column": "counter1",
+                    "name": "WaitForTargetFPS",
+                    "category": "VSync",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter2",
+                    "name": "PlayerLoop",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 14144902.777777778,
+                    "p95": 16333000.0,
+                    "maximum": 42923400.0
+                },
+                {
+                    "column": "counter3",
+                    "name": "Main Thread",
+                    "category": "Internal",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 14150748.888888888,
+                    "p95": 16338900.0,
+                    "maximum": 42958400.0
+                },
+                {
+                    "column": "counter4",
+                    "name": "GC.Alloc",
+                    "category": "Memory",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 2818.6111111111113,
+                    "p95": 3600.0,
+                    "maximum": 74900.0
+                },
+                {
+                    "column": "counter5",
+                    "name": "GC.Collect",
+                    "category": "GC",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter6",
+                    "name": "Gfx.WaitForRenderThread",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter7",
+                    "name": "Gfx.WaitForPresentOnGfxThread",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter8",
+                    "name": "Gfx.PresentFrame",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter9",
+                    "name": "Physics.Simulate",
+                    "category": "Physics",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 288751.3888888889,
+                    "p95": 447100.0,
+                    "maximum": 1175700.0
+                },
+                {
+                    "column": "counter10",
+                    "name": "GC Used Memory",
+                    "category": "Memory",
+                    "unit": "Bytes",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 15700286.577777777,
+                    "p95": 15896576.0,
+                    "maximum": 15929344.0
+                },
+                {
+                    "column": "counter11",
+                    "name": "GC Allocated In Frame",
+                    "category": "Memory",
+                    "unit": "Bytes",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 1132.2111111111112,
+                    "p95": 4910.0,
+                    "maximum": 9002.0
+                },
+                {
+                    "column": "counter12",
+                    "name": "Batches Count",
+                    "category": "UI Toolkit",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter13",
+                    "name": "Draw Calls Count",
+                    "category": "UI Toolkit",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter14",
+                    "name": "Vertices Count",
+                    "category": "UI Toolkit",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter15",
+                    "name": "Draw Calls Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 1068.8111111111111,
+                    "p95": 1146.0,
+                    "maximum": 1150.0
+                },
+                {
+                    "column": "counter16",
+                    "name": "Triangles Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 660953.5833333334,
+                    "p95": 679536.0,
+                    "maximum": 679600.0
+                },
+                {
+                    "column": "counter17",
+                    "name": "Vertices Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 1389681.575,
+                    "p95": 1430300.0,
+                    "maximum": 1430394.0
+                },
+                {
+                    "column": "counter18",
+                    "name": "SetPass Calls Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 150.59166666666667,
+                    "p95": 178.0,
+                    "maximum": 186.0
+                },
+                {
+                    "column": "counter19",
+                    "name": "RailArena.PortalView",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 3081477.5,
+                    "p95": 3998100.0,
+                    "maximum": 12325100.0
+                },
+                {
+                    "column": "counter20",
+                    "name": "FixedUpdate.ScriptRunBehaviourFixedUpdate",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 291327.5,
+                    "p95": 1237400.0,
+                    "maximum": 2547500.0
+                },
+                {
+                    "column": "counter21",
+                    "name": "Update.ScriptRunBehaviourUpdate",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 532599.7222222222,
+                    "p95": 776200.0,
+                    "maximum": 2079600.0
+                },
+                {
+                    "column": "counter22",
+                    "name": "PreLateUpdate.ScriptRunBehaviourLateUpdate",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 3274163.611111111,
+                    "p95": 4230200.0,
+                    "maximum": 13671600.0
+                }
+            ],
+            "portalTargets": [
+                {
+                    "id": 4,
+                    "renders": 360,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Basement return portal",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.4878225326538086,
+                        "y": 0.4223422110080719,
+                        "width": 0.0051901936531066895,
+                        "height": 0.01693841814994812
+                    }
+                },
+                {
+                    "id": 3,
+                    "renders": 360,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Under bridge portal 1",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.4787335693836212,
+                        "y": 0.22324708104133606,
+                        "width": 0.010032594203948975,
+                        "height": 0.03750166296958923
+                    }
+                },
+                {
+                    "id": 5,
+                    "renders": 0,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Under bridge portal 3",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.6382676959037781,
+                        "y": 0.47362518310546875,
+                        "width": 0.014011263847351074,
+                        "height": 0.03620404005050659
+                    }
+                },
+                {
+                    "id": 0,
+                    "renders": 360,
+                    "width": 128,
+                    "height": 128,
+                    "name": "PA // GARDEN PORTAL",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.5597334504127502,
+                        "y": 0.3331621289253235,
+                        "width": 0.010472297668457031,
+                        "height": 0.027521520853042603
+                    }
+                },
+                {
+                    "id": 1,
+                    "renders": 0,
+                    "width": 128,
+                    "height": 128,
+                    "name": "PB // GARDEN PORTAL",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.30758094787597656,
+                        "y": 0.4023778736591339,
+                        "width": 0.007924765348434448,
+                        "height": 0.05367863178253174
+                    }
+                },
+                {
+                    "id": 2,
+                    "renders": 0,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Basement return portal",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.7003121376037598,
+                        "y": 0.4158075153827667,
+                        "width": 0.007847845554351807,
+                        "height": 0.019307076930999756
+                    }
+                }
+            ]
+        },
+        {
+            "view": "basement",
+            "frames": 360,
+            "portalRenders": 1080,
+            "gc0": 0,
+            "gc1": 0,
+            "gc2": 0,
+            "nonBlackSamples": 32400,
+            "validGpuSamples": 0,
+            "meanWallMs": 14.961823888888894,
+            "p95WallMs": 17.4895,
+            "meanSubmitMs": 1.805469444444444,
+            "p95SubmitMs": 2.5092,
+            "meanReadbackMs": 5.711376666666665,
+            "p95ReadbackMs": 6.9454,
+            "medianGpuMs": -1.0,
+            "counters": [
+                {
+                    "column": "counter0",
+                    "name": "Semaphore.WaitForSignal",
+                    "category": "Internal",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 21386410.277777776,
+                    "p95": 24831300.0,
+                    "maximum": 59068700.0
+                },
+                {
+                    "column": "counter1",
+                    "name": "WaitForTargetFPS",
+                    "category": "VSync",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter2",
+                    "name": "PlayerLoop",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 14950528.888888888,
+                    "p95": 17485600.0,
+                    "maximum": 44510500.0
+                },
+                {
+                    "column": "counter3",
+                    "name": "Main Thread",
+                    "category": "Internal",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 14957060.277777778,
+                    "p95": 17492900.0,
+                    "maximum": 44545100.0
+                },
+                {
+                    "column": "counter4",
+                    "name": "GC.Alloc",
+                    "category": "Memory",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 3113.3333333333335,
+                    "p95": 5300.0,
+                    "maximum": 19900.0
+                },
+                {
+                    "column": "counter5",
+                    "name": "GC.Collect",
+                    "category": "GC",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter6",
+                    "name": "Gfx.WaitForRenderThread",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter7",
+                    "name": "Gfx.WaitForPresentOnGfxThread",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter8",
+                    "name": "Gfx.PresentFrame",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter9",
+                    "name": "Physics.Simulate",
+                    "category": "Physics",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 311871.1111111111,
+                    "p95": 498200.0,
+                    "maximum": 1170600.0
+                },
+                {
+                    "column": "counter10",
+                    "name": "GC Used Memory",
+                    "category": "Memory",
+                    "unit": "Bytes",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 5971911.111111111,
+                    "p95": 6127616.0,
+                    "maximum": 6135808.0
+                },
+                {
+                    "column": "counter11",
+                    "name": "GC Allocated In Frame",
+                    "category": "Memory",
+                    "unit": "Bytes",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 1183.861111111111,
+                    "p95": 4964.0,
+                    "maximum": 4978.0
+                },
+                {
+                    "column": "counter12",
+                    "name": "Batches Count",
+                    "category": "UI Toolkit",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter13",
+                    "name": "Draw Calls Count",
+                    "category": "UI Toolkit",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter14",
+                    "name": "Vertices Count",
+                    "category": "UI Toolkit",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter15",
+                    "name": "Draw Calls Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 1082.388888888889,
+                    "p95": 1116.0,
+                    "maximum": 1125.0
+                },
+                {
+                    "column": "counter16",
+                    "name": "Triangles Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 432933.84444444446,
+                    "p95": 439412.0,
+                    "maximum": 443654.0
+                },
+                {
+                    "column": "counter17",
+                    "name": "Vertices Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 903475.7972222222,
+                    "p95": 918092.0,
+                    "maximum": 928838.0
+                },
+                {
+                    "column": "counter18",
+                    "name": "SetPass Calls Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 181.11944444444444,
+                    "p95": 204.0,
+                    "maximum": 208.0
+                },
+                {
+                    "column": "counter19",
+                    "name": "RailArena.PortalView",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 3484016.6666666665,
+                    "p95": 4616600.0,
+                    "maximum": 17339600.0
+                },
+                {
+                    "column": "counter20",
+                    "name": "FixedUpdate.ScriptRunBehaviourFixedUpdate",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 321074.72222222225,
+                    "p95": 1050600.0,
+                    "maximum": 4747400.0
+                },
+                {
+                    "column": "counter21",
+                    "name": "Update.ScriptRunBehaviourUpdate",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 623241.3888888889,
+                    "p95": 1075300.0,
+                    "maximum": 3039400.0
+                },
+                {
+                    "column": "counter22",
+                    "name": "PreLateUpdate.ScriptRunBehaviourLateUpdate",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 3701944.722222222,
+                    "p95": 4786400.0,
+                    "maximum": 17853100.0
+                }
+            ],
+            "portalTargets": [
+                {
+                    "id": 4,
+                    "renders": 360,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Basement return portal",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.6866691708564758,
+                        "y": 0.606410562992096,
+                        "width": 0.011703550815582275,
+                        "height": 0.020642340183258057
+                    }
+                },
+                {
+                    "id": 3,
+                    "renders": 360,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Under bridge portal 1",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.5052844882011414,
+                        "y": 0.6831963062286377,
+                        "width": 0.006594479084014893,
+                        "height": 0.02199375629425049
+                    }
+                },
+                {
+                    "id": 5,
+                    "renders": 0,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Under bridge portal 3",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.6382676959037781,
+                        "y": 0.47362518310546875,
+                        "width": 0.014011263847351074,
+                        "height": 0.03620404005050659
+                    }
+                },
+                {
+                    "id": 0,
+                    "renders": 0,
+                    "width": 128,
+                    "height": 128,
+                    "name": "PA // GARDEN PORTAL",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.5597334504127502,
+                        "y": 0.3331621289253235,
+                        "width": 0.010472297668457031,
+                        "height": 0.027521520853042603
+                    }
+                },
+                {
+                    "id": 1,
+                    "renders": 360,
+                    "width": 128,
+                    "height": 128,
+                    "name": "PB // GARDEN PORTAL",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.45181500911712646,
+                        "y": 0.6798005700111389,
+                        "width": 0.006829768419265747,
+                        "height": 0.019159436225891113
+                    }
+                },
+                {
+                    "id": 2,
+                    "renders": 0,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Basement return portal",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.7003121376037598,
+                        "y": 0.4158075153827667,
+                        "width": 0.007847845554351807,
+                        "height": 0.019307076930999756
+                    }
+                }
+            ]
+        },
+        {
+            "view": "foliage-waterfall",
+            "frames": 360,
+            "portalRenders": 1080,
+            "gc0": 0,
+            "gc1": 0,
+            "gc2": 0,
+            "nonBlackSamples": 32400,
+            "validGpuSamples": 0,
+            "meanWallMs": 14.016696666666661,
+            "p95WallMs": 15.9283,
+            "meanSubmitMs": 1.7765333333333337,
+            "p95SubmitMs": 2.1984,
+            "meanReadbackMs": 5.451623333333335,
+            "p95ReadbackMs": 6.6882,
+            "medianGpuMs": -1.0,
+            "counters": [
+                {
+                    "column": "counter0",
+                    "name": "Semaphore.WaitForSignal",
+                    "category": "Internal",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 20066040.833333332,
+                    "p95": 23103100.0,
+                    "maximum": 63809000.0
+                },
+                {
+                    "column": "counter1",
+                    "name": "WaitForTargetFPS",
+                    "category": "VSync",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter2",
+                    "name": "PlayerLoop",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 14005712.5,
+                    "p95": 15904100.0,
+                    "maximum": 46889800.0
+                },
+                {
+                    "column": "counter3",
+                    "name": "Main Thread",
+                    "category": "Internal",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 14012477.5,
+                    "p95": 15908400.0,
+                    "maximum": 46912000.0
+                },
+                {
+                    "column": "counter4",
+                    "name": "GC.Alloc",
+                    "category": "Memory",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 2793.0555555555557,
+                    "p95": 4100.0,
+                    "maximum": 17900.0
+                },
+                {
+                    "column": "counter5",
+                    "name": "GC.Collect",
+                    "category": "GC",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter6",
+                    "name": "Gfx.WaitForRenderThread",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter7",
+                    "name": "Gfx.WaitForPresentOnGfxThread",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter8",
+                    "name": "Gfx.PresentFrame",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter9",
+                    "name": "Physics.Simulate",
+                    "category": "Physics",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 281102.22222222225,
+                    "p95": 419900.0,
+                    "maximum": 1029100.0
+                },
+                {
+                    "column": "counter10",
+                    "name": "GC Used Memory",
+                    "category": "Memory",
+                    "unit": "Bytes",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 15459248.355555555,
+                    "p95": 15642624.0,
+                    "maximum": 15663104.0
+                },
+                {
+                    "column": "counter11",
+                    "name": "GC Allocated In Frame",
+                    "category": "Memory",
+                    "unit": "Bytes",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 1121.95,
+                    "p95": 4910.0,
+                    "maximum": 4986.0
+                },
+                {
+                    "column": "counter12",
+                    "name": "Batches Count",
+                    "category": "UI Toolkit",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter13",
+                    "name": "Draw Calls Count",
+                    "category": "UI Toolkit",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter14",
+                    "name": "Vertices Count",
+                    "category": "UI Toolkit",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter15",
+                    "name": "Draw Calls Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 1140.0305555555556,
+                    "p95": 1199.0,
+                    "maximum": 1227.0
+                },
+                {
+                    "column": "counter16",
+                    "name": "Triangles Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 586485.8444444444,
+                    "p95": 599161.0,
+                    "maximum": 606843.0
+                },
+                {
+                    "column": "counter17",
+                    "name": "Vertices Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 1247518.9583333333,
+                    "p95": 1279726.0,
+                    "maximum": 1295528.0
+                },
+                {
+                    "column": "counter18",
+                    "name": "SetPass Calls Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 164.56944444444446,
+                    "p95": 182.0,
+                    "maximum": 197.0
+                },
+                {
+                    "column": "counter19",
+                    "name": "RailArena.PortalView",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 3125968.611111111,
+                    "p95": 3988200.0,
+                    "maximum": 15002900.0
+                },
+                {
+                    "column": "counter20",
+                    "name": "FixedUpdate.ScriptRunBehaviourFixedUpdate",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 211500.27777777778,
+                    "p95": 532100.0,
+                    "maximum": 1508100.0
+                },
+                {
+                    "column": "counter21",
+                    "name": "Update.ScriptRunBehaviourUpdate",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 558206.3888888889,
+                    "p95": 867900.0,
+                    "maximum": 2572800.0
+                },
+                {
+                    "column": "counter22",
+                    "name": "PreLateUpdate.ScriptRunBehaviourLateUpdate",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 3361463.3333333335,
+                    "p95": 4298600.0,
+                    "maximum": 15922500.0
+                }
+            ],
+            "portalTargets": [
+                {
+                    "id": 4,
+                    "renders": 0,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Basement return portal",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.6866691708564758,
+                        "y": 0.606410562992096,
+                        "width": 0.011703550815582275,
+                        "height": 0.020642340183258057
+                    }
+                },
+                {
+                    "id": 3,
+                    "renders": 0,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Under bridge portal 1",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.5052844882011414,
+                        "y": 0.6831963062286377,
+                        "width": 0.006594479084014893,
+                        "height": 0.02199375629425049
+                    }
+                },
+                {
+                    "id": 5,
+                    "renders": 360,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Under bridge portal 3",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.32994064688682556,
+                        "y": 0.7924025058746338,
+                        "width": 0.018059879541397095,
+                        "height": 0.04333782196044922
+                    }
+                },
+                {
+                    "id": 0,
+                    "renders": 0,
+                    "width": 128,
+                    "height": 128,
+                    "name": "PA // GARDEN PORTAL",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.5597334504127502,
+                        "y": 0.3331621289253235,
+                        "width": 0.010472297668457031,
+                        "height": 0.027521520853042603
+                    }
+                },
+                {
+                    "id": 1,
+                    "renders": 360,
+                    "width": 128,
+                    "height": 128,
+                    "name": "PB // GARDEN PORTAL",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.4418458938598633,
+                        "y": 0.7685943245887756,
+                        "width": 0.009205430746078491,
+                        "height": 0.029768943786621094
+                    }
+                },
+                {
+                    "id": 2,
+                    "renders": 360,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Basement return portal",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.39859190583229065,
+                        "y": 0.681701123714447,
+                        "width": 0.0070157647132873535,
+                        "height": 0.01725482940673828
+                    }
+                }
+            ]
+        },
+        {
+            "view": "portal",
+            "frames": 360,
+            "portalRenders": 720,
+            "gc0": 1,
+            "gc1": 1,
+            "gc2": 1,
+            "nonBlackSamples": 32400,
+            "validGpuSamples": 0,
+            "meanWallMs": 13.130401111111105,
+            "p95WallMs": 15.4187,
+            "meanSubmitMs": 1.5853855555555552,
+            "p95SubmitMs": 2.1212,
+            "meanReadbackMs": 5.301998888888891,
+            "p95ReadbackMs": 6.5951,
+            "medianGpuMs": -1.0,
+            "counters": [
+                {
+                    "column": "counter0",
+                    "name": "Semaphore.WaitForSignal",
+                    "category": "Internal",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 19104844.166666668,
+                    "p95": 22509900.0,
+                    "maximum": 58275300.0
+                },
+                {
+                    "column": "counter1",
+                    "name": "WaitForTargetFPS",
+                    "category": "VSync",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter2",
+                    "name": "PlayerLoop",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 13118750.277777778,
+                    "p95": 15353200.0,
+                    "maximum": 43209600.0
+                },
+                {
+                    "column": "counter3",
+                    "name": "Main Thread",
+                    "category": "Internal",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 13125644.166666666,
+                    "p95": 15360800.0,
+                    "maximum": 43233800.0
+                },
+                {
+                    "column": "counter4",
+                    "name": "GC.Alloc",
+                    "category": "Memory",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 2575.0,
+                    "p95": 4300.0,
+                    "maximum": 29900.0
+                },
+                {
+                    "column": "counter5",
+                    "name": "GC.Collect",
+                    "category": "GC",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 3863.0555555555557,
+                    "p95": 0.0,
+                    "maximum": 1390700.0
+                },
+                {
+                    "column": "counter6",
+                    "name": "Gfx.WaitForRenderThread",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter7",
+                    "name": "Gfx.WaitForPresentOnGfxThread",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter8",
+                    "name": "Gfx.PresentFrame",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter9",
+                    "name": "Physics.Simulate",
+                    "category": "Physics",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 303632.22222222225,
+                    "p95": 474900.0,
+                    "maximum": 1270800.0
+                },
+                {
+                    "column": "counter10",
+                    "name": "GC Used Memory",
+                    "category": "Memory",
+                    "unit": "Bytes",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 7375360.0,
+                    "p95": 25067520.0,
+                    "maximum": 25067520.0
+                },
+                {
+                    "column": "counter11",
+                    "name": "GC Allocated In Frame",
+                    "category": "Memory",
+                    "unit": "Bytes",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 898.1444444444444,
+                    "p95": 796.0,
+                    "maximum": 4888.0
+                },
+                {
+                    "column": "counter12",
+                    "name": "Batches Count",
+                    "category": "UI Toolkit",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter13",
+                    "name": "Draw Calls Count",
+                    "category": "UI Toolkit",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter14",
+                    "name": "Vertices Count",
+                    "category": "UI Toolkit",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 0.0,
+                    "p95": 0.0,
+                    "maximum": 0.0
+                },
+                {
+                    "column": "counter15",
+                    "name": "Draw Calls Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 294.89722222222224,
+                    "p95": 330.0,
+                    "maximum": 337.0
+                },
+                {
+                    "column": "counter16",
+                    "name": "Triangles Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 288042.8,
+                    "p95": 299797.0,
+                    "maximum": 299845.0
+                },
+                {
+                    "column": "counter17",
+                    "name": "Vertices Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 612810.0333333333,
+                    "p95": 640085.0,
+                    "maximum": 640175.0
+                },
+                {
+                    "column": "counter18",
+                    "name": "SetPass Calls Count",
+                    "category": "Render",
+                    "unit": "Count",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 107.43888888888888,
+                    "p95": 115.0,
+                    "maximum": 119.0
+                },
+                {
+                    "column": "counter19",
+                    "name": "RailArena.PortalView",
+                    "category": "Render",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 2617376.9444444445,
+                    "p95": 3689100.0,
+                    "maximum": 14102800.0
+                },
+                {
+                    "column": "counter20",
+                    "name": "FixedUpdate.ScriptRunBehaviourFixedUpdate",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 236559.16666666666,
+                    "p95": 604800.0,
+                    "maximum": 2099300.0
+                },
+                {
+                    "column": "counter21",
+                    "name": "Update.ScriptRunBehaviourUpdate",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 610642.2222222222,
+                    "p95": 1036500.0,
+                    "maximum": 3693400.0
+                },
+                {
+                    "column": "counter22",
+                    "name": "PreLateUpdate.ScriptRunBehaviourLateUpdate",
+                    "category": "PlayerLoop",
+                    "unit": "TimeNanoseconds",
+                    "available": true,
+                    "samples": 360,
+                    "mean": 2824277.222222222,
+                    "p95": 3923200.0,
+                    "maximum": 14882100.0
+                }
+            ],
+            "portalTargets": [
+                {
+                    "id": 4,
+                    "renders": 360,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Basement return portal",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.08378592878580093,
+                        "y": 0.3057577610015869,
+                        "width": 0.035959579050540924,
+                        "height": 0.061853766441345215
+                    }
+                },
+                {
+                    "id": 3,
+                    "renders": 0,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Under bridge portal 1",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.5052844882011414,
+                        "y": 0.6831963062286377,
+                        "width": 0.006594479084014893,
+                        "height": 0.02199375629425049
+                    }
+                },
+                {
+                    "id": 5,
+                    "renders": 0,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Under bridge portal 3",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.32994064688682556,
+                        "y": 0.7924025058746338,
+                        "width": 0.018059879541397095,
+                        "height": 0.04333782196044922
+                    }
+                },
+                {
+                    "id": 0,
+                    "renders": 360,
+                    "width": 128,
+                    "height": 192,
+                    "name": "PA // GARDEN PORTAL",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.4410232901573181,
+                        "y": 0.3520336151123047,
+                        "width": 0.117953360080719,
+                        "height": 0.3096652626991272
+                    }
+                },
+                {
+                    "id": 1,
+                    "renders": 0,
+                    "width": 128,
+                    "height": 128,
+                    "name": "PB // GARDEN PORTAL",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.4418458938598633,
+                        "y": 0.7685943245887756,
+                        "width": 0.009205430746078491,
+                        "height": 0.029768943786621094
+                    }
+                },
+                {
+                    "id": 2,
+                    "renders": 0,
+                    "width": 128,
+                    "height": 128,
+                    "name": "Basement return portal",
+                    "viewport": {
+                        "serializedVersion": "2",
+                        "x": 0.39859190583229065,
+                        "y": 0.681701123714447,
+                        "width": 0.0070157647132873535,
+                        "height": 0.01725482940673828
+                    }
+                }
+            ]
+        }
+    ]
+}

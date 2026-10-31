@@ -1,5 +1,6 @@
 """Package measured deck construction sheets and matching installed-game comparisons."""
 import hashlib
+import argparse
 import json
 from pathlib import Path
 from html.parser import HTMLParser
@@ -8,13 +9,16 @@ from PIL import Image,ImageDraw,ImageFont,ImageStat
 
 root=Path(__file__).resolve().parent.parent
 folder=root/'ArtSource/Original/ArtPass-v1/Environment/BasementDecks'
-result=ET.parse(root/'Validation/art-basement-installed-production.xml').getroot()
-assert result.attrib['result']=='Passed' and result.attrib['total']=='1'
+parser=argparse.ArgumentParser();parser.add_argument('--native-result',default='Validation/art-basement-installed-production.xml');args=parser.parse_args()
+result=ET.parse(root/args.native_result).getroot()
+cases=[case for case in result.iter('test-case') if case.attrib.get('fullname','').endswith('BasementStoneArtReview.VerifyAndCaptureInstalledDecks')]
+assert len(cases)==1 and cases[0].attrib['result']=='Passed'
 spec=json.loads((folder/'production.json').read_text());measurements=json.loads((folder/'measured-construction.json').read_text())
 digest=hashlib.sha256((folder/spec['master']).read_bytes()).hexdigest();assert digest==spec['masterSha256']==measurements['masterSha256']
 assert hashlib.sha256((folder/'deck-source.json').read_bytes()).hexdigest()==spec['sourceSha256']
 for lod in spec['lods']:assert hashlib.sha256((root/lod['export']).read_bytes()).hexdigest()==lod['exportSha256']
 review=json.loads((folder/'UnityReview/index.json').read_text());assert review['decks']==8 and len(review['meshes'])==24 and len(review['views'])==9
+assert review['sourceMasterSha256']==digest and digest in ''.join(cases[0].itertext()), 'Require native evidence tied to the current measured master'
 for check in review['meshes']:assert check['minimumY']>=-.601 and check['maximumY']<=.001 and check['minimumHullCross']>=-.001
 font=ImageFont.truetype('C:/Windows/Fonts/segoeui.ttf',28)
 for profile in measurements['profiles']:

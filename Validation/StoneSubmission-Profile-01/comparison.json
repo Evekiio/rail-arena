@@ -1,0 +1,217 @@
+{
+  "scope": "Single off/on ordered pair; same executable and seeded fixed simulation. Forced offscreen submission/readback is not native presentation, isolated GPU timing or sustained 60 FPS acceptance. Counters are inclusive and non-additive. No automatic promotion.",
+  "fingerprint": "ac538985fcd76adfe5c1f609de1198b176f7c859ff2b57319785861ec4d9d90b",
+  "executableSha256": "3726509af94bdacbfe23f85da13109a7e70fb7d61913506e98690bd3208b2fd7",
+  "inputSha256": {
+    "off": "fc07a74b0ffcb8d45cccfa2c5ccd9e6b81b868fa2979441c5209ee947a0f041c",
+    "on": "ebd58e9e248b06cd2de619dec29f456c46d5fc20430d0fb81c24408d58bccc63"
+  },
+  "rendererInstancesOn": 114,
+  "sourceMaterialSlotsOn": 555,
+  "frameTimingFeatureEnabled": {
+    "off": true,
+    "on": true
+  },
+  "views": [
+    {
+      "view": "combat",
+      "validGpuSamplesOff": 0,
+      "validGpuSamplesOn": 0,
+      "meanWallMs": {
+        "off": 15.535292222222218,
+        "on": 16.758416388888904,
+        "changePercent": 7.87319703530962
+      },
+      "p95WallMs": {
+        "off": 17.6948,
+        "on": 25.0272,
+        "changePercent": 41.438162624047735
+      },
+      "meanSubmitMs": {
+        "off": 1.7338616666666673,
+        "on": 1.876863333333334,
+        "changePercent": 8.247582227340322
+      },
+      "meanReadbackMs": {
+        "off": 5.919592222222221,
+        "on": 6.058425277777774,
+        "changePercent": 2.34531451396891
+      },
+      "Draw Calls Count": {
+        "off": 1949.0305555555556,
+        "on": 1220.9611111111112,
+        "changePercent": -37.35546589401283
+      },
+      "SetPass Calls Count": {
+        "off": 194.20277777777778,
+        "on": 187.8111111111111,
+        "changePercent": -3.291233390070525
+      },
+      "Triangles Count": {
+        "off": 754231.5388888889,
+        "on": 754230.661111111,
+        "changePercent": -0.00011638041271799793
+      }
+    },
+    {
+      "view": "summit",
+      "validGpuSamplesOff": 0,
+      "validGpuSamplesOn": 0,
+      "meanWallMs": {
+        "off": 15.436268611111114,
+        "on": 14.155101944444441,
+        "changePercent": -8.299717366569293
+      },
+      "p95WallMs": {
+        "off": 23.5877,
+        "on": 16.3887,
+        "changePercent": -30.52014397334204
+      },
+      "meanSubmitMs": {
+        "off": 1.9066811111111102,
+        "on": 1.7048374999999993,
+        "changePercent": -10.586123182050478
+      },
+      "meanReadbackMs": {
+        "off": 5.706097777777781,
+        "on": 5.738626388888888,
+        "changePercent": 0.5700675378853326
+      },
+      "Draw Calls Count": {
+        "off": 1740.7305555555556,
+        "on": 1068.8111111111111,
+        "changePercent": -38.59985350978118
+      },
+      "SetPass Calls Count": {
+        "off": 154.86944444444444,
+        "on": 150.59166666666667,
+        "changePercent": -2.762183200903978
+      },
+      "Triangles Count": {
+        "off": 660952.7611111111,
+        "on": 660953.5833333334,
+        "changePercent": 0.00012439954419907195
+      }
+    },
+    {
+      "view": "basement",
+      "validGpuSamplesOff": 0,
+      "validGpuSamplesOn": 0,
+      "meanWallMs": {
+        "off": 15.791322222222233,
+        "on": 14.961823888888894,
+        "changePercent": -5.2528744690297895
+      },
+      "p95WallMs": {
+        "off": 25.6983,
+        "on": 17.4895,
+        "changePercent": -31.942968990166666
+      },
+      "meanSubmitMs": {
+        "off": 1.926927777777779,
+        "on": 1.805469444444444,
+        "changePercent": -6.303211502478123
+      },
+      "meanReadbackMs": {
+        "off": 5.842520277777776,
+        "on": 5.711376666666665,
+        "changePercent": -2.244641094527644
+      },
+      "Draw Calls Count": {
+        "off": 1654.4166666666667,
+        "on": 1082.388888888889,
+        "changePercent": -34.57579878775668
+      },
+      "SetPass Calls Count": {
+        "off": 181.26111111111112,
+        "on": 181.11944444444444,
+        "changePercent": -0.07815612835995189
+      },
+      "Triangles Count": {
+        "off": 432934.9111111111,
+        "on": 432933.84444444446,
+        "changePercent": -0.00024638037711133265
+      }
+    },
+    {
+      "view": "foliage-waterfall",
+      "validGpuSamplesOff": 0,
+      "validGpuSamplesOn": 0,
+      "meanWallMs": {
+        "off": 15.394808055555536,
+        "on": 14.016696666666661,
+        "changePercent": -8.951793253385553
+      },
+      "p95WallMs": {
+        "off": 24.6884,
+        "on": 15.9283,
+        "changePercent": -35.482655822167494
+      },
+      "meanSubmitMs": {
+        "off": 1.9324733333333328,
+        "on": 1.7765333333333337,
+        "changePercent": -8.069451583635434
+      },
+      "meanReadbackMs": {
+        "off": 5.767895833333335,
+        "on": 5.451623333333335,
+        "changePercent": -5.483325447249321
+      },
+      "Draw Calls Count": {
+        "off": 1813.6444444444444,
+        "on": 1140.0305555555556,
+        "changePercent": -37.14145244688412
+      },
+      "SetPass Calls Count": {
+        "off": 167.98611111111111,
+        "on": 164.56944444444446,
+        "changePercent": -2.033898305084736
+      },
+      "Triangles Count": {
+        "off": 586481.8222222222,
+        "on": 586485.8444444444,
+        "changePercent": 0.000685822146540005
+      }
+    },
+    {
+      "view": "portal",
+      "validGpuSamplesOff": 0,
+      "validGpuSamplesOn": 0,
+      "meanWallMs": {
+        "off": 12.40758500000001,
+        "on": 13.130401111111105,
+        "changePercent": 5.825598705236312
+      },
+      "p95WallMs": {
+        "off": 14.1891,
+        "on": 15.4187,
+        "changePercent": 8.6658068517383
+      },
+      "meanSubmitMs": {
+        "off": 1.483096666666667,
+        "on": 1.5853855555555552,
+        "changePercent": 6.896980566936839
+      },
+      "meanReadbackMs": {
+        "off": 5.289111666666668,
+        "on": 5.301998888888891,
+        "changePercent": 0.24365570315789675
+      },
+      "Draw Calls Count": {
+        "off": 527.05,
+        "on": 294.89722222222224,
+        "changePercent": -44.04758140172237
+      },
+      "SetPass Calls Count": {
+        "off": 117.88333333333334,
+        "on": 107.43888888888888,
+        "changePercent": -8.85998397662473
+      },
+      "Triangles Count": {
+        "off": 288044.52222222224,
+        "on": 288042.8,
+        "changePercent": -0.0005979013969703573
+      }
+    }
+  ]
+}

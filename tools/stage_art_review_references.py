@@ -29,6 +29,8 @@ if int(args.review) >= 22:
     inherited.append('ArenaStone')
 if int(args.review) >= 23:
     inherited.append('GardenNature')
+if int(args.review) >= 25:
+    inherited.append('ReadyMotion')
 for name in inherited:
     source = previous/'ValidationEvidence'/name
     assert source.is_dir() and not (destination/name).exists(), name
@@ -36,8 +38,23 @@ for name in inherited:
         if path.is_file():
             assert hashlib.sha256(path.read_bytes()).hexdigest() == manifest[path.relative_to(previous).as_posix()], path
     shutil.copytree(source, destination/name)
-family = 'ReadyMotion' if int(args.review) >= 23 else 'GardenNature' if int(args.review) >= 22 else 'ArenaStone' if int(args.review) >= 20 else 'SlideMotion'
-if family == 'ReadyMotion':
+family = 'BasementDecks' if int(args.review) >= 25 else 'ReadyMotion' if int(args.review) >= 23 else 'GardenNature' if int(args.review) >= 22 else 'ArenaStone' if int(args.review) >= 20 else 'SlideMotion'
+if family == 'BasementDecks':
+    source = root/'ArtSource/Original/ArtPass-v1/Environment/BasementDecks'
+    spec = json.loads((source/'production.json').read_text(encoding='utf-8'))
+    digest = hashlib.sha256((source/spec['master']).read_bytes()).hexdigest()
+    assert digest == spec['masterSha256'] == json.loads((source/'measured-construction.json').read_text(encoding='utf-8'))['masterSha256']
+    assert digest == json.loads((source/'review-evidence.json').read_text(encoding='utf-8'))['masterSha256']
+    current = destination/family
+    assert not current.exists(), 'Never overwrite a staged reference batch'
+    current.mkdir()
+    files = [(path, path.relative_to(source).as_posix()) for path in sorted(source.rglob('*')) if path.is_file() and path.suffix in ('.blend','.json','.png','.html')]
+    exports = root/'RailArena/Assets/RailArena/Art/ArtPass/Environment/BasementDecks'
+    files += [(exports/Path(lod['export']).name, 'Exports/'+Path(lod['export']).name) for lod in spec['lods']]
+    for lod in spec['lods']:
+        assert hashlib.sha256((root/lod['export']).read_bytes()).hexdigest() == lod['exportSha256']
+    files += [(root/'Validation/stone-deck-inset-native.xml', 'stone-deck-inset-native.xml'), (root/'docs/BASEMENT-STONE-KIT.md', 'BASEMENT-STONE-KIT.md')]
+elif family == 'ReadyMotion':
     current = destination/family
     assert not current.exists(), 'Never overwrite a staged reference batch'
     current.mkdir()

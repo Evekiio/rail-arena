@@ -232,9 +232,17 @@ for entry in entries:
             'referenceSheets':[],'rigBones':[],'clips':[],'currentScreenshot':'Validation/ArtFrame-RifleBatch-Visual2/matching-comparison.png',
             'provenance':'Original Rail Arena rendering prototype and tests; source commit and checksums in experiment.json',
             'referenceException':'Code/research archive with no new model geometry; source identity and controlled evidence retained. Not production artwork or an approved performance fix.'})
+    if '/Experiments/StoneSubmission/' in path:
+        entry.update({'category':'supporting / archived research','family':'archived-stone-submission','disposition':'archive-reference',
+            'approval':'Unpromoted experiment; retained as source/evidence only','runtimeUsage':'Not installed; exact source/exports retained in a noncompiled ZIP and historical candidate build',
+            'sourceMaster':None,'dimensionsMetresBlenderXYZ':None,'dimensionAuthority':'No new canonical geometry; derived source buffers verified corner by corner',
+            'dependencies':['ArtSource/Original/ArtPass-v1/Experiments/StoneSubmission/experiment.json','ArtSource/Original/ArtPass-v1/Experiments/StoneSubmission/candidate-source.zip','docs/STONE-SUBMISSION-RESEARCH.md','Validation/StoneSubmission-Profile-01/comparison.json','Validation/StoneSubmission-Profile-02/comparison.json'],
+            'referenceSheets':[],'rigBones':[],'clips':[],'currentScreenshot':'Validation/StoneSubmissionNative-03/combat-after.png',
+            'provenance':'Original Rail Arena derived GPU exports and rendering prototype; exact file hashes and historical build/source identities in experiment.json',
+            'referenceException':'Archived performance research. Native image/geometry checks pass; two ordered pairs did not establish a consistent frame-time improvement. Not accepted production artwork.'})
     if Path(path).suffix.lower()=='.png':
         with Image.open(root/path) as texture:entry['textureDimensionsPixelsWH']=list(texture.size)
-(art/'integrated-manifest.json').write_text(json.dumps({'schema':'rail-arena-art-delta/2','baseline':'Gate1/asset-manifest.json','entries':entries,'coverage':'Baseline inventory plus production delta; remaining reference and animation exceptions in PRODUCTION-STATUS.md'},indent=2)+'\n')
+(art/'integrated-manifest.json').write_text(json.dumps({'schema':'rail-arena-art-delta/2','baseline':'Gate1/asset-manifest.json','entries':entries,'coverage':'Baseline inventory plus production delta; remaining reference and animation exceptions in Gate2/PRODUCTION-STATUS.md'},indent=2)+'\n')
 with (art/'integrated-asset-register.csv').open('w',newline='',encoding='utf-8') as stream:
     columns=['id','path','category','family','mapArea','runtimeUsage','sourceMaster','dimensionsMetresBlenderXYZ','dimensionAuthority','dependencies','referenceSheets','rigBones','clips','provenance','approval','currentScreenshot','disposition','referenceException','sha256']
     writer=csv.DictWriter(stream,columns,extrasaction='ignore');writer.writeheader();writer.writerows({k:json.dumps(v) if isinstance(v,(dict,list)) else v for k,v in e.items()} for e in entries)

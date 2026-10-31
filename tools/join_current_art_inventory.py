@@ -24,13 +24,15 @@ for path in sorted(base.keys()|delta.keys()):
     record={'id':identity,'path':path,'baselineId':old['id'] if old else None,'productionId':new['id'] if new else None,'category':new['category'] if new else old['category'],'mapArea':new['mapArea'] if new else old['area'],'disposition':new['disposition'] if new else old['disposition'],'existsNow':file.is_file(),'baselineUsage':old.get('scope') if old else None,'productionUsage':new.get('runtimeUsage') if new else None,'runtimeEvidenceLimit':'Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.','canonicalMaster':new.get('sourceMaster') if new else None,'dimensionAuthority':new.get('dimensionAuthority') if new else old.get('dimensionsEvidence'),'dimensions':new.get('dimensionsMetresBlenderXYZ') if new else old.get('dimensions'),'dependencies':new.get('dependencies',[]) if new else old.get('dependencies',[]),'references':new.get('referenceSheets',[]) if new else old.get('references',[]),'screenshots':[new['currentScreenshot']] if new else old.get('screenshots',[]),'provenance':new['provenance'] if new else old['provenance'],'approval':'Direction approved; integrated native/artistic acceptance pending','evidenceState':'production-evidence-present' if new else 'baseline-only','referenceException':new.get('referenceException') if new else 'Current per-asset reference requirements remain to be completed or explicitly excepted; baseline candidates are not certified masters.'}
     if new and new.get('disposition')=='archive-reference':
         record['approval']=new['approval'];record['evidenceState']='archived-research';record['runtimeEvidenceLimit']='Explicitly archived research; not installed production content or final art acceptance.'
+    if new and new.get('researchStatus')=='unpromoted':
+        record['approval']=new['approval'];record['evidenceState']='unpromoted-research';record['runtimeEvidenceLimit']='Opt-in Editor/development research only; default disabled. Not installed production artwork or an accepted performance improvement.'
     if new:
         actual=hashlib.sha256(file.read_bytes()).hexdigest() if file.is_file() else None
         assert actual==new['sha256'],path
         record['productionSha256']=actual
     records.append(record)
 assert len({entry['id'] for entry in records})==len(records),'Stable inventory IDs must remain unique'
-summary={'baselineEntries':len(base),'productionEntries':len(delta),'overlappingPaths':len(base.keys()&delta.keys()),'currentUniquePaths':len(records),'productionEvidencePaths':sum(entry['evidenceState']=='production-evidence-present' for entry in records),'archivedResearchPaths':sum(entry['evidenceState']=='archived-research' for entry in records),'baselineOnlyPaths':sum(entry['evidenceState']=='baseline-only' for entry in records),'missingPaths':sum(not entry['existsNow'] for entry in records),'finalApprovedEntries':0,'referenceCoverage':'Incomplete; evidence-present is not complete geometry/contact/reference certification.'}
+summary={'baselineEntries':len(base),'productionEntries':len(delta),'overlappingPaths':len(base.keys()&delta.keys()),'currentUniquePaths':len(records),'productionEvidencePaths':sum(entry['evidenceState']=='production-evidence-present' for entry in records),'unpromotedResearchPaths':sum(entry['evidenceState']=='unpromoted-research' for entry in records),'archivedResearchPaths':sum(entry['evidenceState']=='archived-research' for entry in records),'baselineOnlyPaths':sum(entry['evidenceState']=='baseline-only' for entry in records),'missingPaths':sum(not entry['existsNow'] for entry in records),'finalApprovedEntries':0,'referenceCoverage':'Incomplete; evidence-present is not complete geometry/contact/reference certification.'}
 (art/'current-asset-manifest.json').write_text(json.dumps({'schema':'rail-arena-art-current/1','baseline':'Gate1/asset-manifest.json','productionDelta':'integrated-manifest.json','summary':summary,'assets':records},indent=2)+'\n')
 columns=list(records[0]);columns += [key for record in records for key in record if key not in columns]
 columns=list(dict.fromkeys(columns))
@@ -51,5 +53,5 @@ text+='''
 
 See integrated-review.html, animation-production-matrix.csv and docs/ART-PASS-REVIEW.md for actual in-game/reel/build evidence. No intermediate approval stop is required.
 '''
-(art/'CURRENT-GAPS.md').write_text(text)
+(art/'CURRENT-GAPS.md').write_text(text,encoding='utf-8')
 print('CURRENT_INVENTORY_JOINED',json.dumps(summary))

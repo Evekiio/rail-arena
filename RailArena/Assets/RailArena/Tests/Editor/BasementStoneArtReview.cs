@@ -17,7 +17,8 @@ namespace RailArena.Tests
     {
         [Serializable] sealed class View { public string id; public Vector3 position,euler; public float fieldOfView; }
         [Serializable] sealed class MeshCheck { public string deck;public int lod,triangles;public float minimumY,maximumY,minimumHullCross; }
-        [Serializable] sealed class Report { public string scope="Installed eight stone deck visuals under the production art pipeline. Exact source colliders, transforms and return-device positions preserved; matching camera comparisons isolate deck presentation. Offscreen world cameras exclude HUD/native input/audio."; public int decks,colliders; public View[] views; public MeshCheck[] meshes; }
+        [Serializable] sealed class Report { public string scope="Installed eight stone deck visuals under the production art pipeline. Exact source colliders, transforms and return-device positions preserved; matching camera comparisons isolate deck presentation. Offscreen world cameras exclude HUD/native input/audio."; public string sourceMasterSha256; public int decks,colliders; public View[] views; public MeshCheck[] meshes; }
+        [Serializable] sealed class MasterRecord { public string master,masterSha256; }
         sealed class Source
         {
             public Transform deck;public MeshCollider collider;public Mesh mesh;public Matrix4x4 matrix;public MeshRenderer renderer;public Material material;public Vector3[] vertices;public int[] triangles;
@@ -99,7 +100,12 @@ namespace RailArena.Tests
                 foreach(var source in sources){Assert.That(source.renderer.enabled,Is.True);Assert.That(source.renderer.sharedMaterial,Is.SameAs(source.material));Assert.That(source.collider.sharedMesh,Is.SameAs(source.mesh));}
                 foreach(var group in roots)Assert.That(group==null,Is.True,"Owned stone visuals must be removed when the art profile is removed");
                 foreach(var marker in markers)Assert.That(marker.enabled,Is.True);
-                File.WriteAllText(Path.Combine(folder,"index.json"),JsonUtility.ToJson(new Report{decks=8,colliders=colliders.Length,views=views.ToArray(),meshes=meshChecks.ToArray()},true));
+                const string sourceFolder="../ArtSource/Original/ArtPass-v1/Environment/BasementDecks/";
+                var master=JsonUtility.FromJson<MasterRecord>(File.ReadAllText(sourceFolder+"production.json"));
+                using(var sha=System.Security.Cryptography.SHA256.Create())
+                    Assert.That(BitConverter.ToString(sha.ComputeHash(File.ReadAllBytes(sourceFolder+master.master))).Replace("-","").ToLowerInvariant(),Is.EqualTo(master.masterSha256));
+                File.WriteAllText(Path.Combine(folder,"index.json"),JsonUtility.ToJson(new Report{sourceMasterSha256=master.masterSha256,decks=8,colliders=colliders.Length,views=views.ToArray(),meshes=meshChecks.ToArray()},true));
+                TestContext.WriteLine("BASEMENT_DECK_MASTER_NATIVE_VERIFIED "+master.masterSha256);
             }
             finally{Time.timeScale=priorScale;target.Release();Object.Destroy(target);Object.Destroy(pixels);Object.Destroy(camera.gameObject);}
             yield return new ExitPlayMode();
