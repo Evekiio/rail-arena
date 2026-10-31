@@ -15,6 +15,8 @@ installed={
     ('character','jump start'):('Animation/Airborne','Contender-Airborne-v1.blend','Controller-Jumps.mp4','Takeoff'),
     ('character','fall loop'):('Animation/Airborne','Contender-Airborne-v1.blend','Controller-Jumps.mp4','AirborneHold'),
     ('character','landing'):('Animation/Airborne','Contender-Airborne-v1.blend','Controller-Jumps.mp4','LandingRecover'),
+    ('character','hit reaction'):('Animation/Reactions','Contender-Reactions-v1.blend','Reaction-Playback.mp4','HitResponse'),
+    ('character','death'):('Animation/Reactions','Contender-Reactions-v1.blend','Reaction-Playback.mp4','DeathFall'),
 }
 for row in rows:
     row.update(productionState='remaining-production',sourceMaster='',measuredReferences='',playback='',validation='',remainingEvidence='Original Gate 1 requirements remain open unless evidence below explicitly covers them. Sanders native/artistic acceptance pending.')

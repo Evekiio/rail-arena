@@ -25,6 +25,7 @@ namespace RailArena
                 actor.Presentation.SetMotionController(motion);
             for (int i = 0; i < art.lods.Length; i++)
                 actor.Presentation.BodyRenderers[i] = Apply((SkinnedMeshRenderer)actor.Presentation.BodyRenderers[i], actor.Presentation.Animator, art.lods[i], art.surface, art.outline);
+            actor.Presentation.RefreshCorpseSurface();
         }
 
         public void ApplyArms(FirstPersonArms arms, ContenderArtSet.Variant art)
