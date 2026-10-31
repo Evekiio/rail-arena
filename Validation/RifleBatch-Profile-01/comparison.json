@@ -1,0 +1,326 @@
+{
+  "schema": "rail-arena-rifle-batch-profile-comparison/1",
+  "fingerprint": "87566282bcb61c5a3010bce2e465b51f9542a56ebdad5d397f475a7cfcf8697a",
+  "executableSha256": "3726509af94bdacbfe23f85da13109a7e70fb7d61913506e98690bd3208b2fd7",
+  "scope": "Hidden Windows player; 1080p High; one automated human and three bots; 100-degree vertical observer FOV; fixed 60 Hz simulation with uncapped wall-timed render throughput. Observer stages after ArenaSession and before automatic portal renders. Main rendering runs after LateUpdate at EndOfFrame with synchronous one-pixel readback. Phase wall times include scheduling/driver work; readback is not isolated GPU time. Profiler counters are inclusive, last-completed-frame values and are not additive. Unity delta is fixed by captureFramerate and is not a pacing measurement. No HUD/native input/audio/sustained visible-play acceptance.",
+  "order": "off then on, once each; no repeated selection of passing timings",
+  "views": [
+    {
+      "view": "combat",
+      "frames": 360,
+      "portalRenders": 1440,
+      "off": {
+        "meanWallMs": 15.76792416666668,
+        "p95WallMs": 19.2906,
+        "meanSubmitMs": 1.725074444444445,
+        "meanReadbackMs": 6.1202752777777825,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "drawCalls": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 1966.9194444444445,
+          "p95": 2043.0
+        },
+        "triangles": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 820101.5611111111,
+          "p95": 842973.0
+        },
+        "portalCpu": {
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 4149930.5555555555,
+          "p95": 5538600.0
+        }
+      },
+      "on": {
+        "meanWallMs": 16.243421388888876,
+        "p95WallMs": 23.9776,
+        "meanSubmitMs": 1.796354166666667,
+        "meanReadbackMs": 6.14394444444444,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "drawCalls": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 1896.2527777777777,
+          "p95": 1944.0
+        },
+        "triangles": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 819157.6722222222,
+          "p95": 842973.0
+        },
+        "portalCpu": {
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 4365550.0,
+          "p95": 7451100.0
+        }
+      },
+      "drawCallReductionPercent": 3.5927585578689802,
+      "meanWallReductionPercent": -3.0155981040763447
+    },
+    {
+      "view": "summit",
+      "frames": 360,
+      "portalRenders": 1080,
+      "off": {
+        "meanWallMs": 15.732437222222224,
+        "p95WallMs": 25.9844,
+        "meanSubmitMs": 1.9313749999999996,
+        "meanReadbackMs": 5.941813611111112,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "drawCalls": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 1770.5805555555555,
+          "p95": 1848.0
+        },
+        "triangles": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 730812.2111111111,
+          "p95": 749404.0
+        },
+        "portalCpu": {
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 3664377.222222222,
+          "p95": 7856300.0
+        }
+      },
+      "on": {
+        "meanWallMs": 16.091149444444433,
+        "p95WallMs": 35.1416,
+        "meanSubmitMs": 1.9497161111111116,
+        "meanReadbackMs": 5.981756666666663,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "drawCalls": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 1703.4277777777777,
+          "p95": 1751.0
+        },
+        "triangles": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 731289.7888888889,
+          "p95": 749404.0
+        },
+        "portalCpu": {
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 3798826.111111111,
+          "p95": 11427300.0
+        }
+      },
+      "drawCallReductionPercent": 3.7926982518288965,
+      "meanWallReductionPercent": -2.280080429722142
+    },
+    {
+      "view": "basement",
+      "frames": 360,
+      "portalRenders": 1080,
+      "off": {
+        "meanWallMs": 14.25252666666667,
+        "p95WallMs": 16.5575,
+        "meanSubmitMs": 1.687358333333332,
+        "meanReadbackMs": 5.6974644444444404,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "drawCalls": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 1690.6666666666667,
+          "p95": 1725.0
+        },
+        "triangles": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 533566.0777777778,
+          "p95": 540040.0
+        },
+        "portalCpu": {
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 3179126.111111111,
+          "p95": 4120600.0
+        }
+      },
+      "on": {
+        "meanWallMs": 17.296548611111106,
+        "p95WallMs": 37.448,
+        "meanSubmitMs": 2.0804288888888873,
+        "meanReadbackMs": 6.041792500000001,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "drawCalls": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 1657.6805555555557,
+          "p95": 1683.0
+        },
+        "triangles": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 533831.1,
+          "p95": 540854.0
+        },
+        "portalCpu": {
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 4384875.833333333,
+          "p95": 12134700.0
+        }
+      },
+      "drawCallReductionPercent": 1.9510712407991626,
+      "meanWallReductionPercent": -21.357770559824264
+    },
+    {
+      "view": "foliage-waterfall",
+      "frames": 360,
+      "portalRenders": 1080,
+      "off": {
+        "meanWallMs": 14.694970833333324,
+        "p95WallMs": 18.6758,
+        "meanSubmitMs": 1.777161388888891,
+        "meanReadbackMs": 5.739664444444445,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "drawCalls": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 1858.7305555555556,
+          "p95": 1918.0
+        },
+        "triangles": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 685782.9888888889,
+          "p95": 698461.0
+        },
+        "portalCpu": {
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 3330393.611111111,
+          "p95": 4749400.0
+        }
+      },
+      "on": {
+        "meanWallMs": 16.146716388888873,
+        "p95WallMs": 31.5623,
+        "meanSubmitMs": 1.989995,
+        "meanReadbackMs": 5.962286388888886,
+        "validGpuSamples": 0,
+        "gc0": 0,
+        "gc1": 0,
+        "gc2": 0,
+        "drawCalls": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 1826.7888888888888,
+          "p95": 1864.0
+        },
+        "triangles": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 685841.6722222222,
+          "p95": 699267.0
+        },
+        "portalCpu": {
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 3827534.1666666665,
+          "p95": 10678300.0
+        }
+      },
+      "drawCallReductionPercent": 1.7184667552376798,
+      "meanWallReductionPercent": -9.879199979509213
+    },
+    {
+      "view": "portal",
+      "frames": 360,
+      "portalRenders": 720,
+      "off": {
+        "meanWallMs": 12.536100000000003,
+        "p95WallMs": 14.3863,
+        "meanSubmitMs": 1.4804094444444438,
+        "meanReadbackMs": 5.3092583333333305,
+        "validGpuSamples": 0,
+        "gc0": 1,
+        "gc1": 1,
+        "gc2": 1,
+        "drawCalls": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 526.925,
+          "p95": 566.0
+        },
+        "triangles": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 288042.97777777776,
+          "p95": 299801.0
+        },
+        "portalCpu": {
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 2384054.4444444445,
+          "p95": 3203200.0
+        }
+      },
+      "on": {
+        "meanWallMs": 13.816456666666665,
+        "p95WallMs": 19.2113,
+        "meanSubmitMs": 1.6892127777777786,
+        "meanReadbackMs": 5.479120555555557,
+        "validGpuSamples": 0,
+        "gc0": 1,
+        "gc1": 1,
+        "gc2": 1,
+        "drawCalls": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 521.2083333333334,
+          "p95": 541.0
+        },
+        "triangles": {
+          "category": "Render",
+          "unit": "Count",
+          "mean": 288075.2888888889,
+          "p95": 299741.0
+        },
+        "portalCpu": {
+          "category": "Render",
+          "unit": "TimeNanoseconds",
+          "mean": 2758337.777777778,
+          "p95": 4111100.0
+        }
+      },
+      "drawCallReductionPercent": 1.0849108823203668,
+      "meanWallReductionPercent": -10.213357157861402
+    }
+  ],
+  "nativeFramePacingAccepted": false,
+  "gpuCostIsolated": false
+}

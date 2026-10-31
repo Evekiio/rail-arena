@@ -52,8 +52,10 @@ Combat, summit and basement P95 exceed the target. Performance acceptance remain
 
 ## Continuing production and QA
 
-The joined inventory contains 3,472 unique file paths, including 1,249 production-evidence paths and zero missing paths. These are not counts of unique 3D models or complete reference certification. The original 34-action matrix remains intact; sixteen rows have integrated-review evidence, with final acceptance pending.
+The joined inventory contains 3,482 unique file paths, including 1,249 production-evidence paths, 10 explicitly archived research paths and zero missing paths. These are not counts of unique 3D models or complete reference certification. The original 34-action matrix remains intact; sixteen rows have integrated-review evidence, with final acceptance pending.
 
 Remaining work includes standing/crouch cosmetic transitions, broader FPS/body actions and combat interruptions, complete terrain/traversal/remote-motion coverage, additional structural framing and cover production, device assembly and state refinement, nature variants, complete per-asset reference evidence, UI/audio acceptance and measured performance. The deferred ADS/portal corner case remains recorded for reproduction if it blocks acceptance. See [production status](../ArtSource/Original/ArtPass-v1/Gate2/PRODUCTION-STATUS.md).
 
 Playtest ADS, reloads, movement/slide readability, reticle bounds, basement routes/returns, menu/character states, Physics Lab, deaths, sound and sustained frame pacing. Continue production without intermediate approval holds; final artistic approval remains Sanders' decision.
+
+Source-only rendering research after Review 20 is recorded in [the rifle budget findings](RIFLE-RENDER-BUDGET.md). The candidate passes correctness checks but does not establish a frame-time improvement; its runtime integration is not installed and Review 21 is not promoted. The archived prototype and measured evidence do not alter the verified Review 20 player or its ZIP/checksum.

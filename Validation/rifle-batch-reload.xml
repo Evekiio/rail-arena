@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-31 05:42:11Z" end-time="2026-10-31 05:42:15Z" duration="4.1045105">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="303" result="Passed" start-time="2026-10-31 05:42:11Z" end-time="2026-10-31 05:42:15Z" duration="4.104511" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1454" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="303" result="Passed" start-time="2026-10-31 05:42:11Z" end-time="2026-10-31 05:42:15Z" duration="4.066234" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="54588" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1455" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="303" result="Passed" start-time="2026-10-31 05:42:11Z" end-time="2026-10-31 05:42:15Z" duration="4.034889" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1456" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="303" result="Passed" start-time="2026-10-31 05:42:11Z" end-time="2026-10-31 05:42:15Z" duration="4.021363" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1259" name="RifleReloadArtReview" fullname="RailArena.Tests.RifleReloadArtReview" classname="RailArena.Tests.RifleReloadArtReview" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-31 05:42:11Z" end-time="2026-10-31 05:42:15Z" duration="3.992970" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1261" name="AuthoredReloadContactsAndReset" fullname="RailArena.Tests.RifleReloadArtReview.AuthoredReloadContactsAndReset" methodname="AuthoredReloadContactsAndReset" classname="RailArena.Tests.RifleReloadArtReview" runstate="Runnable" seed="1783032846" result="Passed" start-time="2026-10-31 05:42:11Z" end-time="2026-10-31 05:42:15Z" duration="3.961695" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[AUTHORED_RELOAD_REVIEW_PASSED 7 contact poses; simulation timing; interruption/reset; no ammo writes
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

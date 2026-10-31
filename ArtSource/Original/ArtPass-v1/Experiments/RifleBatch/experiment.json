@@ -1,0 +1,42 @@
+{
+  "id": "RA-EXPERIMENT-RIFLE-BATCH-01",
+  "disposition": "archive-reference",
+  "runtimeUsage": "Not installed; original candidate source retained in Git commit and noncompiled text archive",
+  "sourceCommit": "ece7ae6989376cdac8e80408618d4ef4f0630af5",
+  "candidateFingerprint": "87566282bcb61c5a3010bce2e465b51f9542a56ebdad5d397f475a7cfcf8697a",
+  "currentVerifiedWindowsReview": 20,
+  "geometry": "No new canonical geometry or dimensions; candidate combined existing rigid rifle buffers only",
+  "result": "Native visual/geometry/reload and gameplay checks pass, but controlled wall-time improvement is not established. Runtime integration is not promoted.",
+  "sourceArchive": [
+    {
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Runtime/RifleRenderBatch.cs.txt",
+      "sha256": "f6685f95d6cf898aa02f86b5901f97c1bedc9a86d28cf6c2cccfee29a99743c2"
+    },
+    {
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Runtime/RifleRenderBatch.cs.meta.txt",
+      "sha256": "47128fd74bcfeca797f118f9e92040e82d276b0eaaf56ade87300ffdf6bdc10f"
+    },
+    {
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Tests/ArtRenderBudgetReview.cs.txt",
+      "sha256": "22edcb436f141cc9fc3a8df2fed54d4a5c6c4b87b187345392c23e7133f0621e"
+    },
+    {
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Tests/ArtRenderBudgetReview.cs.meta.txt",
+      "sha256": "597b4e9a6848dc7d64ed5d9c0f61641988538abaed984f966e1054319f677ea7"
+    },
+    {
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Tools/Profile-RifleBatch.ps1",
+      "sha256": "795eb313bff3b0d82765ed6dd60af523dc537df33df314ac27bafb98b61a3f4c"
+    },
+    {
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Tools/compare_rifle_batch_profiles.py",
+      "sha256": "f76094260c5327bc843a4d76767a0c614792a6921d7a4459c29b8f7e72040483"
+    }
+  ],
+  "evidence": [
+    "Validation/RifleBatch-Profile-01/comparison.json",
+    "Validation/rifle-batch-candidate-21.json",
+    "Validation/ArtFrame-RifleBatch-Visual2/pixel-comparison.json"
+  ],
+  "sourceArchiveTextEncoding": "UTF-8, LF; scoped Git attributes preserve recorded bytes"
+}
