@@ -1,0 +1,54 @@
+{
+  "scope": "Preserved local raw iterations; unaccepted first visual capture has mismatched FPS FOV. Matched Visual2 views replace it. String-quantized normal comparison was replaced with direct tolerances; ancestor-active eligibility was corrected after the native lifecycle failure.",
+  "runs": [
+    {
+      "path": "Validation/rifle-batch-native-02.xml",
+      "sha256": "08dcd91d796208fc0f2dddf0d2ae283468993d1edf1de58412e4a97a46e92f6d",
+      "result": "Failed(Child)",
+      "scope": "Local raw diagnostic; final matched/native XML is committed separately",
+      "message": "  Combined positions, normals, tangents, UVs and materials differ\n  Expected: equivalent to < \"36989:256:-253777,14666,-175351,9224,2606,2851,224,41,1045,5423,-8337,-10000\", \"36989:256:-253773,14660,-175359,9224,2606,285"
+    },
+    {
+      "path": "Validation/rifle-batch-native-03.xml",
+      "sha256": "9fb483831ee88c5c658272c44773b3f545b24ab84b4c33f0b84cda94c0bcbd16",
+      "result": "Failed(Child)",
+      "scope": "Local raw diagnostic; final matched/native XML is committed separately",
+      "message": "  Expected: greater than 0\n  But was:  0\n"
+    },
+    {
+      "path": "Validation/rifle-batch-native-04.xml",
+      "sha256": "8447a13d0b0816688b49cbe36d45a4674cd1329ea7b92845863c3454b5847c86",
+      "result": "Failed(Child)",
+      "scope": "Local raw diagnostic; final matched/native XML is committed separately",
+      "message": "  Active rifles should have rigid shell batches\n  Expected: False\n  But was:  True\n"
+    },
+    {
+      "path": "Validation/rifle-batch-native-05.xml",
+      "sha256": "effeb6ce75c68c06e77e0c868d87180bf86fbbe9546007723fe6fb6bd275d992",
+      "result": "Failed(Child)",
+      "scope": "Local raw diagnostic; final matched/native XML is committed separately",
+      "message": "  Unbatched rifle must be hidden: Main Camera/Railgun(Clone)\n  Expected: True\n  But was:  False\n"
+    },
+    {
+      "path": "Validation/rifle-batch-native-06.xml",
+      "sha256": "adb9e15d5660b56a631029b7896b7f9b2774d29191bcc5c2221af64bc56f7250",
+      "result": "Passed",
+      "scope": "Local raw diagnostic; final matched/native XML is committed separately",
+      "message": "passed"
+    },
+    {
+      "path": "Validation/rifle-batch-native-matched.xml",
+      "sha256": "a758b5620b90d9f1e243b394d9db1d4d8a1a63d34a51ce5ec56a65f663c97ace",
+      "result": "Passed",
+      "scope": "Local raw diagnostic; final matched/native XML is committed separately",
+      "message": "passed"
+    },
+    {
+      "path": "Validation/rifle-batch-native-visual.xml",
+      "sha256": "df590423fe11f581a7f98741fb2d4770bc0d3891c6ac28b081fe2d605ce052d6",
+      "result": "Passed",
+      "scope": "Local raw diagnostic; final matched/native XML is committed separately",
+      "message": "passed"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "scope": "Matching recorded poses/projections; same-frame native Editor renders. Pixel differences include probe sampling, shadow rasterization and changed triangle submission. Not native-input or performance acceptance.",
+  "views": [
+    {
+      "view": "fps",
+      "meanAbsoluteRgb": [
+        0.0007009548611111111,
+        0.000712890625,
+        0.0007291666666666667
+      ],
+      "pixelsOver10Luma": 2,
+      "fractionOver10Luma": 2.170138888888889e-06
+    },
+    {
+      "view": "third-lod0",
+      "meanAbsoluteRgb": [
+        0.017923177083333332,
+        0.007106119791666666,
+        0.004624565972222223
+      ],
+      "pixelsOver10Luma": 0,
+      "fractionOver10Luma": 0.0
+    },
+    {
+      "view": "third-lod1",
+      "meanAbsoluteRgb": [
+        0.017937282986111112,
+        0.007099609375,
+        0.004635416666666667
+      ],
+      "pixelsOver10Luma": 0,
+      "fractionOver10Luma": 0.0
+    },
+    {
+      "view": "third-lod2",
+      "meanAbsoluteRgb": [
+        0.016994357638888888,
+        0.00732421875,
+        0.004368489583333334
+      ],
+      "pixelsOver10Luma": 0,
+      "fractionOver10Luma": 0.0
+    }
+  ]
+}
