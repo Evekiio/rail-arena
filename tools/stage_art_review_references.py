@@ -37,7 +37,7 @@ current.mkdir()
 files = [(slide/name, name) for name in ['Slide-Playback.mp4', 'Slide-Before-After.mp4', 'Slide-Before-After.png',
     'slide-production.json', 'baked-contact-review.json', 'review-evidence.json', 'Moving-Playback.csv', 'Integrated-Poses.csv', 'Lifecycle.csv']]
 files += [(slide/'References'/name/'measured-poses.png', name+'-Measured.png') for name in ['SlideEnter', 'SlideHold', 'SlideRecover']]
-files += [(root/'Validation'/name, name) for name in ['motion-slide-native.xml', 'motion-slide-integrated.xml', 'motion-slide-moving-regression.xml', 'motion-slide-graph-repeatability.json']]
+files += [(root/'Validation'/name, name) for name in ['motion-slide-native.xml', 'motion-slide-integrated.xml', 'motion-slide-moving-regression.xml', 'motion-slide-graph-repeatability.json', 'motion-slide-duel-driver-fixed.xml', 'art-review-18-exception.json']]
 files += [(root/'docs/AUTHORED-SLIDE.md', 'AUTHORED-SLIDE.md')]
 records = []
 for source, name in files:

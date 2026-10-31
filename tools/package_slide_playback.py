@@ -78,7 +78,7 @@ record = {'scope': 'Four-character installed body animation on a controlled flat
     'configuredDurationsTested': [2, 8, 16, 36, 120], 'aimAngles': '0/90 degrees yaw, -30/0/30 degrees pitch in pose review; moving steering and +/-15 degree pitch in the runway comparison',
     'lifecycle': 'Standing, held crouch, jump, grounded warp, death, respawn and legacy fallback at entry/hold/recovery; collider definitions and local attachments retained.',
     'results': ['Validation/motion-slide-native.xml', 'Validation/motion-slide-integrated.xml', 'Validation/motion-slide-moving-regression.xml'],
-    'videos': videos, 'windowsBuild': 'Review 17 is the current packaged build; slide Windows integration pending',
+    'videos': videos, 'windowsBuild': 'Current shipping identity and validation: docs/ART-PASS-REVIEW.md. This record establishes scoped source-stage native animation evidence.',
     'remaining': 'Native input/audio, first-person slide actions, firing/reload/hit interruption combinations, all terrain and portal/pad trajectories, dynamic tuning changes and Sanders artistic acceptance.'}
 (folder/'review-evidence.json').write_text(json.dumps(record, indent=2)+'\n', encoding='utf-8')
 print('SLIDE_INSTALLED_PLAYBACK_PACKAGED', record['movingCharacterSamples'], record['minimumMovingSlideSkinYMetres'])

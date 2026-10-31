@@ -151,7 +151,7 @@ for entry in entries:
         if family=='contender-reactions':
             entry['dependencies'] += ['RailArena/Assets/RailArena/Runtime/ContenderPresentation.cs','RailArena/Assets/RailArena/Runtime/CorpseContactSurface.cs','RailArena/Assets/RailArena/Editor/ContenderMotionArtBuilder.cs']
     if family=='contender-slide':
-        entry['runtimeUsage']='Source-integrated slide; Windows integration pending' if path.startswith('RailArena/') else 'Editable source, measured references or native controlled movement evidence'
+        entry['runtimeUsage']='Sky Gardens art profile / verified Windows Review 19' if path.startswith('RailArena/') else 'Editable source, measured references or native controlled movement evidence'
         entry['referenceSheets']=[relative(art/'Animation/Slide/References'/name/'measured-poses.png') for name in ('SlideEnter','SlideHold','SlideRecover')]
         entry['dependencies'] += [relative(art/'Animation/Slide/baked-contact-review.json'),relative(art/'Animation/Slide/review-evidence.json'),'RailArena/Assets/RailArena/Editor/ContenderMotionArtBuilder.cs','RailArena/Assets/RailArena/Runtime/ContenderPresentation.cs','RailArena/Assets/RailArena/Runtime/ArenaActor.cs']
         entry['clips']=[clip['name'] for clip in json.loads(references.read_text())['clips']]
