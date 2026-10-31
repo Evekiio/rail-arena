@@ -39,3 +39,5 @@ Six identical-scale orthographic views cover each profile, with a one-metre rule
 6. Run `tools/package_basement_deck_review.py`, then `tools/package_integrated_art_review.py` and `tools/join_current_art_inventory.py`.
 
 Final native traversal, sustained frame pacing and artistic acceptance remain open. This is one completed environment production batch, not completion of the entire map kit or the full art pass. The broad map structure, remaining devices/nature families, full action library and complete reference coverage continue in production.
+
+The canonical grout backing is recessed to 0.997 of the source radius to remove coplanar faces behind the coping. Original collision meshes and top planes remain unchanged. Current native evidence is in Validation/stone-deck-inset-native.xml (two focused tests passed); the package binds its images and sheets to the current master hash. See [stone submission research](STONE-SUBMISSION-RESEARCH.md) for the isolated material experiment and bounds checks.

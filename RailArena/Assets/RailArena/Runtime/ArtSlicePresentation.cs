@@ -27,6 +27,7 @@ namespace RailArena
         ArenaWayfindingArt wayfinding;
         Material opticSurface;
         FirstPersonEquipArt equipArt, previousEquipArt;
+        StoneSubmissionPresentation stoneSubmission;
 
         void Start()
         {
@@ -59,6 +60,13 @@ namespace RailArena
             foreach (var actor in session.Actors)
                 BindCharacter(actor.gameObject).ApplyBody(actor, characters.variants[actor.CharacterId], characters.locomotionController);
             Apply(FindObjectsByType<Renderer>(FindObjectsInactive.Include, FindObjectsSortMode.None));
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            if (System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "--profile-stone-palette") >= 0)
+            {
+                stoneSubmission = gameObject.AddComponent<StoneSubmissionPresentation>();
+                stoneSubmission.Apply();
+            }
+#endif
         }
 
         void LateUpdate()
@@ -306,6 +314,7 @@ namespace RailArena
 
         void OnDestroy()
         {
+            if (stoneSubmission != null) { stoneSubmission.Restore(); Destroy(stoneSubmission); }
             if (session != null && session.EquipArt == equipArt) session.EquipArt = previousEquipArt;
             if (Profile != null && RenderSettings.skybox == Profile.CloudSkybox) RenderSettings.skybox = originalSkybox;
             if (wayfinding != null) Destroy(wayfinding);

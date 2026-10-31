@@ -50,6 +50,8 @@ namespace RailArena
             public int width,height,simulationHz=60,randomSeed=2147;
             public bool gpuRecorderSupported,passed;
             public bool apertureCropping;
+            public int stonePaletteRenderers, stonePaletteSourceSlots;
+            public bool frameTimingFeatureEnabled;
             public Reading[] views;
         }
         struct Sample
@@ -161,6 +163,10 @@ namespace RailArena
                     File.WriteAllBytes(output+"."+pose.Item1+".png",image.EncodeToPNG());readings.Add(reading);
                 }
                 var report=new Report{fingerprint=Resources.Load<TextAsset>("BuildIdentity").text.Trim(),gpu=SystemInfo.graphicsDeviceName,api=SystemInfo.graphicsDeviceType.ToString(),gpuRecorderSupported=SystemInfo.supportsGpuRecorder,exceptions=errors,width=texture.width,height=texture.height,apertureCropping=cropped,views=readings.ToArray(),passed=errors==0&&readings.Count==5&&readings.All(reading=>reading.nonBlackSamples>100)};
+                var stone = FindObjectsByType<StoneSubmissionPresentation>(FindObjectsSortMode.None);
+                report.stonePaletteRenderers = stone.Sum(item => item.ReplacedRenderers);
+                report.stonePaletteSourceSlots = stone.Sum(item => item.OriginalMaterialSlots);
+                report.frameTimingFeatureEnabled = FrameTimingManager.IsFeatureEnabled();
                 File.WriteAllText(output,JsonUtility.ToJson(report,true));Application.Quit(report.passed?0:1);
             }
             finally
