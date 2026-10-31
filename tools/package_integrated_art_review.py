@@ -55,7 +55,7 @@ html += '<p><a href="Animation/Slide/index.html">Feet-first slide master, measur
 html += '<p><a href="Environment/BridgeStone/index.html">Measured bridge, screen and pier construction</a></p>'
 html += '<p><a href="Environment/SummitStone/index.html">Measured summit deck, cover and column construction</a></p>'
 html += '<p><a href="Environment/ArenaStone/index.html">Measured arena decks, ramps and native camera comparisons</a></p>'
-html += '<p><a href="Nature/GardenNature/index.html">Garden nature / canonical modules, measured sheets, native comparisons and wind reel; next Windows milestone pending</a></p>'
+html += '<p><a href="Nature/GardenNature/index.html">Garden nature / canonical modules, measured sheets, native comparisons and wind reel; Windows Review 22 verified; final native/artistic acceptance pending</a></p>'
 html += '<p><a href="Experiments/RifleBatch/index.html">Archived rifle rendering experiment / not installed; no demonstrated frame-time improvement</a></p>'
 for title, directory in sections:
     html += f'<h2>{title}</h2><section>'
@@ -128,7 +128,7 @@ for entry in entries:
             if module and '-LOD' in Path(path).name:
                 level=int(Path(path).name.split('-LOD')[1][0]);lod=next(item for item in data['lods'] if item['family']==module['family'] and item['level']==level);dimensions=[lod['boundsMaxBlender'][i]-lod['boundsMinBlender'][i] for i in range(3)]
             if module:sheet=directory/(module['family']+'-Measured-Sheet.png')
-            provenance='Original Blender opaque garden construction and painted palette; audited installed reference frames, native canonical meshes and scoped integration/motion evidence. Review 20 retains prior nature art; next Windows integration is recorded separately.'
+            provenance='Original Blender opaque garden construction and painted palette; audited installed reference frames, native canonical meshes and scoped integration/motion evidence. Review 22 integrates this nature family; Review 20 preserves the prior planting.'
         elif 'Canopy' in path or '/Nature/' in path:
             family='canopy';category='nature';directory=art/'Nature/Canopy';master=directory/'SkyGarden-Canopy-v1.blend';references=directory/'production.json';sheet=directory/'measured-sheet.png';dimensions=[1,1,1]
         elif 'Medical' in path or 'HealthCore' in path:
@@ -175,7 +175,7 @@ for entry in entries:
         entry['dependencies'] += [relative(art/'Animation/Crouch/baked-contact-review.json'),relative(art/'Animation/Crouch/review-evidence.json'),'RailArena/Assets/RailArena/Editor/ContenderMotionArtBuilder.cs','RailArena/Assets/RailArena/Runtime/ContenderPresentation.cs','RailArena/Assets/RailArena/Runtime/ArenaActor.cs']
         entry['clips']=[clip['name'] for clip in json.loads(references.read_text())['clips']]
     if family=='arena-stone':
-        entry['runtimeUsage']='Installed Sky Gardens art / verified local Windows Review 20; final native/artistic acceptance pending' if path.startswith('RailArena/') else 'Editable canonical master or measured/native reference evidence; not runtime content by itself'
+        entry['runtimeUsage']='Installed Sky Gardens art / verified local Windows Review 22; final native/artistic acceptance pending' if path.startswith('RailArena/') else 'Editable canonical master or measured/native reference evidence; not runtime content by itself'
         modules={item['family']:item['sizeUnityMetres'] for item in json.loads(references.read_text())['lods'] if item['lod']==0}
         entry['moduleDimensionsUnityMetresWHD']=modules
         variant=next((name for name in modules if Path(path).stem.startswith(name) or '/References/'+name+'/' in path or 'ArenaStone'+name in path),None)
@@ -201,7 +201,7 @@ for entry in entries:
         entry['runtimeUsage']='Retained previous canopy family for Review 20 provenance and explicit native before/after recreation. Source integration selects GardenNature; this is not the replacement family.'
     if family=='garden-nature':
         entry['mapArea']='Sky Gardens / four original planting sites'
-        entry['runtimeUsage']='Source-integrated Sky Gardens replacement / native Editor geometry, lifecycle and motion reviewed; next Windows milestone pending. Canonical/raw sources are not runtime content by themselves.'
+        entry['runtimeUsage']='Source-integrated Sky Gardens replacement / native Editor geometry, lifecycle and motion reviewed; Windows Review 22 verified; final native/artistic acceptance pending. Canonical/raw sources are not runtime content by themselves.'
         entry['dimensionAuthority']='Audited installed frames in nature-source.json, per-module geometry and shared unit-frame bindings in production.json; no per-LOD stretching'
         entry['referenceSheets']=['ArtSource/Original/ArtPass-v1/Nature/GardenNature/'+item['family']+'-Measured-Sheet.png' for item in data['modules']]
         entry['dependencies'] += ['ArtSource/Original/ArtPass-v1/Nature/GardenNature/nature-source.json','ArtSource/Original/ArtPass-v1/Nature/GardenNature/measured-views.json','ArtSource/Original/ArtPass-v1/Nature/GardenNature/site-views.json','RailArena/Assets/RailArena/Editor/GardenNatureArtBuilder.cs']

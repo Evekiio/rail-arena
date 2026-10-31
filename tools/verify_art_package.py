@@ -27,6 +27,12 @@ with zipfile.ZipFile(package) as archive:
     for required in ('RailArena.exe','Run-Checks.ps1','Test-Duel.ps1','BuildIdentity.txt','BuildInputs.txt','LICENSE','Licenses/Barlow-OFL.txt','ValidationEvidence/integrated-final.json'):
         assert required in manifest,required
     archive.extractall(extraction)
-record={'package':package.relative_to(root).as_posix(),'sha256':hashlib.sha256(package.read_bytes()).hexdigest(),'bytes':package.stat().st_size,'verifiedFiles':len(manifest),'shippingBackupFoldersExcluded':True,'extractedTo':extraction.relative_to(root).as_posix(),'nativeInputAudioAcceptance':False}
+    for name, expected in manifest.items():
+        extracted = extraction/prefix/name
+        digest = hashlib.sha256()
+        with extracted.open("rb") as stream:
+            while block := stream.read(1024*1024): digest.update(block)
+        assert digest.hexdigest() == expected, "Extracted file mismatch: " + name
+record={'package':package.relative_to(root).as_posix(),'sha256':hashlib.sha256(package.read_bytes()).hexdigest(),'bytes':package.stat().st_size,'verifiedFiles':len(manifest),'extractedFilesVerified':len(manifest),'shippingBackupFoldersExcluded':True,'extractedTo':extraction.relative_to(root).as_posix(),'nativeInputAudioAcceptance':False}
 (root/f'Validation/art-package-verification-{args.review}.json').write_text(json.dumps(record,indent=2)+'\n')
 print(json.dumps(record))
