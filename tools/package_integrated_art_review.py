@@ -55,6 +55,7 @@ html += '<p><a href="Animation/Slide/index.html">Feet-first slide master, measur
 html += '<p><a href="Environment/BridgeStone/index.html">Measured bridge, screen and pier construction</a></p>'
 html += '<p><a href="Environment/SummitStone/index.html">Measured summit deck, cover and column construction</a></p>'
 html += '<p><a href="Environment/ArenaStone/index.html">Measured arena decks, ramps and native camera comparisons</a></p>'
+html += '<p><a href="Animation/FirstPersonReady/index.html">First-person ready / measured weapon motion and player-eye comparison; source integrated after Review22, shipping pending</a></p>'
 html += '<p><a href="Animation/Standing/index.html">Standing ready / measured poses and native playback; source integrated after Review22, shipping pending</a></p>'
 html += '<p><a href="Nature/GardenNature/index.html">Garden nature / canonical modules, measured sheets, native comparisons and wind reel; Windows Review 22 verified; final native/artistic acceptance pending</a></p>'
 html += '<p><a href="Experiments/RifleBatch/index.html">Archived rifle rendering experiment / not installed; no demonstrated frame-time improvement</a></p>'
@@ -120,6 +121,8 @@ for entry in entries:
             family='contender-airborne';category='animation';directory=art/'Animation/Airborne';master=directory/'Contender-Airborne-v1.blend';references=directory/'airborne-production.json';sheet=directory/'References/Takeoff/measured-poses.png';screenshot=directory/'Airborne-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original authored takeoff, suspension and impact-recovery motion on the unchanged shared skeleton; simulation owns root translation.'
         elif '/Forward/' in path or 'Advance' in path:
             family='contender-advance';category='animation';directory=art/'Animation/Forward';master=directory/'Contender-Advance-v1.blend';references=directory/'forward-production.json';sheet=directory/'References/AdvanceWalk/measured-poses.png';screenshot=directory/'Advance-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original authored forward support/swing contact paths baked on the unchanged shared contender skeleton.'
+        elif '/FirstPersonReady/' in path or 'FirstPersonEquip' in path:
+            family='first-person-ready';category='animation';directory=art/'Animation/FirstPersonReady';master=directory/'Carbine-FirstPerson-Ready-v1.blend';references=directory/'ReadyAction.json';sheet=directory/'Ready-Measured-Sheet.png';screenshot=directory/'Raise-Comparison.png';provenance='Original rigid rifle-root Blender action on the existing original carbine, preserving calibrated endpoints and native grip/ADS alignment. Source integrated; shipping milestone pending.'
         elif '/Standing/' in path or 'StandingReady' in path:
             family='contender-standing';category='animation';directory=art/'Animation/Standing';master=directory/'Contender-Standing-v1.blend';references=directory/'standing-production.json';sheet=directory/'References/StandingReady/measured-poses.png';screenshot=directory/'Standing-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original four-second planted standing-ready loop on the shared skeleton; native four-character candidate and installed review. Source integrated; Windows milestone pending.'
         elif '/Animation/' in path or 'ContenderRetreat' in path:
@@ -150,7 +153,15 @@ for entry in entries:
     relative=lambda p:p.relative_to(root).as_posix() if p else None
     if '/ArtPassPortraits/' in path:category='UI / UX'
     entry.update({'category':category,'family':family,'mapArea':'Sky Gardens / summit / four basement routes','runtimeUsage':'Production review build' if path.startswith('RailArena/') else 'Editable source or reference evidence; not runtime content','sourceMaster':relative(master),'sourceExportLocations':[path],'dimensionsMetresBlenderXYZ':dimensions,'dimensionAuthority':relative(references),'dependencies':[relative(references)],'referenceSheets':[relative(sheet)] if sheet else [],'rigBones':rig,'clips':['Carbine reload / 120 ticks'] if family=='carbine' else [],'provenance':provenance,'currentScreenshot':relative(screenshot),'referenceException':'Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.'})
-    if family in ('contender-retreat','contender-advance','contender-airborne','contender-strafe','contender-reactions','contender-motion-controller'):
+    if family=='first-person-ready':
+        measured=json.loads((directory/'measured-views.json').read_text(encoding='utf-8'))
+        bounds=measured['restBoundsBlenderMetres']
+        entry['dimensionsMetresBlenderXYZ']=[bounds['maximum'][axis]-bounds['minimum'][axis] for axis in range(3)]
+        entry['dimensionAuthority']=relative(directory/'measured-views.json')
+        entry['clips']=['First-person ready / 18 frames / 60 Hz / 0.3 seconds; rigid root track, calibrated arm rig follows weapon grips']
+        entry['dependencies'] += [relative(directory/'review-evidence.json'),'RailArena/Assets/RailArena/Runtime/FirstPersonEquipArt.cs','RailArena/Assets/RailArena/Editor/FirstPersonEquipArtBuilder.cs']
+        entry['runtimeUsage']='Sky Gardens art profile / source integrated; shipping milestone pending' if path.startswith('RailArena/') else 'Editable source, measured reference or native evidence; not runtime content by itself'
+    if family in ('contender-retreat','contender-advance','contender-airborne','contender-strafe','contender-reactions','contender-motion-controller','contender-standing'):
         entry['clips']=[f"{clip['name']} / {clip['frames']} frames / {clip['fps']} Hz" for clip in json.loads(references.read_text())['clips']]
         entry['dependencies'] += ['RailArena/Assets/Resources/Art/ContenderRetreat.overrideController','RailArena/Assets/Resources/Art/ContenderMotion.controller','ArtSource/Original/ArtPass-v1/Characters/Player-Production.json']
         entry['runtimeUsage']='Sky Gardens art profile / four contenders' if path.startswith('RailArena/') else 'Editable animation master or measured playback evidence; not runtime content'

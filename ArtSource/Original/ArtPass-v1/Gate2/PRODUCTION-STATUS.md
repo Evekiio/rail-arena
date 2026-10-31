@@ -52,3 +52,8 @@ The first source milestone remains in commit `319a6f1`; subsequent refinement fi
 ## Standing-ready / source integration after Review22
 
 The zero-velocity art blend now uses one original four-second ready loop, bringing source-integrated authored body clips to 26. Native candidate and installed reviews each pass 964 all-character contact/root/capsule samples. The affected directional/crouch regressions pass. A measured six-view/time sheet and a normal-speed four-second 60 Hz reel are available. Review22 remains the verified Windows package and does not contain this subsequent loop. Full crouch transitions, combat/FPS actions, broader terrain/interruption and final acceptance remain open. See [standing contract](../../../../docs/AUTHORED-STANDING.md) and [source/playback gallery](../Animation/Standing/index.html).
+
+
+## First-person ready / source integration after Review22
+
+An original 0.3-second Blender rifle raise now replaces the procedural raise in the optional art profile, preserving exact calibrated rest/ADS endpoints and the legacy fallback. The player-eye native comparison covers 720 paired-stage samples across four arm appearances and hip/ADS/ADS-entry, including 400 full-ADS checks. Maximum recorded wrist error is 0.003 mm; simulation tick, ammunition, shot timing, actor root/velocity and capsule remain fixed. Reset/profile-removal and three legacy motion regressions pass. The original inactive-weapon fixture failure and provisional aerial-camera pass remain retained; final images use the actual player eye. Review22 is still the verified Windows package until the new milestone completes. See [ready contract](../../../../docs/AUTHORED-FIRST-PERSON-READY.md) and [source/native gallery](../Animation/FirstPersonReady/index.html).

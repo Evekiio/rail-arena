@@ -27,6 +27,8 @@ if int(args.review) >= 20:
     inherited.append('SlideMotion')
 if int(args.review) >= 22:
     inherited.append('ArenaStone')
+if int(args.review) >= 23:
+    inherited.append('GardenNature')
 for name in inherited:
     source = previous/'ValidationEvidence'/name
     assert source.is_dir() and not (destination/name).exists(), name
@@ -34,8 +36,18 @@ for name in inherited:
         if path.is_file():
             assert hashlib.sha256(path.read_bytes()).hexdigest() == manifest[path.relative_to(previous).as_posix()], path
     shutil.copytree(source, destination/name)
-family = 'GardenNature' if int(args.review) >= 22 else 'ArenaStone' if int(args.review) >= 20 else 'SlideMotion'
-if family == 'GardenNature':
+family = 'ReadyMotion' if int(args.review) >= 23 else 'GardenNature' if int(args.review) >= 22 else 'ArenaStone' if int(args.review) >= 20 else 'SlideMotion'
+if family == 'ReadyMotion':
+    current = destination/family
+    assert not current.exists(), 'Never overwrite a staged reference batch'
+    current.mkdir()
+    files = []
+    for name in ('Standing','FirstPersonReady'):
+        source = root/'ArtSource/Original/ArtPass-v1/Animation'/name
+        files += [(path, name+'/'+path.relative_to(source).as_posix()) for path in sorted(source.rglob('*')) if path.is_file() and path.suffix in ('.blend','.json','.csv','.mp4','.png','.html')]
+    files += [(root/'Validation'/name,name) for name in ['standing-candidate.xml','standing-integrated.xml','standing-blends.xml','motion-standing-import.json','motion-standing-graph-repeatability.json','fps-ready-native.xml','fps-ready-active-native.xml','fps-ready-eye-native.xml']]
+    files += [(root/'docs'/name,name) for name in ['AUTHORED-STANDING.md','AUTHORED-FIRST-PERSON-READY.md']]
+elif family == 'GardenNature':
     current = destination/family
     assert not current.exists(), 'Never overwrite a staged reference batch'
     current.mkdir()
@@ -70,6 +82,7 @@ else:
 records = []
 for source, name in files:
     assert source.is_file(), source
+    (current/name).parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(source, current/name)
     records.append({'source': source.relative_to(root).as_posix(), 'packaged': (current/name).relative_to(build).as_posix(), 'sha256': hashlib.sha256(source.read_bytes()).hexdigest()})
 (destination/'reference-source-index.json').write_text(json.dumps({'inheritedVerifiedReview': args.previous_review,
