@@ -19,7 +19,7 @@ $ErrorActionPreference='Stop'
 $railPlayer=Join-Path $PSScriptRoot 'RailArena.exe'
 $railEvidence=Join-Path $PSScriptRoot 'TestResults'
 [IO.Directory]::CreateDirectory($railEvidence)|Out-Null
-if($Mode -eq 'Duel') { & (Join-Path $PSScriptRoot 'Test-Duel.ps1') -Build $railPlayer -OutputDirectory (Join-Path $railEvidence 'Duel') -MovementModes; exit }
+if($Mode -eq 'Duel') { & (Join-Path $PSScriptRoot 'Test-Duel.ps1') -Build $railPlayer -OutputDirectory (Join-Path $railEvidence 'Duel') -MovementModes -Duration 90; exit }
 $railReport=Join-Path $railEvidence ($Mode+'.json')
 $railFlag=switch($Mode){'Mechanics'{'--validate-mechanics'} 'Performance'{'--validate-art-performance'} default{'--validate-offline --validation-seconds 45 --validation-bots 3'}}
 $railJob=Start-Process -FilePath $railPlayer -ArgumentList ($railFlag+' --validation-output "'+$railReport+'" -screen-width 1920 -screen-height 1080 -screen-fullscreen 0 -logFile "'+$railReport+'.log"') -WindowStyle Hidden -PassThru
@@ -30,7 +30,7 @@ RAIL ARENA v1 alpha / integrated art review
 
 Launch RailArena.exe. G opens Physics Lab. Existing control settings remain available in Settings.
 Included checks: powershell -ExecutionPolicy Bypass -File .\Run-Checks.ps1 -Mode Mechanics
-Use -Mode Bots for a 45-second automated match, or -Mode Duel for two local hidden peers.
+Use -Mode Bots for a 45-second automated match, or -Mode Duel for two local hidden peers over 90 seconds.
 Checks write TestResults; they do not replace native input, sound or artistic playtesting.
 
 Source commit: $SourceCommit
