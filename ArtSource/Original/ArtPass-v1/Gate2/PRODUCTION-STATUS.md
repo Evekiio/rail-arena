@@ -6,7 +6,7 @@ Sanders approved the direction and authorized continuous production without inte
 
 ## Implemented
 
-Seven original crouch actions have been authored as candidates with valid humanoid imports, 252 six-view source images, seven measured sheets and all-bound-mesh floor/contact checks. The knee-guard penetration found during source review was corrected. They are not installed: the current procedural stance remains live until native all-avatar retarget/grip/transition/hitbox checks and double-lowering prevention are complete. Review-16 remains the current Windows package. [Crouch candidate contract](../../../../docs/AUTHORED-CROUCH.md).
+Five of seven original crouch actions are now integrated in the art-controller source with native foot IK and immediate stance synchronization. Full-body enter/exit remain references. The package retains 252 six-view source images and seven sheets; native evidence adds a ten-second four-character reel, 2,400 installed samples, 544 directional poses, lifecycle/hitbox checks and legacy restoration. Double lowering is prevented, and the initial diagonal contact failure was corrected with native foot IK. The next Windows integration package is pending; Review-16 remains current. [Crouch contract](../../../../docs/AUTHORED-CROUCH.md).
 
 Review-16 installs original summit radial paving and compass seal, coping/frieze/underside rays, central cover and four banded columns. Three metre-scaled Blender modules have nine reducing LODs, eighteen orthographic views and controller-scale reference sheets. All six installed placements retain the original collision hulls and return-device destinations. [Summit source contract](../../../../docs/SUMMIT-STONE-KIT.md).
 

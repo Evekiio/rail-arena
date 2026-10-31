@@ -29,6 +29,7 @@ namespace RailArena
         private Transform[] surfaceBones;
         private CrouchPose crouchPose;
         private bool directionalMotion;
+        private bool authoredCrouch;
         private Quaternion headAimOffset;
         private static readonly float[] SurfaceMargins = { .17f, .2f, .07f, .07f, .035f, .035f };
 #if UNITY_EDITOR
@@ -40,6 +41,7 @@ namespace RailArena
         private static readonly int Dead = UnityEngine.Animator.StringToHash("Dead");
         private static readonly int MotionX = UnityEngine.Animator.StringToHash("MotionX");
         private static readonly int MotionZ = UnityEngine.Animator.StringToHash("MotionZ");
+        private static readonly int AuthoredCrouch = UnityEngine.Animator.StringToHash("AuthoredCrouch");
 
         public void SetMotionController(RuntimeAnimatorController controller)
         {
@@ -48,6 +50,7 @@ namespace RailArena
             corpseSurface = null;
             directionalMotion = System.Array.Exists(Animator.parameters, item => item.nameHash == MotionX) &&
                 System.Array.Exists(Animator.parameters, item => item.nameHash == MotionZ);
+            authoredCrouch = System.Array.Exists(Animator.parameters, item => item.nameHash == AuthoredCrouch);
             if (reactionSuppressed && Animator.layerCount > 1) Animator.SetLayerWeight(1, 0);
         }
 
@@ -136,6 +139,7 @@ namespace RailArena
             Animator.SetFloat(Vertical, actor.Velocity.y);
             Animator.SetBool(Grounded, onGround);
             Animator.SetBool(Dead, !actor.Alive);
+            if(authoredCrouch)Animator.SetBool(AuthoredCrouch,GroundCrouch());
             if (onGround && !grounded && actor.Alive) Animator.SetTrigger("Land");
             grounded = onGround;
             if (!actor.Alive) return;
@@ -217,7 +221,27 @@ namespace RailArena
         {
             if (crouchPose == null) return;
             crouchPose.Restore();
+            if(authoredCrouch&&actor.Alive)
+            {
+                bool desired=GroundCrouch();var state=Animator.GetCurrentAnimatorStateInfo(0);
+                if(desired!=state.IsTag("AuthoredCrouch"))
+                {
+                    Animator.SetBool(AuthoredCrouch,desired);
+                    Animator.SetBool(Grounded,actor.Grounded&&actor.AirborneTicks==0);
+                    Animator.SetFloat(Vertical,actor.Velocity.y);Animator.SetBool(Dead,false);
+                    string next=desired?"Crouch":actor.Grounded&&actor.AirborneTicks==0?"Locomotion":actor.Velocity.y>0?"Jump":"Air";
+                    // Stance changes must affect the pose during the authoritative tick, before hit queries.
+                    Animator.Play(next,0,Mathf.Repeat(state.normalizedTime,1));Animator.Update(0);
+                }
+                if(desired)return;
+            }
             if (actor.Alive && actor.IsCrouched) crouchPose.Apply();
+        }
+        bool GroundCrouch()=>actor.Alive&&actor.IsCrouched&&actor.Grounded&&actor.AirborneTicks==0&&!actor.IsSliding;
+        public void StanceChanged()
+        {
+            ApplyStance();
+            if(authoredCrouch)ApplyCombatPose();
         }
         public void Hit() { if (actor != null && actor.Alive) Animator.SetTrigger("Hit"); }
 

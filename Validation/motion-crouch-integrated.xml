@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-31 02:33:43Z" end-time="2026-10-31 02:33:47Z" duration="3.9496292">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="295" result="Failed" site="Child" start-time="2026-10-31 02:33:43Z" end-time="2026-10-31 02:33:47Z" duration="3.949629" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1440" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="295" result="Failed" site="Child" start-time="2026-10-31 02:33:43Z" end-time="2026-10-31 02:33:47Z" duration="3.932179" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="61460" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1441" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="295" result="Failed" site="Child" start-time="2026-10-31 02:33:43Z" end-time="2026-10-31 02:33:47Z" duration="3.927206" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1442" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="295" result="Failed" site="Child" start-time="2026-10-31 02:33:43Z" end-time="2026-10-31 02:33:47Z" duration="3.922173" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1119" name="CrouchIntegrationReview" fullname="RailArena.Tests.CrouchIntegrationReview" classname="RailArena.Tests.CrouchIntegrationReview" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-10-31 02:33:43Z" end-time="2026-10-31 02:33:47Z" duration="3.905464" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1120" name="GroundedCrouchPreservesImmediateStanceAndContacts" fullname="RailArena.Tests.CrouchIntegrationReview.GroundedCrouchPreservesImmediateStanceAndContacts" methodname="GroundedCrouchPreservesImmediateStanceAndContacts" classname="RailArena.Tests.CrouchIntegrationReview" runstate="Runnable" seed="924463019" result="Failed" start-time="2026-10-31 02:33:43Z" end-time="2026-10-31 02:33:46Z" duration="3.882624" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  0 direction (0.71, 0.71) phase 0 skin (-0.07, 1.25)
+1 direction (0.71, 0.71) phase 0 skin (-0.07, 1.27)
+2 direction (0.71, 0.71) phase 0 skin (-0.07, 1.26)
+3 direction (0.71, 0.71) phase 0 skin (-0.07, 1.22)
+0 direction (0.71, 0.71) phase 0.5 skin (-0.06, 1.25)
+1 direction (0.71, 0.71) phase 0.5 skin (-0.06, 1.27)
+2 direction (0.71, 0.71) phase 0.5 skin (-0.06, 1.26)
+3 direction (0.71, 0.71) phase 0.5 skin (-0.06, 1.22)
+0 direction (-0.71, -0.71) phase 0 skin (-0.07, 1.25)
+1 direction (-0.71, -0.71) phase 0 skin (-0.07, 1.27)
+2 direction (-0.71, -0.71) phase 0 skin (-0.07, 1.26)
+3 direction (-0.71, -0.71) phase 0 skin (-0.07, 1.22)
+0 direction (-0.71, -0.71) phase 0.5 skin (-0.07, 1.25)
+1 direction (-0.71, -0.71) phase 0.5 skin (-0.07, 1.27)
+2 direction (-0.71, -0.71) phase 0.5 skin (-0.07, 1.26)
+3 direction (-0.71, -0.71) phase 0.5 skin (-0.07, 1.22)
+0 direction (0.71, 0.71) phase 0 skin (-0.07, 1.25)
+1 direction (0.71, 0.71) phase 0 skin (-0.07, 1.27)
+2 direction (0.71, 0.71) phase 0 skin (-0.07, 1.26)
+3 direction (0.71, 0.71) phase 0 skin (-0.07, 1.22)
+  Expected: <empty>
+  But was:  < "0 direction (0.71, 0.71) phase 0 skin (-0.07, 1.25)", "1 direction (0.71, 0.71) phase 0 skin (-0.07, 1.27)", "2 direction (0.71, 0.71) phase 0 skin (-0.07, 1.26)", "3 direction (0.71, 0.71) phase 0 skin (-0.07, 1.22)", "0 direction (0.71, 0.71) phase 0.5 skin (-0.06, 1.25)", "1 direction (0.71, 0.71) phase 0.5 skin (-0.06, 1.27)", "2 direction (0.71, 0.71) phase 0.5 skin (-0.06, 1.26)", "3 direction (0.71, 0.71) phase 0.5 skin (-0.06, 1.22)", "0 direction (-0.71, -0.71) phase 0 skin (-0.07, 1.25)", "1 direction (-0.71, -0.71) phase 0 skin (-0.07, 1.27)"... >
+]]></message>
+                <stack-trace><![CDATA[at RailArena.Tests.CrouchIntegrationReview+<GroundedCrouchPreservesImmediateStanceAndContacts>d__0.MoveNext () [0x0089f] in F:\Rail Arena\RailArena\Assets\RailArena\Tests\Editor\CrouchIntegrationReview.cs:66
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ee3fe9477490\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

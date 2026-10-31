@@ -105,7 +105,7 @@ namespace RailArena
             IsCrouched = crouched;
             Controller.height = crouched ? CrouchingHeight : StandingHeight;
             Controller.center = Vector3.up * (Controller.height * .5f);
-            if (changed && Presentation != null) Presentation.ApplyStance();
+            if (changed && Presentation != null) Presentation.StanceChanged();
         }
 
         public void SetAlive(bool alive)

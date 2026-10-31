@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-31 02:42:13Z" end-time="2026-10-31 02:43:20Z" duration="66.5629388">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="296" result="Passed" start-time="2026-10-31 02:42:13Z" end-time="2026-10-31 02:43:20Z" duration="66.562939" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1441" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="296" result="Passed" start-time="2026-10-31 02:42:13Z" end-time="2026-10-31 02:43:20Z" duration="66.537183" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="39688" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1442" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="296" result="Passed" start-time="2026-10-31 02:42:13Z" end-time="2026-10-31 02:43:20Z" duration="66.514367" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1443" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="296" result="Passed" start-time="2026-10-31 02:42:13Z" end-time="2026-10-31 02:43:20Z" duration="66.508565" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1117" name="CrouchCandidateArtReview" fullname="RailArena.Tests.CrouchCandidateArtReview" classname="RailArena.Tests.CrouchCandidateArtReview" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-31 02:42:14Z" end-time="2026-10-31 02:43:16Z" duration="62.801963" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1119" name="CaptureInstalledGroundCrouch" fullname="RailArena.Tests.CrouchCandidateArtReview.CaptureInstalledGroundCrouch" methodname="CaptureInstalledGroundCrouch" classname="RailArena.Tests.CrouchCandidateArtReview" runstate="Runnable" seed="847021712" result="Passed" start-time="2026-10-31 02:42:14Z" end-time="2026-10-31 02:43:02Z" duration="48.331072" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1118" name="CaptureNativeCandidatesWithoutInstallingStance" fullname="RailArena.Tests.CrouchCandidateArtReview.CaptureNativeCandidatesWithoutInstallingStance" methodname="CaptureNativeCandidatesWithoutInstallingStance" classname="RailArena.Tests.CrouchCandidateArtReview" runstate="Runnable" seed="1598617510" result="Passed" start-time="2026-10-31 02:43:02Z" end-time="2026-10-31 02:43:16Z" duration="14.443844" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1120" name="CrouchIntegrationReview" fullname="RailArena.Tests.CrouchIntegrationReview" classname="RailArena.Tests.CrouchIntegrationReview" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-31 02:43:16Z" end-time="2026-10-31 02:43:20Z" duration="3.690209" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1121" name="GroundedCrouchPreservesImmediateStanceAndContacts" fullname="RailArena.Tests.CrouchIntegrationReview.GroundedCrouchPreservesImmediateStanceAndContacts" methodname="GroundedCrouchPreservesImmediateStanceAndContacts" classname="RailArena.Tests.CrouchIntegrationReview" runstate="Runnable" seed="1431500514" result="Passed" start-time="2026-10-31 02:43:16Z" end-time="2026-10-31 02:43:20Z" duration="3.689389" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
