@@ -1,5 +1,6 @@
 """Package authored reaction references and measured live lifecycle evidence."""
 import csv
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -11,9 +12,14 @@ from PIL import Image, ImageDraw, ImageFont
 
 root=Path(__file__).resolve().parent.parent
 folder=root/'ArtSource/Original/ArtPass-v1/Animation/Reactions'
-raw=root/'Validation/ReactionPlayback-Acceptance';legacy=root/'Validation/ReactionLegacyReference'
-for name in ('motion-reactions-lifecycle.xml','motion-reactions-legacy-reference.xml'):
-    report=ET.parse(root/'Validation'/name).getroot();assert report.attrib['result']=='Passed' and report.attrib['total']=='1',name
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--raw',type=Path,default=root/'Validation/ReactionPlayback-Acceptance')
+parser.add_argument('--legacy-raw',type=Path,default=root/'Validation/ReactionLegacyReference')
+parser.add_argument('--lifecycle-results',type=Path,default=root/'Validation/motion-reactions-lifecycle.xml')
+parser.add_argument('--reference-results',type=Path,default=root/'Validation/motion-reactions-legacy-reference.xml')
+args=parser.parse_args();raw=args.raw.resolve();legacy=args.legacy_raw.resolve()
+for path in (args.lifecycle_results,args.reference_results):
+    report=ET.parse(path).getroot();assert report.attrib['result']=='Passed' and report.attrib['total']=='1',path
 spec=json.loads((folder/'reactions-production.json').read_text(encoding='utf-8'))
 assert hashlib.sha256((folder/spec['master']).read_bytes()).hexdigest()==spec['masterSha256']
 measured=json.loads((folder/'measured-pose-review.json').read_text(encoding='utf-8'));assert measured['masterSha256']==spec['masterSha256']

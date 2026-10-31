@@ -57,3 +57,5 @@ Six new clips retain the shared rest skeleton. Equal-scale front/side/top sheets
 [Controller transition review](../Validation/motion-strafe-airborne.xml) independently repeats standing, forward and retreat jumps against the changed graph, requiring Locomotion, Jump, Air and Land plus the unchanged discrete ballistic height. Older raw evidence is preserved using `RA_AIRBORNE_REVIEW_OUTPUT`.
 
 Append `--strafe` to `author_contender_retreat.py`, `render_contender_retreat_refs.py` and `package_retreat_review.py`. Import with `ContenderMotionArtBuilder.Prepare`. Run `DirectionalMotionArtReview` and `RetreatPlaybackReview.CaptureInstalledStrafeForAllFourIdentities` in hidden graphics-enabled batch mode. Then run `AirborneTransitionReview` with output `Validation/StrafeAirborneTransitions` before packaging. Source import and builds remain graphics-disabled batch jobs.
+
+The separate [authored combat-reaction pass](AUTHORED-COMBAT-REACTIONS.md) adds HitResponse and DeathFall in Review-14, preserving these locomotion and airborne clips.

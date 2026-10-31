@@ -40,7 +40,7 @@ text+='''
 
 ## Next production priorities
 
-1. Complete body stance, full directional movement transitions, traversal, reaction/death and remaining first-person actions with contact evidence. The current action matrix retains all 34 original action requirements; the six lateral clips now have integrated review evidence.
+1. Complete body stance, full directional movement transitions, traversal, interrupted hit/death stance combinations and remaining first-person actions with contact evidence. The current action matrix retains all 34 original action requirements; lateral and basic hit/death clips now have integrated review evidence.
 2. Extend measured stone production from the staging/basement deck kit to the lower arena, bridge, summit and remaining structural undersides while preserving tested movement envelopes.
 3. Refine portal/pad silhouettes, active/depleted states, launch cues and destination readability; complete their measured assembly references.
 4. Finish bark/foliage/vines, waterfall lips/foam, cloudscape and distant ruins with variant, collision, LOD and material records.
