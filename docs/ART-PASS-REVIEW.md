@@ -1,57 +1,51 @@
-# Rail Arena v1 alpha: integrated art build 25
+# Rail Arena v1 alpha: integrated art build 26
 
-Review 25 retains all Review 23 art upgrades and corrects overlapping deck backing/coping faces in the canonical Blender model. Original collision hulls, deck top planes, route transforms, pads and portals remain authoritative. This is a verified local playtest milestone; the complete art-production plan remains unfinished. Production continues without intermediate approval holds. Sanders retains final native input, sound and artistic acceptance; public prerelease publication remains held.
+Review 26 fixes detached glove segments by retaining authored finger bind frames instead of replacing them with legacy rest frames. Twelve character LOD skins and four first-person arm skins are regenerated. All previous graphical work, four basement routes and returns, gameplay, movement, accuracy, damage, weapon cadence, reload timing, trajectories and multiplayer protocol are preserved. This is a verified local playtest milestone; the complete art-production plan remains unfinished. Continue production without intermediate approval holds. Sanders retains final native input, sound and artistic acceptance; public prerelease publication remains held.
 
 ## Play and inspect
 
-Launch `Builds/RailArena-v1Alpha-ArtPass-Review-25/RailArena.exe` with its folder intact, or extract `Builds/RailArena-v1Alpha-ArtPass-Review-25.zip`. Press **G** for Physics Lab. Movement and graphics controls remain in Settings.
+Launch `Builds/RailArena-v1Alpha-ArtPass-Review-26/RailArena.exe` with its folder intact, or extract `Builds/RailArena-v1Alpha-ArtPass-Review-26.zip`. Press **G** for Physics Lab; movement and graphics controls remain in Settings.
 
-Portable ZIP: **253,804,801 bytes**, **645 shipped file hashes verified in the archive and again after fresh extraction**. SHA-256: `6dfa6e8545bf65fed199854aaaa241c7819cab47562c89904604ec0302687af3`. The package contains ten verified prior reference families plus 47 current basement-deck references, including the corrected Blender master, measured construction views, six Unity-ready FBXs, native comparisons and focused test evidence. Licenses and `Run-Checks.ps1` are included. Historical packages remain preserved; Review 24 is an unpromoted rendering-research artifact.
+Portable ZIP: **365,611,248 bytes**, **762 file hashes verified in the archive and again after fresh extraction**. SHA-256: `960e8f0c1fe0a8dc08ccccca4a0aab1e236c984881ae25ebddfdddbcade77142`. The package contains eleven verified prior reference families plus 117 current hand-binding references, including the editable Assembly-v2 Blender master, all measured views, native captures and before/after motion. Licenses and `Run-Checks.ps1` are included. Historical packages and diagnostic work remain preserved; Review 24 is an unpromoted rendering experiment.
 
-- [Corrected deck master, measured views and comparisons](../ArtSource/Original/ArtPass-v1/Environment/BasementDecks/index.html).
-- [Standing-ready source and native playback](../ArtSource/Original/ArtPass-v1/Animation/Standing/index.html).
-- [First-person ready and ADS comparison](../ArtSource/Original/ArtPass-v1/Animation/FirstPersonReady/index.html).
-- [Painted nature, measured modules and wind](../ArtSource/Original/ArtPass-v1/Nature/GardenNature/index.html).
+- [Corrected hands, measured assembly and motion comparison](../ArtSource/Original/ArtPass-v1/FirstPerson/Assembly-v2/index.html).
+- [Binding root cause, implementation and reproduction](HAND-BIND-CALIBRATION.md).
 - [Full gameplay, menu and reference gallery](../ArtSource/Original/ArtPass-v1/integrated-review.html).
+- [Current inventory and production gaps](../ArtSource/Original/ArtPass-v1/CURRENT-GAPS.md).
 
-The build retains four painted characters and portraits, calibrated first-person arms, standing/locomotion/airborne/crouch/slide/reaction clips, the authored rifle raise and two-second reload, revised rifle materials and physical optic, stone paving/normal detail, arena/bridge/summit construction, eight staging/basement decks, cover shells, painted trees/shrubs/grass/ivy, floating medical cores, route labels, cloud banks, waterfalls, cel lighting, menus and HUD. All four basement routes and returns remain intact. The distracting cyan particle cloud remains absent. Gameplay movement, accuracy, damage, weapon cadence, reload timing, trajectories and multiplayer protocol are preserved. Unrelated dirty diagnostic work is preserved outside the clean shipping source.
+The build retains painted characters/portraits, calibrated arms, standing/locomotion/airborne/crouch/slide/reaction clips, authored rifle raise and two-second reload, rifle materials and physical optic, stone paving/normal detail, arena/bridge/summit construction, staging/basement decks, cover shells, painted trees/shrubs/grass/ivy, floating medical cores, route labels, clouds, waterfalls, cel lighting, menus and HUD. The distracting cyan particle cloud remains absent.
+
+## Focused hand evidence
+
+All twelve LODs preserve 36 byte-identical vertex streams and topology, 360 authored finger bind matrices and 288 established body matrices. Original Blender character masters, FBXs, weights, skeleton and Avatar are unchanged. Eight native hip/ADS views cover four appearances. Reopening the measured Assembly-v2 master verifies all 31,012 posed arm vertices, 432 bone heads, rifle parts, weights/hierarchy and camera/socket frames.
+
+The native same-state motion comparison covers equip, ADS/recoil articulation, authored reload and settling. Across 3,600 corrected sleeve-joint centre samples, maximum separation falls from 50.4365 mm to 0.00274 mm. Actor position, velocity, capsule, simulation tick, ammo and next shot time remain unchanged. This is narrow deformation evidence, not complete surface/contact fit or a newly authored action library. Clips are silent reference, not native input/audio acceptance. Assembly-v1 remains historical.
 
 ## Validation on the shipped executable
 
-Source commit: `76976046a4b0c78ad564a04048e7bfcc3e1c6892`. Verified build fingerprint: `0ea9acc9df8cc0d489140a9e8a8f3a5e941e6f0799bad3daf265315eb92a5ee7`. [Integrated shipping evidence](../Validation/art-integrated-final-25.json), [portable verification](../Validation/art-package-verification-25.json).
+Source commit: `d5d13a3b352000dcc9d7499fda041a50cd334f50`. Build fingerprint: `52b097a64a3d30c085a971e9c8ee53b7a0089f78c2d2f8c10f89879ddd7deac6`. [Integrated shipping evidence](../Validation/art-integrated-final-26.json), [portable verification](../Validation/art-package-verification-26.json).
 
 - All 39 mechanics checks passed.
-- A 45-second match with one automated player and three bots passed: 179 shots, ten deaths, four pickups, twenty pad events, zero exceptions and zero actor voids.
-- Both local multiplayer peers passed 90 seconds with zero errors. Slide observations: host 1477/2191, client 1541/2339. This is loopback evidence, not real-internet acceptance.
-- Five actual 1920×1080 High-tier rendered views passed non-black-content checks and were visually inspected. All checks executed directly on this shipping artifact.
-- Two focused native checks tied the deck images to the current master and preserved eight decks/24 LOD instances, collider identities and return-device transforms.
+- A 45-second automated player/three-bot match passed: 157 shots, ten deaths, nineteen pad events, zero exceptions and zero actor voids. No pickup occurred in this particular smoke run.
+- Both local multiplayer peers passed 90 seconds with zero errors. Slide observations: host 1200/2541, client 1836/1954. This is loopback evidence, not real-internet acceptance; the movement driver intentionally exercises falls.
+- Five actual 1920×1080 High-tier rendered views passed non-black checks and were visually inspected. Checks ran directly on the shipping artifact.
 
 RTX 2080 / Direct3D12 forced offscreen probe, including synchronous readback overhead:
 
 | View | Mean ms | P95 ms |
 |---|---:|---:|
-| combat | 15.568 | 17.335 |
-| summit | 13.893 | 16.009 |
-| basement | 13.776 | 16.494 |
-| foliage-waterfall | 14.206 | 16.444 |
-| portal | 12.201 | 14.038 |
+| combat | 14.259 | 16.627 |
+| summit | 14.238 | 18.605 |
+| basement | 15.162 | 20.338 |
+| foliage-waterfall | 14.835 | 18.499 |
+| portal | 12.141 | 14.289 |
 
-Combat P95 exceeds the 16.67 ms probe budget; the other four views meet it in this run. No valid GPU timing samples were returned. These timings include capture overhead and do not establish native frame pacing or sustained 60 FPS. Differences from earlier builds are not controlled A/B evidence and are not attributed to the deck correction.
-
-The stone material experiment reduced draws 34.6–44.1% but produced mixed timings across two reverse-ordered same-executable pairs. Its 109 source files and derived exports are archived outside Unity compilation/resources; it is not installed. The independent deck geometry fix remains. [Research and measured decision](STONE-SUBMISSION-RESEARCH.md).
+Summit, basement and foliage/waterfall P95 exceed the 16.67 ms probe budget. Zero valid GPU timing samples were returned. These readback-inclusive timings do not establish native frame pacing or sustained 60 FPS; differences from prior builds are not controlled A/B evidence and are not attributed to the hand correction.
 
 ## Remaining production and QA
 
-The current source inventory contains 4,017 paths: 1,678 production-evidence paths, 103 historical-reference paths, thirteen archived-research paths and 2,223 baseline-only paths. These counts include the held assembly reference batch authored after Review 25; those source-only references are not added retroactively to its immutable ZIP. The structural audit found zero missing linked files. These are file/link counts, not unique model counts or complete reference certification. [Reference-link audit](../Validation/ArtReferenceLinks-08/audit.md), [current gaps](../ArtSource/Original/ArtPass-v1/CURRENT-GAPS.md).
+The inventory contains 4,017 paths: 1,678 production-evidence paths, 103 historical references, thirteen archived-research paths and 2,223 baseline-only paths. [Structural audit](../Validation/ArtReferenceLinks-08/audit.md) found zero missing linked files. These counts describe files and links, not unique models or complete reference certification. The original 34-action matrix remains intact; eighteen rows have source integration evidence.
 
-The original 34-action matrix remains intact; eighteen rows have source integration evidence. Full first-person action and assembled rig references, character combat/reload/respawn and temporal transitions, complete per-asset construction/variant evidence, remaining structural framing/cover and device assemblies, waterfall lips/foam/cloudscape, broader nature coverage, UI/audio acceptance and measured native performance remain unfinished. Distant paving joints and thin trim still need aliasing/readability review. The deferred ADS/portal corner case remains recorded for reproduction if it blocks acceptance.
+Next: fine rifle/magazine finger contacts and the complete first-person action/transition library; remaining character combat/reload/respawn and stance transitions; structural framing/cover and measured device assemblies; waterfall lips/foam, cloudscape and distant ruins; broader nature/variant evidence; UI states/audio review; native GPU/pacing measurement and optimization of demonstrated bottlenecks. Distant paving joints and thin trim still need readability review. The ADS/portal corner case remains recorded for reproduction if it blocks acceptance. The archived rendering experiments remain outside the installed runtime.
 
-Playtest ADS, reload contacts, movement/slide readability, reticle bounds, basement routes/returns, menu/character states, Physics Lab, deaths, sound and sustained frame pacing. This build is ready for Sanders' feedback while production continues; it is not a claim that the full art pass or final artistic acceptance is complete.
-
-## Source references after Review 25
-
-The [calibrated first-person assembly](FIRST-PERSON-ASSEMBLY.md) adds an editable held-reference Blender master, four appearances, eight hip/ADS poses, 48 equal-scale orthographics and matched native/Blender eye views. Saved-master verification covers 31,012 posed arm vertices, 78,528 rigid part vertices, 432 bone heads, original weights/hierarchy, rifle topology/UVs and exact socket/camera frames. No runtime replacement or new motion clip is installed. The orthographics expose finger/grip defects for the next hand-art batch. This does not complete the full first-person action/import/reference requirements or change the verified Review 25 executable.
-
-## Hand calibration after Review 25
-
-The [authored finger binding correction](HAND-BIND-CALIBRATION.md) preserves the imported curled finger frames while retaining legacy wrist/body calibration. Twelve character LOD skins and four arm skins are regenerated without geometry, weights, skeleton or gameplay changes. Assembly-v2 supplies corrected measured views and a same-state native motion comparison; Assembly-v1 remains historical. Focused structural, held-pose, saved-master and 3,600-sample corrected joint checks pass. This source work is pending the next shipping build; Review 25 remains immutable. Full action/contact quality and final native/artistic acceptance remain open.
+Playtest ADS, reload contacts, movement/slide readability, reticle bounds, basement routes/returns, menu/character states, Physics Lab, deaths, sound and sustained frame pacing. This build is ready for feedback while production continues; the full art pass and final artistic acceptance remain open.

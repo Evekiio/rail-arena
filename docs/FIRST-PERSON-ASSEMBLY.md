@@ -32,6 +32,6 @@ Imported 100x rifle frame bases are compared relatively, with strict physical pi
 
 The reconstructed rest frames preserve deformation through an explicit calibrated mapping; they are not a claim that a replacement humanoid Avatar can be imported without validation. Existing compatible character masters and the installed skeleton remain authoritative. The canonical assembly is in Blender weapon-root metres: X right, Y forward, Z up, converted from Unity (x,y,z) as (x,z,y).
 
-The latest verified playable package remains Review 25. Its gameplay, physical ADS, 1.5x zoom, cadence, accuracy, movement, collision and multiplayer are unchanged by these reference-only assets. Continue production without intermediate approval holds; public release remains held for final acceptance.
+The latest verified playable package is Review 26, including the corrected authored finger calibration. Its gameplay, physical ADS, 1.5x zoom, cadence, accuracy, movement, collision and multiplayer are unchanged by the reference package and finger calibration correction. Continue production without intermediate approval holds; public release remains held for final acceptance.
 
 The held assembly includes visible first-person geometry. Shadows-only rear surfaces and disabled optic glass are excluded from that visible reference; the original rifle master remains the complete weapon source for third-person geometry, mechanical hierarchy, LODs and exports.
