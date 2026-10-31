@@ -1,0 +1,192 @@
+{
+  "schema": "rail-arena-integrated-art-validation/1",
+  "build": "Builds/RailArena-v1Alpha-ArtPass-Review-15",
+  "sourceCommit": "88a41dcb22574167389d425540eff8da9f2eab7a",
+  "fingerprint": "cc25f7e3139d5ab84fa7260e573490ceda7d43d7b8b7711d9646c158c00c3e68",
+  "validatedPlayer": "Review-15; shipped Review-15 runtime files verified below",
+  "runtimeByteComparisons": [
+    {
+      "path": "RailArena.exe",
+      "sha256": "3726509af94bdacbfe23f85da13109a7e70fb7d61913506e98690bd3208b2fd7",
+      "scope": "Validation executed on this shipping artifact directly"
+    },
+    {
+      "path": "UnityPlayer.dll",
+      "sha256": "c93b9eaa6b12782ea809a0a35d65e81bbdc24ad080c914a7ca017ea5534b8958",
+      "scope": "Validation executed on this shipping artifact directly"
+    },
+    {
+      "path": "RailArena_Data/Managed/RailArena.Runtime.dll",
+      "sha256": "2f322cefc60cfa40699dbf5209b9e733dc06cc0df4714f0e40dd5cfb8ca572c8",
+      "scope": "Validation executed on this shipping artifact directly"
+    },
+    {
+      "path": "RailArena_Data/Managed/RailArena.Simulation.dll",
+      "sha256": "0304f52c070ad316e35224aa97e225d1b261dde696ffe9dcf21434887c992e34",
+      "scope": "Validation executed on this shipping artifact directly"
+    },
+    {
+      "path": "RailArena_Data/resources.assets",
+      "sha256": "27e8a4086062bdc9e58d237b9915bbe0de0f8a9fecacc6efec3b654c86edc5a8",
+      "scope": "Validation executed on this shipping artifact directly"
+    },
+    {
+      "path": "RailArena_Data/resources.assets.resS",
+      "sha256": "0a466931405e99f6af7d4a3ac9ce73e931f91779da0441670dbde5db6b787f29",
+      "scope": "Validation executed on this shipping artifact directly"
+    },
+    {
+      "path": "RailArena_Data/sharedassets0.assets",
+      "sha256": "e093afc6329d31937780258d075228b6762a700f0c72f521e8cbb71666a36397",
+      "scope": "Validation executed on this shipping artifact directly"
+    },
+    {
+      "path": "RailArena_Data/sharedassets0.assets.resS",
+      "sha256": "ccf493d5ec6dd7206308d1613b6a52090377bbb3706d7a1b7aff6ed2f8d4055a",
+      "scope": "Validation executed on this shipping artifact directly"
+    },
+    {
+      "path": "RailArena_Data/level0",
+      "sha256": "0c22bc9df509f032bd8f36bb9b0e78c8459b617db263712882e8f992193741d8",
+      "scope": "Validation executed on this shipping artifact directly"
+    }
+  ],
+  "sourceQualityAndIdentityRestored": true,
+  "mechanicsChecks": 39,
+  "mechanicsPassed": true,
+  "botMatch": {
+    "seconds": 45.08954620361328,
+    "bots": 3,
+    "telemetry": "ticks=2711 shots=150 deaths=8 pickups=1 pads=21",
+    "exceptions": 0,
+    "voids": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "duel": {
+    "host": {
+      "passed": true,
+      "errors": 0,
+      "slideSamples": [
+        1270,
+        196
+      ],
+      "statisticsPassed": true
+    },
+    "client": {
+      "passed": true,
+      "errors": 0,
+      "slideSamples": [
+        1260,
+        743
+      ],
+      "statisticsPassed": true
+    }
+  },
+  "performance": {
+    "scope": "Version 2: observer stages after ArenaSession and before portal views; forced 1080p main rendering at EndOfFrame with synchronized one-pixel readback. High tier, 100-degree vertical FOV, one automated human and three bots. Timings include readback overhead. Earlier probes staged after portal views and are not equivalent portal workloads. Overlay HUD, native swapchain/input/audio and sustained visible-play acceptance remain open. GPU -1 means unavailable.",
+    "measurementVersion": 2,
+    "gpu": "NVIDIA GeForce RTX 2080",
+    "api": "Direct3D12",
+    "fingerprint": "cc25f7e3139d5ab84fa7260e573490ceda7d43d7b8b7711d9646c158c00c3e68",
+    "width": 1920,
+    "height": 1080,
+    "exceptions": 0,
+    "views": [
+      {
+        "view": "combat",
+        "frames": 180,
+        "validGpuSamples": 0,
+        "nonBlackSamples": 32400,
+        "meanFrameMs": 20.236024856567383,
+        "p95FrameMs": 40.97959899902344,
+        "medianGpuMs": -1.0,
+        "frameBudgetMet": false,
+        "portalRenders": 720
+      },
+      {
+        "view": "summit",
+        "frames": 180,
+        "validGpuSamples": 0,
+        "nonBlackSamples": 32400,
+        "meanFrameMs": 14.537256240844727,
+        "p95FrameMs": 17.295700073242188,
+        "medianGpuMs": -1.0,
+        "frameBudgetMet": false,
+        "portalRenders": 540
+      },
+      {
+        "view": "basement",
+        "frames": 180,
+        "validGpuSamples": 0,
+        "nonBlackSamples": 32400,
+        "meanFrameMs": 14.588607788085938,
+        "p95FrameMs": 16.905500411987305,
+        "medianGpuMs": -1.0,
+        "frameBudgetMet": false,
+        "portalRenders": 540
+      },
+      {
+        "view": "foliage-waterfall",
+        "frames": 180,
+        "validGpuSamples": 0,
+        "nonBlackSamples": 32400,
+        "meanFrameMs": 14.533211708068848,
+        "p95FrameMs": 17.3125,
+        "medianGpuMs": -1.0,
+        "frameBudgetMet": false,
+        "portalRenders": 540
+      },
+      {
+        "view": "portal",
+        "frames": 180,
+        "validGpuSamples": 0,
+        "nonBlackSamples": 32400,
+        "meanFrameMs": 12.538481712341309,
+        "p95FrameMs": 14.233701705932617,
+        "medianGpuMs": -1.0,
+        "frameBudgetMet": true,
+        "portalRenders": 360
+      }
+    ],
+    "passed": true,
+    "allViewsWithinBudget": false
+  },
+  "discardedEvidence": "Review-05 hidden swapchain timings are invalid for graphics performance: screenshots were black. They are excluded from final evidence.",
+  "acceptanceRemaining": [
+    "Native visible-window input, audio and sustained playtest by Sanders",
+    "Real-internet multiplayer acceptance",
+    "Broader authored animation replacement and complete inventory reference coverage; see production status"
+  ],
+  "validationExecutedOnShippingArtifact": true,
+  "performanceTargetMet": false,
+  "performanceExceptions": [
+    {
+      "view": "combat",
+      "meanFrameMs": 20.236024856567383,
+      "p95FrameMs": 40.97959899902344,
+      "targetMs": 16.666666666666668
+    },
+    {
+      "view": "summit",
+      "meanFrameMs": 14.537256240844727,
+      "p95FrameMs": 17.295700073242188,
+      "targetMs": 16.666666666666668
+    },
+    {
+      "view": "basement",
+      "meanFrameMs": 14.588607788085938,
+      "p95FrameMs": 16.905500411987305,
+      "targetMs": 16.666666666666668
+    },
+    {
+      "view": "foliage-waterfall",
+      "meanFrameMs": 14.533211708068848,
+      "p95FrameMs": 17.3125,
+      "targetMs": 16.666666666666668
+    }
+  ]
+}

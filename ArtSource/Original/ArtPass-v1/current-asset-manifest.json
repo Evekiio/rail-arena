@@ -4,10 +4,10 @@
   "productionDelta": "integrated-manifest.json",
   "summary": {
     "baselineEntries": 2224,
-    "productionEntries": 616,
+    "productionEntries": 665,
     "overlappingPaths": 1,
-    "currentUniquePaths": 2839,
-    "productionEvidencePaths": 616,
+    "currentUniquePaths": 2888,
+    "productionEvidencePaths": 665,
     "baselineOnlyPaths": 2223,
     "missingPaths": 0,
     "finalApprovedEntries": 0,
@@ -23315,6 +23315,1301 @@
       "evidenceState": "production-evidence-present",
       "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
       "productionSha256": "31828f529197667560e982f5881159f7a5a6d76d5827ff8236bda6d329069a50"
+    },
+    {
+      "id": "art-4c77a3e990d562e7",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "baselineId": null,
+      "productionId": "art-4c77a3e990d562e7",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "1669fd04bf83b7ca5199a6c30fa61520214ec3b37914f4d1ea6a48f64a1862b0"
+    },
+    {
+      "id": "art-c85a7c57dee41e2a",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+      "baselineId": null,
+      "productionId": "art-c85a7c57dee41e2a",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "867c4e7f4291846b38705ef30a0cbf5bfa256c8cba3b04007c3bc66b7e037e5c"
+    },
+    {
+      "id": "art-a1a67b9a7f6a272b",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png",
+      "baselineId": null,
+      "productionId": "art-a1a67b9a7f6a272b",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "e1a0a354d7b2f098cf3037c36c46fbf571fe71d99d19fe680058d0d4c25f0c63"
+    },
+    {
+      "id": "art-2827de9b196ac28e",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Deck/bottom.png",
+      "baselineId": null,
+      "productionId": "art-2827de9b196ac28e",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "3277cf9fbab1b6c9c620c09210b49e53a2c313152840948a3a903555074b963f"
+    },
+    {
+      "id": "art-0ab730e233a3ffa8",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Deck/front.png",
+      "baselineId": null,
+      "productionId": "art-0ab730e233a3ffa8",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "9cdba3e9930ff78f261b1920b7ed2f0c8b56fd5f190782374ee430246edf9380"
+    },
+    {
+      "id": "art-19e270976f3aef01",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Deck/left.png",
+      "baselineId": null,
+      "productionId": "art-19e270976f3aef01",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "85a9b3dc727142a8cf65cc9eb3db1ea87ad515bba21ab015459eb4f5a8350cd7"
+    },
+    {
+      "id": "art-4c47b16db7ce516b",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Deck/perspective.png",
+      "baselineId": null,
+      "productionId": "art-4c47b16db7ce516b",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "be6a4018b7f2a6c3f3ccddbe49f352968bf811ae1187521e3f903635ee6cc4de"
+    },
+    {
+      "id": "art-98c7d56a7e71956e",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Deck/rear.png",
+      "baselineId": null,
+      "productionId": "art-98c7d56a7e71956e",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "45b5fb8bb8dce321a20b09c1ca52394e0730b7f38afedb15069d462afd5df096"
+    },
+    {
+      "id": "art-18068968b89e9269",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Deck/right.png",
+      "baselineId": null,
+      "productionId": "art-18068968b89e9269",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "3584e4a3e864fa0bda77fa801f449227b042d89c2e4c9188d4097f44f3b3e97f"
+    },
+    {
+      "id": "art-b051b38299b0724e",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Deck/top.png",
+      "baselineId": null,
+      "productionId": "art-b051b38299b0724e",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "47c78914a954d47e1664868c402019ec0f494e641dd46e28d384a20465ef786f"
+    },
+    {
+      "id": "art-293b7a6f5ccda4b7",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Pier/bottom.png",
+      "baselineId": null,
+      "productionId": "art-293b7a6f5ccda4b7",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "de1f6afc5bc713ced1d94833d3e757407ad9544412adc3c00fd7e986ff5048bc"
+    },
+    {
+      "id": "art-10239e238a3d6a2d",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Pier/front.png",
+      "baselineId": null,
+      "productionId": "art-10239e238a3d6a2d",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "5f111125d5f7be3227b8578108e2cec1784d3d1f17cf37da8f9f6b5a1daf2ea4"
+    },
+    {
+      "id": "art-800ea36da8af217c",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Pier/left.png",
+      "baselineId": null,
+      "productionId": "art-800ea36da8af217c",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "44df74bc024be5cf0a6744039766a26fbb44640ad2263a4c591e243d9a5a4514"
+    },
+    {
+      "id": "art-c5bddc663853ff55",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Pier/perspective.png",
+      "baselineId": null,
+      "productionId": "art-c5bddc663853ff55",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "f44de90318c97e0467eee90bbdac408c6a3bea6cb1db82787758b963b737b870"
+    },
+    {
+      "id": "art-f6e5e370371a3da5",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Pier/rear.png",
+      "baselineId": null,
+      "productionId": "art-f6e5e370371a3da5",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "1f30d3fb7c189eef3335bc35e45b50786b6e9fedaed7d1a34ce7f1845aaaf1df"
+    },
+    {
+      "id": "art-27f0904f9f515863",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Pier/right.png",
+      "baselineId": null,
+      "productionId": "art-27f0904f9f515863",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "d642fcd965aed4099ea452a1c2ed332271643aefdb0e9f6a206222370d94f35b"
+    },
+    {
+      "id": "art-2a8f0492642af855",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Pier/top.png",
+      "baselineId": null,
+      "productionId": "art-2a8f0492642af855",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "d15404cb0162d9fb3e8585799812fe2565c5a893908250d55e34bd217b133153"
+    },
+    {
+      "id": "art-3acadab7bd8023b2",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Screen/bottom.png",
+      "baselineId": null,
+      "productionId": "art-3acadab7bd8023b2",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "9e3010de63f9b24fb3818b96d787a0ddde60b49b4a8016669553bbcecdfcf9c7"
+    },
+    {
+      "id": "art-e8c503081e4489a4",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Screen/front.png",
+      "baselineId": null,
+      "productionId": "art-e8c503081e4489a4",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "c1a71c3435314b87d737fcdf8fc75bfa39415a4e64104ddc1908ad948e29236a"
+    },
+    {
+      "id": "art-9c43ee6ad2ea8f85",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Screen/left.png",
+      "baselineId": null,
+      "productionId": "art-9c43ee6ad2ea8f85",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "6ea163546c679ca528873c5848e52df64664164e78282b3fdfae546d3d4b5553"
+    },
+    {
+      "id": "art-75f9b0f4d015f42d",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Screen/perspective.png",
+      "baselineId": null,
+      "productionId": "art-75f9b0f4d015f42d",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "b3edd8307fd6d872af126781c7cba65e0d1a6df1d9e1dd40359a28a78ef8fddf"
+    },
+    {
+      "id": "art-694486c702ba7c52",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Screen/rear.png",
+      "baselineId": null,
+      "productionId": "art-694486c702ba7c52",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "d90bffb4ea379c41523cbf48c0928133461dc63872e3d4f2a2dd1bade7c87622"
+    },
+    {
+      "id": "art-5d11e9fbb8788b18",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Screen/right.png",
+      "baselineId": null,
+      "productionId": "art-5d11e9fbb8788b18",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "95b21e2cca192a44ef687e66c4460ad926b3a98706150cbe1969cbc7398aace2"
+    },
+    {
+      "id": "art-ec889fcceff53ea3",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/References/Screen/top.png",
+      "baselineId": null,
+      "productionId": "art-ec889fcceff53ea3",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "2c7819926190d7f0959f97f1bdc4009d0bd9e3d254e1dcdbf8e90b7de9fa3620"
+    },
+    {
+      "id": "art-1152cc66b6f0e490",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+      "baselineId": null,
+      "productionId": "art-1152cc66b6f0e490",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "3103c8ab18699aa117b8c83a31e2066122041581e2c4e764229e2a95813e26c8"
+    },
+    {
+      "id": "art-5be43916795283cf",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-gameplay-after.png",
+      "baselineId": null,
+      "productionId": "art-5be43916795283cf",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "807961d9fce9f03e318b304dae36d729750650b4daffe1b93bf3e5408091f6d1"
+    },
+    {
+      "id": "art-d37b47cc59f668d8",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-gameplay-before.png",
+      "baselineId": null,
+      "productionId": "art-d37b47cc59f668d8",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "469d0f4f50ed425370a82d46cb3c69281674ab61e1aaa3f47c11035bfec79a6d"
+    },
+    {
+      "id": "art-d0d5dba4a2b1948c",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png",
+      "baselineId": null,
+      "productionId": "art-d0d5dba4a2b1948c",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "5ac3f462f30d45b937ce70bf0fc6a3cf5b8d0ba3f36dc6b374214e8200035549"
+    },
+    {
+      "id": "art-37f974c601b35721",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-before.png",
+      "baselineId": null,
+      "productionId": "art-37f974c601b35721",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "dfd7923058348327f0cdca3b32d1319739ffd7ee4b977e9dbecfaa6f0e3e2adf"
+    },
+    {
+      "id": "art-f9634d7ddc7b970b",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/underpass-after.png",
+      "baselineId": null,
+      "productionId": "art-f9634d7ddc7b970b",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "47d97c6fca4d497747bce05e217bfd6c3ae59172707daf3334b0cc793b225570"
+    },
+    {
+      "id": "art-5538ba76ebde5b62",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/underpass-before.png",
+      "baselineId": null,
+      "productionId": "art-5538ba76ebde5b62",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "1ffac6128cf0dc1250c29d8987d10fb155458b96f1f47d9e3bab1479a88bc73d"
+    },
+    {
+      "id": "art-111feb7ad196340f",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/underside-after.png",
+      "baselineId": null,
+      "productionId": "art-111feb7ad196340f",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "4d9dde53171cfb1fcf5c62757c441ab724300673f16e91eb25bab2a8036bd7d8"
+    },
+    {
+      "id": "art-0703ee68d66c2732",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/underside-before.png",
+      "baselineId": null,
+      "productionId": "art-0703ee68d66c2732",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "05deb99c15a6750987064ac41edc74ea67967e58355a2a23f8638a62dcfc5112"
+    },
+    {
+      "id": "art-c7cce86f6ea4a229",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+      "baselineId": null,
+      "productionId": "art-c7cce86f6ea4a229",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "8fd4fccb35e7f0256f4ed1f81c6a696491d8637fa02f462581be9591e31bc545"
+    },
+    {
+      "id": "art-aa908cf131813a5e",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/index.html",
+      "baselineId": null,
+      "productionId": "art-aa908cf131813a5e",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "60ca5a206580242f2f71ff672e09e78fe852f23684f9be5d3fee3f5bbdeb0203"
+    },
+    {
+      "id": "art-61ce5fa4743df8d7",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+      "baselineId": null,
+      "productionId": "art-61ce5fa4743df8d7",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "4cc5d8ba0bd7615452fd771b5eb5640ba38c914363baf2b5785b0083dcc44cc9"
+    },
+    {
+      "id": "art-4887691115788d33",
+      "path": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "baselineId": null,
+      "productionId": "art-4887691115788d33",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Editable source or reference evidence; not runtime content",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "682b441bd66e3c92208a89cad2329c73abbfc04a76aeff99bcb753f97deac8b4"
     },
     {
       "id": "art-00ae4e5447b08bc9",
@@ -51416,6 +52711,321 @@
       "productionSha256": "9e242d11f56f94067656e56b3fea236fd840cf7857535fc075006018a46f885b"
     },
     {
+      "id": "unity:6e502720c684230478f3fdd7ae3ddc8a",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BridgeStone/Deck-LOD0.fbx",
+      "baselineId": null,
+      "productionId": "art-45727fa230d22e46",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Production review build",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "0c4eb43b0587bc6e7b10c960ce1cbbcea122d6d47d23f35923a02c78737a23e9"
+    },
+    {
+      "id": "unity:d411c7c396373104e864f2d4980d951c",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BridgeStone/Deck-LOD1.fbx",
+      "baselineId": null,
+      "productionId": "art-dcee83e488cdadb1",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Production review build",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "6cff0558228f5ee03832abf863d78d78a6b38667c6c03cfc11039e9f2dc9b542"
+    },
+    {
+      "id": "unity:e8ed612373b33f0428cb7546337e9ec0",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BridgeStone/Deck-LOD2.fbx",
+      "baselineId": null,
+      "productionId": "art-fddc20d4f858401c",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Production review build",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "4e3d97b06d90ffb8c7ec74957d1d0ad1e4855ab38745e61534dad563f17dd36a"
+    },
+    {
+      "id": "unity:7a6e662f6135217428245ef25129b9fe",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BridgeStone/Pier-LOD0.fbx",
+      "baselineId": null,
+      "productionId": "art-312093ec1cd57641",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Production review build",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "8745628bb93ae7342cf458b2d5ac2bb9f018cc4173ed9b948094ab25cebd2b2f"
+    },
+    {
+      "id": "unity:23d852edab354be40bda566c18b13f7f",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BridgeStone/Pier-LOD1.fbx",
+      "baselineId": null,
+      "productionId": "art-e0108f0ca9860fa0",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Production review build",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "e115eac2a95d1054bbcd09b9562c46d8b798996c48ed09126570ed694eaed8df"
+    },
+    {
+      "id": "unity:123e238e48e3419408b9ff0905f2bd9e",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BridgeStone/Pier-LOD2.fbx",
+      "baselineId": null,
+      "productionId": "art-03569e515be2d108",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Production review build",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "002720a1746cde1f763da2c088933ec6fe4b0ec2f8990a2b8666ca907f2af93f"
+    },
+    {
+      "id": "unity:5d758310db276864ea26a2e693c91a7e",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BridgeStone/Screen-LOD0.fbx",
+      "baselineId": null,
+      "productionId": "art-50d24ad0b044d496",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Production review build",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "5b757b5f7432a9315d13b0d99102ce4398bc098f6415deb066388c72e28dc7a2"
+    },
+    {
+      "id": "unity:f23a5820223e65347b8b36cb1a87f333",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BridgeStone/Screen-LOD1.fbx",
+      "baselineId": null,
+      "productionId": "art-655fd7b2a49ad57f",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Production review build",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "68a7fafb577e0462a14137e869539dc9a1f838001a12f760cbf7282634704fbf"
+    },
+    {
+      "id": "unity:87270d47966e0ef4baa70eb27909c67a",
+      "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/BridgeStone/Screen-LOD2.fbx",
+      "baselineId": null,
+      "productionId": "art-fb62566ce58b8919",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Production review build",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "717b89f601402fb4ff7c8748569486adc9ac3226ae2a6a800d7c7f25b3da37fa"
+    },
+    {
       "id": "unity:3d3f581e955206344bf570edcbc5a309",
       "path": "RailArena/Assets/RailArena/Art/ArtPass/Environment/Stone-Cavity.png",
       "baselineId": null,
@@ -73671,6 +75281,111 @@
       "evidenceState": "production-evidence-present",
       "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
       "productionSha256": "86ed05bb6d2c4dd8f31e4c473539819d94947cc701ccfc564b8dac7102efa58e"
+    },
+    {
+      "id": "unity:4b66e1f8510c35949ae86fa6e91a0bdb",
+      "path": "RailArena/Assets/Resources/Art/BridgeStoneDeck.prefab",
+      "baselineId": null,
+      "productionId": "art-32c7c559a8a2418e",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Production review build",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "86f61658974dbf541d25907c07745df9cde11f9e6932f85ac482101ce0b59a36"
+    },
+    {
+      "id": "unity:d61a83f7876bf0b419814533ce5e512f",
+      "path": "RailArena/Assets/Resources/Art/BridgeStonePier.prefab",
+      "baselineId": null,
+      "productionId": "art-cc9e7bbec387eaff",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Production review build",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "b5750dc6e35fb40e15d24018ca0843a72d38decfdd4b98c208d15b07e5133c3d"
+    },
+    {
+      "id": "unity:c680527bf086d7a479a0ba248a3eea0d",
+      "path": "RailArena/Assets/Resources/Art/BridgeStoneScreen.prefab",
+      "baselineId": null,
+      "productionId": "art-33aa0728e5f7d307",
+      "category": "environment",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "refine",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Production review build",
+      "runtimeEvidenceLimit": "Baseline usage is the original Unity audit snapshot. Production inclusion is the conditional Sky Gardens art profile; source/reference evidence files are not runtime artwork. No deletion or installation is inferred from this join.",
+      "canonicalMaster": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Bridge-Stone-v1.blend",
+      "dimensionAuthority": "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/production.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/bridge-source.json",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/measured-views.json",
+        "RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs"
+      ],
+      "references": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Deck-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Screen-Measured-Sheet.png",
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/Pier-Measured-Sheet.png"
+      ],
+      "screenshots": [
+        "ArtSource/Original/ArtPass-v1/Environment/BridgeStone/UnityReview/bridge-overview-after.png"
+      ],
+      "provenance": "Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.",
+      "approval": "Direction approved; integrated native/artistic acceptance pending",
+      "evidenceState": "production-evidence-present",
+      "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
+      "productionSha256": "6c51d34a35bfb4f388eaf7c7b1aa92ca16a054dc7c7bb35a07223f332dbc0b6a"
     },
     {
       "id": "unity:18714cb22a5cb6f45b195b80d2b6e5cd",

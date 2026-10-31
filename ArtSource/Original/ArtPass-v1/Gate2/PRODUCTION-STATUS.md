@@ -2,7 +2,7 @@
 
 Sanders approved the direction and authorized continuous production without intermediate approval holds. Final playtest is the artistic and user QA gate. Public release remains held for acceptance.
 
-**Working local milestone:** ArtPass Review-14 adds original native-speed hit/death motion, relaxed hands, reaction-layer lifecycle fixes and cached skin-contact corpse support to all Review-13 graphics/portal work. Full-skin evidence covers 1,200 character samples, a hit active before death, repeated death, actor-root preservation and hand/weapon/hitbox reset. The measured settled contact gap is about 10 mm. A controlled legacy reference and editable six-view Blender package are included. Shipping mechanics, bot match, extended loopback peers and five rendered views pass. Combat P95 remains above 16.67 ms; GPU/native acceptance is open. [Validation](../../../../Validation/art-integrated-final-14.json), [reaction gallery](../Animation/Reactions/index.html) and [build handoff](../../../../docs/ART-PASS-REVIEW.md) record scope. Historical packages are preserved.
+**Working local milestone:** ArtPass Review-15 adds the measured bridge deck, cover-screen and pier stone modules to all Review-14 graphics and gameplay. All 39 standalone mechanics checks, the three-bot match and both 90-second loopback peers passed. The archive verified 376 shipped file hashes. Combat mean/P95 and three additional view P95 timings exceed the 16.67 ms budget; GPU/native acceptance remains open. [Validation](../../../../Validation/art-integrated-final-15.json), [bridge gallery](../Environment/BridgeStone/index.html) and [build handoff](../../../../docs/ART-PASS-REVIEW.md) record scope. Historical packages are preserved.
 
 ## Implemented
 
@@ -11,6 +11,8 @@ Four refined Blender character masters, original 2K painted atlases, twelve LODs
 Six equal-scale canonical views cover all four characters, stone cover, canopy and medical core. The baseline inventory is supplemented by a hashed production delta and offline gallery. Three integrated Editor tests passed, including reload timing/contact/reset and 180-frame playback. UI flows passed at 1920x1080, 1280x720 and 2560x1080.
 
 ## Remaining production and acceptance
+
+Review-15 installs original bridge deck, cover-screen and pier modules with nine LOD exports, eighteen equal-scale orthographic views and three dimensioned sheets. Five installed placements passed exact-envelope, unchanged-collider/device and removal checks; matching bridge/gameplay/underpass/underside captures were inspected after correcting a backing/panel overlap. [Bridge stone evidence](../../../../docs/BRIDGE-STONE-KIT.md).
 
 Seventeen original body clips are installed in the Sky Gardens art-profile source: forward/backward/left/right walk, jog, run, takeoff, airborne hold, landing recovery, hit response and fall/settle. The forward gait fixes measured legacy boot penetration that also affected landing blends. Family reels cover all four identities; three actual-controller jump scenarios cover standing, forward and retreat motion. See [authored locomotion](../../../../docs/AUTHORED-LOCOMOTION.md) and the [current complete action matrix](../animation-production-matrix.csv). Review-09 contains the complete nine-action batch. Complete authored crouch/slide/traversal and directional transitions, complete interrupted hit/death stance combinations and the broader FPS/action reference library remain production work. Wrist reach tests do not certify every palm/finger surface.
 

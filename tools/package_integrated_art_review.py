@@ -26,6 +26,7 @@ for directory, span, name in families:
 
 sections = [('Gameplay / integrated captures', art/'Gate2/look-prototype'), ('Menus and HUD / three resolutions', art/'UiReview')]
 if (art/'Environment/BasementDecks/UnityReview').exists():sections.insert(0,('Authored basement stone / matched cameras and LODs',art/'Environment/BasementDecks/UnityReview'))
+if (art/'Environment/BridgeStone/UnityReview').exists():sections.insert(0,('Authored bridge stone / matched cameras',art/'Environment/BridgeStone/UnityReview'))
 if (art/'StandaloneReview').exists():sections.insert(0,('Standalone Windows player / forced offscreen render; native swapchain and HUD excluded',art/'StandaloneReview'))
 comparisons=art/'Comparisons';comparisons.mkdir(exist_ok=True)
 before_views={v['id']:v for v in json.loads((art/'Gate1/baseline-views/index.json').read_text())['views']}
@@ -47,6 +48,7 @@ html += '<p><a href="current-asset-register.csv">Joined current inventory</a> ·
 html += '<p><a href="Performance/UnderbridgeMounted/index.html">Corrected under-bridge destinations and measured wall mounting</a></p>'
 html += '<p><a href="Animation/Strafe/index.html">Authored lateral gaits, measured poses and installed playback</a></p>'
 html += '<p><a href="Animation/Reactions/index.html">Authored hit/death, matching legacy reference and lifecycle evidence</a></p>'
+html += '<p><a href="Environment/BridgeStone/index.html">Measured bridge, screen and pier construction</a></p>'
 for title, directory in sections:
     html += f'<h2>{title}</h2><section>'
     for p in sorted(directory.rglob('*.png')):
@@ -83,7 +85,9 @@ for entry in entries:
     else:
         rig=[]; dimensions=None; provenance='Original Rail Arena code-authored paint, Blender construction or promoted existing project graphics; existing source retained.'
         master=art/'Environment/SkyGardens-Stone-Art-v1.blend'; references=art/'Environment/Environment-Master.json'; sheet=None; screenshot=art/'Gate2/look-prototype/garden-bridge.png'
-        if '/BasementDecks/' in path or any(name in path for name in ('StagingStoneDeck','BasementStoneDeck')):
+        if '/BridgeStone/' in path or 'BridgeStone' in Path(path).name:
+            family='bridge-stone';category='environment';directory=art/'Environment/BridgeStone';master=directory/'Bridge-Stone-v1.blend';references=directory/'production.json';sheet=directory/'Deck-Measured-Sheet.png';screenshot=directory/'UnityReview/bridge-overview-after.png';provenance='Original inset ashlar, deck paving, friezes, panels and underside ribs constructed in Blender inside audited source envelopes; existing original painted stone maps and shared cel materials.'
+        elif '/BasementDecks/' in path or any(name in path for name in ('StagingStoneDeck','BasementStoneDeck')):
             family='basement-stone-decks';category='environment';directory=art/'Environment/BasementDecks';master=directory/'Basement-Stone-Decks-v1.blend';references=directory/'production.json';sheet=directory/'References/Basement/measured-sheet.png';screenshot=directory/'UnityReview/basement-top-after.png';provenance='Original layered stone, inlaid crest, underside and LOD geometry authored from exact existing collision hulls; original periodic limestone paint.'
             variant='Staging' if Path(path).name.startswith('Staging') or '/References/Staging/' in path else 'Basement' if Path(path).name.startswith('Basement') or '/References/Basement/' in path else None
             if variant:
@@ -129,6 +133,10 @@ for entry in entries:
             entry['dependencies'] += [relative(source) for source in sources]
         if family=='contender-reactions':
             entry['dependencies'] += ['RailArena/Assets/RailArena/Runtime/ContenderPresentation.cs','RailArena/Assets/RailArena/Runtime/CorpseContactSurface.cs','RailArena/Assets/RailArena/Editor/ContenderMotionArtBuilder.cs']
+    if family=='bridge-stone':
+        entry['runtimeUsage']='Production review build' if path.startswith('RailArena/') else 'Editable source or reference evidence; not runtime content'
+        entry['referenceSheets']=[relative(art/'Environment/BridgeStone'/(name+'-Measured-Sheet.png')) for name in ('Deck','Screen','Pier')]
+        entry['dependencies'] += [relative(art/'Environment/BridgeStone/bridge-source.json'),relative(art/'Environment/BridgeStone/measured-views.json'),'RailArena/Assets/RailArena/Editor/BridgeStoneArtBuilder.cs']
     if family=='basement-stone-decks':
         entry['mapArea']='Sky Gardens / four staging and four basement decks'
         entry['referenceSheets']=[relative(art/'Environment/BasementDecks/References'/name/'measured-sheet.png') for name in ('Staging','Basement')]
