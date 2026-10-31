@@ -8,15 +8,15 @@ This batch replaces nineteen existing deck/ramp renderings with seven original B
 
 | Family | Unity W × H × D, metres | Placements | Triangles LOD0 / LOD1 / LOD2 |
 |---|---|---:|---:|
-| OuterX | 6 × 0.6 × 40 | 2 | 11772 / 1164 / 252 |
-| OuterN | 44 × 0.6 × 6 | 2 | 12916 / 1260 / 252 |
-| Spine | 4 × 0.6 × 12 | 2 | 2708 / 420 / 252 |
-| Wing | 10 × 0.6 × 4 | 4 | 2312 / 384 / 252 |
-| Landing | 4 × 0.6 × 4 | 4 | 1124 / 276 / 252 |
-| Underpass | 8 × 0.6 × 28 | 1 | 10804 / 1044 / 252 |
-| Ramp | 16 × 4.4 × 4 | 4 | 1109 / 557 / 365 |
+| OuterX | 6 × 0.6 × 40 | 2 | 11772 / 924 / 644 |
+| OuterN | 44 × 0.6 × 6 | 2 | 12916 / 996 / 692 |
+| Spine | 4 × 0.6 × 12 | 2 | 2708 / 372 / 260 |
+| Wing | 10 × 0.6 × 4 | 4 | 2312 / 344 / 244 |
+| Landing | 4 × 0.6 × 4 | 4 | 1124 / 260 / 196 |
+| Underpass | 8 × 0.6 × 28 | 1 | 10804 / 820 / 612 |
+| Ramp | 16 × 4.4 × 4 | 4 | 1109 / 459 / 399 |
 
-There are twenty-one unique LOD exports and fifty-seven installed LOD mesh instances. If all nineteen placements use the same level, their combined visual geometry is 83,776 / 11,600 / 5,240 triangles. This is a geometry budget, not a measured frame-time claim. Material slots share the existing original ivory, stone, teal, bronze and shade cel materials and painted paving texture; no new external dependency is introduced.
+There are twenty-one unique LOD exports and fifty-seven installed LOD mesh instances. If all nineteen placements use the same level, their combined visual geometry is 83,776 / 9,656 / 7,160 triangles. This is a geometry budget, not a measured frame-time claim. Material slots share the existing original ivory, stone, teal, bronze and shade cel materials and painted paving texture; no new external dependency is introduced.
 
 The ramp has two 6.5 m sloping spans separated by a 3 m level landing. Its travel rises 4 m in total, while its vertical slab thickness is 0.4 m. The complete 4.4 m bounds height includes rise and slab thickness. Source vertex levels define the actual piecewise upper/lower surfaces; visual vertices must remain inside that profile, not merely its enclosing box. Deck slab heights round to 0.6 m; source float precision is retained in the manifest.
 
@@ -38,4 +38,6 @@ Run hidden Unity batch `RailArena.Editor.ArenaStoneArtBuilder.Audit`, then hidde
 
 Native integration evidence, matched gameplay captures, LOD readability, the next Windows build and representative frame timings must be read from current results before claiming acceptance. Native input/audio, all camera/terrain cases, complete inventory reference coverage and Sanders' final artistic approval remain open. Review 19 remains the current verified Windows package until this batch completes integration.
 
-The first corrected native review passed: nineteen placements, fifty-seven LOD mesh instances, twenty-seven floor rays, unchanged original colliders/navigation/devices and cleanup. Seven matching camera pairs and two forced simplified-level views were captured. Those images exposed an additional production gap: weathered paving patches move when the coarse tiling grid changes. The source-integrated revision is retained in Git before that LOD appearance correction; it is not a final Windows milestone.
+The final focused native review passes nineteen placements, fifty-seven LOD mesh instances, twenty-seven floor rays and 704 cross-LOD material-region comparisons, with original colliders/navigation/devices and cleanup preserved. Seven matching camera pairs and two forced simplified-level views are recorded in `UnityReview/installed-review.json`. Direct inspection confirms visible top surfaces at both simplified levels. All levels retain the same paving grid, weathered regions and arrow wells; intermediate geometry removes hidden paving depth and the far level closes subpixel joints. This preserves colour placement while reducing geometry, without claiming imperceptible transitions in every gameplay view.
+
+The first candidate, committed as `791e57d`, retains the earlier changing-grid appearance for provenance. `Validation/arena-stone-near-preservation.json` compares the original and revised canonical LOD0 vertices by material across all seven families: identical triangle counts and zero bidirectional vertex deviation. This does not certify every UV or triangle index. Final sheets and installed evidence bind to master SHA-256 `5610080a36c54726d48e268c233692b352ae0108b811148bb09959fa3e6283b5`. The next shipping-player milestone remains pending.

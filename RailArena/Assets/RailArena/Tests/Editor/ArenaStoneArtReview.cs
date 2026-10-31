@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using NUnit.Framework;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -19,14 +20,50 @@ namespace RailArena.Tests
         [Serializable] sealed class Geometry { public Vector3[] vertices; }
         [Serializable] sealed class SourcePart { public string name, family; public Vector3 size; public Geometry canonicalCollision; }
         [Serializable] sealed class SourceReport { public SourcePart[] parts; }
+        [Serializable] sealed class Production { public string master, masterSha256, sourceSha256; }
         [Serializable] sealed class Evidence
         {
             public string scope = "Installed Editor art profile; unchanged collider identities/geometry, navigation, devices, exact visual hulls and cleanup. Matching camera comparisons and forced LOD views; not Windows performance or native input acceptance.";
-            public int placements, uniqueLodAssets, lodMeshInstances, originalFamilyColliders, preservedSceneColliders, floorRays;
+            public string masterSha256, sourceSha256;
+            public int placements, uniqueLodAssets, lodMeshInstances, originalFamilyColliders, preservedSceneColliders, floorRays, materialRegionProbes;
             public bool physicsPreserved, navigationPreserved, devicesPreserved, cleanupPassed;
             public View[] views;
         }
         [Serializable] sealed class View { public string name; public Vector3 position, euler; public int lod; }
+        sealed class Surface
+        {
+            public readonly Vector3[] points;
+            public readonly int[][] triangles;
+            public readonly Material[] materials;
+            public Surface(Renderer renderer)
+            {
+                var filter=renderer.GetComponent<MeshFilter>(); var mesh=filter.sharedMesh;
+                points=mesh.vertices.Select(filter.transform.TransformPoint).ToArray();
+                triangles=Enumerable.Range(0,mesh.subMeshCount).Select(submesh=>mesh.GetTriangles(submesh)).ToArray();
+                materials=renderer.sharedMaterials;
+            }
+            public Material At(Vector3 origin)
+            {
+                float closest=float.PositiveInfinity; Material result=null;
+                for(int submesh=0;submesh<triangles.Length;submesh++)
+                for(int index=0;index<triangles[submesh].Length;index+=3)
+                {
+                    var indices=triangles[submesh]; Vector3 a=points[indices[index]],b=points[indices[index+1]],c=points[indices[index+2]];
+                    Vector3 edge=b-a,other=c-a,p=Vector3.Cross(Vector3.down,other);
+                    float determinant=Vector3.Dot(edge,p);
+                    if(Mathf.Abs(determinant)<.0000001f)continue;
+                    Vector3 delta=origin-a; float inverse=1/determinant;
+                    float u=Vector3.Dot(delta,p)*inverse;
+                    if(u<-.00001f||u>1.00001f)continue;
+                    Vector3 q=Vector3.Cross(delta,edge); float v=Vector3.Dot(Vector3.down,q)*inverse;
+                    if(v<-.00001f||u+v>1.00001f)continue;
+                    float distance=Vector3.Dot(other,q)*inverse;
+                    if(distance<0||distance>=closest)continue;
+                    closest=distance;result=materials[submesh];
+                }
+                return result;
+            }
+        }
 
         static float RampHeight(SourcePart source, float x, bool top)
         {
@@ -42,6 +79,13 @@ namespace RailArena.Tests
         public IEnumerator InstalledArenaPreservesCollisionRoutesAndDevices()
         {
             priorQuality = File.ReadAllBytes("ProjectSettings/QualitySettings.asset");
+            const string artFolder="../ArtSource/Original/ArtPass-v1/Environment/ArenaStone";
+            var production=JsonUtility.FromJson<Production>(File.ReadAllText(artFolder+"/production.json"));
+            using(var hash=SHA256.Create())
+            {
+                Assert.That(BitConverter.ToString(hash.ComputeHash(File.ReadAllBytes(artFolder+"/"+production.master))).Replace("-","").ToLowerInvariant(),Is.EqualTo(production.masterSha256));
+                Assert.That(BitConverter.ToString(hash.ComputeHash(File.ReadAllBytes(artFolder+"/arena-source.json"))).Replace("-","").ToLowerInvariant(),Is.EqualTo(production.sourceSha256));
+            }
             priorPipeline = QualitySettings.renderPipeline;
             QualitySettings.renderPipeline = AssetDatabase.LoadAssetAtPath<RenderPipelineAsset>("Assets/RailArena/Art/ArtPass/Atmosphere/SkyGardensPipeline.asset");
             var report = JsonUtility.FromJson<SourceReport>(File.ReadAllText("../ArtSource/Original/ArtPass-v1/Environment/ArenaStone/arena-source.json"));
@@ -76,7 +120,7 @@ namespace RailArena.Tests
             CollectionAssert.AreEqual(links,session.World.Links);
             CollectionAssert.AreEqual(destinations,session.World.Pads.Select(pad => pad.Destination).ToArray());
             foreach (var device in devices) Assert.That(device.Key.localToWorldMatrix,Is.EqualTo(device.Value));
-            int rays=0;
+            int rays=0,materialProbes=0;
             foreach (var entry in sources)
             {
                 string name=entry.Key; var source=entry.Value; var part=report.parts.Single(item => item.name==name);
@@ -122,6 +166,28 @@ namespace RailArena.Tests
                     Assert.That(hit.collider,Is.SameAs(collision[name]));
                     Assert.That(Mathf.Abs(hit.point.y-expected.y),Is.LessThan(.001f)); rays++;
                 }
+                var surfaces=group.GetLODs().Select(lod=>new Surface(lod.renderers.Single())).ToArray();
+                int probesBefore=materialProbes;
+                for(int submesh=0;submesh<surfaces[0].materials.Length;submesh++)
+                {
+                    var expected=surfaces[0].materials[submesh];
+                    if(expected.name!="DeckStone"&&expected.name!="DeckTeal")continue;
+                    var indices=surfaces[0].triangles[submesh];
+                    for(int index=0;index<indices.Length;index+=3)
+                    {
+                        Vector3 a=surfaces[0].points[indices[index]],b=surfaces[0].points[indices[index+1]],c=surfaces[0].points[indices[index+2]];
+                        if(Mathf.Abs(Vector3.Cross(b-a,c-a).normalized.y)<.9f)continue;
+                        Vector3 point=(a+b+c)/3,canonical=Quaternion.Inverse(binding.rotation)*(point-center);
+                        float top=part.family=="Ramp"?RampHeight(part,canonical.x,true):part.size.y/2;
+                        if(Mathf.Abs(canonical.y-top)>.001f)continue;
+                        for(int level=1;level<3;level++)
+                        {
+                            Assert.That(surfaces[level].At(point+Vector3.up*.04f),Is.SameAs(expected),name+" LOD"+level+" must retain paving/arrow material at "+point);
+                            materialProbes++;
+                        }
+                    }
+                }
+                Assert.That(materialProbes,Is.GreaterThan(probesBefore),name+" needs actual top-surface appearance probes");
             }
             var camera=new GameObject("Owned arena stone camera").AddComponent<Camera>();
             camera.enabled=false; camera.cullingMask=(1<<0)|(1<<9); camera.fieldOfView=65; camera.nearClipPlane=.08f; camera.farClipPlane=1000;
@@ -172,6 +238,7 @@ namespace RailArena.Tests
                 foreach (var device in devices) Assert.That(device.Key.localToWorldMatrix,Is.EqualTo(device.Value));
                 CollectionAssert.AreEquivalent(colliders,Object.FindObjectsByType<Collider>(FindObjectsInactive.Include,FindObjectsSortMode.None));
                 File.WriteAllText(Path.Combine(output,"installed-review.json"),JsonUtility.ToJson(new Evidence { placements=19,uniqueLodAssets=21,lodMeshInstances=57,originalFamilyColliders=19,preservedSceneColliders=colliders.Length,
+                    masterSha256=production.masterSha256,sourceSha256=production.sourceSha256,materialRegionProbes=materialProbes,
                     floorRays=rays,physicsPreserved=true,navigationPreserved=true,devicesPreserved=true,cleanupPassed=true,views=captured.ToArray() },true));
             }
             finally { Time.timeScale=priorTime; target.Release(); Object.Destroy(target); Object.Destroy(pixels); Object.Destroy(camera.gameObject); }

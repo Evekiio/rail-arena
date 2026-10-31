@@ -15,6 +15,7 @@ title = 'ARENA' if arena else 'SUMMIT' if summit else 'BRIDGE'
 spec = json.loads((folder/'production.json').read_text(encoding='utf-8'))
 views = json.loads((folder/'measured-views.json').read_text(encoding='utf-8'))
 assert hashlib.sha256((folder/spec['master']).read_bytes()).hexdigest() == spec['masterSha256']
+assert all(module['masterSha256']==spec['masterSha256'] for module in views['modules']), 'Re-render measured views after changing the canonical master'
 font = ImageFont.truetype('C:/Windows/Fonts/arial.ttf', 28)
 small = ImageFont.truetype('C:/Windows/Fonts/arial.ttf', 21)
 cards = []

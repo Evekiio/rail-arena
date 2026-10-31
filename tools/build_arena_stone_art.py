@@ -5,6 +5,7 @@ import math
 from pathlib import Path
 import sys
 import bpy
+import bmesh
 from mathutils import Vector
 
 root = Path(sys.argv[sys.argv.index('--')+1]).resolve()
@@ -69,18 +70,12 @@ for family in families:
         scene.collection.children.link(collection)
         parts = []
 
-        def finish(obj, name, slot, bevel=0):
+        def finish(obj, name, slot):
             obj.name = name
             for parent in list(obj.users_collection):
                 parent.objects.unlink(obj)
             collection.objects.link(obj)
             obj.data.materials.append(materials[slot])
-            if bevel and lod == 0:
-                modifier = obj.modifiers.new('Single cut stone edge', 'BEVEL')
-                modifier.width = bevel
-                modifier.segments = 1
-                bpy.context.view_layer.objects.active = obj
-                bpy.ops.object.modifier_apply(modifier=modifier.name)
             uv = obj.data.uv_layers.active or obj.data.uv_layers.new(name='Metre paving')
             for polygon in obj.data.polygons:
                 for index in polygon.loop_indices:
@@ -92,11 +87,26 @@ for family in families:
             return obj
 
         def block(name, center, size, slot, bevel=0):
-            bpy.ops.mesh.primitive_cube_add(size=1, location=center)
-            obj = bpy.context.object
-            obj.dimensions = size
-            bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
-            return finish(obj, name, slot, bevel)
+            w,d,h = (value/2 for value in size)
+            points = [(-w,-d,-h),(w,-d,-h),(w,d,-h),(-w,d,-h),(-w,-d,h),(w,-d,h),(w,d,h),(-w,d,h)]
+            faces = [(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)]
+            if lod>0 and name.startswith('Paving'):
+                points=points[4:];faces=[(0,1,2,3)]
+            elif lod==2 and name.startswith('Bronze'):
+                indices = (1,2,6,5) if name.startswith('Bronze_X') and center[0]>0 else (3,0,4,7) if name.startswith('Bronze_X') else (2,3,7,6) if center[1]>0 else (0,1,5,4)
+                points=[points[index] for index in indices];faces=[(0,1,2,3)]
+            data = bpy.data.meshes.new(name)
+            data.from_pydata(points,[],faces)
+            if bevel and lod==0:
+                edit=bmesh.new()
+                try:
+                    edit.from_mesh(data)
+                    bmesh.ops.bevel(edit,geom=list(edit.edges),offset=bevel,segments=1,affect='EDGES',clamp_overlap=True)
+                    edit.normal_update();edit.to_mesh(data)
+                finally:edit.free()
+            data.update()
+            obj=bpy.data.objects.new(name,data);collection.objects.link(obj);obj.location=center
+            return finish(obj,name,slot)
 
         def ramp_piece(name, a, b, low_y, high_y, lower_offset, upper_offset, slot):
             bottom_a, bottom_b = floor_at(a, False)+lower_offset, floor_at(b, False)+lower_offset
@@ -104,7 +114,13 @@ for family in families:
             points = [(a,low_y,bottom_a),(b,low_y,bottom_b),(b,high_y,bottom_b),(a,high_y,bottom_a),
                       (a,low_y,top_a),(b,low_y,top_b),(b,high_y,top_b),(a,high_y,top_a)]
             data = bpy.data.meshes.new(name)
-            data.from_pydata(points, [], [(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)])
+            faces=[(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)]
+            if lod>0 and name.startswith('Paving'):
+                points=points[4:];faces=[(0,1,2,3)]
+            elif lod==2 and name.startswith('Bronze'):
+                indices=(2,3,7,6) if high_y>0 else (0,1,5,4)
+                points=[points[index] for index in indices];faces=[(0,1,2,3)]
+            data.from_pydata(points, [], faces)
             data.update()
             obj = bpy.data.objects.new(name, data)
             collection.objects.link(obj)
@@ -113,13 +129,14 @@ for family in families:
         if family != 'Ramp':
             top, bottom = height/2, -height/2
             block('Core_joint_bed', (0,0,0), (width-.03,depth-.03,height-.10), 4)
-            nx = max(1, math.ceil((width-.36)/(1 if lod==0 else 2))) if lod<2 else 2
-            ny = max(1, math.ceil((depth-.36)/(1 if lod==0 else 2))) if lod<2 else 2
+            # Material regions stay fixed in metre space. Distant levels simplify depth, not layout.
+            nx = max(1, math.ceil(width-.36))
+            ny = max(1, math.ceil(depth-.36))
             for x in range(nx):
                 for y in range(ny):
                     w, d = (width-.36)/nx, (depth-.36)/ny
                     block(f'Paving_{x:02d}_{y:02d}', (-width/2+.18+(x+.5)*w,-depth/2+.18+(y+.5)*d,top-.07),
-                          (w-.012,d-.012,.14), 1 if (x*3+y*5)%11==7 else 0, .004)
+                          (w-(.012 if lod<2 else 0),d-(.012 if lod<2 else 0),.14), 1 if (x*3+y*5)%11==7 else 0, .004)
             for sign in (-1,1):
                 block('Coping_Y_'+str(sign), (0,sign*(depth/2-.09),top-.055), (width,.18,.11), 0, .006)
                 block('Coping_X_'+str(sign), (sign*(width/2-.09),0,top-.055), (.18,depth-.36,.11), 0, .006)
@@ -151,12 +168,13 @@ for family in families:
                     lo,hi = (depth/2-.14,depth/2) if sign>0 else (-depth/2,-depth/2+.14)
                     ramp_piece(f'Underside_{segment}_{sign}',a,b,lo,hi,0,-thickness+.07,0)
                 flat = abs(right[2]-left[2])<.00001
-                nx = (3 if lod==0 else 1) if flat else (math.ceil((b-a)/(1 if lod==0 else 2)) if lod<2 else 1)
-                ny = (3 if flat else 4) if lod==0 else (3 if flat and lod==1 else 2 if lod==1 else 1)
+                nx = 3 if flat else math.ceil(b-a)
+                ny = 3 if flat else 4
                 for x in range(nx):
                     for y in range(ny):
-                        x0,x1 = a+x*(b-a)/nx+.006,a+(x+1)*(b-a)/nx-.006
-                        y0,y1 = -depth/2+.18+y*(depth-.36)/ny+.006,-depth/2+.18+(y+1)*(depth-.36)/ny-.006
+                        gap=.006 if lod<2 else 0
+                        x0,x1 = a+x*(b-a)/nx+gap,a+(x+1)*(b-a)/nx-gap
+                        y0,y1 = -depth/2+.18+y*(depth-.36)/ny+gap,-depth/2+.18+(y+1)*(depth-.36)/ny-gap
                         arrow = flat and x0<-.45 and x1>.45 and y0<-.4 and y1>.4
                         ramp_piece(f'Paving_{segment}_{x}_{y}',x0,x1,y0,y1,thickness-.08,-.02 if arrow else 0,1 if (x+y)%7==5 else 0)
                 if flat:
@@ -177,7 +195,7 @@ for family in families:
                 assert abs(point.x)<=width/2+.00002 and abs(point.y)<=depth/2+.00002, (family,obj.name,tuple(point))
                 low,high = (floor_at(point.x,False),floor_at(point.x)) if family=='Ramp' else (-height/2,height/2)
                 assert low-.00002<=point.z<=high+.00002, (family,obj.name,tuple(point),low,high)
-            construction.append({'name':obj.name,'layer':obj['construction_layer'],'minimum':[min(point[i] for point in points) for i in range(3)],'maximum':[max(point[i] for point in points) for i in range(3)]})
+            construction.append({'name':obj.name,'layer':obj['construction_layer'],'material':obj.data.materials[0].name,'minimum':[min(point[i] for point in points) for i in range(3)],'maximum':[max(point[i] for point in points) for i in range(3)]})
         duplicates=[]
         bpy.ops.object.select_all(action='DESELECT')
         for obj in parts:
@@ -205,5 +223,7 @@ bpy.ops.wm.save_as_mainfile(filepath=str(master))
     'provenance':'Original Blender construction using existing original painted stone and shared ivory/teal/bronze cel materials; no external assets.',
     'collision':'No collision exported. Every visual vertex checked inside the exact original box or piecewise ramp hull. Hidden canonical collision references retain original Unity source coordinates.',
     'unityImportCorrection':'ArenaStoneArtBuilder applies a 180-degree Y rotation to each imported model, normalizing the native FBX half-turn. The asymmetric ramp direction and all imported hull vertices are checked against source collision.',
-    'rampProfileBlenderXZ':ramp_profile,'instances':source['parts'],'lods':records},indent=2)+'\n',encoding='utf-8')
+    'lodAppearance':'Paving colour regions and arrow wells keep the same metre-space layout at every level. LOD1 removes hidden tread depth; LOD2 closes subpixel paving gaps and reduces narrow bronze bands to their visible faces.',
+    'supersededCandidate':{'commit':'791e57d35768b06196ad4f3acdcd8c84380fea12','masterSha256':'e355d0250eef363c25c5e387949a9b940c75f4b856d9f48fa7d0b60942cb7a77','disposition':'archive-reference in Git; coarse grids moved paving colour regions'},
+    'rampProfileBlenderXBottomTop':ramp_profile,'instances':source['parts'],'lods':records},indent=2)+'\n',encoding='utf-8')
 print('ARENA_STONE_EXPORTED',[(entry['family'],entry['lod'],entry['triangles']) for entry in records])

@@ -9,6 +9,8 @@ folder = root/'ArtSource/Original/ArtPass-v1/Environment/ArenaStone'
 spec = json.loads((folder/'production.json').read_text(encoding='utf-8'))
 review = json.loads((folder/'UnityReview/installed-review.json').read_text(encoding='utf-8'))
 assert hashlib.sha256((folder/spec['master']).read_bytes()).hexdigest() == spec['masterSha256']
+assert review['masterSha256']==spec['masterSha256'] and review['sourceSha256']==spec['sourceSha256'], 'Native captures must belong to this canonical master'
+assert review['materialRegionProbes']>0, 'Native simplified levels must retain the visible material regions'
 assert review['placements']==19 and review['uniqueLodAssets']==21 and review['lodMeshInstances']==57
 assert review['physicsPreserved'] and review['navigationPreserved'] and review['devicesPreserved'] and review['cleanupPassed']
 font = ImageFont.truetype('C:/Windows/Fonts/arial.ttf', 25)
@@ -31,6 +33,6 @@ for name in ['arena-overview','outer-gameplay','ramp-west','ramp-east','underpas
 page = (folder/'index.html').read_text(encoding='utf-8')
 marker = '<!-- NATIVE_ARENA_REVIEW -->'
 page = page.split(marker)[0]
-page += marker+'<h1>Installed arena comparison</h1><p>Nineteen source placements and fifty-seven LOD mesh instances pass the focused hull, unchanged physics/navigation/device and cleanup checks. These are controlled Editor views. Final Windows performance, all LOD transitions, native input/audio and artistic acceptance remain separate.</p><p><a href="UnityReview/installed-review.json">Native contract evidence</a> / <a href="comparison-evidence.json">Matching camera poses</a></p>'+''.join(cards)+'<h2>Forced simplified levels / same corner camera</h2><img src="UnityReview/corner-detail-lod1.png"><img src="UnityReview/corner-detail-lod2.png">'
+page += marker+'<h1>Installed arena comparison</h1><p>Nineteen source placements and fifty-seven LOD mesh instances pass the focused hull, unchanged physics/navigation/device and cleanup checks. 704 cross-LOD material-region comparisons also pass, bound to the current canonical master. These are controlled Editor views. Final Windows performance, all LOD transitions, native input/audio and artistic acceptance remain separate.</p><p><a href="UnityReview/installed-review.json">Native contract evidence</a> / <a href="comparison-evidence.json">Matching camera poses</a></p>'+''.join(cards)+'<h2>Forced simplified levels / same corner camera</h2><img src="UnityReview/corner-detail-lod1.png"><img src="UnityReview/corner-detail-lod2.png">'
 (folder/'index.html').write_text(page,encoding='utf-8')
 print('ARENA_NATIVE_COMPARISONS_PACKAGED',len(comparisons))

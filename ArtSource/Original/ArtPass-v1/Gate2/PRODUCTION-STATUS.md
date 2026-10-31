@@ -33,3 +33,7 @@ Packaged mechanics, bot-match, targeted multiplayer and 1080p performance eviden
 ## Reproduction
 
 Use Blender 5.2 background scripts under tools. Unity 6000.6.7f1: batchmode/nographics ArtSliceBuilder.Prepare, then ArtSliceBuilder.Build from a clean committed checkout. RA_ART_BUILD_OUTPUT selects a new output folder; existing folders are refused. ArtSliceLookCaptures and RifleReloadArtReview are graphics-enabled hidden EditMode tests; check the executed count. Offline galleries do not establish browser rendering.
+
+## Lower arena stone source milestone
+
+Seven original measured Blender families now cover nineteen lower-deck/ramp placements with three detail levels each. Focused native verification passes 27 original-floor rays, 704 material-region comparisons across LODs, all collider/navigation/device preservation and cleanup checks. Forty-two equal-scale orthographic views, seven measured sheets and matching installed comparisons are supplied. Revised LODs preserve the original near geometry and weathered colour positions. This source milestone awaits Review 20 shipping-player validation; Review 19 remains the verified Windows package. Wider nature/device, animation and full-reference production remain open.
