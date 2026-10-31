@@ -55,6 +55,7 @@ html += '<p><a href="Animation/Slide/index.html">Feet-first slide master, measur
 html += '<p><a href="Environment/BridgeStone/index.html">Measured bridge, screen and pier construction</a></p>'
 html += '<p><a href="Environment/SummitStone/index.html">Measured summit deck, cover and column construction</a></p>'
 html += '<p><a href="Environment/ArenaStone/index.html">Measured arena decks, ramps and native camera comparisons</a></p>'
+html += '<p><a href="Nature/GardenNature/index.html">Garden nature source candidate / measured modules and installed-scale diagrams; not live in Review 20</a></p>'
 html += '<p><a href="Experiments/RifleBatch/index.html">Archived rifle rendering experiment / not installed; no demonstrated frame-time improvement</a></p>'
 for title, directory in sections:
     html += f'<h2>{title}</h2><section>'
@@ -120,6 +121,12 @@ for entry in entries:
             family='contender-advance';category='animation';directory=art/'Animation/Forward';master=directory/'Contender-Advance-v1.blend';references=directory/'forward-production.json';sheet=directory/'References/AdvanceWalk/measured-poses.png';screenshot=directory/'Advance-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original authored forward support/swing contact paths baked on the unchanged shared contender skeleton.'
         elif '/Animation/' in path or 'ContenderRetreat' in path:
             family='contender-retreat';category='animation';directory=art/'Animation';master=directory/'Contender-Retreat-v1.blend';references=directory/'retreat-production.json';sheet=directory/'References/RetreatWalk/measured-poses.png';screenshot=directory/'Retreat-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original authored contact paths and baked bone animation on the unchanged shared contender skeleton; inherited CC0 rig provenance retained.'
+        elif '/GardenNature/' in path:
+            family='garden-nature';category='nature';directory=art/'Nature/GardenNature';master=directory/'Garden-Nature-v2.blend';references=directory/'production.json';sheet=None;screenshot=directory/'InstalledScale/tree-close.png'
+            data=json.loads(references.read_text(encoding='utf-8'));module=next((item for item in data['modules'] if Path(path).name.startswith(item['family']+'-') or '/References/'+item['family']+'/' in path),None)
+            dimensions=module['geometryDimensionsMetresBlenderXYZ'] if module else None
+            if module:sheet=directory/(module['family']+'-Measured-Sheet.png')
+            provenance='Original Blender opaque garden construction and painted palette; audited installed reference frames. Source production candidate, not installed in Review 20.'
         elif 'Canopy' in path or '/Nature/' in path:
             family='canopy';category='nature';directory=art/'Nature/Canopy';master=directory/'SkyGarden-Canopy-v1.blend';references=directory/'production.json';sheet=directory/'measured-sheet.png';dimensions=[1,1,1]
         elif 'Medical' in path or 'HealthCore' in path:
@@ -187,6 +194,13 @@ for entry in entries:
         entry['referenceSheets']=[relative(art/'Environment/BasementDecks/References'/name/'measured-sheet.png') for name in ('Staging','Basement')]
         entry['dependencies'] += [relative(art/'Environment/BasementDecks/deck-source.json'),relative(art/'Environment/BasementDecks/paint-spec.json'),'RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs']
         entry['runtimeUsage']='Conditional Sky Gardens art profile / eight visual decks; original colliders retained' if path.startswith('RailArena/') else 'Canonical source, paint or measured/reference evidence; not installed artwork by itself'
+    if family=='garden-nature':
+        entry['mapArea']='Sky Gardens / four original planting sites'
+        entry['runtimeUsage']='Source candidate only; imported models are not bound to the live art profile. Verified Windows Review 20 retains prior nature art.'
+        entry['dimensionAuthority']='Audited installed frames in nature-source.json, per-module geometry and shared unit-frame bindings in production.json; no per-LOD stretching'
+        entry['referenceSheets']=['ArtSource/Original/ArtPass-v1/Nature/GardenNature/'+item['family']+'-Measured-Sheet.png' for item in data['modules']]
+        entry['dependencies'] += ['ArtSource/Original/ArtPass-v1/Nature/GardenNature/nature-source.json','ArtSource/Original/ArtPass-v1/Nature/GardenNature/measured-views.json','ArtSource/Original/ArtPass-v1/Nature/GardenNature/site-views.json','RailArena/Assets/RailArena/Editor/GardenNatureArtBuilder.cs']
+        entry['referenceException']='Source geometry/reference milestone; native axis/import, installed clearances, visual review, gameplay integration and Windows acceptance remain pending.'
     if '/Experiments/RifleBatch/' in path:
         entry.update({'category':'supporting / archived research','family':'archived-rifle-batch-experiment','disposition':'archive-reference',
             'approval':'Unpromoted experiment; final art acceptance is not applicable to this code archive',

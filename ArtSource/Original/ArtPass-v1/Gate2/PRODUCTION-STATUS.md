@@ -41,3 +41,7 @@ Seven original measured Blender families now cover nineteen lower-deck/ramp plac
 ## Rendering-budget research / unpromoted candidate
 
 Review 20 attribution recorded approximately 1,966 combat draw calls across main/portal views. A rigid rifle-shell batching prototype passes native geometry, matched visual, reload and candidate gameplay checks, but reduces full-workload draw calls only 1.1–3.8% and has worse wall-time means in all five controlled views. It is archived as reference material, with production runtime restored and Review 20 still current. Research candidate Review 21 is not a promoted portable package. The archive explicitly records source, disposition and evidence; see [findings](../../../../docs/RIFLE-RENDER-BUDGET.md) and [research gallery](../Experiments/RifleBatch/index.html). The existing low-LOD barrel simplification remains an art gap.
+
+## Garden nature / source milestone
+
+Eleven original unit-frame modules and 33 reducing LOD exports now cover the proposed trunks, crown variants, shrubs, grass and paired vines for all four existing planting sites. The read-only native source audit records 24 noncolliding renderings and exact installed frames. The package includes 66 equal-scale orthographic images, eleven dimensioned sheets and four installed-scale Blender diagrams. It is not installed in Review 20. Flat shrub masses and some branch/crown contacts are being refined before native integration; see [source contract](../../../../docs/GARDEN-NATURE.md) and [candidate gallery](../Nature/GardenNature/index.html).

@@ -1,0 +1,776 @@
+{
+    "scene": "Assets/RailArena/Generated/SkyGardensBasement.unity",
+    "sceneSha256": "e2a4dcbc1259ec1768b86d5333eb744bbe02921bed4e0cbf83a390e21b2a6684",
+    "scope": "Read-only installed planting authority. Bounds are world-space metres. Canonical unit families map into these original visual envelopes; existing collision/navigation/traversal remain authoritative.",
+    "axes": "Blender (x,y,z) -> Unity (x,z,-y). Unit visual family pivots use bounds centre.",
+    "parts": [
+        {
+            "sourceName": "GRASS-1",
+            "family": "Grass",
+            "meshAsset": "Assets/RailArena/Generated/SkyGardensArt/GRASS-1.asset",
+            "meshGuid": "770ce2b04a9a4ae4f9f099a845339f8e",
+            "vertexSha256": "a431c38677efe8b6306af9c241e03749b3e9add1a94c9b8f8d395994d86b3ebc",
+            "indexSha256": "c10412aaaecef13a0396d5b47e7ae2ca70fe64a71f27d3dca42829dc545599e0",
+            "center": {
+                "x": -29.47732925415039,
+                "y": 0.2199999988079071,
+                "z": 16.022418975830078
+            },
+            "size": {
+                "x": 2.149618625640869,
+                "y": 0.2973976135253906,
+                "z": 3.0115201473236084
+            },
+            "frameCenter": {
+                "x": -29.47732925415039,
+                "y": 0.2199999988079071,
+                "z": 16.022418975830078
+            },
+            "frameSize": {
+                "x": 2.149618625640869,
+                "y": 0.2973976135253906,
+                "z": 3.0115201473236084
+            },
+            "vertices": 6600,
+            "triangles": 2200,
+            "colliders": 0,
+            "wind": true
+        },
+        {
+            "sourceName": "GRASS-2",
+            "family": "Grass",
+            "meshAsset": "Assets/RailArena/Generated/SkyGardensArt/GRASS-2.asset",
+            "meshGuid": "feb8f031ec2271046b1b3a0dd8094d7e",
+            "vertexSha256": "ede22b8c401817888519e5b00aee531d5f5be6cd6575e30644fb129cd5e533ff",
+            "indexSha256": "c10412aaaecef13a0396d5b47e7ae2ca70fe64a71f27d3dca42829dc545599e0",
+            "center": {
+                "x": -29.499536514282227,
+                "y": 0.2199999988079071,
+                "z": -15.986640930175781
+            },
+            "size": {
+                "x": 2.18727970123291,
+                "y": 0.29751068353652954,
+                "z": 3.025545120239258
+            },
+            "frameCenter": {
+                "x": -29.499536514282227,
+                "y": 0.2199999988079071,
+                "z": -15.986640930175781
+            },
+            "frameSize": {
+                "x": 2.18727970123291,
+                "y": 0.29751068353652954,
+                "z": 3.025545120239258
+            },
+            "vertices": 6600,
+            "triangles": 2200,
+            "colliders": 0,
+            "wind": true
+        },
+        {
+            "sourceName": "GRASS-3",
+            "family": "Grass",
+            "meshAsset": "Assets/RailArena/Generated/SkyGardensArt/GRASS-3.asset",
+            "meshGuid": "2e3bb782e1a72c748a046643e764a807",
+            "vertexSha256": "0cd81cf6c6753eae23cb5b84b5f9d92940ac097d2df4442331840a57142d0461",
+            "indexSha256": "c10412aaaecef13a0396d5b47e7ae2ca70fe64a71f27d3dca42829dc545599e0",
+            "center": {
+                "x": 29.5058536529541,
+                "y": 0.2199999988079071,
+                "z": 15.957448959350586
+            },
+            "size": {
+                "x": 2.13435697555542,
+                "y": 0.29928481578826904,
+                "z": 2.9725117683410645
+            },
+            "frameCenter": {
+                "x": 29.5058536529541,
+                "y": 0.2199999988079071,
+                "z": 15.957448959350586
+            },
+            "frameSize": {
+                "x": 2.13435697555542,
+                "y": 0.29928481578826904,
+                "z": 2.9725117683410645
+            },
+            "vertices": 6600,
+            "triangles": 2200,
+            "colliders": 0,
+            "wind": true
+        },
+        {
+            "sourceName": "GRASS-4",
+            "family": "Grass",
+            "meshAsset": "Assets/RailArena/Generated/SkyGardensArt/GRASS-4.asset",
+            "meshGuid": "7715639a0e65162419bdccffbcb6a4ac",
+            "vertexSha256": "5f57288ceadb984e1cbb005c29b9e942ef96dc3fb59e84ee4bf6517c3219a79d",
+            "indexSha256": "c10412aaaecef13a0396d5b47e7ae2ca70fe64a71f27d3dca42829dc545599e0",
+            "center": {
+                "x": 29.491302490234375,
+                "y": 0.2199999988079071,
+                "z": -15.999215126037598
+            },
+            "size": {
+                "x": 2.1574654579162598,
+                "y": 0.2995166480541229,
+                "z": 3.0464868545532227
+            },
+            "frameCenter": {
+                "x": 29.491302490234375,
+                "y": 0.2199999988079071,
+                "z": -15.999215126037598
+            },
+            "frameSize": {
+                "x": 2.1574654579162598,
+                "y": 0.2995166480541229,
+                "z": 3.0464868545532227
+            },
+            "vertices": 6600,
+            "triangles": 2200,
+            "colliders": 0,
+            "wind": true
+        },
+        {
+            "sourceName": "IVY-1-LEAVES",
+            "family": "VineLeaf",
+            "meshAsset": "Assets/RailArena/Generated/SkyGardensArt/IVY-1-LEAVES.asset",
+            "meshGuid": "9564a964dfad57a428e25025bef6725c",
+            "vertexSha256": "ee6d6a833209794ed0979102fb52eb5b842003261e7fc4b3668e5cde5ed612e7",
+            "indexSha256": "dad11684584bd6dac15a9afe50783183ec28881d97378ff9820494acddeab2c0",
+            "center": {
+                "x": -29.502098083496094,
+                "y": -1.6500000953674316,
+                "z": 14.0
+            },
+            "size": {
+                "x": 2.5451889038085938,
+                "y": 3.394601345062256,
+                "z": 0.16865837574005127
+            },
+            "frameCenter": {
+                "x": -29.502098083496094,
+                "y": -1.8463497161865234,
+                "z": 14.0
+            },
+            "frameSize": {
+                "x": 2.5451889038085938,
+                "y": 3.7873005867004395,
+                "z": 0.16865921020507813
+            },
+            "vertices": 5760,
+            "triangles": 1920,
+            "colliders": 0,
+            "wind": true
+        },
+        {
+            "sourceName": "IVY-1-STEMS",
+            "family": "VineStem",
+            "meshAsset": "Assets/Validation/SkyGiCandidate/IVY-1-STEMS.asset",
+            "meshGuid": "42dcc1218a61f744584d084011cdfd80",
+            "vertexSha256": "f7ae0986b00cd23efa659d7cfd663e6a4cda59efeb43f50560ef569611e62c74",
+            "indexSha256": "406b3eeeb320708ab26825cb03ae9438f57fc57a462db987bff7c44e94fa2f81",
+            "center": {
+                "x": -29.502098083496094,
+                "y": -1.8700000047683716,
+                "z": 14.020000457763672
+            },
+            "size": {
+                "x": 2.279188632965088,
+                "y": 3.740000009536743,
+                "z": 0.020784609019756317
+            },
+            "frameCenter": {
+                "x": -29.502098083496094,
+                "y": -1.8463497161865234,
+                "z": 14.0
+            },
+            "frameSize": {
+                "x": 2.5451889038085938,
+                "y": 3.7873005867004395,
+                "z": 0.16865921020507813
+            },
+            "vertices": 2156,
+            "triangles": 1272,
+            "colliders": 0,
+            "wind": false
+        },
+        {
+            "sourceName": "IVY-2-LEAVES",
+            "family": "VineLeaf",
+            "meshAsset": "Assets/RailArena/Generated/SkyGardensArt/IVY-2-LEAVES.asset",
+            "meshGuid": "94e8fbcdfa14ad5479da889e5fd1631f",
+            "vertexSha256": "ee6d6a833209794ed0979102fb52eb5b842003261e7fc4b3668e5cde5ed612e7",
+            "indexSha256": "dad11684584bd6dac15a9afe50783183ec28881d97378ff9820494acddeab2c0",
+            "center": {
+                "x": -29.502098083496094,
+                "y": -1.6500000953674316,
+                "z": -18.0
+            },
+            "size": {
+                "x": 2.5451889038085938,
+                "y": 3.394601345062256,
+                "z": 0.16865837574005127
+            },
+            "frameCenter": {
+                "x": -29.502098083496094,
+                "y": -1.8463497161865234,
+                "z": -18.0
+            },
+            "frameSize": {
+                "x": 2.5451889038085938,
+                "y": 3.7873005867004395,
+                "z": 0.16865921020507813
+            },
+            "vertices": 5760,
+            "triangles": 1920,
+            "colliders": 0,
+            "wind": true
+        },
+        {
+            "sourceName": "IVY-2-STEMS",
+            "family": "VineStem",
+            "meshAsset": "Assets/Validation/SkyGiCandidate/IVY-2-STEMS.asset",
+            "meshGuid": "003a19911e8eef04e9b29bf1025dc4e3",
+            "vertexSha256": "2f2d776084e6051131745f8d90e2b66c573f19cc3e2a69cced0825de8f569f51",
+            "indexSha256": "78934730e803d6a77f539d6b9363c6c43add2c40d355b21541eb89717faff403",
+            "center": {
+                "x": -29.502098083496094,
+                "y": -1.8700000047683716,
+                "z": -17.979999542236328
+            },
+            "size": {
+                "x": 2.279188632965088,
+                "y": 3.740000009536743,
+                "z": 0.020784609019756317
+            },
+            "frameCenter": {
+                "x": -29.502098083496094,
+                "y": -1.8463497161865234,
+                "z": -18.0
+            },
+            "frameSize": {
+                "x": 2.5451889038085938,
+                "y": 3.7873005867004395,
+                "z": 0.16865921020507813
+            },
+            "vertices": 2138,
+            "triangles": 1272,
+            "colliders": 0,
+            "wind": false
+        },
+        {
+            "sourceName": "IVY-3-LEAVES",
+            "family": "VineLeaf",
+            "meshAsset": "Assets/RailArena/Generated/SkyGardensArt/IVY-3-LEAVES.asset",
+            "meshGuid": "9ccdc282b1cff13469cf76137239e779",
+            "vertexSha256": "ee6d6a833209794ed0979102fb52eb5b842003261e7fc4b3668e5cde5ed612e7",
+            "indexSha256": "dad11684584bd6dac15a9afe50783183ec28881d97378ff9820494acddeab2c0",
+            "center": {
+                "x": 29.497901916503906,
+                "y": -1.6500000953674316,
+                "z": 14.0
+            },
+            "size": {
+                "x": 2.5451889038085938,
+                "y": 3.394601345062256,
+                "z": 0.16865837574005127
+            },
+            "frameCenter": {
+                "x": 29.497901916503906,
+                "y": -1.8463497161865234,
+                "z": 14.0
+            },
+            "frameSize": {
+                "x": 2.5451889038085938,
+                "y": 3.7873005867004395,
+                "z": 0.16865921020507813
+            },
+            "vertices": 5760,
+            "triangles": 1920,
+            "colliders": 0,
+            "wind": true
+        },
+        {
+            "sourceName": "IVY-3-STEMS",
+            "family": "VineStem",
+            "meshAsset": "Assets/Validation/SkyGiCandidate/IVY-3-STEMS.asset",
+            "meshGuid": "cf9086883d15122408bdd074f1a0db9c",
+            "vertexSha256": "f7ae0986b00cd23efa659d7cfd663e6a4cda59efeb43f50560ef569611e62c74",
+            "indexSha256": "406b3eeeb320708ab26825cb03ae9438f57fc57a462db987bff7c44e94fa2f81",
+            "center": {
+                "x": 29.497901916503906,
+                "y": -1.8700000047683716,
+                "z": 14.020000457763672
+            },
+            "size": {
+                "x": 2.279188632965088,
+                "y": 3.740000009536743,
+                "z": 0.020784609019756317
+            },
+            "frameCenter": {
+                "x": 29.497901916503906,
+                "y": -1.8463497161865234,
+                "z": 14.0
+            },
+            "frameSize": {
+                "x": 2.5451889038085938,
+                "y": 3.7873005867004395,
+                "z": 0.16865921020507813
+            },
+            "vertices": 2156,
+            "triangles": 1272,
+            "colliders": 0,
+            "wind": false
+        },
+        {
+            "sourceName": "IVY-4-LEAVES",
+            "family": "VineLeaf",
+            "meshAsset": "Assets/RailArena/Generated/SkyGardensArt/IVY-4-LEAVES.asset",
+            "meshGuid": "953d63286d4791e4db56eeba3a9d89a4",
+            "vertexSha256": "ee6d6a833209794ed0979102fb52eb5b842003261e7fc4b3668e5cde5ed612e7",
+            "indexSha256": "dad11684584bd6dac15a9afe50783183ec28881d97378ff9820494acddeab2c0",
+            "center": {
+                "x": 29.497901916503906,
+                "y": -1.6500000953674316,
+                "z": -18.0
+            },
+            "size": {
+                "x": 2.5451889038085938,
+                "y": 3.394601345062256,
+                "z": 0.16865837574005127
+            },
+            "frameCenter": {
+                "x": 29.497901916503906,
+                "y": -1.8463497161865234,
+                "z": -18.0
+            },
+            "frameSize": {
+                "x": 2.5451889038085938,
+                "y": 3.7873005867004395,
+                "z": 0.16865921020507813
+            },
+            "vertices": 5760,
+            "triangles": 1920,
+            "colliders": 0,
+            "wind": true
+        },
+        {
+            "sourceName": "IVY-4-STEMS",
+            "family": "VineStem",
+            "meshAsset": "Assets/Validation/SkyGiCandidate/IVY-4-STEMS.asset",
+            "meshGuid": "0f023bfdd0a5d0640b757e9a81ae3738",
+            "vertexSha256": "2f2d776084e6051131745f8d90e2b66c573f19cc3e2a69cced0825de8f569f51",
+            "indexSha256": "78934730e803d6a77f539d6b9363c6c43add2c40d355b21541eb89717faff403",
+            "center": {
+                "x": 29.497901916503906,
+                "y": -1.8700000047683716,
+                "z": -17.979999542236328
+            },
+            "size": {
+                "x": 2.279188632965088,
+                "y": 3.740000009536743,
+                "z": 0.020784609019756317
+            },
+            "frameCenter": {
+                "x": 29.497901916503906,
+                "y": -1.8463497161865234,
+                "z": -18.0
+            },
+            "frameSize": {
+                "x": 2.5451889038085938,
+                "y": 3.7873005867004395,
+                "z": 0.16865921020507813
+            },
+            "vertices": 2138,
+            "triangles": 1272,
+            "colliders": 0,
+            "wind": false
+        },
+        {
+            "sourceName": "SHRUB-1",
+            "family": "Shrub",
+            "meshAsset": "Assets/RailArena/Generated/SkyGardensArt/SHRUB-1.asset",
+            "meshGuid": "ad0dff1e55579d547bc2f76b324843c3",
+            "vertexSha256": "9693cb086e2185f2a8d8cd429d15063ed7e0bdcc3c97a524c924d543353d0e04",
+            "indexSha256": "f5b94936dea71f2a870bdb35344961211615e61f738fcd99f0e3c9593782f175",
+            "center": {
+                "x": -29.49524688720703,
+                "y": 0.5400241613388062,
+                "z": 15.990358352661133
+            },
+            "size": {
+                "x": 2.3465147018432617,
+                "y": 0.4859285354614258,
+                "z": 2.8207950592041016
+            },
+            "frameCenter": {
+                "x": -29.49524688720703,
+                "y": 0.5400241613388062,
+                "z": 15.990358352661133
+            },
+            "frameSize": {
+                "x": 2.3465147018432617,
+                "y": 0.4859285354614258,
+                "z": 2.8207950592041016
+            },
+            "vertices": 8400,
+            "triangles": 2800,
+            "colliders": 0,
+            "wind": true
+        },
+        {
+            "sourceName": "SHRUB-2",
+            "family": "Shrub",
+            "meshAsset": "Assets/RailArena/Generated/SkyGardensArt/SHRUB-2.asset",
+            "meshGuid": "8814341655cddc04aa453829f368f219",
+            "vertexSha256": "b1345513d43276e22b6f05516a48202f5d06c70b8e544809bf55384c76d315f5",
+            "indexSha256": "f5b94936dea71f2a870bdb35344961211615e61f738fcd99f0e3c9593782f175",
+            "center": {
+                "x": -29.51371192932129,
+                "y": 0.5527490973472595,
+                "z": -15.99958610534668
+            },
+            "size": {
+                "x": 2.314859390258789,
+                "y": 0.4929794669151306,
+                "z": 2.785353660583496
+            },
+            "frameCenter": {
+                "x": -29.51371192932129,
+                "y": 0.5527490973472595,
+                "z": -15.99958610534668
+            },
+            "frameSize": {
+                "x": 2.314859390258789,
+                "y": 0.4929794669151306,
+                "z": 2.785353660583496
+            },
+            "vertices": 8400,
+            "triangles": 2800,
+            "colliders": 0,
+            "wind": true
+        },
+        {
+            "sourceName": "SHRUB-3",
+            "family": "Shrub",
+            "meshAsset": "Assets/RailArena/Generated/SkyGardensArt/SHRUB-3.asset",
+            "meshGuid": "c76ac2a62f4033349b6df6eddada349d",
+            "vertexSha256": "8e41e4d1674ef98ef502a889f26c117d220e5d826ddf8d7520afe7d4f6036f49",
+            "indexSha256": "f5b94936dea71f2a870bdb35344961211615e61f738fcd99f0e3c9593782f175",
+            "center": {
+                "x": 29.483211517333984,
+                "y": 0.5461390018463135,
+                "z": 16.024900436401367
+            },
+            "size": {
+                "x": 2.350576400756836,
+                "y": 0.4795629382133484,
+                "z": 2.7824831008911133
+            },
+            "frameCenter": {
+                "x": 29.483211517333984,
+                "y": 0.5461390018463135,
+                "z": 16.024900436401367
+            },
+            "frameSize": {
+                "x": 2.350576400756836,
+                "y": 0.4795629382133484,
+                "z": 2.7824831008911133
+            },
+            "vertices": 8400,
+            "triangles": 2800,
+            "colliders": 0,
+            "wind": true
+        },
+        {
+            "sourceName": "SHRUB-4",
+            "family": "Shrub",
+            "meshAsset": "Assets/RailArena/Generated/SkyGardensArt/SHRUB-4.asset",
+            "meshGuid": "4cfbeb81bee765f4790f8f2bb2ba06dd",
+            "vertexSha256": "7169cf0fb5d047ce832d4458db4539f1a9babbf90a1a4a3a5cf1d2d14a0a1d24",
+            "indexSha256": "f5b94936dea71f2a870bdb35344961211615e61f738fcd99f0e3c9593782f175",
+            "center": {
+                "x": 29.485088348388672,
+                "y": 0.5419775247573853,
+                "z": -15.993915557861328
+            },
+            "size": {
+                "x": 2.357738971710205,
+                "y": 0.4956558346748352,
+                "z": 2.8409719467163086
+            },
+            "frameCenter": {
+                "x": 29.485088348388672,
+                "y": 0.5419775247573853,
+                "z": -15.993915557861328
+            },
+            "frameSize": {
+                "x": 2.357738971710205,
+                "y": 0.4956558346748352,
+                "z": 2.8409719467163086
+            },
+            "vertices": 8400,
+            "triangles": 2800,
+            "colliders": 0,
+            "wind": true
+        },
+        {
+            "sourceName": "TREE-1-BARK",
+            "family": "Trunk",
+            "meshAsset": "Assets/Validation/SkyGiCandidate/TREE-1-BARK.asset",
+            "meshGuid": "2a8ac768c1af88341bf205b4d1e3d133",
+            "vertexSha256": "11d7c05032091cede3dd62f03aee1b97c28f9eda84127c03269a56fef7437066",
+            "indexSha256": "0757e8e4212e84ef379ad6c84ec9fc135802b7fe3ac9934010ba89c45d962ce3",
+            "center": {
+                "x": -29.595491409301758,
+                "y": 2.3299999237060547,
+                "z": 16.0
+            },
+            "size": {
+                "x": 1.8330169916152954,
+                "y": 4.340000152587891,
+                "z": 2.211430072784424
+            },
+            "frameCenter": {
+                "x": -29.595491409301758,
+                "y": 2.3299999237060547,
+                "z": 16.0
+            },
+            "frameSize": {
+                "x": 1.8330169916152954,
+                "y": 4.340000152587891,
+                "z": 2.211430072784424
+            },
+            "vertices": 1132,
+            "triangles": 556,
+            "colliders": 0,
+            "wind": false
+        },
+        {
+            "sourceName": "TREE-1-LEAVES",
+            "family": "Crown",
+            "meshAsset": "Assets/RailArena/Generated/SkyGardensArt/TREE-1-LEAVES.asset",
+            "meshGuid": "29cbee43355fcbe4a91b4d8dcb0f1719",
+            "vertexSha256": "52283556fd48378c4658bf3b8f5939506dabc078e44828c104bf23ab92afdff0",
+            "indexSha256": "1295be7183a2adddeb4fe7e365111d8c403cce9a6221aa5bec94f5c2fa9b9572",
+            "center": {
+                "x": -29.516984939575195,
+                "y": 4.0555925369262695,
+                "z": 15.977237701416016
+            },
+            "size": {
+                "x": 2.9127931594848633,
+                "y": 1.5473504066467285,
+                "z": 3.3178272247314453
+            },
+            "frameCenter": {
+                "x": -29.516984939575195,
+                "y": 4.0555925369262695,
+                "z": 15.977237701416016
+            },
+            "frameSize": {
+                "x": 2.9127931594848633,
+                "y": 1.5473504066467285,
+                "z": 3.3178272247314453
+            },
+            "vertices": 14400,
+            "triangles": 4800,
+            "colliders": 0,
+            "wind": true
+        },
+        {
+            "sourceName": "TREE-2-BARK",
+            "family": "Trunk",
+            "meshAsset": "Assets/Validation/SkyGiCandidate/TREE-2-BARK.asset",
+            "meshGuid": "6b602e5b07fe73c468fc559b0f4352c9",
+            "vertexSha256": "11d7c05032091cede3dd62f03aee1b97c28f9eda84127c03269a56fef7437066",
+            "indexSha256": "0757e8e4212e84ef379ad6c84ec9fc135802b7fe3ac9934010ba89c45d962ce3",
+            "center": {
+                "x": -29.595491409301758,
+                "y": 2.3299999237060547,
+                "z": -16.0
+            },
+            "size": {
+                "x": 1.8330169916152954,
+                "y": 4.340000152587891,
+                "z": 2.211430072784424
+            },
+            "frameCenter": {
+                "x": -29.595491409301758,
+                "y": 2.3299999237060547,
+                "z": -16.0
+            },
+            "frameSize": {
+                "x": 1.8330169916152954,
+                "y": 4.340000152587891,
+                "z": 2.211430072784424
+            },
+            "vertices": 1132,
+            "triangles": 556,
+            "colliders": 0,
+            "wind": false
+        },
+        {
+            "sourceName": "TREE-2-LEAVES",
+            "family": "Crown",
+            "meshAsset": "Assets/RailArena/Generated/SkyGardensArt/TREE-2-LEAVES.asset",
+            "meshGuid": "0f22aec2d68d8de44b662a2351cf68c6",
+            "vertexSha256": "eced31cb5ce5c3685fb1590eb2028c872082638dd4308e845d800c54fa965f53",
+            "indexSha256": "1295be7183a2adddeb4fe7e365111d8c403cce9a6221aa5bec94f5c2fa9b9572",
+            "center": {
+                "x": -29.602584838867188,
+                "y": 4.056136131286621,
+                "z": -16.040132522583008
+            },
+            "size": {
+                "x": 2.9640402793884277,
+                "y": 1.5528011322021484,
+                "z": 3.2912073135375977
+            },
+            "frameCenter": {
+                "x": -29.602584838867188,
+                "y": 4.056136131286621,
+                "z": -16.040132522583008
+            },
+            "frameSize": {
+                "x": 2.9640402793884277,
+                "y": 1.5528011322021484,
+                "z": 3.2912073135375977
+            },
+            "vertices": 14400,
+            "triangles": 4800,
+            "colliders": 0,
+            "wind": true
+        },
+        {
+            "sourceName": "TREE-3-BARK",
+            "family": "Trunk",
+            "meshAsset": "Assets/Validation/SkyGiCandidate/TREE-3-BARK.asset",
+            "meshGuid": "fbf35a1b8ec28ad48a7f19a666c809d7",
+            "vertexSha256": "11d7c05032091cede3dd62f03aee1b97c28f9eda84127c03269a56fef7437066",
+            "indexSha256": "0757e8e4212e84ef379ad6c84ec9fc135802b7fe3ac9934010ba89c45d962ce3",
+            "center": {
+                "x": 29.404508590698242,
+                "y": 2.3299999237060547,
+                "z": 16.0
+            },
+            "size": {
+                "x": 1.8330169916152954,
+                "y": 4.340000152587891,
+                "z": 2.211430072784424
+            },
+            "frameCenter": {
+                "x": 29.404508590698242,
+                "y": 2.3299999237060547,
+                "z": 16.0
+            },
+            "frameSize": {
+                "x": 1.8330169916152954,
+                "y": 4.340000152587891,
+                "z": 2.211430072784424
+            },
+            "vertices": 1132,
+            "triangles": 556,
+            "colliders": 0,
+            "wind": false
+        },
+        {
+            "sourceName": "TREE-3-LEAVES",
+            "family": "Crown",
+            "meshAsset": "Assets/RailArena/Generated/SkyGardensArt/TREE-3-LEAVES.asset",
+            "meshGuid": "05c986bf827531048a9602bf19fac5ac",
+            "vertexSha256": "09931f6107e47b877f8b0b68064f0b8def41f397583abee9aa9476c4d700351a",
+            "indexSha256": "1295be7183a2adddeb4fe7e365111d8c403cce9a6221aa5bec94f5c2fa9b9572",
+            "center": {
+                "x": 29.441991806030273,
+                "y": 4.041660308837891,
+                "z": 15.972237586975098
+            },
+            "size": {
+                "x": 2.953134059906006,
+                "y": 1.5932338237762451,
+                "z": 3.3285820484161377
+            },
+            "frameCenter": {
+                "x": 29.441991806030273,
+                "y": 4.041660308837891,
+                "z": 15.972237586975098
+            },
+            "frameSize": {
+                "x": 2.953134059906006,
+                "y": 1.5932338237762451,
+                "z": 3.3285820484161377
+            },
+            "vertices": 14400,
+            "triangles": 4800,
+            "colliders": 0,
+            "wind": true
+        },
+        {
+            "sourceName": "TREE-4-BARK",
+            "family": "Trunk",
+            "meshAsset": "Assets/Validation/SkyGiCandidate/TREE-4-BARK.asset",
+            "meshGuid": "e41c4e786249d5644ab9483c3f22133e",
+            "vertexSha256": "11d7c05032091cede3dd62f03aee1b97c28f9eda84127c03269a56fef7437066",
+            "indexSha256": "0757e8e4212e84ef379ad6c84ec9fc135802b7fe3ac9934010ba89c45d962ce3",
+            "center": {
+                "x": 29.404508590698242,
+                "y": 2.3299999237060547,
+                "z": -16.0
+            },
+            "size": {
+                "x": 1.8330169916152954,
+                "y": 4.340000152587891,
+                "z": 2.211430072784424
+            },
+            "frameCenter": {
+                "x": 29.404508590698242,
+                "y": 2.3299999237060547,
+                "z": -16.0
+            },
+            "frameSize": {
+                "x": 1.8330169916152954,
+                "y": 4.340000152587891,
+                "z": 2.211430072784424
+            },
+            "vertices": 1132,
+            "triangles": 556,
+            "colliders": 0,
+            "wind": false
+        },
+        {
+            "sourceName": "TREE-4-LEAVES",
+            "family": "Crown",
+            "meshAsset": "Assets/RailArena/Generated/SkyGardensArt/TREE-4-LEAVES.asset",
+            "meshGuid": "bdd927b33815db54a9b9c47dfec706ef",
+            "vertexSha256": "660a1e28ec708f7b534593bb2cc3bc59162f9b7e595060d8a9a757e8dff920ba",
+            "indexSha256": "1295be7183a2adddeb4fe7e365111d8c403cce9a6221aa5bec94f5c2fa9b9572",
+            "center": {
+                "x": 29.385459899902344,
+                "y": 4.040226459503174,
+                "z": -16.01656150817871
+            },
+            "size": {
+                "x": 3.036311626434326,
+                "y": 1.6191892623901367,
+                "z": 3.273794412612915
+            },
+            "frameCenter": {
+                "x": 29.385459899902344,
+                "y": 4.040226459503174,
+                "z": -16.01656150817871
+            },
+            "frameSize": {
+                "x": 3.036311626434326,
+                "y": 1.6191892623901367,
+                "z": 3.273794412612915
+            },
+            "vertices": 14400,
+            "triangles": 4800,
+            "colliders": 0,
+            "wind": true
+        }
+    ]
+}
