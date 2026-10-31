@@ -22,6 +22,10 @@ namespace RailArena
         private float bodyYaw;
         private float corpseVelocity;
         private float corpseGround;
+        private float reactionWeight;
+        private bool reactionSuppressed;
+        private CorpseContactSurface corpseSurface;
+        public int CorpseContactSamples => corpseSurface?.SampleCount ?? 0;
         private Transform[] surfaceBones;
         private CrouchPose crouchPose;
         private bool directionalMotion;
@@ -41,8 +45,16 @@ namespace RailArena
         {
             crouchPose?.Restore();
             Animator.runtimeAnimatorController = controller;
+            corpseSurface = null;
             directionalMotion = System.Array.Exists(Animator.parameters, item => item.nameHash == MotionX) &&
                 System.Array.Exists(Animator.parameters, item => item.nameHash == MotionZ);
+            if (reactionSuppressed && Animator.layerCount > 1) Animator.SetLayerWeight(1, 0);
+        }
+
+        public void RefreshCorpseSurface()
+        {
+            var skin = (SkinnedMeshRenderer)BodyRenderers[0];
+            if (corpseSurface == null || corpseSurface.Skin != skin) corpseSurface = new CorpseContactSurface(skin);
         }
 
         public void Initialize(ArenaActor owner, ArenaSession authority)
@@ -139,7 +151,8 @@ namespace RailArena
 
         private void OnAnimatorIK(int layer)
         {
-            if (actor == null || !actor.Alive) return;
+            if (actor == null) return;
+            if (!actor.Alive) { Animator.SetLookAtWeight(0); return; }
             Quaternion aim = Quaternion.Euler(Mathf.Clamp(actor.Command.Pitch, -65, 65), actor.Command.Yaw, 0);
             Vector3 forward = aim * Vector3.forward;
             Animator.SetLookAtWeight(.85f, .45f, .9f, 0, .55f);
@@ -156,10 +169,18 @@ namespace RailArena
             if (ReviewPlayback) paused = false;
 #endif
             if (paused) return;
-            corpseVelocity -= session.Tuning.Gravity * Time.deltaTime;
-            transform.position += Vector3.up * corpseVelocity * Time.deltaTime;
+            ApplyCorpsePose(Time.deltaTime);
+        }
+
+        /// <summary>Cosmetic corpse floor support; never moves the authoritative actor.</summary>
+        public void ApplyCorpsePose(float delta)
+        {
+            if (actor == null || actor.Alive) return;
+            corpseVelocity -= session.Tuning.Gravity * delta;
+            transform.position += Vector3.up * corpseVelocity * delta;
             float lowest = float.PositiveInfinity;
-            for (int i = 0; i < surfaceBones.Length; i++)
+            if (corpseSurface != null) lowest = corpseSurface.MinimumWorldHeight();
+            else for (int i = 0; i < surfaceBones.Length; i++)
                 lowest = Mathf.Min(lowest, surfaceBones[i].position.y - SurfaceMargins[i]);
             if (lowest < corpseGround + .01f)
             {
@@ -211,11 +232,21 @@ namespace RailArena
                 Animator.Rebind();
                 Animator.Update(0);
                 Animator.SetBool(Dead, false);
+                if (reactionSuppressed && Animator.layerCount > 1) Animator.SetLayerWeight(1, reactionWeight);
+                reactionSuppressed = false;
                 recoil = 0;
                 recoilSpring.Reset();
+                if (Hands != null) { Hands.enabled = true; Hands.Pose(0); }
             }
             else
             {
+                if (Animator.layerCount > 1)
+                {
+                    if (!reactionSuppressed) reactionWeight = Animator.GetLayerWeight(1);
+                    Animator.SetLayerWeight(1, 0); reactionSuppressed = true;
+                }
+                Animator.ResetTrigger("Hit");
+                if (Hands != null) Hands.enabled = false;
                 corpseVelocity = actor.Velocity.y;
                 corpseGround = Physics.Raycast(actor.transform.position + Vector3.up * .2f, Vector3.down,
                     out var ground, 150, 1 << 0, QueryTriggerInteraction.Ignore) ? ground.point.y : float.NegativeInfinity;

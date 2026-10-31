@@ -46,6 +46,7 @@ html = '<!doctype html><meta charset="utf-8"><title>Rail Arena integrated art re
 html += '<p><a href="current-asset-register.csv">Joined current inventory</a> · <a href="current-asset-manifest.json">Machine-readable current manifest</a> · <a href="CURRENT-GAPS.md">Coverage and remaining production gaps</a> · <a href="Environment/BasementDecks/index.html">Measured basement stone kit and construction layers</a></p>'
 html += '<p><a href="Performance/UnderbridgeMounted/index.html">Corrected under-bridge destinations and measured wall mounting</a></p>'
 html += '<p><a href="Animation/Strafe/index.html">Authored lateral gaits, measured poses and installed playback</a></p>'
+html += '<p><a href="Animation/Reactions/index.html">Authored hit/death, matching legacy reference and lifecycle evidence</a></p>'
 for title, directory in sections:
     html += f'<h2>{title}</h2><section>'
     for p in sorted(directory.rglob('*.png')):
@@ -90,6 +91,8 @@ for entry in entries:
                 dimensions=[variant_spec['diameterMetres'],variant_spec['diameterMetres'],variant_spec['thicknessMetres']]
         elif any(name in path for name in ('ContenderMotion.controller','ContenderRetreat.overrideController')):
             family='contender-motion-controller';category='animation';directory=art/'Animation/Strafe';master=directory/'Contender-Strafe-v1.blend';references=directory/'strafe-production.json';sheet=directory/'References/StrafeLeftWalk/measured-poses.png';screenshot=directory/'Strafe-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Independent Sky Gardens state graph combines original forward, backward, lateral and airborne masters; legacy controller preserved.'
+        elif '/Reactions/' in path or any(name in path for name in ('HitResponse','DeathFall')):
+            family='contender-reactions';category='animation';directory=art/'Animation/Reactions';master=directory/'Contender-Reactions-v1.blend';references=directory/'reactions-production.json';sheet=directory/'References/DeathFall/measured-poses.png';screenshot=directory/'Reaction-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original hit and fall/settle bone poses, authored hand/foot contacts and geometry-derived floor clearance; unchanged compatible rig, no ragdoll or gameplay root motion.'
         elif '/Strafe/' in path or 'Strafe' in path:
             family='contender-strafe';category='animation';directory=art/'Animation/Strafe';master=directory/'Contender-Strafe-v1.blend';references=directory/'strafe-production.json';sheet=directory/'References/StrafeLeftWalk/measured-poses.png';screenshot=directory/'Strafe-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original baked lateral IK contact paths on the unchanged shared skeleton; native-rate left/right walk, jog and run.'
         elif '/Airborne/' in path or any(name in path for name in ('Takeoff','AirborneHold','LandingRecover')):
@@ -116,14 +119,16 @@ for entry in entries:
     relative=lambda p:p.relative_to(root).as_posix() if p else None
     if '/ArtPassPortraits/' in path:category='UI / UX'
     entry.update({'category':category,'family':family,'mapArea':'Sky Gardens / summit / four basement routes','runtimeUsage':'Production review build' if path.startswith('RailArena/') else 'Editable source or reference evidence; not runtime content','sourceMaster':relative(master),'sourceExportLocations':[path],'dimensionsMetresBlenderXYZ':dimensions,'dimensionAuthority':relative(references),'dependencies':[relative(references)],'referenceSheets':[relative(sheet)] if sheet else [],'rigBones':rig,'clips':['Carbine reload / 120 ticks'] if family=='carbine' else [],'provenance':provenance,'currentScreenshot':relative(screenshot),'referenceException':'Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.'})
-    if family in ('contender-retreat','contender-advance','contender-airborne','contender-strafe','contender-motion-controller'):
+    if family in ('contender-retreat','contender-advance','contender-airborne','contender-strafe','contender-reactions','contender-motion-controller'):
         entry['clips']=[f"{clip['name']} / {clip['frames']} frames / {clip['fps']} Hz" for clip in json.loads(references.read_text())['clips']]
         entry['dependencies'] += ['RailArena/Assets/Resources/Art/ContenderRetreat.overrideController','RailArena/Assets/Resources/Art/ContenderMotion.controller','ArtSource/Original/ArtPass-v1/Characters/Player-Production.json']
         entry['runtimeUsage']='Sky Gardens art profile / four contenders' if path.startswith('RailArena/') else 'Editable animation master or measured playback evidence; not runtime content'
         if family=='contender-motion-controller':
-            sources=[art/'Animation/retreat-production.json',art/'Animation/Forward/forward-production.json',art/'Animation/Airborne/airborne-production.json',art/'Animation/Strafe/strafe-production.json']
+            sources=[art/'Animation/retreat-production.json',art/'Animation/Forward/forward-production.json',art/'Animation/Airborne/airborne-production.json',art/'Animation/Strafe/strafe-production.json',art/'Animation/Reactions/reactions-production.json']
             entry['clips']=[clip['name'] for source in sources for clip in json.loads(source.read_text())['clips']]
             entry['dependencies'] += [relative(source) for source in sources]
+        if family=='contender-reactions':
+            entry['dependencies'] += ['RailArena/Assets/RailArena/Runtime/ContenderPresentation.cs','RailArena/Assets/RailArena/Runtime/CorpseContactSurface.cs','RailArena/Assets/RailArena/Editor/ContenderMotionArtBuilder.cs']
     if family=='basement-stone-decks':
         entry['mapArea']='Sky Gardens / four staging and four basement decks'
         entry['referenceSheets']=[relative(art/'Environment/BasementDecks/References'/name/'measured-sheet.png') for name in ('Staging','Basement')]

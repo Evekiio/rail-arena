@@ -1,0 +1,75 @@
+{
+  "sourceMasterSha256": "6f0e4f347473ecf291f9d889929dab64c31ab0862188c848dd586dce77df4c88",
+  "frames": 300,
+  "fps": 60,
+  "durationSeconds": 5,
+  "characterSamples": 1200,
+  "characterIds": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "minimumSkinY": 0.006822,
+  "maximumSettledContactGap": 0.01,
+  "contactProfiles": [
+    {
+      "characterId": "0",
+      "vertices": "21130",
+      "contactSamples": "1029",
+      "iterations": "1000",
+      "meanMs": "0.116837",
+      "p95Ms": "0.191500"
+    },
+    {
+      "characterId": "1",
+      "vertices": "19955",
+      "contactSamples": "1024",
+      "iterations": "1000",
+      "meanMs": "0.109148",
+      "p95Ms": "0.189900"
+    },
+    {
+      "characterId": "2",
+      "vertices": "21548",
+      "contactSamples": "1026",
+      "iterations": "1000",
+      "meanMs": "0.102933",
+      "p95Ms": "0.168000"
+    },
+    {
+      "characterId": "3",
+      "vertices": "19430",
+      "contactSamples": "1020",
+      "iterations": "1000",
+      "meanMs": "0.107737",
+      "p95Ms": "0.183100"
+    }
+  ],
+  "scope": "Actual imported clips on four refined skinned contenders. Live cosmetic pose/floor methods; whole-skin validation, root preservation, masked hit, hit active before death, repeated death, relaxed hand posing, weapon/hitbox lifecycle and reset at the existing 120-tick respawn interval. Camera render waits for native skinning. No ragdoll or authoritative movement/damage changes.",
+  "legacyReference": "Controlled capture of the unchanged shared Death01 state at its existing 1.3 speed, prior six-bone floor support and static grip. Those death assets were also used by Review-13. This is a matching scene-camera source reference, not a native-input recording of the older executable. No active hit was applied in this quiet-death reference.",
+  "comparisonCamera": {
+    "position": [
+      3.2,
+      2.3,
+      17.5
+    ],
+    "target": [
+      0,
+      0.65,
+      12
+    ],
+    "orthographicSize": 1.65,
+    "resolution": [
+      1280,
+      720
+    ],
+    "elapsedDeathSeconds": 1.5
+  },
+  "performanceLimit": "Contact profiles are 1000 warm terminal-pose Editor calls per character, not player frame/GPU measurements or sustained 60 FPS acceptance.",
+  "remaining": [
+    "Crouched/airborne/traversal and all interrupted combat-action combinations",
+    "Moving-world collision-edge and full LOD contact acceptance",
+    "Native input, sound, final artistic acceptance and the wider production plan"
+  ]
+}

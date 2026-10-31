@@ -15,6 +15,7 @@ namespace RailArena.Editor
             PrepareAirborneCandidates();
             ImportClips(new[] { "AdvanceWalk", "AdvanceJog", "AdvanceRun" }, "motion-advance-import.json");
             PrepareStrafeCandidates();
+            PrepareReactionCandidates();
             var original = Resources.Load<GameObject>("Characters/Contender").GetComponent<ContenderPresentation>().Animator.runtimeAnimatorController;
             foreach (string name in new[] { "Bot01", "Bot02", "Bot03" })
                 if (Resources.Load<GameObject>("Characters/Stylized/" + name).GetComponent<ContenderPresentation>().Animator.runtimeAnimatorController != original)
@@ -34,7 +35,7 @@ namespace RailArena.Editor
                 }
             if (changed != 6) throw new InvalidOperationException("Exactly six forward and backward locomotion clips must be replaced");
             controller.ApplyOverrides(overrides); EditorUtility.SetDirty(controller); AssetDatabase.SaveAssets();
-            Debug.Log("AUTHORED_LOCOMOTION_READY twelve cardinal gaits plus airborne states; legacy controller preserved");
+            Debug.Log("AUTHORED_LOCOMOTION_READY twelve cardinal gaits, three airborne states and two combat reactions; legacy controller preserved");
         }
         static AnimatorController PrepareArtStateGraph(RuntimeAnimatorController original)
         {
@@ -68,6 +69,13 @@ namespace RailArena.Editor
                 state.speed = 1; state.speedParameterActive = false;
                 EditorUtility.SetDirty(state);
             }
+            states["Death"].motion = AuthoredClip("DeathFall"); states["Death"].speed = 1; states["Death"].speedParameterActive = false; states["Death"].tag = "AuthoredDeath";
+            EditorUtility.SetDirty(states["Death"]);
+            var impact = graph.layers[1].stateMachine.states.Single(child => child.state.name == "Impact").state;
+            impact.motion = AuthoredClip("HitResponse"); impact.speed = 1; impact.speedParameterActive = false;
+            foreach (var transition in impact.transitions)
+            { transition.hasExitTime = true; transition.exitTime = .95f; transition.duration = .04f; EditorUtility.SetDirty(transition); }
+            EditorUtility.SetDirty(impact);
             foreach (var transition in states["Jump"].transitions)
                 if (transition.destinationState == states["Air"] && transition.hasExitTime)
                 { transition.exitTime = .9f; EditorUtility.SetDirty(transition); }
@@ -111,6 +119,9 @@ namespace RailArena.Editor
 
         public static void PrepareStrafeCandidates()
             => ImportClips(new[] { "StrafeLeftWalk", "StrafeLeftJog", "StrafeLeftRun", "StrafeRightWalk", "StrafeRightJog", "StrafeRightRun" }, "motion-strafe-import.json");
+
+        public static void PrepareReactionCandidates()
+            => ImportClips(new[] { "HitResponse", "DeathFall" }, "motion-reactions-import.json");
 
         static void ImportClips(string[] names, string evidenceFile)
         {
