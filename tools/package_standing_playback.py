@@ -12,7 +12,7 @@ folder = root / 'ArtSource/Original/ArtPass-v1/Animation/Standing'
 spec = json.loads((folder / 'standing-production.json').read_text(encoding='utf-8'))
 digest = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
 assert digest(folder / spec['master']) == spec['masterSha256']
-for name, count in [('standing-candidate.xml', 1), ('standing-integrated.xml', 3)]:
+for name, count in [('standing-candidate.xml', 1), ('standing-integrated.xml', 3), ('standing-blends.xml', 1)]:
     test = ET.parse(root / 'Validation' / name).getroot()
     assert test.attrib['result'] == 'Passed' and int(test.attrib['passed']) == count
 checks = {}
@@ -45,6 +45,19 @@ record = {'masterSha256': spec['masterSha256'], 'scope': 'Native stationary four
           'movie': {'path': movie.name, 'sha256': digest(movie), 'frames': 240, 'seconds': 4, 'fps': 60, 'audio': False},
           'sourceFrameEndpointExcludedFromMovie': 240,
           'csv': {name: digest(folder / name) for name in ('Candidate-Playback.csv', 'Installed-Playback.csv')}}
+blend_source = root / 'Validation/StandingBlendReview'
+assert not (blend_source / 'Failures.txt').read_text().strip()
+blend_rows = list(csv.DictReader((blend_source / 'BlendChecks.csv').open(newline='')))
+assert len(blend_rows) == 5184
+shutil.copy2(blend_source / 'BlendChecks.csv', folder / 'BlendChecks.csv')
+record['blendReview'] = {'samples': len(blend_rows), 'characters': 4, 'directions': 8,
+                        'yawAngles': 2, 'speeds': 9, 'phases': 9,
+                        'minimumSkinY': min(float(row['skinFloorY']) for row in blend_rows),
+                        'maximumSkinFloorY': max(float(row['skinFloorY']) for row in blend_rows),
+                        'maximumWristError': max(float(row[key]) for row in blend_rows for key in ('leftWristError', 'rightWristError')),
+                        'scope': 'Stationary blend snapshots; actor root, velocity and capsule unchanged. Not moving-world or temporal start/stop validation.'}
+record['nativeTests'].append('Validation/standing-blends.xml')
+record['csv']['BlendChecks.csv'] = digest(folder / 'BlendChecks.csv')
 (folder / 'review-evidence.json').write_text(json.dumps(record, indent=2) + '\n', encoding='utf-8')
 page = folder / 'index.html'
 text = page.read_text(encoding='utf-8').split('<!-- NATIVE_STANDING -->')[0]

@@ -28,7 +28,8 @@
   },
   "nativeTests": [
     "Validation/standing-candidate.xml",
-    "Validation/standing-integrated.xml"
+    "Validation/standing-integrated.xml",
+    "Validation/standing-blends.xml"
   ],
   "regressions": [
     "DirectionalBlendsPreserveAimStanceAndAuthority",
@@ -45,6 +46,19 @@
   "sourceFrameEndpointExcludedFromMovie": 240,
   "csv": {
     "Candidate-Playback.csv": "4873b30d914342acdbf64f23f10c7ebda2af67a8042aa2d5cc648c3a89672793",
-    "Installed-Playback.csv": "f886b150024a7351f7a0bfd4e66def6bbbd81ae5110270eb247e2e0580374ee1"
+    "Installed-Playback.csv": "f886b150024a7351f7a0bfd4e66def6bbbd81ae5110270eb247e2e0580374ee1",
+    "BlendChecks.csv": "a58cc8c03a586e201aa7d11d92d175803c5cae8d6cb0a81c73550098342d7b69"
+  },
+  "blendReview": {
+    "samples": 5184,
+    "characters": 4,
+    "directions": 8,
+    "yawAngles": 2,
+    "speeds": 9,
+    "phases": 9,
+    "minimumSkinY": 0.008436,
+    "maximumSkinFloorY": 0.008502,
+    "maximumWristError": 3.5e-05,
+    "scope": "Stationary blend snapshots; actor root, velocity and capsule unchanged. Not moving-world or temporal start/stop validation."
   }
 }
