@@ -1,5 +1,7 @@
 # Calibrated first-person assembly references
 
+Current calibrated source: [Assembly-v2](../ArtSource/Original/ArtPass-v1/FirstPerson/Assembly-v2/index.html), with authored finger bindings retained and matched native motion comparison. [Root cause, focused checks and remaining limits](HAND-BIND-CALIBRATION.md). Assembly-v1 below is preserved as the pre-correction historical reference.
+
 Four appearance skins now have a combined rifle/forearm/hand Blender master, held hip and ADS poses, 54 editable bones per assembly, original four-weight skin groups, 14 visible first-person rifle parts, and exact grip, sight, muzzle, shoulder and native-eye frames. Original character and rifle masters remain preserved and hash-linked. This is source/reference production; no runtime rig or animation is replaced.
 
 - [Master and gallery](../ArtSource/Original/ArtPass-v1/FirstPerson/Assembly-v1/index.html).
@@ -24,12 +26,12 @@ Use Unity 6000.6.7f1 and Blender 5.2.2. Keep heavy jobs sequential and hidden; d
 
 ## Remaining quality and integration work
 
-Arm-only construction-layer images confirm the detached-looking pieces belong to the arm mesh rather than rifle controls. Orthographics expose finger/grip intersections and detached-looking fingertip shapes in the current held baseline. Those are defects for the hand-art pass, not accepted final hand placement. The full first-person action library, animated magazine/finger contacts, movement and traversal transitions, compatible runtime replacement-rig import, normal-speed/native input/audio review and Sanders' final artistic acceptance remain unfinished. This reference batch does not add a nineteenth action to the existing eighteen source-integrated rows of the 34-action matrix.
+Arm-only construction-layer images confirm the detached-looking pieces belong to the arm mesh rather than rifle controls. Orthographics expose finger/grip intersections and detached-looking fingertip shapes in the historical Assembly-v1 held baseline. Those are defects for the hand-art pass, not accepted final hand placement. The full first-person action library, animated magazine/finger contacts, movement and traversal transitions, compatible runtime replacement-rig import, normal-speed/native input/audio review and Sanders' final artistic acceptance remain unfinished. This reference batch does not add a nineteenth action to the existing eighteen source-integrated rows of the 34-action matrix.
 
 Imported 100x rifle frame bases are compared relatively, with strict physical pivot and vertex tolerances in metres; original native matrix values are retained exactly as object metadata. The trigger pivot is preserved in the editable object frame.
 
 The reconstructed rest frames preserve deformation through an explicit calibrated mapping; they are not a claim that a replacement humanoid Avatar can be imported without validation. Existing compatible character masters and the installed skeleton remain authoritative. The canonical assembly is in Blender weapon-root metres: X right, Y forward, Z up, converted from Unity (x,y,z) as (x,z,y).
 
-The latest verified playable package remains Review 25. Its gameplay, physical ADS, 1.5x zoom, cadence, accuracy, movement, collision and multiplayer are unchanged by these reference-only assets. Continue production without intermediate approval holds; public release remains held for final acceptance.
+The latest verified playable package is Review 26, including the corrected authored finger calibration. Its gameplay, physical ADS, 1.5x zoom, cadence, accuracy, movement, collision and multiplayer are unchanged by the reference package and finger calibration correction. Continue production without intermediate approval holds; public release remains held for final acceptance.
 
 The held assembly includes visible first-person geometry. Shadows-only rear surfaces and disabled optic glass are excluded from that visible reference; the original rifle master remains the complete weapon source for third-person geometry, mechanical hierarchy, LODs and exports.

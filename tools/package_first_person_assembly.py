@@ -1,19 +1,20 @@
 """Package measured FPS assembly sheets, exact socket frames and honest native/Workbench comparisons."""
+import argparse
 import gzip,hashlib,json,math
 from pathlib import Path
 from html.parser import HTMLParser
 import xml.etree.ElementTree as ET
 from PIL import Image,ImageDraw,ImageFont,ImageStat
-root=Path(__file__).resolve().parents[1];folder=root/'ArtSource/Original/ArtPass-v1/FirstPerson/Assembly-v1'
+parser=argparse.ArgumentParser();parser.add_argument('--family',default='Assembly-v1');args=parser.parse_args();assert args.family.startswith('Assembly-v') and args.family[len('Assembly-v'):].isdigit();root=Path(__file__).resolve().parents[1];folder=root/'ArtSource/Original/ArtPass-v1/FirstPerson'/args.family
 spec=json.loads((folder/'production.json').read_text(encoding='utf-8'));views=json.loads((folder/'measured-views.json').read_text(encoding='utf-8'));digest=hashlib.sha256((folder/spec['master']).read_bytes()).hexdigest();assert digest==spec['masterSha256']==views['masterSha256']
 source=folder/spec['source'];assert hashlib.sha256(source.read_bytes()).hexdigest()==spec['sourceSha256'];native=json.loads(gzip.decompress(source.read_bytes()))
 capture=json.loads((folder/'RuntimeSource/capture.json').read_text(encoding='utf-8'));assert capture['sourceSha256']==spec['sourceSha256']
-case=[item for item in ET.parse(root/'Validation/fps-assembly-export-scale-correct.xml').getroot().iter('test-case') if item.attrib.get('fullname','').endswith('FirstPersonAssemblyExport.ExportHeldAssemblyWithSkinProof')];assert len(case)==1 and case[0].attrib['result']=='Passed' and spec['sourceSha256'] in ''.join(case[0].itertext())
+case=[item for item in ET.parse(root/spec.get('nativeResult','Validation/fps-assembly-export-scale-correct.xml')).getroot().iter('test-case') if item.attrib.get('fullname','').endswith('FirstPersonAssemblyExport.ExportHeldAssemblyWithSkinProof')];assert len(case)==1 and case[0].attrib['result']=='Passed' and spec['sourceSha256'] in ''.join(case[0].itertext())
 for item in spec['referencePoses']:assert item['maximumNativeVertexErrorMetres']<.00005 and item['maximumNativeBoneHeadErrorMetres']<.00005
 font=ImageFont.truetype('C:/Windows/Fonts/segoeui.ttf',28);small=ImageFont.truetype('C:/Windows/Fonts/segoeui.ttf',23)
 for item in views['views']:
     name=item['id'];directory=folder/'References'/name;sheet=Image.new('RGB',(3584,2350),'#14252c');draw=ImageDraw.Draw(sheet)
-    draw.text((24,18),'RAIL ARENA / FPS ASSEMBLY v1 / '+name,font=font,fill='white');draw.text((24,59),'Metres / editable 54-bone rig / exact installed four-weight skin and rifle LOD0 / held pose reference',font=small,fill='#a7ddd2')
+    draw.text((24,18),'RAIL ARENA / FPS '+args.family.upper()+' / '+name,font=font,fill='white');draw.text((24,59),'Metres / editable 54-bone rig / exact installed four-weight skin and rifle LOD0 / held pose reference',font=small,fill='#a7ddd2')
     scale=1024/item['orthographicSpanMetres'];ruler=1 if item['orthographicSpanMetres']>=1.2 else .5
     for index,label in enumerate(item['views']):
         x=(index%3)*1024;y=115+(index//3)*1024
@@ -56,6 +57,19 @@ for item in views['views']:
     name=item['id'];html+=f'<h2>{name} / isolated construction layers</h2><p>Same right-side camera and scale. These images expose the held baseline finger/grip defects; they are not a corrected hand-art pass.</p><img loading="lazy" src="References/{name}/right-arms-only.png"><img loading="lazy" src="References/{name}/right-rifle-only.png">'
     html+=f'<h2>{name}</h2><h3>Matched eye and held geometry</h3><img loading="lazy" src="References/{name}/native-eye-comparison.png"><h3>Six equal-scale orthographics</h3><img loading="lazy" src="References/{name}/measured-sheet.png">'
 html+='<p>Remaining: visible finger/grip intersections and detached-looking fingertip shapes in the held baseline, full first-person motion, reload finger/magazine contacts and transitions, additional asset production and complete reference certification, sustained performance and Sanders’ final native input/audio/artistic acceptance. Verified playable build remains Review 25.</p></html>'
+html=html.replace('FirstPerson-Assembly-v1.blend',spec['master'])
+if args.family!='Assembly-v1':
+    html=html.replace('visible finger/grip intersections and detached-looking fingertip shapes in the held baseline, ','fine finger/grip contact polish, ')
+    html=html.replace('These images expose the held baseline finger/grip defects; they are not a corrected hand-art pass.','These layers show the corrected authored finger binding. Fine contact fit and the full hand-art/motion pass remain open.')
+    html=html.replace('Verified playable build remains Review 25.','This corrected calibration is source-integrated; consult the current review handoff for the latest verified Windows package.')
+if (folder/'motion-review.json').is_file():
+    motion=json.loads((folder/'motion-review.json').read_text(encoding='utf-8'))
+    for clip in motion['clips']:assert hashlib.sha256((folder/clip['path']).read_bytes()).hexdigest()==clip['sha256']
+    assert hashlib.sha256((folder/motion['comparisonClip']).read_bytes()).hexdigest()==motion['comparisonClipSha256']
+    section='<h2>Native controlled motion / previous binding and corrected binding</h2><p>Same geometry, actor state and camera. Equip, ADS/recoil articulation and authored reload; silent 60 FPS reference. Joint centres verified across 3,600 corrected samples, maximum separation 0.00274 mm. This is not native input/audio acceptance or a complete action library.</p><video controls preload="metadata" style="width:100%" src="Hand-before-after.mp4"></video><p><a href="motion-review.json">Motion scope and clip hashes</a></p><img loading="lazy" src="Hand-motion-comparison.png">'
+    html=html.replace('</html>',section+'</html>')
+error_mm=max(item['maximumNativeVertexErrorMetres'] for item in spec['referencePoses'])*1000
+html=html.replace('maximum vertex error below 0.003 mm',f'maximum vertex error {error_mm:.6f} mm')
 class Links(HTMLParser):
     def handle_starttag(self,tag,attrs):
         for key,value in attrs:

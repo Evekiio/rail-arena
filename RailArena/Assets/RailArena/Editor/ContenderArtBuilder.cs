@@ -40,7 +40,12 @@ namespace RailArena.Editor
                     var installedPoses = installed.sharedMesh.bindposes;
                     var calibrated = UnityEngine.Object.Instantiate(renderer.sharedMesh);
                     calibrated.name = name + " art-pass calibrated LOD" + level;
-                    calibrated.bindposes = renderer.bones.Select(b => installedPoses[Array.FindIndex(installed.bones, previous => previous.name == b.name)]).ToArray();
+                    // Glove segments are authored in curled finger bind frames. Replacing these
+                    // with the legacy rest frames separates the rigid distal segments when posed.
+                    var sourcePoses = renderer.sharedMesh.bindposes;
+                    calibrated.bindposes = renderer.bones.Select((bone, index) => IsFingerBone(bone.name)
+                        ? sourcePoses[index]
+                        : installedPoses[Array.FindIndex(installed.bones, previous => previous.name == bone.name)]).ToArray();
                     string calibratedPath = Root + name + "_LOD" + level + "-Calibrated.asset";
                     var saved = AssetDatabase.LoadAssetAtPath<Mesh>(calibratedPath);
                     if (saved == null) { AssetDatabase.CreateAsset(calibrated, calibratedPath); saved = calibrated; }
@@ -79,6 +84,10 @@ namespace RailArena.Editor
             if (set.locomotionController == null) throw new InvalidOperationException("Authored retreat controller is missing");
             EditorUtility.SetDirty(set); AssetDatabase.SaveAssets();
         }
+
+        static bool IsFingerBone(string name) =>
+            name.StartsWith("LeftHand", StringComparison.Ordinal) && name != "LeftHand" ||
+            name.StartsWith("RightHand", StringComparison.Ordinal) && name != "RightHand";
 
         sealed class DisposableMaterial : IDisposable
         {
