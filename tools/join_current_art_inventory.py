@@ -49,9 +49,9 @@ text+='''
 3. Refine portal/pad silhouettes, active/depleted states, launch cues and destination readability; complete their measured assembly references.
 4. Complete waterfall lips/foam, cloudscape and distant ruins, plus broader nature placement/variant/wind/contact coverage. Eleven garden modules now have canonical geometry, measured sheets, matched native views and a scoped wind reel; shipping and final acceptance are recorded separately.
 5. Refine the lowest rifle LOD barrel/vent silhouette and complete per-family rig/socket/pivot/collision/construction-layer evidence, UI state/animation references, audio/provenance review and complete legacy/archive references.
-6. Resolve measured performance exceptions, then native sound/input, sustained match and artistic acceptance with Sanders. The archived rifle batch reduced draw calls only 1.1â€“3.8% and did not establish a frame-time improvement; it is not installed. Prioritize the larger environment/material budget and stronger native GPU/pacing evidence. No public release until final acceptance.
+6. Resolve measured performance exceptions, then native sound/input, sustained match and artistic acceptance with Sanders. The archived rifle batch reduced draw calls only 1.1–3.8% and did not establish a frame-time improvement; it is not installed. Prioritize the larger environment/material budget and stronger native GPU/pacing evidence. No public release until final acceptance.
 
 See integrated-review.html, animation-production-matrix.csv and docs/ART-PASS-REVIEW.md for actual in-game/reel/build evidence. No intermediate approval stop is required.
 '''
-(art/'CURRENT-GAPS.md').write_text(text)
+(art/'CURRENT-GAPS.md').write_text(text,encoding='utf-8')
 print('CURRENT_INVENTORY_JOINED',json.dumps(summary))

@@ -17,6 +17,7 @@ foreach($railMode in @('off','on')){
         if(-not $railJob.WaitForExit(180000)){throw "$railMode stone profile timed out"}
         @{mode=$railMode;executable=$railPlayer;executableSha256=$railHash;arguments=$railArguments;pid=$railJob.Id;startedUtc=$railStarted;completedUtc=[DateTime]::UtcNow.ToString('o');exitCode=$railJob.ExitCode}|ConvertTo-Json -Depth 4|Set-Content -LiteralPath ($railOutput+'.run.json')
         if($railJob.ExitCode -ne 0){throw "$railMode stone profile exited $($railJob.ExitCode)"}
+        if((Get-FileHash -LiteralPath $railPlayer -Algorithm SHA256).Hash.ToLowerInvariant() -ne $railHash){throw "Player changed during $railMode profile"}
         $railResult=Get-Content -Raw -LiteralPath $railOutput|ConvertFrom-Json
         if(-not $railResult.passed -or $railResult.exceptions -ne 0){throw "$railMode stone profile reported errors"}
         if($railMode -eq 'off' -and $railResult.stonePaletteRenderers -ne 0){throw 'Off workload unexpectedly used the candidate'}
