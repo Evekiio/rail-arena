@@ -2,8 +2,8 @@
   "masterSha256": "304af42e5dc4dd0f423f996eab42c86fe8121b2f5c0005eec170538c159b06f8",
   "scope": "Native stationary four-character candidate and installed idle review. Simulation frozen for geometry/contact inspection; not native input, audio, moving-world transitions, performance or final artistic acceptance.",
   "sourceIntegrated": true,
-  "shippingBuildPending": true,
-  "currentVerifiedWindowsReview": 22,
+  "shippingBuildPending": false,
+  "currentVerifiedWindowsReview": 23,
   "checks": {
     "candidate": {
       "samples": 964,
@@ -60,5 +60,14 @@
     "maximumSkinFloorY": 0.008502,
     "maximumWristError": 3.5e-05,
     "scope": "Stationary blend snapshots; actor root, velocity and capsule unchanged. Not moving-world or temporal start/stop validation."
+  },
+  "shippingFollowup": {
+    "review": 23,
+    "sourceCommit": "e11805d55c1cf2d235d665b584fe9fdf4e609df9",
+    "fingerprint": "d941a433bbc25bf5366c01c30b6258d9dbf4a2a0139479cc1ccfd7ecb5426458",
+    "evidence": "Validation/art-integrated-final-23.json",
+    "packageVerification": "Validation/art-package-verification-23.json",
+    "packageSha256": "89fa3bef752f185617c89f16558a3e5add7a90b5b4e8794458da22b86ab7d43a",
+    "scope": "This exact art master is included in the identified verified historical Windows source. Later runtime edits, native input/audio, performance and artistic acceptance are separate."
   }
 }

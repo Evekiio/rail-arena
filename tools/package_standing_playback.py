@@ -6,6 +6,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import xml.etree.ElementTree as ET
+from art_shipping_evidence import shipping_followup
 
 root = Path(__file__).resolve().parents[1]
 folder = root / 'ArtSource/Original/ArtPass-v1/Animation/Standing'
@@ -58,9 +59,13 @@ record['blendReview'] = {'samples': len(blend_rows), 'characters': 4, 'direction
                         'scope': 'Stationary blend snapshots; actor root, velocity and capsule unchanged. Not moving-world or temporal start/stop validation.'}
 record['nativeTests'].append('Validation/standing-blends.xml')
 record['csv']['BlendChecks.csv'] = digest(folder / 'BlendChecks.csv')
-(folder / 'review-evidence.json').write_text(json.dumps(record, indent=2) + '\n', encoding='utf-8')
+shipping = shipping_followup(root, folder / 'standing-production.json', spec['masterSha256'])
+if shipping:
+    record.update(shippingBuildPending=False, currentVerifiedWindowsReview=shipping['review'], shippingFollowup=shipping)
+(folder / 'review-evidence.json').write_bytes((json.dumps(record, indent=2) + '\n').encode('utf-8'))
 page = folder / 'index.html'
 text = page.read_text(encoding='utf-8').split('<!-- NATIVE_STANDING -->')[0]
-text += '''<!-- NATIVE_STANDING --><h2>Installed four-character playback</h2><img src="Standing-Family-Poster.png"><video controls preload="metadata" src="Standing-Playback.mp4"></video><p>Four seconds at native 60 Hz; silent. All four identities share the compatible skeleton. The motion is integrated in source, with shipping build still pending. Review22 remains the current verified Windows build.</p><p><a href="review-evidence.json">Native scope and numeric evidence</a> / <a href="Installed-Playback.csv">964 installed samples</a></p>'''
+status = f'This master is included in verified Windows Review{shipping["review"]}; final acceptance remains open.' if shipping else 'Source integrated; shipping verification remains pending.'
+text += '<!-- NATIVE_STANDING --><h2>Installed four-character playback</h2><img src="Standing-Family-Poster.png"><video controls preload="metadata" src="Standing-Playback.mp4"></video><p>Four seconds at native 60 Hz; silent. All four identities share the compatible skeleton. '+status+'</p><p><a href="review-evidence.json">Native scope and numeric evidence</a> / <a href="Installed-Playback.csv">964 installed samples</a></p>'
 page.write_text(text, encoding='utf-8')
 print('STANDING_NATIVE_PACKAGED', json.dumps(checks))

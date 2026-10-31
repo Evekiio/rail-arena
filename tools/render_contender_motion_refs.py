@@ -53,5 +53,5 @@ for clip in spec['clips']:
         'loop':clip['loop'],'loopSeamMatrixDifference':seam if clip['loop'] else None,'minimumWholeSkinHeightMetres':minimum,'maximumWholeSkinHeightMetres':maximum_height,
         'maximumWholeSkinWidthMetres':maximum_width,'boundMeshCount':len(bodies),'scope':'All canonical Blender meshes bound to this rig and baked target checks; not Unity retarget, grip, capsule clearance or installed stance certification'})
 assert hashlib.sha256(master.read_bytes()).hexdigest()==digest
-(folder/('baked-contact-check.json' if check_only else 'baked-contact-review.json')).write_text(json.dumps({'masterSha256':digest,'rendersUpdated':not check_only,'clips':evidence},indent=2)+'\n',encoding='utf-8')
+(folder/('baked-contact-check.json' if check_only else 'baked-contact-review.json')).write_bytes((json.dumps({'masterSha256':digest,'rendersUpdated':not check_only,'clips':evidence},indent=2)+'\n').encode('utf-8'))
 print(family.upper()+'_REFERENCE_CONTACTS_VERIFIED',[(entry['clip'],entry['minimumWholeSkinHeightMetres']) for entry in evidence])

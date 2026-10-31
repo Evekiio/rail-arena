@@ -1,6 +1,8 @@
 """Join current authored evidence to the unchanged Gate 1 action inventory."""
 import csv
+import json
 from pathlib import Path
+from art_shipping_evidence import shipping_followup
 
 root=Path(__file__).resolve().parent.parent
 art=root/'ArtSource/Original/ArtPass-v1'
@@ -39,6 +41,14 @@ for row in rows:
             row.update(productionState='integrated-review',playback='Animation/Crouch/Crouch-Playback.mp4',validation='Animation/Crouch/review-evidence.json',currentEvidence='Five grounded motions installed in the art-controller source with native foot IK, four-character playback, sixteen-direction contacts and immediate stance/lifecycle checks.',remainingEvidence='Moving-world contacts, complete transition/interruption coverage and Sanders native/artistic acceptance remain open.')
     if row['group']=='character' and row['action'] in ('slide entry','slide loop','slide exit'):
         row.update(productionState='integrated-review',sourceMaster='Animation/Slide/Contender-Slide-v1.blend',measuredReferences='Animation/Slide/index.html',playback='Animation/Slide/Slide-Before-After.mp4',validation='Animation/Slide/review-evidence.json',currentEvidence='Original source-frame-clocked entry, feet-first hold and compact recovery; all-character moving trajectory comparison and configurable-duration/lifecycle checks pass.',remainingEvidence='First-person slide actions, broader terrain/combat interruption and native input/audio/artistic acceptance remain open.')
+    followups={('character','idle'):'Animation/Standing/standing-production.json',('first-person','ready/equip'):'Animation/FirstPersonReady/ReadyAction.json'}
+    reference=followups.get((row['group'],row['action']))
+    if reference:
+        record=art/reference;spec=json.loads(record.read_text(encoding='utf-8'))
+        shipping=shipping_followup(root,record,spec['masterSha256'])
+        if shipping:
+            row['currentEvidence']=row['currentEvidence'].replace('Shipping build pending; Review22 remains current.','Shipping evidence recorded separately.').replace('Shipping milestone pending.','Shipping evidence recorded separately.')
+            row['currentEvidence']+=f" This exact master is included in verified Windows Review{shipping['review']} at {shipping['sourceCommit']}; current runtime and final acceptance are separate."
 with (art/'animation-production-matrix.csv').open('w',newline='',encoding='utf-8') as stream:
     writer=csv.DictWriter(stream,columns);writer.writeheader();writer.writerows(rows)
 print('ANIMATION_MATRIX_UPDATED',len(rows),'baseline actions;',sum(row['productionState']=='integrated-review' for row in rows),'with evidence; final approval remains pending')

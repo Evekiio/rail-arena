@@ -29,5 +29,5 @@ sheet.save(folder / 'Ready-Measured-Sheet.png')
 <style>body{background:#102029;color:#dfeee9;font:18px system-ui;margin:32px}a{color:#6ed7d2}img,video{max-width:100%}</style>
 <h1>First-person ready / original Blender action</h1><p>An original 0.3-second rifle raise settles at the exact calibrated rest pose. The visual track does not delay firing, change accuracy, move the player or alter the physical ADS alignment. Original calibrated hands follow the weapon grips.</p>
 <p><a href="Carbine-FirstPerson-Ready-v1.blend">Editable Blender master</a> / <a href="ReadyAction.json">Unity-ready evaluated track and provenance</a> / <a href="measured-views.json">Metre-scaled reference frames</a></p>
-<img src="Ready-Measured-Sheet.png"><p>Six equal-scale views at six moments. These source images show weapon construction and motion only. Native contact, interruption and camera acceptance are recorded separately. Shipping integration and final artistic acceptance remain pending.</p>''', encoding='utf-8')
+<img src="Ready-Measured-Sheet.png"><p>Six equal-scale views at six moments. These source images show weapon construction and motion only. Native contact, interruption, shipping verification and final artistic acceptance are recorded separately.</p>''', encoding='utf-8')
 print('FPS_READY_MEASURED_PACKAGE_READY', spec['masterSha256'])

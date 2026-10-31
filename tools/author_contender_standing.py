@@ -120,5 +120,5 @@ record = {'id': 'ANIM-STANDING-v1', 'master': master.name,
                      'loopSeamMatrixDifference': seam, 'ankleTargetsBlenderMetres': ankle_targets,
                      'export': export.relative_to(root).as_posix(),
                      'exportSha256': hashlib.sha256(export.read_bytes()).hexdigest()}]}
-(folder / 'standing-production.json').write_text(json.dumps(record, indent=2) + '\n', encoding='utf-8')
+(folder / 'standing-production.json').write_bytes((json.dumps(record, indent=2) + '\n').encode('utf-8'))
 print('AUTHORED_STANDING_EXPORTED', maximum_error, seam)

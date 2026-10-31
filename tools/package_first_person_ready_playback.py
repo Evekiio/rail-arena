@@ -7,6 +7,7 @@ import shutil
 import subprocess
 import xml.etree.ElementTree as ET
 from PIL import Image, ImageDraw, ImageFont
+from art_shipping_evidence import shipping_followup
 
 root = Path(__file__).resolve().parents[1]
 folder = root / 'ArtSource/Original/ArtPass-v1/Animation/FirstPersonReady'
@@ -61,11 +62,15 @@ record = {'masterSha256': spec['masterSha256'], 'sourceAssetSha256': digest(asse
     'movies': movies, 'comparisons': comparisons,
     'provisionalEvidence': {'Validation/fps-ready-native.xml': 'Initial fixture froze before the inactive view weapon was activated; one null-reference failure, three legacy regressions passed.',
                             'Validation/fps-ready-active-native.xml': 'Numeric/contact review passes; menu aerial camera was unsuitable for final gameplay-view evidence. Superseded by player-eye review.'}}
+shipping = shipping_followup(root, folder / 'ReadyAction.json', spec['masterSha256'])
+if shipping:
+    record.update(shippingBuildPending=False, currentVerifiedWindowsReview=shipping['review'], shippingFollowup=shipping)
 (folder / 'review-evidence.json').write_bytes((json.dumps(record, indent=2) + '\n').encode('utf-8'))
 page = folder / 'index.html'
 html = page.read_text(encoding='utf-8').split('<!-- NATIVE_READY -->')[0]
 html += '<!-- NATIVE_READY --><h2>Player-eye native comparison</h2><p>Prior procedural raise on the left; authored ready on the right. Four arm appearances, hip, ADS and ADS entry. Six seconds at 60 Hz, silent. Camera and weapon samples match; background atmosphere time is not identical. The main-camera capture excludes the HUD and illuminated overlay reticle.</p><video controls preload="metadata" src="Ready-Before-After.mp4"></video>'
 html += ''.join('<h3>' + item['path'].split('-Comparison')[0] + '</h3><img src="' + item['path'] + '">' for item in comparisons)
-html += '<p><a href="review-evidence.json">Source and native evidence</a> / <a href="Playback.csv">720 samples</a> / <a href="Ready-Playback.mp4">Authored playback only</a>. Source integrated; the next Windows milestone and final artistic acceptance remain pending.</p>'
+status = f'This master is included in verified Windows Review{shipping["review"]}; final acceptance remains open.' if shipping else 'Source integrated; shipping verification remains pending.'
+html += '<p><a href="review-evidence.json">Source and native evidence</a> / <a href="Playback.csv">720 samples</a> / <a href="Ready-Playback.mp4">Authored playback only</a>. '+status+'</p>'
 page.write_text(html, encoding='utf-8')
 print('FPS_READY_NATIVE_PACKAGED', record['samples'], 'samples;', record['fullAdsSamples'], 'full ADS;', record['maximumRecordedWristError'], 'maximum wrist error')

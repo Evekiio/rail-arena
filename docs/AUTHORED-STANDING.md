@@ -1,6 +1,6 @@
 # Original standing-ready motion
 
-The Sky Gardens art graph now uses `StandingReady` at zero movement speed. The original legacy graph is preserved. This is source integration after Windows Review22; that verified portable build remains current until the next shipping milestone. The new loop does not change gameplay movement, weapon timing, controller dimensions, stance setters or multiplayer messages.
+The Sky Gardens art graph now uses `StandingReady` at zero movement speed. The original legacy graph is preserved. The loop was integrated after Review22 and is now included in verified Windows Review23; shipping evidence is in art-integrated-final-23.json. The new loop does not change gameplay movement, weapon timing, controller dimensions, stance setters or multiplayer messages.
 
 The canonical source is `ArtSource/Original/ArtPass-v1/Animation/Standing/Contender-Standing-v1.blend`. It retains the original shared skeleton and body parts, metre units and a 60 Hz, four-second loop. Slight knee flex and restrained breathing avoid a rigid standing silhouette. Original ankle targets stay planted. Arm bone poses are construction references; Unity's existing weapon contact solution remains authoritative for the live hands.
 
