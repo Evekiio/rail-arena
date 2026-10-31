@@ -16,6 +16,7 @@ namespace RailArena.Editor
             ImportClips(new[] { "AdvanceWalk", "AdvanceJog", "AdvanceRun" }, "motion-advance-import.json");
             PrepareStrafeCandidates();
             PrepareReactionCandidates();
+            PrepareCrouchCandidates();
             var original = Resources.Load<GameObject>("Characters/Contender").GetComponent<ContenderPresentation>().Animator.runtimeAnimatorController;
             foreach (string name in new[] { "Bot01", "Bot02", "Bot03" })
                 if (Resources.Load<GameObject>("Characters/Stylized/" + name).GetComponent<ContenderPresentation>().Animator.runtimeAnimatorController != original)
@@ -35,7 +36,7 @@ namespace RailArena.Editor
                 }
             if (changed != 6) throw new InvalidOperationException("Exactly six forward and backward locomotion clips must be replaced");
             controller.ApplyOverrides(overrides); EditorUtility.SetDirty(controller); AssetDatabase.SaveAssets();
-            Debug.Log("AUTHORED_LOCOMOTION_READY twelve cardinal gaits, three airborne states and two combat reactions; legacy controller preserved");
+            Debug.Log("AUTHORED_LOCOMOTION_READY twelve cardinal gaits, five grounded crouch motions, three airborne states and two combat reactions; legacy controller preserved");
         }
         static AnimatorController PrepareArtStateGraph(RuntimeAnimatorController original)
         {
@@ -62,6 +63,7 @@ namespace RailArena.Editor
             tree.blendParameter = "MotionX"; tree.blendParameterY = "MotionZ"; tree.useAutomaticThresholds = false; tree.children = children.ToArray();
             states["Locomotion"].speed = 1; states["Locomotion"].speedParameterActive = false;
             EditorUtility.SetDirty(tree); EditorUtility.SetDirty(states["Locomotion"]);
+            PrepareCrouchState(graph, states);
             foreach (var pair in new[] { ("Jump", "Takeoff"), ("Air", "AirborneHold"), ("Land", "LandingRecover") })
             {
                 var state = states[pair.Item1];
@@ -99,6 +101,46 @@ namespace RailArena.Editor
         }
         static AnimationClip AuthoredClip(string name) => AssetDatabase.LoadAllAssetsAtPath("Assets/RailArena/Art/ArtPass/Animation/" + name + ".fbx")
             .OfType<AnimationClip>().Single(clip => !clip.name.StartsWith("__preview__", StringComparison.Ordinal));
+
+        static void PrepareCrouchState(AnimatorController graph, System.Collections.Generic.Dictionary<string,AnimatorState> states)
+        {
+            if(!graph.parameters.Any(parameter=>parameter.name=="AuthoredCrouch"))graph.AddParameter("AuthoredCrouch",AnimatorControllerParameterType.Bool);
+            var machine=graph.layers[0].stateMachine;
+            if(!states.TryGetValue("Crouch",out var state))state=machine.AddState("Crouch");
+            var tree=state.motion as BlendTree;
+            if(tree==null){tree=new BlendTree();AssetDatabase.AddObjectToAsset(tree,graph);}
+            tree.name="Authored crouch directions";tree.blendType=BlendTreeType.FreeformDirectional2D;tree.blendParameter="MotionX";tree.blendParameterY="MotionZ";tree.useAutomaticThresholds=false;
+            tree.children=new[]{new ChildMotion{motion=AuthoredClip("CrouchIdle"),position=Vector2.zero,timeScale=1},
+                new ChildMotion{motion=AuthoredClip("CrouchForward"),position=new Vector2(0,3.6f),timeScale=1},new ChildMotion{motion=AuthoredClip("CrouchBackward"),position=new Vector2(0,-3.6f),timeScale=1},
+                new ChildMotion{motion=AuthoredClip("CrouchLeft"),position=new Vector2(-3.6f,0),timeScale=1},new ChildMotion{motion=AuthoredClip("CrouchRight"),position=new Vector2(3.6f,0),timeScale=1}};
+            state.motion=tree;state.speed=1;state.speedParameterActive=false;state.iKOnFeet=true;state.tag="AuthoredCrouch";
+            var enter=machine.anyStateTransitions.SingleOrDefault(item=>item.name=="Art grounded crouch");
+            if(enter==null)enter=machine.AddAnyStateTransition(state);
+            enter.name="Art grounded crouch";enter.conditions=new[]{new AnimatorCondition{mode=AnimatorConditionMode.If,parameter="AuthoredCrouch"},new AnimatorCondition{mode=AnimatorConditionMode.If,parameter="Grounded"},new AnimatorCondition{mode=AnimatorConditionMode.IfNot,parameter="Dead"}};
+            enter.hasExitTime=false;enter.duration=0;enter.canTransitionToSelf=false;
+            CrouchTransition(state,states["Locomotion"],"Art crouch stand",0,new AnimatorCondition{mode=AnimatorConditionMode.IfNot,parameter="AuthoredCrouch"},new AnimatorCondition{mode=AnimatorConditionMode.If,parameter="Grounded"});
+            CrouchTransition(state,states["Jump"],"Art crouch jump",.06f,new AnimatorCondition{mode=AnimatorConditionMode.IfNot,parameter="Grounded"},new AnimatorCondition{mode=AnimatorConditionMode.Greater,parameter="Vertical",threshold=0});
+            CrouchTransition(state,states["Air"],"Art crouch fall",.06f,new AnimatorCondition{mode=AnimatorConditionMode.IfNot,parameter="Grounded"},new AnimatorCondition{mode=AnimatorConditionMode.Less,parameter="Vertical",threshold=.0001f});
+            EditorUtility.SetDirty(tree);EditorUtility.SetDirty(state);EditorUtility.SetDirty(enter);
+        }
+        static void CrouchTransition(AnimatorState source,AnimatorState destination,string name,float duration,params AnimatorCondition[] conditions)
+        {
+            var transition=source.transitions.SingleOrDefault(item=>item.name==name)??source.transitions.SingleOrDefault(item=>item.destinationState==destination&&string.IsNullOrEmpty(item.name));
+            if(transition==null)transition=source.AddTransition(destination);
+            transition.name=name;transition.hasExitTime=false;transition.duration=duration;transition.conditions=conditions;EditorUtility.SetDirty(transition);
+        }
+        public static void AuditGraphRepeatability()
+        {
+            var original=Resources.Load<GameObject>("Characters/Contender").GetComponent<ContenderPresentation>().Animator.runtimeAnimatorController;
+            PrepareArtStateGraph(original);AssetDatabase.SaveAssets();
+            const string path="Assets/Resources/Art/ContenderMotion.controller";byte[] before=File.ReadAllBytes(path);
+            PrepareArtStateGraph(original);AssetDatabase.SaveAssets();byte[] after=File.ReadAllBytes(path);
+            if(!before.SequenceEqual(after))throw new InvalidOperationException("Art graph preparation must preserve serialized identities across repeated runs");
+            Directory.CreateDirectory("../Validation");
+            using(var sha=System.Security.Cryptography.SHA256.Create())
+                File.WriteAllText("../Validation/motion-crouch-graph-repeatability.json","{\"identical\":true,\"controllerSha256\":\""+BitConverter.ToString(sha.ComputeHash(after)).Replace("-","").ToLowerInvariant()+"\"}\n");
+            Debug.Log("ART_GRAPH_REPEATABILITY_VERIFIED");
+        }
         [Serializable] sealed class ClipEvidence
         {
             public string name, path;
@@ -123,6 +165,9 @@ namespace RailArena.Editor
         public static void PrepareReactionCandidates()
             => ImportClips(new[] { "HitResponse", "DeathFall" }, "motion-reactions-import.json");
 
+        public static void PrepareCrouchCandidates()
+            => ImportClips(new[] { "CrouchIdle", "CrouchForward", "CrouchBackward", "CrouchLeft", "CrouchRight", "CrouchEnter", "CrouchExit" }, "motion-crouch-import.json");
+
         static void ImportClips(string[] names, string evidenceFile)
         {
             var source = (ModelImporter)AssetImporter.GetAtPath("Assets/RailArena/Art/StylizedContenders/Player_LOD0.fbx");
@@ -140,7 +185,8 @@ namespace RailArena.Editor
                 importer.SaveAndReimport();
                 var settings = importer.defaultClipAnimations;
                 if (settings.Length != 1) throw new InvalidOperationException("One authored take is required per motion export: " + name);
-                settings[0].name = name; settings[0].loopTime = name.StartsWith("Retreat", StringComparison.Ordinal) || name.StartsWith("Advance", StringComparison.Ordinal) || name.StartsWith("Strafe", StringComparison.Ordinal) || name == "AirborneHold"; settings[0].loopPose = settings[0].loopTime;
+                settings[0].name = name; settings[0].loopTime = name.StartsWith("Retreat", StringComparison.Ordinal) || name.StartsWith("Advance", StringComparison.Ordinal) || name.StartsWith("Strafe", StringComparison.Ordinal) || name == "AirborneHold" ||
+                    (name.StartsWith("Crouch", StringComparison.Ordinal) && name != "CrouchEnter" && name != "CrouchExit"); settings[0].loopPose = settings[0].loopTime;
                 settings[0].lockRootRotation = true; settings[0].lockRootPositionXZ = true; settings[0].lockRootHeightY = true;
                 settings[0].keepOriginalOrientation = true; settings[0].keepOriginalPositionXZ = true; settings[0].keepOriginalPositionY = true;
                 importer.clipAnimations = settings; importer.SaveAndReimport();

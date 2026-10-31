@@ -1,0 +1,41 @@
+{
+  "scope": "Five grounded motions sampled through the installed art controller at their native cadence, with native foot IK and live rifle grip solve. Manual 60 Hz pose staging; simulation held for geometry inspection. Not native input/audio, moving-world foot lock, complete interruption coverage or Windows player acceptance.",
+  "sourceMasterSha256": "550218e2cd56b786778c016124698152f100d1ee89e4eecc77ec0431a96e0ca4",
+  "controllerSha256": "b85a091310a249ef404fc7ea13474281b33848eee38fb0c89579aa699f4b3157",
+  "graphPreparationByteStable": true,
+  "focusedResults": "Validation/motion-crouch-final-focused.xml",
+  "focusedTestsPassed": 3,
+  "installedFrames": 600,
+  "installedCharacterSamples": 2400,
+  "directionalPoseSamples": 544,
+  "minimumInstalledSkinYMetres": 0.008424,
+  "maximumInstalledSkinYMetres": 1.273188,
+  "minimumDirectionalSkinYMetres": 0.008423,
+  "maximumDirectionalFloorHeightMetres": 0.013705,
+  "maximumWristErrorMetres": 1.4e-05,
+  "lifecycle": "Immediate stance pose/capsule synchronization, jump and slide fallbacks, unchanged slide ticks, death/respawn, restored legacy lowering and unchanged hitbox collider definitions/attachments for four characters.",
+  "nativeFootIK": "Required for blended diagonal crouch contacts. Isolated source clips passed with IK off; the first live blend review failed floor bounds. Native state foot IK resolves the tested 16 directions without moving actor roots.",
+  "installedClips": [
+    "CrouchIdle",
+    "CrouchForward",
+    "CrouchBackward",
+    "CrouchLeft",
+    "CrouchRight"
+  ],
+  "referenceOnlyClips": [
+    "CrouchEnter",
+    "CrouchExit"
+  ],
+  "transitionPolicy": "Preserve the existing immediate crouch/stand response. Full-body enter/exit references are not installed; a cosmetic transition solution that preserves hitbox timing remains open.",
+  "video": {
+    "path": "Crouch-Playback.mp4",
+    "width": 1280,
+    "height": 720,
+    "fps": 60,
+    "frames": 600,
+    "seconds": 10,
+    "audio": false
+  },
+  "windowsBuild": "Review 17 verified Windows integration; see Validation/art-integrated-final-17.json",
+  "finalAcceptance": "Sanders native input/sound/artistic acceptance pending"
+}
