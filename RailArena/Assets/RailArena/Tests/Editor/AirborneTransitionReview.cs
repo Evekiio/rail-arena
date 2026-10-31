@@ -34,7 +34,7 @@ namespace RailArena.Tests
             var target=new RenderTexture(1280,720,24);target.Create();var pixels=new Texture2D(1280,720,TextureFormat.RGB24,false);
             var update=typeof(ContenderPresentation).GetMethod("Update",BindingFlags.Instance|BindingFlags.NonPublic);
             var soles=new RetreatPlaybackReview.FootSurface(actor);
-            string folder=Path.GetFullPath("../Validation/AirborneTransitions");Directory.CreateDirectory(folder);
+            string folder=Path.GetFullPath(System.Environment.GetEnvironmentVariable("RA_AIRBORNE_REVIEW_OUTPUT")??"../Validation/AirborneTransitions");Directory.CreateDirectory(folder);
             var csv=new System.Text.StringBuilder("frame,scenario,rootX,rootY,rootZ,verticalVelocity,grounded,state,normalizedTime,minimumSoleY\n");
             int oldRate=Time.captureFramerate;Time.captureFramerate=60;int outputFrame=0;
             try

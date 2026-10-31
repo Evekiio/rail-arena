@@ -24,6 +24,7 @@ namespace RailArena
         private float corpseGround;
         private Transform[] surfaceBones;
         private CrouchPose crouchPose;
+        private bool directionalMotion;
         private Quaternion headAimOffset;
         private static readonly float[] SurfaceMargins = { .17f, .2f, .07f, .07f, .035f, .035f };
 #if UNITY_EDITOR
@@ -33,6 +34,16 @@ namespace RailArena
         private static readonly int Grounded = UnityEngine.Animator.StringToHash("Grounded");
         private static readonly int Vertical = UnityEngine.Animator.StringToHash("Vertical");
         private static readonly int Dead = UnityEngine.Animator.StringToHash("Dead");
+        private static readonly int MotionX = UnityEngine.Animator.StringToHash("MotionX");
+        private static readonly int MotionZ = UnityEngine.Animator.StringToHash("MotionZ");
+
+        public void SetMotionController(RuntimeAnimatorController controller)
+        {
+            crouchPose?.Restore();
+            Animator.runtimeAnimatorController = controller;
+            directionalMotion = System.Array.Exists(Animator.parameters, item => item.nameHash == MotionX) &&
+                System.Array.Exists(Animator.parameters, item => item.nameHash == MotionZ);
+        }
 
         public void Initialize(ArenaActor owner, ArenaSession authority)
         {
@@ -86,28 +97,42 @@ namespace RailArena
             bool worldPaused = session.Paused && !session.IsOnline;
             Animator.speed = worldPaused ? 0 : 1;
             if (worldPaused) return;
-            crouchPose.Restore();
             int chargeTick = actor == session.Human ? session.LocalSimulationTick : session.Match.Tick;
             Railgun.SetCharge((actor.NextShotTick - chargeTick) / (float)Mathf.Max(1, actor.Magazine.LastShotInterval));
+            ApplyMotionState(Time.deltaTime);
+            recoilSpring.Step(Time.deltaTime);
+            recoil = recoilSpring.Kick;
+        }
+
+        /// <summary>Observe actual velocity and stance. Used by live animation and measured pose review.</summary>
+        public void ApplyMotionState(float delta)
+        {
+            if (actor == null) return;
+            crouchPose?.Restore();
             float speed = new Vector2(actor.Velocity.x, actor.Velocity.z).magnitude;
             Vector3 aimForward = Quaternion.Euler(0, actor.Command.Yaw, 0) * Vector3.forward;
             bool backwards = speed > .5f && Vector3.Dot(actor.Velocity, aimForward) < -speed * .2f;
             bool onGround = actor.Grounded && actor.AirborneTicks == 0;
-            Animator.SetFloat(Speed, backwards ? -speed : speed, .09f, Time.deltaTime);
+            if (delta > 0) Animator.SetFloat(Speed, backwards ? -speed : speed, .09f, delta);
+            else Animator.SetFloat(Speed, backwards ? -speed : speed);
+            if (directionalMotion)
+            {
+                var local = Quaternion.Inverse(Quaternion.Euler(0, actor.Command.Yaw, 0)) * actor.Velocity;
+                if (delta > 0) { Animator.SetFloat(MotionX, local.x, .09f, delta); Animator.SetFloat(MotionZ, local.z, .09f, delta); }
+                else { Animator.SetFloat(MotionX, local.x); Animator.SetFloat(MotionZ, local.z); }
+            }
             Animator.SetFloat(Vertical, actor.Velocity.y);
             Animator.SetBool(Grounded, onGround);
             Animator.SetBool(Dead, !actor.Alive);
             if (onGround && !grounded && actor.Alive) Animator.SetTrigger("Land");
             grounded = onGround;
-            recoilSpring.Step(Time.deltaTime);
-            recoil = recoilSpring.Kick;
             if (!actor.Alive) return;
-            // Turn the legs toward travel while keeping the torso and weapon aimed at the opponent.
+            // Directional art faces aim; the legacy controller turns its legs toward travel.
             float aimYaw = actor.Command.Yaw;
             float travelYaw = speed > .5f ? Mathf.Atan2(actor.Velocity.x, actor.Velocity.z) * Mathf.Rad2Deg : aimYaw;
             if (backwards) travelYaw += 180;
             float offset = Mathf.Clamp(Mathf.DeltaAngle(aimYaw, travelYaw), -65, 65);
-            bodyYaw = Mathf.LerpAngle(bodyYaw, aimYaw + offset, 1 - Mathf.Exp(-Time.deltaTime * 16));
+            bodyYaw = Mathf.LerpAngle(bodyYaw, directionalMotion ? aimYaw : aimYaw + offset, delta > 0 ? 1 - Mathf.Exp(-delta * 16) : 1);
             transform.localRotation = Quaternion.Euler(0, bodyYaw, 0);
             Animator.SetFloat("Gait", Mathf.Clamp(speed / 5.5f, .85f, 1.8f));
         }
