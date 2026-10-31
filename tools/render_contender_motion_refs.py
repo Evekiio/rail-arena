@@ -9,7 +9,7 @@ from mathutils import Vector
 root=Path(sys.argv[sys.argv.index('--')+1]).resolve()
 check_only='--check-only' in sys.argv
 family=sys.argv[sys.argv.index('--family')+1] if '--family' in sys.argv else 'Crouch'
-assert family in ('Crouch','Slide'),family
+assert family in ('Crouch','Slide','Standing'),family
 folder=root/'ArtSource/Original/ArtPass-v1/Animation'/family
 spec=json.loads((folder/(family.lower()+'-production.json')).read_text(encoding='utf-8'))
 master=folder/spec['master'];digest=hashlib.sha256(master.read_bytes()).hexdigest();assert digest==spec['masterSha256']

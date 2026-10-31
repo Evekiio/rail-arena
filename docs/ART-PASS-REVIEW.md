@@ -55,7 +55,7 @@ Combat P95 exceeds the target. Performance acceptance remains open. Measurements
 
 ## Continuing production and QA
 
-The joined inventory contains 3,705 unique file paths, including 1,472 production-evidence paths, 10 explicitly archived research paths and zero missing paths. These are not counts of unique 3D models or complete reference certification. The original 34-action matrix remains intact; sixteen rows have integrated-review evidence, with final acceptance pending.
+The joined inventory contains 3,753 unique file paths, including 1,520 production-evidence paths, 10 explicitly archived research paths and zero missing paths. These are not counts of unique 3D models or complete reference certification. The original 34-action matrix remains intact; seventeen rows have source integration evidence, with final acceptance pending. The standing-ready loop was integrated after Review22 and is not in that shipping artifact.
 
 Remaining work includes standing/crouch cosmetic transitions, broader FPS/body actions and combat interruptions, complete terrain/traversal/remote-motion coverage, additional structural framing and cover production, device assembly and state refinement, nature variants, complete per-asset reference evidence, UI/audio acceptance and measured performance. The deferred ADS/portal corner case remains recorded for reproduction if it blocks acceptance. See [production status](../ArtSource/Original/ArtPass-v1/Gate2/PRODUCTION-STATUS.md).
 

@@ -18,6 +18,7 @@ namespace RailArena.Editor
             PrepareReactionCandidates();
             PrepareCrouchCandidates();
             PrepareSlideCandidates();
+            PrepareStandingCandidates();
             var original = Resources.Load<GameObject>("Characters/Contender").GetComponent<ContenderPresentation>().Animator.runtimeAnimatorController;
             foreach (string name in new[] { "Bot01", "Bot02", "Bot03" })
                 if (Resources.Load<GameObject>("Characters/Stylized/" + name).GetComponent<ContenderPresentation>().Animator.runtimeAnimatorController != original)
@@ -56,7 +57,7 @@ namespace RailArena.Editor
             var legacyTree = (BlendTree)((AnimatorController)original).layers[0].stateMachine.states.Single(child => child.state.name == "Locomotion").state.motion;
             var tree = (BlendTree)states["Locomotion"].motion;
             var children = legacyTree.children.Select(child => new ChildMotion
-            { motion = child.motion, position = new Vector2(0, child.threshold), timeScale = 1 }).ToList();
+            { motion = Mathf.Abs(child.threshold) < .0001f ? AuthoredClip("StandingReady") : child.motion, position = new Vector2(0, child.threshold), timeScale = 1 }).ToList();
             foreach (var direction in new[] { ("Left", -1), ("Right", 1) })
             foreach (var gait in new[] { ("Walk", 1.5f), ("Jog", 4f), ("Run", 9f) })
                 children.Add(new ChildMotion { motion = AuthoredClip("Strafe" + direction.Item1 + gait.Item1), position = new Vector2(direction.Item2 * gait.Item2, 0), timeScale = 1 });
@@ -152,6 +153,8 @@ namespace RailArena.Editor
             => AuditGraphRepeatability("motion-crouch-graph-repeatability.json");
         public static void AuditSlideGraphRepeatability()
             => AuditGraphRepeatability("motion-slide-graph-repeatability.json");
+        public static void AuditStandingGraphRepeatability()
+            => AuditGraphRepeatability("motion-standing-graph-repeatability.json");
         static void AuditGraphRepeatability(string evidenceFile)
         {
             var original=Resources.Load<GameObject>("Characters/Contender").GetComponent<ContenderPresentation>().Animator.runtimeAnimatorController;
@@ -190,6 +193,8 @@ namespace RailArena.Editor
 
         public static void PrepareCrouchCandidates()
             => ImportClips(new[] { "CrouchIdle", "CrouchForward", "CrouchBackward", "CrouchLeft", "CrouchRight", "CrouchEnter", "CrouchExit" }, "motion-crouch-import.json");
+        public static void PrepareStandingCandidates()
+            => ImportClips(new[] { "StandingReady" }, "motion-standing-import.json");
 
         public static void PrepareSlideCandidates()
             => ImportClips(new[] { "SlideEnter", "SlideHold", "SlideRecover" }, "motion-slide-import.json");
@@ -212,7 +217,7 @@ namespace RailArena.Editor
                 var settings = importer.defaultClipAnimations;
                 if (settings.Length != 1) throw new InvalidOperationException("One authored take is required per motion export: " + name);
                 settings[0].name = name; settings[0].loopTime = name.StartsWith("Retreat", StringComparison.Ordinal) || name.StartsWith("Advance", StringComparison.Ordinal) || name.StartsWith("Strafe", StringComparison.Ordinal) || name == "AirborneHold" ||
-                    name == "SlideHold" || (name.StartsWith("Crouch", StringComparison.Ordinal) && name != "CrouchEnter" && name != "CrouchExit"); settings[0].loopPose = settings[0].loopTime;
+                    name == "SlideHold" || name == "StandingReady" || (name.StartsWith("Crouch", StringComparison.Ordinal) && name != "CrouchEnter" && name != "CrouchExit"); settings[0].loopPose = settings[0].loopTime;
                 settings[0].lockRootRotation = true; settings[0].lockRootPositionXZ = true; settings[0].lockRootHeightY = true;
                 settings[0].keepOriginalOrientation = true; settings[0].keepOriginalPositionXZ = true; settings[0].keepOriginalPositionY = true;
                 importer.clipAnimations = settings; importer.SaveAndReimport();
