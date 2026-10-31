@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-31 14:43:47Z" end-time="2026-10-31 14:43:52Z" duration="5.2880584">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="320" result="Passed" start-time="2026-10-31 14:43:47Z" end-time="2026-10-31 14:43:52Z" duration="5.288058" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1482" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="320" result="Passed" start-time="2026-10-31 14:43:47Z" end-time="2026-10-31 14:43:52Z" duration="5.254771" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="8324" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1483" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="320" result="Passed" start-time="2026-10-31 14:43:47Z" end-time="2026-10-31 14:43:52Z" duration="5.247473" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1484" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="320" result="Passed" start-time="2026-10-31 14:43:47Z" end-time="2026-10-31 14:43:52Z" duration="5.239843" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1224" name="PortalRefreshRenderingReview" fullname="RailArena.Tests.PortalRefreshRenderingReview" classname="RailArena.Tests.PortalRefreshRenderingReview" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-31 14:43:47Z" end-time="2026-10-31 14:43:52Z" duration="5.221641" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1225" name="DistantCacheRetainsPixelsAndCloseScopedViewsStayLive" fullname="RailArena.Tests.PortalRefreshRenderingReview.DistantCacheRetainsPixelsAndCloseScopedViewsStayLive" methodname="DistantCacheRetainsPixelsAndCloseScopedViewsStayLive" classname="RailArena.Tests.PortalRefreshRenderingReview" runstate="Runnable" seed="2008760770" result="Passed" start-time="2026-10-31 14:43:47Z" end-time="2026-10-31 14:43:52Z" duration="5.195541" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PORTAL_REFRESH_NATIVE_PASSED six destination directions / cached pixels / nearby and scoped full refresh / actor invariants
+Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

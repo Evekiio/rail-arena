@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Passed" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-31 14:29:54Z" end-time="2026-10-31 14:29:54Z" duration="0.1242843">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="319" result="Passed" start-time="2026-10-31 14:29:54Z" end-time="2026-10-31 14:29:54Z" duration="0.124284" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1480" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="319" result="Passed" start-time="2026-10-31 14:29:54Z" end-time="2026-10-31 14:29:54Z" duration="0.105618" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="16772" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1481" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="319" result="Passed" start-time="2026-10-31 14:29:54Z" end-time="2026-10-31 14:29:54Z" duration="0.080699" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1482" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="319" result="Passed" start-time="2026-10-31 14:29:54Z" end-time="2026-10-31 14:29:54Z" duration="0.069871" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1219" name="PortalRefreshPolicyTests" fullname="RailArena.Tests.PortalRefreshPolicyTests" classname="RailArena.Tests.PortalRefreshPolicyTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-31 14:29:54Z" end-time="2026-10-31 14:29:54Z" duration="0.050430" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1222" name="CachedCropKeepsActualApertureAndClippedScreenEdgesInside" fullname="RailArena.Tests.PortalRefreshPolicyTests.CachedCropKeepsActualApertureAndClippedScreenEdgesInside" methodname="CachedCropKeepsActualApertureAndClippedScreenEdgesInside" classname="RailArena.Tests.PortalRefreshPolicyTests" runstate="Runnable" seed="1987082703" result="Passed" start-time="2026-10-31 14:29:54Z" end-time="2026-10-31 14:29:54Z" duration="0.016286" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1220" name="CloseScopedAndLargeAperturesNeverDropRefreshes" fullname="RailArena.Tests.PortalRefreshPolicyTests.CloseScopedAndLargeAperturesNeverDropRefreshes" methodname="CloseScopedAndLargeAperturesNeverDropRefreshes" classname="RailArena.Tests.PortalRefreshPolicyTests" runstate="Runnable" seed="992310180" result="Passed" start-time="2026-10-31 14:29:54Z" end-time="2026-10-31 14:29:54Z" duration="0.006712" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1223" name="DistantCameraPhasesDistributeTheMeasuredCombatWorkload" fullname="RailArena.Tests.PortalRefreshPolicyTests.DistantCameraPhasesDistributeTheMeasuredCombatWorkload" methodname="DistantCameraPhasesDistributeTheMeasuredCombatWorkload" classname="RailArena.Tests.PortalRefreshPolicyTests" runstate="Runnable" seed="934793425" result="Passed" start-time="2026-10-31 14:29:54Z" end-time="2026-10-31 14:29:54Z" duration="0.002468" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1221" name="OnlyDistantSmallAperturesUseTwoOrFourFrames" fullname="RailArena.Tests.PortalRefreshPolicyTests.OnlyDistantSmallAperturesUseTwoOrFourFrames" methodname="OnlyDistantSmallAperturesUseTwoOrFourFrames" classname="RailArena.Tests.PortalRefreshPolicyTests" runstate="Runnable" seed="1089780179" result="Passed" start-time="2026-10-31 14:29:54Z" end-time="2026-10-31 14:29:54Z" duration="0.000339" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

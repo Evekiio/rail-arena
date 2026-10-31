@@ -40,7 +40,7 @@ namespace RailArena
             public Metric[] counters;
             public PortalTarget[] portalTargets;
         }
-        [Serializable] sealed class PortalTarget { public int id,renders,width,height;public string name;public Rect viewport; }
+        [Serializable] sealed class PortalTarget { public int id,renders,width,height,skipped,interval;public string name;public Rect viewport; }
         [Serializable] sealed class Report
         {
             public string schema="rail-arena-art-frame-profile/1";
@@ -49,7 +49,7 @@ namespace RailArena
             public int warmupFrames=WarmupFrames,sampleFrames=SampleFrames,exceptions;
             public int width,height,simulationHz=60,randomSeed=2147;
             public bool gpuRecorderSupported,passed;
-            public bool apertureCropping;
+            public bool apertureCropping,adaptivePortalRefresh;
             public bool frameTimingFeatureEnabled;
             public Reading[] views;
         }
@@ -110,7 +110,7 @@ namespace RailArena
             session.AutomatedHuman=true;session.StartSession(true,3,1,TargetScenario.Combat);yield return new WaitForSecondsRealtime(5);
             int priorCaptureRate=Time.captureFramerate;Time.captureFramerate=60;UnityEngine.Random.InitState(2147);session.StartSession(true,3,1,TargetScenario.Combat);yield return null;yield return null;
             var portals=FindObjectsByType<PortalView>(FindObjectsSortMode.None);observer.cullingMask=(observer.cullingMask|(1<<8))&~(1<<11);observer.enabled=false;
-            bool cropped=Array.IndexOf(args,"--profile-portal-crop-off")<0;foreach(var portal in portals)portal.CropToAperture=cropped;
+            bool cropped=Array.IndexOf(args,"--profile-portal-crop-off")<0;bool adaptive=Array.IndexOf(args,"--profile-portal-refresh")>=0;foreach(var portal in portals){portal.CropToAperture=cropped;portal.AdaptiveRefresh=adaptive;}
             var texture=new RenderTexture(1920,1080,24);texture.Create();var pixel=new Texture2D(1,1,TextureFormat.RGB24,false);var image=new Texture2D(1920,1080,TextureFormat.RGB24,false);
             var renderRequest=new RenderPipeline.StandardRequest{destination=texture};
             var counters=OpenCounters(output);var readings=new List<Reading>();var endOfFrame=new WaitForEndOfFrame();var timing=new FrameTiming[1];
@@ -122,11 +122,11 @@ namespace RailArena
                 {
                     position=pose.Item2;target=pose.Item3;staged=true;
                     var samples=new Sample[SampleFrames];var raw=new long[SampleFrames,counters.Count];var gpu=new List<double>();
-                    var initialPortalFrames=new int[portals.Length];
+                    var initialPortalFrames=new int[portals.Length];var initialSkipped=new int[portals.Length];
                     long previousEnd=0;int previousPortals=PortalFrames(portals),g0=GC.CollectionCount(0),g1=GC.CollectionCount(1),g2=GC.CollectionCount(2);
                     for(int frame=0;frame<WarmupFrames+SampleFrames;frame++)
                     {
-                        if(frame==WarmupFrames)for(int portal=0;portal<portals.Length;portal++)initialPortalFrames[portal]=portals[portal].RenderedFrames;
+                        if(frame==WarmupFrames)for(int portal=0;portal<portals.Length;portal++){initialPortalFrames[portal]=portals[portal].RenderedFrames;initialSkipped[portal]=portals[portal].SkippedRefreshes;}
                         yield return endOfFrame;
                         long start=Stopwatch.GetTimestamp();
                         RenderPipeline.SubmitRenderRequest(observer,renderRequest);long submitted=Stopwatch.GetTimestamp();
@@ -155,13 +155,13 @@ namespace RailArena
                     }
                     File.WriteAllText(output+"."+pose.Item1+".csv",csv.ToString());
                     var reading=new Reading{view=pose.Item1,frames=SampleFrames,meanWallMs=Mean(samples.Select(sample=>sample.wall)),p95WallMs=Percentile(samples.Select(sample=>sample.wall),.95),meanSubmitMs=Mean(samples.Select(sample=>sample.submit)),p95SubmitMs=Percentile(samples.Select(sample=>sample.submit),.95),meanReadbackMs=Mean(samples.Select(sample=>sample.readback)),p95ReadbackMs=Percentile(samples.Select(sample=>sample.readback),.95),portalRenders=samples.Sum(sample=>sample.portals),gc0=samples.Sum(sample=>sample.gc0),gc1=samples.Sum(sample=>sample.gc1),gc2=samples.Sum(sample=>sample.gc2),counters=metrics.ToArray(),validGpuSamples=gpu.Count,medianGpuMs=gpu.Count>0?Percentile(gpu,.5):-1};
-                    reading.portalTargets=portals.Select((portal,index)=>new PortalTarget{id=Array.IndexOf(session.World.Portals,portal.Gate),name=portal.name,renders=portal.RenderedFrames-initialPortalFrames[index],width=portal.Texture!=null?portal.Texture.width:0,height=portal.Texture!=null?portal.Texture.height:0,viewport=portal.Viewport}).ToArray();
+                    reading.portalTargets=portals.Select((portal,index)=>new PortalTarget{id=Array.IndexOf(session.World.Portals,portal.Gate),name=portal.name,renders=portal.RenderedFrames-initialPortalFrames[index],skipped=portal.SkippedRefreshes-initialSkipped[index],interval=portal.RefreshInterval,width=portal.Texture!=null?portal.Texture.width:0,height=portal.Texture!=null?portal.Texture.height:0,viewport=portal.Viewport}).ToArray();
                     var old=RenderTexture.active;
                     try{RenderTexture.active=texture;image.ReadPixels(new Rect(0,0,1920,1080),0,0,false);image.Apply();}finally{RenderTexture.active=old;}
                     var pixels=image.GetPixels32();for(int index=0;index<pixels.Length;index+=64)if(pixels[index].r>8||pixels[index].g>8||pixels[index].b>8)reading.nonBlackSamples++;
                     File.WriteAllBytes(output+"."+pose.Item1+".png",image.EncodeToPNG());readings.Add(reading);
                 }
-                var report=new Report{fingerprint=Resources.Load<TextAsset>("BuildIdentity").text.Trim(),gpu=SystemInfo.graphicsDeviceName,api=SystemInfo.graphicsDeviceType.ToString(),gpuRecorderSupported=SystemInfo.supportsGpuRecorder,exceptions=errors,width=texture.width,height=texture.height,apertureCropping=cropped,views=readings.ToArray(),passed=errors==0&&readings.Count==5&&readings.All(reading=>reading.nonBlackSamples>100)};
+                var report=new Report{fingerprint=Resources.Load<TextAsset>("BuildIdentity").text.Trim(),gpu=SystemInfo.graphicsDeviceName,api=SystemInfo.graphicsDeviceType.ToString(),gpuRecorderSupported=SystemInfo.supportsGpuRecorder,exceptions=errors,width=texture.width,height=texture.height,apertureCropping=cropped,adaptivePortalRefresh=adaptive,views=readings.ToArray(),passed=errors==0&&readings.Count==5&&readings.All(reading=>reading.nonBlackSamples>100)};
                 report.frameTimingFeatureEnabled = FrameTimingManager.IsFeatureEnabled();
                 File.WriteAllText(output,JsonUtility.ToJson(report,true));Application.Quit(report.passed?0:1);
             }
