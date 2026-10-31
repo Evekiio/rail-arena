@@ -2,7 +2,7 @@
 
 Sanders approved the direction and authorized continuous production without intermediate approval holds. Final playtest is the artistic and user QA gate. Public release remains held for acceptance.
 
-**Working local milestone:** ArtPass Review-22 adds eleven painted garden modules across 24 original placements, retaining all earlier graphics, animation and gameplay. All 39 mechanics checks, the three-bot match and both 90-second loopback peers pass. All 492 portable files verify in the archive and fresh extraction. Combat P95 is 18.47 ms; GPU/native acceptance remains open. [Validation](../../../../Validation/art-integrated-final-22.json) and [build handoff](../../../../docs/ART-PASS-REVIEW.md) record identity, checksum and scope.
+**Working local milestone:** Review23 includes the standing-ready loop and authored first-person raise with all earlier graphics/gameplay. All 39 mechanics checks, the three-bot match and both 90-second loopback peers pass. All 598 portable files verify in the archive and fresh extraction. All five measured P95 frame times exceed 16.67 ms in this run; GPU/native acceptance remains open. [Validation](../../../../Validation/art-integrated-final-23.json) and [handoff](../../../../docs/ART-PASS-REVIEW.md) identify the exact source, checksum and scope.
 
 ## Implemented
 
@@ -51,4 +51,9 @@ The first source milestone remains in commit `319a6f1`; subsequent refinement fi
 
 ## Standing-ready / source integration after Review22
 
-The zero-velocity art blend now uses one original four-second ready loop, bringing source-integrated authored body clips to 26. Native candidate and installed reviews each pass 964 all-character contact/root/capsule samples. The affected directional/crouch regressions pass. A measured six-view/time sheet and a normal-speed four-second 60 Hz reel are available. Review22 remains the verified Windows package and does not contain this subsequent loop. Full crouch transitions, combat/FPS actions, broader terrain/interruption and final acceptance remain open. See [standing contract](../../../../docs/AUTHORED-STANDING.md) and [source/playback gallery](../Animation/Standing/index.html).
+The zero-velocity art blend now uses one original four-second ready loop, bringing source-integrated authored body clips to 26. Native candidate and installed reviews each pass 964 all-character contact/root/capsule samples. The affected directional/crouch regressions pass. A measured six-view/time sheet and a normal-speed four-second 60 Hz reel are available. Review23 now validates and packages this loop; historical Review22 remains preserved. Full crouch transitions, combat/FPS actions, broader terrain/interruption and final acceptance remain open. See [standing contract](../../../../docs/AUTHORED-STANDING.md) and [source/playback gallery](../Animation/Standing/index.html).
+
+
+## First-person ready / source integration after Review22
+
+An original 0.3-second Blender rifle raise now replaces the procedural raise in the optional art profile, preserving exact calibrated rest/ADS endpoints and the legacy fallback. The player-eye native comparison covers 720 paired-stage samples across four arm appearances and hip/ADS/ADS-entry, including 400 full-ADS checks. Maximum recorded wrist error is 0.003 mm; simulation tick, ammunition, shot timing, actor root/velocity and capsule remain fixed. Reset/profile-removal and three legacy motion regressions pass. The original inactive-weapon fixture failure and provisional aerial-camera pass remain retained; final images use the actual player eye. Review23 now validates and packages this first-person track; historical Review22 remains preserved. See [ready contract](../../../../docs/AUTHORED-FIRST-PERSON-READY.md) and [source/native gallery](../Animation/FirstPersonReady/index.html).

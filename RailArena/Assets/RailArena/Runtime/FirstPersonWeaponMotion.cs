@@ -8,6 +8,7 @@ namespace RailArena
         public static readonly Vector3 RestPosition = new(.20f, -.20f, .58f);
         public Vector3 Offset { get; private set; }
         public Quaternion Rotation { get; private set; } = Quaternion.identity;
+        public FirstPersonEquipArt EquipArt { get; set; }
         private float phase, movement, landingStrength, landingAge = 10, raiseAge = 10;
         private float downwardSpeed;
         private Vector2 sway;
@@ -52,12 +53,19 @@ namespace RailArena
             float t = landingAge / .065f;
             float landing = t * Mathf.Exp(1 - t) * landingStrength;
             float raise = 1 - Mathf.SmoothStep(0, 1, Mathf.Clamp01(raiseAge / .28f));
+            if (EquipArt != null) raise = 0;
             float stride = Mathf.Sin(phase), doubleStride = Mathf.Cos(phase * 2);
             Offset = new Vector3(stride * .012f * movement,
                 doubleStride * .009f * movement - .04f * landing - .16f * raise,
                 -.012f * landing - .035f * raise);
             Rotation = Quaternion.Euler(sway.x - 2.25f * Mathf.Clamp01(recoil) + 8 * raise + 1.5f * landing,
                 sway.y * .3f, sway.y + stride * .45f * movement);
+            if (EquipArt != null)
+            {
+                var equip = EquipArt.Evaluate(raiseAge);
+                Offset += equip.position;
+                Rotation *= equip.rotation;
+            }
         }
     }
 }

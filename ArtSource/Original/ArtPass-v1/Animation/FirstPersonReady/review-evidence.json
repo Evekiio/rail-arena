@@ -1,0 +1,72 @@
+{
+  "masterSha256": "91c8db5fe247f99eae9fbb2cf586b93098737954e34b211ed924c794a635c97e",
+  "sourceAssetSha256": "5c0735c92f0cdba91e5890d62a8271384812e0c2d4ea9db2c047ff8c724ce4ba",
+  "scope": "Player-eye native camera, four arm appearances, hip/ADS/ADS-entry, matching camera/pose/frame samples. Background atmosphere time is not held identical. Overlay HUD/reticle, native input/audio and performance are excluded.",
+  "sourceIntegrated": true,
+  "shippingBuildPending": false,
+  "currentVerifiedWindowsReview": 23,
+  "samples": 720,
+  "fullAdsSamples": 400,
+  "maximumRecordedWristError": 3e-06,
+  "maximumRecordedFullAdsAxisError": 0.0,
+  "simulationTickRoundsRootVelocityCapsuleAndShotTimingPreserved": true,
+  "resetAndArtProfileRemovalChecked": true,
+  "legacyMotionRegressionsPassed": [
+    "ExtremeTravelAndLookStayBoundedAndSettleAtRest",
+    "LandingUsesFallSpeedAndResetPreventsPhantomImpact",
+    "LookSwayConvergesEquallyAcrossRenderRates"
+  ],
+  "nativeTest": "Validation/fps-ready-eye-native.xml",
+  "csvSha256": "5d015504a7149b542c8c768ad8872daf9411873a76fc8e6db89f240e7817f21e",
+  "movies": {
+    "Ready-Playback.mp4": {
+      "sha256": "507c1aed65f1756613f41fb09326b3ed3be3f935267db66c410cadeafcdde3a3",
+      "frames": 360,
+      "fps": 60,
+      "seconds": 6,
+      "audio": false
+    },
+    "Ready-Before-After.mp4": {
+      "sha256": "dc1ff25322fed74eb3e870672f7d1ffc7d207f0be51b3f91c5a81cc81a53b8c5",
+      "frames": 360,
+      "fps": 60,
+      "seconds": 6,
+      "audio": false
+    }
+  },
+  "comparisons": [
+    {
+      "path": "Raise-Comparison.png",
+      "frame": 4,
+      "sha256": "8d9f479abc8a9e0fc1caf18e159add9bb1fee8c855723649fdf3bc5051db6248"
+    },
+    {
+      "path": "Settle-Comparison.png",
+      "frame": 9,
+      "sha256": "cec3ec166b2ca463445ebf82cdc524f774c0f6063f72bd290ba2b54c1297168b"
+    },
+    {
+      "path": "ADS-Comparison.png",
+      "frame": 40,
+      "sha256": "4b74a1fdba7c2f4d6c58d4d38e699022ab667d0e8ef0687d5906f84132994f03"
+    },
+    {
+      "path": "ADS-Entry-Comparison.png",
+      "frame": 64,
+      "sha256": "dc2f142bc8787ec1edc56d7ecb13a57e773020dc9f575fb7d332aa3c46b0bd14"
+    }
+  ],
+  "provisionalEvidence": {
+    "Validation/fps-ready-native.xml": "Initial fixture froze before the inactive view weapon was activated; one null-reference failure, three legacy regressions passed.",
+    "Validation/fps-ready-active-native.xml": "Numeric/contact review passes; menu aerial camera was unsuitable for final gameplay-view evidence. Superseded by player-eye review."
+  },
+  "shippingFollowup": {
+    "review": 23,
+    "sourceCommit": "e11805d55c1cf2d235d665b584fe9fdf4e609df9",
+    "fingerprint": "d941a433bbc25bf5366c01c30b6258d9dbf4a2a0139479cc1ccfd7ecb5426458",
+    "evidence": "Validation/art-integrated-final-23.json",
+    "packageVerification": "Validation/art-package-verification-23.json",
+    "packageSha256": "89fa3bef752f185617c89f16558a3e5add7a90b5b4e8794458da22b86ab7d43a",
+    "scope": "This exact art master is included in the identified verified historical Windows source. Later runtime edits, native input/audio, performance and artistic acceptance are separate."
+  }
+}

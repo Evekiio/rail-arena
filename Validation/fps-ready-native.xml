@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Failed(Child)" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-31 08:29:26Z" end-time="2026-10-31 08:29:30Z" duration="3.2682319">
+  <test-suite type="TestSuite" id="1000" name="Rail Arena" fullname="Rail Arena" runstate="Runnable" testcasecount="307" result="Failed" site="Child" start-time="2026-10-31 08:29:26Z" end-time="2026-10-31 08:29:30Z" duration="3.268232" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1461" name="RailArena.Tests.dll" fullname="F:/Rail Arena/RailArena/Library/ScriptAssemblies/RailArena.Tests.dll" runstate="Runnable" testcasecount="307" result="Failed" site="Child" start-time="2026-10-31 08:29:26Z" end-time="2026-10-31 08:29:30Z" duration="3.251992" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="51164" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1462" name="RailArena" fullname="RailArena" runstate="Runnable" testcasecount="307" result="Failed" site="Child" start-time="2026-10-31 08:29:26Z" end-time="2026-10-31 08:29:30Z" duration="3.245275" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1463" name="Tests" fullname="RailArena.Tests" runstate="Runnable" testcasecount="307" result="Failed" site="Child" start-time="2026-10-31 08:29:26Z" end-time="2026-10-31 08:29:30Z" duration="3.240010" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1134" name="FirstPersonReadyArtReview" fullname="RailArena.Tests.FirstPersonReadyArtReview" classname="RailArena.Tests.FirstPersonReadyArtReview" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-10-31 08:29:26Z" end-time="2026-10-31 08:29:29Z" duration="3.153672" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1135" name="AuthoredReadyPreservesContactsAdsAndSimulation" fullname="RailArena.Tests.FirstPersonReadyArtReview.AuthoredReadyPreservesContactsAdsAndSimulation" methodname="AuthoredReadyPreservesContactsAdsAndSimulation" classname="RailArena.Tests.FirstPersonReadyArtReview" runstate="Runnable" seed="706937025" result="Failed" label="Error" start-time="2026-10-31 08:29:26Z" end-time="2026-10-31 08:29:29Z" duration="3.129654" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                <stack-trace><![CDATA[  at RailArena.Tests.FirstPersonReadyArtReview+<AuthoredReadyPreservesContactsAdsAndSimulation>d__0.MoveNext () [0x004e3] in F:\Rail Arena\RailArena\Assets\RailArena\Tests\Editor\FirstPersonReadyArtReview.cs:74
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ee3fe9477490\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52 ]]></stack-trace>
+              </failure>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1136" name="FirstPersonWeaponMotionTests" fullname="RailArena.Tests.FirstPersonWeaponMotionTests" classname="RailArena.Tests.FirstPersonWeaponMotionTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-31 08:29:29Z" end-time="2026-10-31 08:29:30Z" duration="0.022453" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1138" name="ExtremeTravelAndLookStayBoundedAndSettleAtRest" fullname="RailArena.Tests.FirstPersonWeaponMotionTests.ExtremeTravelAndLookStayBoundedAndSettleAtRest" methodname="ExtremeTravelAndLookStayBoundedAndSettleAtRest" classname="RailArena.Tests.FirstPersonWeaponMotionTests" runstate="Runnable" seed="552754742" result="Passed" start-time="2026-10-31 08:29:29Z" end-time="2026-10-31 08:29:30Z" duration="0.016384" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1137" name="LandingUsesFallSpeedAndResetPreventsPhantomImpact" fullname="RailArena.Tests.FirstPersonWeaponMotionTests.LandingUsesFallSpeedAndResetPreventsPhantomImpact" methodname="LandingUsesFallSpeedAndResetPreventsPhantomImpact" classname="RailArena.Tests.FirstPersonWeaponMotionTests" runstate="Runnable" seed="1148339845" result="Passed" start-time="2026-10-31 08:29:30Z" end-time="2026-10-31 08:29:30Z" duration="0.003124" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1139" name="LookSwayConvergesEquallyAcrossRenderRates" fullname="RailArena.Tests.FirstPersonWeaponMotionTests.LookSwayConvergesEquallyAcrossRenderRates" methodname="LookSwayConvergesEquallyAcrossRenderRates" classname="RailArena.Tests.FirstPersonWeaponMotionTests" runstate="Runnable" seed="1585273622" result="Passed" start-time="2026-10-31 08:29:30Z" end-time="2026-10-31 08:29:30Z" duration="0.000546" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/Evekiio/Rail Arena\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

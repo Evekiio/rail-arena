@@ -26,6 +26,7 @@ namespace RailArena
         public bool AutomatedHuman { get; set; }
         public int VoidDeaths { get; private set; }
         public int ShotsFired => shotCount;
+        public FirstPersonEquipArt EquipArt { get => weaponMotion.EquipArt; set => weaponMotion.EquipArt = value; }
         public int Deaths => deathCount;
         public int PadLaunches => padCount;
         public List<string> VoidTraces { get; } = new();
