@@ -17,7 +17,6 @@ namespace RailArena
         readonly Dictionary<Renderer, bool> hiddenCover = new();
         readonly List<GameObject> coverInstances = new();
         readonly List<RifleReloadPresentation> rifleActions = new();
-        readonly List<RifleRenderBatch> rifleBatches = new();
         readonly List<ContenderArtPresentation> contenderArt = new();
         ContenderArtSet characters;
         readonly Dictionary<HealthPickupVisual, Renderer> pickupMarkers = new();
@@ -98,11 +97,6 @@ namespace RailArena
             }
             var action = weapon.gameObject.AddComponent<RifleReloadPresentation>();
             rifleActions.Add(action); action.Initialize(weapon, session, owner);
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-            if (System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "--profile-rifle-batch-off") >= 0) return;
-#endif
-            var batch = weapon.gameObject.AddComponent<RifleRenderBatch>();
-            rifleBatches.Add(batch); batch.Initialize(weapon);
         }
 
         void Apply(IEnumerable<Renderer> renderers)
@@ -302,7 +296,6 @@ namespace RailArena
         {
             if (Profile != null && RenderSettings.skybox == Profile.CloudSkybox) RenderSettings.skybox = originalSkybox;
             if (wayfinding != null) Destroy(wayfinding);
-            foreach (var batch in rifleBatches) if (batch != null) { batch.Restore(); Destroy(batch); }
             foreach (var action in rifleActions) if (action != null) Destroy(action);
             foreach (var entry in originalRifleMeshes) if (entry.Key != null) entry.Key.sharedMesh = entry.Value;
             foreach (var character in contenderArt) if (character != null) Destroy(character);

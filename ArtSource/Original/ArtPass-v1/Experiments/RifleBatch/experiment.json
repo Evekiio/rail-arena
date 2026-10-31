@@ -1,0 +1,41 @@
+{
+  "id": "RA-EXPERIMENT-RIFLE-BATCH-01",
+  "disposition": "archive-reference",
+  "runtimeUsage": "Not installed; original candidate source retained in Git commit and noncompiled text archive",
+  "sourceCommit": "ece7ae6989376cdac8e80408618d4ef4f0630af5",
+  "candidateFingerprint": "87566282bcb61c5a3010bce2e465b51f9542a56ebdad5d397f475a7cfcf8697a",
+  "currentVerifiedWindowsReview": 20,
+  "geometry": "No new canonical geometry or dimensions; candidate combined existing rigid rifle buffers only",
+  "result": "Native visual/geometry/reload and gameplay checks pass, but controlled wall-time improvement is not established. Runtime integration is not promoted.",
+  "sourceArchive": [
+    {
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Runtime/RifleRenderBatch.cs.txt",
+      "sha256": "853d17e71db44a12cb78562cd27d0de460b5a035c90a06727c2c9415b808781c"
+    },
+    {
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Runtime/RifleRenderBatch.cs.meta.txt",
+      "sha256": "47128fd74bcfeca797f118f9e92040e82d276b0eaaf56ade87300ffdf6bdc10f"
+    },
+    {
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Tests/ArtRenderBudgetReview.cs.txt",
+      "sha256": "569aef37c5b839aa0cd598ff0b1b51cf9323a7d746ada6701e2f9506edca72a5"
+    },
+    {
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Tests/ArtRenderBudgetReview.cs.meta.txt",
+      "sha256": "597b4e9a6848dc7d64ed5d9c0f61641988538abaed984f966e1054319f677ea7"
+    },
+    {
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Tools/Profile-RifleBatch.ps1",
+      "sha256": "e535d2e23db467596c4616cf5a89b240f1de6e24e0e27c3fafc5c637fadb7dca"
+    },
+    {
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Tools/compare_rifle_batch_profiles.py",
+      "sha256": "9782760fa4493f841da3f87575ae633bc14bd957b262f4767a923f203ab9e96c"
+    }
+  ],
+  "evidence": [
+    "Validation/RifleBatch-Profile-01/comparison.json",
+    "Validation/rifle-batch-candidate-21.json",
+    "Validation/ArtFrame-RifleBatch-Visual2/pixel-comparison.json"
+  ]
+}

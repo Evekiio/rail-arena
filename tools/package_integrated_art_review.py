@@ -55,6 +55,7 @@ html += '<p><a href="Animation/Slide/index.html">Feet-first slide master, measur
 html += '<p><a href="Environment/BridgeStone/index.html">Measured bridge, screen and pier construction</a></p>'
 html += '<p><a href="Environment/SummitStone/index.html">Measured summit deck, cover and column construction</a></p>'
 html += '<p><a href="Environment/ArenaStone/index.html">Measured arena decks, ramps and native camera comparisons</a></p>'
+html += '<p><a href="Experiments/RifleBatch/index.html">Archived rifle rendering experiment / not installed; no demonstrated frame-time improvement</a></p>'
 for title, directory in sections:
     html += f'<h2>{title}</h2><section>'
     for p in sorted(directory.rglob('*.png')):
@@ -71,7 +72,7 @@ class Links(HTMLParser):
                 assert (art/value).resolve().is_file(), value
 Links().feed(html)
 paths=[]
-for directory in [root/'RailArena/Assets/RailArena/Art/ArtPass',root/'RailArena/Assets/Resources/Art',root/'RailArena/Assets/Resources/UI/ArtPassPortraits',art/'Characters',art/'Nature',art/'Devices',art/'Environment',art/'Gate2/RifleActions',art/'Animation']:
+for directory in [root/'RailArena/Assets/RailArena/Art/ArtPass',root/'RailArena/Assets/Resources/Art',root/'RailArena/Assets/Resources/UI/ArtPassPortraits',art/'Characters',art/'Nature',art/'Devices',art/'Environment',art/'Gate2/RifleActions',art/'Animation',art/'Experiments']:
     paths += [p for p in directory.rglob('*') if p.is_file() and p.suffix not in ('.meta','.blend1','.blend2')]
 paths += [root/'RailArena/Assets/Resources/Effects'/name for name in ('CelSurface.shader','CelWater.shader','CelOutline.shader','SkyGardenClouds.shader','WorldGlyph.shader','ArtAtmosphere.shader','TraversalEnergy.shader')]
 entries=[{'id':'art-'+hashlib.sha256(p.relative_to(root).as_posix().encode()).hexdigest()[:16], 'path':p.relative_to(root).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'disposition':'refine','approval':'Art direction approved; final integrated playtest pending'} for p in sorted(set(paths))]
@@ -186,6 +187,15 @@ for entry in entries:
         entry['referenceSheets']=[relative(art/'Environment/BasementDecks/References'/name/'measured-sheet.png') for name in ('Staging','Basement')]
         entry['dependencies'] += [relative(art/'Environment/BasementDecks/deck-source.json'),relative(art/'Environment/BasementDecks/paint-spec.json'),'RailArena/Assets/RailArena/Editor/BasementRouteBuilder.cs']
         entry['runtimeUsage']='Conditional Sky Gardens art profile / eight visual decks; original colliders retained' if path.startswith('RailArena/') else 'Canonical source, paint or measured/reference evidence; not installed artwork by itself'
+    if '/Experiments/RifleBatch/' in path:
+        entry.update({'category':'supporting / archived research','family':'archived-rifle-batch-experiment','disposition':'archive-reference',
+            'approval':'Unpromoted experiment; final art acceptance is not applicable to this code archive',
+            'runtimeUsage':'Not installed; historical candidate and noncompiled source archive only',
+            'sourceMaster':None,'dimensionsMetresBlenderXYZ':None,'dimensionAuthority':'No new geometry; unchanged canonical rifle buffers only',
+            'dependencies':['ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/experiment.json','docs/RIFLE-RENDER-BUDGET.md','Validation/RifleBatch-Profile-01/comparison.json'],
+            'referenceSheets':[],'rigBones':[],'clips':[],'currentScreenshot':'Validation/ArtFrame-RifleBatch-Visual2/matching-comparison.png',
+            'provenance':'Original Rail Arena rendering prototype and tests; source commit and checksums in experiment.json',
+            'referenceException':'Code/research archive with no new model geometry; source identity and controlled evidence retained. Not production artwork or an approved performance fix.'})
     if Path(path).suffix.lower()=='.png':
         with Image.open(root/path) as texture:entry['textureDimensionsPixelsWH']=list(texture.size)
 (art/'integrated-manifest.json').write_text(json.dumps({'schema':'rail-arena-art-delta/2','baseline':'Gate1/asset-manifest.json','entries':entries,'coverage':'Baseline inventory plus production delta; remaining reference and animation exceptions in PRODUCTION-STATUS.md'},indent=2)+'\n')

@@ -1,0 +1,34 @@
+{
+  "schema": "rail-arena-rifle-batch-research-candidate/1",
+  "sourceCommit": "ece7ae6989376cdac8e80408618d4ef4f0630af5",
+  "fingerprint": "87566282bcb61c5a3010bce2e465b51f9542a56ebdad5d397f475a7cfcf8697a",
+  "localBuild": "Builds/RailArena-v1Alpha-ArtPass-Review-21",
+  "status": "not promoted; research candidate only",
+  "currentVerifiedBuild": "Builds/RailArena-v1Alpha-ArtPass-Review-20",
+  "reason": "Controlled same-executable draw-call reduction is only 1.1\u20133.8%, with worse wall means in all five views. Frame-time improvement is not established. No portable candidate package is promoted.",
+  "mechanicsChecks": 39,
+  "botTelemetry": "ticks=2707 shots=161 deaths=7 pickups=3 pads=20",
+  "botExceptions": 0,
+  "botVoids": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "loopbackPeersPassed": true,
+  "performanceTargetMet": false,
+  "performanceExceptions": [
+    {
+      "view": "combat",
+      "meanMs": 20.491621017456055,
+      "p95Ms": 43.6083984375
+    },
+    {
+      "view": "basement",
+      "meanMs": 14.53905963897705,
+      "p95Ms": 17.977502822875977
+    }
+  ],
+  "nativeInputAudioAccepted": false,
+  "controlledComparison": "Validation/RifleBatch-Profile-01/comparison.json"
+}

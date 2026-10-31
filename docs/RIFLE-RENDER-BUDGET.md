@@ -8,7 +8,7 @@ The installed inventory includes every LOD candidate, including inactive and hid
 
 ## Visual-only production contract
 
-`RifleRenderBatch` combines rigid shell surfaces within each existing LOD. Material, shadow mode, receive-shadow state, probe settings/anchors, rendering layer, motion-vector mode, lightmap state and object layer define compatible groups. Each batch stays under the original LOD parent. World positions, normals, tangents, UVs, material identity, triangle order/winding and LOD thresholds remain verifiable against the original renderers.
+The archived `RifleRenderBatch` prototype combines rigid shell surfaces within each existing LOD. Material, shadow mode, receive-shadow state, probe settings/anchors, rendering layer, motion-vector mode, lightmap state and object layer define compatible groups. Each batch stays under the original LOD parent. World positions, normals, tangents, UVs, material identity, triangle order/winding and LOD thresholds remain verifiable against the original renderers.
 
 The physical optic, magazine, trigger, energy surfaces, actuators, sockets and grip transforms remain separate. Existing charge property blocks and authored reload contacts remain authoritative. No simulation, weapon cadence, spread, hitboxes or network protocol is changed. Older maps do not install this art-profile component. Canonical Blender masters and exports remain editable and unchanged; combined meshes are instance-owned Unity presentation buffers.
 
@@ -22,4 +22,16 @@ The first string-quantized normal comparison failed at rounding-bin boundaries. 
 
 The matched native geometry and visual test passes. Each before/after pair has identical recorded position, rotation, field of view and projection. Mean absolute RGB differences are below 0.018 on the 0–255 scale; only two first-person pixels and no third-person pixels exceed ten luma units. These controlled captures show equivalent presentation, not a newly refined silhouette. The lowest rifle LOD retains its pre-existing triangular barrel-vent simplification, which remains an art-production gap.
 
-Controlled same-executable on/off profiling, reload/contact regression and a new shipping Windows milestone remain pending. Review 20 remains the current verified local package. This rendering batch does not complete the broader nature/device, animation, UI or full-reference production plan.
+The reload contact/timing/interruption/reset regression passes. Review 21 was built as a research candidate from commit `ece7ae6989376cdac8e80408618d4ef4f0630af5`; its independently verified source fingerprint is `87566282bcb61c5a3010bce2e465b51f9542a56ebdad5d397f475a7cfcf8697a`. The controlled on/off profiles use this same executable, recorded launch arguments and executable hash, with unchanged aperture cropping, view order, portal render counts, warmup/sample counts, fixed-step workload and random seed. Off ran first and on second, once each; no repeated timings were selected.
+
+| View | Draw calls off → on | Reduction | Wall mean off → on, ms |
+|---|---:|---:|---:|
+| combat | 1966.92 → 1896.25 | 3.6% | 15.77 → 16.24 |
+| summit | 1770.58 → 1703.43 | 3.8% | 15.73 → 16.09 |
+| basement | 1690.67 → 1657.68 | 2.0% | 14.25 → 17.30 |
+| foliage-waterfall | 1858.73 → 1826.79 | 1.7% | 14.69 → 16.15 |
+| portal | 526.92 → 521.21 | 1.1% | 12.54 → 13.82 |
+
+Submitted draw calls decrease only 1.1–3.8% in the full workload. Wall time is worse in all five views in this run pair; readback and scheduling remain included, and unavailable GPU samples prevent isolating GPU cost. The evidence does not establish a frame-time improvement or attribute every timing difference to batching. Fewer renderers alone is insufficient to approve this as a performance fix.
+
+**Decision:** archive this experiment as reference material in PR #46, restoring production runtime code and retaining the candidate in noncompiled source files under `ArtSource/Original/ArtPass-v1/Experiments/RifleBatch`. Do not install its runtime integration or promote Review 21 as the current build. Review 20 remains the verified playtest package. The candidate passes all 39 mechanics checks, its 45-second three-bot match and both 90-second loopback peers, with zero reported errors. That correctness evidence does not establish a performance benefit; see `Validation/rifle-batch-candidate-21.json`. No verified portable Review 21 package is produced from this experiment. Future work should investigate the larger environment/material submission budget and native GPU/pacing evidence while continuing the remaining art-production categories.

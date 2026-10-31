@@ -4,10 +4,11 @@
   "productionDelta": "integrated-manifest.json",
   "summary": {
     "baselineEntries": 2224,
-    "productionEntries": 1249,
+    "productionEntries": 1259,
     "overlappingPaths": 1,
-    "currentUniquePaths": 3472,
+    "currentUniquePaths": 3482,
     "productionEvidencePaths": 1249,
+    "archivedResearchPaths": 10,
     "baselineOnlyPaths": 2223,
     "missingPaths": 0,
     "finalApprovedEntries": 0,
@@ -46185,6 +46186,306 @@
       "evidenceState": "production-evidence-present",
       "referenceException": "Family-shared specifications apply to supporting textures/materials. Remaining per-asset construction/variant evidence is explicitly incomplete, pending production rather than silently approved.",
       "productionSha256": "7bb23b66a6f7d441c6e728658f437f940f2a8e3cb0ec4b5bc4f873425edf234c"
+    },
+    {
+      "id": "art-522e0aff42fb309c",
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/README.md",
+      "baselineId": null,
+      "productionId": "art-522e0aff42fb309c",
+      "category": "supporting / archived research",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "archive-reference",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Not installed; historical candidate and noncompiled source archive only",
+      "runtimeEvidenceLimit": "Explicitly archived research; not installed production content or final art acceptance.",
+      "canonicalMaster": null,
+      "dimensionAuthority": "No new geometry; unchanged canonical rifle buffers only",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/experiment.json",
+        "docs/RIFLE-RENDER-BUDGET.md",
+        "Validation/RifleBatch-Profile-01/comparison.json"
+      ],
+      "references": [],
+      "screenshots": [
+        "Validation/ArtFrame-RifleBatch-Visual2/matching-comparison.png"
+      ],
+      "provenance": "Original Rail Arena rendering prototype and tests; source commit and checksums in experiment.json",
+      "approval": "Unpromoted experiment; final art acceptance is not applicable to this code archive",
+      "evidenceState": "archived-research",
+      "referenceException": "Code/research archive with no new model geometry; source identity and controlled evidence retained. Not production artwork or an approved performance fix.",
+      "productionSha256": "f845f3e984200d13456716c9dd73e85024e71075fc0c4cb501ae92e38a8a2c7c"
+    },
+    {
+      "id": "art-1d26bebbc19f8f34",
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Runtime/ArtSlicePresentation.patch",
+      "baselineId": null,
+      "productionId": "art-1d26bebbc19f8f34",
+      "category": "supporting / archived research",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "archive-reference",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Not installed; historical candidate and noncompiled source archive only",
+      "runtimeEvidenceLimit": "Explicitly archived research; not installed production content or final art acceptance.",
+      "canonicalMaster": null,
+      "dimensionAuthority": "No new geometry; unchanged canonical rifle buffers only",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/experiment.json",
+        "docs/RIFLE-RENDER-BUDGET.md",
+        "Validation/RifleBatch-Profile-01/comparison.json"
+      ],
+      "references": [],
+      "screenshots": [
+        "Validation/ArtFrame-RifleBatch-Visual2/matching-comparison.png"
+      ],
+      "provenance": "Original Rail Arena rendering prototype and tests; source commit and checksums in experiment.json",
+      "approval": "Unpromoted experiment; final art acceptance is not applicable to this code archive",
+      "evidenceState": "archived-research",
+      "referenceException": "Code/research archive with no new model geometry; source identity and controlled evidence retained. Not production artwork or an approved performance fix.",
+      "productionSha256": "cb559c3e002a7591014a7b803961264d938d12122df088b9248f66b2ed19e5ca"
+    },
+    {
+      "id": "art-35581b90f418898d",
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Runtime/RifleRenderBatch.cs.meta.txt",
+      "baselineId": null,
+      "productionId": "art-35581b90f418898d",
+      "category": "supporting / archived research",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "archive-reference",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Not installed; historical candidate and noncompiled source archive only",
+      "runtimeEvidenceLimit": "Explicitly archived research; not installed production content or final art acceptance.",
+      "canonicalMaster": null,
+      "dimensionAuthority": "No new geometry; unchanged canonical rifle buffers only",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/experiment.json",
+        "docs/RIFLE-RENDER-BUDGET.md",
+        "Validation/RifleBatch-Profile-01/comparison.json"
+      ],
+      "references": [],
+      "screenshots": [
+        "Validation/ArtFrame-RifleBatch-Visual2/matching-comparison.png"
+      ],
+      "provenance": "Original Rail Arena rendering prototype and tests; source commit and checksums in experiment.json",
+      "approval": "Unpromoted experiment; final art acceptance is not applicable to this code archive",
+      "evidenceState": "archived-research",
+      "referenceException": "Code/research archive with no new model geometry; source identity and controlled evidence retained. Not production artwork or an approved performance fix.",
+      "productionSha256": "47128fd74bcfeca797f118f9e92040e82d276b0eaaf56ade87300ffdf6bdc10f"
+    },
+    {
+      "id": "art-f8fc04a2e6d02af9",
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Runtime/RifleRenderBatch.cs.txt",
+      "baselineId": null,
+      "productionId": "art-f8fc04a2e6d02af9",
+      "category": "supporting / archived research",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "archive-reference",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Not installed; historical candidate and noncompiled source archive only",
+      "runtimeEvidenceLimit": "Explicitly archived research; not installed production content or final art acceptance.",
+      "canonicalMaster": null,
+      "dimensionAuthority": "No new geometry; unchanged canonical rifle buffers only",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/experiment.json",
+        "docs/RIFLE-RENDER-BUDGET.md",
+        "Validation/RifleBatch-Profile-01/comparison.json"
+      ],
+      "references": [],
+      "screenshots": [
+        "Validation/ArtFrame-RifleBatch-Visual2/matching-comparison.png"
+      ],
+      "provenance": "Original Rail Arena rendering prototype and tests; source commit and checksums in experiment.json",
+      "approval": "Unpromoted experiment; final art acceptance is not applicable to this code archive",
+      "evidenceState": "archived-research",
+      "referenceException": "Code/research archive with no new model geometry; source identity and controlled evidence retained. Not production artwork or an approved performance fix.",
+      "productionSha256": "853d17e71db44a12cb78562cd27d0de460b5a035c90a06727c2c9415b808781c"
+    },
+    {
+      "id": "art-52dd9cb0ac03256d",
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Tests/ArtRenderBudgetReview.cs.meta.txt",
+      "baselineId": null,
+      "productionId": "art-52dd9cb0ac03256d",
+      "category": "supporting / archived research",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "archive-reference",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Not installed; historical candidate and noncompiled source archive only",
+      "runtimeEvidenceLimit": "Explicitly archived research; not installed production content or final art acceptance.",
+      "canonicalMaster": null,
+      "dimensionAuthority": "No new geometry; unchanged canonical rifle buffers only",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/experiment.json",
+        "docs/RIFLE-RENDER-BUDGET.md",
+        "Validation/RifleBatch-Profile-01/comparison.json"
+      ],
+      "references": [],
+      "screenshots": [
+        "Validation/ArtFrame-RifleBatch-Visual2/matching-comparison.png"
+      ],
+      "provenance": "Original Rail Arena rendering prototype and tests; source commit and checksums in experiment.json",
+      "approval": "Unpromoted experiment; final art acceptance is not applicable to this code archive",
+      "evidenceState": "archived-research",
+      "referenceException": "Code/research archive with no new model geometry; source identity and controlled evidence retained. Not production artwork or an approved performance fix.",
+      "productionSha256": "597b4e9a6848dc7d64ed5d9c0f61641988538abaed984f966e1054319f677ea7"
+    },
+    {
+      "id": "art-3136e6a7d7b1a191",
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Tests/ArtRenderBudgetReview.cs.txt",
+      "baselineId": null,
+      "productionId": "art-3136e6a7d7b1a191",
+      "category": "supporting / archived research",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "archive-reference",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Not installed; historical candidate and noncompiled source archive only",
+      "runtimeEvidenceLimit": "Explicitly archived research; not installed production content or final art acceptance.",
+      "canonicalMaster": null,
+      "dimensionAuthority": "No new geometry; unchanged canonical rifle buffers only",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/experiment.json",
+        "docs/RIFLE-RENDER-BUDGET.md",
+        "Validation/RifleBatch-Profile-01/comparison.json"
+      ],
+      "references": [],
+      "screenshots": [
+        "Validation/ArtFrame-RifleBatch-Visual2/matching-comparison.png"
+      ],
+      "provenance": "Original Rail Arena rendering prototype and tests; source commit and checksums in experiment.json",
+      "approval": "Unpromoted experiment; final art acceptance is not applicable to this code archive",
+      "evidenceState": "archived-research",
+      "referenceException": "Code/research archive with no new model geometry; source identity and controlled evidence retained. Not production artwork or an approved performance fix.",
+      "productionSha256": "569aef37c5b839aa0cd598ff0b1b51cf9323a7d746ada6701e2f9506edca72a5"
+    },
+    {
+      "id": "art-757beceffa63d91b",
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Tools/Profile-RifleBatch.ps1",
+      "baselineId": null,
+      "productionId": "art-757beceffa63d91b",
+      "category": "supporting / archived research",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "archive-reference",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Not installed; historical candidate and noncompiled source archive only",
+      "runtimeEvidenceLimit": "Explicitly archived research; not installed production content or final art acceptance.",
+      "canonicalMaster": null,
+      "dimensionAuthority": "No new geometry; unchanged canonical rifle buffers only",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/experiment.json",
+        "docs/RIFLE-RENDER-BUDGET.md",
+        "Validation/RifleBatch-Profile-01/comparison.json"
+      ],
+      "references": [],
+      "screenshots": [
+        "Validation/ArtFrame-RifleBatch-Visual2/matching-comparison.png"
+      ],
+      "provenance": "Original Rail Arena rendering prototype and tests; source commit and checksums in experiment.json",
+      "approval": "Unpromoted experiment; final art acceptance is not applicable to this code archive",
+      "evidenceState": "archived-research",
+      "referenceException": "Code/research archive with no new model geometry; source identity and controlled evidence retained. Not production artwork or an approved performance fix.",
+      "productionSha256": "e535d2e23db467596c4616cf5a89b240f1de6e24e0e27c3fafc5c637fadb7dca"
+    },
+    {
+      "id": "art-5daffa78fc34a6d7",
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/Tools/compare_rifle_batch_profiles.py",
+      "baselineId": null,
+      "productionId": "art-5daffa78fc34a6d7",
+      "category": "supporting / archived research",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "archive-reference",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Not installed; historical candidate and noncompiled source archive only",
+      "runtimeEvidenceLimit": "Explicitly archived research; not installed production content or final art acceptance.",
+      "canonicalMaster": null,
+      "dimensionAuthority": "No new geometry; unchanged canonical rifle buffers only",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/experiment.json",
+        "docs/RIFLE-RENDER-BUDGET.md",
+        "Validation/RifleBatch-Profile-01/comparison.json"
+      ],
+      "references": [],
+      "screenshots": [
+        "Validation/ArtFrame-RifleBatch-Visual2/matching-comparison.png"
+      ],
+      "provenance": "Original Rail Arena rendering prototype and tests; source commit and checksums in experiment.json",
+      "approval": "Unpromoted experiment; final art acceptance is not applicable to this code archive",
+      "evidenceState": "archived-research",
+      "referenceException": "Code/research archive with no new model geometry; source identity and controlled evidence retained. Not production artwork or an approved performance fix.",
+      "productionSha256": "9782760fa4493f841da3f87575ae633bc14bd957b262f4767a923f203ab9e96c"
+    },
+    {
+      "id": "art-1f13978a8531e227",
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/experiment.json",
+      "baselineId": null,
+      "productionId": "art-1f13978a8531e227",
+      "category": "supporting / archived research",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "archive-reference",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Not installed; historical candidate and noncompiled source archive only",
+      "runtimeEvidenceLimit": "Explicitly archived research; not installed production content or final art acceptance.",
+      "canonicalMaster": null,
+      "dimensionAuthority": "No new geometry; unchanged canonical rifle buffers only",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/experiment.json",
+        "docs/RIFLE-RENDER-BUDGET.md",
+        "Validation/RifleBatch-Profile-01/comparison.json"
+      ],
+      "references": [],
+      "screenshots": [
+        "Validation/ArtFrame-RifleBatch-Visual2/matching-comparison.png"
+      ],
+      "provenance": "Original Rail Arena rendering prototype and tests; source commit and checksums in experiment.json",
+      "approval": "Unpromoted experiment; final art acceptance is not applicable to this code archive",
+      "evidenceState": "archived-research",
+      "referenceException": "Code/research archive with no new model geometry; source identity and controlled evidence retained. Not production artwork or an approved performance fix.",
+      "productionSha256": "7915696321329ca4aa2b50ad4c6cfabec833dbfc05d1bdf61e7a74a8800e7310"
+    },
+    {
+      "id": "art-5620231d98569a98",
+      "path": "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/index.html",
+      "baselineId": null,
+      "productionId": "art-5620231d98569a98",
+      "category": "supporting / archived research",
+      "mapArea": "Sky Gardens / summit / four basement routes",
+      "disposition": "archive-reference",
+      "existsNow": true,
+      "baselineUsage": null,
+      "productionUsage": "Not installed; historical candidate and noncompiled source archive only",
+      "runtimeEvidenceLimit": "Explicitly archived research; not installed production content or final art acceptance.",
+      "canonicalMaster": null,
+      "dimensionAuthority": "No new geometry; unchanged canonical rifle buffers only",
+      "dimensions": null,
+      "dependencies": [
+        "ArtSource/Original/ArtPass-v1/Experiments/RifleBatch/experiment.json",
+        "docs/RIFLE-RENDER-BUDGET.md",
+        "Validation/RifleBatch-Profile-01/comparison.json"
+      ],
+      "references": [],
+      "screenshots": [
+        "Validation/ArtFrame-RifleBatch-Visual2/matching-comparison.png"
+      ],
+      "provenance": "Original Rail Arena rendering prototype and tests; source commit and checksums in experiment.json",
+      "approval": "Unpromoted experiment; final art acceptance is not applicable to this code archive",
+      "evidenceState": "archived-research",
+      "referenceException": "Code/research archive with no new model geometry; source identity and controlled evidence retained. Not production artwork or an approved performance fix.",
+      "productionSha256": "3a6497d709a72cf6453a1e994aec4dba7b853878497bb557c9951bf46c99900f"
     },
     {
       "id": "art-6413c9c2c021831f",
