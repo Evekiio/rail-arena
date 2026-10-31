@@ -55,7 +55,7 @@ namespace RailArena.Tests
         }
         [UnityTest] public IEnumerator CaptureNativeCandidatesWithoutInstallingStance()=>Capture(false);
         [UnityTest] public IEnumerator CaptureInstalledGroundCrouch()=>Capture(true);
-        IEnumerator Capture(bool installed)
+        internal IEnumerator Capture(bool installed,string[] clipNames=null,string outputDirectory=null)
         {
             priorQuality=File.ReadAllBytes("ProjectSettings/QualitySettings.asset");priorPipeline=QualitySettings.renderPipeline;
             QualitySettings.renderPipeline=AssetDatabase.LoadAssetAtPath<RenderPipelineAsset>("Assets/RailArena/Art/ArtPass/Atmosphere/SkyGardensPipeline.asset");
@@ -88,12 +88,12 @@ namespace RailArena.Tests
             var material=new Material(Resources.Load<Material>("Art/StoneCover-Stone"));floor.GetComponent<Renderer>().sharedMaterial=material;
             var fill=new GameObject("Owned crouch portrait fill").AddComponent<Light>();fill.type=LightType.Directional;fill.intensity=.5f;fill.shadows=LightShadows.None;fill.cullingMask=1<<30;fill.transform.rotation=Quaternion.Euler(25,200,0);
             var target=new RenderTexture(1280,720,24);target.Create();var pixels=new Texture2D(1280,720,TextureFormat.RGB24,false);
-            string folder=Path.GetFullPath(Environment.GetEnvironmentVariable("RA_CROUCH_REVIEW_OUTPUT")??(installed?"../Validation/CrouchInstalledPlayback":"../Validation/CrouchCandidatePlayback"));Directory.CreateDirectory(folder);
+            string folder=Path.GetFullPath(outputDirectory??Environment.GetEnvironmentVariable("RA_CROUCH_REVIEW_OUTPUT")??(installed?"../Validation/CrouchInstalledPlayback":"../Validation/CrouchCandidatePlayback"));Directory.CreateDirectory(folder);
             var csv=new StringBuilder("frame,clip,sourceFrame,characterId,minimumSkinY,maximumSkinY,headY,leftWristError,rightWristError,actorX,actorY,actorZ,controllerHeight\n");
             var failures=new List<string>();int outputFrame=0;int previousRate=Time.captureFramerate;Time.captureFramerate=60;
             try
             {
-                foreach(string name in installed?new[]{"CrouchIdle","CrouchForward","CrouchBackward","CrouchLeft","CrouchRight"}:new[]{"CrouchIdle","CrouchForward","CrouchBackward","CrouchLeft","CrouchRight","CrouchEnter","CrouchExit"})
+                foreach(string name in clipNames??(installed?new[]{"CrouchIdle","CrouchForward","CrouchBackward","CrouchLeft","CrouchRight"}:new[]{"CrouchIdle","CrouchForward","CrouchBackward","CrouchLeft","CrouchRight","CrouchEnter","CrouchExit"}))
                 {
                     var clip=AssetDatabase.LoadAllAssetsAtPath("Assets/RailArena/Art/ArtPass/Animation/"+name+".fbx").OfType<AnimationClip>().Single(item=>!item.name.StartsWith("__preview__",StringComparison.Ordinal));
                     var playables=new Dictionary<int,AnimationClipPlayable>();

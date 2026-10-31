@@ -1,0 +1,21 @@
+{
+  "review": "18",
+  "sourceCommit": "5e2709e08db11ee72e8fa937060f7ba06684338d",
+  "fingerprint": "fad4a319f7b0ae4ae5798e1584eaf0ec0f245b12a23b4656f84753db5459ce3e",
+  "accepted": false,
+  "mechanicsPassed": true,
+  "botMatchPassed": true,
+  "hostSlideSamples": [
+    0,
+    1253
+  ],
+  "clientSlideSamples": [
+    60,
+    935
+  ],
+  "hostStatisticsPassed": true,
+  "clientStatisticsPassed": true,
+  "reason": "Host recorded no slide. Script forced Sprint while preserving bot aim-relative backward/strafe input, so it did not reliably meet forward sprint eligibility. Keep failure evidence; fix the validation-only input driver without changing simulation or weakening coverage.",
+  "supersedingBuild": "Review 19 verified; see art-integrated-final-19.json and art-package-verification-19.json",
+  "performanceTargetMet": false
+}

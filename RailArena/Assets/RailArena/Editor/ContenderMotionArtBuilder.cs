@@ -17,6 +17,7 @@ namespace RailArena.Editor
             PrepareStrafeCandidates();
             PrepareReactionCandidates();
             PrepareCrouchCandidates();
+            PrepareSlideCandidates();
             var original = Resources.Load<GameObject>("Characters/Contender").GetComponent<ContenderPresentation>().Animator.runtimeAnimatorController;
             foreach (string name in new[] { "Bot01", "Bot02", "Bot03" })
                 if (Resources.Load<GameObject>("Characters/Stylized/" + name).GetComponent<ContenderPresentation>().Animator.runtimeAnimatorController != original)
@@ -36,7 +37,7 @@ namespace RailArena.Editor
                 }
             if (changed != 6) throw new InvalidOperationException("Exactly six forward and backward locomotion clips must be replaced");
             controller.ApplyOverrides(overrides); EditorUtility.SetDirty(controller); AssetDatabase.SaveAssets();
-            Debug.Log("AUTHORED_LOCOMOTION_READY twelve cardinal gaits, five grounded crouch motions, three airborne states and two combat reactions; legacy controller preserved");
+            Debug.Log("AUTHORED_LOCOMOTION_READY twelve cardinal gaits, five grounded crouch motions, three slide phases, three airborne states and two combat reactions; legacy controller preserved");
         }
         static AnimatorController PrepareArtStateGraph(RuntimeAnimatorController original)
         {
@@ -64,6 +65,7 @@ namespace RailArena.Editor
             states["Locomotion"].speed = 1; states["Locomotion"].speedParameterActive = false;
             EditorUtility.SetDirty(tree); EditorUtility.SetDirty(states["Locomotion"]);
             PrepareCrouchState(graph, states);
+            PrepareSlideStates(graph);
             foreach (var pair in new[] { ("Jump", "Takeoff"), ("Air", "AirborneHold"), ("Land", "LandingRecover") })
             {
                 var state = states[pair.Item1];
@@ -129,7 +131,28 @@ namespace RailArena.Editor
             if(transition==null)transition=source.AddTransition(destination);
             transition.name=name;transition.hasExitTime=false;transition.duration=duration;transition.conditions=conditions;EditorUtility.SetDirty(transition);
         }
+        static void PrepareSlideStates(AnimatorController graph)
+        {
+            if (!graph.parameters.Any(parameter => parameter.name == "AuthoredSlide"))
+                graph.AddParameter("AuthoredSlide", AnimatorControllerParameterType.Bool);
+            var machine = graph.layers[0].stateMachine;
+            foreach (string name in new[] { "SlideEnter", "SlideHold", "SlideRecover" })
+            {
+                var state = machine.states.Select(child => child.state).SingleOrDefault(item => item.name == name) ?? machine.AddState(name);
+                state.motion = AuthoredClip(name);
+                state.tag = "AuthoredSlide";
+                state.speed = 1;
+                state.speedParameterActive = false;
+                // Sliding boots glide rather than lock to the walking IK solver.
+                state.iKOnFeet = false;
+                EditorUtility.SetDirty(state);
+            }
+        }
         public static void AuditGraphRepeatability()
+            => AuditGraphRepeatability("motion-crouch-graph-repeatability.json");
+        public static void AuditSlideGraphRepeatability()
+            => AuditGraphRepeatability("motion-slide-graph-repeatability.json");
+        static void AuditGraphRepeatability(string evidenceFile)
         {
             var original=Resources.Load<GameObject>("Characters/Contender").GetComponent<ContenderPresentation>().Animator.runtimeAnimatorController;
             PrepareArtStateGraph(original);AssetDatabase.SaveAssets();
@@ -138,7 +161,7 @@ namespace RailArena.Editor
             if(!before.SequenceEqual(after))throw new InvalidOperationException("Art graph preparation must preserve serialized identities across repeated runs");
             Directory.CreateDirectory("../Validation");
             using(var sha=System.Security.Cryptography.SHA256.Create())
-                File.WriteAllText("../Validation/motion-crouch-graph-repeatability.json","{\"identical\":true,\"controllerSha256\":\""+BitConverter.ToString(sha.ComputeHash(after)).Replace("-","").ToLowerInvariant()+"\"}\n");
+                File.WriteAllText("../Validation/"+evidenceFile,"{\"identical\":true,\"controllerSha256\":\""+BitConverter.ToString(sha.ComputeHash(after)).Replace("-","").ToLowerInvariant()+"\"}\n");
             Debug.Log("ART_GRAPH_REPEATABILITY_VERIFIED");
         }
         [Serializable] sealed class ClipEvidence
@@ -168,6 +191,9 @@ namespace RailArena.Editor
         public static void PrepareCrouchCandidates()
             => ImportClips(new[] { "CrouchIdle", "CrouchForward", "CrouchBackward", "CrouchLeft", "CrouchRight", "CrouchEnter", "CrouchExit" }, "motion-crouch-import.json");
 
+        public static void PrepareSlideCandidates()
+            => ImportClips(new[] { "SlideEnter", "SlideHold", "SlideRecover" }, "motion-slide-import.json");
+
         static void ImportClips(string[] names, string evidenceFile)
         {
             var source = (ModelImporter)AssetImporter.GetAtPath("Assets/RailArena/Art/StylizedContenders/Player_LOD0.fbx");
@@ -186,7 +212,7 @@ namespace RailArena.Editor
                 var settings = importer.defaultClipAnimations;
                 if (settings.Length != 1) throw new InvalidOperationException("One authored take is required per motion export: " + name);
                 settings[0].name = name; settings[0].loopTime = name.StartsWith("Retreat", StringComparison.Ordinal) || name.StartsWith("Advance", StringComparison.Ordinal) || name.StartsWith("Strafe", StringComparison.Ordinal) || name == "AirborneHold" ||
-                    (name.StartsWith("Crouch", StringComparison.Ordinal) && name != "CrouchEnter" && name != "CrouchExit"); settings[0].loopPose = settings[0].loopTime;
+                    name == "SlideHold" || (name.StartsWith("Crouch", StringComparison.Ordinal) && name != "CrouchEnter" && name != "CrouchExit"); settings[0].loopPose = settings[0].loopTime;
                 settings[0].lockRootRotation = true; settings[0].lockRootPositionXZ = true; settings[0].lockRootHeightY = true;
                 settings[0].keepOriginalOrientation = true; settings[0].keepOriginalPositionXZ = true; settings[0].keepOriginalPositionY = true;
                 importer.clipAnimations = settings; importer.SaveAndReimport();

@@ -50,6 +50,7 @@ html += '<p><a href="Performance/UnderbridgeMounted/index.html">Corrected under-
 html += '<p><a href="Animation/Strafe/index.html">Authored lateral gaits, measured poses and installed playback</a></p>'
 html += '<p><a href="Animation/Reactions/index.html">Authored hit/death, matching legacy reference and lifecycle evidence</a></p>'
 html += '<p><a href="Animation/Crouch/index.html">Grounded crouch source, installed-controller reel and transition references</a></p>'
+html += '<p><a href="Animation/Slide/index.html">Feet-first slide master, measured poses and matching moving comparison</a></p>'
 html += '<p><a href="Environment/BridgeStone/index.html">Measured bridge, screen and pier construction</a></p>'
 html += '<p><a href="Environment/SummitStone/index.html">Measured summit deck, cover and column construction</a></p>'
 for title, directory in sections:
@@ -100,6 +101,8 @@ for entry in entries:
                 dimensions=[variant_spec['diameterMetres'],variant_spec['diameterMetres'],variant_spec['thicknessMetres']]
         elif any(name in path for name in ('ContenderMotion.controller','ContenderRetreat.overrideController')):
             family='contender-motion-controller';category='animation';directory=art/'Animation/Strafe';master=directory/'Contender-Strafe-v1.blend';references=directory/'strafe-production.json';sheet=directory/'References/StrafeLeftWalk/measured-poses.png';screenshot=directory/'Strafe-Family-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Independent Sky Gardens state graph combines original forward, backward, lateral and airborne masters; legacy controller preserved.'
+        elif '/Slide/' in path or Path(path).stem.startswith('Slide'):
+            family='contender-slide';category='animation';directory=art/'Animation/Slide';master=directory/'Contender-Slide-v1.blend';references=directory/'slide-production.json';sheet=directory/'References/SlideHold/measured-poses.png';screenshot=directory/'Slide-Before-After.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original feet-first slide entry, gliding posture and compact recovery on the unchanged shared skeleton; source-frame clock observes existing simulation ticks, with no gameplay root motion.'
         elif '/Crouch/' in path or Path(path).stem.startswith('Crouch'):
             family='contender-crouch';category='animation';directory=art/'Animation/Crouch';master=directory/'Contender-Crouch-v1.blend';references=directory/'crouch-production.json';sheet=directory/'References/CrouchIdle/measured-poses.png';screenshot=directory/'Crouch-Installed-Poster.png';rig=json.loads((art/'Characters/Player-Production.json').read_text()).get('bones',[]);provenance='Original in-place crouch ankle paths, knee solves and baked bone poses on the unchanged shared skeleton. Five grounded loops are source-integrated with native foot IK; full-body enter/exit remain references.'
         elif '/Reactions/' in path or any(name in path for name in ('HitResponse','DeathFall')):
@@ -141,9 +144,17 @@ for entry in entries:
             crouch_source=art/'Animation/Crouch/crouch-production.json'
             entry['clips'] += [clip['name'] for clip in json.loads(crouch_source.read_text())['clips'] if clip['loop']]
             entry['dependencies'] += [relative(crouch_source)]
-            entry['provenance']='Independent Sky Gardens graph combines original forward, backward, lateral, airborne, reaction and grounded crouch masters; legacy controller preserved.'
+            slide_source=art/'Animation/Slide/slide-production.json'
+            entry['clips'] += [clip['name'] for clip in json.loads(slide_source.read_text())['clips']]
+            entry['dependencies'] += [relative(slide_source)]
+            entry['provenance']='Independent Sky Gardens graph combines original forward, backward, lateral, airborne, reaction, grounded crouch and slide masters; legacy controller preserved.'
         if family=='contender-reactions':
             entry['dependencies'] += ['RailArena/Assets/RailArena/Runtime/ContenderPresentation.cs','RailArena/Assets/RailArena/Runtime/CorpseContactSurface.cs','RailArena/Assets/RailArena/Editor/ContenderMotionArtBuilder.cs']
+    if family=='contender-slide':
+        entry['runtimeUsage']='Sky Gardens art profile / verified Windows Review 19' if path.startswith('RailArena/') else 'Editable source, measured references or native controlled movement evidence'
+        entry['referenceSheets']=[relative(art/'Animation/Slide/References'/name/'measured-poses.png') for name in ('SlideEnter','SlideHold','SlideRecover')]
+        entry['dependencies'] += [relative(art/'Animation/Slide/baked-contact-review.json'),relative(art/'Animation/Slide/review-evidence.json'),'RailArena/Assets/RailArena/Editor/ContenderMotionArtBuilder.cs','RailArena/Assets/RailArena/Runtime/ContenderPresentation.cs','RailArena/Assets/RailArena/Runtime/ArenaActor.cs']
+        entry['clips']=[clip['name'] for clip in json.loads(references.read_text())['clips']]
     if family=='contender-crouch':
         entry['runtimeUsage']=('Candidate transition reference; not referenced by live controller' if Path(path).stem in ('CrouchEnter','CrouchExit') else 'Grounded crouch integrated in verified Windows Review 17') if path.startswith('RailArena/') else 'Editable source/native review; five grounded loops integrated, enter/exit reference-only'
         entry['referenceSheets']=[relative(art/'Animation/Crouch/References'/name/'measured-poses.png') for name in ('CrouchIdle','CrouchForward','CrouchBackward','CrouchLeft','CrouchRight','CrouchEnter','CrouchExit')]

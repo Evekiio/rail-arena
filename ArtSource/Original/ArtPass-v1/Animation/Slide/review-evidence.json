@@ -1,0 +1,58 @@
+{
+  "scope": "Four-character installed body animation on a controlled flat runway using actual ArenaActor.Move and original slide physics. Six cycles per character under identical legacy/authored commands; simulation sampled at 60 Hz. Not native input/audio, all terrain/traversal cases or final artistic acceptance.",
+  "sourceMasterSha256": "08254b945ca82b5396de397713d81b861d485c3c788c5e7d1b4efd2c5c5a3d45",
+  "controllerSha256": "0cced61c831d6c5002f0ea4175e443c6dc98f67c23313875b9e7e85d2f5fc61c",
+  "graphPreparationByteStable": true,
+  "installed": true,
+  "installedClips": [
+    "SlideEnter",
+    "SlideHold",
+    "SlideRecover"
+  ],
+  "integratedPoseSamples": 1176,
+  "lifecycleScenarios": 12,
+  "movingCharacterSamples": 1440,
+  "pairedMovementComparisons": 1440,
+  "activeMovingSlideSamples": 840,
+  "movementComparisonToleranceMetres": 0.0001,
+  "authority": "Actor root, velocity, remaining ticks and capsule heights matched for identical scripted movement. Presentation never changes simulation ticks or root position.",
+  "minimumMovingSlideSkinYMetres": 0.007779,
+  "minimumIntegratedSkinYMetres": 0.007779,
+  "maximumWristErrorMetres": 3.6e-05,
+  "configuredDurationsTested": [
+    2,
+    8,
+    16,
+    36,
+    120
+  ],
+  "aimAngles": "0/90 degrees yaw, -30/0/30 degrees pitch in pose review; moving steering and +/-15 degree pitch in the runway comparison",
+  "lifecycle": "Standing, held crouch, jump, grounded warp, death, respawn and legacy fallback at entry/hold/recovery; collider definitions and local attachments retained.",
+  "results": [
+    "Validation/motion-slide-native.xml",
+    "Validation/motion-slide-integrated.xml",
+    "Validation/motion-slide-moving-regression.xml"
+  ],
+  "videos": [
+    {
+      "path": "Slide-Playback.mp4",
+      "width": 1280,
+      "height": 720,
+      "fps": 60,
+      "frames": 360,
+      "seconds": 6,
+      "audio": false
+    },
+    {
+      "path": "Slide-Before-After.mp4",
+      "width": 2560,
+      "height": 780,
+      "fps": 60,
+      "frames": 360,
+      "seconds": 6,
+      "audio": false
+    }
+  ],
+  "windowsBuild": "Review 19 verified Windows integration; see Validation/art-integrated-final-19.json and art-package-verification-19.json",
+  "remaining": "Native input/audio, first-person slide actions, firing/reload/hit interruption combinations, all terrain and portal/pad trajectories, dynamic tuning changes and Sanders artistic acceptance."
+}
